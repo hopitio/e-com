@@ -41,7 +41,17 @@ table .btn.btn-default:hover{background: #ddd;}
 .btn.check-all{width:34px;}
 tr.checked > td{background: #ffc !important}
 .dataTable tr{cursor: pointer;}
-.modal{position: absolute !important;}
-.modal-backdrop{position: fixed !important;overflow:auto;}
+.modal{position: absolute !important;overflow-y:auto;overflow-x: auto;}
+.modal-backdrop{position: fixed !important;overflow-y:auto;overflow-x: auto;}
 .required{color:red;}
 legend i{font-size: 20.5px;}
+.form-group .error{color: #b94a48}
+.form-group.warning > label, .form-group.warning .help-block, .form-group.warning .help-inline{color: #c09853;}
+.form-group.warning input, .form-group.warning select, .form-group.warning textarea{border-color: #c09853;}
+.form-group.error > label, .form-group.error .help-block, .form-group.error .help-inline{color: #b94a48;}
+.form-group.error input, .form-group.error select, .form-group.error textarea{border-color: #b94a48}
+.alert a {
+    text-decoration: underline;
+    color: #fff;
+    font-weight: bold;
+}

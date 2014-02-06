@@ -70,6 +70,11 @@ class App
         return ROOT_DIR . static::_replace_seperator(Config::APPS_PATH);
     }
 
+    static function get_langs_dir()
+    {
+        return ROOT_DIR . static::_replace_seperator(Config::LANGS_PATH);
+    }
+
     static function get_uploads_url()
     {
         return static::get_site_url() . Config::UPLOADS_PATH;

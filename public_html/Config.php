@@ -16,6 +16,10 @@ class Config
     const SITE_URL = '/e-com/';
     const BRAND = 'eCom';
     const DEFAULT_ROWS_LIMIT = 10;
+    const HASH_KEY = 'ta';
+    //Cookie
+    const COOKIE_EXPIRE_HOURS = 12;
+    const COOKIE_PATH = '/e-com/'; //không cần dấu / cuối
     //DB
     const DB_TYPE = 'mysqli';
     const DB_HOST = 'localhost';
@@ -29,6 +33,7 @@ class Config
     const THEMES_PATH = 'themes/';
     const PUBLIC_PATH = 'public/';
     const APPS_PATH = 'apps/';
+    const LANGS_PATH = 'langs/';
 
 }
 

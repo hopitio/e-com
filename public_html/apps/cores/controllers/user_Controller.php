@@ -7,6 +7,11 @@ require_once App::get_libs_dir() . 'domains' . DS . 'user_Domain.php';
 
 class user_Controller extends cores_Controller
 {
+    function __construct($module, $controller)
+    {
+        parent::__construct($module, $controller);
+        $this->_require_login();
+    }
 
     function main()
     {
@@ -28,7 +33,7 @@ class user_Controller extends cores_Controller
         $this->model->db->debug = Config::DEBUG_MODE < 10 ? 0 : 1;
         header('Content-Type: application/json');
 
-        $v_ou_id = get_reqest_var('ou_id');
+        $v_ou_id = get_request_var('ou_id');
         //query group
         group_Domain::reset_query();
         group_Domain::filter_ou($v_ou_id);

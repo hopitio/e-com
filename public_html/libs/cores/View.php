@@ -19,6 +19,7 @@ class View
     protected $_arr_main_nav;
     protected $_active_main_nav;
     protected $_active_sub_nav;
+    protected $_arr_langs;
 
     public function __construct($module, $controller)
     {

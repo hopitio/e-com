@@ -15,4 +15,10 @@ class dashboard_Controller extends cores_Controller
                 ->render('main');
     }
 
+    function change_language($lang)
+    {
+        Cookie::set('lang', $lang, 24 * 365);
+        $this->model->exec_retry();
+    }
+
 }

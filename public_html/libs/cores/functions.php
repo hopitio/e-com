@@ -2,6 +2,11 @@
 
 defined('DS') or die;
 
+/**
+ * Loại bỏ ký tự đặc biệt
+ * @param string $str
+ * @return string
+ */
 function escape_string($str)
 {
     $arr_search = array('&', '<', '>', '"', "'", '/', "\\");
@@ -25,12 +30,17 @@ function get_array_value($array, $key, $default)
     return isset($array[$key]) ? $array[$key] : $default;
 }
 
+        const XPATH_ARRAY = 1;
+        const XPATH_OBJECT = 2;
+        const XPATH_STRING = 3;
+
 /**
  * Không tìm thấy cũng trả về dữ liệu, tránh lỗi lập trình
  * @param SimpleXMLElement $simplexml
  * @param string $xpath
  * @param int $mode
  * @param mixed $default
+ * @return \SimpleXMLElement[]
  */
 function xpath($simplexml, $xpath, $mode = XPATH_ARRAY, $default = null)
 {
@@ -63,18 +73,47 @@ function xpath($simplexml, $xpath, $mode = XPATH_ARRAY, $default = null)
     }
 }
 
-function get_reqest_var($name, $default = '', $escape = true)
+/**
+ * 
+ * @param string $name
+ * @param mixed $default
+ * @param bool $escape
+ * @return mixed
+ */
+function get_request_var($name, $default = '', $escape = true)
 {
-    return Request::get_instance()->get_request($name, $default, $escape);
+    return Request::get_request($name, $default, $escape);
 }
 
+/**
+ * 
+ * @param string $name
+ * @param mixed $default
+ * @param bool $escape
+ * @return mixed
+ */
 function get_post_var($name, $default = '', $escape = true)
 {
-    return Request::get_instance()->get_post($name, $default, $escape);
+    return Request::get_post($name, $default, $escape);
 }
 
+/**
+ * Dấu phân cách tiếp theo là ? hay &
+ * @param string $url
+ * @return string
+ */
 function get_sep($url)
 {
     return strpos($url, '?') !== false ? '&' : '?';
 }
 
+/**
+ * Dịch theo ngôn ngữ lưu ở cookie, default=en_us
+ * @param string $str
+ * @param array $params
+ * @return string
+ */
+function __($str, $params = array())
+{
+    return Lang::get_instance(Cookie::get('lang', 'en_us'))->translate($str, $params);
+}

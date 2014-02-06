@@ -5,8 +5,8 @@ echo $this->hidden('hdn_ou_id', $ou->id);
 ?>
 <div class="form-group">
     <label class="control-label col-sm-3" for="sel_parent">Trực thuộc <span class="required">*</span></label>
-    <div class="col-sm-9">
-        <select name="sel_parent" id="sel_parent" class="form-control">
+    <div class="col-sm-9 control-group">
+        <select name="sel_parent" id="sel_parent" class="form-control" required>
             <option></option>
             <?php foreach ($arr_all_ou as $arr_single_ou): ?>
                 <?php
@@ -21,13 +21,13 @@ echo $this->hidden('hdn_ou_id', $ou->id);
 </div>
 <div class="form-group">
     <label class="control-label col-sm-3" for="txt_name">Tên đơn vị <span class="required">*</span></label>
-    <div class="col-sm-9">
+    <div class="col-sm-9 control-group">
         <input type="text" class="form-control" name="txt_name" id="txt_name" value="<?php echo $ou->name ?>"/>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-3" for="txt_code_name">Mã đơn vị <span class="required">*</span></label>
-    <div class="col-sm-9">
+    <div class="col-sm-9 control-group">
         <input type="text" class="form-control" name="txt_code_name" id="txt_code_name" value="<?php echo $ou->code_name ?>"/>
     </div>
 </div>
@@ -39,7 +39,7 @@ echo $this->hidden('hdn_ou_id', $ou->id);
 </div>
 <div class="form-group">
     <label class="control-label col-sm-3" for="chk_status"></label>
-    <div class="col-sm-9">
+    <div class="col-sm-9 control-group">
         <label>
             <input type="checkbox" name="chk_status" id="chk_status" value="1"/>
             Hoạt động

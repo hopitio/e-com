@@ -6,6 +6,18 @@ $(function() {
     }).on('hide.bs.modal', function() {
         $('.modal-body', this).html('');
     });
+    $('.form-validate').submit(function(e) {
+        e.preventDefault();
+        var $form_input = $("input,select,textarea", this)
+                .not("[type=submit]")
+                .not('[data-init-validate=1]')
+                .attr('data-init-validate', 1);
+        $form_input.jqBootstrapValidation();
+        $(this).trigger('validate_submit');
+        if ($("input,select,textarea", this).not("[type=submit]").jqBootstrapValidation("hasErrors") == false) {
+            $(this).unbind('submit').submit();
+        }
+    });
 });
 
 function tooltip(container) {
@@ -105,6 +117,15 @@ function get_data_table_opts(custom_opts) {
             tooltip(this);
             check_all($(this).parents('.panel:first'));
             $('tbody', this).unbind('click').click(function(e) {
+                if ($(e.target).prop('tagName') === 'button'
+                        || $(e.target).prop('tagName') === 'input'
+                        || $(e.target).prop('tagName') === 'A'
+                        || $(e.target).prop('tagName') === 'I') {
+                    var $tr = $(e.target).parents('tr:first');
+                    $('.check', this).prop('checked', false).trigger('change');
+                    $('.check', $tr).prop('checked', true).trigger('change');
+                    return;
+                }
                 if ($(e.target).attr('type') === 'checkbox') {
                     return;
                 }
@@ -112,7 +133,6 @@ function get_data_table_opts(custom_opts) {
                 var $tr = $(e.target).parents('tr:first');
                 var $tbody = $(e.target).parents('tbody:first');
                 var $check = $('.check', $tr);
-                $('.check', $tbody).prop('checked', false).trigger('change');
                 $check.prop('checked', true).trigger('change');
             });
             $('tbody', this).dblclick(function(e) {
@@ -121,6 +141,8 @@ function get_data_table_opts(custom_opts) {
                 }
                 e.preventDefault();
                 var $tr = $(e.target).parents('tr:first');
+                $('.check', this).prop('checked', false).trigger('change');
+                $('.check', $tr).prop('checked', true).trigger('change');
                 $tr.trigger('update');
             });
             if (typeof custom_opts.fnCustomCallback !== 'undefined') {
@@ -138,7 +160,5 @@ function btn_update_onclick(elm) {
     var $tr = $(elm).parents('tr:first');
     $tr.trigger('update');
 }
-
-
 
 

@@ -39,6 +39,18 @@ class Session
         $_SESSION[$name] = $value;
     }
 
+    /**
+     * Xóa một biến
+     * @param type $name
+     */
+    static function unset_var($name)
+    {
+        if (isset($_SESSION[$name]))
+        {
+            unset($_SESSION[$name]);
+        }
+    }
+
     static function get_token()
     {
         return md5(session_id());
@@ -58,6 +70,22 @@ class Session
         $notify = static::get(static::NOTIFICATION, false);
         static::set(static::NOTIFICATION, false);
         return $notify;
+    }
+
+    /**
+     * @param user_Domain $user
+     */
+    static function set_current_user(user_Domain $user)
+    {
+        static::set('__USER__', $user);
+    }
+
+    /**
+     * @return \user_Domain
+     */
+    static function get_current_user()
+    {
+        return static::get('__USER__');
     }
 
 }

@@ -54,7 +54,7 @@ $v_ajax_url = $v_controller . 'svc_all_ou_children';
     </div>
 </div>
 <div style="margin-left: 200px;">
-    <form method="post" class="form-horizontal">
+    <form method="post" class="form-horizontal form-validate" novalidate>
         <?php
         echo $this->hidden('hdn_goback', $v_controller);
         echo $this->hidden('hdn_update_group', $v_controller . 'dsp_single_group/');

@@ -5,26 +5,6 @@ defined('DS') or die;
 class Request
 {
 
-    /** @var \Request */
-    protected static $_instance;
-
-    /** @var return \Request */
-    static function get_instance()
-    {
-        if (!static::$_instance)
-        {
-            static::$_instance = new static;
-        }
-        return static::$_instance;
-    }
-
-    function __construct()
-    {
-        
-    }
-
-   
-
     /**
      * Lấy dữ liệu từ $_REQUEST
      * @param string $name
@@ -32,14 +12,22 @@ class Request
      * @param bool $escape
      * @return mixed
      */
-    function get_request($name, $default = '', $escape = TRUE)
+    static function get_request($name, $default = '', $escape = TRUE)
     {
         $var = isset($_REQUEST[$name]) ? $_REQUEST[$name] : $default;
-        if ($escape)
+        if (!$escape)
+        {
+            return $var;
+        }
+        if (!is_array($var))
         {
             return escape_string($var);
         }
-        return $var;
+        else //array
+        {
+            array_walk_recursive($var, 'escape_string');
+            return $var;
+        }
     }
 
     /**
@@ -49,14 +37,22 @@ class Request
      * @param bool $escape
      * @return mixed
      */
-    function get_post($name, $default = '', $escape = TRUE)
+    static function get_post($name, $default = '', $escape = TRUE)
     {
         $var = isset($_POST[$name]) ? $_POST[$name] : $default;
-        if ($escape)
+        if (!$escape)
+        {
+            return $var;
+        }
+        if (!is_array($var))
         {
             return escape_string($var);
         }
-        return $var;
+        else //array
+        {
+            array_walk_recursive($var, 'escape_string');
+            return $var;
+        }
     }
 
 }

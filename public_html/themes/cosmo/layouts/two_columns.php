@@ -11,6 +11,7 @@ defined('DS') or die;
         <link rel="stylesheet" type="text/css" href="<?php echo $this->get_theme_url() ?>css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo $this->get_theme_url() ?>css/bootswatch.min.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo $this->get_theme_url() ?>css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->get_theme_url() ?>css/flags.css"/>
         <!--data table-->
         <link rel="stylesheet" type="text/css" href="<?php echo $this->get_theme_url() ?>css/custom.css"/>
 
@@ -28,6 +29,8 @@ defined('DS') or die;
         <script src="<?php echo $this->get_theme_url() ?>js/jquery.datatable/js/dataTables.custom.js"></script>
         <!--notify-->
         <script src="<?php echo $this->get_theme_url() ?>js/notify.min.js"></script>
+        <!--validadtion-->
+        <script src="<?php echo $this->get_theme_url() ?>js/jqBootstrapValidation.js"></script>
         <!--custom-->
         <script src="<?php echo $this->get_theme_url() ?>js/custom.js"></script>
     </head>
@@ -42,7 +45,7 @@ defined('DS') or die;
                 <div class="navbar-collapse collapse " id="navbar-main">
                     <ul class="nav navbar-nav">
                         <li class="divider">
-                            <a href="javascript:;" class="bs-tooltip" title="Hiện/ẩn thanh bên">
+                            <a href="javascript:;" class="bs-tooltip" title="<?php echo ucfirst(__('show_hide_sidebar')) ?>">
                                 <i class="fa fa-bars"></i>
                             </a>
                         </li>
@@ -82,26 +85,57 @@ defined('DS') or die;
                         <?php endforeach; ?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="javascript:;" class="dropdown-toggle bs-tooltip" data-toggle="dropdown" 
-                               id="admin-nav" title="Quản trị" >
-                                <i class="fa fa-cog"></i>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="admin-nav">
-                                <?php foreach ($this->_arr_admin_nav as $nav): ?>
-                                    <?php if ($nav == null): ?>
-                                        <li class="divider"></li>
-                                    <?php else: ?>
-                                        <?php $v_active = $this->_active_admin_nav == $nav->get_id() ? 'active' : ''; ?>
-                                        <li class="<?php echo $v_active ?>">
-                                            <a href="<?php echo $nav->get_url() ?>" target="_blank">
-                                                <?php echo $nav->get_label() ?>
-                                            </a>
-                                        </li>
-                                    <?php endif; ?>
-                                <?php endforeach ?>
-                            </ul>
-                        </li>
+                        <!--lang-->
+                        <?php $v_current_lang = Cookie::get('lang', 'en_us') ?>
+                        <?php foreach ($this->_arr_langs as $arr_single_lang): ?>
+                            <?php
+                            $v_active = $v_current_lang == $arr_single_lang['id'] ? 'active' : '';
+                            $v_url = $this->get_controller_url('dashboard/change_language') . $arr_single_lang['id'];
+                            ?>
+                            <li class="<?php echo $v_active ?>">
+                                <a href="<?php echo $v_url ?>" title="<?php echo $arr_single_lang['title'] ?>" class="bs-tooltip">
+                                    <img class="flag flag-<?php echo $arr_single_lang['flag'] ?>"/>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php if (Session::get_current_user()): ?>
+                            <li><!--account-->
+                                <a href="javascript:;" class="dropdown-toggle bs-tooltip" data-toggle="dropdown" 
+                                   id="account-nav" title="<?php echo ucfirst(__('account')) ?>" >
+                                    <i class="fa fa-user"></i>&nbsp;<?php echo Session::get_current_user()->account ?>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="account-nav">
+                                    <li>
+                                        <a href="<?php echo $this->get_controller_url('account/dsp_change_password') ?>">
+                                            <?php echo ucfirst(__('change_password')) ?>
+                                        </a>
+                                        <a href="javascript:;"><?php echo ucfirst(__('logout')) ?></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php endif; ?>
+                        <?php if (Session::get_current_user() && Session::get_current_user()->is_admin): ?>
+                            <li><!--admin-->
+                                <a href="javascript:;" class="dropdown-toggle bs-tooltip" data-toggle="dropdown" 
+                                   id="admin-nav" title="<?php echo ucfirst(__('manage')) ?>" >
+                                    <i class="fa fa-cog"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="admin-nav">
+                                    <?php foreach ($this->_arr_admin_nav as $nav): ?>
+                                        <?php if ($nav == null): ?>
+                                            <li class="divider"></li>
+                                        <?php else: ?>
+                                            <?php $v_active = $this->_active_admin_nav == $nav->get_id() ? 'active' : ''; ?>
+                                            <li class="<?php echo $v_active ?>">
+                                                <a href="<?php echo $nav->get_url() ?>" target="_blank">
+                                                    <?php echo $nav->get_label() ?>
+                                                </a>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endforeach ?>
+                                </ul>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

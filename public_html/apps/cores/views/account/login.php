@@ -35,6 +35,7 @@ defined('DS') or die;
         <div class="container" style="padding-top:10px;">
             <div id="content" class="no-sidebar">
                 <form class="form-horizontal well col-xs-4 col-xs-offset-4" method="post" action="<?php echo $this->get_controller_url() ?>do_login">
+                    <?php echo $this->hidden('hdn_goback', $goback); ?>
                     <fieldset>
                         <legend><i class="fa fa-key"></i> Đăng nhập hệ thống</legend>
                         <div class="form-group">
@@ -58,5 +59,10 @@ defined('DS') or die;
                 </form>
             </div>
         </div>
+        <?php if ($notify = Session::get_notification()): ?>
+            <script>
+                $.notify('<?php echo $notify['text'] ?>', '<?php echo $notify['status'] ?>');
+            </script>
+        <?php endif; ?>
     </body>
 </html>
