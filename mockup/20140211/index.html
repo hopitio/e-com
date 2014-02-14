@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Project E Mockup UI</title>
+<script src="js/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style/main.css" media="all">
+<link rel="stylesheet" type="text/css" href="style/homePage.css" media="all">
+
+<script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
+<script>
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="headToolbar w100percent">   
+            <div class='topbar wStaticPx'>
+                <div class="contentBar leftContent">
+                    <ul>
+                        <li><a>Logo HERE </a></li>
+                        <li><a>SubSystem</a></li>
+                        <li><a>SubSystem</a></li>
+                    </ul>
+                </div>
+                <div class="contentBar rightContent">
+                     <ul>
+                        <li><a>Login </a></li>
+                        <li><a>Don Hang</a></li>
+                        <li><a>SomeThing Here</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content wStaticPx" >
+            <div class="searchBox searchboxSize">
+                <div class="searchTitle">
+                    Tìm kiếm sản phẩm.
+                </div>
+                <div class="searchForm">
+                    <input id="tags" class="searchBox" type="text"/>
+                    <div class="searchButton" ><a > Tìm kiếm </a></div>
+                </div>
+                <div class="searchFav">
+                    <span class="searchFavTitle">Từ khóa tìm kiếm nhiều</span>
+                    <ul>
+                        <li><a>>> quần áo</a></li>
+                        <li><a>>> IPhone 4</a></li>
+                        <li><a>>> Áo len thu đông</a></li>
+                        <li><a>>> Giấy nam</a></li>
+                        <li><a>>> Cellphone</a></li>
+                        <li><a>>> Chiến</a></li>
+                    </ul>
+                </div>
+                <div class="searchAdv">
+                    <a> &lt;&lt; Tìm kiếm nâng cao.</a>
+                </div>
+            </div>
+            <div class="catelogryBox catelogrySize">
+                <span class="categoryTitle">Danh Mục</span>
+                <ul>
+                    <li>Quần áo</li>
+                    <li>Giầy dép </li>
+                    <li>Áo khoác</li>
+                    <li>Cell Phone</li>
+                    <li>Iphone </li>
+                    <li>Xe đạp </li>
+                    <li>Xe máy </li>
+                </ul>
+                <div class="allCate">
+                    Tất cả
+                </div>
+            </div>
+            
+            <div class="towCloumns">
+                <div class="left">
+                    <img width="368px" height="228px" alt="" src="images/PhoneLandingHero.png">
+                </div>
+                <div class="right">
+                    <div class="title">Khuyến mãi <span>[1]</span> <span>2</span></div>
+                    <ul>
+                        <li><a><div><span>IPhone 5</span><br/><span class="des">description</span></div></a></li>
+                        <li><a><div><span>IPhone 6</span><br/><span class="des">Cửa hàng 1</span></div></a></li>
+                        <li><a><div><span>HTC M8 </span><br/><span class="des">Cửa hàng vô đối</span></div></a></li>
+                        <li><a><div><span>HTC 8X </span><br/><span class="des">Cửa hàng</span></div></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="nomarlCol">
+                <div class="imgContainer">
+                    <img height='250px' width="200px" src="images/TURB-200x250.jpg"/>
+                </div>
+                <div class="desInfo">
+                    <ul>
+                        <li class="idInfor">Mã  SP01</li>
+                        <li class="priceInfor">Giá 100,000 VND</li>
+                        <li class="">Gian hàng </li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <div class="title">
+                    Sản phẩm sản xuất đại trà
+                </div>
+            </div>
+            <div class="nomarlCol">
+                <div class="imgContainer">
+                    <img height='250px' width="200px" src="images/images1.jpg"/>
+                </div>
+                <div class="desInfo">
+                    <ul>
+                        <li class="idInfor">Mã  SP01</li>
+                        <li class="priceInfor">Giá 100,000 VND</li>
+                        <li class="priceDown">39% </li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <div class="title">
+                    Sản phẩm sản xuất đại trà
+                </div>
+            </div>
+             <div class="nomarlCol">
+                <div class="imgContainer">
+                    <img height='250px' width="200px" src="images/images3.jpg"/>
+                </div>
+                <div class="desInfo">
+                    <ul>
+                        <li class="idInfor">Mã  SP01</li>
+                        <li class="priceInfor">Giá 100,000 VND</li>
+                        <li class="priceDown">39% </li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <div class="title">
+                    Sản phẩm sản xuất đại trà
+                </div>
+            </div>
+             <div class="nomarlCol">
+                <div class="imgContainer">
+                    <img height='250px' width="200px" src="images/images2.jpg"/>
+                </div>
+                <div class="desInfo">
+                    <ul>
+                        <li class="idInfor">Mã  SP01</li>
+                        <li class="priceInfor">Giá 100,000 VND</li>
+                        <li class="priceDown">39% </li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <div class="title">
+                    Sản phẩm sản xuất đại trà
+                </div>
+            </div>
+             <div class="nomarlCol">
+                <div class="imgContainer">
+                    <img height='250px' width="200px" src="images/images4.jpg"/>
+                </div>
+                <div class="desInfo">
+                    <ul>
+                        <li class="idInfor">Mã  SP01</li>
+                        <li class="priceInfor">Giá 100,000 VND</li>
+                        <li class="priceDown">39% </li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <div class="title">
+                    Sản phẩm sản xuất đại trà
+                </div>
+            </div>
+             <div class="nomarlCol">
+                <div class="imgContainer">
+                    <img height='250px' width="200px" src="images/tiles-200x250_20922.jpg"/>
+                </div>
+                <div class="desInfo">
+                    <ul>
+                        <li class="idInfor">Mã  SP01</li>
+                        <li class="priceInfor">Giá 100,000 VND</li>
+                        <li class="priceDown">39% </li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <div class="title">
+                    Sản phẩm sản xuất đại trà
+                </div>
+            </div>
+            
+        </div>
+        <div class="footer">
+        
+        </div>
+    </div>
+</body>
+</html>

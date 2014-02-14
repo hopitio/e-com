@@ -1,0 +1,34 @@
+@CHARSET "utf-8";
+*{padding: 0px; margin:0px;font-size: 12px; font-family: arial;}
+ul, li, dl, dd, dt {list-style: none outside none;}
+a{text-decoration: }
+#wrap{
+    margin:0px; 
+    padding:0px; 
+    position: relative; 
+    display: inline-block;
+    width: 100%;
+    min-height: 768px;
+    text-align: center;
+	background: transparent url('../images/bg_gnb.gif') repeat 0 0;
+}
+.headToolbar{
+    height: 30px;
+    background: transparent url('../images/headBg.png') repeat-x 0 0;
+    border-bottom: solid 1px #CECECE;
+    text-align: center;
+}
+.w100percent{width:100%;}
+.wStaticPx{width:1078px;}
+/*---Topbar---*/
+.topbar{border-left: solid 1px #CECECE;border-right: solid 1px #CECECE;height: 30px;margin: auto;}
+.contentBar{text-align: left;line-height: 30px;color: #7f7f7f;}
+.topbar .leftContent{width: 49.9%;float: left;}
+.topbar .leftContent li{float:left;border-right: solid 1px #CECECE;cursor: pointer;padding:0px 10px;}
+.topbar .leftContent li:hover,.topbar .rightContent li a:hover{color: #2f2f2f;}
+.topbar .rightContent{width: 49.9%;float: left;}
+.topbar .rightContent li{float: right; padding: 0px 5px;}
+.topbar .rightContent li a{font-size: 11px;cursor:pointer;}
+/*---Content---*/
+.content{margin: auto auto auto auto;border-left: solid 1px transparent;border-right: solid 1px transparent;min-height: 500px;}
+/*---Search---*/

@@ -1,0 +1,121 @@
+@CHARSET "utf-8";
+.searchBox{margin:10px 0px 10px 10px;float:left;background-color: #05bd00;border: solid 1px #029200;}
+.searchBox *{margin:0;}
+.searchboxSize{width: 348px;height: 248px;}
+.searchBox .searchTitle,.searchForm{color: white;font-size: 30px;text-align: left; margin:10px; }
+.searchBox .searchForm{font-size: 12px;}
+.searchBox .searchForm .searchBox{width: 260px;height: 23px;background-color: white;border-radius: 10px 0px 0px 10px;text-align: center;border:solid 1px #495164;}
+.searchBox .searchForm .searchButton{height: 23px;border-radius: 0px 10px 10px 0px;float: left;line-height: 22px;border:solid 1px #495164;padding: 0px 5px;}
+.searchBox .searchForm .searchButton:hover{cursor:pointer;}
+.searchBox .searchFav{float:left;width: 230px;text-align: left;margin: 10px;color: white;}
+.searchBox .searchFav .searchFavTitle{font-weight: bold;}
+.searchBox .searchFav li a{font-size: 11px;margin-left:  5px;}
+.searchBox .searchFav li a:hover{cursor: pointer;}
+.searchBox .searchAdv{float:left;width: 230px;text-align: left;margin: 10px;color: #495164;}
+.searchBox .searchAdv:hover{cursor:pointer;}
+
+
+.catelogryBox{margin:10px 10px 10px 0px;float:left;background-color: #495164;border: solid 1px #1C2028;}
+.catelogrySize{height: 248px;width: 128px;}
+.catelogryBox .categoryTitle{color:#07EF00;float:left;padding: 0 0 0 10px;line-height: 50px;font-size: 20px;}
+.catelogryBox ul{float: left;width: 130px;text-align: left;}
+.catelogryBox li{border-bottom: solid 1px transparent;border-top: solid 1px transparent;padding: 0 0 0 10px;line-height: 20px;color: white;font-weight: bold;}
+.catelogryBox li:hover{border-bottom: solid 1px #2F3542;border-top: solid 1px #2F3542;cursor:pointer;background-color: #404759;}
+.catelogryBox .allCate{float:left;margin-top: 10px;color:white;height: 34px;border-top:solid 1px #4E5669;background-color: #2F3542;width: 118px;text-align: left;line-height: 33px;font-weight: bold;padding: 0 0 0 10px;}
+.catelogryBox .allCate:hover{cursor: pointer;}
+
+.towCloumns{width: 556px;height: 248px;margin: 10px;border: solid 1px #EDEDEE;float:left; background-color: white;}
+
+.towCloumns .left{
+	float:left;
+	height: 228px;
+	width: 368px;
+	padding: 10px;
+}
+.towCloumns .right{
+	float:left;
+	height: 248px;
+	border-left:solid 1px #EDEDEE;
+	width: 167px;
+}
+.towCloumns .right .title{
+	line-height: 30px;
+	width: 100%;
+	font-weight: bold;
+}
+
+.towCloumns .right li{
+	text-align: left;
+	min-height: 43px;
+	border-top: solid 1px #EDEDEE;
+	padding:5px;
+}
+.towCloumns .right li:hover{
+    cursor:pointer;
+}
+.towCloumns .right li div{
+    float:left;
+	line-height: 20px;
+}
+.towCloumns .right li img{
+    float:right;
+}
+
+.towCloumns .right span.des{
+	font-size: 11px;
+	color: #7f7f7f;
+	font-style: italic;
+}
+.content .nomarlCol{
+	width: 337px;
+	height: 250px;
+	background-color: white;
+	float:left;
+	margin:10px;
+	border:solid 1px #CCCCCC;
+}
+.content .nomarlCol:hover{
+	border:solid 1px #05bd00;
+	cursor:pointer;
+}
+.nomarlCol .title{
+	background-color: #EDEDED;
+	opacity:0.5;
+	line-height:30px;
+	width:190px;
+	text-align: left;
+	color:black;
+	font-size: 16px;
+	padding-left:10px;
+	margin-top: -30px;
+	float:left;
+}
+.nomarlCol .imgContainer{
+	float:left;
+	height: 250px;
+	width:200px;
+}
+.nomarlCol .desInfo{
+	float:left;
+	height:250px;
+	background-color:#F8F8F8;
+	width: 137px;
+}
+.nomarlCol .desInfo li{
+    padding:5px;
+	text-align: left;
+	color: #7f7f7f;
+	font-style: italic;
+}
+.desInfo li.idInfor{
+	color: Gray;
+	font-weight: bold;
+}
+.desInfo li.priceInfor{
+    color: green;
+	font-weight: bolder;
+}
+.desInfo li.priceDown{
+	color: #029200;
+	font-size: 40px;
+}
