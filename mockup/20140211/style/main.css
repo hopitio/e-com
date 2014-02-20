@@ -1,7 +1,13 @@
 @CHARSET "utf-8";
-*{padding: 0px; margin:0px;font-size: 12px; font-family: arial;}
+*{padding: 0px; margin:0px;
+font-family: 'Cabin';
+font-size: 14px;
+font-weight: normal;
+font-style: normal;
+text-decoration: none;
+}
 ul, li, dl, dd, dt {list-style: none outside none;}
-a{text-decoration: }
+a{text-decoration: none;}
 #wrap{
     margin:0px; 
     padding:0px; 
@@ -10,25 +16,107 @@ a{text-decoration: }
     width: 100%;
     min-height: 768px;
     text-align: center;
-	background: transparent url('../images/bg_gnb.gif') repeat 0 0;
+	background: #FAF8F2 ;
 }
 .headToolbar{
-    height: 30px;
-    background: transparent url('../images/headBg.png') repeat-x 0 0;
-    border-bottom: solid 1px #CECECE;
     text-align: center;
+	background:white;
 }
 .w100percent{width:100%;}
-.wStaticPx{width:1078px;}
+.wStaticPx{width:980px;}
 /*---Topbar---*/
-.topbar{border-left: solid 1px #CECECE;border-right: solid 1px #CECECE;height: 30px;margin: auto;}
-.contentBar{text-align: left;line-height: 30px;color: #7f7f7f;}
+.topbar{height: 30px;margin: auto;}
+.contentBar{text-align: left;line-height: 30px; color: #7f7f7f;}
 .topbar .leftContent{width: 49.9%;float: left;}
-.topbar .leftContent li{float:left;border-right: solid 1px #CECECE;cursor: pointer;padding:0px 10px;}
+.topbar .leftContent li{float:left;cursor: pointer;padding:0px 10px;}
 .topbar .leftContent li:hover,.topbar .rightContent li a:hover{color: #2f2f2f;}
 .topbar .rightContent{width: 49.9%;float: left;}
 .topbar .rightContent li{float: right; padding: 0px 5px;}
 .topbar .rightContent li a{font-size: 11px;cursor:pointer;}
 /*---Content---*/
-.content{margin: auto auto auto auto;border-left: solid 1px transparent;border-right: solid 1px transparent;min-height: 500px;}
+.staticContent{
+	background: transparent url("../images/top-header-pttrn.png") repeat-x left top;
+	margin: auto;
+	padding-top:12px;
+}
+.staticContent .robin{
+	height:50px;
+	margin:auto;
+}
+.staticContent .topMenu{
+	width:100%;
+	height: 52px;
+	margin-top:10px;
+	border-top: solid 1px #EEEADC;
+	border-bottom: solid 1px #EEEADC;
+}
+.content{
+	   margin: auto auto auto auto;
+	   border-left: solid 1px transparent;
+	   border-right: solid 1px transparent;
+	   min-height: 500px;
+}
+.robin .logo{
+	line-height: 50px;
+	float: left;
+	font-size:50px;
+	width: 480px;
+	text-align: left;
+}
+.robin .search{
+	float: right;
+	text-align: right;
+}
+.staticContent .effectTowBorder{
+	width: 100%;
+	border-top: solid 1px #EEEADC;
+    border-bottom: solid 1px #EEEADC;
+	height:40px;
+	margin:5px 0px;
+}
+.topMenu .topMenuContentContainer{
+	margin: auto;
+	height: 40px;
+}
+.topMenuContentContainer .menu{
+	display: inline-block;
+    float: left;
+	width: 100%;
+}
+.topMenuContentContainer li{
+    float:left;
+	line-height:40px;
+	font-weight: bold;
+}
+.topMenuContentContainer li a{
+	padding:0px 10px;
+	color: #9D8A7E;
+	font-size: 16px;
+	border-right: solid 1px #EEEADC;
+}
+.topMenuContentContainer li a:hover{
+    color: #DB4D4D;
+}
+.topMenuContentContainer .cart{
+	width: 80px;
+	height: 40px;
+	float: right;
+	background: transparent url("../images/sprite.png") no-repeat 10px -40px;
+}
+.topMenuContentContainer .cart:hover{
+	cursor: pointer;
+}
 /*---Search---*/
+.button{
+	margin:  auto;
+	line-height: 30px;
+	padding:0px 10px;
+	color:white;
+	width:100%;
+	background-color: #DB4D4D; 
+	border-radius:5px;
+	
+}
+.button:hover{
+	cursor:pointer;
+}
