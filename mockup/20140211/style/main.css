@@ -1,10 +1,11 @@
 @CHARSET "utf-8";
 *{padding: 0px; margin:0px;
-font-family: 'Cabin';
-font-size: 14px;
-font-weight: normal;
-font-style: normal;
-text-decoration: none;
+	font-family: 'Cabin';
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+    color: #9D8A7E;
 }
 ul, li, dl, dd, dt {list-style: none outside none;}
 a{text-decoration: none;}
@@ -62,11 +63,39 @@ a{text-decoration: none;}
 	font-size:50px;
 	width: 480px;
 	text-align: left;
+	color:#DB4D4D;
 }
 .robin .search{
 	float: right;
 	text-align: right;
+	line-height:50px;
 }
+.robin .search input[type=text]{
+    width: 350px;
+	border-radius:10px;
+	border:solid 1px #EEEADC;
+	height:30px;
+	padding: 5px;
+	color: #9D8A7E;
+    font-size: 16px;
+	margin-top: 5px;
+}
+.robin .search .searchButton{
+    border-radius:10px;
+    border:solid 1px #EEEADC;
+    line-height:30px;
+    padding: 5px;
+    color: white;
+    font-size: 16px;
+    margin-top: 5px;
+	background-color:#DB4D4D; 
+	padding:5px 10px;
+    display: inline-block;
+}
+.robin .search .searchButton:hover{
+	cursor:pointer;
+}
+
 .staticContent .effectTowBorder{
 	width: 100%;
 	border-top: solid 1px #EEEADC;
@@ -119,4 +148,10 @@ a{text-decoration: none;}
 }
 .button:hover{
 	cursor:pointer;
+}
+.footer{
+	height: 250px;
+	width:100%;
+	background: #493A34 url('../images/footer-pttrn.png') repeat-x top left;
+	
 }

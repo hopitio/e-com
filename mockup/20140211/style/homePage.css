@@ -1,10 +1,76 @@
 @CHARSET "utf-8";
 .sliderContainer{
-	padding-top:33px;
-	height: 250px;
-	width:100%;
 	background:transparent url('../images/banner-bg-cat.png') repeat-x 0px 0px;
+	display:inline-block;
+	padding-top:30px;
+	width: 100%;
 }
+.sliderContainer .bx-wrapper .bx-controls-direction a.bx-prev{
+    left: -50px;
+}
+.sliderContainer .bx-wrapper .bx-controls-direction a.bx-next{
+    right: -50px;
+}
+.sliderContainer .containerClearFix{width:980px;margin:auto;}
+.sliderContainer .bx-wrapper{width:600px;float:left;}
+.sliderContainer .bx-wrapper .bx-viewport{left:0px;}
+.sliderContainer .chatbox{
+    width: 320px;
+    height:400px;
+	float:right;
+	margin-top: -30px;
+	background-color: white;
+	box-shadow: 0 0 5px white;
+}
+.chatbox .conatinerChat{
+	border:solid 1px #EEEADC;
+	border-radius:5px;
+	background-color:#FAF8F2;
+	height: 300px;
+	width: 300px;
+	margin:10px auto;
+	overflow: hidden;
+	position: relative;
+}
+.chatbox .conatinerChat .contentChat{
+    width: 280px;
+	text-align: left;
+	padding:10px;
+}
+.chatbox .conatinerChat .rowChat{
+    width: 280px;
+}
+.chatbox .conatinerChat .rowChat span{
+    font-weight: bold;
+}
+.chatbox .conatinerChat .admin span{
+    color:red;
+}
+.chatbox .conatinerChat .user span{
+    color: lime;
+}
+.chatbox input[type=text]{
+	float: left;
+	margin-left:10px;
+	border:solid 1px #EEEADC;
+	border-radius:5px;
+	width:200px;
+	height: 70px;
+}
+.chatbox .sendChatButtom{
+	background-color:#DB4D4D;
+	height:70px;
+	width: 70px;
+	border-radius:5px;
+	float: left;
+	line-height: 70px;
+	color: white;
+	margin-left: 30px;
+}
+.chatbox .sendChatButtom:hover{
+	cursor:pointer;
+}
+
 .content{
 	padding-top:12px;
 	
@@ -14,6 +80,7 @@
 	min-height: 250px;
 }
 .rowProduct{
+	margin: 10px 0px;
 }
 .rowProduct .rowHead {
 	height: 22px;
@@ -23,7 +90,7 @@
 	line-height: 22px;
 	background-color: #FAF8F2;
 	padding:0px 10px;
-	font-size: 16px;
+	font-size: 25px;
 	font-weight: bold;
 	color:#9D8A7E;
 }
@@ -34,6 +101,9 @@
 .rowProduct .productItem{
 	margin:10px;
 	float:left;
+}
+.rowProduct .productItem:hover{
+    cursor:pointer;
 }
 .productItem .productImage{
 	margin:auto;
@@ -49,7 +119,7 @@
 }
 .productItem .productName a{
     color:#9D8A7E;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
 }
 .productItem .productName a:hover{
@@ -69,4 +139,14 @@
 	box-shadow: none;
 	border: none;
 	background: transparent;
+}
+.contentClearFlex .bx-wrapper .bx-controls-direction a.bx-prev{
+    left: -50px;
+}
+.contentClearFlex .bx-wrapper .bx-controls-direction a.bx-next{
+    right: -50px;
+}
+.sliderContainer .bannerSliderContainer img{
+    width:600px;
+	margin-auto;
 }
