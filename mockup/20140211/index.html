@@ -15,11 +15,17 @@
 <script src="js/perfect-scrollbar.with-mousewheel.min.js"></script>
 <link href="style/perfect-scrollbar.min.css" rel="stylesheet" />
 
+<!-- Jquery UI -->
 <script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
 
+<!-- Css -->
 <link rel="stylesheet" type="text/css" href="style/main.css" media="all">
 <link rel="stylesheet" type="text/css" href="style/homePage.css" media="all">
+
+<!-- responsive design -->
+<link rel="stylesheet" type="text/css" href="style/main-responsive.css" media="all">
+
 <script>
   $(function() {
     var availableTags = [
@@ -105,8 +111,91 @@
                     <div class="topMenuContentContainer wStaticPx">
                         <div class="menu">
                             <ul>
-                                <li><a href='#'>ELECTRONICS</a></li>
-                                <li><a href='#'>Sports & Outdoors</a></li>
+                                <li>
+                                    <a href='#'>ELECTRONICS</a>
+                                    <div class="containerSubMenu">
+                                        <ul>
+	                                        <li class="menuCol">
+	                                            <span><a href="#">Điện Máy </a></span>
+	                                            <ul>
+	                                                <li><a href="">Điện máy 1</a></li>
+	                                                <li><a href="">Điện máy 2</a></li>
+	                                                <li><a href="">Điện máy 3</a></li>
+	                                                <li><a href="">Điện máy 4</a></li>
+	                                                <li><a href="">Điện máy 4</a></li>
+	                                                <li><a href="">Điện máy 4</a></li>
+	                                                <li><a href="">Điện máy 4</a></li>
+	                                                <li><a href="">Xem Thêm →</a></li>
+	                                            </ul>
+	                                        </li>
+	                                        <li class="menuCol">
+	                                          <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+	                                        </li>
+	                                         <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+	                                         <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li> 
+                                            <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href='#'>Sports & Outdoors</a>
+                                    <div class="containerSubMenu">
+                                        <ul>
+                                            <li class="menuCol">
+                                                <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                                 <li><a href='#'>Apparel</a></li>
                                 <li><a href='#'>Books</a></li>
                                 <li><a href='#'>Music</a></li>
@@ -123,13 +212,11 @@
             <div class="sliderContainer">
                 <div class="containerClearFix">
 	                <ul class="bxBannerslider wStaticPx">
-					  <li><a class="bannerSliderContainer" href='#'><img src="images/demoSlider1.jpg" height='330' width='980' /></a></li>
-					  <li><a class="bannerSliderContainer" href='#'><img src="images/demoSlider2.jpg" height='330' width='980' /></a></li>
-					  <li><a class="bannerSliderContainer" href='#'><img src="images/demoSlider1.jpg" height='330' width='980' /></a></li>
-	                  <li><a class="bannerSliderContainer" href='#'><img src="images/demoSlider2.jpg" height='330' width='980' /></a></li>
-					  <li><a class="bannerSliderContainer" href='#'><img src="images/demoSlider3.jpg" height='330' width='980' /></a></li>
+					  <li><a class="bannerSliderContainer" href='#'><img src="images/main-banner-1_wn1y-ie.png" width="100%" /></a></li>
+					  <li><a class="bannerSliderContainer" href='#'><img src="images/main-banner-2_kd3a-62.png" width="100%" /></a></li>
+					  <li><a class="bannerSliderContainer" href='#'><img src="images/main-banner-3_a46o-uv.png" width="100%" /></a></li>
 					</ul>
-					<div class="chatbox">
+					<!-- <div class="chatbox">
 					   <div class="conatinerChat">
 					       <div class="contentChat">
 					           <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
@@ -154,9 +241,10 @@
                                <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
 					       </div>
 					   </div>
-					   <input class="chatTextbox" type="text"/>
+					   <textarea class="chatTextbox" ></textarea>
 					   <div class="sendChatButtom"> Send </div>
-					</div>
+					</div> -->
+					<div class="extendChatButton">Comming Soom</div>
 			    </div>
             </div>
             <div class="contentClearFlex wStaticPx">
@@ -269,7 +357,7 @@
                     </div>
                 </div>
                 <div class="rowProduct">
-                    <img alt="" src="images/sub-banner-1_7ota-go.png"/>
+                    <img alt="" width="100%" src="images/sub-banner-1_7ota-go.png"/>
                 </div>
             </div>
         </div>

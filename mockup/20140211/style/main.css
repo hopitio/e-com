@@ -34,6 +34,9 @@ a{text-decoration: none;}
 .topbar .rightContent{width: 49.9%;float: left;}
 .topbar .rightContent li{float: right; padding: 0px 5px;}
 .topbar .rightContent li a{font-size: 11px;cursor:pointer;}
+
+
+
 /*---Content---*/
 .staticContent{
 	background: transparent url("../images/top-header-pttrn.png") repeat-x left top;
@@ -103,38 +106,57 @@ a{text-decoration: none;}
 	height:40px;
 	margin:5px 0px;
 }
-.topMenu .topMenuContentContainer{
-	margin: auto;
-	height: 40px;
+/*----- HEAD MENU -----*/
+.topMenu .topMenuContentContainer{margin: auto;height: 40px;}
+.topMenuContentContainer .menu{display: inline-block;float: left;width: 100%;}
+.topMenuContentContainer li{float:left;line-height:40px;font-weight: bold;}
+.topMenuContentContainer li a{padding:0px 10px;color: #9D8A7E;font-size: 16px;border-right: solid 1px #EEEADC;}
+.topMenuContentContainer li a:hover{color: #DB4D4D;}
+.topMenuContentContainer .cart{width: 80px;height: 40px;float: right;background: transparent url("../images/sprite.png") no-repeat 10px -40px;}
+.topMenuContentContainer .cart:hover{cursor: pointer;}
+
+.topMenuContentContainer .containerSubMenu{
+    border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: 10px 20px;
+	border-color: #DB4D4D #DDD8C2 #DDD8C2;
+	border-style:solid;
+	border-width:5px 1px 1px 1px ;
+	box-shadow:0 0 5px #ccc;
+	background-color: white;
+	display: none;
+	position: absolute;
+	z-index:10000;
+	float:left;}
+.topMenuContentContainer li:hover .containerSubMenu{
+    display: block;
 }
-.topMenuContentContainer .menu{
-	display: inline-block;
-    float: left;
-	width: 100%;
+.containerSubMenu ul{display: block;}
+.containerSubMenu .menuCol a{border:none;padding:0px;}
+.containerSubMenu .menuCol span{border:none;padding:0px;line-height:18px;}
+.containerSubMenu .menuCol{
+    width: 150px;
+	text-align: left;
 }
-.topMenuContentContainer li{
-    float:left;
-	line-height:40px;
-	font-weight: bold;
+.containerSubMenu .menuCol span{
+	width: 135px;
+	padding: 10px 0px 5px 0px;
+	font-size: 18px;
+    display: block;
+	border-bottom:solid 1px #DDD8C2;
 }
-.topMenuContentContainer li a{
-	padding:0px 10px;
-	color: #9D8A7E;
-	font-size: 16px;
-	border-right: solid 1px #EEEADC;
+.containerSubMenu .menuCol span a{
+	font-size: 18px;
+	font-weight: bold; 
 }
-.topMenuContentContainer li a:hover{
-    color: #DB4D4D;
+.containerSubMenu .menuCol li{
+	float:left;
+	width: 135px;
+	line-height: 16px;
+	margin: 5px 0px;
 }
-.topMenuContentContainer .cart{
-	width: 80px;
-	height: 40px;
-	float: right;
-	background: transparent url("../images/sprite.png") no-repeat 10px -40px;
-}
-.topMenuContentContainer .cart:hover{
-	cursor: pointer;
-}
+
+
 /*---Search---*/
 .button{
 	margin:  auto;
