@@ -1,9 +1,10 @@
 @CHARSET "UTF-8";
 @media only screen and (max-width: 979px)
 {
+	.sliderContainer .bx-wrapper{width:100%;}
     .sliderContainer .bx-wrapper .bx-controls-direction a.bx-next{right: 25px;}
     .sliderContainer .bx-wrapper .bx-controls-direction a.bx-prev{left: 25px;}
-	.wStaticPx{width:100%;}
+	.wStaticPx,.sliderContainer .containerClearFix{width:100%;}
 	.staticContent .robin{height:auto;margin:auto;display:inline-block;}
 	.robin .logo,.search{width:100%;text-align: center;}
 	.robin .search{text-align: center;}
