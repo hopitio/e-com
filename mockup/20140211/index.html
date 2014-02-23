@@ -74,6 +74,12 @@
   $(function() {
       $('.conatinerChat').perfectScrollbar();
   });
+  
+  $(document).on( "click", ".quickViewButton", function(){
+    $( "#quickViewer" ).dialog({
+        modal: true
+      });
+  });
   </script>
 </head>
 <body>
@@ -256,7 +262,10 @@
                      <ul class="bxrowContentSlider">
 	                  <li>
 	                    <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images.jpg"/></div>
+                            <div class="productImage">
+                                <img height="300px" width="300px" src="images/images.jpg"/>
+                                <span class="quickViewButton"> QuickView </span>
+                            </div>
                             <div class="productName"><a href='#'>Sản phẩm 1</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -264,7 +273,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/></div>
+                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 2</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -272,7 +281,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images2.jpg"/></div>
+                            <div class="productImage"><img height="300px" width="300px" src="images/images2.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 3</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -280,7 +289,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images3.jpg"/></div>
+                            <div class="productImage"><img height="300px" width="300px" src="images/images3.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 4</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -288,7 +297,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images3.jpg"/></div>
+                            <div class="productImage"><img height="300px" width="300px" src="images/images3.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 5</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -296,7 +305,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images2.jpg"/></div>
+                            <div class="productImage"><img height="300px" width="300px" src="images/images2.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 6</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -304,7 +313,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/></div>
+                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 7</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -364,6 +373,9 @@
         <div class="footer">
         
         </div>
+    </div>
+    <div id="quickViewer" class="popupQuickViewer" title="Quick Product view"> 
+        
     </div>
 </body>
 </html>

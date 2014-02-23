@@ -1,28 +1,9 @@
 @CHARSET "utf-8";
-*{padding: 0px; margin:0px;
-	font-family: 'Cabin';
-	font-size: 14px;
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: none;
-    color: #9D8A7E;
-}
+*{padding: 0px; margin:0px;font-family: 'Cabin';font-size: 14px;font-weight: normal;font-style: normal;text-decoration: none;color: #9D8A7E;}
 ul, li, dl, dd, dt {list-style: none outside none;}
 a{text-decoration: none;}
-#wrap{
-    margin:0px; 
-    padding:0px; 
-    position: relative; 
-    display: inline-block;
-    width: 100%;
-    min-height: 768px;
-    text-align: center;
-	background: #FAF8F2 ;
-}
-.headToolbar{
-    text-align: center;
-	background:white;
-}
+#wrap{margin:0px; padding:0px; position: relative; display: inline-block;width: 100%;min-height: 768px;text-align: center;background: #FAF8F2 ;}
+.headToolbar{text-align: center;background:white;}
 .w100percent{width:100%;}
 .wStaticPx{width:980px;}
 /*---Topbar---*/
@@ -34,78 +15,17 @@ a{text-decoration: none;}
 .topbar .rightContent{width: 49.9%;float: left;}
 .topbar .rightContent li{float: right; padding: 0px 5px;}
 .topbar .rightContent li a{font-size: 11px;cursor:pointer;}
-
-
-
 /*---Content---*/
-.staticContent{
-	background: transparent url("../images/top-header-pttrn.png") repeat-x left top;
-	margin: auto;
-	padding-top:12px;
-}
-.staticContent .robin{
-	height:50px;
-	margin:auto;
-}
-.staticContent .topMenu{
-	width:100%;
-	height: 52px;
-	margin-top:10px;
-	border-top: solid 1px #EEEADC;
-	border-bottom: solid 1px #EEEADC;
-}
-.content{
-	   margin: auto auto auto auto;
-	   border-left: solid 1px transparent;
-	   border-right: solid 1px transparent;
-	   min-height: 500px;
-}
-.robin .logo{
-	line-height: 50px;
-	float: left;
-	font-size:50px;
-	width: 480px;
-	text-align: left;
-	color:#DB4D4D;
-}
-.robin .search{
-	float: right;
-	text-align: right;
-	line-height:50px;
-}
-.robin .search input[type=text]{
-    width: 350px;
-	border-radius:10px;
-	border:solid 1px #EEEADC;
-	height:30px;
-	padding: 5px;
-	color: #9D8A7E;
-    font-size: 16px;
-	margin-top: 5px;
-}
-.robin .search .searchButton{
-    border-radius:10px;
-    border:solid 1px #EEEADC;
-    line-height:30px;
-    padding: 5px;
-    color: white;
-    font-size: 16px;
-    margin-top: 5px;
-	background-color:#DB4D4D; 
-	padding:5px 10px;
-    display: inline-block;
-}
-.robin .search .searchButton:hover{
-	cursor:pointer;
-}
-
-.staticContent .effectTowBorder{
-	width: 100%;
-	border-top: solid 1px #EEEADC;
-    border-bottom: solid 1px #EEEADC;
-	height:40px;
-	margin:5px 0px;
-}
+.staticContent{background: transparent url("../images/top-header-pttrn.png") repeat-x left top;margin: auto;padding-top:12px;}
+.staticContent .robin{height:50px;margin:auto;}
+.staticContent .topMenu{width:100%;height: 52px;margin-top:10px;border-top: solid 1px #EEEADC;border-bottom: solid 1px #EEEADC;}
+.content{margin: auto auto auto auto;border-left: solid 1px transparent;border-right: solid 1px transparent;min-height: 500px;}
+.robin .logo{line-height: 50px;float: left;font-size:50px;width: 480px;text-align: left;color:#DB4D4D;}
+.robin .search{float: right;text-align: right;line-height:50px;}
+.robin .search input[type=text]{width: 350px;border-radius:10px;border:solid 1px #EEEADC;height:30px;padding: 5px;color: #9D8A7E;font-size: 16px;margin-top: 5px;}
+.robin .search .searchButton{border-radius:10px;border:solid 1px #EEEADC;line-height:30px;padding: 5px;color: white;font-size: 16px;margin-top: 5px;background-color:#DB4D4D; padding:5px 10px;display: inline-block;}
+.robin .search .searchButton:hover{cursor:pointer;}
+.staticContent .effectTowBorder{width: 100%;border-top: solid 1px #EEEADC;border-bottom: solid 1px #EEEADC;height:40px;margin:5px 0px;}
 /*----- HEAD MENU -----*/
 .topMenu .topMenuContentContainer{margin: auto;height: 40px;}
 .topMenuContentContainer .menu{display: inline-block;float: left;width: 100%;}
@@ -114,66 +34,16 @@ a{text-decoration: none;}
 .topMenuContentContainer li a:hover{color: #DB4D4D;}
 .topMenuContentContainer .cart{width: 80px;height: 40px;float: right;background: transparent url("../images/sprite.png") no-repeat 10px -40px;}
 .topMenuContentContainer .cart:hover{cursor: pointer;}
-
-.topMenuContentContainer .containerSubMenu{
-    border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	padding: 10px 20px;
-	border-color: #DB4D4D #DDD8C2 #DDD8C2;
-	border-style:solid;
-	border-width:5px 1px 1px 1px ;
-	box-shadow:0 0 5px #ccc;
-	background-color: white;
-	display: none;
-	position: absolute;
-	z-index:10000;
-	float:left;}
-.topMenuContentContainer li:hover .containerSubMenu{
-    display: block;
-}
+.topMenuContentContainer .containerSubMenu{border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;padding: 10px 20px;border-color: #DB4D4D #DDD8C2 #DDD8C2;border-style:solid;border-width:5px 1px 1px 1px ;box-shadow:0 0 5px #ccc;background-color: white;display: none;position: absolute;z-index:10000;float:left;}
+.topMenuContentContainer li:hover .containerSubMenu{display: block;}
 .containerSubMenu ul{display: block;}
 .containerSubMenu .menuCol a{border:none;padding:0px;}
 .containerSubMenu .menuCol span{border:none;padding:0px;line-height:18px;}
-.containerSubMenu .menuCol{
-    width: 150px;
-	text-align: left;
-}
-.containerSubMenu .menuCol span{
-	width: 135px;
-	padding: 10px 0px 5px 0px;
-	font-size: 18px;
-    display: block;
-	border-bottom:solid 1px #DDD8C2;
-}
-.containerSubMenu .menuCol span a{
-	font-size: 18px;
-	font-weight: bold; 
-}
-.containerSubMenu .menuCol li{
-	float:left;
-	width: 135px;
-	line-height: 16px;
-	margin: 5px 0px;
-}
-
-
+.containerSubMenu .menuCol{width: 150px;text-align: left;}
+.containerSubMenu .menuCol span{width: 135px;padding: 10px 0px 5px 0px;font-size: 18px;display: block;border-bottom:solid 1px #DDD8C2;}
+.containerSubMenu .menuCol span a{font-size: 18px;font-weight: bold; }
+.containerSubMenu .menuCol li{float:left;width: 135px;line-height: 16px;margin: 5px 0px;}
 /*---Search---*/
-.button{
-	margin:  auto;
-	line-height: 30px;
-	padding:0px 10px;
-	color:white;
-	width:100%;
-	background-color: #DB4D4D; 
-	border-radius:5px;
-	
-}
-.button:hover{
-	cursor:pointer;
-}
-.footer{
-	height: 250px;
-	width:100%;
-	background: #493A34 url('../images/footer-pttrn.png') repeat-x top left;
-	
-}
+.button{margin:  auto;line-height: 30px;padding:0px 10px;color:white;width:100%;background-color: #DB4D4D; border-radius:5px;}
+.button:hover{cursor:pointer;}
+.footer{height: 250px;width:100%;background: #493A34 url('../images/footer-pttrn.png') repeat-x top left;}

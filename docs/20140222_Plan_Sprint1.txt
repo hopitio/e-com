@@ -1,5 +1,0 @@
-﻿Thời gian của Sprint 1 : 24/02/2014 đến 08/03/2014 tổng thời gian (6*4*2*3 = 144h)
-	- Dựng khung nền (Mockup) cho HTML - 24h
-	- Dựng khung nền cho PHP - 36h
-	- Dưng khung nền cho Database - 44h
-	- Đưa home page vào chạy với MasterData. 
