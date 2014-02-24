@@ -5,8 +5,6 @@
 <title>Project E Mockup UI</title>
 <script src="js/jquery-1.11.0.min.js"></script>
 
-
-
 <!-- bxSlider-->
 <script src="js/jquery.bxslider.js"></script>
 <link href="style/jquery.bxslider.css" rel="stylesheet" />
@@ -66,9 +64,9 @@
       });
       slider = $('.bxrowContentSlider').bxSlider({
           minSlides: 1,
-          maxSlides: Math.floor(980/300),
+          maxSlides: 980/4,
           moveSlides: 0,
-          slideWidth: 300,
+          slideWidth: 980/4,
       });
     });
   $(function() {
@@ -80,26 +78,45 @@
         modal: true
       });
   });
+  $(document).on('click','#chatContainer .title',function(){
+      
+      $('#chatContainer').toggleClass('chatActive');
+  });
   </script>
 </head>
 <body>
     <div id="wrap">
-        <div class="headToolbar w100percent">   
-            <div class='topbar wStaticPx'>
-                <div class="contentBar leftContent">
-                    <ul>
-                        <li><a>Logo HERE </a></li>
-                        <li><a>SubSystem</a></li>
-                        <li><a>SubSystem</a></li>
-                    </ul>
-                </div>
-                <div class="contentBar rightContent">
-                     <ul>
-                        <li><a>Login </a></li>
-                        <li><a>Don Hang</a></li>
-                        <li><a>SomeThing Here</a></li>
-                    </ul>
-                </div>
+        <div id="chatContainer" class="chatContainer">
+            <div class="title">
+                Chating window.
+            </div>
+            <div class="chatbox">
+                       <div class="conatinerChat">
+                           <div class="contentChat">
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                           </div>
+                       </div>
+                       <textarea class="chatTextbox" ></textarea>
+                       <div class="sendChatButtom"> Send </div>
             </div>
         </div>
         <div class="staticContent">
@@ -110,6 +127,12 @@
                 <div class="search">
                     <input type="text"/>
                     <div class="searchButton">Search</div>
+                </div>
+                <div class="robinRight login">
+                    <span>Login</span>
+                </div>
+                <div class="robinRight cart">
+                    <span>Cart</span>
                 </div>
             </div>
             <div class="topMenu">
@@ -206,7 +229,6 @@
                                 <li><a href='#'>Books</a></li>
                                 <li><a href='#'>Music</a></li>
                                 <li><a href='#'>Movies & TV</a></li>
-                                <li class="cart"></li>
                             </ul>
                         </div>
                         
@@ -218,40 +240,53 @@
             <div class="sliderContainer">
                 <div class="containerClearFix">
 	                <ul class="bxBannerslider wStaticPx">
-					  <li><a class="bannerSliderContainer" href='#'><img src="images/main-banner-1_wn1y-ie.png" width="100%" /></a></li>
-					  <li><a class="bannerSliderContainer" href='#'><img src="images/main-banner-2_kd3a-62.png" width="100%" /></a></li>
-					  <li><a class="bannerSliderContainer" href='#'><img src="images/main-banner-3_a46o-uv.png" width="100%" /></a></li>
-					</ul>
-					<!-- <div class="chatbox">
-					   <div class="conatinerChat">
-					       <div class="contentChat">
-					           <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-					           <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-					           <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
-                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
-                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+					  <li>
+					   <a href="#">
+					       <div class="sliderItemContainer">
+					           <div class="itemContent">
+					               <div class="leftContent">
+					                   <img alt="" width="100%" src="images/Sp-1.png"/>
+                                   </div>
+                                    <div class="rightContent">
+                                        <div class="rightContentTitle">Sản phẩm đang khuyến mại</div>
+                                        <div class="rightContentDes">
+                                            <span class="DesTitle">Sản phẩm khuyến mại</span>
+                                            <span class="Des">Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại</span>
+                                        </div>
+                                   </div>
+					           </div>
 					       </div>
-					   </div>
-					   <textarea class="chatTextbox" ></textarea>
-					   <div class="sendChatButtom"> Send </div>
-					</div> -->
-					<div class="extendChatButton">Comming Soom</div>
+					    </a>
+					  </li>
+					  <li>
+					  <a href="#">
+                           <div class="sliderItemContainer">   
+                               <div class="itemContent">
+                                  
+                                   <div class="leftContent">
+                                       <img alt="" width="100%" src="images/Sp-1.png"/>
+                                   </div>
+                                    <div class="rightContent">
+                                        <div class="rightContentTitle">Sản phẩm đang khuyến mại</div>
+                                        <div class="rightContentDes">
+                                            <span class="DesTitle">Sản phẩm khuyến mại</span>
+                                            <span class="Des">Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại</span>
+                                        </div>
+                                   </div>
+                               </div>
+                           </div>
+                      </a>
+                      </li>
+					</ul>
 			    </div>
+                <div class="toolContainer">
+                    <div class="toolContainerClear">
+	                    <div class="itemTool call"></div>
+	                    <div class="itemTool faq"></div>
+	                    <div class="itemTool chat"></div>
+                    </div>
+                    
+                </div>
             </div>
             <div class="contentClearFlex wStaticPx">
                 <div class="rowProduct">
@@ -263,7 +298,7 @@
 	                  <li>
 	                    <div class="productItem">
                             <div class="productImage">
-                                <img height="300px" width="300px" src="images/images.jpg"/>
+                                <img  src="images/images.jpg"/>
                                 <span class="quickViewButton"> QuickView </span>
                             </div>
                             <div class="productName"><a href='#'>Sản phẩm 1</a></div>
@@ -273,7 +308,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productImage"><img  src="images/images1.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 2</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -281,7 +316,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images2.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productImage"><img  src="images/images2.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 3</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -289,7 +324,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images3.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productImage"><img  src="images/images3.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 4</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -297,7 +332,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images3.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productImage"><img  src="images/images3.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 5</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -305,7 +340,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images2.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productImage"><img  src="images/images2.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 6</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -313,7 +348,7 @@
                       </li>
                       <li>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productImage"><img  src="images/images1.jpg"/><span class="quickViewButton"> QuickView </span></div>
                             <div class="productName"><a href='#'>Sản phẩm 7</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
@@ -328,37 +363,37 @@
                     </div>
                     <div class="rowContent">
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/></div>
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
                             <div class="productName"><a href='#'>Sản phẩm 7</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
                         </div>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/></div>
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
                             <div class="productName"><a href='#'>Sản phẩm 7</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
                         </div>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/></div>
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
                             <div class="productName"><a href='#'>Sản phẩm 7</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
                         </div>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/></div>
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
                             <div class="productName"><a href='#'>Sản phẩm 7</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
                         </div>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/></div>
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
                             <div class="productName"><a href='#'>Sản phẩm 7</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
                         </div>
                         <div class="productItem">
-                            <div class="productImage"><img height="300px" width="300px" src="images/images1.jpg"/></div>
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
                             <div class="productName"><a href='#'>Sản phẩm 7</a></div>
                             <div class="productPrice">$ 300.000 VND</div>
                             <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
