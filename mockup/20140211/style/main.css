@@ -1,0 +1,91 @@
+@CHARSET "utf-8";
+*{padding: 0px; margin:0px;font-family: 'Cabin';font-size: 14px;font-weight: normal;font-style: normal;text-decoration: none;color: #9D8A7E;}
+ul, li, dl, dd, dt {list-style: none outside none;}
+a{text-decoration: none;}
+#wrap{margin:0px; padding:0px; position: relative; display: inline-block;width: 100%;min-height: 768px;text-align: center;background: #FAF8F2 ;}
+.headToolbar{text-align: center;background:white;}
+.w100percent{width:100%;}
+.wStaticPx{width:980px;}
+/*---Topbar---*/
+.topbar{height: 30px;margin: auto;}
+.contentBar{text-align: left;line-height: 30px; color: #7f7f7f;}
+.topbar .leftContent{width: 49.9%;float: left;}
+.topbar .leftContent li{float:left;cursor: pointer;padding:0px 10px;}
+.topbar .leftContent li:hover,.topbar .rightContent li a:hover{color: #2f2f2f;}
+.topbar .rightContent{width: 49.9%;float: left;}
+.topbar .rightContent li{float: right; padding: 0px 5px;}
+.topbar .rightContent li a{font-size: 11px;cursor:pointer;}
+/*---Content---*/
+.staticContent{margin: auto;}
+.staticContent .robin{height:50px;margin:auto;}
+.staticContent .topMenu{width:100%;height: 52px;margin-top:10px;border-top: solid 1px #EEEADC;border-bottom: solid 1px #EEEADC;}
+.content{margin: auto auto auto auto;border-left: solid 1px transparent;border-right: solid 1px transparent;min-height: 500px;}
+.robin .logo{float: left;font-size:40px;width: 280px;text-align: left;color:#DB4D4D;}
+.robin .search{float: left;text-align: right;line-height:50px;margin-top: 10px;}
+.robin .search input[type=text]{
+	float:left;
+	width: 250px;
+	border-radius:10px 0px 0px 10px;
+	border-color:#EEEADC;
+	border-style: solid;
+	border-width:1px 0px 1px 1px;
+	height:27px;
+	padding: 5px;
+	color: #9D8A7E;
+	font-size: 16px;
+}
+.robin .search .searchButton{
+	border-radius:0px 10px 10px 0px;
+	border-color:#EEEADC;
+    border-style: solid;
+    border-width:1px 1px 1px 0px;
+	line-height:27px;
+	padding: 5px;
+	color: white;
+	font-size: 16px;
+	background-color:#DB4D4D; 
+	padding:5px 10px;
+	display: inline-block;
+    float:left;
+}
+.robin .robinRight{width:50px;height:50px;float:right;dispay:inline-block;}
+.robin .robinRight:hover{cursor:pointer;}
+.robin .robinRight span{margin-top: 40px;display:inline-block;}
+.robin .login{background: transparent url('../images/bg-login.png') no-repeat 10px 10px;}
+.robin .cart{background: transparent url("../images/sprite.png") no-repeat 4px -35px;}
+
+.robin .search .searchButton:hover{cursor:pointer;}
+.staticContent .effectTowBorder{width: 100%;border-top: solid 1px #EEEADC;border-bottom: solid 1px #EEEADC;height:40px;margin:5px 0px;}
+/*----- HEAD MENU -----*/
+.topMenu .topMenuContentContainer{margin: auto;height: 40px;}
+.topMenuContentContainer .menu{display: inline-block;float: left;width: 100%;}
+.topMenuContentContainer li{float:left;line-height:40px;font-weight: bold;}
+.topMenuContentContainer li a{padding:0px 10px;color: #9D8A7E;font-size: 16px;border-right: solid 1px #EEEADC;}
+.topMenuContentContainer li a:hover{color: #DB4D4D;}
+.topMenuContentContainer .containerSubMenu{border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;padding: 10px 20px;border-color: #DB4D4D #DDD8C2 #DDD8C2;border-style:solid;border-width:5px 1px 1px 1px ;box-shadow:0 0 5px #ccc;background-color: white;display: none;position: absolute;z-index:10000;float:left;}
+.topMenuContentContainer li:hover .containerSubMenu{display: block;}
+.containerSubMenu ul{display: block;}
+.containerSubMenu .menuCol a{border:none;padding:0px;}
+.containerSubMenu .menuCol span{border:none;padding:0px;line-height:18px;}
+.containerSubMenu .menuCol{width: 150px;text-align: left;}
+.containerSubMenu .menuCol span{width: 135px;padding: 10px 0px 5px 0px;font-size: 18px;display: block;border-bottom:solid 1px #DDD8C2;}
+.containerSubMenu .menuCol span a{font-size: 18px;font-weight: bold; }
+.containerSubMenu .menuCol li{float:left;width: 135px;line-height: 16px;margin: 5px 0px;}
+/*---Search---*/
+.button{margin:  auto;line-height: 30px;padding:0px 10px;color:white;width:100%;background-color: #DB4D4D; border-radius:5px;}
+.button:hover{cursor:pointer;}
+.footer{height: 250px;width:100%;background: #493A34 url('../images/footer-pttrn.png') repeat-x top left;}
+/*--Chat--*/
+.chatContainer{position: fixed;bottom:0px;right:10px;box-shadow: 0 1px 1px rgba(0, 0, 0, .3);border:1px solid rgba(29, 49, 91, .3);height:30px;width:300px;border-radius: 10px 10px 0 0;background: transparent url('../images/bgdes_itemSlider.png'); z-index: 10000;}
+.chatbox .conatinerChat{border:solid 1px #EEEADC;border-radius:5px;background-color:#FAF8F2;height: 228px;width: 280px;margin: 0px auto 10px;overflow: hidden;position: relative;}
+.chatbox .conatinerChat .contentChat{width: 260px;text-align: left;padding:10px;}
+.chatbox .conatinerChat .rowChat{width: 260px;}
+.chatbox .conatinerChat .rowChat span{font-weight: bold;}
+.chatbox .conatinerChat .admin span{color:red;}
+.chatbox .conatinerChat .user span{color: lime;}
+.chatbox textarea{float: left;margin-left:10px;border:solid 1px #EEEADC;border-radius:5px;width:218px;height: 50px;}
+.chatbox .sendChatButtom{background: transparent url('../images/bgdes_itemSlider.png') repeat 0 0;height: 50px;width: 50px;border-radius: 5px;float: left;line-height: 50px;color: white;margin-left: 10px;}
+.chatbox .sendChatButtom:hover{cursor:pointer;}
+.chatContainer .title{line-height:30px;color:white;text-align: left; padding:0px 10px;width:280px}
+.chatContainer .title:hover{cursor:pointer;}
+.chatActive{height:330px;}

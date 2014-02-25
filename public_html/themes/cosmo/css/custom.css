@@ -1,0 +1,57 @@
+body{padding-top: 31px;}
+body, html{height: 100%;position: relative;display: block}
+*{font-size: 13px;}
+*, h1,h2,h3,h4,h5,h6{font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.nav > li > a, .navbar-brand{padding: 10px;}
+.navbar{min-height: 41px;position: fixed;}
+.navbar-header{width: 147px;}
+.container{position: fixed;height: 100%;width: 100%;padding:0;}
+.navbar .container{padding: 0px 20px;height: auto;}
+#left{width: 200px;height: 100%;position: fixed;background: #f5f5f5;left:0;padding-top:10px;}
+#left .nav{width: 200px;}
+#content #left{margin-top: -10px;margin-left: 10px;width:190px;}
+#left .dropdown-menu{top:-2px;left:200px;}
+#content.have-sidebar{margin-left: 200px;}
+#content{padding: 0 10px;padding-top: 10px;}
+.navbar-nav.navbar-right:last-child{margin-right: 40px;}
+.page-header{margin-top:0;margin-bottom: 10px;}
+h3,h3 i{font-size: 20px;}
+.center{text-align: center;}
+.panel-actions{float:right;}
+.panel-heading,.panel-footer{padding:5px;}
+.panel-footer{overflow: hidden;vertical-align: middle;}
+.panel-footer .pagination{margin:0;}
+.panel-footer .dataTables_paginate {height: 30px;}
+.panel-footer .dataTables_info{height: 30px;line-height: 30px;}
+.btn.btn-default, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{background-color: #f8f8f8;border:1px solid #888888;color:#333}
+.btn.btn-default:hover{border-color: #333;color: black;}
+.btn{border: 1px solid;}
+.panel{position: relative;}
+.tooltip{border:none;background: none;}
+.btn-divider{width: 15px;display: inline-block;}
+input,select,textarea, .form-control{border: 1px solid #888888;padding:5px;line-height: 18px;height: auto;}
+.form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline{padding-top: 5px;}
+.dataTables_length, .dataTables_info{float:left;}
+.dataTables_filter, .dataTables_paginate {float:right;}
+.dataTables_wrapper .table{margin:0;}
+table .btn i{font-size: 15px;}
+table .btn.btn-default{border:none;}
+table .btn.btn-default:hover{background: #ddd;}
+.modal-header, .modal-footer{padding: 10px;}
+.btn.check-all{width:34px;}
+tr.checked > td{background: #ffc !important}
+.dataTable tr{cursor: pointer;}
+.modal{position: absolute !important;overflow-y:auto;overflow-x: auto;}
+.modal-backdrop{position: fixed !important;overflow-y:auto;overflow-x: auto;}
+.required{color:red;}
+legend i{font-size: 20.5px;}
+.form-group .error{color: #b94a48}
+.form-group.warning > label, .form-group.warning .help-block, .form-group.warning .help-inline{color: #c09853;}
+.form-group.warning input, .form-group.warning select, .form-group.warning textarea{border-color: #c09853;}
+.form-group.error > label, .form-group.error .help-block, .form-group.error .help-inline{color: #b94a48;}
+.form-group.error input, .form-group.error select, .form-group.error textarea{border-color: #b94a48}
+.alert a {
+    text-decoration: underline;
+    color: #fff;
+    font-weight: bold;
+}

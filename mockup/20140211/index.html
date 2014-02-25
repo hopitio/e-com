@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Project E Mockup UI</title>
+<script src="js/jquery-1.11.0.min.js"></script>
+
+<!-- bxSlider-->
+<script src="js/jquery.bxslider.js"></script>
+<link href="style/jquery.bxslider.css" rel="stylesheet" />
+
+<!-- perfect srollbar -->
+<script src="js/perfect-scrollbar.with-mousewheel.min.js"></script>
+<link href="style/perfect-scrollbar.min.css" rel="stylesheet" />
+
+<!-- Jquery UI -->
+<script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
+
+<!-- Css -->
+<link rel="stylesheet" type="text/css" href="style/main.css" media="all">
+<link rel="stylesheet" type="text/css" href="style/homePage.css" media="all">
+
+<!-- responsive design -->
+<link rel="stylesheet" type="text/css" href="style/main-responsive.css" media="all">
+
+<script>
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  var slider,bxBannerslider;
+  $(document).ready(function(){
+      bxBannerslider = $('.bxBannerslider').bxSlider({
+          minSlides: 1,
+          maxSlides: 1,
+          moveSlides: 0,
+          slideWidth: 0,
+      });
+      slider = $('.bxrowContentSlider').bxSlider({
+          minSlides: 1,
+          maxSlides: 980/4,
+          moveSlides: 0,
+          slideWidth: 980/4,
+      });
+    });
+  $(function() {
+      $('.conatinerChat').perfectScrollbar();
+  });
+  
+  $(document).on( "click", ".quickViewButton", function(){
+    $( "#quickViewer" ).dialog({
+        modal: true
+      });
+  });
+  $(document).on('click','#chatContainer .title',function(){
+      
+      $('#chatContainer').toggleClass('chatActive');
+  });
+  </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="chatContainer" class="chatContainer">
+            <div class="title">
+                Chating window.
+            </div>
+            <div class="chatbox">
+                       <div class="conatinerChat">
+                           <div class="contentChat">
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                               <div class="rowChat admin"><span>Admin 1 :</span> Chào bạn. đến với website thương mại điện tử </div>
+                               <div class="rowChat user"><span>User 1 :</span> Chào bạn. oh thì chào</div>
+                           </div>
+                       </div>
+                       <textarea class="chatTextbox" ></textarea>
+                       <div class="sendChatButtom"> Send </div>
+            </div>
+        </div>
+        <div class="staticContent">
+            <div class="robin wStaticPx">
+                <div class="logo"> 
+                    PROJECT - E
+                </div>
+                <div class="search">
+                    <input type="text"/>
+                    <div class="searchButton">Search</div>
+                </div>
+                <div class="robinRight login">
+                    <span>Login</span>
+                </div>
+                <div class="robinRight cart">
+                    <span>Cart</span>
+                </div>
+            </div>
+            <div class="topMenu">
+                <div class="effectTowBorder">
+                    <div class="topMenuContentContainer wStaticPx">
+                        <div class="menu">
+                            <ul>
+                                <li>
+                                    <a href='#'>ELECTRONICS</a>
+                                    <div class="containerSubMenu">
+                                        <ul>
+	                                        <li class="menuCol">
+	                                            <span><a href="#">Điện Máy </a></span>
+	                                            <ul>
+	                                                <li><a href="">Điện máy 1</a></li>
+	                                                <li><a href="">Điện máy 2</a></li>
+	                                                <li><a href="">Điện máy 3</a></li>
+	                                                <li><a href="">Điện máy 4</a></li>
+	                                                <li><a href="">Điện máy 4</a></li>
+	                                                <li><a href="">Điện máy 4</a></li>
+	                                                <li><a href="">Điện máy 4</a></li>
+	                                                <li><a href="">Xem Thêm →</a></li>
+	                                            </ul>
+	                                        </li>
+	                                        <li class="menuCol">
+	                                          <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+	                                        </li>
+	                                         <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+	                                         <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li> 
+                                            <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href='#'>Sports & Outdoors</a>
+                                    <div class="containerSubMenu">
+                                        <ul>
+                                            <li class="menuCol">
+                                                <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href='#'>Apparel</a></li>
+                                <li><a href='#'>Books</a></li>
+                                <li><a href='#'>Music</a></li>
+                                <li><a href='#'>Movies & TV</a></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content" >
+            <div class="sliderContainer">
+                <div class="containerClearFix">
+	                <ul class="bxBannerslider wStaticPx">
+					  <li>
+					   <a href="#">
+					       <div class="sliderItemContainer">
+					           <div class="itemContent">
+					               <div class="leftContent">
+					                   <img alt="" width="100%" src="images/Sp-1.png"/>
+                                   </div>
+                                    <div class="rightContent">
+                                        <div class="rightContentTitle">Sản phẩm đang khuyến mại</div>
+                                        <div class="rightContentDes">
+                                            <span class="DesTitle">Sản phẩm khuyến mại</span>
+                                            <span class="Des">Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại</span>
+                                        </div>
+                                   </div>
+					           </div>
+					       </div>
+					    </a>
+					  </li>
+					  <li>
+					  <a href="#">
+                           <div class="sliderItemContainer">   
+                               <div class="itemContent">
+                                  
+                                   <div class="leftContent">
+                                       <img alt="" width="100%" src="images/Sp-1.png"/>
+                                   </div>
+                                    <div class="rightContent">
+                                        <div class="rightContentTitle">Sản phẩm đang khuyến mại</div>
+                                        <div class="rightContentDes">
+                                            <span class="DesTitle">Sản phẩm khuyến mại</span>
+                                            <span class="Des">Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại</span>
+                                        </div>
+                                   </div>
+                               </div>
+                           </div>
+                      </a>
+                      </li>
+					</ul>
+			    </div>
+                <div class="toolContainer">
+                    <div class="toolContainerClear">
+	                    <div class="itemTool call"></div>
+	                    <div class="itemTool faq"></div>
+	                    <div class="itemTool chat"></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="contentClearFlex wStaticPx">
+                <div class="rowProduct">
+                    <div class="rowHead">
+                        <span>HOT DEAL</span>
+                    </div>
+                    <div class="rowContent">
+                     <ul class="bxrowContentSlider">
+	                  <li>
+	                    <div class="productItem">
+                            <div class="productImage">
+                                <img  src="images/images.jpg"/>
+                                <span class="quickViewButton"> QuickView </span>
+                            </div>
+                            <div class="productName"><a href='#'>Sản phẩm 1</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images1.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productName"><a href='#'>Sản phẩm 2</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images2.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productName"><a href='#'>Sản phẩm 3</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images3.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productName"><a href='#'>Sản phẩm 4</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images3.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productName"><a href='#'>Sản phẩm 5</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images2.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productName"><a href='#'>Sản phẩm 6</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images1.jpg"/><span class="quickViewButton"> QuickView </span></div>
+                            <div class="productName"><a href='#'>Sản phẩm 7</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                      </li>
+	                 </ul>
+                    </div>
+                </div>
+                <div class="rowProduct">
+                    <div class="rowHead">
+                        <span>NEW PRODUCT</span>
+                    </div>
+                    <div class="rowContent">
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
+                            <div class="productName"><a href='#'>Sản phẩm 7</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
+                            <div class="productName"><a href='#'>Sản phẩm 7</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
+                            <div class="productName"><a href='#'>Sản phẩm 7</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
+                            <div class="productName"><a href='#'>Sản phẩm 7</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
+                            <div class="productName"><a href='#'>Sản phẩm 7</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                        <div class="productItem">
+                            <div class="productImage"><img  src="images/images1.jpg"/></div>
+                            <div class="productName"><a href='#'>Sản phẩm 7</a></div>
+                            <div class="productPrice">$ 300.000 VND</div>
+                            <div class="productAddCart"><div class="button" style="width: 100px;">Thêm vào giỏ</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rowProduct">
+                    <img alt="" width="100%" src="images/sub-banner-1_7ota-go.png"/>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+        
+        </div>
+    </div>
+    <div id="quickViewer" class="popupQuickViewer" title="Quick Product view"> 
+        
+    </div>
+</body>
+</html>

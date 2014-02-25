@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root lang="en_us">
+    <general>
+        <item id="edit">edit</item>
+        <item id="delete">delete</item>
+        <item id="manage">manage</item>
+        <item id="submit">submit</item>
+        <item id="test">%s%s</item>
+    </general>
+    <menu>
+        <item id="dashboard">dashboard</item>
+        <item id="show_hide_sidebar">show/hide sidebar</item>
+    </menu>
+    <account>
+        <item id="account">account</item>
+        <item id="account_management">account management</item>
+        <item id="new_account">new account</item>
+        <item id="edit_account">edit account</item>
+        <item id="change_password">change password</item>
+        <item id="logout">logout</item>
+        <item id="current_password">current password</item>
+        <item id="retype_password">retype password</item>
+        <item id="new_password">new password</item>
+        <item id="password_changed_title">password changed</item>
+        <item id="password_changed_message">you can login with new password</item>
+        <item id="password_error_title">error occured</item>
+        <item id="password_error_message">
+            <![CDATA[
+            your password was not updated, <a href="%s">retry here</a>
+            ]]>
+        </item>
+    </account>
+    <validation>
+        <item id="validate_required">this field is required</item>
+        <item id="validate_match_password">must match password entered above</item>
+        <item id="validate_server_required">please fill all required field(s)</item>
+        <item id="wrong_password">wrong password</item>
+    </validation>
+    <ou>
+        <item id="ou_management">OU management</item>
+    </ou>
+</root>

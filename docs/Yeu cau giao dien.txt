@@ -1,0 +1,9 @@
+1. Login trên cùng
+2. Menu category chữ vừa phải, dropdown dạng mega
+3. Không có quá nhiều animaition
+4. Search box rộng hoặc có thể mở rộng
+5. Giao diện trực quan, các điều khiển có thể nhìn thấy ngay
+6. Các điều khiển rõ ràng, không mờ nhạt
+7. Hạn chế khoảng thừa để tiết kiệm diện tích
+8. Màn hình chữ Z đầu tiên phải tốt, đầy đủ thông tin
+9. 3 SP 1 hàng
