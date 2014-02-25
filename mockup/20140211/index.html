@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=320; initial-scale=1; maximum-scale=1; minimum-scale=1 user-scalable=no" />
 <title>Project E Mockup UI</title>
 <script src="js/jquery-1.11.0.min.js"></script>
 
@@ -25,8 +26,15 @@
 <link rel="stylesheet" type="text/css" href="style/main-responsive.css" media="all">
 
 <script>
-  var slider,bxBannerslider;
+  var slider,bxBannerslider,supportSlide;
+  
   $(document).ready(function(){
+      supportSlide = $('#supportSlide').bxSlider({
+          minSlides: 1,
+          maxSlides: 4,
+          moveSlides: 0,
+          slideWidth: 320,
+      });
       bxBannerslider = $('.bxBannerslider').bxSlider({
           minSlides: 1,
           maxSlides: 1,
@@ -35,27 +43,45 @@
       });
       slider = $('.bxrowContentSlider').bxSlider({
           minSlides: 1,
-          maxSlides: 980/4,
+          maxSlides: 4,
           moveSlides: 0,
-          slideWidth: 980/4,
+          slideWidth: 245 ,
       });
     });
+  $(window).resize(function(e){
+      bxBannerslider.reloadSlider();
+      supportSlide.reloadSlider();
+  });
+  
   $(function() {
       $('.conatinerChat').perfectScrollbar();
   });
+  
   $(document).on( "click", ".quickViewButton", function(){
     $( "#quickViewer" ).dialog({
         modal: true
       });
   });
+  
   $(document).on('click','#chatContainer .title',function(){
-      
-      $('#chatContainer').toggleClass('chatActive');
+      $('#chatContainer').toggleClass('chatActive','slow');
   });
+  $(document).on('click','#btnExtendMenu',function(){
+      $('.menu ul').toggle('slow');
+  });
+  
   </script>
 </head>
 <body>
     <div id="wrap">
+        <div class="topBarMobileView">
+            <div class="cart">
+                <span>Cart</span>
+            </div>
+            <div class="login">
+                <span>Login</span>
+            </div>
+        </div>
         <div id="chatContainer" class="chatContainer">
             <div class="title">
                 Chating window.
@@ -98,17 +124,21 @@
                     <input type="text"/>
                     <div class="searchButton">Search</div>
                 </div>
-                <div class="robinRight login">
-                    <span>Login</span>
-                </div>
-                <div class="robinRight cart">
-                    <span>Cart</span>
-                </div>
+                  <div class="robinRight login">
+                      <span>Login</span>
+                  </div>
+                  <div class="robinRight cart">
+                      <span>Cart</span>
+                  </div>
+                
             </div>
             <div class="topMenu">
                 <div class="effectTowBorder">
                     <div class="topMenuContentContainer wStaticPx">
                         <div class="menu">
+                            <div id="btnExtendMenu" class="menuScroll">
+                                MENU
+                            </div>
                             <ul>
                                 <li>
                                     <a href='#'>ELECTRONICS</a>
@@ -209,7 +239,7 @@
         <div class="content" >
             <div class="sliderContainer">
                 <div class="containerClearFix">
-	                <ul class="bxBannerslider wStaticPx">
+	                <ul class="bxBannerslider">
 					  <li>
 					   <a href="#">
 					       <div class="sliderItemContainer">
@@ -251,9 +281,11 @@
 			    </div>
                 <div class="toolContainer">
                     <div class="toolContainerClear">
-	                    <div class="itemTool call"></div>
-	                    <div class="itemTool faq"></div>
-	                    <div class="itemTool chat"></div>
+                        <ul id="supportSlide">
+                            <li><div class="itemTool call"></div></li>
+                            <li><div class="itemTool chat"></div></li>
+                            <li><div class="itemTool faq"></div></li>
+                        </ul>
                     </div>
                     
                 </div>
