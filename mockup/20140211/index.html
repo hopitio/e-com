@@ -25,35 +25,6 @@
 <link rel="stylesheet" type="text/css" href="style/main-responsive.css" media="all">
 
 <script>
-  $(function() {
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  });
   var slider,bxBannerslider;
   $(document).ready(function(){
       bxBannerslider = $('.bxBannerslider').bxSlider({
@@ -72,7 +43,6 @@
   $(function() {
       $('.conatinerChat').perfectScrollbar();
   });
-  
   $(document).on( "click", ".quickViewButton", function(){
     $( "#quickViewer" ).dialog({
         modal: true
