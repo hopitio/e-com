@@ -75,8 +75,8 @@ $(window).resize(function(e){
         </div>
         <div class="content">
             <div class="bannerContainer">
-                <div class="banner">
-                    <div class="bannerWarper wStaticPx">
+                <div class="banner" style="display:none;">
+                    <div class="bannerWarper">
                     <ul class="bxBannerslider">
                       <li>
                        <a href="#">
@@ -118,11 +118,14 @@ $(window).resize(function(e){
                     </ul>
                     </div>
                 </div>
+                
+               <div class="SuggetConatinerDetails">
+               </div>
                 <div class="suggestContainer">
                     <ul class="suggestWarp wStaticPx">
-                        <li class="step1"><span>Chọn ngày lễ</span></li>
-                        <li class="step2"><span>Chọn đối tượng</span></li>
-                        <li class="step3"><span>Chọn Quà</span></li>
+                        <li class="step1"> <div class="iconMapping"></div> <span>Chọn ngày lễ</span></li>
+                        <li class="step2 active"> <div class="iconMapping"></div><span>Chọn đối tượng</span></li>
+                        <li class="step3"><div class="iconMapping"></div><span>Chọn Quà</span></li>
                     </ul>
                 </div>
             </div>
