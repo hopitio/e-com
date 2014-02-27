@@ -17,7 +17,7 @@
 .sliderItemContainer .itemContent{max-height:380px;width:980px;text-align: center;margin:auto;display:inline-block;}
 .sliderItemContainer .itemContent .leftContent{max-height: 380px;max-width:380px;float:right;width:100%;}
 .sliderItemContainer .itemContent .rightContent{float:left;width: 500px;  margin:50px;height:280px; text-align: left;}
-.itemContent .rightContentTitle{font-size: 30px;font-weight: bold;}
+.itemContent .rightContentTitle{font-size: 30px;font-weight: bold;color: #0060AF;}
 .itemContent .rightContentDes{min-width:470px; padding:10px; border-radius: 15px;margin-top: 25px;min-height: 200px;}
 .itemContent .rightContentDes span.DesTitle{;display:inline-block;width:100%;font-size:25px; }
 .itemContent .rightContentDes span.Des{display:inline-block;width:100%;font-size:20px;}
@@ -33,3 +33,6 @@
 .content .suggestContainer .suggestWarp li span:after{content:"  \f13a"; font-family: FontAwesome;}
 
 .content .contentWarp{margin:auto;margin-top:40px;display:inline-block;}
+
+.content .rowContent .boxSuggets span{color:#E15E34;}
+.content .rowContent .boxNew span{color:#0060AF;}
