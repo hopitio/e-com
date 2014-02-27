@@ -37,9 +37,18 @@ $(document).ready(function(){
         moveSlides: 0,
         slideWidth: 0,
     });
+    
+    
+
   });
 $(window).resize(function(e){
     bxBannerslider.reloadSlider();
+});
+
+$(document).on('click','.step2',function(){
+        $('.step2 .iconMapping').toggle('slow');
+        $('.banner').toggle('slow');
+        $('.suggetConatinerDetails').toggle('slow');
 });
 </script>
 </head>
@@ -75,7 +84,7 @@ $(window).resize(function(e){
         </div>
         <div class="content">
             <div class="bannerContainer">
-                <div class="banner" style="display:none;">
+                <div class="banner">
                     <div class="bannerWarper">
                     <ul class="bxBannerslider">
                       <li>
@@ -119,12 +128,17 @@ $(window).resize(function(e){
                     </div>
                 </div>
                 
-               <div class="SuggetConatinerDetails">
+               <div class="suggetConatinerDetails" style="display:none;">
+                    <a href="#"><div class="col" style="background-image: url(images/bridge.jpg);"><span style="font-size: 50px;">Sinh Nhật</span></div></a>
+                    <a href="#"><div class="col" style="background-image: url(images/leaf.jpg);"><span style="font-size: 50px;">Sinh Nhật</span></div></a>
+                    <a href="#"><div class="col" style="background-image: url(images/road.jpg);"><span style="font-size: 50px;">Sinh Nhật</span></div></a>
+                    <a href="#"><div class="col" style="background-image: url(images/sea.jpg);"><span style="font-size: 50px;">Sinh Nhật</span></div></a>
+                    <a href="#"><div class="col" style="background-image: url(images/shelter.jpg);"><span style="font-size: 50px;">Sinh Nhật</span></div></a>
                </div>
                 <div class="suggestContainer">
                     <ul class="suggestWarp wStaticPx">
                         <li class="step1"> <div class="iconMapping"></div> <span>Chọn ngày lễ</span></li>
-                        <li class="step2 active"> <div class="iconMapping"></div><span>Chọn đối tượng</span></li>
+                        <li class="step2"> <div class="iconMapping" style="display:none;"></div><span>Chọn đối tượng</span></li>
                         <li class="step3"><div class="iconMapping"></div><span>Chọn Quà</span></li>
                     </ul>
                 </div>

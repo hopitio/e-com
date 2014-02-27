@@ -23,19 +23,19 @@
 .bannerWarper .bx-wrapper .bx-viewport {-moz-box-shadow: none;-webkit-box-shadow: none;box-shadow: none;border: none;background: transparent;}
 .content .suggestContainer{width:100%;min-height: 100px;background:transparent url('../images/bg2.gif') repeat-x center;}
 .content .suggestContainer .suggestWarp{width:980px; margin: auto; display: inline-block;}
-.content .suggestContainer .suggestWarp li{width:33.32%;float: left;height:100px;cursor:pointer;}
-.content .suggestContainer .suggestWarp li.step1{background: transparent url(../images/1.png) no-repeat center;z-index: 10000;}
-.content .suggestContainer .suggestWarp li.step2{background: transparent url(../images/2.png) no-repeat center;z-index: 10000;}
-.content .suggestContainer .suggestWarp li.step3{background: transparent url(../images/3.png) no-repeat center;z-index: 10000;}
+.content .suggestContainer .suggestWarp li{width:33.32%;float: left;height:100px;cursor:pointer;overflow: hidden;}
+.content .suggestContainer .suggestWarp li.step1{background: transparent url(../images/1.png) no-repeat center;}
+.content .suggestContainer .suggestWarp li.step2{background: transparent url(../images/2.png) no-repeat center;}
+.content .suggestContainer .suggestWarp li.step3{background: transparent url(../images/3.png) no-repeat center;}
 .content .suggestContainer .suggestWarp li span{font-weight: bold;margin-top: 85px;display: block;}
 .content .suggestContainer .suggestWarp li span:after{content:"  \f13a"; font-family: FontAwesome;}
-.content .suggestContainer .suggestWarp li.active span{font-weight: bold;margin-top: 100px;display: block;}
 .content .contentWarp{margin:auto;margin-top:40px;display:inline-block;}
 .content .rowContent .boxSuggets span{color:#E15E34;}
 .content .rowContent .boxNew span{color:#0060AF;}
-.bannerContainer .SuggetConatinerDetails{height:380px;background-color: #84BB39;}
 .bannerContainer .suggestWarp .iconMapping{width:100px;height:100px;display:block;margin:auto;-ms-transform: rotate(45deg); /* IE 9 */-webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */transform: rotate(45deg);margin-top:-100px;display:none;}
 .bannerContainer .suggestWarp li.step1 .iconMapping{background-color: #0060AF;}
 .bannerContainer .suggestWarp li.step2 .iconMapping{background-color: #84BB39;}
 .bannerContainer .suggestWarp li.step3 .iconMapping{background-color: #E15E34;}
 .bannerContainer .suggestWarp li.active .iconMapping{display:block;}
+.bannerContainer .suggetConatinerDetails{height:380px;background-color: #84BB39;overflow: hidden;width:100%;}
+.bannerContainer .suggetConatinerDetails .col{height:370px;margin:5px 0;width:19.99%;float:left;float:left;background-color: white;}
