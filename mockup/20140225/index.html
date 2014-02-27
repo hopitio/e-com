@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=320; initial-scale=1; maximum-scale=1; minimum-scale=1 user-scalable=no" />
+<title>Project E Mockup UI</title>
+<script src="js/jquery-1.11.0.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
+<!-- perfect srollbar -->
+<script src="js/perfect-scrollbar.with-mousewheel.min.js"></script>
+<link href="style/perfect-scrollbar.min.css" rel="stylesheet" />
+
+<!-- bxSlider-->
+<script src="js/jquery.bxslider.js"></script>
+<link href="style/jquery.bxslider.css" rel="stylesheet" /
+
+<!-- Jquery UI -->
+<script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
+
+<!-- Css -->
+<link rel="stylesheet" type="text/css" href="style/main.css" media="all">
+<link rel="stylesheet" type="text/css" href="style/homePage.css" media="all">
+
+<!-- responsive design -->
+<link rel="stylesheet" type="text/css" href="style/main-responsive.css" media="all">
+
+<script>
+var bxBannerslider;
+$(document).ready(function(){
+
+    bxBannerslider = $('.bxBannerslider').bxSlider({
+        minSlides: 1,
+        maxSlides: 1,
+        moveSlides: 0,
+        slideWidth: 0,
+    });
+  });
+$(window).resize(function(e){
+    bxBannerslider.reloadSlider();
+});
+</script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="topbar">
+            <div class="container wStaticPx">
+                <ul class="quickAccess">
+                    <li class="frist"><a href="#">My Account</a></li>
+                    <li><a href="#">My Wishlist</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li><a href="#">Log In</a></li>
+                </ul>
+                <ul class="headerButtonList">
+                    <li class="lang">EN </li>
+                    <li class="money">Dollar </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header">
+            <div class="container wStaticPx">
+                <div class="logo"><img src="images/logo.gif"/></div>
+                <div class="centerBlock">
+                    <div class="form">
+                        <input type='text'/>
+                        <button title="Search" class="button"><span><span>SEARCH</span></span></button>
+                    </div>
+                </div>
+                <div class="rightBlock">
+                    <h3>MY CART: <span>0 Items(s)</span> - $0.00 </h3>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="bannerContainer">
+                <div class="banner">
+                    <div class="bannerWarper wStaticPx">
+                    <ul class="bxBannerslider">
+                      <li>
+                       <a href="#">
+                           <div class="sliderItemContainer">
+                               <div class="itemContent">
+                                   <div class="leftContent">
+                                       <img alt="" width="100%" src="images/Sp-1.png"/>
+                                   </div>
+                                    <div class="rightContent">
+                                        <div class="rightContentTitle">Sản phẩm đang khuyến mại</div>
+                                        <div class="rightContentDes">
+                                            <span class="DesTitle">Sản phẩm khuyến mại</span>
+                                            <span class="Des">Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại</span>
+                                        </div>
+                                   </div>
+                               </div>
+                           </div>
+                        </a>
+                      </li>
+                      <li>
+                      <a href="#">
+                           <div class="sliderItemContainer">   
+                               <div class="itemContent">
+                                  
+                                   <div class="leftContent">
+                                       <img alt="" width="100%" src="images/Sp-1.png"/>
+                                   </div>
+                                    <div class="rightContent">
+                                        <div class="rightContentTitle">Sản phẩm đang khuyến mại</div>
+                                        <div class="rightContentDes">
+                                            <span class="DesTitle">Sản phẩm khuyến mại</span>
+                                            <span class="Des">Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại</span>
+                                        </div>
+                                   </div>
+                               </div>
+                           </div>
+                      </a>
+                      </li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="suggestContainer">
+                    <ul class="suggestWarp wStaticPx">
+                        <li class="step1"><span>Chọn ngày lễ</span></li>
+                        <li class="step2"><span>Chọn đối tượng</span></li>
+                        <li class="step3"><span>Chọn Quà</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contentWarp wStaticPx">
+                    <div class="menu" >
+                        <ul class="cate">
+                            <li>ELECTRONICS</li>
+                            <li>Sports & Outdoors</li>
+                            <li>Apparel</li>
+                            <li>Books</li>
+                            <li>Movies & TV</li>
+                            
+                        </ul>
+                     </div>
+                    <div class="rowContent">
+                        <div class="productItem">
+                            
+                        </div>
+                    </div>
+                    <div class="rowContent">
+                        <div class=""></div>
+                    </div>
+                    <div class="rowContent">
+                        <div class=""></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
