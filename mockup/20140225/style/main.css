@@ -65,7 +65,12 @@ a{text-decoration: none;}
 .containerSubMenu .menuCol span{width: 135px;padding: 10px 0px 5px 0px;font-size: 18px;display: block;border-bottom:solid 1px #DDD8C2;}
 .containerSubMenu .menuCol span a{font-size: 18px;font-weight: bold; }
 .containerSubMenu .menuCol li{float:left;width: 135px;line-height: 16px;margin: 5px 0px;}
-.foot{height: 250px;width: 100%;background: #493A34 url('../images/footer-pttrn.png') repeat-x top left;}
+.foot{height: 250px;width: 100%;background: #493A34 url('../images/footer-pttrn.png') repeat-x top left;text-align: center;padding-top:10px;}
+.foot .footWarp{margin: auto;height:100%;}
+.foot .col {width:180px;float:left;min-height:220px;text-align: left; padding:10px;color:white;}
+.foot .col .title{color:white;font-size: 20px;font-weight: bold;margin-bottom:15px;display: inline-block;}
+.foot .col li{min-height:30px;}
+.foot .pay {width:280px;}
 
 
 

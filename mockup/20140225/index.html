@@ -45,11 +45,51 @@ $(window).resize(function(e){
     bxBannerslider.reloadSlider();
 });
 
+//suggest swicth;
+var currentItem;
 $(document).on('click','.step2',function(){
-        $('.step2 .iconMapping').toggle('slow');
-        $('.banner').toggle('slow');
-        $('.suggetConatinerDetails').toggle('slow');
+    stepSuggestClickFunction($('.step2'));
+    changeBackgroudColor('step2');
 });
+$(document).on('click','.step1',function(){
+    stepSuggestClickFunction($('.step1'));
+    changeBackgroudColor('step1');
+});
+$(document).on('click','.step3',function(){
+    stepSuggestClickFunction($('.step3'));
+    changeBackgroudColor('step3');
+});
+
+function stepSuggestClickFunction(item){
+    $(currentItem).toggle('slow');
+    currentItem =$(item).find('.iconMapping').toggle('slow'); 
+    $('.banner').toggle('slow');
+    //if(currentItem == item){
+        $('.suggetConatinerDetails').toggle('slow');
+    //}
+    
+}
+function changeBackgroudColor(id){
+    var color = '#CCC';
+    var backgroundImage ='';
+    switch(id){
+    case 'step1':
+        color = "#0060AF";
+        backgroundImage= "bg1.gif";
+        break;
+    case 'step2':
+        color = "#84BB39";
+        backgroundImage= "bg2.gif";
+        break;
+    case 'step3':
+        color = "#E15E34";
+        backgroundImage= "bg3.gif";
+        break;
+    }
+    $('.suggetConatinerDetails').css('background',color);
+    $('.content .suggestContainer').css('background-image','url("images/'+backgroundImage+'")');
+}
+
 </script>
 </head>
 <body>
@@ -109,7 +149,6 @@ $(document).on('click','.step2',function(){
                       <a href="#">
                            <div class="sliderItemContainer">   
                                <div class="itemContent">
-                                  
                                    <div class="leftContent">
                                        <img alt="" width="100%" src="images/Sp-1.png"/>
                                    </div>
@@ -134,12 +173,12 @@ $(document).on('click','.step2',function(){
                     <a href="#"><div class="col" style="background-image: url(images/road.jpg);"><span style="font-size: 50px;">Sinh Nhật</span></div></a>
                     <a href="#"><div class="col" style="background-image: url(images/sea.jpg);"><span style="font-size: 50px;">Sinh Nhật</span></div></a>
                     <a href="#"><div class="col" style="background-image: url(images/shelter.jpg);"><span style="font-size: 50px;">Sinh Nhật</span></div></a>
-               </div>
+                </div>
                 <div class="suggestContainer">
                     <ul class="suggestWarp wStaticPx">
-                        <li class="step1"> <div class="iconMapping"></div> <span>Chọn ngày lễ</span></li>
+                        <li class="step1"> <div class="iconMapping" style="display:none;"></div> <span>Chọn ngày lễ</span></li>
                         <li class="step2"> <div class="iconMapping" style="display:none;"></div><span>Chọn đối tượng</span></li>
-                        <li class="step3"><div class="iconMapping"></div><span>Chọn Quà</span></li>
+                        <li class="step3"> <div class="iconMapping" style="display:none;"></div><span>Chọn Quà</span></li>
                     </ul>
                 </div>
             </div>
@@ -327,6 +366,44 @@ $(document).on('click','.step2',function(){
             </div>
         </div>
         <div class="foot">
+            <div class="footWarp wStaticPx">
+                <div class="col">
+                    <span class="title">Liên hệ</span>
+                    <ul>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <span class="title">Liên hệ</span>
+                    <ul>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <span class="title">Liên hệ</span>
+                    <ul>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                    </ul>
+                </div>
+                <div class="col pay">
+                    <span class="title">Chấp nhận thanh toán</span>
+                    <ul>
+                        <li><a href="#"><img  src="images/payment.png"/></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </body>
