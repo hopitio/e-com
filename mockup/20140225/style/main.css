@@ -52,7 +52,7 @@ a{text-decoration: none;}
 .content .rowContent .boxHeader {height: 22px;background: transparent url('../images/douleline.png') repeat-x center left;text-align: center;}
 .content .productItem .bottom button{margin:auto 5px;}
 .content .rowContent .boxHeader span {line-height: 22px;background:#f4f4f4;padding: 0px 10px;font-size: 25px;font-weight: bold;margin:auto;}
-.content .contentWarp .menu{background:#FAFAFA;width:232px;margin-right:10px;border: solid 1px #b2b2b2;float:left;border-radius:5px;}
+.content .contentWarp .menu{margin-bottom:10px;background:#FAFAFA;width:232px;margin-right:10px;border: solid 1px #b2b2b2;float:left;border-radius:5px;}
 /*--content Menu--*/
 .content .menu h3{font-size: 16px;color: #E15E34;text-align: left;padding:5px;line-height: 25px;border-radius:4px 4px 0 0;margin: 0;font-family: 'Roboto', sans-serif;text-transform: uppercase;font-weight: bold;background: transparent url('../images/douleline.png') repeat-x bottom left;}
 .content .menu .cate li{font-size: 14px;text-align: left;padding:5px 5px 5px 10px;line-height: 20px;border-radius:4px 4px 0 0;margin: 0;font-family: 'Roboto', sans-serif;font-weight: bold;position:relative;display:inline-block;width: 216px;}
