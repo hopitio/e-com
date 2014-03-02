@@ -1,5 +1,5 @@
 @CHARSET "utf-8";
-.content .bannerContainer {width:100%;min-height:480px;background: url('../images/content-bg.gif') top repeat-x #fff;}
+.content .bannerContainer {width:100%;min-height:480px;background:transparent url('../images/content-bg.gif') top repeat-x;}
 .content .bannerContainer .banner {width:100%; text-align: center;}
 .content .banner .bannerWarper{margin: auto;height:380px;}
 .bannerWarper .bannerSliderContainer img{margin:auto;}
@@ -21,7 +21,7 @@
 .itemContent .rightContentDes span.DesTitle{;display:inline-block;width:100%;font-size:25px; }
 .itemContent .rightContentDes span.Des{display:inline-block;width:100%;font-size:20px;}
 .bannerWarper .bx-wrapper .bx-viewport {-moz-box-shadow: none;-webkit-box-shadow: none;box-shadow: none;border: none;background: transparent;}
-.content .suggestContainer{width:100%;min-height: 100px;background:transparent url('../images/bg2.gif') repeat-x center;}
+.content .suggestContainer{width:100%;min-height: 100px;background:transparent url('../images/bg2.gif') repeat-x top;}
 .content .suggestContainer .suggestWarp{width:980px; margin: auto; display: inline-block;}
 .content .suggestContainer .suggestWarp li{width:33.32%;float: left;height:100px;cursor:pointer;overflow: hidden;}
 .content .suggestContainer .suggestWarp li.step1{background: transparent url(../images/1.png) no-repeat center;}
