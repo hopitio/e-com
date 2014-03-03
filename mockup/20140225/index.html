@@ -20,6 +20,9 @@
 <script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
 
+<!-- masonry http://masonry.desandro.com/ -->
+<script src="js/masonry.pkgd.min.js"></script>
+
 <!-- Css -->
 <link rel="stylesheet" type="text/css" href="style/main.css" media="all">
 <link rel="stylesheet" type="text/css" href="style/homePage.css" media="all">
@@ -38,9 +41,12 @@ $(document).ready(function(){
         moveSlides: 0,
         slideWidth: 0,
     });
-    
-    
 
+    var container = document.querySelector('.rowContent .container');
+    var msnry = new Masonry( container, {
+      itemSelector: '.productItem'
+    });
+    
   });
 $(window).resize(function(e){
     bxBannerslider.reloadSlider();
@@ -256,61 +262,16 @@ function changeBackgroudColor(id){
                     <div class="menu" >
                         <h3>Danh Mục</h3>
                         <ul class="cate">
-                            <li><a href="#">ELECTRONICS <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Sports & Outdoors <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Apparel <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Books <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Movies & TV <i class="fa  fa-chevron-circle-right"></i></a></li>
-                             <li><a href="#">ELECTRONICS <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Sports & Outdoors <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Apparel <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Books <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Movies & TV <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            
-                        </ul>
-                        
-                        <h3>Danh Mục</h3>
-                        <ul class="cate">
-                            <li><a href="#">ELECTRONICS <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Sports & Outdoors <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Apparel <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Books <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Movies & TV <i class="fa  fa-chevron-circle-right"></i></a></li>
-                             <li><a href="#">ELECTRONICS <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Sports & Outdoors <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Apparel <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Books <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Movies & TV <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            
-                        </ul>
-                        
-                        <h3>Danh Mục</h3>
-                        <ul class="cate">
-                            <li><a href="#">ELECTRONICS <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Sports & Outdoors <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Apparel <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Books <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Movies & TV <i class="fa  fa-chevron-circle-right"></i></a></li>
-                             <li><a href="#">ELECTRONICS <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Sports & Outdoors <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Apparel <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Books <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Movies & TV <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            
-                        </ul>
-                        
-                        <h3>Danh Mục</h3>
-                        <ul class="cate">
-                            <li><a href="#">ELECTRONICS <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Sports & Outdoors <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Apparel <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Books <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Movies & TV <i class="fa  fa-chevron-circle-right"></i></a></li>
-                             <li><a href="#">ELECTRONICS <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Sports & Outdoors <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Apparel <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Books <i class="fa  fa-chevron-circle-right"></i></a></li>
-                            <li><a href="#">Movies & TV <i class="fa  fa-chevron-circle-right"></i></a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
                             
                         </ul>
                      </div>
@@ -318,8 +279,9 @@ function changeBackgroudColor(id){
                         <div class="boxHeader boxNew">
                             <span>Sản phẩm mới</span>
                         </div>
-                        <div class="rowContentCol">
-                            <div class="productItem">
+                        <div class="container">
+                        
+                         <div class="productItem">
                             <img src="images/images4.jpg"/>
                             <div class="title">Sản phẩm demo </div>
                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
@@ -346,9 +308,8 @@ function changeBackgroudColor(id){
                                  <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
                              </div>
                          </div>
-                        </div>
-                        <div class="rowContentCol">
-                            <div class="productItem">
+
+                        <div class="productItem">
                             <img src="images/images3.jpg"/>
                             <div class="title">Sản phẩm demo </div>
                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
@@ -357,7 +318,7 @@ function changeBackgroudColor(id){
                                 <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
                             </div>
                          </div>
-                         <div class="productItem">
+                        <div class="productItem">
                              <img src="images/images2.jpg"/>
                              <div class="title">Sản phẩm demo </div>
                              <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
@@ -366,8 +327,8 @@ function changeBackgroudColor(id){
                                  <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
                              </div>
                          </div>
-                         <div class="productItem">
-                             <img src="images/images.jpg"/>
+                        <div class="productItem">
+                             <img src="images/images2.jpg"/>
                              <div class="title">Sản phẩm demo </div>
                              <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
                              <div class="bottom">
@@ -375,9 +336,8 @@ function changeBackgroudColor(id){
                                  <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
                              </div>
                          </div>
-                        </div>
-                        <div class="rowContentCol">
-                            <div class="productItem">
+  <!-- <div class="rowContentCol"> -->
+                        <div class="productItem">
                             <img src="images/images.jpg"/>
                             <div class="title">Sản phẩm demo </div>
                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
@@ -386,7 +346,7 @@ function changeBackgroudColor(id){
                                 <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
                             </div>
                          </div>
-                         <div class="productItem">
+                        <div class="productItem">
                              <img src="images/images4.jpg"/>
                              <div class="title">Sản phẩm demo </div>
                              <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
@@ -395,7 +355,7 @@ function changeBackgroudColor(id){
                                  <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
                              </div>
                          </div>
-                         <div class="productItem">
+                        <div class="productItem">
                              <img src="images/images3.jpg"/>
                              <div class="title">Sản phẩm demo </div>
                              <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
@@ -404,100 +364,9 @@ function changeBackgroudColor(id){
                                  <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
                              </div>
                          </div>
-                        </div>
+                         </div>
                     </div>
-                    <div class="rowContent">
-                        <div class="boxHeader boxNew">
-                            <span>Sản phẩm mới</span>
-                        </div>
-                        <div class="rowContentCol">
-                            <div class="productItem">
-                            <img src="images/images4.jpg"/>
-                            <div class="title">Sản phẩm demo </div>
-                            <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                            <div class="bottom">
-                                <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                            </div>
-                         </div>
-                         <div class="productItem">
-                             <img src="images/images2.jpg"/>
-                             <div class="title">Sản phẩm demo </div>
-                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                             <div class="bottom">
-                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                 <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                             </div>
-                         </div>
-                         <div class="productItem">
-                             <img src="images/images2.jpg"/>
-                             <div class="title">Sản phẩm demo </div>
-                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                             <div class="bottom">
-                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                 <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                             </div>
-                         </div>
-                        </div>
-                        <div class="rowContentCol">
-                            <div class="productItem">
-                            <img src="images/images3.jpg"/>
-                            <div class="title">Sản phẩm demo </div>
-                            <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                            <div class="bottom">
-                                <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                            </div>
-                         </div>
-                         <div class="productItem">
-                             <img src="images/images2.jpg"/>
-                             <div class="title">Sản phẩm demo </div>
-                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                             <div class="bottom">
-                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                 <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                             </div>
-                         </div>
-                         <div class="productItem">
-                             <img src="images/images.jpg"/>
-                             <div class="title">Sản phẩm demo </div>
-                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                             <div class="bottom">
-                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                 <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                             </div>
-                         </div>
-                        </div>
-                        <div class="rowContentCol">
-                            <div class="productItem">
-                            <img src="images/images.jpg"/>
-                            <div class="title">Sản phẩm demo </div>
-                            <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                            <div class="bottom">
-                                <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                            </div>
-                         </div>
-                         <div class="productItem">
-                             <img src="images/images4.jpg"/>
-                             <div class="title">Sản phẩm demo </div>
-                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                             <div class="bottom">
-                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                 <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                             </div>
-                         </div>
-                         <div class="productItem">
-                             <img src="images/images3.jpg"/>
-                             <div class="title">Sản phẩm demo </div>
-                             <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                             <div class="bottom">
-                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                                 <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                             </div>
-                         </div>
-                        </div>
-                    </div>
+                    
             </div>
         </div>
         <div class="foot">
