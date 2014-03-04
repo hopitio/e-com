@@ -49,8 +49,7 @@ codename	VARCHAR(50),
 fk_parent	INT,
 sort	TINYINT,
 path	VARCHAR(255),
-image	VARCHAR(255)
-
+image	text
 );
 
 CREATE TABLE t_category_language(
@@ -108,7 +107,9 @@ id	INT PRIMARY KEY AUTO_INCREMENT,
 codename	VARCHAR(50),
 datatype	ENUM('number', 'enum', 'text'),
 fk_enum_ref	INT,
-multi_language	TINYINT DEFAULT 0
+multi_language	TINYINT DEFAULT 0,
+repeating_group tinyint,
+important_level int
 );
 
 CREATE TABLE t_category_attribute(
@@ -262,8 +263,7 @@ CREATE TABLE t_feature_product(
 id	INT PRIMARY KEY AUTO_INCREMENT,
 fk_product	INT,
 fk_category	INT,
-sort	TINYINT,
-custom_image	TEXT
+sort	TINYINT
 
 );
 
