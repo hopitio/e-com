@@ -39,3 +39,4 @@
 .bannerContainer .suggestWarp li.active .iconMapping{display:block;}
 .bannerContainer .suggetConatinerDetails{height:380px;background-color: #84BB39;overflow: hidden;width:100%;}
 .bannerContainer .suggetConatinerDetails .col{height:370px;margin:5px 0;width:19.99%;float:left;float:left;background-color: white;}
+.bannerContainer .suggetConatinerDetails .col img{width:100%;}
