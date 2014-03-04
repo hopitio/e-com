@@ -17,13 +17,26 @@ a{text-decoration: none;}
 .topbar{width:100%;background: #313131;}
 .topbar .container{min-height: 32px;margin: auto;}
 .topbar .headerButtonList li.frist{float:left;}
-.topbar .headerButtonList li.frist:after{content: "   \f13a";font-family: FontAwesome;}
+.topbar .headerButtonList li.frist a:after{content: "   \f13a";font-family: FontAwesome;}
 .topbar .headerButtonList li a {display: inline-block;color: #9b9b9b;font-weight: bold;}
 .topbar .headerButtonList{float:right;margin: 7px 0 0 3px;}
 .topbar .headerButtonList li{display: inline-block;color: #9b9b9b;font-weight: bold;float:right;margin-left: 15px;font-style: normal;font-weight: normal;text-decoration: inherit;}
 .topbar .headerButtonList li:hover{cursor:pointer;}
-.topbar .headerButtonList li.lang:after{content:"\f13a";font-family: FontAwesome;}
-.topbar .headerButtonList li.money:after{content:"\f13a";font-family: FontAwesome;}
+.topbar .headerButtonList li.lang a:after{content:"\f13a";font-family: FontAwesome;}
+.topbar .headerButtonList li.money a:after{content:"\f13a";font-family: FontAwesome;}
+.topbar .headerButtonList .accessPannel li a:after{content:none;}
+.topbar .headerButtonList .accessPannel{
+    position:absolute;
+    display:block;
+    z-index:999;
+    background:white;
+    width:150px;
+    float:left;
+    margin-left:-50px;
+    margin-top: 5px;
+    border-radius:5px;
+    
+}
 .topbar .headerMobileView{display:none;}
 /*---header---*/
 .header{width: 100%;background: #f4f4f4;}
@@ -38,6 +51,7 @@ a{text-decoration: none;}
 .header .container .rightBlock{float: right; margin:10px  0px 0px 10px;}
 .header  .rightBlock i{font-size: 29px;color: #69bf30;}
 .header .menu .menuExt{display: none;}
+
 /*--MENU--*/
 .content .contentWarp{margin:auto;margin-top:20px;display:inline-block;}
 .content .rowContent{text-align:left;border-radius:5px;width:100%;margin-bottom:20px;float:right;}
