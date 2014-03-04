@@ -47,6 +47,12 @@ $(document).ready(function(){
       itemSelector: '.productItem'
     });
     
+    var currentHeadextend;
+    $('.headerButtonList li').click(function(e){
+        $('.headerButtonList li .accessPannel').hide('fast');
+        $(this).find('.accessPannel').toggle('fast');
+    });
+    
   });
 $(window).resize(function(e){
     bxBannerslider.reloadSlider();
@@ -95,6 +101,7 @@ function changeBackgroudColor(id){
     $('.content .suggestContainer').css('background-image','url("images/'+backgroundImage+'")');
 }
 
+
 </script>
 </head>
 <body>
@@ -102,19 +109,30 @@ function changeBackgroudColor(id){
         <div class="topbar">
             <div class="container wStaticPx">
                 <ul class="headerButtonList">
-                    <li class="lang">EN </li>
-                    <li class="money">Dollar </li>
-                    <li class="frist">
-                    <a href="#">My Account</a>
-                        <div class="accessPannel">
-                            <ul>
-                                <li><a href="#">Đăng nhập</a></li>
-                                <li><a href="#">WishList</a></li>
-                                <li><a href="#">Đăng sản phẩm</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                 <li class="myAcc">
+                   <a href="#">My Account</a>
+                   <ul class="accessPannel">
+                    <li><a href="#">Đăng nhập</a></li>
+                    <li><a href="#">WishList</a></li>
+                    <li><a href="#">Đăng sản phẩm</a></li>
+                   </ul>
+                 </li>
+                 <li class="lang"><a href="#">EN</a>
+                   <ul class="accessPannel">
+                    <li><a href="#">EN</a></li>
+                    <li><a href="#">VN</a></li>
+                    <li><a href="#">KOR</a></li>
+                   </ul>
+                </li>
+               <li class="money"><a href="#">Dollar</a>
+                <ul class="accessPannel">
+                 <li><a href="#">EN</a></li>
+                 <li><a href="#">VN</a></li>
+                 <li><a href="#">KOR</a></li>
                 </ul>
+              </li>
+
+            </ul>
                 <div class="headerMobileView">
                     <div class="shortcutButton"><i class="fa fa-list"></i></div>
                     <div class="shortcutSearch"><i class="fa fa-search"></i></div>
