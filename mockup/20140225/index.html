@@ -59,29 +59,43 @@ $(window).resize(function(e){
 });
 
 //suggest swicth;
-var currentItem;
+var currentItem = null;
 $(document).on('click','.step2',function(){
     stepSuggestClickFunction($('.step2'));
-    changeBackgroudColor('step2');
 });
 $(document).on('click','.step1',function(){
     stepSuggestClickFunction($('.step1'));
-    changeBackgroudColor('step1');
 });
 $(document).on('click','.step3',function(){
     stepSuggestClickFunction($('.step3'));
-    changeBackgroudColor('step3');
 });
 
 function stepSuggestClickFunction(item){
-    $(currentItem).toggle('slow');
-    currentItem =$(item).find('.iconMapping').toggle('slow'); 
-    $('.banner').toggle('slow');
-    $('.suggetConatinerDetails').toggle('slow');
+    var targetItemId = $(item).attr('id');
+    if(targetItemId == $(currentItem).attr('id')){
+        $('div[anchor='+$(currentItem).attr('id')+']').hide();//id;
+        $('.banner').show();
+        $(currentItem).find('.iconMapping').hide();
+        currentItem = null;
+    }else{
+        //hide current slide;
+         if(currentItem != null){
+            $('div[anchor='+$(currentItem).attr('id')+']').hide();
+            $(currentItem).find('.iconMapping').hide();
+         }
+        //show target item
+        $('div[anchor='+targetItemId+']').show();
+        $('.banner').hide();
+        $(item).find('.iconMapping').show();
+        currentItem = item;
+    }
+    changeBackgroudColor(currentItem);
 }
 
-function changeBackgroudColor(id){
+function changeBackgroudColor(item){
+    if(item == null) {return;}
     var color = '#CCC';
+    var id = $(item).attr('id');
     var backgroundImage ='';
     switch(id){
     case 'step1':
@@ -272,18 +286,35 @@ function changeBackgroudColor(id){
                     </div>
                 </div>
                 
-               <div class="suggetConatinerDetails" style="display:none;">
+               <div class="suggetConatinerDetails" style="display:none;" anchor="step1">
                     <a href="#"><div class="col" ><img src="images/sl1.png"/></div></a>
                     <a href="#"><div class="col" ><img src="images/sl2.png"/></div></a>
                     <a href="#"><div class="col" ><img src="images/sl4.png"/></div></a>
                     <a href="#"><div class="col" ><img src="images/sl3.jpg"/></div></a>
                     <a href="#"><div class="col" ><img src="images/sl5.png"/></div></a>
                 </div>
+                
+                <div class="suggetConatinerDetails" style="display:none;" anchor="step2">
+                    <a href="#"><div class="col" ><img src="images/sl1.png"/></div></a>
+                    <a href="#"><div class="col" ><img src="images/sl2.png"/></div></a>
+                    <a href="#"><div class="col" ><img src="images/sl4.png"/></div></a>
+                    <a href="#"><div class="col" ><img src="images/sl3.jpg"/></div></a>
+                    <a href="#"><div class="col" ><img src="images/sl5.png"/></div></a>
+                </div>
+                
+                <div class="suggetConatinerDetails" style="display:none;" anchor="step3">
+                    <a href="#"><div class="col" ><img src="images/sl1.png"/></div></a>
+                    <a href="#"><div class="col" ><img src="images/sl2.png"/></div></a>
+                    <a href="#"><div class="col" ><img src="images/sl4.png"/></div></a>
+                    <a href="#"><div class="col" ><img src="images/sl3.jpg"/></div></a>
+                    <a href="#"><div class="col" ><img src="images/sl5.png"/></div></a>
+                </div>
+                
                 <div class="suggestContainer">
                     <ul class="suggestWarp wStaticPx">
-                        <li class="step1"> <div class="iconMapping" style="display:none;"></div> <span>Chọn ngày lễ</span></li>
-                        <li class="step2"> <div class="iconMapping" style="display:none;"></div><span>Chọn đối tượng</span></li>
-                        <li class="step3"> <div class="iconMapping" style="display:none;"></div><span>Chọn Quà</span></li>
+                        <li class="step1" id="step1"> <div class="iconMapping" style="display:none;"></div> <span>Chọn ngày lễ</span></li>
+                        <li class="step2" id="step2"> <div class="iconMapping" style="display:none;"></div><span>Chọn đối tượng</span></li>
+                        <li class="step3" id="step3"> <div class="iconMapping" style="display:none;"></div><span>Chọn Quà</span></li>
                     </ul>
                 </div>
             </div>
