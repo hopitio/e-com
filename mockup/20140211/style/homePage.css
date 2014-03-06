@@ -11,22 +11,23 @@
 .sliderContainer .bx-wrapper .bx-controls-direction a.bx-next{right: 50px;background:transparent url("../images/sprite.png") no-repeat scroll -45px -119px ;display:none;}
 .sliderContainer .bx-wrapper:hover .bx-controls-direction a.bx-next{display:block;}
 .sliderContainer .bx-wrapper:hover .bx-controls-direction a.bx-prev{display:block;}
+
 .sliderContainer .chatbox{width: 320px;height:400px;float:right;margin-top: -30px;background-color: white;box-shadow: 0 0 5px white;}
-.sliderItemContainer {max-height:380px;width:100%;text-align: center;}
-.sliderItemContainer .itemContent{max-height:380px;width:980px;text-align: center;margin:auto;display:inline-block;}
-.sliderItemContainer .itemContent .leftContent{max-height: 380px;max-width:380px;float:left;width:100%;}
+
+.sliderItemContainer {height:380px;width:100%;text-align: center;}
+.sliderItemContainer .itemContent{height:380px;width:980px;text-align: center;margin:auto;display:inline-block;}
+.sliderItemContainer .itemContent .leftContent{height: 380px;width:380px;float:left;}
 .sliderItemContainer .itemContent .rightContent{float:left;width: 500px;  margin:50px;height:280px; text-align: left;}
 .itemContent .rightContentTitle{font-size: 30px;font-weight: bold;color: white;}
 .itemContent .rightContentDes{min-width:470px; padding:10px; border-radius: 15px;background: transparent url('../images/bgdes_itemSlider.png') repeat 0 0;margin-top: 25px;min-height: 200px;}
 .itemContent .rightContentDes span.DesTitle{color:white;display:inline-block;width:100%;font-size:25px; }
 .itemContent .rightContentDes span.Des{display:inline-block;width:100%;}
 .sliderContainer .toolContainer{bottom:0px;width:100%;height:100px;display:inline-block;text-align: center;}
-.sliderContainer .toolContainer .toolContainerClear{max-width:980px;margin: auto;display: inline-block;}
+.sliderContainer .toolContainer .toolContainerClear{width:980px;margin: auto;display: inline-block;}
 .sliderContainer .toolContainer .itemTool{width: 300px;height:100px;background-color:white;margin: 0px 10px;float:left;background: transparent url('../images/bgdes_itemSlider.png') repeat 0 0;border-radius: 10px 10px 0 0;box-shadow:0 0 10px #251A16;}
 .sliderContainer .toolContainer .call {background: transparent url('../images/support.jpg') repeat 0 0;}
 .sliderContainer .toolContainer .faq {background: transparent url('../images/faq.jpg') repeat 0 0;}
 .sliderContainer .toolContainer .chat{background: transparent url('../images/chat.jpg') repeat 0 0;}
-.sliderContainer .toolContainer .bx-controls{display:none;}
 .content{padding-top:12px;}
 .contentClearFlex{margin: auto;min-height: 250px;}
 .rowProduct{margin: 10px 0px;}

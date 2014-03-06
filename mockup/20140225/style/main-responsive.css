@@ -4,15 +4,26 @@
     .wStaticPx {width:100%;}
     .content .suggestContainer .suggestWarp{width:100%;}
     .content .contentWarp .menu{width:99%;margin:0px;}
-   
     .header .centerBlock .form input[type='text']{width:auto;}
-    .content .rowContent {width: 720px;float: none;margin: 20px auto;display: inline-block;}
+    .content .rowContent {width: 760px;float: none;margin: 20px auto;display: inline-block;}
+    
+    .header .logo{display: none;}
+    .header .menu {width:100%;}
+    .header .menu .cate{display: none;}
+    .header .menu .menuExt{display: inline-block;float: left;width: 100%;}
+    .header .menuExt .logo{display: block;}
+    .header .menuExt .extendIcon i{font-size: 40px; margin: 5px 5px 0px 0px;float: right;}
+    .header .rightBlock,.centerBlock{display:none;}
+    .topbar .headerMobileView{display:block;}
+    .topbar .headerMobileView i{font-size: 40px;}
+    .topbar .headerButtonList{display:none;}
+    .topbar .shortcutButton{float:left;}
+    .topbar .shortcutSearch{float:right;}
 }
 @media only screen and (max-width: 739px){
-    .topbar .quickAccessShortcut{display:block;}
-    .topbar .quickAccess{display:none;}
+    
+    
     .content .rowContent{width:490px;}
-    .content .menu .cate li {width: 90%;padding: 10px 5%;}
 }
 @media only screen and (max-width: 639px){
     .sliderItemContainer .itemContent .rightContent{display:none;}

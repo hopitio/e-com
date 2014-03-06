@@ -1,49 +1,25 @@
 @CHARSET "UTF-8";
 @media only screen and (max-width: 979px)
 {
-    .wStaticPx {width:100%;}
-    .sliderItemContainer .itemContent{width:100%;}
-    .sliderContainer .toolContainer .toolContainerClear{width:100%;}
-    .sliderItemContainer .itemContent .rightContent{display:none;}
-    .sliderItemContainer .itemContent .leftContent{margin:auto;float: none;}
-    .sliderContainer .bx-wrapper .bxBannerslider  li{width:100%;}
-    .sliderContainer .toolContainer .bx-controls{display: block;}
-    .sliderContainer .bx-wrapper .bx-controls-direction a.bx-prev{left: 0px;background:transparent url("../images/sprite.png") no-repeat scroll -2px -119px ;display:none;}
-    .sliderContainer .bx-wrapper .bx-controls-direction a.bx-next{right: 0px;background:transparent url("../images/sprite.png") no-repeat scroll -45px -119px ;display:none;}
-    .rowProduct .bx-wrapper .bx-controls-direction a.bx-prev{left: 0px;background:transparent url("../images/sprite.png") no-repeat scroll -93px -124px; }
-    .rowProduct .bx-wrapper .bx-controls-direction a.bx-next{right: 0px;background:transparent url("../images/sprite.png") no-repeat scroll -130px -124px;}
-    .sliderContainer .toolContainer {width: 640px;}
+	.sliderContainer .bx-wrapper{width:100%;}
+    .sliderContainer .bx-wrapper .bx-controls-direction a.bx-next{right: 25px;}
+    .sliderContainer .bx-wrapper .bx-controls-direction a.bx-prev{left: 25px;}
+	.wStaticPx,.sliderContainer .containerClearFix{width:100%;}
+	.staticContent .robin{height:auto;margin:auto;display:inline-block;}
+	.robin .logo,.search{width:100%;text-align: center;}
+	.robin .search{text-align: center;}
+	.robin .search input[type=text],.searchButton{margin:auto;}
+    .topbar .leftContent{display:none;}
+    .topbar .rightContent{width:100%;}
+    .containerClearFix .extendChatButton{display:block;}
 }
-@media only screen and (max-width: 739px){
-    .topBarMobileView{display:inline-block;}
-    .robin .robinRight{display:none;}
-    .topMenuContentContainer .menuScroll{display:block;}
-    .topMenuContentContainer ul{display:none;}
-    .topMenuContentContainer ul li{width:100%;text-align: left;padding-left: 10px;}
-    .topMenuContentContainer li a{padding-left:20px;width:100%;border:none;height: 30px;background: url("../images/Plus.png") no-repeat center left;}
-    .robin .search{width:100%;}
-    .robin .search input[type=text]{margin: auto;width:90%; border:solid 1px #EEEADC;border-radius:10px;display:block;float: none;}
-    .robin .search .searchButton {text-align:center; border-radius: 10px;width:90%;border: solid 1px #EEEADC;padding: 5px 10px;display: block;float: none;margin:5px auto;}
-    .topMenuContentContainer li:hover .containerSubMenu{display:none;}
-}
-
 @media only screen and (max-width: 639px){
-    
+	.sliderContainer .chatbox {display:none;}
+	.topMenuContentContainer li{width:100%;}
+	.topMenuContentContainer .cart{width:100%;}
+	.staticContent .topMenu,.staticContent .effectTowBorder,.topMenu .topMenuContentContainer{height:inherit;display: inline-block;}
+	.topMenuContentContainer li:hover .containerSubMenu{display:none;}
+}
+@media only screen and (max-width: 479px){
     .sliderContainer .chatbox {display:none;}
-    .topMenuContentContainer li{width:100%;}
-    .topMenuContentContainer .cart{width:100%;}
-    .staticContent .topMenu,.staticContent .effectTowBorder,.topMenu .topMenuContentContainer{height: inherit; display: inline-block;}
-    .topMenuContentContainer li:hover .containerSubMenu{display:none;}
-    .sliderContainer .toolContainer {width: 320px;}
-    
 }
-@media only screen and (max-width: 490px){
-    .rowProduct .rowContent{width:245px;}
-    .rowProduct .bx-wrapper .bx-controls-direction a.bx-prev{left: -50px;background:transparent url("../images/sprite.png") no-repeat scroll -93px -124px; }
-    .rowProduct .bx-wrapper .bx-controls-direction a.bx-next{right: -50px;background:transparent url("../images/sprite.png") no-repeat scroll -130px -124px;}
-}
-@media only screen and (max-width: 380px){
-    .robin .search{width:100%}
-    .rowProduct .bx-wrapper .bx-controls-direction a.bx-prev{left: -20px;background:transparent url("../images/sprite.png") no-repeat scroll -93px -124px; }
-    .rowProduct .bx-wrapper .bx-controls-direction a.bx-next{right: -20px;background:transparent url("../images/sprite.png") no-repeat scroll -130px -124px;}
-    

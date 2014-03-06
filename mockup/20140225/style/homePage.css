@@ -21,7 +21,7 @@
 .itemContent .rightContentDes span.DesTitle{;display:inline-block;width:100%;font-size:25px; }
 .itemContent .rightContentDes span.Des{display:inline-block;width:100%;font-size:20px;}
 .bannerWarper .bx-wrapper .bx-viewport {-moz-box-shadow: none;-webkit-box-shadow: none;box-shadow: none;border: none;background: transparent;}
-.content .suggestContainer{width:100%;min-height: 100px;background:transparent url('../images/bg2.gif') repeat-x top;}
+.content .suggestContainer{width:100%;min-height: 100px;background:#f4f4f4 url('../images/bg2.gif') repeat-x center;}
 .content .suggestContainer .suggestWarp{width:980px; margin: auto; display: inline-block;}
 .content .suggestContainer .suggestWarp li{width:33.32%;float: left;height:100px;cursor:pointer;overflow: hidden;}
 .content .suggestContainer .suggestWarp li.step1{background: transparent url(../images/1.png) no-repeat center;}
@@ -39,3 +39,4 @@
 .bannerContainer .suggestWarp li.active .iconMapping{display:block;}
 .bannerContainer .suggetConatinerDetails{height:380px;background-color: #84BB39;overflow: hidden;width:100%;}
 .bannerContainer .suggetConatinerDetails .col{height:370px;margin:5px 0;width:19.99%;float:left;float:left;background-color: white;}
+.bannerContainer .suggetConatinerDetails .col img{width:100%;}
