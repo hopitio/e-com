@@ -1,0 +1,5 @@
+/*form search*/
+.formSearch{width: 100%;margin-bottom: 10px;height: 31px;}
+.formSearch  input[type='text'] {height: 17px;float: left; padding: 6px; width: 75%; border: solid 1px #b2b2b2;  border-right: none; border-radius: 3px 0 0 3px;box-shadow: inset 0px 5px 5px #efefef; resize: none;}
+.formSearch .button{margin-left: -2px;}
+.formSearch .button span span i {font-size: 16px;color: white;line-height: 29px;}
