@@ -20,9 +20,6 @@
 <script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
 
-<!-- masonry http://masonry.desandro.com/ -->
-<script src="js/masonry.pkgd.min.js"></script>
-
 <!-- Css -->
 <link rel="stylesheet" type="text/css" href="style/main.css" media="all">
 <link rel="stylesheet" type="text/css" href="style/homePage.css" media="all">
@@ -42,10 +39,6 @@ $(document).ready(function(){
         slideWidth: 0,
     });
 
-    var container = document.querySelector('.rowContent .container');
-    var msnry = new Masonry( container, {
-      itemSelector: '.productItem'
-    });
     
     var currentHeadextend;
     $('.headerButtonList li').click(function(e){
@@ -53,10 +46,16 @@ $(document).ready(function(){
         $(this).find('.accessPannel').toggle('fast');
     });
     
+    $(document).on('click','.form button',function(e){
+        window.location.href="search.html";
+    });
+    
   });
 $(window).resize(function(e){
     bxBannerslider.reloadSlider();
 });
+
+
 
 //suggest swicth;
 var currentItem = null;
@@ -164,66 +163,66 @@ function changeBackgroudColor(item){
                     </div>
                         <ul class="cate">
                             <li>
-                                <a href="#">ELECTRONICS</a>
+                                <a href="category.html">ELECTRONICS</a>
                                 <div class="containerSubMenu">
                                         <ul>
                                             <li class="menuCol">
-                                                <span><a href="#">Điện Máy </a></span>
+                                                <span><a href="category.html">Điện Máy </a></span>
                                                 <ul>
-                                                    <li><a href="">Điện máy 1</a></li>
-                                                    <li><a href="">Điện máy 2</a></li>
-                                                    <li><a href="">Điện máy 3</a></li>
-                                                    <li><a href="">Điện máy 4</a></li>
-                                                    <li><a href="">Điện máy 4</a></li>
-                                                    <li><a href="">Điện máy 4</a></li>
-                                                    <li><a href="">Điện máy 4</a></li>
-                                                    <li><a href="">Xem Thêm →</a></li>
+                                                    <li><a href="category.html">Điện máy 1</a></li>
+                                                    <li><a href="category.html">Điện máy 2</a></li>
+                                                    <li><a href="category.html">Điện máy 3</a></li>
+                                                    <li><a href="category.html">Điện máy 4</a></li>
+                                                    <li><a href="category.html">Điện máy 4</a></li>
+                                                    <li><a href="category.html">Điện máy 4</a></li>
+                                                    <li><a href="category.html">Điện máy 4</a></li>
+                                                    <li><a href="category.html">Xem Thêm →</a></li>
                                                 </ul>
                                             </li>
                                             <li class="menuCol">
-                                              <span><a href="#">Điện Máy </a></span>
+                                              <span><a href="category.html">Điện Máy </a></span>
                                                 <ul>
-                                                    <li><a href="">Điện máy 1</a></li>
-                                                    <li><a href="">Điện máy 2</a></li>
-                                                    <li><a href="">Điện máy 3</a></li>
-                                                    <li><a href="">Xem Thêm →</a></li>
+                                                    <li><a href="category.html">Điện máy 1</a></li>
+                                                    <li><a href="category.html">Điện máy 2</a></li>
+                                                    <li><a href="category.html">Điện máy 3</a></li>
+                                                    <li><a href="category.html">Xem Thêm →</a></li>
                                                 </ul>
                                             </li>
                                              <li class="menuCol">
-                                              <span><a href="#">Điện Máy </a></span>
+                                              <span><a href="category.html">Điện Máy </a></span>
                                                 <ul>
-                                                    <li><a href="">Điện máy 1</a></li>
-                                                    <li><a href="">Điện máy 2</a></li>
-                                                    <li><a href="">Điện máy 3</a></li>
-                                                    <li><a href="">Xem Thêm →</a></li>
+                                                    <li><a href="category.html">Điện máy 1</a></li>
+                                                    <li><a href="category.html">Điện máy 2</a></li>
+                                                    <li><a href="category.html">Điện máy 3</a></li>
+                                                    <li><a href="category.html">Xem Thêm →</a></li>
                                                 </ul>
                                             </li>
                                              <li class="menuCol">
-                                              <span><a href="#">Điện Máy </a></span>
+                                              <span><a href="category.html">Điện Máy </a></span>
                                                 <ul>
-                                                    <li><a href="">Điện máy 1</a></li>
-                                                    <li><a href="">Điện máy 2</a></li>
-                                                    <li><a href="">Điện máy 3</a></li>
-                                                    <li><a href="">Xem Thêm →</a></li>
+                                                    <li><a href="category.html">Điện máy 1</a></li>
+                                                    <li><a href="category.html">Điện máy 2</a></li>
+                                                    <li><a href="category.html">Điện máy 3</a></li>
+                                                    <li><a href="category.html">Xem Thêm →</a></li>
                                                 </ul>
                                             </li> 
                                             <li class="menuCol">
-                                              <span><a href="#">Điện Máy </a></span>
+                                              <span><a href="category.html">Điện Máy </a></span>
                                                 <ul>
-                                                    <li><a href="">Điện máy 1</a></li>
-                                                    <li><a href="">Điện máy 2</a></li>
-                                                    <li><a href="">Điện máy 3</a></li>
-                                                    <li><a href="">Xem Thêm →</a></li>
+                                                    <li><a href="category.html">Điện máy 1</a></li>
+                                                    <li><a href="category.html">Điện máy 2</a></li>
+                                                    <li><a href="category.html">Điện máy 3</a></li>
+                                                    <li><a href="category.html">Xem Thêm →</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
-                            <li><a href="#">Sports & Outdoors </a></li>
-                            <li><a href="#">Apparel </a></li>
-                            <li><a href="#">Books </a></li>
-                            <li><a href="#">Movies & TV </a></li>
-                            <li><a href="#">Movies & TV </a></li>   
+                            <li><a href="category.html">Sports & Outdoors </a></li>
+                            <li><a href="category.html">Apparel </a></li>
+                            <li><a href="category.html">Books </a></li>
+                            <li><a href="category.html">Movies & TV </a></li>
+                            <li><a href="category.html">Movies & TV </a></li>   
                         </ul>
                      </div>
                 
@@ -319,6 +318,7 @@ function changeBackgroudColor(item){
                 </div>
             </div>
             <div class="contentWarp wStaticPx">
+                  <div class="leftContainer">
                     <div class="menu" >
                         <h3>Danh Mục</h3>
                         <ul class="cate">
@@ -332,9 +332,41 @@ function changeBackgroudColor(item){
                             <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel</a></li>
                             <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books </a></li>
                             <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
-                            
                         </ul>
                      </div>
+                     
+                     <div class="menu" >
+                        <h3>Danh Mục</h3>
+                        <ul class="cate">
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
+                        </ul>
+                     </div>
+                     
+                     <div class="menu" >
+                        <h3>Danh Mục</h3>
+                        <ul class="cate">
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel</a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books </a></li>
+                            <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
+                        </ul>
+                     </div>
+                  </div>
                      <div class="rowContent">
                         <div class="boxHeader boxNew">
                             <span>Sản phẩm mới</span>
