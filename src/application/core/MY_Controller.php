@@ -162,8 +162,8 @@ class MY_Controller extends CI_Controller {
      * @return boolean
      */
     public function platform_login_url_with_params(){
-        $dst = 'to_home';
-        return $this->config->item('platform_login_url');
+        $dst = uri_string();
+        return $this->config->item('platform_login_url')."&su=". urlencode(base_url($dst));
     }
 
 

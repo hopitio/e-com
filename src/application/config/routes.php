@@ -13,7 +13,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-         
+         $route['login'] = 'login/showPage';
         
     }
     
