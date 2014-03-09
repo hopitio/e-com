@@ -9,6 +9,7 @@
  */
 class User{
 
+    public $is_authorized;
     protected function load(){
         if($this->is_persistent()){
             $CI =& get_instance();
