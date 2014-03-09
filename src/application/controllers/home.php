@@ -3,6 +3,7 @@
 class home extends MY_Controller
 {
     protected $authorization_required = true;
+    
     public function showHome(){
         $this->load->view('home');
     }
