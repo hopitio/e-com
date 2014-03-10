@@ -63,6 +63,14 @@ class MY_Controller extends CI_Controller {
                 throw new Lynx_RoutingException();
             }
             call_user_func_array(array($this, $method), $ar_arg);
+        }catch (Lynx_ViewException $e){
+            log_message('infor', $e);
+            $this->output->set_status_header($e->status_code);
+            if($is_ajax_request){
+                $this->output->set_content_type('application/json')->set_output(json_encode($e->to_hash()));
+            }else{
+                $this->load->view('errors/maintenance', array('e' => $e));
+            }
         }catch(Lynx_RoutingException $e){
             log_message('info', $e);
             $this->output->set_status_header($e->status_code);

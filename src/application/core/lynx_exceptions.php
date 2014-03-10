@@ -97,6 +97,28 @@ class Lynx_MaintenanceException extends Lynx_Exception{
     public $title = 'BẢO TRÌ HỆ THỐNG';
 }
 
+//View exception
+class Lynx_ViewException extends Lynx_Exception{
+    public $status_code = '500';
+    public $title = 'Lỗi view';
+    public function __construct($message='Khởi tạo view sảy ra lỗi.'){
+        parent::__construct($message);
+    }
+}
+
+/**
+ * Lỗi truy xuất files
+ * @author LE
+ *
+ */
+class Lynx_IOException extends Lynx_Exception{
+    public $status_code = '500';
+    public $title = 'Lỗi view';
+    public function __construct($message='Lỗi tương tác với files.'){
+        parent::__construct($message);
+    }
+}
+
 
 
 
