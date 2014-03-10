@@ -16,13 +16,14 @@ a{text-decoration: none;}
 /*---Topbar---*/
 .topbar{width:100%;background: #313131;}
 .topbar .container{min-height: 32px;margin: auto;}
-.topbar .headerButtonList{float:right;margin: 7px 0 0 3px;}
-.topbar .headerButtonList li{position: relative;cursor:pointer;display: inline-block;color: #9b9b9b;font-weight: bold;float:right;margin-left: 15px;font-style: normal;font-weight: normal;text-decoration: inherit;}
+.topbar .headerButtonList li.frist{float:left;}
+.topbar .headerButtonList li.frist:after{content: "   \f13a";font-family: FontAwesome;}
 .topbar .headerButtonList li a {display: inline-block;color: #9b9b9b;font-weight: bold;}
-.topbar .headerButtonList li a:after{content:"   \f13a";font-family: FontAwesome;}
-.topbar .headerButtonList .accessPannel{position:absolute;display:none;z-index:999;background:white;min-width:50px;margin-top: 7px;border-radius:0px 0px 3px 3px;border-style: solid;border-width: 0px 1px 0px 1px;border-color: #ccc;}
-.topbar .headerButtonList .accessPannel li{border-bottom:solid 1px #ccc;width:100%;line-height: 25px;}
-.topbar .headerButtonList .accessPannel li a:after{content:none;}
+.topbar .headerButtonList{float:right;margin: 7px 0 0 3px;}
+.topbar .headerButtonList li{display: inline-block;color: #9b9b9b;font-weight: bold;float:right;margin-left: 15px;font-style: normal;font-weight: normal;text-decoration: inherit;}
+.topbar .headerButtonList li:hover{cursor:pointer;}
+.topbar .headerButtonList li.lang:after{content:"\f13a";font-family: FontAwesome;}
+.topbar .headerButtonList li.money:after{content:"\f13a";font-family: FontAwesome;}
 .topbar .headerMobileView{display:none;}
 /*---header---*/
 .header{width: 100%;background: #f4f4f4;}
@@ -37,12 +38,11 @@ a{text-decoration: none;}
 .header .container .rightBlock{float: right; margin:10px  0px 0px 10px;}
 .header  .rightBlock i{font-size: 29px;color: #69bf30;}
 .header .menu .menuExt{display: none;}
-
 /*--MENU--*/
 .content .contentWarp{margin:auto;margin-top:20px;display:inline-block;}
-.content .rowContent{text-align:left;border-radius:5px;width:720px;margin-bottom:20px;float:right;}
+.content .rowContent{text-align:left;border-radius:5px;width:100%;margin-bottom:20px;float:right;}
 .content .rowContent .rowContentCol{float:left;width:239px;}
-.content .productItem {width:218px;float:left;margin:10px 10px;border: solid 1px #b2b2b2;background: white;border-radius:5px;overflow: hidden;padding-bottom:10px;}
+.content .productItem {width:223px;float:left;margin:10px 10px;border: solid 1px #b2b2b2;background: white;border-radius:5px;overflow: hidden;padding-bottom:10px;}
 .content .rowContent .productItem img{width:100%;border-bottom:solid 1px #b2b2b2;}
 .content .rowContent .productItem .des,.title,.prices{padding:0px 5px;}
 .content .rowContent .productItem .title{text-align: left;font-size: 20px;color:black;margin:5px auto;}
@@ -52,12 +52,10 @@ a{text-decoration: none;}
 .content .productItem .bottom button{margin:auto 5px;}
 .content .productItem .bottom button span span{font-size: 14px;}
 .content .rowContent .boxHeader span {line-height: 22px;background:#f4f4f4;padding: 0px 10px;font-size: 25px;font-weight: bold;margin:auto;}
+.content .contentWarp .menu{margin-bottom:10px;background:#FAFAFA;width:100%;border: solid 1px #b2b2b2;float:left;border-radius:5px;}
 /*--content Menu--*/
-.content .contentWarp .leftContainer{width:240px;display: inline-block;float: left;}
-.content .contentWarp .menu{margin-bottom:10px;background:#FAFAFA;border: solid 1px #b2b2b2;float:left;border-radius:5px;}
-.content .menu h3{filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3b3b3b', endColorstr='#171717');background: -webkit-gradient(linear, left top, left bottom, from(#3b3b3b), to(#171717));background: -moz-linear-gradient(top, #3b3b3b, #171717);background: -o-linear-gradient(top, #3b3b3b, #171717);background: -ms-linear-gradient(top, #3b3b3b, #171717);-webkit-border-radius: 4px 4px 0 0;-moz-border-radius: 4px 4px 0 0;;font-size: 16px;color: #ffffff;text-align: left;padding:5px 19px;line-height: 35px;border-radius:4px 4px 0 0;margin: 0;font-family: 'Roboto', sans-serif;text-transform: uppercase;font-weight: bold;}
-.content .menu .cate{display:inline-block;}
-.content .menu .cate li{width:90%;font-size: 14px;text-align: left;padding:5px 5px 5px 10px;line-height: 20px;border-radius:4px 4px 0 0;margin: 0;font-family: 'Roboto', sans-serif;font-weight: bold;position:relative;display:inline-block;float:left;}
+.content .menu h3{font-size: 16px;color: #E15E34;text-align: left;padding:5px;line-height: 25px;border-radius:4px 4px 0 0;margin: 0;font-family: 'Roboto', sans-serif;text-transform: uppercase;font-weight: bold;background: transparent url('../images/douleline.png') repeat-x bottom left;}
+.content .menu .cate li{font-size: 14px;text-align: left;padding:5px 5px 5px 10px;line-height: 20px;border-radius:4px 4px 0 0;margin: 0;font-family: 'Roboto', sans-serif;font-weight: bold;position:relative;display:inline-block;float:left;}
 .content .menu .cate li:hover a{color:#0060AF}
 .content .menu .cate li:hover a i{color:#0060AF}
 .content .menu .cate li a{width:100%;display:inline-block;}
@@ -92,7 +90,6 @@ a{text-decoration: none;}
 .page-title h1, .page-title h2 {font-size: 16px;line-height: 22px;color: #333333;font-weight: bold;font-family: 'Roboto', sans-serif;}
 /*clear*/
 .clear{clear: both;}
-
 
 
 
