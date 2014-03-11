@@ -10,10 +10,16 @@ abstract class AbstractLoadLanguage{
      * Lấy giá trị của nhãn
      * @param unknown $key
      */
-    abstract function getLable($key);
+    abstract function getLable($key,$languageKey,$resource);
+    
     /**
-     * lấy giá trị đa ngôn ngữ của nhiều màn hinh.
+     * lấy giá trị đa ngôn ngữ của màn hinh.
      * @param unknown $screenKey
      */
-    abstract function getScreen($screenKey);
+    abstract function getScreen($screenKey,$languageKey,$resource);
+    
+    /**
+     * Kiểm tra màn hình có hỗ trợ hay không.
+     */
+    abstract function getSupportedScreen($screenName,$languageKey,$resource);
 }

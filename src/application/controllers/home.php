@@ -5,6 +5,6 @@ class home extends MY_Controller
     protected $authorization_required = FALSE;
     
     public function showHome(){
-        $this->load->view('');
+        $this->load->view('home');
     }
 }

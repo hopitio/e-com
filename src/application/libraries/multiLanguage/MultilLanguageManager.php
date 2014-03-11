@@ -10,26 +10,43 @@ class MultilLanguageManager
     /**
      * @var MultilLanguageManager
      */
-    
     private static $instance = null;
+    
     /**
      * @var AbstractLoadLanguage
      */
     private $_loadLanguage;
     
+    /**
+     * @var DefaultLanguageProviders
+     */
+    private $_languageProviders;
     
-    function __construct($loadLanguge){
+    /**
+     * 
+     * @var mixed
+     */
+    protected  $_resource;
+    
+    
+    function __construct($loadLanguge,$languageProviders){
        $this->_loadLanguage = $loadLanguge;
+       $this->_languageProviders = $languageProviders;
     }
     
     /**
      * initial instance, 
      */
-    static function initial($loadLanguge = null){
+    static function initial($loadLanguge = null,$languageProviders = null){
         if($loadLanguge == null){
             $loadLanguge = new DefaultLoadLanguage();
         }
-        static::$instance = new MultilLanguageManager($loadLanguge);
+        
+        if($languageProviders == null){
+            throw new Exception('path resource not found.');
+        }
+        
+        static::$instance = new MultilLanguageManager($loadLanguge,$languageProviders);
     }
     
     /**
@@ -47,7 +64,7 @@ class MultilLanguageManager
      * @param unknown $key
      */
     function getLable($key,$languageKey){
-      return $this->_loadLanguage->getLable($key);
+      return $this->_loadLanguage->getLable($key,$languageKey);
     }
     
     /**
@@ -55,11 +72,34 @@ class MultilLanguageManager
      * @param string
      */
     function getLangViaScreen($screenKey,$languageKey){
-        return $this->_loadLanguage->getScreen($screenKey);
+        return $this->_loadLanguage->getScreen($screenKey,$languageKey,$this->_resource);
     }
     
+    /**
+     * Cung cấp phương thức load resource đa ngôn ngữ cho hệ thống.
+     * @param string Path.
+     */
     function loadResource(){
-        
+        $resource = $this->_languageProviders->loadResource();
+        $this->_languageProviders->saveToCache($resource,false);
+        $this->_resource = $resource;
+    }
+    
+    /**
+     * Cung cấp hàm thay đổi resource trong runtime.
+     */
+    function changeResource(){
+        $resource = $this->_languageProviders->loadResource();
+        $this->_languageProviders->saveToCache($resource,true);
+        $this->_resource = $resource;
+    }
+    
+    /**
+     * 
+     * @param string $screenName
+     */
+    function checkSupportScreen($screenName,$languageKey){
+        $this->_loadLanguage->getSupportedScreen($screenName, $languageKey, $this->_resource);
     }
     
 }

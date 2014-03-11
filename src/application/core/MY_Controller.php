@@ -2,6 +2,7 @@
 
 require_once 'lynx_exceptions.php';
 require_once 'lynx_masters.php';
+require_once APPPATH.'libraries/multiLanguage/multiLanguage.inc';
 
 /**
  * MY_Controller
@@ -15,7 +16,7 @@ class MY_Controller extends CI_Controller {
         'status_message' => 'LỖI XÁC MINH',
     );
 
-
+    protected $_languageResource;
     protected $obj_user;
     protected $obj_setting;
 
@@ -114,6 +115,14 @@ class MY_Controller extends CI_Controller {
             }else{
                 $this->load->view('errors/common', array('e' => $e));
             }
+        }catch (Lynx_ModelMiscException $e){
+            $status_code = isset($e->status_code)? $e->status_code: '500';
+            if($is_ajax_request){
+                $this->output->set_status_header($status_code)->set_content_type('application/json')->set_output(json_encode($e->to_hash()));
+            }else{
+                $this->output->set_status_header($status_code);
+                $this->load->view('errors/common', array('e' => $e));
+            }
         }catch(Exception $e){
             log_message('error', $e);
             $status_code = isset($e->status_code)? $e->status_code: '500';
@@ -132,8 +141,16 @@ class MY_Controller extends CI_Controller {
      * @return void
      */
     protected function init(){
+        
+        //Khởi tạo trình quản lý ngôn ngữ.
+        $resourcePath = APPPATH.$this->config->item('languagePath');
+        $languageProviders = new DefaultLanguageProviders($resourcePath);
+        $loadLanguage = new DefaultLoadLanguage();
+        MultilLanguageManager::initial($loadLanguage, $languageProviders);
+        MultilLanguageManager::getInstance()->loadResource();
+        
+        
         $this->load->helper('form');
-
        //TODO: Check quyền truy cập
         $this->authorization_required =  $this->authorization_required;
 
@@ -147,6 +164,8 @@ class MY_Controller extends CI_Controller {
                 throw new Lynx_AuthenticationException('Không có quyền truy cập');
             }
         }
+        
+        
 
     }
 

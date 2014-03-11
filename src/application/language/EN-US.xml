@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<home>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-</home>
-<login>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-</login>
-<Details>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label>abc{0}</label>
-    <label></label>
-</Details>
+<data>
+	<home>
+	    <label>abc{0}</label>
+	</home>
+	<login>
+	    <label>abc{0}</label>
+	</login>
+	<Details>
+	    <label>abc{0}</label>
+	</Details>
+</data>
