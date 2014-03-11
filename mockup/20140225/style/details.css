@@ -105,8 +105,6 @@ input.qty { width:40px !important; text-align: center !important; background: no
 .block-related .product a{float:left}
 .block-related .product .product-details .regular-price { float:none; }
 .rel-label{ font-size:12px; color:#333; padding-top:6px; display:inline-block;}
-.block-related .link-wishlist{ font-size:12px; font-weight:bold; }
-.block-related .link-wishlist:hover{ text-decoration:underline; }
 .block-related .block-content li.item {padding:20px 0;}
 .block-related .block-content li.item:first-child{ padding-top:0;}
 .block-related .block-content li.item.last{ padding-bottom:10px;}
@@ -114,3 +112,13 @@ input.qty { width:40px !important; text-align: center !important; background: no
 
 .block-related .product a img {width:90px;height: 90px;float:left}
 .block-related button{float:right}
+
+.addToWishLish{    width: 100%;    border-top: 1px solid #DBDBDB;    margin-top: 10px;    padding-top: 10px;}
+.addToWishLish a:before{    color: #69bf30;}
+.addToWishLish a:after{    color: #333333;    text-decoration: none;font-weight: bold;font-size:16px;}
+.addToWishLish a:hover{    color: #69bf30;    text-decoration: none;}
+
+.likeShare
+{
+    margin: 10px 0px 10px 0px;
+}
