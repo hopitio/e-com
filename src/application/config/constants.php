@@ -36,6 +36,12 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
+/**
+ * Khai báo lưu constant
+ * @var unknown
+ */
+define('TEMP_ONE_COl', 'ONE_COL');
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -92,7 +92,9 @@ a{text-decoration: none;}
 .page-title h1, .page-title h2 {font-size: 16px;line-height: 22px;color: #333333;font-weight: bold;font-family: 'Roboto', sans-serif;}
 /*clear*/
 .clear{clear: both;}
-
+/*title*/
+.title{    width: 100%;    border-bottom: 1px solid #ececec;    margin-bottom: 19px;}
+.title h2{    font-size: 19px;font-weight: normal;padding: 10px 0px 7px 0px;color: #69bf30;}
 
 
 
