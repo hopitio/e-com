@@ -10,7 +10,7 @@ abstract class AbstractLoadLanguage{
      * Lấy giá trị của nhãn
      * @param unknown $key
      */
-    abstract function getLable($key,$languageKey,$resource);
+    abstract function getLabel($key,$languageKey,$resource);
     
     /**
      * lấy giá trị đa ngôn ngữ của màn hinh.

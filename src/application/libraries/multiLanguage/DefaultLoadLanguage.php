@@ -4,7 +4,7 @@ class DefaultLoadLanguage extends AbstractLoadLanguage{
 	/* (non-PHPdoc)
      * @see AbstractLoadLanguage::getLable()
      */
-    public function getLable($key, $languageKey, $resource)
+    public function getLabel($key, $languageKey, $resource)
     {
         // TODO Auto-generated method stub
         
