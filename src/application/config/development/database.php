@@ -51,10 +51,10 @@ $active_record = TRUE;
 
 $db['lynx']['hostname'] = '127.0.0.1';
 $db['lynx']['username'] = 'root';
-$db['lynx']['password'] = '';
-$db['lynx']['database'] = 'test';
+$db['lynx']['password'] = 'root';
+$db['lynx']['database'] = 'eproject';
 
-$db['lynx']['dbdriver'] = 'mysql';
+$db['lynx']['dbdriver'] = 'mysqli';
 $db['lynx']['dbprefix'] = '';
 $db['lynx']['pconnect'] = TRUE;
 $db['lynx']['db_debug'] = TRUE;
@@ -66,5 +66,7 @@ $db['lynx']['swap_pre'] = '';
 $db['lynx']['autoinit'] = TRUE;
 $db['lynx']['stricton'] = FALSE;
 $db['lynx']['port']     = 3306;
+
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */

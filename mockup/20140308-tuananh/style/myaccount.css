@@ -47,7 +47,7 @@ h3{font-size: 18px;}
 h4{font-size:16px;}
 h5{font-size:14px;}
 h6{font-size: 12px;}
-a:hover{color: #69bf30;}
+a:hover, a:hover *{color: #69bf30;}
 
 .product{overflow:hidden;}
 .product a.product-image{display:block;float:left;width: 200px;text-align:center;}
@@ -61,4 +61,4 @@ a:hover{color: #69bf30;}
 
 a.link-menu{padding:10px;display:inline-block;}
 a.link-menu.active, a.link-menu:hover{border-bottom: 2px solid #69bf30;}
-a.sort-menu{padding:5px;}
+a.sort-menu{padding:10px;}

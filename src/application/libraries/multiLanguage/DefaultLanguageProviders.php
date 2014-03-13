@@ -13,7 +13,7 @@ class DefaultLanguageProviders extends AbstractLanguageProviders{
     {
         try{
             //TODO: cần create thêm phần reading file.
-            $resource = [];
+            $resource = array();
             $resource['EN-US'] = simplexml_load_file($this->_resourcePath.'EN-US.xml','SimpleXMLElement',LIBXML_NOCDATA);
             $resource['VN-VI'] = simplexml_load_file($this->_resourcePath.'VN-VI.xml','SimpleXMLElement',LIBXML_NOCDATA);
         }catch(Exception $e)

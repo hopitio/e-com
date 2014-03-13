@@ -1,25 +1,31 @@
 <?php
 
 /*
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  * PHPネイティブのエラー報告を例外に変換する
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  *
  */
+date_default_timezone_set("Asia/Saigon");
 
-class Lynx_ErrorException extends ErrorException{
+class Lynx_ErrorException extends ErrorException
+{
+
     public $status_code = '500';
     public $title = 'PHPネイティブエラー';
-    public function to_hash(){
+
+    public function to_hash()
+    {
         $class = get_class($this);
-        $title = isset($this->title)? $this->title: '-';
+        $title = isset($this->title) ? $this->title : '-';
         $ha = array(
             'error' => true,
             'class' => $class,
             'title' => $title,
             'message' => $this->getMessage()
         );
-        if(ENVIRONMENT == 'development'){
+        if (ENVIRONMENT == 'development')
+        {
             $ha['debug'] = array(
                 'code' => $this->getCode(),
                 'file' => $this->getFile(),
@@ -29,18 +35,21 @@ class Lynx_ErrorException extends ErrorException{
         }
         return $ha;
     }
+
 }
 
-function _exception_handler($errno, $errstr, $errfile, $errline ) {
+function _exception_handler($errno, $errstr, $errfile, $errline)
+{
     throw new Lynx_ErrorException($errstr, $errno, 0, $errfile, $errline);
 }
+
 set_error_handler("_exception_handler");
 
 
 /*
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  *
  * You can load different configurations depending on your
  * current environment. Setting the environment also influences
@@ -64,9 +73,9 @@ set_error_handler("_exception_handler");
 include_once 'ENVIRONMENT.php';
 
 /*
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  * ERROR REPORTING
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  *
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
@@ -74,46 +83,45 @@ include_once 'ENVIRONMENT.php';
 
 if (defined('ENVIRONMENT'))
 {
-	switch (ENVIRONMENT)
-	{
+    switch (ENVIRONMENT)
+    {
         case 'development':
         case 'development_smaeda':
         case 'kakunin':
         case 'deveg':
-			error_reporting(E_ALL);
-		    break;
+            error_reporting(E_ALL);
+            break;
 
         case 'testing':
         case 'pf_testing':
-		case 'zj_testing':
+        case 'zj_testing':
         case 'production_fc':
         case 'demoeg':
         case 'production':
-			error_reporting(0);
-		    break;
+            error_reporting(0);
+            break;
 
-		default:
-			exit('The application environment is not set correctly.');
-
-	}
+        default:
+            exit('The application environment is not set correctly.');
+    }
 }
 
 /*
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  * SYSTEM FOLDER NAME
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  *
  * This variable must contain the name of your "system" folder.
  * Include the path if the folder is not in the same  directory
  * as this file.
  *
  */
-	$system_path = '../system';
+$system_path = '../system';
 
 /*
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  * APPLICATION FOLDER NAME
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  *
  * If you want this front controller to use a different "application"
  * folder then the default one you can set its name here. The folder
@@ -124,7 +132,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = '../application';
+$application_folder = '../application';
 
 /*
  * --------------------------------------------------------------------
@@ -146,15 +154,13 @@ if (defined('ENVIRONMENT'))
  * Un-comment the $routing array below to use this feature
  *
  */
-	// The directory name, relative to the "controllers" folder.  Leave blank
-	// if your controller is not in a sub-folder within the "controllers" folder
-	// $routing['directory'] = '';
-
-	// The controller class file name.  Example:  Mycontroller
-	// $routing['controller'] = '';
-
-	// The controller function you wish to be called.
-	// $routing['function']	= '';
+// The directory name, relative to the "controllers" folder.  Leave blank
+// if your controller is not in a sub-folder within the "controllers" folder
+// $routing['directory'] = '';
+// The controller class file name.  Example:  Mycontroller
+// $routing['controller'] = '';
+// The controller function you wish to be called.
+// $routing['function']	= '';
 
 
 /*
@@ -172,10 +178,7 @@ if (defined('ENVIRONMENT'))
  * Un-comment the $assign_to_config array below to use this feature
  *
  */
-	// $assign_to_config['name_of_config_item'] = 'value of config item';
-
-
-
+// $assign_to_config['name_of_config_item'] = 'value of config item';
 // --------------------------------------------------------------------
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
 // --------------------------------------------------------------------
@@ -186,62 +189,62 @@ if (defined('ENVIRONMENT'))
  * ---------------------------------------------------------------
  */
 
-	// Set the current directory correctly for CLI requests
-	if (defined('STDIN'))
-	{
-		chdir(dirname(__FILE__));
-	}
+// Set the current directory correctly for CLI requests
+if (defined('STDIN'))
+{
+    chdir(dirname(__FILE__));
+}
 
-	if (realpath($system_path) !== FALSE)
-	{
-		$system_path = realpath($system_path).'/';
-	}
+if (realpath($system_path) !== FALSE)
+{
+    $system_path = realpath($system_path) . '/';
+}
 
-	// ensure there's a trailing slash
-	$system_path = rtrim($system_path, '/').'/';
+// ensure there's a trailing slash
+$system_path = rtrim($system_path, '/') . '/';
 
-	// Is the system path correct?
-	if ( ! is_dir($system_path))
-	{
-		exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: ".pathinfo(__FILE__, PATHINFO_BASENAME));
-	}
+// Is the system path correct?
+if (!is_dir($system_path))
+{
+    exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: " . pathinfo(__FILE__, PATHINFO_BASENAME));
+}
 
 /*
  * -------------------------------------------------------------------
  *  Now that we know the path, set the main path constants
  * -------------------------------------------------------------------
  */
-	// The name of THIS file
-	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+// The name of THIS file
+define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 
-	// The PHP file extension
-	// this global constant is deprecated.
-	define('EXT', '.php');
+// The PHP file extension
+// this global constant is deprecated.
+define('EXT', '.php');
 
-	// Path to the system folder
-	define('BASEPATH', str_replace("\\", "/", $system_path));
+// Path to the system folder
+define('BASEPATH', str_replace("\\", "/", $system_path));
 
-	// Path to the front controller (this file)
-	define('FCPATH', str_replace(SELF, '', __FILE__));
+// Path to the front controller (this file)
+define('FCPATH', str_replace(SELF, '', __FILE__));
 
-	// Name of the "system folder"
-	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
+// Name of the "system folder"
+define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
 
 
-	// The path to the "application" folder
-	if (is_dir($application_folder))
-	{
-		define('APPPATH', $application_folder.'/');
-	}
-	else
-	{
-		if ( ! is_dir(BASEPATH.$application_folder.'/'))
-		{
-			exit("Your application folder path does not appear to be set correctly. Please open the following file and correct this: ".SELF);
-		}
+// The path to the "application" folder
+if (is_dir($application_folder))
+{
+    define('APPPATH', $application_folder . '/');
+}
+else
+{
+    if (!is_dir(BASEPATH . $application_folder . '/'))
+    {
+        exit("Your application folder path does not appear to be set correctly. Please open the following file and correct this: " . SELF);
+    }
 
-		define('APPPATH', BASEPATH.$application_folder.'/');
-	}
+    define('APPPATH', BASEPATH . $application_folder . '/');
+}
 
 /*
  * --------------------------------------------------------------------
@@ -252,7 +255,7 @@ if (defined('ENVIRONMENT'))
  *
  */
 
-require_once BASEPATH.'core/CodeIgniter.php';
+require_once BASEPATH . 'core/CodeIgniter.php';
 
 /* End of file index.php */
 /* Location: ./index.php */

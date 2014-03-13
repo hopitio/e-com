@@ -1,6 +1,8 @@
 <?php
 
-class Category_Mapper extends Mapper
+defined('BASEPATH') or die('No direct script access allowed');
+
+class CategoryMapper extends MapperAbstract
 {
 
     public function __construct()
@@ -9,14 +11,14 @@ class Category_Mapper extends Mapper
             'from' => 't_category',
             'where' => 'status=1'
         ));
-        parent::__construct('Category_Domain', $query);
+        parent::__construct('CategoryDomain', $query);
     }
 
     /**
      * 
      * @param mixed $id_or_code id của category hoặc code
      * @param string $fields '*'
-     * @return \Category_Domain
+     * @return \CategoryDomain
      */
     public function find($id_or_code, $fields = '*')
     {
@@ -26,29 +28,29 @@ class Category_Mapper extends Mapper
         ));
         $params = array($id_or_code);
         is_numeric($id_or_code) ? $query->where('id=?') : $query->where('code=?');
-        $data = DB::get_instance()->GetRow($query, $params);
-        return $this->make_domain($data);
+        $data = DB::getInstance()->GetRow($query, $params);
+        return $this->makeDomain($data);
     }
 
     /**
      * 
      * @param type $fields
-     * @return \Category_Domain[]
+     * @return \CategoryDomain[]
      */
-    public function find_all($fields = '*')
+    public function findAll($fields = '*')
     {
-        return parent::find_all($fields);
+        return parent::findAll($fields);
     }
 
     /**
      * 
      * @param type $keywords
-     * @return \Category_Mapper
+     * @return \CategoryMapper
      */
-    public function filter_keywords($keywords)
+    public function filterKeywords($keywords)
     {
         $this->_query->where('codename LIKE ?', __METHOD__);
-        $this->_query_params[__METHOD__] = "%$keywords%";
+        $this->_queryParams[__METHOD__] = "%$keywords%";
         return $this;
     }
 

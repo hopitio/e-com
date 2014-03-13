@@ -1,6 +1,8 @@
 <?php
 
-abstract class Mapper
+defined('BASEPATH') or die('No direct script access allowed');
+
+abstract class MapperAbstract
 {
 
     static protected $_instance;
@@ -9,13 +11,13 @@ abstract class Mapper
 
     /** @var \Query */
     protected $_query;
-    protected $_query_params = array();
+    protected $_queryParams = array();
 
     /**
      * 
      * @return \static
      */
-    static public function get_instance()
+    static public function getInstance()
     {
         if (!static::$_instance)
         {
@@ -69,7 +71,7 @@ abstract class Mapper
      * @param array $record
      * @return \Domain
      */
-    public function make_domain($record)
+    public function makeDomain($record)
     {
         $class = $this->_domain;
         $instance = new $class;
@@ -82,7 +84,7 @@ abstract class Mapper
      * @param \Domain $instance
      * @return array
      */
-    public function get_raw_data(Domain $instance)
+    public function getRawData(Domain $instance)
     {
         $return = array();
         foreach (get_object_vars($instance) as $prop => $value)
@@ -102,9 +104,9 @@ abstract class Mapper
      * @param type $fields
      * @return \Domain[]
      */
-    public function find_all($fields = '*')
+    public function findAll($fields = '*')
     {
-        $recordset = DB::get_instance()->GetAll($this->_query->select($fields), $this->_query_params);
+        $recordset = DB::getInstance()->GetAll($this->_query->select($fields), $this->_queryParams);
         if (empty($recordset))
         {
             return array();
@@ -112,7 +114,7 @@ abstract class Mapper
         $domains = array();
         foreach ($recordset as $record)
         {
-            $domains[] = $this->make_domain($record);
+            $domains[] = $this->makeDomain($record);
         }
         return $domains;
     }

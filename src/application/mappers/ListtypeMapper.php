@@ -1,13 +1,13 @@
 <?php
 
-defined('DS') or die;
+defined('BASEPATH') or die('No direct script access allowed');
 
-class Listtype_Mapper extends Mapper
+class ListtypeMapper extends MapperAbstract
 {
 
     function __construct()
     {
-        parent::__construct('Listtype_Domain', new Query(array(
+        parent::__construct('ListtypeDomain', new Query(array(
             'from' => 't_listtype',
             'where' => 'status=1'
         )));
@@ -17,15 +17,15 @@ class Listtype_Mapper extends Mapper
      * 
      * @param mixed $id_or_code
      * @param string $fields
-     * @return \Listtype_Domain
+     * @return \ListtypeDomain
      */
     function find($id_or_code, $fields = '*')
     {
         $query_options = array('select' => $fields, 'from' => 't_listtype');
         $query = new Query($query_options);
         is_numeric($id_or_code) ? $query->where('id=?') : $query->where('codename=?');
-        $record = DB::get_instance()->GetRow($query, array($id_or_code));
-        return $this->make_domain($record);
+        $record = DB::getInstance()->GetRow($query, array($id_or_code));
+        return $this->makeDomain($record);
     }
 
 }

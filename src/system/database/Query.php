@@ -1,5 +1,7 @@
 <?php
 
+defined('BASEPATH') or die('No direct script access allowed');
+
 class Query
 {
 
@@ -10,8 +12,8 @@ class Query
     protected $_where = array();
     protected $_limit;
     protected $_offset;
-    protected $_order_by;
-    protected $_group_by;
+    protected $_orderBy;
+    protected $_groupBy;
     protected $_having;
 
     public static function make($options)
@@ -19,19 +21,19 @@ class Query
         return new static($options);
     }
 
-    protected function _get_arr_val($arr, $key, $default = null)
+    protected function _getArrayVal($arr, $key, $default = null)
     {
         return isset($arr[$key]) ? $arr[$key] : $default;
     }
 
     public function __construct($options)
     {
-        $this->select($this->_get_arr_val($options, 'select', '*'))
-                ->from($this->_get_arr_val($options, 'from'))
-                ->limit($this->_get_arr_val($options, 'limit'))
-                ->offset($this->_get_arr_val($options, 'offset'))
-                ->order_by($this->_get_arr_val($options, 'order_by'))
-                ->group_by($this->_get_arr_val($options, 'group_by'));
+        $this->select($this->_getArrayVal($options, 'select', '*'))
+                ->from($this->_getArrayVal($options, 'from'))
+                ->limit($this->_getArrayVal($options, 'limit'))
+                ->offset($this->_getArrayVal($options, 'offset'))
+                ->orderBy($this->_getArrayVal($options, 'orderBy'))
+                ->groupBy($this->_getArrayVal($options, 'groupBy'));
         if (isset($options['where']))
         {
             $this->where($options['where']);
@@ -57,13 +59,13 @@ class Query
                 $sql .= " OFFSET {$this->_offset}";
             }
         }
-        if ($this->_order_by)
+        if ($this->_orderBy)
         {
-            $sql .= "\nORDER BY {$this->_order_by}";
+            $sql .= "\nORDER BY {$this->_orderBy}";
         }
-        if ($this->_group_by)
+        if ($this->_groupBy)
         {
-            $sql .= "\nGROUP BY {$this->_group_by}";
+            $sql .= "\nGROUP BY {$this->_groupBy}";
         }
         if ($this->_having)
         {
@@ -90,22 +92,22 @@ class Query
         return $this;
     }
 
-    public function inner_join($table, $on_condition)
+    public function innerJoin($table, $on_condition)
     {
         return $this->join($table, $on_condition, "INNER");
     }
 
-    public function left_join($table, $on_condition)
+    public function leftJoin($table, $on_condition)
     {
         return $this->join($table, $on_condition, 'LEFT');
     }
 
-    public function right_join($table, $on_condition)
+    public function rightJoin($table, $on_condition)
     {
         return $this->join($table, $on_condition, "RIGHT");
     }
 
-    public function full_join($table, $on_condition)
+    public function fullJoin($table, $on_condition)
     {
         $this->join($table, $on_condition, "FULL");
     }
@@ -139,15 +141,15 @@ class Query
         return $this;
     }
 
-    public function order_by($field)
+    public function orderBy($field)
     {
-        $this->_order_by = $field;
+        $this->_orderBy = $field;
         return $this;
     }
 
-    public function group_by($field)
+    public function groupBy($field)
     {
-        $this->_group_by = $field;
+        $this->_groupBy = $field;
     }
 
     public function having($condition)

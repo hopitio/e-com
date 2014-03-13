@@ -1,6 +1,8 @@
 <?php
 
-class Category_Domain extends Domain
+defined('BASEPATH') or die('No direct script access allowed');
+
+class CategoryDomain extends DomainInterface
 {
 
     public $id;
