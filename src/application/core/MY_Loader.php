@@ -2,6 +2,7 @@
 require_once 'lynx_exceptions.php';
 require_once 'lynx_masters.php';
 require_once APPPATH.'libraries/multiLanguage/multiLanguage.inc';
+require_once APPPATH.'libraries/layout/layout.inc';
 /**
  * Thêm custom loader.
  * @author LE
@@ -9,15 +10,20 @@ require_once APPPATH.'libraries/multiLanguage/multiLanguage.inc';
  */
 class MY_Loader extends CI_Loader{
 
-    /**
-     * Ghi đè hàm view nhằm mục đích ghi đè thêm data vào view.
-     * 
+    /* (non-PHPdoc)
      * @see CI_Loader::view()
      */
-    function view($view, $template = TEMP_ONE_COl, $data = Array(), $return = FALSE)
-    {
+	/**
+     * Hàm cho phép inital view và auto add thêm language cho view.
+     *
+     * @see CI_Loader::view()
+     */
+    function  initalView($view, $template = TEMP_ONE_COl, $data = Array(), $return = FALSE){
+        
+        
+        
         if(MultilLanguageManager::getInstance()->checkSupportScreen($view, 'VN-VI')){
-            
+        
             parent::view($view, $data, $return);
             return;
         }
@@ -41,6 +47,6 @@ class MY_Loader extends CI_Loader{
             }
         }
         
-        parent::view($view, $data, $return);
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->render($view,$data);
     }
 }
