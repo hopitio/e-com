@@ -139,27 +139,22 @@ class MultilLanguageManager
      * @throws Lynx_ModelMiscException
      * @return unknown
      */
-    function acctachedLanguageDataToScreen($screenName,$data = array())
+    function attachedLanguageDataToScreen($screenName = null ,$data = array())
     {
         $languageKey = User::getCurrentUser()->languageKey;
-        if (is_array($data) && count($data) > 0)
-        {
-            if (array_key_exists('language', $data))
-            {
-                throw new Lynx_ViewException('Gắn kết đa ngôn ngữ thất bại');
-            }
+        if(!is_array($data)){
+            throw new Lynx_ErrorException('Dữ liệu view buộc phải là array.');
         }
-        else
-        {
-            if (is_array($data))
-            {
-                $data['language'] = MultilLanguageManager::getInstance()->getLangViaScreen($screenName, $languageKey);
-            }
-            else
-            {
-                throw new Lynx_ModelMiscException('Dữ liệu set cho view buộc phải là array');
-            }
+        if(array_key_exists('language', $data)){
+            throw new Lynx_ErrorException('Key [language] trong data đã tồn tại.');            
+        }  
+        
+        $arrayLanguage = array();
+        if($screenName != null){
+            $arrayLanguage[$screenName] = MultilLanguageManager::getInstance()->getLangViaScreen($screenName, $languageKey);
         }
+        $arrayLanguage['layout'] = MultilLanguageManager::getInstance()->getLangViaScreen('layout', $languageKey);
+        $data['language'] = $arrayLanguage;
         return $data;
     }
     

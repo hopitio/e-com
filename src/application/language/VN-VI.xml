@@ -9,5 +9,7 @@
     <Details>
         <label>abc{0}</label>
     </Details>
-    
+    <layout>
+        <demo>DEMO DATA</demo>
+    </layout>
 </data>

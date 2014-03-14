@@ -11,13 +11,14 @@ class OneColumnLayout extends AbstractLayout
     /*
      * (non-PHPdoc) @see AbstractLayout::render()
      */
-    public function render($name, $viewData = array())
+    public function render($view)
     {
-        $dataHeader = MultilLanguageManager::getInstance()->acctachedLanguageDataToScreen($name);
-        $this->_CI->load->view('layout/header',$dataHeader);
-        $this->_CI->load->view('layout/one_colmun');
-        $this->_CI->load->view('layout/footer');
-        
+        if($this->_autoLoadLanguage){
+           $data = MultilLanguageManager::getInstance()->attachedLanguageDataToScreen($view,$this->_data);
+        }
+        $data =  $this->attachedView($view,$data);
+        $this->_CI->load->view($this->_layout,$data);
+        return $this;
     }
     
     /*

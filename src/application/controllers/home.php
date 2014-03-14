@@ -5,6 +5,6 @@ class home extends MY_Controller
     protected $authorization_required = FALSE;
     
     public function showHome(){
-        $this->load->initalView('home',LayoutFactory::TEMP_ONE_COl);
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setData()->setCss(array("___",'1111'))->render('home');
     }
 }

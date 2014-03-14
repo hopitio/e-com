@@ -14,7 +14,7 @@ class LayoutFactory
      * @throws Exception
      * @return AbstractLayout
      */
-    static function getLayout($templateName)
+    static function getLayout($templateName = self::TEMP_ONE_COl)
     {
         switch ($templateName)
         {
@@ -29,5 +29,4 @@ class LayoutFactory
                 break;
         }
     }
-
 }
