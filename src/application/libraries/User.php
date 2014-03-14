@@ -10,6 +10,8 @@
 class User{
 
     public $is_authorized;
+    public $languageKey = 'VN-VI';
+    
     protected function load(){
         if($this->is_persistent()){
             $CI =& get_instance();
@@ -23,6 +25,19 @@ class User{
 
     public function touch(){
         
+    }
+    
+    /**
+     * Get current user in session.
+     * @return User
+     */
+    static function getCurrentUser(){
+        $objUser = get_instance()->session->userdata(USER_SESSION);
+        if(is_a($objUser, 'User')){
+            return $objUser;
+        }else{
+            return new User();
+        }
     }
 
 

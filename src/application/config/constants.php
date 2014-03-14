@@ -43,7 +43,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
  * Khai báo lưu constant
  * @var unknown
  */
-define('TEMP_ONE_COl', 'ONE_COL');
+define('USER_SESSION', 'USER_SESSION');
 
 
 /* End of file constants.php */

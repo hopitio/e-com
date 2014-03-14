@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <home>
-        <label><![CDATA[asdaskldasflkjsadlfj sf]]></label>
+        <title>PROJECT E</title>
     </home>
     <login>
         <label>abc{0}</label>
@@ -9,4 +9,5 @@
     <Details>
         <label>abc{0}</label>
     </Details>
+    
 </data>

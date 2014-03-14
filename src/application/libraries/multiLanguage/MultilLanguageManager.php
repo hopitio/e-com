@@ -10,22 +10,31 @@ class MultilLanguageManager
 {
 
     /**
+     * CodeIgniter Instances.
+     * @var unknown
+     */
+    private $_CI;
+    
+    /**
+     *
      * @var MultilLanguageManager
      */
     private static $instance = null;
 
     /**
+     *
      * @var AbstractLoadLanguage
      */
     private $_loadLanguage;
 
     /**
+     *
      * @var DefaultLanguageProviders
      */
     private $_languageProviders;
 
     /**
-     * 
+     *
      * @var mixed
      */
     protected $_resource;
@@ -34,10 +43,11 @@ class MultilLanguageManager
     {
         $this->_loadLanguage = $loadLanguge;
         $this->_languageProviders = $languageProviders;
+        $this->_CI = & get_instance();
     }
 
     /**
-     * initial instance, 
+     * initial instance,
      */
     static function initial($loadLanguge = null, $languageProviders = null)
     {
@@ -45,13 +55,14 @@ class MultilLanguageManager
         {
             $loadLanguge = new DefaultLoadLanguage();
         }
-
+        
         if ($languageProviders == null)
         {
             throw new Exception('path resource not found.');
         }
-
-        static::$instance = new MultilLanguageManager($loadLanguge, $languageProviders);
+        
+        static::$instance = new MultilLanguageManager($loadLanguge, 
+            $languageProviders);
     }
 
     /**
@@ -68,7 +79,8 @@ class MultilLanguageManager
 
     /**
      * GetKey.
-     * @param unknown $key
+     * 
+     * @param unknown $key            
      */
     function getLabel($key, $languageKey)
     {
@@ -77,7 +89,8 @@ class MultilLanguageManager
 
     /**
      * Lấy dữ liệu đa ngôn ngữ theo màn hình
-     * @param string
+     * @param string $screenKey
+     * @param string $languageKey
      */
     function getLangViaScreen($screenKey, $languageKey)
     {
@@ -86,7 +99,9 @@ class MultilLanguageManager
 
     /**
      * Cung cấp phương thức load resource đa ngôn ngữ cho hệ thống.
-     * @param string Path.
+     * 
+     * @param
+     *            string Path.
      */
     function loadResource()
     {
@@ -106,12 +121,46 @@ class MultilLanguageManager
     }
 
     /**
-     * 
-     * @param string $screenName
+     *
+     * @param string $screenName            
      */
     function checkSupportScreen($screenName, $languageKey)
     {
-        $this->_loadLanguage->getSupportedScreen($screenName, $languageKey, $this->_resource);
+        $this->_loadLanguage->getSupportedScreen($screenName, $languageKey, 
+            $this->_resource);
     }
-
+    
+    /**
+     * Tự động gắn thêm dữ liệu ngôn ngữ cho view.
+     * @param string $screenName 
+     * @param string $languageKey
+     * @param Array $data Dữ liệu hiển thị.
+     * @throws Lynx_ViewException
+     * @throws Lynx_ModelMiscException
+     * @return unknown
+     */
+    function acctachedLanguageDataToScreen($screenName,$data = array())
+    {
+        $languageKey = User::getCurrentUser()->languageKey;
+        if (is_array($data) && count($data) > 0)
+        {
+            if (array_key_exists('language', $data))
+            {
+                throw new Lynx_ViewException('Gắn kết đa ngôn ngữ thất bại');
+            }
+        }
+        else
+        {
+            if (is_array($data))
+            {
+                $data['language'] = MultilLanguageManager::getInstance()->getLangViaScreen($screenName, $languageKey);
+            }
+            else
+            {
+                throw new Lynx_ModelMiscException('Dữ liệu set cho view buộc phải là array');
+            }
+        }
+        return $data;
+    }
+    
 }
