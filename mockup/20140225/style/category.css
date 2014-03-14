@@ -130,3 +130,11 @@ height: 60px;
 width: 60px;
 }
 /*end top button*/
+
+/*banner*/
+.categoryBanner img
+{
+    width: 100%;
+    height: auto;
+    margin: 5px 0px;
+}
