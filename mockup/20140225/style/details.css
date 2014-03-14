@@ -113,12 +113,64 @@ input.qty { width:40px !important; text-align: center !important; background: no
 .block-related .product a img {width:90px;height: 90px;float:left}
 .block-related button{float:right}
 
-.addToWishLish{    width: 100%;    border-top: 1px solid #DBDBDB;    margin-top: 10px;    padding-top: 10px;}
-.addToWishLish a:before{    color: #69bf30;}
-.addToWishLish a:after{    color: #333333;    text-decoration: none;font-weight: bold;font-size:16px;}
-.addToWishLish a:hover{    color: #69bf30;    text-decoration: none;}
+.addToWishLish{width: 100%;border-top: 1px solid #DBDBDB;margin: 10px 0px;padding-top: 10px;}
+.addToWishLish a:before{color: #69bf30;}
+.addToWishLish a:after{color: #333333;text-decoration: none;font-weight: bold;font-size:16px;}
+.addToWishLish a:hover{color: #69bf30;text-decoration: none;}
 
 .likeShare
 {
     margin: 10px 0px 10px 0px;
 }
+
+.priceBox
+{
+    margin-bottom: 10px;
+    text-align: center;
+}
+.priceBox span
+{
+    font-size: 34px;
+    color: #69bf30;
+}
+
+.productOption
+{
+    width: 100%;
+    float: left;
+}
+.productOption select
+{
+    width: 100%;
+    margin: 0 0 15px 0;
+    height: 30px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    color: #777777;
+}
+
+
+.zoomContainer
+{
+    width: 735px !important;
+}
+
+
+#rating {border-bottom: none !important;height: 20px;margin: 0;padding: 0px 0 5px 0;width: 240px;text-align: center;}
+#rating .stars {display: inline-block;float: left;margin: 0;width: 105px;height: 20px;background: url(../images/details/spFoxwoods.20140220110330.png) no-repeat !important;text-indent: -9999px;overflow: hidden;}
+#rating .stars1 {background-position: -87px 0px !important;}
+#rating .stars2 {background-position: -65px 0px !important;}
+#rating .stars3 {background-position: -43px 0px !important;}
+#rating .stars4 {background-position: -22px 0px !important;}
+#rating .stars5 {background-position:0px 0px !important;}
+
+
+.imgZoom img
+{
+    width: 735px !important;
+    height: auto;
+}
+
