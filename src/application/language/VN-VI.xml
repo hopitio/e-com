@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <home>
+        <label><![CDATA[asdaskldasflkjsadlfj sf]]></label>
+    </home>
+    <login>
+        <label>abc{0}</label>
+    </login>
+    <Details>
+        <label>abc{0}</label>
+    </Details>
+</data>

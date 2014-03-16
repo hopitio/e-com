@@ -1,0 +1,19 @@
+.retailerFilter label{margin-right: 10px;}
+.retailerFilter input{margin-right: 10px; border: #D6D6D6 1px solid;outline: 0;background: 0;}
+.retailerFilter select{margin-right: 10px;border: #D6D6D6 1px solid;padding: 1px;outline: 0;}.retailerFilter .btnSearch{padding: 5px 5px;background: #69bf30;color: white;   border-radius: 0 4px 4px 0;border-bottom-color: #3d7219;border-right-color: #4a8920;}
+
+.retailerFilter .searchText{width: 222px;padding: 3px 0;text-indent: 5px;}
+.retailerFilter .btnSearch{padding: 5px 5px;background: #69bf30;color: white;border-radius: 0 4px 4px 0;border-bottom-color: #3d7219;border-right-color: #4a8920;}
+
+
+.retailerContent{width: 100%;margin: 0px;padding:0px;}
+.retailerContent .list{width: 100%;margin: 0px;padding:0px;}
+.retailerContent .list ul{width: 100%;margin: 0px;padding:0px;}
+.retailerContent .list ul li{width: 25%;float:left;}
+.retailerContent .list ul li a{float: left;width: 87%;   margin-bottom: 10px;background-color: #F2F2F2;padding: 10px;}
+.retailerContent .list ul li a img{width: 100%;max-height: 150px;display: inline-block;}
+.retailerContent .list ul li label{width: 100%;float: left;}
+.retailerContent .list ul li label strong{font-weight: bold;}
+.retailerContent .list .retailerListName{background: white;font-size: 18px;}
+.retailerContent .list a.retailerListName:hover{color:#69bf30;}
+
