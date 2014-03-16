@@ -1,0 +1,66 @@
+.formFilter
+{
+    margin: 0 0 20px;
+    padding: 10px;
+}
+.formFilter .colLeft
+{
+    text-align: right;
+}
+.formFilter .colLeft label
+{
+    font-weight: bold;
+}
+.formFilter .colRight
+{
+    text-align: left;
+}
+
+.formFilter label
+{
+    float: left;
+    width: 100%;
+    padding-top: 5px;
+    text-align: right;
+}
+.formFilter label.wAuto{
+    width: auto;
+    margin: 0px 5px 0px 5px;
+}
+.formFilter input
+{
+    float:left;
+    margin: 0px 5px 0px 0px;
+}
+
+.historyContent
+{
+    margin: 0px 0px 10px 0px;
+}
+.historyContent .item
+{
+    width: 100%;
+    float:left;
+    background: #69bf30;
+    border-radius: 5px;
+}
+.historyContent .item span
+{
+    color: white;
+    margin: 0px 30px 0px 0px;
+}
+.historyContent .item .action
+{
+    float: right;
+    width: auto;
+}
+.historyContent .item .action span
+{
+    color: white
+}
+.historyContent .section
+{
+    width: 100%;
+    float:left;
+    margin: 0px 0px 10px 0px;
+}
