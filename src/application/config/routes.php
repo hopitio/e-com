@@ -13,14 +13,12 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-         $route['login'] = 'login/showPage';
-        
+         $route['portal/login'] = 'login/showPage';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        
-        
+        $route['portal/login'] = 'login/authenicate';
     }
 }
 //

@@ -84,7 +84,7 @@ class MultilLanguageManager
      */
     function getLabel($key, $languageKey)
     {
-        return $this->_loadLanguage->getLable($key, $languageKey);
+        return $this->_loadLanguage->getLabel($key, $languageKey);
     }
 
     /**

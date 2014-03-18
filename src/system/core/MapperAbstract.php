@@ -38,12 +38,14 @@ abstract class MapperAbstract
     /**
      * 
      * @param string $domain
-     * @param \Query $query
+     * @param Query $query
+     * @param array $map
      */
-    public function __construct($domain, Query $query)
+    public function __construct($domain, Query $query, $map = null)
     {
         $this->_domain = $domain;
         $this->_query = $query;
+        $this->_map = $map;
     }
 
     /**
@@ -52,7 +54,7 @@ abstract class MapperAbstract
      * @param array $record
      * @return \Domain
      */
-    public function map(Domain $instance, $record)
+    public function map(DomainInterface $instance, $record)
     {
         $props = array_keys(get_object_vars($instance));
         foreach ($props as $prop)
@@ -117,15 +119,6 @@ abstract class MapperAbstract
             $domains[] = $this->makeDomain($record);
         }
         return $domains;
-    }
-
-    /**
-     * 
-     * @param type $fields
-     */
-    public function find($fields = '*')
-    {
-        
     }
 
 }

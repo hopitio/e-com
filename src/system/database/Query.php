@@ -16,7 +16,7 @@ class Query
     protected $_groupBy;
     protected $_having;
 
-    public static function make($options)
+    public static function make($options = array())
     {
         return new static($options);
     }
@@ -116,7 +116,14 @@ class Query
     {
         if ($key)
         {
-            $this->_where[$key] = $condition;
+            if ($condition)
+            {
+                $this->_where[$key] = $condition;
+            }
+            elseif (isset($this->_where[$key]))
+            {
+                unset($this->_where[$key]);
+            }
         }
         else
         {

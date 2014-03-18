@@ -4,7 +4,14 @@
         <title>PROJECT E</title>
     </home>
     <login>
-        <label>abc{0}</label>
+        <loginTitle>Đăng nhập</loginTitle>
+        <registeTitle>Đăng Ký</registeTitle>
+        <lblUs>Tên Đăng nhập : </lblUs>
+        <lblPs>Mật khẩu :</lblPs>
+        <btnLogin>Đăng nhập</btnLogin>
+        <lblForgetPassword>Bạn không thể đăng nhập tài khoản</lblForgetPassword>
+        <lblCreateNewAccount>Đăng ký tài khoản mới</lblCreateNewAccount>
+        <lblError>Tên đăng nhập hoặc mật khẩu không đúng.</lblError>
     </login>
     <Details>
         <label>abc{0}</label>

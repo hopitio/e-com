@@ -5,9 +5,10 @@ require_once APPPATH.'libraries/multiLanguage/multiLanguage.inc';
 require_once APPPATH.'libraries/layout/layout.inc';
 /**
  * Thêm custom loader.
- * @author LE
+ * @author ANLT
  *
  */
-class MY_Loader extends CI_Loader{
+class MY_Loader extends CI_Loader
+{
 
 }
