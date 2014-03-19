@@ -52,7 +52,7 @@
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('user', 'database', 'input', 'session','layout');
+$autoload['libraries'] = array('user', 'database', 'input', 'session','layout','CategoryData');
 
 
 /*

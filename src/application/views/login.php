@@ -21,6 +21,9 @@
             
             <a href="#"><img src="/images/Social_signin_facebook.png" /></a>
             <a href="#"><img src="/images/Social_signin_google.png" /></a>
+            
+            <input name='postUrlCaller' type="hidden" value='<?php echo $postUrlCaller;?>'>
+            <input name='postUrlTarget' type="hidden" value='<?php echo $postUrlTarget;?>'>
         </form>
     </div>
 </div> 

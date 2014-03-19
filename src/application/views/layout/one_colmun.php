@@ -41,7 +41,14 @@
                         <li class="myAcc">
                             <a href="#">My Account</a>
                             <ul class="accessPannel">
-                                <li><a href="#">Đăng nhập</a></li>
+                            <?php 
+                                if($user->is_authorized){
+                                    
+                                }else{
+                                    echo '<li><a href="#">Đăng nhập</a></li>';
+                                }
+                            ?>
+                                
                                 <li><a href="#">WishList</a></li>
                                 <li><a href="#">Đăng sản phẩm</a></li>
                             </ul>

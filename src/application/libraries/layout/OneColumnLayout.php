@@ -20,6 +20,7 @@ class OneColumnLayout extends AbstractLayout
                 MultilLanguageManager::getInstance()->attachedLanguageDataToScreen($view,$this->_data):
                 MultilLanguageManager::getInstance()->attachedLanguageDataToScreen('layout',$this->_data);
         $data = $this->attachedView($view, $data);
+        $data['user'] = User::getCurrentUser();
         $this->_CI->load->view($this->_layout, $data);
         return $this;
     }

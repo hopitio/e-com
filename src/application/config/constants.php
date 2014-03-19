@@ -44,6 +44,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
  * @var unknown
  */
 define('USER_SESSION', 'USER_SESSION');
+define('CATEGORY','CATEGORY');
 
 
 /* End of file constants.php */

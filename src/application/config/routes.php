@@ -20,6 +20,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $route['portal/login'] = 'login/authenicate';
+        $route['__portal/authen'] = 'Portal/PortalAuthen';
     }
 }
 //

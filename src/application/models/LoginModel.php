@@ -1,5 +1,4 @@
 <?php
-include_once APPPATH.'models/BaseModels.php';
 /**
  * Thực hiện các biz liên quan đến việc login
  * @author ANLT

@@ -20,9 +20,14 @@ class login extends BaseController
      */
     function showPage()
     {
+        $params = $this->getQueryStringParams();
+        $url = !empty($params['u']) ? $params['u'] : '/__portal/authen';
+        $redirectUrl = !empty($params['t']) ? $params['t'] : '/home';
         $this->_data['postUrl'] = self::URL_TO_POST;
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
-            $this->_data, true)
+        $this->_data['postUrlCaller'] = $url;
+        $this->_data['postUrlTarget'] = $redirectUrl;
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+            ->setData($this->_data, true)
             ->setCss($this->_css)
             ->render('login');
     }
@@ -33,7 +38,13 @@ class login extends BaseController
     function authenicate()
     {
         $data = $this->input->post();
-        if (! isset($data['txtUs']) || ! isset($data['txtPw']))
+        log_message('error',var_export($data,true));
+        if (
+            !isset($data['txtUs']) || 
+            !isset($data['txtPw'])|| 
+            !isset($data['postUrlCaller']) || 
+            !isset($data['postUrlTarget'])
+        )
         {
             throw new Lynx_RequestException('request login thiếu tham số');
         }
@@ -49,12 +60,11 @@ class login extends BaseController
         $isLoginResult = $this->loginModel()->login($us, $pw);
         if ($isLoginResult)
         {
-            $params = $this->getQueryStringParams();
-            $url = !empty($params['u']) ? $params['u'] : '/home';
-            $data = array();
-            $data['postUrl'] = $url;
-            $data['dataJson'] = json_encode($this->obj_user);
-            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data,false)->render('LoginComplete');
+            $dataResult = array();
+            $dataResult['postUrl'] = $data['postUrlCaller'];
+            $dataResult['dataJson'] = json_encode($this->obj_user);
+            $dataResult['redirect']  = $data['postUrlTarget'];
+            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
         }
         else
         {

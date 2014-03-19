@@ -11,13 +11,12 @@ class User{
 
     public $is_authorized;
     public $languageKey = 'VN-VI';
+    public $authenUrl = '/portal/login';
     
-    protected function load(){
-        if($this->is_persistent()){
-            $CI =& get_instance();
-        }
+    function __construct(){
+        $CI =& get_instance();
+        $this->authenUrl = $CI->config->item('platform_login_url');
     }
-
 
     protected function save(){
 
