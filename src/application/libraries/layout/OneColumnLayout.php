@@ -1,9 +1,12 @@
 <?php
-include_once APPPATH.'libraries/multiLanguage/multiLanguage.inc';
+include_once APPPATH . 'libraries/multiLanguage/multiLanguage.inc';
+
 /**
  * Create tow columns layout.
+ * 
  * @author ANLT
  * @author
+ *
  */
 class OneColumnLayout extends AbstractLayout
 {
@@ -13,11 +16,11 @@ class OneColumnLayout extends AbstractLayout
      */
     public function render($view)
     {
-        if($this->_autoLoadLanguage){
-           $data = MultilLanguageManager::getInstance()->attachedLanguageDataToScreen($view,$this->_data);
-        }
-        $data =  $this->attachedView($view,$data);
-        $this->_CI->load->view($this->_layout,$data);
+        $data = $this->_autoLoadLanguage ? 
+                MultilLanguageManager::getInstance()->attachedLanguageDataToScreen($view,$this->_data):
+                MultilLanguageManager::getInstance()->attachedLanguageDataToScreen('layout',$this->_data);
+        $data = $this->attachedView($view, $data);
+        $this->_CI->load->view($this->_layout, $data);
         return $this;
     }
     
@@ -29,6 +32,4 @@ class OneColumnLayout extends AbstractLayout
         parent::__construct();
         $this->_layout = 'layout/one_colmun';
     }
-    
-    
 }

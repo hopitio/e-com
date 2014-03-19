@@ -51,7 +51,7 @@ $active_record = TRUE;
 
 $db['lynx']['hostname'] = '127.0.0.1';
 $db['lynx']['username'] = 'root';
-$db['lynx']['password'] = 'root';
+$db['lynx']['password'] = '';
 $db['lynx']['database'] = 'eproject';
 
 $db['lynx']['dbdriver'] = 'mysqli';

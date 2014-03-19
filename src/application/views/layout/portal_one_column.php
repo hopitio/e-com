@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=320; initial-scale=1; maximum-scale=1; minimum-scale=1 user-scalable=no" />
-        <title><?php echo $language[$view->view]->title;?></title>
+        <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title: '';?></title>
         <script src="/js/jquery-1.11.0.min.js"></script>
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         

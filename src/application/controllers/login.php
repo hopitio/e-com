@@ -2,7 +2,7 @@
 if (! defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class login extends MY_Controller
+class login extends BaseController
 {
 
     protected $authorization_required = FALSE;
@@ -43,17 +43,22 @@ class login extends MY_Controller
         $isValid = $this->loginModel()->validUserNamePassword($us, $pw);
         if (! $isValid)
         {
-            canNotLogin();
+           $this->canNotLogin();
         }
-        // TODO: Nếu valid thì làm j tiếp theo
+        
         $isLoginResult = $this->loginModel()->login($us, $pw);
         if ($isLoginResult)
         {
-            
+            $params = $this->getQueryStringParams();
+            $url = !empty($params['u']) ? $params['u'] : '/home';
+            $data = array();
+            $data['postUrl'] = $url;
+            $data['dataJson'] = json_encode($this->obj_user);
+            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data,false)->render('LoginComplete');
         }
         else
         {
-            canNotLogin();
+            $this->canNotLogin();
         }
     }
 

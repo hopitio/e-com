@@ -6,7 +6,7 @@ if ( ! function_exists('redirect'))
     {
         if ( ! preg_match('#^https?://#i', $uri))
         {
-            $uri = base_url($uri);    // site_url を base_url に変更 smaeda
+            $uri = base_url($uri);    
         }
 
         switch($method)
