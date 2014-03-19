@@ -1,0 +1,28 @@
+.retailerFilter label{margin-right: 10px;}
+.retailerFilter input{margin-right: 10px; border: #D6D6D6 1px solid;outline: 0;background: 0;}
+.retailerFilter select{margin-right: 10px;border: #D6D6D6 1px solid;padding: 1px;outline: 0;}.retailerFilter .btnSearch{padding: 5px 5px;background: #69bf30;color: white;   border-radius: 0 4px 4px 0;border-bottom-color: #3d7219;border-right-color: #4a8920;}
+
+.retailerFilter .searchText{width: 222px;padding: 3px 0;text-indent: 5px;}
+.retailerFilter .btnSearch{padding: 5px 5px;background: #69bf30;color: white;border-radius: 0 4px 4px 0;border-bottom-color: #3d7219;border-right-color: #4a8920;}
+
+
+.retailerContent{width: 100%;margin: 0px;padding:0px;}
+.retailerContent .list{width: 100%;margin: 0px;padding:0px;}
+.retailerContent .list ul{width: 100%;margin: 0px;padding:0px;}
+.retailerContent .list ul li{width: 100%;float:left;border-bottom: 1px solid #ccc;margin-bottom: 10px;}
+.retailerContent .list ul li a.logo{float: left;width: 25%;   margin:0px 0px 10px 0px;}
+.retailerContent .list ul li a img{width: 100%;max-height: 150px;}
+.retailerContent .list ul li .info{width: 30%;float:left;padding: 10px}
+.retailerContent .list ul li .info a.retailerListName:hover{color:#69bf30;}
+.retailerContent .list ul li .info a.retailerListName{background: white;font-size: 18px;font-style: italic;font-weight: bold}
+.retailerContent .list ul li label{width: 100%;float: left;}
+.retailerContent .list ul li label strong{font-weight: bold;}
+.retailerContent .list ul li .description{float:left;line-height: 1.5;color: #000;font: normal 12px arial;width: 42%;}
+
+#rating {border-bottom: none !important;height: 20px;margin: 0;padding: 0px 0 5px 0;width: 240px;text-align: center;}
+#rating .stars {display: inline-block;float: left;margin: 0;width: 105px;height: 20px;background: url(../images/details/spFoxwoods.20140220110330.png) no-repeat !important;text-indent: -9999px;overflow: hidden;}
+#rating .stars1 {background-position: -87px 0px !important;}
+#rating .stars2 {background-position: -65px 0px !important;}
+#rating .stars3 {background-position: -43px 0px !important;}
+#rating .stars4 {background-position: -22px 0px !important;}
+#rating .stars5 {background-position:0px 0px !important;}

@@ -1,0 +1,567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=320; initial-scale=1; maximum-scale=1; minimum-scale=1 user-scalable=no" />
+<title>Cart - Project E Mockup UI</title>
+<script src="js/jquery-1.11.0.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
+<!-- perfect srollbar -->
+<script src="js/perfect-scrollbar.with-mousewheel.min.js"></script>
+<link href="style/perfect-scrollbar.min.css" rel="stylesheet" />
+
+<!-- bxSlider-->
+<script src="js/jquery.bxslider.js"></script>
+<link href="style/jquery.bxslider.css" rel="stylesheet" />
+
+<!-- Jquery UI -->
+<script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
+
+<!-- masonry http://masonry.desandro.com/ -->
+<script src="js/masonry.pkgd.min.js"></script>
+
+<!-- Css -->
+<link rel="stylesheet" type="text/css" href="style/main.css" media="all">
+<link rel="stylesheet" type="text/css" href="style/homePage.css" media="all">
+<link rel="stylesheet" type="text/css" href="style/category.css" media="all">
+<link rel="stylesheet" type="text/css" href="style/span.css" media="all">
+<link rel="stylesheet" type="text/css" href="style/cart.css" media="all">
+
+<!-- responsive design -->
+<link rel="stylesheet" type="text/css" href="style/main-responsive.css" media="all">
+<link rel="stylesheet" type="text/css" href="style/homePage-responsive.css" media="all">
+</head>
+<body>
+    <div id="wrap">
+        <div class="topbar">
+            <div class="container wStaticPx">
+                <ul class="headerButtonList">
+                    <li class="frist"><a href="#">My Account</a></li>
+                    <li class="lang">EN </li>
+                    <li class="money">Dollar </li>
+                </ul>
+                <div class="headerMobileView">
+                    <div class="shortcutButton"><i class="fa fa-list"></i></div>
+                    <div class="shortcutSearch"><i class="fa fa-search"></i></div>
+                    <div class="shortcutCart"><i class="fa fa-shopping-cart"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="container wStaticPx">
+                <div class="logo"><img src="images/CGHUB_50x50_botCG_gloss.gif"/></div>
+                <div class="menu" >
+                    <div class="menuExt">
+                        <div class="logo"><img src="images/CGHUB_50x50_botCG_gloss.gif"/></div>
+                        <div class="extendIcon"><i class="fa fa-plus-square-o"></i> </div>
+                    </div>
+                        <ul class="cate">
+                            <li>
+                                <a href="#">ELECTRONICS</a>
+                                <div class="containerSubMenu">
+                                        <ul>
+                                            <li class="menuCol">
+                                                <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Điện máy 4</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                             <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                             <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li> 
+                                            <li class="menuCol">
+                                              <span><a href="#">Điện Máy </a></span>
+                                                <ul>
+                                                    <li><a href="">Điện máy 1</a></li>
+                                                    <li><a href="">Điện máy 2</a></li>
+                                                    <li><a href="">Điện máy 3</a></li>
+                                                    <li><a href="">Xem Thêm →</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            <li><a href="#">Sports & Outdoors </a></li>
+                            <li><a href="#">Apparel </a></li>
+                            <li><a href="#">Books </a></li>
+                            <li><a href="#">Movies & TV </a></li>
+                            <li><a href="#">Movies & TV </a></li>   
+                        </ul>
+                     </div>
+                
+                <div class="rightBlock">
+                    <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng.</a>
+                </div>
+                
+                <div class="centerBlock">
+                    <div class="form">
+                        <input type='text'/>
+                        <button title="Search" class="button"><span><span><i class="fa fa-search"></i></span></span></button>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        <div class="content categoryContent" >
+            <div class="contentWarp wStaticPx">
+                     <div class="rowContent">
+                         <!--breadcrumbs-->
+                         <div class="breadcrumbs">
+                             <ul>
+                                 <li class="home">
+                                     <a href="#" title="Go to Home Page">Home</a>
+                                     <span>&gt;</span>
+                                 </li>
+                                 <li >
+                                     <strong>Giỏ hàng</strong>
+                                 </li>
+                             </ul>
+                         </div>
+                         
+                        <div class="container">
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <!--cart button-->
+                                    <div class="cartButton">
+                                        <div class="leftButton">
+                                            <button class="button"><span><span>Continue Shopping</span></span> </button>
+                                            <a href="javascript:void(0)" class="aButton">
+                                                <span>Clear cart</span>
+                                            </a>
+                                        </div>
+                                        <div class="rightButton">   
+                                            <button class="button"><span><span>Recalculate</span></span> </button>
+                                            <button class="button"><span><span>Process To Checkout</span></span> </button>
+                                        </div>
+                                    </div><!--end cart button-->
+                                    <div class="clear"></div>
+                                    <!--cart content-->
+                                    <div class="mainbox-cart-body">
+                                        <div id="cart_items">
+                                            <table class="table top table-width">
+                                                <tbody>
+                                                    <tr>
+                                                        <th colspan="2" class="left">Product</th>
+                                                        <th class="right">Unit price</th>
+                                                        <th class="quantity-cell">Quantity</th>
+                                                        <th class="right">Total price</th>
+                                                        <th class="right">Actions</th>
+                                                    </tr>                
+                                                    <tr>
+                                                        <td class="product-image-cell">
+                                                            <div class="product-image " id="product_image_update_2372082066">
+                                                                <a href="javascript:void(0)">
+                                                                    <img class="pict" id="det_img_2372082066" src="images/cart/17.jpg" width="120" height="154" alt="" title="">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-description" style="width: 35%;">
+                                                            <a href="javascript:void(0)" class="product-title">
+                                                                Acer 3D Series HN274H bmiiid
+                                                            </a>
+                                                            <a class="" href="javascript:void(0)" title="Remove" onclick="removeCartItem(this)">
+                                                                <i class="fa fa-times-circle"></i>
+                                                            </a>        
+                                                            <p class="sku" id="sku_2372082066">
+                                                                CODE: <span class="" id="product_code_update_2372082066">
+                                                                    L0227FHI2Y
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="center price-cell " >
+                                                            <span class="sub-price">$</span>
+                                                            <span id="sec_product_price_2372082066" class="sub-price">699.00</span>
+                                                        </td>
+                                                        <td class="quantity-cell center quantity-disabled">
+                                                            <div class="quantity changer">
+                                                                <input type="text" value="1" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="center price-cell">
+                                                            <span class="price">$</span><span id="sec_product_subtotal_2372082066" class="price">699.00</span>
+                                                        </td>
+                                                        <td class="right">
+                                                            <button class="button" title="Save for later" onclick="saveForLater(this)">
+                                                                <span><span class="fa fa-save">&nbsp;</span></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="product-image-cell">
+                                                            <div class="product-image " id="product_image_update_2372082066">
+                                                                <a href="javascript:void(0)">
+                                                                    <img class="pict" id="det_img_2372082066" src="images/cart/17.jpg" width="120" height="154" alt="" title="">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-description" style="width: 35%;">
+                                                            <a href="javascript:void(0)" class="product-title">
+                                                                Acer 3D Series HN274H bmiiid
+                                                            </a>
+                                                            <a class="" href="javascript:void(0)" title="Remove" onclick="removeCartItem(this)">
+                                                                <i class="fa fa-times-circle"></i>
+                                                            </a>        
+                                                            <p class="sku" id="sku_2372082066">
+                                                                CODE: <span class="" id="product_code_update_2372082066">
+                                                                    L0227FHI2Y
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="center price-cell " >
+                                                            <span class="sub-price">$</span>
+                                                            <span id="sec_product_price_2372082066" class="sub-price">699.00</span>
+                                                        </td>
+                                                        <td class="quantity-cell center quantity-disabled">
+                                                            <div class="quantity changer">
+                                                                <input type="text" value="1" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="center price-cell">
+                                                            <span class="price">$</span><span id="sec_product_subtotal_2372082066" class="price">699.00</span>
+                                                        </td>
+                                                        <td class="right">
+                                                            <button class="button" title="Save for later" onclick="saveForLater(this)">
+                                                                <span><span class="fa fa-save">&nbsp;</span></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="product-image-cell">
+                                                            <div class="product-image " id="product_image_update_2372082066">
+                                                                <a href="javascript:void(0)">
+                                                                    <img class="pict" id="det_img_2372082066" src="images/cart/17.jpg" width="120" height="154" alt="" title="">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-description" style="width: 35%;">
+                                                            <a href="javascript:void(0)" class="product-title">
+                                                                Acer 3D Series HN274H bmiiid
+                                                            </a>
+                                                            <a class="" href="javascript:void(0)" title="Remove" onclick="removeCartItem(this)">
+                                                                <i class="fa fa-times-circle"></i>
+                                                            </a>        
+                                                            <p class="sku" id="sku_2372082066">
+                                                                CODE: <span class="" id="product_code_update_2372082066">
+                                                                    L0227FHI2Y
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="center price-cell " >
+                                                            <span class="sub-price">$</span>
+                                                            <span id="sec_product_price_2372082066" class="sub-price">699.00</span>
+                                                        </td>
+                                                        <td class="quantity-cell center quantity-disabled">
+                                                            <div class="quantity changer">
+                                                                <input type="text" value="1" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="center price-cell">
+                                                            <span class="price">$</span><span id="sec_product_subtotal_2372082066" class="price">699.00</span>
+                                                        </td>
+                                                        <td class="right">
+                                                            <button class="button" title="Save for later" onclick="saveForLater(this)">
+                                                                <span><span class="fa fa-save">&nbsp;</span></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="product-image-cell">
+                                                            <div class="product-image " id="product_image_update_2372082066">
+                                                                <a href="javascript:void(0)">
+                                                                    <img class="pict" id="det_img_2372082066" src="images/cart/17.jpg" width="120" height="154" alt="" title="">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-description" style="width: 35%;">
+                                                            <a href="javascript:void(0)" class="product-title">
+                                                                Acer 3D Series HN274H bmiiid
+                                                            </a>
+                                                            <a class="" href="javascript:void(0)" title="Remove" onclick="removeCartItem(this)">
+                                                                <i class="fa fa-times-circle"></i>
+                                                            </a>        
+                                                            <p class="sku" id="sku_2372082066">
+                                                                CODE: <span class="" id="product_code_update_2372082066">
+                                                                    L0227FHI2Y
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="center price-cell " >
+                                                            <span class="sub-price">$</span>
+                                                            <span id="sec_product_price_2372082066" class="sub-price">699.00</span>
+                                                        </td>
+                                                        <td class="quantity-cell center quantity-disabled">
+                                                            <div class="quantity changer">
+                                                                <input type="text" value="1" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="center price-cell">
+                                                            <span class="price">$</span><span id="sec_product_subtotal_2372082066" class="price">699.00</span>
+                                                        </td>
+                                                        <td class="right">
+                                                            <button class="button" title="Save for later" onclick="saveForLater(this)">
+                                                                <span><span class="fa fa-save">&nbsp;</span></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="product-image-cell">
+                                                            <div class="product-image " id="product_image_update_2372082066">
+                                                                <a href="javascript:void(0)">
+                                                                    <img class="pict" id="det_img_2372082066" src="images/cart/17.jpg" width="120" height="154" alt="" title="">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-description" style="width: 35%;">
+                                                            <a href="javascript:void(0)" class="product-title">
+                                                                Acer 3D Series HN274H bmiiid
+                                                            </a>
+                                                            <a class="" href="javascript:void(0)" title="Remove" onclick="removeCartItem(this)">
+                                                                <i class="fa fa-times-circle"></i>
+                                                            </a>        
+                                                            <p class="sku" id="sku_2372082066">
+                                                                CODE: <span class="" id="product_code_update_2372082066">
+                                                                    L0227FHI2Y
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="center price-cell " >
+                                                            <span class="sub-price">$</span>
+                                                            <span id="sec_product_price_2372082066" class="sub-price">699.00</span>
+                                                        </td>
+                                                        <td class="quantity-cell center quantity-disabled">
+                                                            <div class="quantity changer">
+                                                                <input type="text" value="1" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="center price-cell">
+                                                            <span class="price">$</span><span id="sec_product_subtotal_2372082066" class="price">699.00</span>
+                                                        </td>
+                                                        <td class="right">
+                                                            <button class="button" title="Save for later" onclick="saveForLater(this)">
+                                                                <span><span class="fa fa-save">&nbsp;</span></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="product-image-cell">
+                                                            <div class="product-image " id="product_image_update_2372082066">
+                                                                <a href="javascript:void(0)">
+                                                                    <img class="pict" id="det_img_2372082066" src="images/cart/17.jpg" width="120" height="154" alt="" title="">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-description" style="width: 35%;">
+                                                            <a href="javascript:void(0)" class="product-title">
+                                                                Acer 3D Series HN274H bmiiid
+                                                            </a>
+                                                            <a class="" href="javascript:void(0)" title="Remove" onclick="removeCartItem(this)">
+                                                                <i class="fa fa-times-circle"></i>
+                                                            </a>        
+                                                            <p class="sku" id="sku_2372082066">
+                                                                CODE: <span class="" id="product_code_update_2372082066">
+                                                                    L0227FHI2Y
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="center price-cell " >
+                                                            <span class="sub-price">$</span>
+                                                            <span id="sec_product_price_2372082066" class="sub-price">699.00</span>
+                                                        </td>
+                                                        <td class="quantity-cell center quantity-disabled">
+                                                            <div class="quantity changer">
+                                                                <input type="text" value="1" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="center price-cell">
+                                                            <span class="price">$</span><span id="sec_product_subtotal_2372082066" class="price">699.00</span>
+                                                        </td>
+                                                        <td class="right">
+                                                            <button class="button" title="Save for later" onclick="saveForLater(this)">
+                                                                <span><span class="fa fa-save">&nbsp;</span></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="product-image-cell">
+                                                            <div class="product-image " id="product_image_update_2372082066">
+                                                                <a href="javascript:void(0)">
+                                                                    <img class="pict" id="det_img_2372082066" src="images/cart/17.jpg" width="120" height="154" alt="" title="">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-description" style="width: 35%;">
+                                                            <a href="javascript:void(0)" class="product-title">
+                                                                Acer 3D Series HN274H bmiiid
+                                                            </a>
+                                                            <a class="" href="javascript:void(0)" title="Remove" onclick="removeCartItem(this)">
+                                                                <i class="fa fa-times-circle"></i>
+                                                            </a>        
+                                                            <p class="sku" id="sku_2372082066">
+                                                                CODE: <span class="" id="product_code_update_2372082066">
+                                                                    L0227FHI2Y
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="center price-cell " >
+                                                            <span class="sub-price">$</span>
+                                                            <span id="sec_product_price_2372082066" class="sub-price">699.00</span>
+                                                        </td>
+                                                        <td class="quantity-cell center quantity-disabled">
+                                                            <div class="quantity changer">
+                                                                <input type="text" value="1" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="center price-cell">
+                                                            <span class="price">$</span><span id="sec_product_subtotal_2372082066" class="price">699.00</span>
+                                                        </td>
+                                                        <td class="right">
+                                                            <button class="button" title="Save for later" onclick="saveForLater(this)">
+                                                                <span><span class="fa fa-save">&nbsp;</span></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td >
+                                                            Total cost:
+                                                        </td>
+                                                        <td >
+                                                            <strong style="font-weight: bold">$2,796,00</strong>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </div><!--cart_items-->
+                                    </div><!--end cart content-->
+                                    
+                                    <div class="clear"></div>
+                                    <div class="cartButton"><!--cart button-->
+                                        <div class="leftButton">
+                                            <button class="button"><span><span>Continue Shopping</span></span> </button>
+                                            <a href="javascript:void(0)" class="aButton">
+                                                <span>Clear cart</span>
+                                            </a>
+                                        </div>
+                                        <div class="rightButton">   
+                                            <button class="button"><span><span>Recalculate</span></span> </button>
+                                            <button class="button"><span><span>Process To Checkout</span></span> </button>
+                                        </div>
+                                    </div><!--end cart button-->
+                                </div><!--end span 12-->
+                            </div><!--row fluid-->
+                         </div><!--end containner-->
+                    </div><!--end rowConntent-->
+            </div>
+            <!--scrop to top-->
+            <div id="topControl" title="Scroll Back to Top" style="position: fixed; bottom: 5px; right: 5px; opacity: 1; cursor: pointer;">
+                <div class="top_button">TOP</div>
+            </div>
+            <script>
+                $(document).ready(function(){
+                    $('#topControl').hide();
+                });
+                
+                $( window ).scroll(function() {
+                    ($(this).scrollTop() > 0) ? $('#topControl').show(): $('#topControl').hide();
+                });
+                
+                $('#topControl').click(function(){
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    $(this).hide();
+                });
+                
+                function removeCartItem(cartItem)
+                {
+                    $(cartItem).parent().parent().remove();
+                }
+                function saveForLater(cartItem)
+                {
+                    //add to wishlist
+                    
+                    //remove row
+                    $(cartItem).parent().parent().remove();
+                }
+            </script>
+        </div>
+        <!--footer-->
+        <div class="foot">
+            <div class="footWarp wStaticPx">
+                <div class="col">
+                    <span class="title">Liên hệ</span>
+                    <ul>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <span class="title">Liên hệ</span>
+                    <ul>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <span class="title">Liên hệ</span>
+                    <ul>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                        <li><a href="#">Link liên hệ 1</a></li>
+                    </ul>
+                </div>
+                <div class="col pay">
+                    <span class="title">Chấp nhận thanh toán</span>
+                    <ul>
+                        <li><a href="#"><img  src="images/payment.png"/></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+.formFilter{    margin: 0 0 20px;    padding: 10px;}
+.formFilter .colLeft{    text-align: right;}
+.formFilter .colLeft label{    font-weight: bold;}
+.formFilter .colRight{    text-align: left;}
+.formFilter label{    float: left;    width: 100%;    padding-top: 5px;    text-align: right;}
+.formFilter label.wAuto{    width: auto;    margin: 0px 5px 0px 5px;}
+.formFilter input{    float:left;    margin: 0px 5px 0px 0px;}
+
+
+.historyContent{    margin: 0px 0px 10px 0px;}
+.historyContent .item{    width: 100%;    float:left;    background: #69bf30;    border-radius: 5px;
+}
+.historyContent .item span{    color: white;    margin: 0px 30px 0px 0px;}
+.historyContent .item .action{    float: right;    width: auto;}
+.historyContent .item .action span{    color: white}
+
+.historyContent .section{
+    margin: 0px 0px 10px 0px;
+    border: 1px solid #ececec;
+    border-radius: 4px;
+}
+.historyContent .section .leftCol{    border-right: 1px solid #ececec;    padding: 10px;     display: inline-block;height: 201px;}
+.historyContent .section .leftCol label{    width: 100%;    margin: 0px 0px 5px 0px;    float: left;}
+.historyContent .section .leftCol .action{    width: 100%;    float:left;    margin: 0px 0px 5px 0px;}
+.historyContent .section .leftCol .dateTime{    font-size: 18px;    color:  #69bf30;}
+.historyContent .section .leftCol .orderNumber a{    font-weight: bold;    font-size: 16px;}
+.historyContent .section .leftCol .Recipient{    font-weight: bold;    font-size: 16px;}
+.historyContent .section .leftCol .total{    font-weight: bold;    color:  #69bf30;}
+
+.historyContent .section .rightCol{padding: 10px;     display: inline-block;}
+.historyContent .section .rightCol .productName
+{
+    margin: 0px 0px 5px 0px;
+}
+.historyContent .section .rightCol .productName a
+{
+    font-weight: bold;
+    font-size: 16px;
+    color: #69bf30;
+}
+.historyContent .section .rightCol label
+{
+    width: 100%;    margin: 0px 0px 5px 0px;    float: left;
+}
+.historyContent .section .rightCol .manufacturer
+{
+    font-weight: bold;
+    font-size: 16px;
+}
+.historyContent .section .rightCol .buyAgain
+{
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+}
+.historyContent .section .rightCol .action
+{
+    text-align: center;
+}
+.historyContent .section .rightCol .action button
+{
+    width: 80%;
+    margin: 0px 0px 8px 0px;
+}
+.historyContent .section .rightCol .action button span span
+{
+    width: 88%;
+}
