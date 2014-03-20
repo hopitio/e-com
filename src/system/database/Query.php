@@ -45,7 +45,7 @@ class Query
         $sql = "SELECT {$this->_select} FROM {$this->_from}";
         if (!empty($this->_join))
         {
-            $sql .= implode("\n    ", $this->_join);
+            $sql .= "\n" . implode("\n    ", $this->_join);
         }
         if (!empty($this->_where))
         {

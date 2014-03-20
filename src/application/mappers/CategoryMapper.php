@@ -9,7 +9,7 @@ class CategoryMapper extends MapperAbstract
     {
         $query = Query::make()
                 ->from('t_category c')
-                ->join('t_category_language cl', 'c.id=cl.fk_category');
+                ->innerJoin('t_category_language cl', 'c.id=cl.fk_category');
 
         $map = array(
             'fkParent' => 'fk_parent'
@@ -61,9 +61,21 @@ class CategoryMapper extends MapperAbstract
         return $this;
     }
 
+    public function filterLanguage($language)
+    {
+        $this->_query->where('cl.language = ?', __METHOD__);
+        $this->_queryParams[__METHOD__] = $language;
+        return $this;
+    }
+
     public function update($id, $raw_data)
     {
         return DB::update('t_category', $raw_data, 'id=?', array($id));
+    }
+
+    public function delete()
+    {
+        
     }
 
 }
