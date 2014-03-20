@@ -9,6 +9,7 @@ require_once APPPATH . "domains" . DS . "ListDomain.php";
 require_once APPPATH . "domains" . DS . "ProductAttributeTypeDomain.php";
 require_once APPPATH . "domains" . DS . "ProductAttributeDomain.php";
 require_once APPPATH . "domains" . DS . "ProductDomain.php";
+require_once APPPATH . "domains" . DS . "ProductFixedDomain.php";
 require_once APPPATH . "domains" . DS . "CategoryDomain.php";
 
 require_once APPPATH . "mappers" . DS . "ListtypeMapper.php";
@@ -19,4 +20,5 @@ require_once APPPATH . "mappers" . DS . "ListMaterialMapper.php";
 require_once APPPATH . "mappers" . DS . "ProductAttributeTypeMapper.php";
 require_once APPPATH . "mappers" . DS . "ProductAttributeMapper.php";
 require_once APPPATH . "mappers" . DS . "ProductMapper.php";
+require_once APPPATH . "mappers" . DS . "ProductFixedMapper.php";
 require_once APPPATH . "mappers" . DS . "CategoryMapper.php";

@@ -8,8 +8,6 @@ class UserDomain implements DomainInterface
     public $id;
     public $firstname;
     public $lastname;
-    public $account;
-    public $password;
     public $sex;
     public $DOB;
     public $dateJoined;
@@ -21,6 +19,7 @@ class UserDomain implements DomainInterface
     public $phoneno;
     public $bonus;
     public $email;
+    public $hashid;
 
     function isAdmin()
     {
@@ -28,11 +27,6 @@ class UserDomain implements DomainInterface
     }
 
     function getFullName()
-    {
-        
-    }
-
-    function checkPassword($password)
     {
         
     }

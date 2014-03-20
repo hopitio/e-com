@@ -5,7 +5,10 @@ defined('BASEPATH') or die('No direct script access allowed');
 class ProductMapper extends MapperAbstract
 {
 
-    function __construct()
+    protected $_autoloadAttributes = false;
+    protected $_attributeLanguage = null;
+
+    function __construct($domain = 'ProductDomain')
     {
         $query = Query::make()->from('t_product p');
 
@@ -16,7 +19,7 @@ class ProductMapper extends MapperAbstract
             'isGroup' => 'is_group',
         );
 
-        parent::__construct('ProductMapper', $query, $map);
+        parent::__construct($domain, $query, $map);
     }
 
     function filterCategory($category)
@@ -29,14 +32,40 @@ class ProductMapper extends MapperAbstract
         $this->_queryParams[__FUNCTION__] = $category;
     }
 
+    /**
+     * 
+     * @param type $bool
+     * @param type $language
+     * @return static
+     */
+    function autoloadAttributes($bool, $language = null)
+    {
+        $this->_autoloadAttributes = $bool;
+        $this->_attributeLanguage = $language;
+        return $this;
+    }
+
     function find($id, $fields = 'p.*')
     {
         
     }
 
+    /**
+     * 
+     * @param type $fields
+     * @return ProductDomain
+     */
     function findAll($fields = 'p.*')
     {
-        return parent::findAll($fields);
+        $products = parent::findAll($fields);
+        if ($this->_autoloadAttributes)
+        {
+            foreach ($products as $p)
+            {
+                $this->loadAttributes($p, $this->_attributeLanguage);
+            }
+        }
+        return $products;
     }
 
     protected function _getCategoryByCode($codename)
@@ -44,13 +73,13 @@ class ProductMapper extends MapperAbstract
         return DB::getInstance()->GetOne("SELECT id FROM t_category WHERE codename=?", array($codename));
     }
 
-    function loadAttributes(ProductDomain $product)
+    function loadAttributes(ProductDomain $product, $language = null)
     {
-        foreach ($this->_loadNoRepeatAttributes($product->id) as $attr)
+        foreach ($this->_loadNoRepeatAttributes($product->id, $language) as $attr)
         {
             $product->addAttribute($attr);
         }
-        foreach ($this->_loadRepeatAttributes($product->id) as $attr)
+        foreach ($this->_loadRepeatAttributes($product->id, $language) as $attr)
         {
             $product->addAttribute($attr);
         }
@@ -61,11 +90,12 @@ class ProductMapper extends MapperAbstract
      * @param int $product_id
      * @return ProductAttributeDomain
      */
-    protected function _loadNoRepeatAttributes($product_id)
+    protected function _loadNoRepeatAttributes($product_id, $language = null)
     {
-        $attrMapper = ProductAttributeMapper::getInstance()
+        $attrMapper = ProductAttributeMapper::make()
                 ->filterProduct($product_id)
-                ->filterRepeatingGroup(false);
+                ->filterRepeatingGroup(false)
+                ->filterLanguage($language);
         return $attrMapper->findAll();
     }
 
@@ -74,11 +104,12 @@ class ProductMapper extends MapperAbstract
      * @param int $product_id
      * @return ProductAttributeDomain
      */
-    protected function _loadRepeatAttributes($product_id)
+    protected function _loadRepeatAttributes($product_id, $language = null)
     {
-        $attrMapper = ProductAttributeMapper::getInstance()
+        $attrMapper = ProductAttributeMapper::make()
                 ->filterProduct($product_id)
-                ->filterRepeatingGroup(true);
+                ->filterRepeatingGroup(true)
+                ->filterLanguage($language);
         return $attrMapper->findAll();
     }
 

@@ -11,4 +11,8 @@ class ListDomain implements DomainInterface
     public $codename;
     public $sort;
 
+    function __toString()
+    {
+        return $this->name;
+    }
 }

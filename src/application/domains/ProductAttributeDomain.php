@@ -14,21 +14,35 @@ class ProductAttributeDomain extends ProductAttributeTypeDomain
     public $valueText;
     public $valueVarchar;
 
+    /**
+     * @var ListDomain 
+     */
+    protected $_trueValue = false;
+
     function getTrueValue()
     {
         switch ($this->dataType)
         {
             case static::DT_ENUM:
-
-                return intval($this->valueEnum);
+                if ($this->_trueValue === false)
+                {
+                    $this->_trueValue = ListMapper::make()->findById($this->valueEnum);
+                }
+                return $this->_trueValue;
             case static::DT_NUMBER:
                 return doubleval($this->valueNumber);
             case static::DT_TEXT:
-            case static::DT_VARCHAR:
                 return strval($this->valueText);
+            case static::DT_VARCHAR:
+                return strval($this->valueVarchar);
             default:
                 throw new Exception("Data type not supported");
         }
+    }
+
+    function __toString()
+    {
+        return strval($this->getTrueValue());
     }
 
 }

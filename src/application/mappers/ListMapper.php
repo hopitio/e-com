@@ -36,6 +36,19 @@ class ListMapper extends MapperAbstract
         return $this->makeDomain($record);
     }
 
+    /**
+     * 
+     * @param type $id
+     * @param string $fields
+     * @return ListDomain
+     */
+    function findById($id, $fields = '*')
+    {
+        $query = Query::make()->select($fields)->from('t_list')->where('id=?');
+        $record = DB::getInstance()->GetRow($query, array($id));
+        return $this->makeDomain($record);
+    }
+
     function filterListtype($listtype)
     {
         if (!is_numeric($listtype))

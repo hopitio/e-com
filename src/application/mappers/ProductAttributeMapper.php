@@ -18,7 +18,7 @@ class ProductAttributeMapper extends MapperAbstract
             'valueEnum' => 'value_enum',
             'valueText' => 'value_text',
             'valueVarchar' => 'value_varchar',
-            'dataType' => 'data_type',
+            'dataType' => 'datatype',
             'fkEnumRef' => 'fk_enum_ref',
             'multiLanguage' => 'multi_language',
             'repeatingGroup' => 'repeating_group'
@@ -38,6 +38,24 @@ class ProductAttributeMapper extends MapperAbstract
     {
         $condition = $is_repeating_group ? 'repeating_group=1' : 'repeating_group=0';
         $this->_query->where($condition, __FUNCTION__);
+        return $this;
+    }
+
+    function filterLanguage($language = null)
+    {
+        if ($language)
+        {
+            $this->_query->where('(language=? OR language IS NULL)', __FUNCTION__);
+            $this->_queryParams[__FUNCTION__] = $language;
+        }
+        else
+        {
+            $this->_query->where(null, __FUNCTION__);
+            if (isset($this->_queryParams[__FUNCTION__]))
+            {
+                unset($this->_queryParams[__FUNCTION__]);
+            }
+        }
         return $this;
     }
 
