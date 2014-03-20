@@ -45,9 +45,22 @@ class ProductMapper extends MapperAbstract
         return $this;
     }
 
+    /**
+     * 
+     * @param type $id
+     * @param type $fields
+     * @return ProductDomain
+     */
     function find($id, $fields = 'p.*')
     {
-        
+        $query = Query::make()->select($fields)->from('t_product')->where('p.id=?');
+        $record = DB::getInstance()->GetRow($query, array($id));
+        $product = $this->makeDomain($record);
+        if ($this->_autoloadAttributes)
+        {
+            $this->loadAttributes($product, $this->_attributeLanguage);
+        }
+        return $product;
     }
 
     /**

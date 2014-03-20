@@ -20,4 +20,5 @@ class UserMapper extends MapperAbstract
     }
 
     
+    
 }
