@@ -38,7 +38,6 @@ class login extends BaseController
     function authenicate()
     {
         $data = $this->input->post();
-        log_message('error',var_export($data,true));
         if (
             !isset($data['txtUs']) || 
             !isset($data['txtPw'])|| 
@@ -77,10 +76,17 @@ class login extends BaseController
      */
     private function canNotLogin()
     {
+        //$this->showPage();
+        $params = $this->getQueryStringParams();
         $this->_data = array();
-        $this->_data['postUrl'] = self::URL_TO_POST;
-        $this->_data['error'] = MultilLanguageManager::getInstance()->getLangViaScreen(
-            'login', User::getCurrentUser()->languageKey)->lblError;
+        
+        $url = !empty($params['u']) ? $params['u'] : '/__portal/authen';
+        $redirectUrl = !empty($params['t']) ? $params['t'] : '/home';
+        
+        $this->_data['error'] = MultilLanguageManager::getInstance()->getLangViaScreen('login', User::getCurrentUser()->languageKey)->lblError;
+        $this->_data['postUrlCaller'] = $url;
+        $this->_data['postUrlTarget'] = $redirectUrl;
+        
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
             $this->_data, true)
             ->setCss($this->_css)
@@ -96,5 +102,17 @@ class login extends BaseController
     {
         $this->load->model('LoginModel');
         return $this->LoginModel;
+    }
+    
+    /**
+     * logout system.
+     */
+    public function out(){
+        $params = $this->getQueryStringParams();
+        $url = !empty($params['u']) ? $params['u'] : '/home';
+        $this->obj_user = new User();
+        $this->session->set_userdata('obj_user', $this->obj_user);
+        redirect($url);
+        return;
     }
 }

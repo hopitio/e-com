@@ -15,6 +15,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     {
          $route['portal/login'] = 'login/showPage';
          $route['home'] = 'home/showHome';
+         $route['logout'] = 'login/out';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')

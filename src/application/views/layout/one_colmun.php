@@ -43,12 +43,11 @@
                             <ul class="accessPannel">
                             <?php 
                                 if($user->is_authorized){
-                                    
+                                    echo '<li><a href="'.$user->getLogout().'">Đăng Xuất</a></li>';
                                 }else{
-                                    echo '<li><a href="#">Đăng nhập</a></li>';
+                                    echo '<li><a href="'.$user->getLoginAuthenUrl().'">Đăng nhập</a></li>';
                                 }
                             ?>
-                                
                                 <li><a href="#">WishList</a></li>
                                 <li><a href="#">Đăng sản phẩm</a></li>
                             </ul>

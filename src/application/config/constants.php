@@ -45,6 +45,9 @@ define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
  */
 define('USER_SESSION', 'USER_SESSION');
 define('CATEGORY','CATEGORY');
+define('platform_login_url','platform_login_url');
+define('platform_login_callback','platform_login_callback');
+define('platform_logout','platform_logout');
 
 
 /* End of file constants.php */

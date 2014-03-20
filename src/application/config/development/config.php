@@ -370,7 +370,9 @@ $config['proxy_ips'] = '';
 
 
 $config['platform_login_url'] = '/portal/login';
-$config['platform_api_common_url'] = '';
+$config['platform_login_callback'] = '/__portal/authen';
+$config['platform_logout'] = '/logout';
+
 $config['platform_available_tickets_list_url'] = '';
 $config['platform_study_gear_sales_url'] = '';
 

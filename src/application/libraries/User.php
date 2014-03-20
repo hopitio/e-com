@@ -9,14 +9,19 @@
  */
 class User{
 
-    public $is_authorized;
+    public $is_authorized = false;
     public $languageKey = 'VN-VI';
-    public $authenUrl = '/portal/login';
-    
+    private $authenUrl = '/portal/login';
+    private $callBack = '/__portal/authen';
+    private $logout = "/logout";
     function __construct(){
         $CI =& get_instance();
-        $this->authenUrl = $CI->config->item('platform_login_url');
+        $this->authenUrl = $CI->config->item(platform_login_url);
+        $this->callBack = $CI->config->item(platform_login_callback);
+        $this->logout = $CI->config->item(platform_logout);
     }
+    
+
 
     protected function save(){
 
@@ -37,5 +42,19 @@ class User{
         }else{
             return new User();
         }
+    }
+    
+    /**
+     * Lấy đường dẫn sử dụng để login.
+     */
+    function getLoginAuthenUrl(){
+        return $this->authenUrl.'?u='.urlencode($this->callBack).'&t='.urlencode(Common::curPageURL()) ;
+    }
+    /**
+     * get logout
+     * @return string
+     */
+    function getLogout(){
+        return $this->logout.'?u='.urlencode(Common::curPageURL());
     }
 }

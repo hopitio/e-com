@@ -6,7 +6,7 @@
         </form>
     </div>
     <div class="rightContent box">
-        <form action='<?php echo $postUrl;?>' method="post">
+        <form method="post">
             <h3> <?php echo $language[$view->view]->loginTitle;?></h3>
             <?php if(isset($error)){
                 echo '<h4> <i class="fa fa-comment"></i>'.$error.'</h4>';
