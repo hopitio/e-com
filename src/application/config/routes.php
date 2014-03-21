@@ -14,6 +14,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
          $route['portal/login'] = 'login/showPage';
+         $route['portal/loginComplete'] = 'login/loginCompleteShowPage';
          $route['home'] = 'home/showHome';
          $route['logout'] = 'login/out';
     }
@@ -21,7 +22,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $route['portal/login'] = 'login/authenicate';
-        $route['__portal/authen'] = 'Portal/PortalAuthen';
+        $route['__portal/callback'] = 'portalProcess/portalAuthen';
     }
 }
 //

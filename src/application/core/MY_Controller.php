@@ -272,19 +272,17 @@ class MY_Controller extends CI_Controller
      *
      * @return	void
      */
-    protected function set_obj_user_to_me()
+    protected function set_obj_user_to_me($objUser = null)
     {
-        $obj_user = $this->session->userdata('obj_user');
-        if (is_a($obj_user, 'User'))
-        {
-            $obj_user->touch();
-            $this->obj_user = $obj_user;
-        }
-        else
-        {
-            $this->obj_user = new User();
-            $this->session->set_userdata('obj_user', $this->obj_user);
-        }
+        $objUser =  $objUser == null ? User::getCurrentUser() : $objUser;
+        $this->obj_user = $objUser;
+        $this->session->set_userdata(USER_SESSION, $objUser);
+        return;
+    }
+    
+    protected function remove_obj_user_to_me()
+    {
+        $this->session->unset_userdata(USER_SESSION);
         return;
     }
 

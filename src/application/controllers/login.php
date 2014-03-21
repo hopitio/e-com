@@ -60,10 +60,19 @@ class login extends BaseController
         if ($isLoginResult)
         {
             $dataResult = array();
+           
+            $user = new User();
+            $this->obj_user->portalData = json_encode($user);
+            $this->obj_user->is_authorized = true;
+            $this->set_obj_user_to_me($this->obj_user);
+            
             $dataResult['postUrl'] = $data['postUrlCaller'];
-            $dataResult['dataJson'] = json_encode($this->obj_user);
+            $dataResult['dataJson'] = json_encode($user);
             $dataResult['redirect']  = $data['postUrlTarget'];
+            
+            //redirect('/home');
             LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
+            return;
         }
         else
         {
@@ -111,7 +120,7 @@ class login extends BaseController
         $params = $this->getQueryStringParams();
         $url = !empty($params['u']) ? $params['u'] : '/home';
         $this->obj_user = new User();
-        $this->session->set_userdata('obj_user', $this->obj_user);
+        $this->set_obj_user_to_me($this->obj_user);
         redirect($url);
         return;
     }
