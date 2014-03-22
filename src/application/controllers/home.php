@@ -14,8 +14,8 @@ class home extends BaseController
         $data['categories'] = CategoryMapper::make()->filterLanguage("vi")->findAll();
         
         $data['products'] = ProductFixedMapper::make()->autoloadAttributes(true, "vi")->findAll();
-        $this->load->model('Category');
-        $cate = $this->Category->loadCategory();
+        //$this->load->model('Category');
+        //$cate = $this->Category->loadCategory();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setCss(array("/style/homePage.css"))->setData($data)->render('home');
            //LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setCss(array("/style/homePage.css"))->setData()->render('home');
     }

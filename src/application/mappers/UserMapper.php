@@ -15,10 +15,8 @@ class UserMapper extends MapperAbstract
             'statusReason' => 'status_reason',
             'lastActive' => 'last_active'
         );
-        
+
         parent::__construct($domain, $query, $map);
     }
 
-    
-    
 }

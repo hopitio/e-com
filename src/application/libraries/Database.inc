@@ -3,6 +3,7 @@
 defined("DS") or define("DS", DIRECTORY_SEPARATOR);
 
 require_once __DIR__ . DS . "database" . DS . "DB.php";
+
 require_once __DIR__ . DS . "database" . DS . "Query.php";
 require_once __DIR__ . DS . "DomainInterface.php";
 require_once __DIR__ . DS . "MapperAbstract.php";
