@@ -8,5 +8,9 @@ require_once APPPATH . 'libraries/Database.inc';
  */
 class MY_Model extends CI_Model
 {
-    
+    function __construct(){
+        parent::__construct();
+        $this->load->driver('cache');
+        DB::getInstance()->debug = 1;
+    }
 }

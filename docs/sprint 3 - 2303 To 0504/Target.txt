@@ -4,17 +4,15 @@
 		Pin	- 12h
 		Màn hình account - 12h
 		Chat - 12h
-		Gửi ý kiến phản hồi - 8h
+		Gửi ý kiến phản hồi - 8h (Loại bỏ)
 		Đăng ký - 12H
-		Trang thông tin khách hàng - 8H
+		Trang thông tin khách hàng - 8H 
 		Security của tài khoản  - 8H
 		Chỉnh sửa Thông tin cá nhân - 8H
 		Setting tài khoản - 8H
-		Danh sách toàn bộ danh mục -8H
+		Danh sách toàn bộ danh mục -8H (Loại bỏ)
 	+ Hoàn thành các màn hình chưa làm 
 	+ Xây khung cho các phần playment, chat, notification (Email). Cần bàn thêm
-
-
 		
 		
 		

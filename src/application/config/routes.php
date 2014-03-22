@@ -17,6 +17,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
          $route['portal/loginComplete'] = 'login/loginCompleteShowPage';
          $route['home'] = 'home/showHome';
          $route['logout'] = 'login/out';
+         $route['sitemap'] = 'sitemap/showPage';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
