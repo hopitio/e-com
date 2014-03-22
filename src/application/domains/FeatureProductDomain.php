@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or die('No direct script access allowed');
 
-class featureProductDomain implements DomainInterface
+class FeatureProductDomain extends ProductFixedDomain
 {
 
     public $id;
