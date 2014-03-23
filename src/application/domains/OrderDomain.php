@@ -19,4 +19,22 @@ class OrderDomain implements DomainInterface
     public $fkCurrency;
     public $dateCreated;
 
+    /** @var OrderProductDomain */
+    protected $_orderProducts = array();
+
+    function addOrderProduct(OrderProductDomain $instance)
+    {
+        $this->_orderProducts[] = $instance;
+        return $this;
+    }
+
+    /**
+     * 
+     * @return OrderProductDomain
+     */
+    function getOrderProducts()
+    {
+        return $this->_orderProducts;
+    }
+
 }

@@ -5,6 +5,8 @@ defined('BASEPATH') or die('No direct script access allowed');
 class OrderMapper extends MapperAbstract
 {
 
+    protected $_autoloadOrderProduct = false;
+
     function __construct($domain = 'OrderDomain')
     {
         $query = Query::make()->from('t_order');
@@ -36,6 +38,12 @@ class OrderMapper extends MapperAbstract
         return $this;
     }
 
+    function autoloadOrderProduct($bool)
+    {
+        $this->_autoloadOrderProduct = $bool;
+        return $this;
+    }
+
     /**
      * 
      * @param DateTime $from
@@ -57,6 +65,44 @@ class OrderMapper extends MapperAbstract
             $this->_queryParams[$keyTo] = $from->format('Y-m-d H:i');
         }
         return $this;
+    }
+
+    function findAll($fields = '*')
+    {
+        $orders = parent::findAll($fields);
+        if ($this->_autoloadOrderProduct)
+        {
+            foreach ($orders as &$order)
+            {
+                $this->loadOrderProduct($order);
+            }
+        }
+        return $orders;
+    }
+
+    function find($id, $fields = '*')
+    {
+        $query = Query::make()->select($fields)->from('t_order')->where('id=?');
+        $record = DB::getInstance()->GetRow($query, array($id));
+        $domain = $this->makeDomain($record);
+        if ($this->_autoloadOrderProduct)
+        {
+            $this->loadOrderProduct($domain);
+        }
+    }
+
+    function loadOrderProduct(OrderDomain $order)
+    {
+        $orderProducts = OrderProductMapper::make()->filterOrder($order->id)->findAll();
+        if (!$orderProducts)
+        {
+            return $order;
+        }
+        foreach ($orderProducts as $orderProductInstance)
+        {
+            $order->addOrderProduct($orderProductInstance);
+        }
+        return $order;
     }
 
 }

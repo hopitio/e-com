@@ -38,7 +38,7 @@ class WishlistMapper extends MapperAbstract
         $instances = parent::findAll($fields);
         if ($this->_autoloadDetails)
         {
-            foreach ($instances as $instance)
+            foreach ($instances as &$instance)
             {
                 $this->loadDetails($instance);
             }
@@ -64,12 +64,13 @@ class WishlistMapper extends MapperAbstract
         $details = WishListDetailMapper::make()->filterWishlist($wishlist->id)->findAll();
         if (!$details)
         {
-            return;
+            return $wishlist;
         }
         foreach ($details as $detailInstance)
         {
             $wishlist->addWishlistDetail($detailInstance);
         }
+        return $wishlist;
     }
 
 }
