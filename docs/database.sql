@@ -1,287 +1,553 @@
-CREATE TABLE IF NOT EXISTS `ci_sessions` (
-  `session_id` varchar(40) NOT NULL DEFAULT '0',
-  `ip_address` varchar(16) NOT NULL DEFAULT '0',
-  `user_agent` varchar(120) NOT NULL,
-  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_data` text NOT NULL,
-  PRIMARY KEY (`session_id`),
-  KEY `last_activity_idx` (`last_activity`)
-)
+/*
+SQLyog Enterprise - MySQL GUI v8.12 
+MySQL - 5.5.29 : Database - eproject
+*********************************************************************
+*/
 
-CREATE TABLE t_user(
-	id	INT PRIMARY KEY AUTO_INCREMENT,
-firstname	VARCHAR(50),
-lastname	VARCHAR(50),
-account	VARCHAR(20),
-`password`	VARCHAR(255),
-sex	ENUM('M', 'F', 'O'),
-DOB	DATETIME,
-date_joined	DATETIME,
-`status`	TINYINT,
-status_date	DATETIME,
-status_reason	TEXT,
-last_active	DATETIME,
-is_admin	TINYINT DEFAULT 0,
-phoneno	VARCHAR(20),
-bonus	DOUBLE
-);
+/*!40101 SET NAMES utf8 */;
 
-CREATE TABLE t_role(
-    id	INT PRIMARY KEY AUTO_INCREMENT,
-    `name`	VARCHAR(255),
-codename	VARCHAR(50)
+/*!40101 SET SQL_MODE=''*/;
 
-);
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-CREATE TABLE t_user_role(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_user	INT,
-fk_role	INT
-);
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`eproject` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 
-CREATE TABLE t_relationship(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_user1	INT,
-fk_user2	INT
-);
+USE `eproject`;
 
-CREATE TABLE t_privillege(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_instance	INT,
-`type`	VARCHAR(20),
-privilige	VARCHAR(50)
+/*Table structure for table `t_category` */
 
-);
+DROP TABLE IF EXISTS `t_category`;
 
-CREATE TABLE t_category(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-codename	VARCHAR(50),
-fk_parent	INT,
-sort	TINYINT,
-path	VARCHAR(255),
-image	text
-);
+CREATE TABLE `t_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_parent` int(11) DEFAULT NULL,
+  `sort` tinyint(4) DEFAULT NULL,
+  `path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8_unicode_ci,
+  `status` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE t_category_language(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_category	INT,
-`language`	VARCHAR(10),
-`name`	VARCHAR(255),
-description	TEXT
+/*Data for the table `t_category` */
 
-);
+insert  into `t_category`(`id`,`codename`,`fk_parent`,`sort`,`path`,`image`,`status`) values (1,'art_glass',NULL,1,'1',NULL,1),(2,'glassware',NULL,2,'2',NULL,1),(3,'wholesale',NULL,3,'3',NULL,1);
 
-CREATE TABLE t_retailer(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-`name`	VARCHAR(255),
-logo	TEXT,
-phoneno	VARCHAR(20),
-email	VARCHAR(50),
-website	VARCHAR(100),
-`status`	TINYINT DEFAULT 1,
-status_date	DATETIME,
-status_reason	TEXT,
-fk_manager	INT
+/*Table structure for table `t_category_attribute` */
 
-);
+DROP TABLE IF EXISTS `t_category_attribute`;
 
-CREATE TABLE t_listtype(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-`name`	VARCHAR(255),
-codename	VARCHAR(50),
-`status`	TINYINT DEFAULT 1
+CREATE TABLE `t_category_attribute` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_attribute_type` int(11) DEFAULT NULL,
+  `fk_category` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-);
+/*Data for the table `t_category_attribute` */
 
-CREATE TABLE t_list(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_listtype	INT,
-`name`	VARCHAR(255),
-codename	VARCHAR(50),
-sort	INT
-);
+/*Table structure for table `t_category_language` */
 
-CREATE TABLE t_product(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_category	INT,
-fk_retailer	INT,
-fk_group	INT,
-is_group	TINYINT DEFAULT 0,
-price	DOUBLE,
-price_currency	VARCHAR(10)
+DROP TABLE IF EXISTS `t_category_language`;
 
-);
+CREATE TABLE `t_category_language` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_category` int(11) DEFAULT NULL,
+  `language` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE t_product_attribute_type(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-codename	VARCHAR(50),
-datatype	ENUM('number', 'enum', 'text'),
-fk_enum_ref	INT,
-multi_language	TINYINT DEFAULT 0,
-repeating_group tinyint,
-important_level int
-);
+/*Data for the table `t_category_language` */
 
-CREATE TABLE t_category_attribute(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_attribute_type	INT,
-fk_category	INT
-);
+insert  into `t_category_language`(`id`,`fk_category`,`language`,`name`,`description`) values (1,1,'en','Art glass',NULL),(2,1,'vi','Thủy tinh nghệ thuật','Mô tả thủy tinh nghệ thuật'),(3,2,'en','Glassware','Glassware description'),(4,2,'vi','Pha lê gia dụng','Mô tả pha lê gia dụng');
 
-CREATE TABLE t_product_attribute(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_product	INT,
-fk_attribute_type	INT,
-value_number DOUBLE,
-value_reference INT,
-value_text	TEXT,
-`language`	VARCHAR(10)
-);
+/*Table structure for table `t_credit_memo` */
 
-CREATE TABLE t_order_status(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-`name`	VARCHAR(255),
-codename	VARCHAR(50),
-sort	TINYINT
-);
+DROP TABLE IF EXISTS `t_credit_memo`;
 
-CREATE TABLE t_order(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-uid	VARCHAR(50),
-fk_customer	INT,
-subtotal	DOUBLE,
-payment_currency	VARCHAR(10),
-payment_method	ENUM('cash'),
-email_status	TINYINT,
-fk_order_status_history	INT,
-`comment`	TEXT,
-bonus	DOUBLE
-);
+CREATE TABLE `t_credit_memo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_order` int(11) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_refunded` datetime DEFAULT NULL,
+  `credit_status` enum('paid','unpaid','cancelled') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_contact` int(11) DEFAULT NULL,
+  `email_status` tinyint(4) DEFAULT NULL,
+  `comment` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE t_order_product(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_order	INT,
-fk_product	INT,
-orginal_price	DOUBLE,
-price	DOUBLE,
-quantity	DOUBLE,
-discharge	DOUBLE
-);
+/*Data for the table `t_credit_memo` */
 
-CREATE TABLE t_invoice(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_order	INT,
-fk_customer	INT,
-date_created	DATETIME,
-date_paid	DATETIME,
-invoice_status	ENUM('unpaid', 'paid', 'cancelled'),
-fk_contact	INT,
-email_status	TINYINT,
-`comment`	TEXT
+/*Table structure for table `t_feature_product` */
 
-);
+DROP TABLE IF EXISTS `t_feature_product`;
 
-CREATE TABLE t_invoice_detail(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_invoice	INT,
-fk_product	INT,
-fk_order	INT,
-quantity	DOUBLE
+CREATE TABLE `t_feature_product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_product` int(11) DEFAULT NULL,
+  `is_on_homepage` tinyint(4) DEFAULT '0',
+  `sort` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-);
+/*Data for the table `t_feature_product` */
 
-CREATE TABLE t_credit_memo(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_order	INT,
-date_created	DATETIME,
-date_refuned	DATETIME,
-credit_status	ENUM('paid', 'unpaid', 'cancelled'),
-fk_contact	INT,
-email_status	TINYINT,
-`comment`	TEXT
-);
+insert  into `t_feature_product`(`id`,`fk_product`,`is_on_homepage`,`sort`) values (1,1,1,1),(2,2,1,2);
 
-CREATE TABLE t_user_contact(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_user	INT,
-date_created	DATETIME,
-date_used	DATETIME,
-count_used	INT,
-prefix	VARCHAR(100),
-firstname	VARCHAR(100),
-middlename	VARCHAR(100),
-lastname	VARCHAR(100),
-suffix	VARCHAR(100),
-company	VARCHAR(255),
-street_address	TEXT,
-city	VARCHAR(255),
-country	VARCHAR(10),
-state_province	VARCHAR(50),
-zip_postal_code	VARCHAR(10),
-telephone	VARCHAR(20),
-fax	VARCHAR(20),
-vat_number	VARCHAR(50)
-);
+/*Table structure for table `t_invoice` */
 
-CREATE TABLE t_shipment(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_order	INT,
-fk_customer	INT,
-date_created	DATETIME,
-date_shipped	DATETIME,
-`comment`	TEXT
+DROP TABLE IF EXISTS `t_invoice`;
 
-);
+CREATE TABLE `t_invoice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_order` int(11) DEFAULT NULL,
+  `fk_customer` int(11) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_paid` datetime DEFAULT NULL,
+  `invoice_status` enum('unpaid','paid','cancelled') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_contact` int(11) DEFAULT NULL,
+  `email_status` tinyint(4) DEFAULT NULL,
+  `comment` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE t_shipment_detail(
-id	INT PRIMARY KEY,
-fk_order	INT,
-fk_product	INT,
-quantity	DOUBLE,
-fk_shipment	INT
-);
+/*Data for the table `t_invoice` */
 
-CREATE TABLE t_order_status_history(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_order	INT,
-fk_status	INT,
-date_happened	DATETIME,
-fk_creator	INT,
-date_created	DATETIME,
-is_mail_sent	TINYINT DEFAULT 0
+/*Table structure for table `t_invoice_detail` */
 
-);
+DROP TABLE IF EXISTS `t_invoice_detail`;
 
-CREATE TABLE t_wishlist(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_customer	INT,
-`name`	INT,
-remind_date	DATETIME,
-note	TEXT,
-date_created DATETIME
-);
+CREATE TABLE `t_invoice_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_invoice` int(11) DEFAULT NULL,
+  `fk_product` int(11) DEFAULT NULL,
+  `fk_order` int(11) DEFAULT NULL,
+  `quantity` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE t_wishlist_detail(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_wishlist	INT,
-`type`	ENUM('product', 'note', 'link'),
-note	TEXT,
-fk_product	INT
-);
+/*Data for the table `t_invoice_detail` */
 
-CREATE TABLE t_feature_product(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_product	INT,
-fk_category	INT,
-sort	TINYINT
+/*Table structure for table `t_list` */
 
-);
+DROP TABLE IF EXISTS `t_list`;
 
-CREATE TABLE t_retailer_category(
-id	INT PRIMARY KEY AUTO_INCREMENT,
-fk_retailer	INT,
-fk_category	INT
+CREATE TABLE `t_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_listtype` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sort` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-);
+/*Data for the table `t_list` */
 
+insert  into `t_list`(`id`,`fk_listtype`,`name`,`codename`,`sort`) values (1,1,'glass','glass',1),(2,1,'pottery','pottery',2),(3,1,'wooden','wooden',3),(4,1,'plastic','plastic',4),(5,1,'other','other',5),(6,2,'lover','lover',1),(7,2,'parent','parent',2),(8,2,'family','family',3),(9,2,'friend','friend',4),(10,2,'children','children',5),(11,3,'birthday','birthday',1),(12,3,'new year','newyear',2),(13,3,'noel','noel',3),(14,4,'USD','USD',1),(15,4,'VND','VND',2),(16,5,'Vietnam','VN',1),(17,5,'US','US',2),(18,5,'Korea','KR',3),(19,6,'express','express',1),(20,6,'in3day','in3day',2),(21,7,'cash','cash',1),(22,7,'bank transfer','transfer',2),(23,7,'bank check','check',3);
 
+/*Table structure for table `t_listtype` */
+
+DROP TABLE IF EXISTS `t_listtype`;
+
+CREATE TABLE `t_listtype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_listtype` */
+
+insert  into `t_listtype`(`id`,`name`,`codename`,`status`) values (1,'material','material',1),(2,'gift target','gift_target',1),(3,'occasion','occasion',1),(4,'currency','currency',1),(5,'source','source',1),(6,'shipping method','shipping_method',1),(7,'payment method','payment_method',1);
+
+/*Table structure for table `t_order` */
+
+DROP TABLE IF EXISTS `t_order`;
+
+CREATE TABLE `t_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_customer` int(11) DEFAULT NULL,
+  `subtotal` double DEFAULT NULL,
+  `fk_order_status_history` int(11) DEFAULT NULL,
+  `comment` text COLLATE utf8_unicode_ci,
+  `bonus` double DEFAULT NULL,
+  `fk_shipping_method` int(11) DEFAULT NULL,
+  `fk_payment_method` int(11) DEFAULT NULL,
+  `fk_currency` int(11) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_order` */
+
+/*Table structure for table `t_order_product` */
+
+DROP TABLE IF EXISTS `t_order_product`;
+
+CREATE TABLE `t_order_product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_order` int(11) DEFAULT NULL,
+  `fk_product` int(11) DEFAULT NULL,
+  `orginal_price` double DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `quantity` double DEFAULT NULL,
+  `discharge` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_order_product` */
+
+/*Table structure for table `t_order_status` */
+
+DROP TABLE IF EXISTS `t_order_status`;
+
+CREATE TABLE `t_order_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sort` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_order_status` */
+
+insert  into `t_order_status`(`id`,`name`,`codename`,`sort`) values (1,'initiate','init',1),(2,'picking','picking',2),(3,'pay','pay',3),(4,'shipping','shipping',4),(5,'completed','completed',5);
+
+/*Table structure for table `t_order_status_history` */
+
+DROP TABLE IF EXISTS `t_order_status_history`;
+
+CREATE TABLE `t_order_status_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_order` int(11) DEFAULT NULL,
+  `fk_status` int(11) DEFAULT NULL,
+  `date_happened` datetime DEFAULT NULL,
+  `fk_creator` int(11) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `is_mail_sent` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_order_status_history` */
+
+/*Table structure for table `t_pin` */
+
+DROP TABLE IF EXISTS `t_pin`;
+
+CREATE TABLE `t_pin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_user` int(11) DEFAULT NULL,
+  `fk_product` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_pin` */
+
+/*Table structure for table `t_privilege` */
+
+DROP TABLE IF EXISTS `t_privilege`;
+
+CREATE TABLE `t_privilege` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_instance` int(11) DEFAULT NULL,
+  `type` enum('user','role') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `privilige` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_privilege` */
+
+/*Table structure for table `t_product` */
+
+DROP TABLE IF EXISTS `t_product`;
+
+CREATE TABLE `t_product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_category` int(11) DEFAULT NULL,
+  `fk_retailer` int(11) DEFAULT NULL,
+  `fk_group` int(11) DEFAULT NULL,
+  `is_group` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_product` */
+
+insert  into `t_product`(`id`,`fk_category`,`fk_retailer`,`fk_group`,`is_group`) values (1,1,1,NULL,0),(2,1,1,NULL,0),(3,1,1,NULL,0),(4,1,1,NULL,0),(5,1,1,NULL,0),(6,1,1,NULL,0),(7,1,1,NULL,0),(8,1,1,NULL,0),(9,1,1,NULL,0),(10,1,1,NULL,0),(11,1,1,NULL,0),(12,1,1,NULL,0);
+
+/*Table structure for table `t_product_attribute` */
+
+DROP TABLE IF EXISTS `t_product_attribute`;
+
+CREATE TABLE `t_product_attribute` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_product` int(11) DEFAULT NULL,
+  `fk_attribute_type` int(11) DEFAULT NULL,
+  `value_number` double DEFAULT NULL,
+  `value_enum` int(11) DEFAULT NULL,
+  `value_text` text COLLATE utf8_unicode_ci,
+  `language` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value_varchar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_product_attribute` */
+
+insert  into `t_product_attribute`(`id`,`fk_product`,`fk_attribute_type`,`value_number`,`value_enum`,`value_text`,`language`,`value_varchar`) values (1,1,1,NULL,NULL,NULL,'en','Strawberry pearl'),(2,1,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(3,1,2,NULL,NULL,'product description','en',NULL),(4,1,2,NULL,NULL,'mo ta sp','vi',NULL),(5,1,3,NULL,NULL,NULL,'en','pearl'),(6,1,3,NULL,NULL,NULL,'vi','ngọc'),(7,1,3,NULL,NULL,NULL,'en','glass'),(8,1,3,NULL,NULL,NULL,'vi','pha lê'),(9,1,7,NULL,1,NULL,NULL,NULL),(10,2,1,NULL,NULL,NULL,'en','Strawberry pearl'),(11,2,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(12,2,2,NULL,NULL,'product description','en',NULL),(13,2,2,NULL,NULL,'mo ta sp','vi',NULL),(14,2,3,NULL,NULL,NULL,'en','pearl'),(15,2,3,NULL,NULL,NULL,'vi','ngọc'),(16,2,3,NULL,NULL,NULL,'en','glass'),(17,2,3,NULL,NULL,NULL,'vi','pha lê'),(18,2,7,NULL,1,NULL,NULL,NULL),(25,3,1,NULL,NULL,NULL,'en','Strawberry pearl'),(26,3,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(27,3,2,NULL,NULL,'product description','en',NULL),(28,3,2,NULL,NULL,'mo ta sp','vi',NULL),(29,3,3,NULL,NULL,NULL,'en','pearl'),(30,3,3,NULL,NULL,NULL,'vi','ngọc'),(31,3,3,NULL,NULL,NULL,'en','glass'),(32,3,3,NULL,NULL,NULL,'vi','pha lê'),(33,3,7,NULL,1,NULL,NULL,NULL),(40,4,1,NULL,NULL,NULL,'en','Strawberry pearl'),(41,4,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(42,4,2,NULL,NULL,'product description','en',NULL),(43,4,2,NULL,NULL,'mo ta sp','vi',NULL),(44,4,3,NULL,NULL,NULL,'en','pearl'),(45,4,3,NULL,NULL,NULL,'vi','ngọc'),(46,4,3,NULL,NULL,NULL,'en','glass'),(47,4,3,NULL,NULL,NULL,'vi','pha lê'),(48,4,7,NULL,1,NULL,NULL,NULL),(55,5,1,NULL,NULL,NULL,'en','Strawberry pearl'),(56,5,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(57,5,2,NULL,NULL,'product description','en',NULL),(58,5,2,NULL,NULL,'mo ta sp','vi',NULL),(59,5,3,NULL,NULL,NULL,'en','pearl'),(60,5,3,NULL,NULL,NULL,'vi','ngọc'),(61,5,3,NULL,NULL,NULL,'en','glass'),(62,5,3,NULL,NULL,NULL,'vi','pha lê'),(63,5,7,NULL,1,NULL,NULL,NULL),(70,6,1,NULL,NULL,NULL,'en','Strawberry pearl'),(71,6,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(72,6,2,NULL,NULL,'product description','en',NULL),(73,6,2,NULL,NULL,'mo ta sp','vi',NULL),(74,6,3,NULL,NULL,NULL,'en','pearl'),(75,6,3,NULL,NULL,NULL,'vi','ngọc'),(76,6,3,NULL,NULL,NULL,'en','glass'),(77,6,3,NULL,NULL,NULL,'vi','pha lê'),(78,6,7,NULL,1,NULL,NULL,NULL),(85,7,1,NULL,NULL,NULL,'en','Strawberry pearl'),(86,7,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(87,7,2,NULL,NULL,'product description','en',NULL),(88,7,2,NULL,NULL,'mo ta sp','vi',NULL),(89,7,3,NULL,NULL,NULL,'en','pearl'),(90,7,3,NULL,NULL,NULL,'vi','ngọc'),(91,7,3,NULL,NULL,NULL,'en','glass'),(92,7,3,NULL,NULL,NULL,'vi','pha lê'),(93,7,7,NULL,1,NULL,NULL,NULL),(100,8,1,NULL,NULL,NULL,'en','Strawberry pearl'),(101,8,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(102,8,2,NULL,NULL,'product description','en',NULL),(103,8,2,NULL,NULL,'mo ta sp','vi',NULL),(104,8,3,NULL,NULL,NULL,'en','pearl'),(105,8,3,NULL,NULL,NULL,'vi','ngọc'),(106,8,3,NULL,NULL,NULL,'en','glass'),(107,8,3,NULL,NULL,NULL,'vi','pha lê'),(108,8,7,NULL,1,NULL,NULL,NULL),(115,9,1,NULL,NULL,NULL,'en','Strawberry pearl'),(116,9,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(117,9,2,NULL,NULL,'product description','en',NULL),(118,9,2,NULL,NULL,'mo ta sp','vi',NULL),(119,9,3,NULL,NULL,NULL,'en','pearl'),(120,9,3,NULL,NULL,NULL,'vi','ngọc'),(121,9,3,NULL,NULL,NULL,'en','glass'),(122,9,3,NULL,NULL,NULL,'vi','pha lê'),(123,9,7,NULL,1,NULL,NULL,NULL),(130,10,1,NULL,NULL,NULL,'en','Strawberry pearl'),(131,10,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(132,10,2,NULL,NULL,'product description','en',NULL),(133,10,2,NULL,NULL,'mo ta sp','vi',NULL),(134,10,3,NULL,NULL,NULL,'en','pearl'),(135,10,3,NULL,NULL,NULL,'vi','ngọc'),(136,10,3,NULL,NULL,NULL,'en','glass'),(137,10,3,NULL,NULL,NULL,'vi','pha lê'),(138,10,7,NULL,1,NULL,NULL,NULL),(145,11,1,NULL,NULL,NULL,'en','Strawberry pearl'),(146,11,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(147,11,2,NULL,NULL,'product description','en',NULL),(148,11,2,NULL,NULL,'mo ta sp','vi',NULL),(149,11,3,NULL,NULL,NULL,'en','pearl'),(150,11,3,NULL,NULL,NULL,'vi','ngọc'),(151,11,3,NULL,NULL,NULL,'en','glass'),(152,11,3,NULL,NULL,NULL,'vi','pha lê'),(153,11,7,NULL,1,NULL,NULL,NULL),(160,12,1,NULL,NULL,NULL,'en','Strawberry pearl'),(161,12,1,NULL,NULL,NULL,'vi','Pha lê dâu'),(162,12,2,NULL,NULL,'product description','en',NULL),(163,12,2,NULL,NULL,'mo ta sp','vi',NULL),(164,12,3,NULL,NULL,NULL,'en','pearl'),(165,12,3,NULL,NULL,NULL,'vi','ngọc'),(166,12,3,NULL,NULL,NULL,'en','glass'),(167,12,3,NULL,NULL,NULL,'vi','pha lê'),(168,12,7,NULL,1,NULL,NULL,NULL);
+
+/*Table structure for table `t_product_attribute_type` */
+
+DROP TABLE IF EXISTS `t_product_attribute_type`;
+
+CREATE TABLE `t_product_attribute_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `datatype` enum('number','enum','text','varchar') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_enum_ref` int(11) DEFAULT NULL,
+  `multi_language` tinyint(4) DEFAULT '0',
+  `repeating_group` tinyint(4) DEFAULT '0',
+  `weight` int(11) DEFAULT '0',
+  `default` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_product_attribute_type` */
+
+insert  into `t_product_attribute_type`(`id`,`codename`,`datatype`,`fk_enum_ref`,`multi_language`,`repeating_group`,`weight`,`default`) values (1,'name','varchar',NULL,1,0,0,NULL),(2,'description','text',NULL,1,0,0,NULL),(3,'tag','varchar',NULL,1,1,0,NULL),(4,'image','text',NULL,0,1,0,NULL),(5,'thumbnail','text',NULL,0,0,0,NULL),(6,'banner_image','text',NULL,0,0,0,NULL),(7,'material','enum',1,0,1,0,NULL),(8,'gift_target','enum',2,0,1,0,NULL),(9,'category','number',NULL,0,0,0,NULL),(10,'occasion','enum',3,0,1,0,NULL),(11,'price','number',NULL,0,0,0,NULL),(12,'currency','enum',4,0,0,0,NULL),(13,'quantity','number',NULL,0,0,0,NULL),(14,'weight','number',NULL,0,0,0,NULL),(15,'source','enum',NULL,0,0,0,NULL),(16,'shipping_method','enum',6,0,1,0,NULL),(17,'payment_method','enum',7,0,1,0,NULL);
+
+/*Table structure for table `t_product_comment` */
+
+DROP TABLE IF EXISTS `t_product_comment`;
+
+CREATE TABLE `t_product_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_product` int(11) DEFAULT NULL,
+  `fk_user` int(11) DEFAULT NULL,
+  `fk_parent` int(11) DEFAULT '0',
+  `body` text COLLATE utf8_unicode_ci,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_product_comment` */
+
+/*Table structure for table `t_rating` */
+
+DROP TABLE IF EXISTS `t_rating`;
+
+CREATE TABLE `t_rating` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_user` int(11) DEFAULT NULL,
+  `fk_product` int(11) DEFAULT NULL,
+  `rate` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_rating` */
+
+/*Table structure for table `t_relationship` */
+
+DROP TABLE IF EXISTS `t_relationship`;
+
+CREATE TABLE `t_relationship` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_user1` int(11) DEFAULT NULL,
+  `fk_user2` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_relationship` */
+
+/*Table structure for table `t_retailer` */
+
+DROP TABLE IF EXISTS `t_retailer`;
+
+CREATE TABLE `t_retailer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `logo` text COLLATE utf8_unicode_ci,
+  `phoneno` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `website` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  `status_date` datetime DEFAULT NULL,
+  `status_reason` text COLLATE utf8_unicode_ci,
+  `fk_manager` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_retailer` */
+
+/*Table structure for table `t_retailer_category` */
+
+DROP TABLE IF EXISTS `t_retailer_category`;
+
+CREATE TABLE `t_retailer_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_retailer` int(11) DEFAULT NULL,
+  `fk_category` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_retailer_category` */
+
+/*Table structure for table `t_role` */
+
+DROP TABLE IF EXISTS `t_role`;
+
+CREATE TABLE `t_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_role` */
+
+insert  into `t_role`(`id`,`name`,`codename`) values (1,'Admin','admin'),(2,'Customer','customer'),(3,'Guest','guest'),(4,'Retailer','retailer');
+
+/*Table structure for table `t_shipment` */
+
+DROP TABLE IF EXISTS `t_shipment`;
+
+CREATE TABLE `t_shipment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_order` int(11) DEFAULT NULL,
+  `fk_customer` int(11) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_shipped` datetime DEFAULT NULL,
+  `comment` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_shipment` */
+
+/*Table structure for table `t_shipment_detail` */
+
+DROP TABLE IF EXISTS `t_shipment_detail`;
+
+CREATE TABLE `t_shipment_detail` (
+  `id` int(11) NOT NULL,
+  `fk_order` int(11) DEFAULT NULL,
+  `fk_product` int(11) DEFAULT NULL,
+  `quantity` double DEFAULT NULL,
+  `fk_shipment` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_shipment_detail` */
+
+/*Table structure for table `t_user` */
+
+DROP TABLE IF EXISTS `t_user`;
+
+CREATE TABLE `t_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sex` enum('M','F','O') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DOB` datetime DEFAULT NULL,
+  `date_joined` datetime DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  `status_date` datetime DEFAULT NULL,
+  `status_reason` text COLLATE utf8_unicode_ci,
+  `last_active` datetime DEFAULT NULL,
+  `phoneno` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bonus` double DEFAULT '0',
+  `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hashid` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_user` */
+
+insert  into `t_user`(`id`,`firstname`,`lastname`,`sex`,`DOB`,`date_joined`,`status`,`status_date`,`status_reason`,`last_active`,`phoneno`,`bonus`,`email`,`hashid`) values (1,'Mr','Admin','M',NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL),(2,'Ms','Alice','F',NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL),(3,'Mr','John Smith','M',NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL);
+
+/*Table structure for table `t_user_contact` */
+
+DROP TABLE IF EXISTS `t_user_contact`;
+
+CREATE TABLE `t_user_contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_user` int(11) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_used` datetime DEFAULT NULL,
+  `count_used` int(11) DEFAULT NULL,
+  `prefix` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `firstname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `middlename` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `suffix` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `company` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `street_address` text COLLATE utf8_unicode_ci,
+  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `state_province` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `zip_postal_code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telephone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fax` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `vat_number` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_user_contact` */
+
+insert  into `t_user_contact`(`id`,`fk_user`,`date_created`,`date_used`,`count_used`,`prefix`,`firstname`,`middlename`,`lastname`,`suffix`,`company`,`street_address`,`city`,`country`,`state_province`,`zip_postal_code`,`telephone`,`fax`,`vat_number`) values (1,2,NULL,NULL,1,'Mr','Adrew',NULL,'Kingsley',NULL,NULL,'12 Wall st\r\n','New york','America',NULL,NULL,'012347888',NULL,NULL);
+
+/*Table structure for table `t_user_role` */
+
+DROP TABLE IF EXISTS `t_user_role`;
+
+CREATE TABLE `t_user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_user` int(11) DEFAULT NULL,
+  `fk_role` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_user_role` */
+
+insert  into `t_user_role`(`id`,`fk_user`,`fk_role`) values (1,1,1),(2,2,2),(3,3,4);
+
+/*Table structure for table `t_wishlist` */
+
+DROP TABLE IF EXISTS `t_wishlist`;
+
+CREATE TABLE `t_wishlist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_customer` int(11) DEFAULT NULL,
+  `name` int(11) DEFAULT NULL,
+  `remind_date` datetime DEFAULT NULL,
+  `note` text COLLATE utf8_unicode_ci,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_wishlist` */
+
+insert  into `t_wishlist`(`id`,`fk_customer`,`name`,`remind_date`,`note`,`date_created`) values (1,2,0,NULL,NULL,NULL);
+
+/*Table structure for table `t_wishlist_detail` */
+
+DROP TABLE IF EXISTS `t_wishlist_detail`;
+
+CREATE TABLE `t_wishlist_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_wishlist` int(11) DEFAULT NULL,
+  `type` enum('product','note','link') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `note` text COLLATE utf8_unicode_ci,
+  `fk_product` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_wishlist_detail` */
+
+insert  into `t_wishlist_detail`(`id`,`fk_wishlist`,`type`,`note`,`fk_product`) values (1,1,'product',NULL,1),(2,1,'link','Something candles',NULL);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
