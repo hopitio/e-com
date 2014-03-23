@@ -11,12 +11,12 @@ class OrderDomain implements DomainInterface
     public $uid;
     public $fkCustomer;
     public $subTotal;
-    public $emailStatus;
     public $fkOrderStatusHistory;
     public $comment;
     public $bonus;
     public $fkShippingMethod;
     public $fkPaymentMethod;
     public $fkCurrency;
+    public $dateCreated;
 
 }

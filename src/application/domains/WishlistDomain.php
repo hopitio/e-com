@@ -12,5 +12,19 @@ class WishlistDomain implements DomainInterface
     public $note;
     public $dateCreated;
 
-    
+    /** @var WishlistDetailDomain */
+    protected $_details = array();
+
+    function addWishlistDetail(WishlistDetailDomain $child)
+    {
+        $this->_details[] = $child;
+        return $this;
+    }
+
+    /** @return WishlistDetailDomain */
+    function getDetails()
+    {
+        return $this->_details;
+    }
+
 }

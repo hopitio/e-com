@@ -121,4 +121,16 @@ abstract class MapperAbstract
         return $domains;
     }
 
+    public function limit($limit, $offset = 0)
+    {
+        $this->_query->limit($limit)->offset($offset);
+        return $this;
+    }
+
+    public function offset($offset)
+    {
+        $this->_query->offset($offset);
+        return $this;
+    }
+
 }

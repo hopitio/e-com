@@ -41,7 +41,7 @@ class ProductAttributeMapper extends MapperAbstract
         return $this;
     }
 
-    function filterLanguage($language = null)
+    function setLanguage($language = null)
     {
         if ($language)
         {

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or die('No direct script access allowed');
 
-class WishlistDetailDomain implements DomainInterface
+class WishlistDetailDomain extends ProductFixedDomain
 {
 
     const TYPE_PRODUCT = 'product';

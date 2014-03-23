@@ -9,7 +9,8 @@ class CategoryMapper extends MapperAbstract
     {
         $query = Query::make()
                 ->from('t_category c')
-                ->innerJoin('t_category_language cl', 'c.id=cl.fk_category');
+                ->innerJoin('t_category_language cl', 'c.id=cl.fk_category')
+                ->orderBy('c.path');
 
         $map = array(
             'fkParent' => 'fk_parent'
@@ -61,7 +62,7 @@ class CategoryMapper extends MapperAbstract
         return $this;
     }
 
-    public function filterLanguage($language)
+    public function setLanguage($language)
     {
         $this->_query->where('cl.language = ?', __METHOD__);
         $this->_queryParams[__METHOD__] = $language;
@@ -76,6 +77,31 @@ class CategoryMapper extends MapperAbstract
     public function delete()
     {
         
+    }
+
+    function filterParent($parent_id)
+    {
+        $this->_query->where('c.fk_parent = ?', 'child_of');
+        $this->_queryParams['child_of'] = $parent_id;
+        return $this;
+    }
+
+    function filterAncestor($ancestor_id)
+    {
+        $queryAncestorPath = Query::make()->select('path')->from('t_category')->where('id=' . intval($ancestor_id));
+        $path = DB::getInstance()->GetOne($queryAncestorPath);
+
+        if ($path !== false)
+        {
+            $this->_query->where('c.path LIKE ?', 'child_of');
+            $this->_queryParams['child_of'] = "{$path}%";
+        }
+        else
+        {
+            trigger_error(__CLASS__ . ':' . __FUNCTION__ . ': không tìm thấy parent hoặc path parent có vấn đề');
+        }
+
+        return $this;
     }
 
 }
