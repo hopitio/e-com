@@ -12,8 +12,7 @@ class sitemap extends BaseController
         $data = $categoryModel->loadAllCategory('vi');
         echo '<pre/>';
         var_dump($data);
-        $this->load->view('sitemap');
-        
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->render('sitemap');
     }
     
     /**

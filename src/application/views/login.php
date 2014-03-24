@@ -2,7 +2,11 @@
     <div class="leftContent box">
         <form action='#'>
             <h3> <?php echo $language[$view->view]->registeTitle;?></h3>
-            <h2 style="font-size: 20px;"> Tính năng đang trong quá trình phát triển ...</h2>
+            <form method='post'>
+                <div>email <input name='us' type='text' /></div>
+                <div>password <input name='ps' type='password' /></div>
+                <div>password <input name='ps' type='text' /></div>
+            </form>
         </form>
     </div>
     <div class="rightContent box">

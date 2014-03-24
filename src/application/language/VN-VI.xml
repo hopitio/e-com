@@ -19,4 +19,7 @@
     <layout>
         <demo>DEMO DATA</demo>
     </layout>
+    <sitemap>
+        <title>Sitemap</title>
+    </sitemap>
 </data>
