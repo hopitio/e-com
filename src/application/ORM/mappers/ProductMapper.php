@@ -53,7 +53,7 @@ class ProductMapper extends MapperAbstract
      */
     function find($id, $fields = 'p.*')
     {
-        $query = Query::make()->select($fields)->from('t_product')->where('p.id=?');
+        $query = Query::make()->select($fields)->from('t_product p')->where('p.id=?');
         $record = DB::getInstance()->GetRow($query, array($id));
         $product = $this->makeDomain($record);
         if ($this->_autoloadAttributes)
@@ -108,7 +108,7 @@ class ProductMapper extends MapperAbstract
         $attrMapper = ProductAttributeMapper::make()
                 ->filterProduct($product_id)
                 ->filterRepeatingGroup(false)
-                ->filterLanguage($language);
+                ->setLanguage($language);
         return $attrMapper->findAll();
     }
 
@@ -122,7 +122,7 @@ class ProductMapper extends MapperAbstract
         $attrMapper = ProductAttributeMapper::make()
                 ->filterProduct($product_id)
                 ->filterRepeatingGroup(true)
-                ->filterLanguage($language);
+                ->setLanguage($language);
         return $attrMapper->findAll();
     }
 
