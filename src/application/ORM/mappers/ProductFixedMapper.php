@@ -19,5 +19,16 @@ class ProductFixedMapper extends ProductMapper
     {
         return parent::findAll($fields);
     }
+    
+    /**
+     * 
+     * @param type $id
+     * @param type $fields
+     * @return ProductFixedDomain
+     */
+    function find($id, $fields = 'p.*')
+    {
+        return parent::find($id, $fields);
+    }
 
 }

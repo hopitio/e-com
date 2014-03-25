@@ -22,9 +22,7 @@
     <sitemap>
         <title>Sitemap</title>
     </sitemap>
-    <product>
-        <details>
-            
-        </details>
-    </product>
+    <product_details>
+        <productInfomation>Thông tin sản phẩm</productInfomation>
+    </product_details>
 </data>

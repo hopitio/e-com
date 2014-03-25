@@ -9,10 +9,9 @@ class product extends BaseController
     function details($productID)
     {
         //query product
-        DB::getInstance()->debug = 1;
         $product = ProductFixedMapper::make()->autoloadAttributes(true, 'VN-VI')->find($productID);
         $data = array('product' => $product);
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data, true)
                 ->render('product/details');
     }

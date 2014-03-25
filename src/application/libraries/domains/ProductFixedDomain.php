@@ -83,4 +83,14 @@ class ProductFixedDomain extends ProductDomain
         return $this->_getAttributeByName('material');
     }
 
+    function getQuantity()
+    {
+        return $this->_getAttributeByName('quantity');
+    }
+
+    function isAvailable()
+    {
+        return ((bool) $this->getQuantity());
+    }
+
 }
