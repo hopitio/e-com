@@ -48,12 +48,10 @@
 $active_group = 'lynx';
 $active_record = TRUE;
 
-
 $db['lynx']['hostname'] = '127.0.0.1';
 $db['lynx']['username'] = 'root';
-$db['lynx']['password'] = 'root';
+$db['lynx']['password'] = '';
 $db['lynx']['database'] = 'eproject';
-
 $db['lynx']['dbdriver'] = 'mysqli';
 $db['lynx']['dbprefix'] = '';
 $db['lynx']['pconnect'] = TRUE;
@@ -66,6 +64,24 @@ $db['lynx']['swap_pre'] = '';
 $db['lynx']['autoinit'] = TRUE;
 $db['lynx']['stricton'] = FALSE;
 $db['lynx']['port']     = 3306;
+
+
+$db['portal']['hostname'] = '127.0.0.1';
+$db['portal']['username'] = 'root';
+$db['portal']['password'] = '';
+$db['portal']['database'] = 'portal_e_project';
+$db['portal']['dbdriver'] = 'mysql';
+$db['portal']['dbprefix'] = '';
+$db['portal']['pconnect'] = TRUE;
+$db['portal']['db_debug'] = TRUE;
+$db['portal']['cache_on'] = FALSE;
+$db['portal']['cachedir'] = '';
+$db['portal']['char_set'] = 'utf8';
+$db['portal']['dbcollat'] = 'utf8_general_ci';
+$db['portal']['swap_pre'] = '';
+$db['portal']['autoinit'] = TRUE;
+$db['portal']['stricton'] = FALSE;
+$db['portal']['port']     = 3306;
 
 
 /* End of file database.php */

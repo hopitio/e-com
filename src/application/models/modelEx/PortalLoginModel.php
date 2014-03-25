@@ -4,7 +4,7 @@
  * @author ANLT
  * @since 20140317
  */
-class LoginModel extends BaseModels
+class PortalLoginModel extends PortalBaseModel
 {
     /**
      * Thực hiện việc valid dữ liệu.

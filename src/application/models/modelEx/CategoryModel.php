@@ -5,7 +5,7 @@
  * @author ANLT 
  * @since 201403121
  */
-class category extends BaseModels
+class CategoryModel extends BaseModel
 {
 
     CONST CACHE_KEY = 'CACHE_KEY';

@@ -13,11 +13,22 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-         $route['portal/login'] = 'sysController/login/showPage';
-         $route['portal/loginComplete'] = 'sysController/login/loginCompleteShowPage';
          $route['home'] = 'sysController/home/showHome';
          $route['logout'] = 'sysController/login/out';
          $route['sitemap'] = 'sysController/sitemap/showPage';
+    }
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        $route['__portal/callback'] = 'portalProcess/portalProcess/portalAuthen';
+    }
+    
+    //portal/////////////////////////////////////////////////////////////////////////////////////
+    if ($_SERVER['REQUEST_METHOD'] == 'GET')
+    {
+        $route['portal/login'] = 'sysController/login/showPage';
+        $route['portal/loginComplete'] = 'sysController/login/loginCompleteShowPage';
+        $route['portal/register'] = 'sysController/register/registerAccount';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')

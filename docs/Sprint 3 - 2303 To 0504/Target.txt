@@ -16,11 +16,11 @@
 		
 - Cân đối lại estimate dựa trên phần update REQ của A.Hoàng
 - Danh sách các màn hình m sẽ phát triển trong sprint 3
-	+ Cart - 8h
-	+ Wishlist - 8h
-	+ Pin - 8h
-	+ Live chat - 12h
-	+ Account General  - 8h
-	+ Đăng ký - 20h (Bao gồm cả login facebook và google)
-	+ Order detail 
+	+ Cart - TA:8h
+	+ Wishlist - TA:8h
+	+ Pin - TA:8h
+	+ Live chat - TA:12h
+	+ Account General  - ANLT:8h
+	+ Đăng ký - ANLT: 16h (Bao gồm cả login facebook và google)
+	+ Order detail - Cần thêm thông tin
 	
