@@ -6,6 +6,7 @@ class DefaultLoadLanguage extends AbstractLoadLanguage{
      */
     public function getScreen($screenKey, $languageKey, $resource)
     {
+        $screenKey = str_replace("/","_",$screenKey);
         if(!isset($resource[$languageKey])){
             throw new LanguageNotSupported('Resource không hỗ trợ ngôn ngữ');
         }
