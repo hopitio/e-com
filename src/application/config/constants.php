@@ -3,6 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+
 /*
   |--------------------------------------------------------------------------
   | File and Directory Modes
@@ -50,5 +51,36 @@ define('platform_login_callback','platform_login_callback');
 define('platform_logout','platform_logout');
 
 
-/* End of file constants.php */
-/* Location: ./application/config/constants.php */
+//Database defined
+class DatabaseFixedValue{
+    CONST DEFAULT_FORMAT_DATE = 'YYYY-MM-DD HH:MM:SS';
+    CONST USER_STATUS_REGISTED = 0;
+    CONST USER_STATUS_OPENED = 1;
+    CONST USER_STATUS_CLOSED = 2;
+}
+class TableName{
+    CONST t_user = 't_user';
+}
+
+class T_user{
+    CONST tableName = 't_user';
+    CONST id = 'id';
+    CONST firstname = 'firstname';
+    CONST lastname = 'lastname';
+    CONST account = 'account';
+    CONST password = 'password';
+    CONST sex = 'sex';
+    CONST DOB = 'DOB';
+    CONST date_joined = 'date_joined';
+    CONST status = 'status';
+    CONST status_date = 'status_date';
+    CONST status_reason = 'status_reason';
+    CONST last_active = 'last_active';
+    CONST phoneno = 'phoneno';
+    CONST bonus = 'bonus';
+    CONST alternative_email = 'alternative_email';
+}
+
+
+
+

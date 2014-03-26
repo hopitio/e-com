@@ -14,6 +14,24 @@ class User{
     private $authenUrl = '/portal/login';
     private $callBack = '/__portal/authen';
     private $logout = "/logout";
+    
+    //Database mapping
+    public $id;
+    public $firstname;
+    public $lastname;
+    public $account;
+    public $password;
+    public $sex;
+    public $DOB;
+    public $date_joined;
+    public $status;
+    public $status_date;
+    public $status_reason;
+    public $last_active;
+    public $phoneno;
+    public $bonus;
+    public $alternative_email;
+    //END DATABASE
     function __construct(){
         $CI =& get_instance();
         $this->authenUrl = $CI->config->item(platform_login_url);
