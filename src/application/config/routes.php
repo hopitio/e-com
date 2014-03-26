@@ -13,28 +13,28 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-         $route['home'] = 'sysController/home/showHome';
-         $route['logout'] = 'sysController/login/out';
-         $route['sitemap'] = 'sysController/sitemap/showPage';
+         $route['home'] = 'home/showHome';
+         $route['logout'] = 'login/out';
+         $route['sitemap'] = 'sitemap/showPage';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $route['__portal/callback'] = 'portalProcess/portalProcess/portalAuthen';
+        $route['__portal/callback'] = 'portalCallbackController/portalProcess/portalAuthen';
     }
     
     //portal/////////////////////////////////////////////////////////////////////////////////////
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-        $route['portal/login'] = 'sysController/login/showPage';
-        $route['portal/loginComplete'] = 'sysController/login/loginCompleteShowPage';
-        $route['portal/register'] = 'sysController/register/registerAccount';
+        $route['portal/login'] = 'portalController/login/showPage';
+        $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
+        $route['portal/register'] = 'portalController/register/registerAccount';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $route['portal/login'] = 'sysController/login/authenicate';
-        $route['__portal/callback'] = 'portalProcess/portalProcess/portalAuthen';
+        $route['portal/login'] = 'portalController/login/authenicate';
+        //$route['__portal/callback'] = 'portalCallbackController/portalProcess/portalAuthen';
     }
 }
 //
