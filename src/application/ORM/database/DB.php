@@ -7,19 +7,21 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . "adodb5" . DIRECTORY_SEPARATOR . "a
 class DB
 {
 
+    const DEFAULT_INSTANCE = 'lynx';
+
     /** @var \ADOConnection */
-    static protected $_instance;
+    static protected $_instances = array();
 
     /** @var \DB_Config */
-    static protected $_config = array();
+    static protected $_configs = array();
 
     /**
      * 
      * @param \DB_Config $config
      */
-    static public function config(DBConfig $config)
+    static public function config($name, DBConfig $config)
     {
-        static::$_config = $config;
+        static::$_configs[$name] = $config;
     }
 
     /**
@@ -27,18 +29,18 @@ class DB
      * @global string $ADODB_CACHE_DIR
      * @return \ADOConnection
      */
-    static public function getInstance()
+    static public function getInstance($name = 'lynx')
     {
-        if (static::$_instance == null)
+        if (!isset(static::$_instances[$name]))
         {
-            if (!static::$_config)
+            if (!static::$_configs[$name])
             {
                 throw new Exception('Chưa gọi ' . __CLASS__ . '::' . 'config()');
             }
-            $config = static::$_config;
-            static::$_instance = NewADOConnection($config->type);
-            static::$_instance->debug = $config->debug;
-            $conn_status = static::$_instance->Connect(
+            $config = static::$_configs[$name];
+            static::$_instances[$name] = NewADOConnection($config->type);
+            static::$_instances[$name]->debug = $config->debug;
+            $conn_status = static::$_instances[$name]->Connect(
                     $config->host
                     , $config->user
                     , $config->password
@@ -47,10 +49,10 @@ class DB
             {
                 throw new Exception('Lỗi kết nối CSDL');
             }
-            static::$_instance->SetFetchMode(ADODB_FETCH_ASSOC);
-            static::$_instance->SetCharSet('utf8');
+            static::$_instances[$name]->SetFetchMode(ADODB_FETCH_ASSOC);
+            static::$_instances[$name]->SetCharSet('utf8');
         }
-        return static::$_instance;
+        return static::$_instances[$name];
     }
 
     /**
@@ -164,98 +166,98 @@ class DBConfig
  * @param 	bool	Determines if active record should be used or not
  * @return \ADOConnection
  */
-function DB($params = '', $active_record_override = NULL)
-{
-    // Load the DB config file if a DSN string wasn't passed
-    if (is_string($params) AND strpos($params, '://') === FALSE)
-    {
-        // Is the config file in the environment folder?
-        if (!defined('ENVIRONMENT') OR !file_exists($file_path = APPPATH . 'config/' . ENVIRONMENT . '/database.php'))
-        {
-            if (!file_exists($file_path = APPPATH . 'config/database.php'))
-            {
-                show_error('The configuration file database.php does not exist.');
-            }
-        }
-
-        include($file_path);
-
-        if (!isset($db) OR count($db) == 0)
-        {
-            show_error('No database connection settings were found in the database config file.');
-        }
-
-        if ($params != '')
-        {
-            $active_group = $params;
-        }
-
-        if (!isset($active_group) OR !isset($db[$active_group]))
-        {
-            show_error('You have specified an invalid database connection group.');
-        }
-
-        $params = $db[$active_group];
-    }
-    elseif (is_string($params))
-    {
-
-        /* parse the URL from the DSN string
-         *  Database settings can be passed as discreet
-         *  parameters or as a data source name in the first
-         *  parameter. DSNs must have this prototype:
-         *  $dsn = 'driver://username:password@hostname/database';
-         */
-
-        if (($dns = @parse_url($params)) === FALSE)
-        {
-            show_error('Invalid DB Connection String');
-        }
-
-        $params = array(
-            'dbdriver' => $dns['scheme'],
-            'hostname' => (isset($dns['host'])) ? rawurldecode($dns['host']) : '',
-            'username' => (isset($dns['user'])) ? rawurldecode($dns['user']) : '',
-            'password' => (isset($dns['pass'])) ? rawurldecode($dns['pass']) : '',
-            'database' => (isset($dns['path'])) ? rawurldecode(substr($dns['path'], 1)) : ''
-        );
-
-        // were additional config items set?
-        if (isset($dns['query']))
-        {
-            parse_str($dns['query'], $extra);
-
-            foreach ($extra as $key => $val)
-            {
-                // booleans please
-                if (strtoupper($val) == "TRUE")
-                {
-                    $val = TRUE;
-                }
-                elseif (strtoupper($val) == "FALSE")
-                {
-                    $val = FALSE;
-                }
-
-                $params[$key] = $val;
-            }
-        }
-    }
-
-    // No DB specified yet?  Beat them senseless...
-    if (!isset($params['dbdriver']) OR $params['dbdriver'] == '')
-    {
-        show_error('You have not selected a database type to connect to.');
-    }
-
-    $config = new DBConfig;
-    $config->type = $params['dbdriver'];
-    $config->host = $params['hostname'];
-    $config->user = $params['username'];
-    $config->password = $params['password'];
-    $config->database = $params['database'];
-    $config->debug = false;
-
-    DB::config($config);
-    return DB::getInstance();
-}
+//function DB($params = '', $active_record_override = NULL)
+//{
+//    // Load the DB config file if a DSN string wasn't passed
+//    if (is_string($params) AND strpos($params, '://') === FALSE)
+//    {
+//        // Is the config file in the environment folder?
+//        if (!defined('ENVIRONMENT') OR !file_exists($file_path = APPPATH . 'config/' . ENVIRONMENT . '/database.php'))
+//        {
+//            if (!file_exists($file_path = APPPATH . 'config/database.php'))
+//            {
+//                show_error('The configuration file database.php does not exist.');
+//            }
+//        }
+//
+//        include($file_path);
+//
+//        if (!isset($db) OR count($db) == 0)
+//        {
+//            show_error('No database connection settings were found in the database config file.');
+//        }
+//
+//        if ($params != '')
+//        {
+//            $active_group = $params;
+//        }
+//
+//        if (!isset($active_group) OR !isset($db[$active_group]))
+//        {
+//            show_error('You have specified an invalid database connection group.');
+//        }
+//
+//        $params = $db[$active_group];
+//    }
+//    elseif (is_string($params))
+//    {
+//
+//        /* parse the URL from the DSN string
+//         *  Database settings can be passed as discreet
+//         *  parameters or as a data source name in the first
+//         *  parameter. DSNs must have this prototype:
+//         *  $dsn = 'driver://username:password@hostname/database';
+//         */
+//
+//        if (($dns = @parse_url($params)) === FALSE)
+//        {
+//            show_error('Invalid DB Connection String');
+//        }
+//
+//        $params = array(
+//            'dbdriver' => $dns['scheme'],
+//            'hostname' => (isset($dns['host'])) ? rawurldecode($dns['host']) : '',
+//            'username' => (isset($dns['user'])) ? rawurldecode($dns['user']) : '',
+//            'password' => (isset($dns['pass'])) ? rawurldecode($dns['pass']) : '',
+//            'database' => (isset($dns['path'])) ? rawurldecode(substr($dns['path'], 1)) : ''
+//        );
+//
+//        // were additional config items set?
+//        if (isset($dns['query']))
+//        {
+//            parse_str($dns['query'], $extra);
+//
+//            foreach ($extra as $key => $val)
+//            {
+//                // booleans please
+//                if (strtoupper($val) == "TRUE")
+//                {
+//                    $val = TRUE;
+//                }
+//                elseif (strtoupper($val) == "FALSE")
+//                {
+//                    $val = FALSE;
+//                }
+//
+//                $params[$key] = $val;
+//            }
+//        }
+//    }
+//
+//    // No DB specified yet?  Beat them senseless...
+//    if (!isset($params['dbdriver']) OR $params['dbdriver'] == '')
+//    {
+//        show_error('You have not selected a database type to connect to.');
+//    }
+//
+//    $config = new DBConfig;
+//    $config->type = $params['dbdriver'];
+//    $config->host = $params['hostname'];
+//    $config->user = $params['username'];
+//    $config->password = $params['password'];
+//    $config->database = $params['database'];
+//    $config->debug = false;
+//
+//    DB::config($config);
+//    return DB::getInstance();
+//}

@@ -28,3 +28,19 @@ require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductFixedMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "FeatureProductMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "CategoryMapper.php";
+
+$portalConfig = new DBConfig;
+$portalConfig->type = 'mysqli';
+$portalConfig->host = 'localhost';
+$portalConfig->user = 'root';
+$portalConfig->password = 'root';
+$portalConfig->database = 'portal';
+DB::config('portal', $portalConfig);
+
+$mainConfig = new DBConfig;
+$mainConfig->type = 'mysqli';
+$mainConfig->host = 'localhost';
+$mainConfig->user = 'root';
+$mainConfig->password = 'root';
+$mainConfig->database = 'eproject';
+DB::config(DB::DEFAULT_INSTANCE, $mainConfig);
