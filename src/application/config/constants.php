@@ -53,10 +53,19 @@ define('platform_logout','platform_logout');
 
 //Database defined
 class DatabaseFixedValue{
-    CONST DEFAULT_FORMAT_DATE = 'YYYY-MM-DD HH:MM:SS';
+    CONST DEFAULT_FORMAT_DATE = 'Y-m-d h:m:s';
     CONST USER_STATUS_REGISTED = 0;
     CONST USER_STATUS_OPENED = 1;
     CONST USER_STATUS_CLOSED = 2;
+    
+    CONST USER_PLATFORM_DEFAULT = 0;
+    CONST USER_PLATFORM_FACEBOOK = 1;
+    CONST USER_PLATFORM_GOOGLE = 2;
+    
+    CONST USER_SETTING_KEY_RecivedEmail = 'isRecivedEmail';
+    CONST USER_SETTING_KEY_RecivedEmail_HAVERECIVE = 'Y';
+    CONST USER_SETTING_KEY_RecivedEmail_HAVENOTRECIVE = 'N';
+    CONST USER_SETTING_KEY_AlternativeEmail = 'AlternativeEmail';
 }
 class TableName{
     CONST t_user = 't_user';
@@ -76,9 +85,15 @@ class T_user{
     CONST status_date = 'status_date';
     CONST status_reason = 'status_reason';
     CONST last_active = 'last_active';
-    CONST phoneno = 'phoneno';
-    CONST bonus = 'bonus';
-    CONST alternative_email = 'alternative_email';
+    CONST platform_key = 'platform_key';
+}
+
+class T_user_setting{
+    CONST id = id;
+    CONST tableName = 't_user_setting';
+    CONST setting_key = 'setting_key';
+    CONST value = 'value';
+    CONST fk_user = 'fk_user';
 }
 
 

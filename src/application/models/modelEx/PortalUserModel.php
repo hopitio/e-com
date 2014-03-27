@@ -18,12 +18,7 @@ class PortalUserModel extends PortalBaseModel
     public $status_date;
     public $status_reason;
     public $last_active;
-    public $phoneno;
-    public $bonus;
-    public $alternative_email;
-    
-
-    
+    public $platform_key;
     
     /**
      * insert thêm một user mới
@@ -42,9 +37,7 @@ class PortalUserModel extends PortalBaseModel
             T_user::status_date=>$this->status_date,
             T_user::status_reason=>$this->status_reason,
             T_user::last_active=>$this->last_active,
-            T_user::phoneno=>$this->phoneno,
-            T_user::bonus=>$this->bonus,
-            T_user::alternative_email=>$this->alternative_email
+            T_user::platform_key=>$this->platform_key
         );
         $this->_dbPortal->insert(T_user::tableName,$data);
         return $this->_dbPortal->insert_id();
@@ -91,9 +84,7 @@ class PortalUserModel extends PortalBaseModel
             T_user::status_date=>$this->status_date,
             T_user::status_reason=>$this->status_reason,
             T_user::last_active=>$this->last_active,
-            T_user::phoneno=>$this->phoneno,
-            T_user::bonus=>$this->bonus,
-            T_user::alternative_email=>$this->alternative_email
+            T_user::platform_key=>$this->platform_key
         );
         $this->_dbPortal->where(T_user::id,$this->id);
         $this->_dbPortal->update(T_user::tableName,$data);

@@ -10,8 +10,14 @@ class login extends BaseController
     private $_css = array(
         '/style/login.css'
     );
+    
+    private $_js = array(
+        '/js/login.js'
+    );
+    
 
     CONST URL_TO_POST = '/portal/login';
+    CONST URL_TO_POST_RES = '/portal/register';
 
     private $_data = array();
 
@@ -23,12 +29,12 @@ class login extends BaseController
         $params = $this->getQueryStringParams();
         $url = !empty($params['u']) ? $params['u'] : '/__portal/authen';
         $redirectUrl = !empty($params['t']) ? $params['t'] : '/home';
-        $this->_data['postUrl'] = self::URL_TO_POST;
         $this->_data['postUrlCaller'] = $url;
         $this->_data['postUrlTarget'] = $redirectUrl;
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
             ->setData($this->_data, true)
             ->setCss($this->_css)
+            ->setJavascript($this->_js)
             ->render('login');
     }
 

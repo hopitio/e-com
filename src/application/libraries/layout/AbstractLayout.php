@@ -74,6 +74,15 @@ abstract class AbstractLayout
         $this->_css += $css;
         return $this;
     } 
+    
+    /**
+     * set javascript
+     * @param array $js
+     */
+    public function setJavascript($js = array()){
+    	$this->_javascript += $js;
+    	return $this;
+    }
 }
 
 class warper{};

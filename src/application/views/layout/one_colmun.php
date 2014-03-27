@@ -25,6 +25,14 @@
         <!-- Css -->
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
 
+        <!-- Thêm các js riêng biệt -->
+        <?php
+        foreach ($view->javascript as $jsItem)
+        {
+            echo '<script src="'. $jsItem .'"></script>';
+        }
+        ?>
+        
         <!-- Thêm các css riêng biệt -->
         <?php
         foreach ($view->css as $item)

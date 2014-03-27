@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2014 at 06:05 PM
+-- Generation Time: Mar 27, 2014 at 06:07 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -151,21 +151,25 @@ CREATE TABLE IF NOT EXISTS `t_user` (
   `status_date` datetime DEFAULT NULL,
   `status_reason` text COLLATE utf8_unicode_ci,
   `last_active` datetime DEFAULT NULL,
-  `phoneno` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `bonus` double DEFAULT '0',
-  `alternative_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `platform_key` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `t_user`
 --
 
-INSERT INTO `t_user` (`id`, `firstname`, `lastname`, `account`, `password`, `sex`, `DOB`, `date_joined`, `status`, `status_date`, `status_reason`, `last_active`, `phoneno`, `bonus`, `alternative_email`) VALUES
-(1, 'Mr', 'Admin', 'admin', NULL, 'M', NULL, NULL, 1, NULL, NULL, NULL, NULL, 0, NULL),
-(2, 'Ms', 'Alice', 'alice', NULL, 'F', NULL, NULL, 1, NULL, NULL, NULL, NULL, 0, NULL),
-(3, 'Mr', 'John Smith', 'smith', NULL, 'M', NULL, NULL, 1, NULL, NULL, NULL, NULL, 0, NULL),
-(4, 'An', 'Lê Thanh', 'lethanhan.bkaptech@gmail.com', 'ANLT', 'M', '2014-03-25 21:28:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', '0916002005', 0, 'lethanhan.bkaptech@gmail.com');
+INSERT INTO `t_user` (`id`, `firstname`, `lastname`, `account`, `password`, `sex`, `DOB`, `date_joined`, `status`, `status_date`, `status_reason`, `last_active`, `platform_key`) VALUES
+(10, '', '', '', '', 'M', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', 0),
+(11, '', '', '', '', 'M', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', 0),
+(12, 'LÊ THANH ', 'AN ', 'le.thanh.an@vsi-international.com', 'aaaaa', 'M', '2014-03-11 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', 0),
+(13, 'LÊ THANH ', 'AN ', 'le.thanh.an@vsi-international.com', 'aaaaa', 'M', '2014-03-11 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', 0),
+(14, 'LÊ THANH ', 'AN ', 'le.thanh.an@vsi-international.com', 'aaaaa', 'M', '2014-03-11 00:00:00', '2014-03-27 11:03:41', 0, '2014-03-27 11:03:41', 'Tạo mới tài khoản', '2014-03-27 11:03:41', 0),
+(15, 'LÊ THANH ', 'AN ', 'le.thanh.an@vsi-international.com', 'aaaaa', 'M', '2014-03-11 00:00:00', '2014-03-27 11:03:04', 0, '2014-03-27 11:03:04', 'Tạo mới tài khoản', '2014-03-27 11:03:04', 0),
+(16, 'âsdasd', 'ádasdasdasda', 'le.thanh.an@vsi-international.com', 'ádasd', 'M', '2014-03-06 00:00:00', '2014-03-28 12:03:11', 0, '2014-03-28 12:03:11', 'Tạo mới tài khoản', '2014-03-28 12:03:11', 0),
+(17, 'âsdasd', 'ádasdasdasda', 'le.thanh.an@vsi-international.com', 'ádasd', 'M', '2014-03-06 00:00:00', '2014-03-28 12:03:57', 0, '2014-03-28 12:03:57', 'Tạo mới tài khoản', '2014-03-28 12:03:57', 0),
+(18, 'âsdasd', 'ádasdasdasda', 'le.thanh.an@vsi-international.com', 'ádasd', 'M', '2014-03-06 00:00:00', '2014-03-28 12:03:56', 0, '2014-03-28 12:03:56', 'Tạo mới tài khoản', '2014-03-28 12:03:56', 0),
+(19, 'âsdasd', 'ádasdasdasda', 'le.thanh.an@vsi-international.com', 'ádasd', 'M', '2014-03-06 00:00:00', '2014-03-28 12:03:10', 0, '2014-03-28 12:03:10', 'Tạo mới tài khoản', '2014-03-28 12:03:10', 0);
 
 -- --------------------------------------------------------
 
@@ -202,6 +206,46 @@ CREATE TABLE IF NOT EXISTS `t_user_contact` (
 
 INSERT INTO `t_user_contact` (`id`, `fk_user`, `date_created`, `date_used`, `count_used`, `prefix`, `firstname`, `middlename`, `lastname`, `suffix`, `company`, `street_address`, `city`, `country`, `state_province`, `zip_postal_code`, `telephone`, `fax`, `vat_number`) VALUES
 (1, 2, NULL, NULL, 1, 'Mr', 'Adrew', NULL, 'Kingsley', NULL, NULL, '12 Wall st\r\n', 'New york', 'America', NULL, NULL, '012347888', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_user_setting`
+--
+
+CREATE TABLE IF NOT EXISTS `t_user_setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_user` int(11) NOT NULL,
+  `setting_key` char(20) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+
+--
+-- Dumping data for table `t_user_setting`
+--
+
+INSERT INTO `t_user_setting` (`id`, `fk_user`, `setting_key`, `value`) VALUES
+(11, 10, 'isRecivedEmail', 'Y'),
+(12, 10, 'AlternativeEmail', ''),
+(13, 11, 'isRecivedEmail', 'Y'),
+(14, 11, 'AlternativeEmail', ''),
+(15, 12, 'isRecivedEmail', 'Y'),
+(16, 12, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
+(17, 13, 'isRecivedEmail', 'Y'),
+(18, 13, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
+(19, 14, 'isRecivedEmail', 'Y'),
+(20, 14, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
+(21, 15, 'isRecivedEmail', 'Y'),
+(22, 15, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
+(23, 16, 'isRecivedEmail', 'Y'),
+(24, 16, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
+(25, 17, 'isRecivedEmail', 'Y'),
+(26, 17, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
+(27, 18, 'isRecivedEmail', 'Y'),
+(28, 18, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
+(29, 19, 'isRecivedEmail', 'Y'),
+(30, 19, 'AlternativeEmail', 'le.thanh.an@vsi-international.com');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

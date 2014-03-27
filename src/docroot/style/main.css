@@ -39,7 +39,7 @@ a{text-decoration: none;}
 .header .menu .menuExt{display: none;}
 
 /*--MENU--*/
-.content .contentWarp{margin:auto;margin-top:20px;display:inline-block;}
+.content .contentWarp{margin:auto;margin-top:20px;display:inline-block;min-height:350px;}
 .content .rowContent{text-align:left;border-radius:5px;width:720px;margin-bottom:20px;float:right;}
 .content .rowContent .rowContentCol{float:left;width:239px;}
 .content .productItem {width:218px;float:left;margin:10px 10px;border: solid 1px #b2b2b2;background: white;border-radius:5px;overflow: hidden;padding-bottom:10px;}

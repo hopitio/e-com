@@ -10,10 +10,22 @@ class account extends BaseController
      */
     function registerAccount()
     {
-        $accountBiz = new PortalAccountBiz();
-        $accountBiz->insertNewUser('An', 'Lê Thanh', 
-            'lethanhan.bkaptech@gmail.com', 'ANLT', 'M', '2014-03-25 21:28:00', 
-            '0916002005');
+        $email = $this->input->post('username');
+        $password = $this->input->post('password');
+        $passwordRetry = $this->input->post('passwordRetry');
+        $fristName = $this->input->post('fristName');
+        $lastName = $this->input->post('lastName');
+        $dob = $this->input->post('dob').' 00:00:00';
+        $sex = $this->input->post('sex');
+        //TODO: Valid data
+        
+        $accBiz = new PortalAccountBiz();
+        $id = $accBiz->insertNewUserNormal($fristName, $lastName, $email, $password, $sex, $dob);
+        if($id){
+            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->render('registercomplete');
+        }else{
+            throw new Lynx_Exception(__CLASS__.'Đăng ký tài khoản không thành công');
+        }
     }
     
     /**

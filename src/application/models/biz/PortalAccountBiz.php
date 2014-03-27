@@ -16,6 +16,41 @@ class PortalAccountBiz extends PortalBaseBiz
     /**
      * insert new user.
      *
+     * @param string $firstname
+     * @param string $lastname
+     * @param string $account
+     * @param string $password
+     * @param string $sex
+     * @param string $DOB
+     *            //format YYYY-MM-DD HH:MM:SS
+     */
+    function insertNewUserNormal($firstname, $lastname, $account, $password, $sex, 
+        $DOB)
+    {
+        $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT);
+        return $newId;
+    }
+    
+    /**
+     * thêm user từ platform facebook....
+     * @param string $firstname
+     * @param string $lastname
+     * @param string $account
+     * @param string $password
+     * @param string $sex
+     * @param string $DOB
+     *            //format YYYY-MM-DD HH:MM:SS
+     */
+    function insertNewUserFormPlatform($firstname, $lastname, $account, $password, $sex, 
+        $DOB, $platformKey = DatabaseFixedValue::USER_PLATFORM_DEFAULT )
+    {
+        $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, $platformKey);
+        return $this->activeUser($newId);
+    }
+    
+    /**
+     * insert new user.
+     *
      * @param string $firstname            
      * @param string $lastname            
      * @param string $account            
@@ -25,15 +60,9 @@ class PortalAccountBiz extends PortalBaseBiz
      *            //format YYYY-MM-DD HH:MM:SS
      * @param string $phoneno            
      */
-    function insertNewUser($firstname, $lastname, $account, $password, $sex, 
-        $DOB, $phoneno)
-    {
-        /**
-         * status : 0 -> registed;
-         * status : 1 -> available;
-         * status : 2 -> closed;
-         * status_reason default: Tạo mới tài khoản.
-         */
+    private function insertNewUser($firstname, $lastname, $account, $password, $sex, 
+        $DOB, $platformKey){
+        //insert user.
         $userModel = new PortalUserModel();
         $userModel->firstname = $firstname;
         $userModel->lastname = $lastname;
@@ -46,42 +75,30 @@ class PortalAccountBiz extends PortalBaseBiz
         $userModel->status_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $userModel->status_reason = 'Tạo mới tài khoản';
         $userModel->last_active = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-        $userModel->phoneno = $phoneno;
-        $userModel->bonus = 0;
-        $userModel->alternative_email = $account;
-        $userModel->insert();
-    }
-    
-    /**
-     * thêm user từ platform facebook....
-     * @param unknown $firstname
-     * @param unknown $lastname
-     * @param unknown $account
-     * @param unknown $password
-     * @param unknown $sex
-     * @param unknown $DOB
-     * @param unknown $phoneno
-     */
-    function insertNewUserFormPlatform($firstname, $lastname, $account, $password, $sex, 
-        $DOB, $phoneno){
-        $userModel = new PortalUserModel();
-        $userModel->firstname = $firstname;
-        $userModel->lastname = $lastname;
-        $userModel->account = $account;
-        $userModel->password = $password;
-        $userModel->sex = $sex;
-        $userModel->DOB = $this->verifyDate($DOB);
-        $userModel->date_joined = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-        $userModel->status = DatabaseFixedValue::USER_STATUS_REGISTED;
-        $userModel->status_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-        $userModel->status_reason = 'Tạo mới tài khoản';
-        $userModel->last_active = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-        $userModel->phoneno = $phoneno;
-        $userModel->bonus = 0;
-        $userModel->alternative_email = $account;
-        
+        $userModel->platform_key = $platformKey;
+        log_message('error','$userModel'.var_export($userModel,true));
         $newId = $userModel->insert();
-        return $this->activeUser($newId);
+
+        //Insert user setting.
+        $portalUserSetting = new PortalUserSettingModel();
+        
+        //Tự động gửi mail key
+        $isreceiveEmailSetting = new PortalUserSettingModel();
+        $isreceiveEmailSetting->fk_user = $newId;
+        $isreceiveEmailSetting->setting_key = DatabaseFixedValue::USER_SETTING_KEY_RecivedEmail;
+        $isreceiveEmailSetting->value = DatabaseFixedValue::USER_SETTING_KEY_RecivedEmail_HAVERECIVE;
+        
+        //Alter mail
+        $isAlterEmailSetting = new PortalUserSettingModel();
+        $isAlterEmailSetting->fk_user = $newId;
+        $isAlterEmailSetting->setting_key = DatabaseFixedValue::USER_SETTING_KEY_AlternativeEmail;
+        $isAlterEmailSetting->value = $userModel->account;
+        
+        $settingArray = array();
+        array_push($settingArray, $isreceiveEmailSetting, $isAlterEmailSetting);
+        $result = $portalUserSetting->insertBatch($settingArray);
+        
+        return $newId;
     }
 
     /**
@@ -231,4 +248,21 @@ class PortalAccountBiz extends PortalBaseBiz
         
         return $userModel->getUserByUserId();
     }
+    
+    /**
+     * Chỉnh sửa danh sách setting 
+     */
+    private function updateSettingAccount($userId,$settingKey,$settingValue)
+    {
+        $portalUserSetting = new PortalUserSettingModel();
+        $portalUserSetting->id = $userId;
+        $portalUserSetting->setting_key =  $settingKey;
+        $portalUserSetting->value = $settingValue;
+    }
+    
+    function updatePassword(){
+    
+    }
+    
+    
 }

@@ -9,10 +9,26 @@
         <lblUs>Tên Đăng nhập : </lblUs>
         <lblPs>Mật khẩu :</lblPs>
         <btnLogin>Đăng nhập</btnLogin>
-        <lblForgetPassword>Bạn không thể đăng nhập tài khoản</lblForgetPassword>
-        <lblCreateNewAccount>Đăng ký tài khoản mới</lblCreateNewAccount>
+        <lblForgetPassword>Bạn không thể đăng nhập tài khoản </lblForgetPassword>
+        <lblCreateNewAccount>Đăng ký tài khoản mới </lblCreateNewAccount>
         <lblError>Tên đăng nhập hoặc mật khẩu không đúng.</lblError>
+        
+        <lblCreateFristName>Họ và tên đệm </lblCreateFristName>
+        <lblCreateLastName>Tên </lblCreateLastName>
+        <lblDOB>Ngày sinh </lblDOB>
+        <lblEmail>Email </lblEmail>
+        <lblPassword>Mật khẩu </lblPassword>
+        <lblPasswordRetry>Nhập lại mật khẩu </lblPasswordRetry>
+        <lblSex>Giới tính </lblSex>
+        <lblSexM>Nam</lblSexM>
+        <lblSexF>Nữ</lblSexF>
+        <lblSexO>Khác</lblSexO>
+        <btnResg>Đồng ý điều khoản sử dụng  Đăng ký </btnResg>
     </login>
+    <registercomplete>
+        <title>Register complete</title>
+        <des>Bạn đã đăng ký thành công vui lòng kiểm tra mail để xác nhận đăng ký này.</des>
+    </registercomplete>
     <Details>
         <label>abc{0}</label>
     </Details>

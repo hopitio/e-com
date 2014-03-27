@@ -28,13 +28,13 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     {
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
-        $route['portal/register'] = 'portalController/account/registerAccount';
+        
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $route['portal/login'] = 'portalController/login/authenicate';
-        //$route['__portal/callback'] = 'portalCallbackController/portalProcess/portalAuthen';
+        $route['portal/register'] = 'portalController/account/registerAccount';
     }
 }
 //
