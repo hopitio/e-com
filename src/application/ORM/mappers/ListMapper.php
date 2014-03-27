@@ -23,7 +23,7 @@ class ListMapper extends MapperAbstract
      * @param type $fields
      * @return ListDomain
      */
-    function find($listtype, $codename, $fields = '*')
+    function findByCodeName($listtype, $codename, $fields = '*')
     {
         if (!is_numeric($listtype))
         {

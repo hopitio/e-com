@@ -119,6 +119,13 @@ class Lynx_IOException extends Lynx_Exception{
     }
 }
 
+class Lynx_EmptyDataSetException extends Lynx_Exception{
+    public $title = 'Lỗi không tìm thấy bản ghi bắt buộc';
+    public function __construct($message='Không tìm thấy bản ghi bắt buộc có kết quả.'){
+        parent::__construct($message);
+    }
+}
+
 
 
 

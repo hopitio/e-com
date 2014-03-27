@@ -9,6 +9,7 @@ class ProductAttributeTypeDomain implements DomainInterface
     const DT_ENUM = 'enum';
     const DT_TEXT = 'text';
     const DT_VARCHAR = 'varchar';
+    const DT_FILE = 'file';
 
     public $id;
     public $codename;

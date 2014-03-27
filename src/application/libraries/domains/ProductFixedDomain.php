@@ -5,89 +5,103 @@ defined('BASEPATH') or die('No direct script access allowed');
 class ProductFixedDomain extends ProductDomain
 {
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getName()
     {
         return $this->_getAttributeByName('name');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getDescription()
     {
         return $this->_getAttributeByName('description');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getTags()
     {
         return $this->_getAttributeByName('tag');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getImages()
     {
         return $this->_getAttributeByName('image');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getThumbnail()
     {
         return $this->_getAttributeByName('thumbnail');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getBannerImage()
     {
         return $this->_getAttributeByName('banner_image');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getGiftTarget()
     {
         return $this->_getAttributeByName('gift_target');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getCategory()
     {
         return $this->_getAttributeByName('category');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getOccasions()
     {
         return $this->_getAttributeByName('occasion');
     }
 
-    /** @return ListDomain */
-    function getPrice()
+    /** @return ProductAttributeDomain */
+    function getPrice($currency)
     {
-        return $this->_getAttributeByName('price');
+        $prices = $this->_getAttributeByName('price');
+        if (!$prices)
+        {
+            return false;
+        }
+        foreach ($prices as $priceCurrency)
+        {
+            if (strtoupper($priceCurrency->valueVarchar) == strtoupper($currency))
+            {
+                return $priceCurrency;
+            }
+        }
+        return false;
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getWeight()
     {
         return $this->_getAttributeByName('weight');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getSource()
     {
         return $this->_getAttributeByName('source');
     }
 
-    /** @return ListDomain */
+    /** @return ProductAttributeDomain */
     function getMaterials()
     {
         return $this->_getAttributeByName('material');
     }
 
+    /** @return ProductAttributeDomain */
     function getQuantity()
     {
         return $this->_getAttributeByName('quantity');
     }
 
+    /** @return ProductAttributeDomain */
     function isAvailable()
     {
         return ((bool) $this->getQuantity());

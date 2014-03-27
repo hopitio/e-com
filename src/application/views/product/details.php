@@ -1,8 +1,31 @@
 <?php
-
 defined('BASEPATH') or die('No direct script access allowed');
-var_dump($language[$view->view]->productInformation);
+/* @var $product ProductFixedDomain */
+$images = $product->getImages();
+$first_image = reset($images);
 ?>
 <div>
-    <h3></h3>
+    <h3><?php echo $product->getName() ?></h3>
+</div>
+
+<div>
+    <div>
+        <img src="<?php echo $first_image->getTrueValue() ?>">
+    </div>
+    <div>
+        <?php while ($image = next($images)): ?>
+            <img src="<?php echo $image->getTrueValue() ?>">
+        <?php endwhile; ?>
+    </div>
+</div>
+<div>
+    <h4>Thông tin chi tiết</h4>
+    <p>
+        <?php echo $product->getDescription() ?>
+    </p>
+</div>
+<div>
+    <h4><?php echo $product->getName() ?></h4>
+    <?php var_dump('price',$product->getPrice('USD')->getTrueValue()) ?><br>
+    <?php var_dump('quantity',$product->getQuantity()->getTrueValue()) ?>
 </div>

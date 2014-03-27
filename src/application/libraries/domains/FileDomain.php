@@ -6,19 +6,19 @@ class FileDomain implements DomainInterface
     public $id;
     public $fkUser;
     public $fkParent;
-    public $displayName;
-    public $realPath;
+    public $url;
     public $isDir;
     public $dateModified;
+    public $internalPath;
 
     function isDir()
     {
         return ((bool) $this->isDir);
     }
 
-    function getUrl()
+    function __toString()
     {
-        return site_url('uploads/' . $this->realPath);
+        return $this->url;
     }
 
 }

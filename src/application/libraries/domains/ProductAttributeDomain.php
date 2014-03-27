@@ -35,6 +35,12 @@ class ProductAttributeDomain extends ProductAttributeTypeDomain
                 return strval($this->valueText);
             case static::DT_VARCHAR:
                 return strval($this->valueVarchar);
+            case static::DT_FILE:
+                if ($this->_trueValue === false)
+                {
+                    $this->_trueValue = FileMapper::make()->find($this->valueNumber);
+                }
+                return $this->_trueValue;
             default:
                 throw new Exception("Data type not supported");
         }
