@@ -108,19 +108,16 @@ class PortalAccountBiz extends PortalBaseBiz
      * @param string $formPlatform
      * @return 
      */
-    function getLogin($username,$password,$formPlatform = false){
+    function getLogin($username,$password,$formPlatform = null){
         $userModel = new PortalUserModel();
         $userModel->account = $username;
         $userModel->password = $password;
-        $result;
-        if($formPlatform){
-            $result = $userModel->selectUserByUserNameAndPassoword();
-        }else{
-            $result = $userModel->selectUserByUserNameAndPassoword();
-        }
+        $formPlatform = $formPlatform == null ? DatabaseFixedValue::USER_PLATFORM_DEFAULT : $formPlatform;
+        $result = $formPlatform == DatabaseFixedValue::USER_PLATFORM_DEFAULT ? $userModel->selectUserByUserNameAndPassoword() : $userModel->selectUserByUserName();
+       
         if ($result)
         {
-            $this->setLoginUser();
+            $this->setLoginUser($result);
             return true;
         }
         else

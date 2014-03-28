@@ -111,16 +111,25 @@ class PortalUserModel extends PortalBaseModel
      * @return boolean|unknown
      */
     function selectUserByUserNameAndPassoword(){
-        $query = $this->_dbPortal->get_where(T_user::account, 
+        $query = $this->_dbPortal->get_where(T_user::tableName, 
             array(
                 T_user::account => $this->account,
                 T_user::password => $this->password
-            ), 1, 1);
+            ), 1);
         $result = $query->result();
         if(count($result) ==  0){
             return false;
         }else{
+            
             return $result;
         }
+    }
+    
+    /**
+     * 
+     */
+    function selectedUserViaAccount()
+    {
+        
     }
 }

@@ -35,6 +35,4 @@ class account extends BaseController
         $currentUser = User::getCurrentUser();
         
     }
-    
-    
 }
