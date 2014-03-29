@@ -8,4 +8,6 @@ require_once APPPATH.'models/biz/BaseBiz.php';
 //portal
 require_once APPPATH.'models/biz/PortalBaseBiz.php';
 require_once APPPATH.'models/biz/PortalAccountBiz.php';
+require_once APPPATH.'models/biz/PortalLoginBiz.php';
+
 

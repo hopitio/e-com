@@ -57,4 +57,7 @@
     <product_details>
         <productInfomation>Thông tin sản phẩm</productInfomation>
     </product_details>
+    <portalaccount_account>
+        <title>Thông tin tài khoản cá nhân</title>
+    </portalaccount_account>
 </data>

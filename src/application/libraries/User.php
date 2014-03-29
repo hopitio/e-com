@@ -20,17 +20,13 @@ class User{
     public $firstname;
     public $lastname;
     public $account;
-    public $password;
     public $sex;
     public $DOB;
     public $date_joined;
     public $status;
-    public $status_date;
-    public $status_reason;
     public $last_active;
-    public $phoneno;
-    public $bonus;
-    public $alternative_email;
+    public $platform_key;
+    
     //END DATABASE
     function __construct(){
         $CI =& get_instance();

@@ -40,9 +40,13 @@ class login extends BaseController
      */
     function showPage()
     {
+        if(User::getCurrentUser()->is_authorized){
+            $this->remove_obj_user_to_me();
+            $this->set_obj_user_to_me(new User());
+        }
         $params = $this->getQueryStringParams();
-        $url = !empty($params['u']) ? $params['u'] : '/__portal/authen';
-        $redirectUrl = !empty($params['t']) ? $params['t'] : '/home';
+        $url = !empty($params['u']) ? $params['u'] : null;
+        $redirectUrl = !empty($params['t']) ? $params['t'] : null;
         $this->_data['postUrlCaller'] = $url;
         $this->_data['postUrlTarget'] = $redirectUrl;
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
@@ -83,14 +87,7 @@ class login extends BaseController
             $user = new User();
             $this->obj_user->portalData = json_encode($user);
             $this->obj_user->is_authorized = true;
-            $this->set_obj_user_to_me($this->obj_user);
-            
-            $dataResult['postUrl'] = $data['postUrlCaller'];
-            $dataResult['dataJson'] = json_encode($user);
-            $dataResult['redirect']  = $data['postUrlTarget'];
-            
-            //redirect('/home');
-            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
+            $this->onLoginComplete();
             return;
         }
         else
@@ -245,5 +242,32 @@ class login extends BaseController
         }
     
         return  $woringData;
+    }
+    
+    /**
+     * Login hệ thống thành công.
+     */
+    function onLoginComplete(){
+        $data = $this->input->post();
+        if (!isset($data['postUrlCaller']) ||!isset($data['postUrlTarget']))
+        {
+            throw new Lynx_RequestException(__CLASS__.'::onLoginComplete:request login thiếu tham số');
+        }
+        $this->set_obj_user_to_me($this->obj_user);
+        $user = clone $this->obj_user;
+        unset($user->id);
+        $dataResult['postUrl'] = $data['postUrlCaller'];
+        $dataResult['redirect']  = $data['postUrlTarget'];
+        $dataResult['dataJson'] = json_encode($user);
+        if($data['postUrlCaller'] == null){
+           redirect('/portal/account');
+           exit;
+        }
+        if($data['postUrlTarget'] == null){
+            //TODO:Địa chỉ subsystem/home.
+            redirect('/portal/account');
+            exit;
+        }
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
     }
 }

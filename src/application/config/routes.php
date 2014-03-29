@@ -28,12 +28,15 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     {
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
+        $route['portal/account'] = 'portalController/account/showPage';
         
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $route['portal/login'] = 'portalController/login/indexPost';
+        $route['portal/login/facbook_callback'] = 'portalController/platform/facebook/authenCallback';
+        $route['portal/login/facebook'] = 'portalController/loginfacebook/loginFb';
     }
 }
 //

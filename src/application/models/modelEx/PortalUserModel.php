@@ -106,11 +106,26 @@ class PortalUserModel extends PortalBaseModel
      */
     function selectUserByUserName()
     {
-        $query = $this->_dbPortal->get_where(T_user::account,array(T_user::account=>$this->account),1,1);
+        $query = $this->_dbPortal->get_where(T_user::tableName,array(T_user::account=>$this->account),1);
         $result = $query->result();
         if(count($result) ==  0){
             return false;
         }else{
+            $row = $result[0];
+            $this->id = $row->id;
+            $this->firstname = $row->firstname;
+            $this->lastname = $row->lastname;
+            $this->last_active = $row->last_active;
+            $this->account = $row->account;
+            $this->password = $row->password;
+            $this->sex = $row->sex;
+            $this->DOB = $row->DOB;
+            $this->date_joined = $row->date_joined;
+            $this->status = $row->status;
+            $this->status_date = $row->status_date;
+            $this->status_reason = $row->status_reason;
+            $this->last_active = $row->last_active;
+            $this->platform_key = $row->platform_key;
             return $result;
         }
         

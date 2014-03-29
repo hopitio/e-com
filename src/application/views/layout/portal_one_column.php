@@ -21,20 +21,29 @@
         
         <!-- Css -->
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
-        <!-- Thêm các js riêng biệt -->
+        
+        
+        <script src="/js/main.js"></script>
         <?php
+        //Thêm các js riêng biệt
         foreach ($view->javascript as $jsItem)
         {
             echo '<script src="'. $jsItem .'"></script>';
         }
         ?>
-        <!-- Thêm các css riêng biệt -->
+        
         <?php 
+        //Thêm các js riêng biệt
             foreach ($view->css as $item)
             {
                 echo '<link rel="stylesheet" type="text/css" href="'.$item.'" media="all">';
             }
         ?>
+        <script type="text/javascript">
+           function Config(){
+               this.facebookApplicationKey  = '<?php echo get_instance()->config->item('facebook_app_id');?>';
+           }
+        </script>
     </head>
     <body>
         <div id="wrap">

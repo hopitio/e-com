@@ -4,16 +4,11 @@ class account extends BaseController
 {
 
     protected $authorization_required = TRUE;
-
-    
     
     /**
      * show information page
      */
-    function showAccountInformation(){
-        $currentUser = User::getCurrentUser();
-        
+    function showPage(){
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->render('portalaccount/account');
     }
-
-
 }

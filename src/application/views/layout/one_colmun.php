@@ -25,6 +25,12 @@
         <!-- Css -->
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
 
+        <script type="text/javascript">
+           function Config(){
+               this.facebookApplicationKey  = '<?php echo get_instance()->config->item('facebook_app_id');?>';
+           }
+        </script>
+        <script src="/js/main.js"></script>
         <!-- Thêm các js riêng biệt -->
         <?php
         foreach ($view->javascript as $jsItem)

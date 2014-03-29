@@ -77,7 +77,6 @@ class PortalAccountBiz extends PortalBaseBiz
         $userModel->status_reason = 'Tạo mới tài khoản';
         $userModel->last_active = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $userModel->platform_key = $platformKey;
-        log_message('error', '$userModel' . var_export($userModel, true));
         $newId = $userModel->insert();
         
         $this->insertSettingKey($newId, $userModel->account, $question, $answer);
@@ -279,6 +278,5 @@ class PortalAccountBiz extends PortalBaseBiz
     function updatePassword(){
     
     }
-    
-    
+
 }

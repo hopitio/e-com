@@ -36,8 +36,6 @@
                     </select> 
                  </div>
                 <div class="row"><span><?php echo $language[$view->view]->lblanswer;?> </span> <input name='answer' type="text" /></div>
-                <!--  <div class="row"> <span><?php //echo $language[$view->view]->lblDOB;?> </span>  <input name='dob' type="text"  data-role="date"/> </div> -->
-                
                 <div class="row"><span></span><a href="#"><?php echo $language[$view->view]->lblLinkPolice;?></a> </div>
                 <div class="row">
                     <button title="Search" class="button"><span><span><?php echo $language[$view->view]->btnResg;?></span></span></button>
@@ -60,11 +58,16 @@
             <a href="#"><?php echo $language[$view->view]->lblForgetPassword;?></a>
             <a href="#"><?php echo $language[$view->view]->lblCreateNewAccount;?></a>
             
-            <a href="#"><img src="/images/Social_signin_facebook.png" /></a>
+            <a href="javascript:void(0)" id="likfacebooklogin" link="<?php echo UrlManager::getInstanse()->getLoginFacebookUrl();?>"><img src="/images/Social_signin_facebook.png" /></a>
             <a href="#"><img src="/images/Social_signin_google.png" /></a>
             
             <input name='postUrlCaller' type="hidden" value='<?php echo $postUrlCaller;?>'>
             <input name='postUrlTarget' type="hidden" value='<?php echo $postUrlTarget;?>'>
         </form>
     </div>
+    <form id='facebooklogin' action="/portal/login/facebook" method="post">
+        <input name='postUrlCaller' type="hidden" value='<?php echo $postUrlCaller;?>'>
+        <input name='postUrlTarget' type="hidden" value='<?php echo $postUrlTarget;?>'>
+        <input name="postValue" type="hidden"/>
+    </form>
 </div> 
