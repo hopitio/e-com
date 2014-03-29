@@ -14,16 +14,32 @@
         <lblError>Tên đăng nhập hoặc mật khẩu không đúng.</lblError>
         
         <lblCreateFristName>Họ và tên đệm </lblCreateFristName>
-        <lblCreateLastName>Tên </lblCreateLastName>
+        <lblCreateLastName> Tên </lblCreateLastName>
         <lblDOB>Ngày sinh </lblDOB>
         <lblEmail>Email </lblEmail>
         <lblPassword>Mật khẩu </lblPassword>
-        <lblPasswordRetry>Nhập lại mật khẩu </lblPasswordRetry>
+        <lblPasswordRetry> Nhập lại mật khẩu </lblPasswordRetry>
         <lblSex>Giới tính </lblSex>
         <lblSexM>Nam</lblSexM>
         <lblSexF>Nữ</lblSexF>
         <lblSexO>Khác</lblSexO>
-        <btnResg>Đồng ý điều khoản sử dụng  Đăng ký </btnResg>
+        <lblQuestion>Câu hỏi bí mật</lblQuestion>
+        <lblQ0>Bạn thích chơi game nào nhất ?</lblQ0>
+        <lblQ1>Tên thuở nhỏ của bạn là gì ? </lblQ1>
+        <lblQ2>Trường cấp 3 của bạn là gì ?</lblQ2>
+        <lblQ3>Cuốn sách mà bạn thích nhất ?</lblQ3>
+        <lblQ4>Tên vật nuôi của bạn là gì ?</lblQ4>
+        <lblQ5>Bạn thích con vật nào nhất ?</lblQ5>
+        <lblanswer>Trả lời</lblanswer>
+        
+        
+        <btnResg>Đồng ý điều khoản sử dụng và Đăng ký </btnResg>
+        <lblLinkPolice>Chi tiết điều khoản sử dụng và điều lệ của website.</lblLinkPolice>
+        <msgWoringEmail>Email sai địng dạng hoặc dài quá 254 ký tự</msgWoringEmail>
+        <msgWoringPass>Mật khẩu không khớp và chỉ chứa ký tự từ 0-9, A-Z </msgWoringPass>
+        <msgWoringFristName>Họ và tên đệm dài quá 50 ký tự</msgWoringFristName>
+        <msgWoringLastName>Tên dài quá 50 ký tự</msgWoringLastName>
+        <msgWoringAns>Tên dài quá 50 ký tự</msgWoringAns>
     </login>
     <registercomplete>
         <title>Register complete</title>

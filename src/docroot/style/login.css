@@ -18,12 +18,13 @@ form input[type='text'],input[type='password'] {height: 17px;padding: 6px;width:
 .leftContent span{display:inline-block; width:120px;}
 .leftContent form .button {margin-left:200px;}
 .leftContent form .button span {width:auto;}
-
 .leftContent form input[name="dob"] {width:150px;}
 .leftContent form select[name="sex"] {width:165px;min-height:28px;} 
 .leftContent form input[name="password"] {width:150px;}
 .leftContent form input[name="passwordRetry"] {width:150px;}
 .leftContent form input[name="fristName"] {width:150px;}
 .leftContent form input[name="lastName"] {width:150px;}
-.leftContent form input[name="username"] {width:345px;}
+.leftContent form input[name="username"] {width:440px;}
+.leftContent form select[name="question"] {width:455px;height:28px;}
+.leftContent form input[name="answer"] {width:440px;}
 .leftContent .contract {height:150px;background-color: white;overflow: hidden;}

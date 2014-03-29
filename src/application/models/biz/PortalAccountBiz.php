@@ -25,9 +25,10 @@ class PortalAccountBiz extends PortalBaseBiz
      *            //format YYYY-MM-DD HH:MM:SS
      */
     function insertNewUserNormal($firstname, $lastname, $account, $password, $sex, 
-        $DOB)
+        $DOB, $question = '', $answer = '')
     {
-        $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT);
+        $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT,$question, $answer);
+        $this->activeUser($newId);
         return $newId;
     }
     
@@ -45,9 +46,9 @@ class PortalAccountBiz extends PortalBaseBiz
         $DOB, $platformKey = DatabaseFixedValue::USER_PLATFORM_DEFAULT )
     {
         $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, $platformKey);
-        return $this->activeUser($newId);
+        return  $this->activeUser($newId);
     }
-    
+
     /**
      * insert new user.
      *
@@ -60,9 +61,9 @@ class PortalAccountBiz extends PortalBaseBiz
      *            //format YYYY-MM-DD HH:MM:SS
      * @param string $phoneno            
      */
-    private function insertNewUser($firstname, $lastname, $account, $password, $sex, 
-        $DOB, $platformKey){
-        //insert user.
+    private function insertNewUser($firstname, $lastname, $account, $password, 
+        $sex, $DOB, $platformKey, $question = '', $answer = '')
+    {
         $userModel = new PortalUserModel();
         $userModel->firstname = $firstname;
         $userModel->lastname = $lastname;
@@ -76,9 +77,15 @@ class PortalAccountBiz extends PortalBaseBiz
         $userModel->status_reason = 'Tạo mới tài khoản';
         $userModel->last_active = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $userModel->platform_key = $platformKey;
-        log_message('error','$userModel'.var_export($userModel,true));
+        log_message('error', '$userModel' . var_export($userModel, true));
         $newId = $userModel->insert();
+        
+        $this->insertSettingKey($newId, $userModel->account, $question, $answer);
+        
+        return $newId;
+    }
 
+    private function insertSettingKey($newId,$alterEmail,$question = '', $answer = ''){
         //Insert user setting.
         $portalUserSetting = new PortalUserSettingModel();
         
@@ -92,15 +99,27 @@ class PortalAccountBiz extends PortalBaseBiz
         $isAlterEmailSetting = new PortalUserSettingModel();
         $isAlterEmailSetting->fk_user = $newId;
         $isAlterEmailSetting->setting_key = DatabaseFixedValue::USER_SETTING_KEY_AlternativeEmail;
-        $isAlterEmailSetting->value = $userModel->account;
+        $isAlterEmailSetting->value = $alterEmail;
+        
+        //Security Question.
+        $questionSetting = new PortalUserSettingModel();
+        $questionSetting->fk_user = $newId;
+        $questionSetting->setting_key = DatabaseFixedValue::SECURITY_QUESTION_SETTINGKEY;
+        $questionSetting->value = $question;
+        
+        //Security Answer.
+        $questionAns = new PortalUserSettingModel();
+        $questionAns->fk_user = $newId;
+        $questionAns->setting_key = DatabaseFixedValue::SECURITY_ANSWER_SETTINGKEY;
+        $questionAns->value = $answer;
         
         $settingArray = array();
-        array_push($settingArray, $isreceiveEmailSetting, $isAlterEmailSetting);
+        array_push($settingArray, $isreceiveEmailSetting, $isAlterEmailSetting,$questionSetting,$questionAns);
         $result = $portalUserSetting->insertBatch($settingArray);
         
-        return $newId;
+        return $result;
     }
-
+    
     /**
      * Kiểm tra dữ liệu login
      * @param string $username

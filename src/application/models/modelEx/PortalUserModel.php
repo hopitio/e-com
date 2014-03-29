@@ -48,22 +48,32 @@ class PortalUserModel extends PortalBaseModel
      * @param string $userId
      * @return bool true if have account, false if not found
      */
-    function getUserByUserId($userId)
+    function getUserByUserId()
     {
-        $condition = array(T_user::id=>$userId);
-        $queryResult = $this->_dbPortal->get_where(T_user::tableName,$condition,1,1);
-        if(count($query->result()) == 0){
+        $condition = array(T_user::id=>$this->id);
+        $queryResult = $this->_dbPortal->get_where(T_user::tableName,$condition,1);
+        if(count($queryResult->result()) == 0){
             return  false;
         }
-        foreach($query->result() as $row)
+        foreach($queryResult->result() as $row)
         {
-            foreach ($row as $key){
-                 if(isset($this->$key)){
-                    $this->$key = $row[$key];
-                 }else {
-                    throw new Lynx_DatabaseQueryException(__CLASS__.'::getUserByUserId::Database và model không khớp');
-                 }
-            }
+            $this->id = $row->id;
+            $this->firstname = $row->firstname;
+            $this->lastname = $row->lastname;
+            $this->last_active = $row->last_active;
+            $this->account = $row->account;
+            $this->password = $row->password;
+            $this->sex = $row->sex;
+            $this->DOB = $row->DOB;
+            $this->date_joined = $row->date_joined;
+            $this->status = $row->status;
+            $this->status_date = $row->status_date;
+            $this->status_reason = $row->status_reason;
+            $this->last_active = $row->last_active;
+            $this->platform_key = $row->platform_key;
+            
+            break;
+            
         }
         return  true;
     }
@@ -120,8 +130,22 @@ class PortalUserModel extends PortalBaseModel
         if(count($result) ==  0){
             return false;
         }else{
-            
-            return $result;
+            $row = $result[0];
+            $this->id = $row->id;
+            $this->firstname = $row->firstname;
+            $this->lastname = $row->lastname;
+            $this->last_active = $row->last_active;
+            $this->account = $row->account;
+            $this->password = $row->password;
+            $this->sex = $row->sex;
+            $this->DOB = $row->DOB;
+            $this->date_joined = $row->date_joined;
+            $this->status = $row->status;
+            $this->status_date = $row->status_date;
+            $this->status_reason = $row->status_reason;
+            $this->last_active = $row->last_active;
+            $this->platform_key = $row->platform_key;
+            return true;
         }
     }
     
@@ -130,6 +154,30 @@ class PortalUserModel extends PortalBaseModel
      */
     function selectedUserViaAccount()
     {
-        
+        $query = $this->_dbPortal->get_where(T_user::tableName,
+            array(
+                T_user::account => $this->account
+            ), 1);
+        $result = $query->result();
+        if(count($result) ==  0){
+            return false;
+        }else{
+            $row = $result[0];
+            $this->id = $row->id;
+            $this->firstname = $row->firstname;
+            $this->lastname = $row->lastname;
+            $this->last_active = $row->last_active;
+            $this->account = $row->account;
+            $this->password = $row->password;
+            $this->sex = $row->sex;
+            $this->DOB = $row->DOB;
+            $this->date_joined = $row->date_joined;
+            $this->status = $row->status;
+            $this->status_date = $row->status_date;
+            $this->status_reason = $row->status_reason;
+            $this->last_active = $row->last_active;
+            $this->platform_key = $row->platform_key;
+            return true;
+        }
     }
 }

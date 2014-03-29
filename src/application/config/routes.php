@@ -33,8 +33,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $route['portal/login'] = 'portalController/login/authenicate';
-        $route['portal/register'] = 'portalController/account/registerAccount';
+        $route['portal/login'] = 'portalController/login/indexPost';
     }
 }
 //
