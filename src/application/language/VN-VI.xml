@@ -12,7 +12,6 @@
         <lblForgetPassword>Bạn không thể đăng nhập tài khoản </lblForgetPassword>
         <lblCreateNewAccount>Đăng ký tài khoản mới </lblCreateNewAccount>
         <lblError>Tên đăng nhập hoặc mật khẩu không đúng.</lblError>
-        
         <lblCreateFristName>Họ và tên đệm </lblCreateFristName>
         <lblCreateLastName> Tên </lblCreateLastName>
         <lblDOB>Ngày sinh </lblDOB>
@@ -31,8 +30,6 @@
         <lblQ4>Tên vật nuôi của bạn là gì ?</lblQ4>
         <lblQ5>Bạn thích con vật nào nhất ?</lblQ5>
         <lblanswer>Trả lời</lblanswer>
-        
-        
         <btnResg>Đồng ý điều khoản sử dụng và Đăng ký </btnResg>
         <lblLinkPolice>Chi tiết điều khoản sử dụng và điều lệ của website.</lblLinkPolice>
         <msgWoringEmail>Email sai địng dạng hoặc dài quá 254 ký tự</msgWoringEmail>
