@@ -1,11 +1,11 @@
 ﻿ - Sprint 3 : Đi vào làm các màn hình liên quan đến phần khách hàng
 	+ Làm màn hình 
-		Giỏ hàng - 8h
+		Giỏ hàng - 8h 
 		Pin	- 12h
-		Màn hình account - 12h
+		Màn hình account - 12h 
 		Chat - 12h
 		Gửi ý kiến phản hồi - 8h (Loại bỏ)
-		Đăng ký - 12H
+		Đăng ký - 12H 
 		Trang thông tin khách hàng - 8H 
 		Security của tài khoản  - 8H
 		Chỉnh sửa Thông tin cá nhân - 8H
@@ -16,11 +16,26 @@
 		
 - Cân đối lại estimate dựa trên phần update REQ của A.Hoàng
 - Danh sách các màn hình m sẽ phát triển trong sprint 3
-	+ Cart - TA:8h
+	+ Cart - TA:8h 
 	+ Wishlist - TA:8h
 	+ Pin - TA:8h
 	+ Live chat - TA:12h
 	+ Account General  - ANLT:8h
-	+ Đăng ký - ANLT: 16h (Bao gồm cả login facebook và google)
+	+ Đăng ký - ANLT: 16h (Bao gồm cả login facebook và google)  29
 	+ Order detail - Cần thêm thông tin
 	
+	
+ANLT ------------------------------------------------------
+24/03 -> 31/03 sprint 3 : 29h 
+10/03 -> 22/03 sprint 2 : 47h
+24/02 -> 08/03 sprint 1 : 
+	01/03 -> 08/03 : 25h
+	24/02 -> 01/03 : 21h
+20/02 -> 24/02 : 12h
+T3 : 29 + 47 + 25 = 101/96h.
+
+QUANGDT ------------------------------------------------------
+10/03 -> 19/03 sprint 2 : 36h.
+03/03 -> 06/03 sprint   : 16h.
+
+
