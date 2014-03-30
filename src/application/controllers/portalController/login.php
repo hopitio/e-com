@@ -40,10 +40,14 @@ class login extends BaseController
      */
     function showPage()
     {
+//         $mail = new MailManager();
+//         $mail->requestSendMail(MailManager::TYPE_RESG_COMFIRM, 'lethanhan.bkaptech@gmail.com', array());
+        
         if(User::getCurrentUser()->is_authorized){
             $this->remove_obj_user_to_me();
             $this->set_obj_user_to_me(new User());
         }
+        
         $params = $this->getQueryStringParams();
         $url = !empty($params['u']) ? $params['u'] : null;
         $redirectUrl = !empty($params['t']) ? $params['t'] : null;

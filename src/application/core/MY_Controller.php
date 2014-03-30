@@ -7,6 +7,7 @@ require_once 'lynx_exceptions.php';
 require_once 'lynx_masters.php';
 require_once APPPATH . 'libraries/multiLanguage/multiLanguage.inc';
 require_once APPPATH . 'libraries/url/url.inc';
+require_once APPPATH . 'libraries/mail/mail.inc';
 require_once APPPATH . 'libraries/Database.inc';
 require_once APPPATH . 'controllers/ControllerBase.php';
 require_once APPPATH . 'models/biz.inc';

@@ -384,5 +384,16 @@ $config['languagePath'] = 'language/';
 
 $config['facebook_app_id'] = '1392515564358247';
 $config['facebook_authen_url'] = 'https://www.facebook.com/dialog/oauth?client_id=[YOUR_APP_ID]&redirect_uri=http://localhost/portal/login/facbook_callback';
+
+$config['ConfirmRegisterMailler_protocol'] = 'smtp';   
+$config['ConfirmRegisterMailler_useragent'] = 'DEMO MAIL';
+$config['ConfirmRegisterMailler_smtp_host'] = 'ssl://smtp.gmail.com';
+$config['ConfirmRegisterMailler_smtp_fullName'] = 'LÊ THANH AN';
+$config['ConfirmRegisterMailler_smtp_user'] = 'lethanhan.bkaptech@gmail.com';
+$config['ConfirmRegisterMailler_smtp_pass'] = 'thuhoa1208';
+$config['ConfirmRegisterMailler_smtp_port'] = '465';
+$config['ConfirmRegisterMailler_smtp_timeout'] = '1';
+$config['ConfirmRegisterMailler_temp'] = '/RegisterConfirm.txt';
+
 /* End of file config.php */
 /* Location: ./application/config/config.php */

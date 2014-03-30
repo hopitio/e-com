@@ -1,0 +1,4 @@
+VN-VI :
+Bạn vừa đăng ký thành công.<br/> 
+Vui lòng click link {link} để kích hoạt tài khoản.
+

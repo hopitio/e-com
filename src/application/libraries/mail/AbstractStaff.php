@@ -12,52 +12,27 @@ abstract class AbstractStaff
         ";
     CONST MAIL_CONTENT_TYPE_TEXT = "";
     
-    protected $to;
-    protected $header;
-    protected $mailData;
-    protected $cc;
-    protected $bcc;
-    
-    
     /**
-     * Tự động tạo mail content từ nội dung cho trước.
-     */
-    protected abstract function createMailContent();
-    
-    /**
-     * Gửi mail.
+     * Hàm thực hiện việc gửi mail
      */
     protected abstract function sendMail();
     
-    /**
-     * 
-     * @param Array $mailData
-     */
-    function send($mailData){
-        $this->createMailContent();
-        $this->sendMail();	
-    }
+    protected $to;
+    protected $mailData;
     
 	/**
-     * @param array $to
+     * @param field_type $to
+     * @return AbstractStaff
      */
     public function setTo($to)
     {
         $this->to = $to;
         return $this;
     }
-
+    
 	/**
-     * @param array $header
-     */
-    public function setHeader($header)
-    {
-        $this->header = $header;
-        return $this;
-    }
-
-	/**
-     * @param array $mailData
+     * @param field_type $mailData
+     * @return AbstractStaff
      */
     public function setMailData($mailData)
     {
@@ -65,22 +40,14 @@ abstract class AbstractStaff
         return $this;
     }
 
-	/**
-     * @param array $cc
+    /**
+     * Thực hiện việc gửi mail
      */
-    public function setCc($cc)
-    {
-        $this->cc = $cc;
-        return $this;
+    function send(){
+        $this->sendMail();
     }
+    
+    
 
-	/**
-     * @param array $bcc
-     */
-    public function setBcc($bcc)
-    {
-        $this->bcc = $bcc;
-        return $this;
-    }
 
 }

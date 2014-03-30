@@ -59,4 +59,7 @@
     </portalaccount_account>
     <cart_showCart></cart_showCart>
     <cart_shipping></cart_shipping>
+    <mail>
+        <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
+    </mail>
 </data>

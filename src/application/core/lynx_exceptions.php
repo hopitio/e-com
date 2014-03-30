@@ -106,6 +106,15 @@ class Lynx_ViewException extends Lynx_Exception{
     }
 }
 
+//Lỗi khi gửi mail
+class Lynx_EmailException extends Lynx_Exception{
+    public $status_code = '500';
+    public $title = 'Lỗi EMAIL';
+    public function __construct($message='KHông thực hiện được việc gửi mai.'){
+        parent::__construct($message);
+    }
+}
+
 /**
  * Lỗi truy xuất files
  * @author LE
