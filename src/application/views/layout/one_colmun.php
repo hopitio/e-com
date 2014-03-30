@@ -26,19 +26,19 @@
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
 
         <script type="text/javascript">
-           function Config(){
-               this.facebookApplicationKey  = '<?php echo get_instance()->config->item('facebook_app_id');?>';
-           }
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+            }
         </script>
         <script src="/js/main.js"></script>
         <!-- Thêm các js riêng biệt -->
         <?php
         foreach ($view->javascript as $jsItem)
         {
-            echo '<script src="'. $jsItem .'"></script>';
+            echo '<script src="' . $jsItem . '"></script>';
         }
         ?>
-        
+
         <!-- Thêm các css riêng biệt -->
         <?php
         foreach ($view->css as $item)
@@ -55,13 +55,16 @@
                         <li class="myAcc">
                             <a href="#">My Account</a>
                             <ul class="accessPannel">
-                            <?php 
-                                if($user->is_authorized){
-                                    echo '<li><a href="'.$user->getLogout().'">Đăng Xuất</a></li>';
-                                }else{
-                                    echo '<li><a href="'.$user->getLoginAuthenUrl().'">Đăng nhập</a></li>';
+                                <?php
+                                if ($user->is_authorized)
+                                {
+                                    echo '<li><a href="' . $user->getLogout() . '">Đăng Xuất</a></li>';
                                 }
-                            ?>
+                                else
+                                {
+                                    echo '<li><a href="' . $user->getLoginAuthenUrl() . '">Đăng nhập</a></li>';
+                                }
+                                ?>
                                 <li><a href="#">WishList</a></li>
                                 <li><a href="#">Đăng sản phẩm</a></li>
                             </ul>

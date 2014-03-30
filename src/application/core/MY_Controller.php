@@ -39,6 +39,9 @@ class MY_Controller extends CI_Controller
     public $lynx_tomorrow_dow;
     protected $authorization_required = false;
 
+    /** Ten controller hien tai */
+    protected $_controller;
+
     /**
      * __construct
      *
@@ -47,6 +50,7 @@ class MY_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->_controller = get_class($this);
     }
 
     /**
@@ -276,12 +280,12 @@ class MY_Controller extends CI_Controller
      */
     protected function set_obj_user_to_me($objUser = null)
     {
-        $objUser =  $objUser == null ? User::getCurrentUser() : $objUser;
+        $objUser = $objUser == null ? User::getCurrentUser() : $objUser;
         $this->obj_user = $objUser;
         $this->session->set_userdata(USER_SESSION, $objUser);
         return;
     }
-    
+
     protected function remove_obj_user_to_me()
     {
         $this->session->unset_userdata(USER_SESSION);

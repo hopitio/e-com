@@ -17,6 +17,9 @@ require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductFixedDomain.p
 require_once APPPATH . "libraries" . DS . "domains" . DS . "FeatureProductDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "CategoryDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "FileDomain.php";
+require_once APPPATH . "libraries" . DS . "domains" . DS . "CartDomain.php";
+require_once APPPATH . "libraries" . DS . "domains" . DS . "AdministrativeDomain.php";
+require_once APPPATH . "libraries" . DS . "domains" . DS . "ShippingMethodDomain.php";
 
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListtypeMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListMapper.php";
@@ -30,6 +33,9 @@ require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductFixedMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "FeatureProductMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "CategoryMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "FileMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "CartMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "AdministrativeMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "ShippingMethodMapper.php";
 
 $portalConfig = new DBConfig;
 $portalConfig->type = 'mysqli';

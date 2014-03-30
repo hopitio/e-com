@@ -121,6 +121,16 @@ abstract class MapperAbstract
         return $domains;
     }
 
+    /**
+     * 
+     * @param type $fields
+     * @return array(key => value)
+     */
+    function findAssoc($fields)
+    {
+        return DB::getInstance()->GetAssoc($this->_query->select($fields), $this->_queryParams);
+    }
+
     public function limit($limit, $offset = 0)
     {
         $this->_query->limit($limit)->offset($offset);

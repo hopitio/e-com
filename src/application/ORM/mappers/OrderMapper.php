@@ -18,7 +18,10 @@ class OrderMapper extends MapperAbstract
             'fkShippingMethod' => 'fk_shipping_method',
             'fkPaymentMethod' => 'fk_payment_method',
             'fkCurrency' => 'fk_currency',
-            'dateCreated' => 'date_created'
+            'dateCreated' => 'date_created',
+            'shippingFee' => 'shipping_fee',
+            'fkShippingAddress' => 'fk_shipping_address',
+            'fkBillingAddress' => 'fk_billing_address'
         );
 
         parent::__construct($domain, $query, $map);

@@ -18,6 +18,10 @@ class OrderDomain implements DomainInterface
     public $fkPaymentMethod;
     public $fkCurrency;
     public $dateCreated;
+    public $shippingFee;
+    public $discount;
+    public $fkShippingAddress;
+    public $fkBillingAddress;
 
     /** @var OrderProductDomain */
     protected $_orderProducts = array();

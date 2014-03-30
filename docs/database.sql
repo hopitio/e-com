@@ -15,6 +15,23 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`eproject` /*!40100 DEFAULT CHARACTER SE
 
 USE `eproject`;
 
+/*Table structure for table `t_administrative_unit` */
+
+DROP TABLE IF EXISTS `t_administrative_unit`;
+
+CREATE TABLE `t_administrative_unit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `unitname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `unitlevel` enum('province','city') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_parent` int(11) DEFAULT NULL,
+  `codename` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_administrative_unit` */
+
+insert  into `t_administrative_unit`(`id`,`unitname`,`unitlevel`,`fk_parent`,`codename`) values (1,'hanoi','province',NULL,'101');
+
 /*Table structure for table `t_category` */
 
 DROP TABLE IF EXISTS `t_category`;
@@ -109,12 +126,14 @@ CREATE TABLE `t_file` (
   `url` text COLLATE utf8_unicode_ci,
   `is_dir` tinyint(4) DEFAULT '0',
   `date_modified` datetime DEFAULT NULL,
+  `internal_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_file` */
 
-insert  into `t_file`(`id`,`fk_user`,`fk_parent`,`url`,`is_dir`,`date_modified`) values (1,1,NULL,'/uploads/2013/3/27/image4.jpg',0,'2014-03-27 22:09:19'),(2,1,NULL,'/uploads/2013/3/27/image.jpg',0,'2014-03-27 22:09:19'),(3,1,NULL,'/uploads/2013/3/27/image2.jpg',0,'2014-03-27 22:09:19'),(4,1,NULL,'/uploads/2013/3/27/image3.jpg',0,'2014-03-27 22:09:19');
+insert  into `t_file`(`id`,`fk_user`,`fk_parent`,`url`,`is_dir`,`date_modified`,`internal_path`,`name`) values (1,1,NULL,'/uploads/2014/3/27/image4.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(2,1,NULL,'/uploads/2014/3/27/image.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(3,1,NULL,'/uploads/2014/3/27/image2.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(4,1,NULL,'/uploads/2014/3/27/image3.jpg',0,'2014-03-27 22:09:19',NULL,NULL);
 
 /*Table structure for table `t_invoice` */
 
@@ -199,6 +218,10 @@ CREATE TABLE `t_order` (
   `fk_payment_method` int(11) DEFAULT NULL,
   `fk_currency` int(11) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
+  `shipping_fee` double DEFAULT NULL,
+  `discount` double DEFAULT NULL,
+  `fk_shipping_address` int(11) DEFAULT NULL,
+  `fk_billing_address` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -312,11 +335,11 @@ CREATE TABLE `t_product_attribute` (
   `language` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `value_varchar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_product_attribute` */
 
-insert  into `t_product_attribute`(`id`,`fk_product`,`fk_attribute_type`,`value_number`,`value_enum`,`value_text`,`language`,`value_varchar`) values (1,1,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(2,1,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(3,1,2,NULL,NULL,'product description','EN-US',NULL),(4,1,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(5,1,3,NULL,NULL,NULL,'EN-US','pearl'),(6,1,3,NULL,NULL,NULL,'VN-VI','ngọc'),(7,1,3,NULL,NULL,NULL,'EN-US','glass'),(8,1,3,NULL,NULL,NULL,'VN-VI','pha lê'),(9,1,7,NULL,1,NULL,NULL,NULL),(10,2,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(11,2,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(12,2,2,NULL,NULL,'product description','EN-US',NULL),(13,2,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(14,2,3,NULL,NULL,NULL,'EN-US','pearl'),(15,2,3,NULL,NULL,NULL,'VN-VI','ngọc'),(16,2,3,NULL,NULL,NULL,'EN-US','glass'),(17,2,3,NULL,NULL,NULL,'VN-VI','pha lê'),(18,2,7,NULL,1,NULL,NULL,NULL),(25,3,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(26,3,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(27,3,2,NULL,NULL,'product description','EN-US',NULL),(28,3,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(29,3,3,NULL,NULL,NULL,'EN-US','pearl'),(30,3,3,NULL,NULL,NULL,'VN-VI','ngọc'),(31,3,3,NULL,NULL,NULL,'EN-US','glass'),(32,3,3,NULL,NULL,NULL,'VN-VI','pha lê'),(33,3,7,NULL,1,NULL,NULL,NULL),(40,4,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(41,4,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(42,4,2,NULL,NULL,'product description','EN-US',NULL),(43,4,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(44,4,3,NULL,NULL,NULL,'EN-US','pearl'),(45,4,3,NULL,NULL,NULL,'VN-VI','ngọc'),(46,4,3,NULL,NULL,NULL,'EN-US','glass'),(47,4,3,NULL,NULL,NULL,'VN-VI','pha lê'),(48,4,7,NULL,1,NULL,NULL,NULL),(55,5,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(56,5,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(57,5,2,NULL,NULL,'product description','EN-US',NULL),(58,5,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(59,5,3,NULL,NULL,NULL,'EN-US','pearl'),(60,5,3,NULL,NULL,NULL,'VN-VI','ngọc'),(61,5,3,NULL,NULL,NULL,'EN-US','glass'),(62,5,3,NULL,NULL,NULL,'VN-VI','pha lê'),(63,5,7,NULL,1,NULL,NULL,NULL),(70,6,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(71,6,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(72,6,2,NULL,NULL,'product description','EN-US',NULL),(73,6,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(74,6,3,NULL,NULL,NULL,'EN-US','pearl'),(75,6,3,NULL,NULL,NULL,'VN-VI','ngọc'),(76,6,3,NULL,NULL,NULL,'EN-US','glass'),(77,6,3,NULL,NULL,NULL,'VN-VI','pha lê'),(78,6,7,NULL,1,NULL,NULL,NULL),(85,7,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(86,7,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(87,7,2,NULL,NULL,'product description','EN-US',NULL),(88,7,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(89,7,3,NULL,NULL,NULL,'EN-US','pearl'),(90,7,3,NULL,NULL,NULL,'VN-VI','ngọc'),(91,7,3,NULL,NULL,NULL,'EN-US','glass'),(92,7,3,NULL,NULL,NULL,'VN-VI','pha lê'),(93,7,7,NULL,1,NULL,NULL,NULL),(100,8,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(101,8,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(102,8,2,NULL,NULL,'product description','EN-US',NULL),(103,8,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(104,8,3,NULL,NULL,NULL,'EN-US','pearl'),(105,8,3,NULL,NULL,NULL,'VN-VI','ngọc'),(106,8,3,NULL,NULL,NULL,'EN-US','glass'),(107,8,3,NULL,NULL,NULL,'VN-VI','pha lê'),(108,8,7,NULL,1,NULL,NULL,NULL),(115,9,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(116,9,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(117,9,2,NULL,NULL,'product description','EN-US',NULL),(118,9,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(119,9,3,NULL,NULL,NULL,'EN-US','pearl'),(120,9,3,NULL,NULL,NULL,'VN-VI','ngọc'),(121,9,3,NULL,NULL,NULL,'EN-US','glass'),(122,9,3,NULL,NULL,NULL,'VN-VI','pha lê'),(123,9,7,NULL,1,NULL,NULL,NULL),(130,10,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(131,10,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(132,10,2,NULL,NULL,'product description','EN-US',NULL),(133,10,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(134,10,3,NULL,NULL,NULL,'EN-US','pearl'),(135,10,3,NULL,NULL,NULL,'VN-VI','ngọc'),(136,10,3,NULL,NULL,NULL,'EN-US','glass'),(137,10,3,NULL,NULL,NULL,'VN-VI','pha lê'),(138,10,7,NULL,1,NULL,NULL,NULL),(145,11,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(146,11,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(147,11,2,NULL,NULL,'product description','EN-US',NULL),(148,11,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(149,11,3,NULL,NULL,NULL,'EN-US','pearl'),(150,11,3,NULL,NULL,NULL,'VN-VI','ngọc'),(151,11,3,NULL,NULL,NULL,'EN-US','glass'),(152,11,3,NULL,NULL,NULL,'VN-VI','pha lê'),(153,11,7,NULL,1,NULL,NULL,NULL),(160,12,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(161,12,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(162,12,2,NULL,NULL,'product description','EN-US',NULL),(163,12,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(164,12,3,NULL,NULL,NULL,'EN-US','pearl'),(165,12,3,NULL,NULL,NULL,'VN-VI','ngọc'),(166,12,3,NULL,NULL,NULL,'EN-US','glass'),(167,12,3,NULL,NULL,NULL,'VN-VI','pha lê'),(168,12,7,NULL,1,NULL,NULL,NULL),(169,1,13,10,NULL,NULL,NULL,NULL),(170,2,13,10,NULL,NULL,NULL,NULL),(171,3,13,10,NULL,NULL,NULL,NULL),(172,4,13,10,NULL,NULL,NULL,NULL),(173,5,13,10,NULL,NULL,NULL,NULL),(174,6,13,10,NULL,NULL,NULL,NULL),(175,7,13,10,NULL,NULL,NULL,NULL),(176,8,13,10,NULL,NULL,NULL,NULL),(177,9,13,10,NULL,NULL,NULL,NULL),(178,10,13,10,NULL,NULL,NULL,NULL),(179,11,13,10,NULL,NULL,NULL,NULL),(180,12,13,10,NULL,NULL,NULL,NULL),(181,1,4,1,NULL,NULL,NULL,NULL),(182,1,4,2,NULL,NULL,NULL,NULL),(183,1,4,3,NULL,NULL,NULL,NULL),(184,1,4,4,NULL,NULL,NULL,NULL),(188,2,4,1,NULL,NULL,NULL,NULL),(189,2,4,2,NULL,NULL,NULL,NULL),(190,2,4,3,NULL,NULL,NULL,NULL),(191,2,4,4,NULL,NULL,NULL,NULL),(195,3,4,1,NULL,NULL,NULL,NULL),(196,3,4,2,NULL,NULL,NULL,NULL),(197,3,4,3,NULL,NULL,NULL,NULL),(198,3,4,4,NULL,NULL,NULL,NULL),(202,4,4,1,NULL,NULL,NULL,NULL),(203,4,4,2,NULL,NULL,NULL,NULL),(204,4,4,3,NULL,NULL,NULL,NULL),(205,4,4,4,NULL,NULL,NULL,NULL),(209,5,4,1,NULL,NULL,NULL,NULL),(210,5,4,2,NULL,NULL,NULL,NULL),(211,5,4,3,NULL,NULL,NULL,NULL),(212,5,4,4,NULL,NULL,NULL,NULL),(216,6,4,1,NULL,NULL,NULL,NULL),(217,6,4,2,NULL,NULL,NULL,NULL),(218,6,4,3,NULL,NULL,NULL,NULL),(219,6,4,4,NULL,NULL,NULL,NULL),(223,7,4,1,NULL,NULL,NULL,NULL),(224,7,4,2,NULL,NULL,NULL,NULL),(225,7,4,3,NULL,NULL,NULL,NULL),(226,7,4,4,NULL,NULL,NULL,NULL),(230,8,4,1,NULL,NULL,NULL,NULL),(231,8,4,2,NULL,NULL,NULL,NULL),(232,8,4,3,NULL,NULL,NULL,NULL),(233,8,4,4,NULL,NULL,NULL,NULL),(237,9,4,1,NULL,NULL,NULL,NULL),(238,9,4,2,NULL,NULL,NULL,NULL),(239,9,4,3,NULL,NULL,NULL,NULL),(240,9,4,4,NULL,NULL,NULL,NULL),(244,10,4,1,NULL,NULL,NULL,NULL),(245,10,4,2,NULL,NULL,NULL,NULL),(246,10,4,3,NULL,NULL,NULL,NULL),(247,10,4,4,NULL,NULL,NULL,NULL);
+insert  into `t_product_attribute`(`id`,`fk_product`,`fk_attribute_type`,`value_number`,`value_enum`,`value_text`,`language`,`value_varchar`) values (1,1,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(2,1,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(3,1,2,NULL,NULL,'product description','EN-US',NULL),(4,1,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(5,1,3,NULL,NULL,NULL,'EN-US','pearl'),(6,1,3,NULL,NULL,NULL,'VN-VI','ngọc'),(7,1,3,NULL,NULL,NULL,'EN-US','glass'),(8,1,3,NULL,NULL,NULL,'VN-VI','pha lê'),(9,1,7,NULL,1,NULL,NULL,NULL),(10,2,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(11,2,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(12,2,2,NULL,NULL,'product description','EN-US',NULL),(13,2,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(14,2,3,NULL,NULL,NULL,'EN-US','pearl'),(15,2,3,NULL,NULL,NULL,'VN-VI','ngọc'),(16,2,3,NULL,NULL,NULL,'EN-US','glass'),(17,2,3,NULL,NULL,NULL,'VN-VI','pha lê'),(18,2,7,NULL,1,NULL,NULL,NULL),(25,3,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(26,3,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(27,3,2,NULL,NULL,'product description','EN-US',NULL),(28,3,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(29,3,3,NULL,NULL,NULL,'EN-US','pearl'),(30,3,3,NULL,NULL,NULL,'VN-VI','ngọc'),(31,3,3,NULL,NULL,NULL,'EN-US','glass'),(32,3,3,NULL,NULL,NULL,'VN-VI','pha lê'),(33,3,7,NULL,1,NULL,NULL,NULL),(40,4,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(41,4,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(42,4,2,NULL,NULL,'product description','EN-US',NULL),(43,4,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(44,4,3,NULL,NULL,NULL,'EN-US','pearl'),(45,4,3,NULL,NULL,NULL,'VN-VI','ngọc'),(46,4,3,NULL,NULL,NULL,'EN-US','glass'),(47,4,3,NULL,NULL,NULL,'VN-VI','pha lê'),(48,4,7,NULL,1,NULL,NULL,NULL),(55,5,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(56,5,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(57,5,2,NULL,NULL,'product description','EN-US',NULL),(58,5,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(59,5,3,NULL,NULL,NULL,'EN-US','pearl'),(60,5,3,NULL,NULL,NULL,'VN-VI','ngọc'),(61,5,3,NULL,NULL,NULL,'EN-US','glass'),(62,5,3,NULL,NULL,NULL,'VN-VI','pha lê'),(63,5,7,NULL,1,NULL,NULL,NULL),(70,6,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(71,6,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(72,6,2,NULL,NULL,'product description','EN-US',NULL),(73,6,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(74,6,3,NULL,NULL,NULL,'EN-US','pearl'),(75,6,3,NULL,NULL,NULL,'VN-VI','ngọc'),(76,6,3,NULL,NULL,NULL,'EN-US','glass'),(77,6,3,NULL,NULL,NULL,'VN-VI','pha lê'),(78,6,7,NULL,1,NULL,NULL,NULL),(85,7,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(86,7,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(87,7,2,NULL,NULL,'product description','EN-US',NULL),(88,7,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(89,7,3,NULL,NULL,NULL,'EN-US','pearl'),(90,7,3,NULL,NULL,NULL,'VN-VI','ngọc'),(91,7,3,NULL,NULL,NULL,'EN-US','glass'),(92,7,3,NULL,NULL,NULL,'VN-VI','pha lê'),(93,7,7,NULL,1,NULL,NULL,NULL),(100,8,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(101,8,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(102,8,2,NULL,NULL,'product description','EN-US',NULL),(103,8,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(104,8,3,NULL,NULL,NULL,'EN-US','pearl'),(105,8,3,NULL,NULL,NULL,'VN-VI','ngọc'),(106,8,3,NULL,NULL,NULL,'EN-US','glass'),(107,8,3,NULL,NULL,NULL,'VN-VI','pha lê'),(108,8,7,NULL,1,NULL,NULL,NULL),(115,9,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(116,9,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(117,9,2,NULL,NULL,'product description','EN-US',NULL),(118,9,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(119,9,3,NULL,NULL,NULL,'EN-US','pearl'),(120,9,3,NULL,NULL,NULL,'VN-VI','ngọc'),(121,9,3,NULL,NULL,NULL,'EN-US','glass'),(122,9,3,NULL,NULL,NULL,'VN-VI','pha lê'),(123,9,7,NULL,1,NULL,NULL,NULL),(130,10,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(131,10,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(132,10,2,NULL,NULL,'product description','EN-US',NULL),(133,10,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(134,10,3,NULL,NULL,NULL,'EN-US','pearl'),(135,10,3,NULL,NULL,NULL,'VN-VI','ngọc'),(136,10,3,NULL,NULL,NULL,'EN-US','glass'),(137,10,3,NULL,NULL,NULL,'VN-VI','pha lê'),(138,10,7,NULL,1,NULL,NULL,NULL),(145,11,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(146,11,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(147,11,2,NULL,NULL,'product description','EN-US',NULL),(148,11,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(149,11,3,NULL,NULL,NULL,'EN-US','pearl'),(150,11,3,NULL,NULL,NULL,'VN-VI','ngọc'),(151,11,3,NULL,NULL,NULL,'EN-US','glass'),(152,11,3,NULL,NULL,NULL,'VN-VI','pha lê'),(153,11,7,NULL,1,NULL,NULL,NULL),(160,12,1,NULL,NULL,NULL,'EN-US','Strawberry pearl'),(161,12,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(162,12,2,NULL,NULL,'product description','EN-US',NULL),(163,12,2,NULL,NULL,'mo ta sp','VN-VI',NULL),(164,12,3,NULL,NULL,NULL,'EN-US','pearl'),(165,12,3,NULL,NULL,NULL,'VN-VI','ngọc'),(166,12,3,NULL,NULL,NULL,'EN-US','glass'),(167,12,3,NULL,NULL,NULL,'VN-VI','pha lê'),(168,12,7,NULL,1,NULL,NULL,NULL),(169,1,13,10,NULL,NULL,NULL,NULL),(170,2,13,10,NULL,NULL,NULL,NULL),(171,3,13,10,NULL,NULL,NULL,NULL),(172,4,13,10,NULL,NULL,NULL,NULL),(173,5,13,10,NULL,NULL,NULL,NULL),(174,6,13,10,NULL,NULL,NULL,NULL),(175,7,13,10,NULL,NULL,NULL,NULL),(176,8,13,10,NULL,NULL,NULL,NULL),(177,9,13,10,NULL,NULL,NULL,NULL),(178,10,13,10,NULL,NULL,NULL,NULL),(179,11,13,10,NULL,NULL,NULL,NULL),(180,12,13,10,NULL,NULL,NULL,NULL),(181,1,4,1,NULL,NULL,NULL,NULL),(182,1,4,2,NULL,NULL,NULL,NULL),(183,1,4,3,NULL,NULL,NULL,NULL),(184,1,4,4,NULL,NULL,NULL,NULL),(188,2,4,1,NULL,NULL,NULL,NULL),(189,2,4,2,NULL,NULL,NULL,NULL),(190,2,4,3,NULL,NULL,NULL,NULL),(191,2,4,4,NULL,NULL,NULL,NULL),(195,3,4,1,NULL,NULL,NULL,NULL),(196,3,4,2,NULL,NULL,NULL,NULL),(197,3,4,3,NULL,NULL,NULL,NULL),(198,3,4,4,NULL,NULL,NULL,NULL),(202,4,4,1,NULL,NULL,NULL,NULL),(203,4,4,2,NULL,NULL,NULL,NULL),(204,4,4,3,NULL,NULL,NULL,NULL),(205,4,4,4,NULL,NULL,NULL,NULL),(209,5,4,1,NULL,NULL,NULL,NULL),(210,5,4,2,NULL,NULL,NULL,NULL),(211,5,4,3,NULL,NULL,NULL,NULL),(212,5,4,4,NULL,NULL,NULL,NULL),(216,6,4,1,NULL,NULL,NULL,NULL),(217,6,4,2,NULL,NULL,NULL,NULL),(218,6,4,3,NULL,NULL,NULL,NULL),(219,6,4,4,NULL,NULL,NULL,NULL),(223,7,4,1,NULL,NULL,NULL,NULL),(224,7,4,2,NULL,NULL,NULL,NULL),(225,7,4,3,NULL,NULL,NULL,NULL),(226,7,4,4,NULL,NULL,NULL,NULL),(230,8,4,1,NULL,NULL,NULL,NULL),(231,8,4,2,NULL,NULL,NULL,NULL),(232,8,4,3,NULL,NULL,NULL,NULL),(233,8,4,4,NULL,NULL,NULL,NULL),(237,9,4,1,NULL,NULL,NULL,NULL),(238,9,4,2,NULL,NULL,NULL,NULL),(239,9,4,3,NULL,NULL,NULL,NULL),(240,9,4,4,NULL,NULL,NULL,NULL),(244,10,4,1,NULL,NULL,NULL,NULL),(245,10,4,2,NULL,NULL,NULL,NULL),(246,10,4,3,NULL,NULL,NULL,NULL),(247,10,4,4,NULL,NULL,NULL,NULL),(251,1,11,10,NULL,NULL,NULL,'USD'),(252,2,11,10,NULL,NULL,NULL,'USD'),(253,3,11,10,NULL,NULL,NULL,'USD'),(254,4,11,10,NULL,NULL,NULL,'USD'),(255,5,11,10,NULL,NULL,NULL,'USD'),(256,6,11,10,NULL,NULL,NULL,'USD'),(257,7,11,10,NULL,NULL,NULL,'USD'),(258,8,11,10,NULL,NULL,NULL,'USD'),(259,9,11,10,NULL,NULL,NULL,'USD'),(260,10,11,10,NULL,NULL,NULL,'USD'),(261,11,11,10,NULL,NULL,NULL,'USD'),(262,12,11,10,NULL,NULL,NULL,'USD');
 
 /*Table structure for table `t_product_attribute_type` */
 
@@ -336,7 +359,7 @@ CREATE TABLE `t_product_attribute_type` (
 
 /*Data for the table `t_product_attribute_type` */
 
-insert  into `t_product_attribute_type`(`id`,`codename`,`datatype`,`fk_enum_ref`,`multi_language`,`repeating_group`,`weight`,`default`) values (1,'name','varchar',NULL,1,0,0,NULL),(2,'description','text',NULL,1,0,0,NULL),(3,'tag','varchar',NULL,1,1,0,NULL),(4,'image','text',NULL,0,1,0,NULL),(5,'thumbnail','text',NULL,0,0,0,NULL),(6,'banner_image','text',NULL,0,0,0,NULL),(7,'material','enum',1,0,1,0,NULL),(8,'gift_target','enum',2,0,1,0,NULL),(9,'category','number',NULL,0,0,0,NULL),(10,'occasion','enum',3,0,1,0,NULL),(11,'price','number',NULL,0,0,0,NULL),(12,'currency','enum',4,0,0,0,NULL),(13,'quantity','number',NULL,0,0,0,NULL),(14,'weight','number',NULL,0,0,0,NULL),(15,'source','enum',NULL,0,0,0,NULL),(16,'shipping_method','enum',6,0,1,0,NULL),(17,'payment_method','enum',7,0,1,0,NULL);
+insert  into `t_product_attribute_type`(`id`,`codename`,`datatype`,`fk_enum_ref`,`multi_language`,`repeating_group`,`weight`,`default`) values (1,'name','varchar',NULL,1,0,0,NULL),(2,'description','text',NULL,1,0,0,NULL),(3,'tag','varchar',NULL,1,1,0,NULL),(4,'image','file',NULL,0,1,0,NULL),(5,'thumbnail','file',NULL,0,0,0,NULL),(6,'banner_image','text',NULL,0,0,0,NULL),(7,'material','enum',1,0,1,0,NULL),(8,'gift_target','enum',2,0,1,0,NULL),(9,'category','number',NULL,0,0,0,NULL),(10,'occasion','enum',3,0,1,0,NULL),(11,'price','number',NULL,0,1,0,NULL),(13,'quantity','number',NULL,0,0,0,NULL),(14,'weight','number',NULL,0,0,0,NULL),(15,'source','enum',NULL,0,0,0,NULL),(16,'shipping_method','enum',6,0,1,0,NULL),(17,'payment_method','enum',7,0,1,0,NULL);
 
 /*Table structure for table `t_product_comment` */
 
@@ -460,6 +483,24 @@ CREATE TABLE `t_shipment_detail` (
 
 /*Data for the table `t_shipment_detail` */
 
+/*Table structure for table `t_shipping_method` */
+
+DROP TABLE IF EXISTS `t_shipping_method`;
+
+CREATE TABLE `t_shipping_method` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fee` double DEFAULT NULL,
+  `fk_currency` int(11) DEFAULT NULL,
+  `min_bday` tinyint(4) DEFAULT NULL,
+  `max_bday` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_shipping_method` */
+
+insert  into `t_shipping_method`(`id`,`codename`,`fee`,`fk_currency`,`min_bday`,`max_bday`) values (1,'standard',5,14,1,3),(2,'premium',10,14,0,1),(3,'express',15,14,0,0);
+
 /*Table structure for table `t_user` */
 
 DROP TABLE IF EXISTS `t_user`;
@@ -486,36 +527,34 @@ CREATE TABLE `t_user` (
 
 insert  into `t_user`(`id`,`firstname`,`lastname`,`sex`,`DOB`,`date_joined`,`status`,`status_date`,`status_reason`,`last_active`,`phoneno`,`bonus`,`email`,`hashid`) values (1,'Mr','Admin','M',NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL),(2,'Ms','Alice','F',NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL),(3,'Mr','John Smith','M',NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL);
 
-/*Table structure for table `t_user_contact` */
+/*Table structure for table `t_user_address` */
 
-DROP TABLE IF EXISTS `t_user_contact`;
+DROP TABLE IF EXISTS `t_user_address`;
 
-CREATE TABLE `t_user_contact` (
+CREATE TABLE `t_user_address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fk_user` int(11) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
   `date_used` datetime DEFAULT NULL,
   `count_used` int(11) DEFAULT NULL,
-  `prefix` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `firstname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `middlename` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `suffix` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `company` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `street_address` text COLLATE utf8_unicode_ci,
-  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `country` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `state_province` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` varchar(10) COLLATE utf8_unicode_ci DEFAULT 'vietnam',
+  `fk_state_province` int(11) DEFAULT NULL,
   `zip_postal_code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telephone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fax` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `vat_number` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` enum('shipping','billing') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `t_user_contact` */
+/*Data for the table `t_user_address` */
 
-insert  into `t_user_contact`(`id`,`fk_user`,`date_created`,`date_used`,`count_used`,`prefix`,`firstname`,`middlename`,`lastname`,`suffix`,`company`,`street_address`,`city`,`country`,`state_province`,`zip_postal_code`,`telephone`,`fax`,`vat_number`) values (1,2,NULL,NULL,1,'Mr','Adrew',NULL,'Kingsley',NULL,NULL,'12 Wall st\r\n','New york','America',NULL,NULL,'012347888',NULL,NULL);
+insert  into `t_user_address`(`id`,`fk_user`,`date_created`,`date_used`,`count_used`,`fullname`,`company`,`street_address`,`city`,`country`,`fk_state_province`,`zip_postal_code`,`telephone`,`fax`,`vat_number`,`type`,`status`) values (1,2,NULL,NULL,1,NULL,NULL,'12 Wall st\r\n','0','America',NULL,NULL,'012347888',NULL,NULL,NULL,0);
 
 /*Table structure for table `t_user_role` */
 

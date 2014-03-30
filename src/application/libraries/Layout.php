@@ -15,6 +15,7 @@ class Layout
     var $show_header;
     var $head_title;
     var $head_title_append_default;
+    var $angular_app;
 
     function Layout($layout = "layout")
     {
@@ -57,6 +58,11 @@ class Layout
     function setLayout($layout)
     {
         $this->layout = $layout;
+    }
+
+    function setAngularApp($name)
+    {
+        $this->angular_app = $name;
     }
 
     /**

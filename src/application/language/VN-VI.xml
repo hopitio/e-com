@@ -60,4 +60,6 @@
     <portalaccount_account>
         <title>Thông tin tài khoản cá nhân</title>
     </portalaccount_account>
+    <cart_showCart></cart_showCart>
+    <cart_shipping></cart_shipping>
 </data>
