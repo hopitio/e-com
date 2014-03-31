@@ -390,10 +390,12 @@ $config['ConfirmRegisterMailler_useragent'] = 'DEMO MAIL';
 $config['ConfirmRegisterMailler_smtp_host'] = 'ssl://smtp.gmail.com';
 $config['ConfirmRegisterMailler_smtp_fullName'] = 'LÊ THANH AN';
 $config['ConfirmRegisterMailler_smtp_user'] = 'lethanhan.bkaptech@gmail.com';
-$config['ConfirmRegisterMailler_smtp_pass'] = 'thuhoa1208';
+$config['ConfirmRegisterMailler_smtp_pass'] = '';
 $config['ConfirmRegisterMailler_smtp_port'] = '465';
 $config['ConfirmRegisterMailler_smtp_timeout'] = '1';
 $config['ConfirmRegisterMailler_temp'] = '/RegisterConfirm.txt';
 
+
+$config['temp_mail_folder'] = APPPATH.'temp/mail/';
 /* End of file config.php */
 /* Location: ./application/config/config.php */
