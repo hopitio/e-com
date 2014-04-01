@@ -71,7 +71,6 @@ class PortalUserModel extends PortalBaseModel
             $this->status_reason = $row->status_reason;
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
-            
             break;
             
         }

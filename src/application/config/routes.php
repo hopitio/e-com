@@ -29,7 +29,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
         $route['portal/account'] = 'portalController/account/showPage';
-        
+        $route['portal/active'] = 'portalController/activeAccount/active';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')

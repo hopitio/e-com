@@ -28,7 +28,21 @@ class PortalAccountBiz extends PortalBaseBiz
         $DOB, $question = '', $answer = '')
     {
         $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT,$question, $answer);
-        $this->activeUser($newId);
+        //$this->activeUser($newId);
+        $portalUserModel = new PortalUserModel();
+        $portalUserModel->id = $newId;
+        $portalUserModel->getUserByUserId();
+        
+        $linkActive = $this->config->item('path_to_active_account');
+        $activeKey  = SecurityManager::inital()->getEncrytion()
+                      ->accountActiveEncrytion($portalUserModel->id, $portalUserModel->account, $portalUserModel->date_joined); 
+        
+        $linkActive = str_replace('{key}', $activeKey, $linkActive);
+        $mailData = array(
+             'link' => $linkActive,
+        );
+        MailManager::initalAndSend(MailManager::TYPE_RESG_COMFIRM, $account, $mailData);
+        
         return $newId;
     }
     
@@ -262,6 +276,31 @@ class PortalAccountBiz extends PortalBaseBiz
         $this->updateUserStatus($userId, DatabaseFixedValue::USER_STATUS_OPENED, $reason);
         
         return $userModel->getUserByUserId();
+    }
+    
+    
+    /**
+     * 
+     * @param string $requestString
+     * @return string er_actived|er_active_error|actived;
+     */
+    function activeUserByRequest($requestString){
+        $activeErrorActived = 'er_actived';
+        $activeError = 'er_active_error';
+        $actived = 'actived';
+        $data = SecurityManager::inital()->getEncrytion()->accountActiveDencrytion($requestString);
+        $userID = $data->userid;
+        $portalModel = new PortalUserModel();
+        $portalModel->id = $userID;
+        $portalModel->getUserByUserId();
+        
+        if($portalModel->status != DatabaseFixedValue::USER_STATUS_REGISTED){
+            log_message('error',__CLASS__.'::'.__METHOD__.' Tài khoản đã được active - '.var_export($requestString,true));
+            return $activeErrorActived;
+        } 
+        
+        $user = $this->activeUser($userID);
+        return $actived;
     }
     
     /**

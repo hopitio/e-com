@@ -6,6 +6,9 @@
  */
 class ConfirmRegisterMailler extends AbstractStaff{
     
+    CONST LINK_KEY = 'link';
+    CONST MAIL_TEMP_FILE_NAME = 'RegisterConfirm.txt';
+    
     CONST CONFIRMREGISTERMAILLER_SMTP_HOST = 'ConfirmRegisterMailler_smtp_host';
     CONST CONFIRMREGISTERMAILLER_SMTP_USER = 'ConfirmRegisterMailler_smtp_user';
     CONST CONFIRMREGISTERMAILLER_SMTP_PASS = 'ConfirmRegisterMailler_smtp_pass';
@@ -50,7 +53,6 @@ class ConfirmRegisterMailler extends AbstractStaff{
         $msg = $this->buildMailContent();
         $this->CI->email->message($msg);
         $this->CI->email->send();
-        log_message('error', $this->CI->email->print_debugger());
     }
     
     /**
@@ -58,6 +60,17 @@ class ConfirmRegisterMailler extends AbstractStaff{
      */
     private function buildMailContent()
     {
-        return $this->mailData['link'];;
+        if(!isset($this->mailData[self::LINK_KEY]))
+        {
+            throw new Lynx_EmailException(__CLASS__.'::'.__METHOD__.' DATA INVALID');
+            
+        }
+        
+        $this->CI->load->helper('file');
+        $temp = $this->CI->config->item('temp_mail_folder');
+        $temp .= User::getCurrentUser()->languageKey.'/'.self::MAIL_TEMP_FILE_NAME;
+        $mailContent = read_file($temp);
+        $mailContent = str_replace('{link}',$this->mailData[self::LINK_KEY],$mailContent);
+        return $mailContent;
     }
 }

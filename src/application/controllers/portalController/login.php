@@ -6,11 +6,8 @@ class login extends BaseController
 {
 
     protected $authorization_required = FALSE;
-
     private $_css = array('/style/login.css');
-    
     private $_js = array('/js/login.js');
-    
     CONST URL_TO_POST = '/portal/login';
     CONST URL_TO_POST_RES = '/portal/register';
 
@@ -40,19 +37,22 @@ class login extends BaseController
      */
     function showPage()
     {
-//         $mail = new MailManager();
-//         $mail->requestSendMail(MailManager::TYPE_RESG_COMFIRM, 'lethanhan.bkaptech@gmail.com', array());
-        
         if(User::getCurrentUser()->is_authorized){
             $this->remove_obj_user_to_me();
             $this->set_obj_user_to_me(new User());
         }
+        $this->_data = array();
+        $params  = $this->getQueryStringParams();
+        $subSysKey = isset($params['su']) ? $params['su'] : null;
+        $currentPage = isset($params['cp']) ? $params['cp'] : '/portal/account';
+        $sessionId = isset($params['se']) ? $params['se'] : null;
+        $endPoint = isset($params['ep']) ? $params['se'] : null;
+
+        $this->_data['su'] = $subSysKey;
+        $this->_data['cp'] = $currentPage;
+        $this->_data['se'] = $sessionId;
+        $this->_data['ep'] = $endPoint;
         
-        $params = $this->getQueryStringParams();
-        $url = !empty($params['u']) ? $params['u'] : null;
-        $redirectUrl = !empty($params['t']) ? $params['t'] : null;
-        $this->_data['postUrlCaller'] = $url;
-        $this->_data['postUrlTarget'] = $redirectUrl;
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
             ->setData($this->_data, true)
             ->setCss($this->_css)
@@ -69,8 +69,10 @@ class login extends BaseController
         if (
             !isset($data['txtUs']) || 
             !isset($data['txtPw'])|| 
-            !isset($data['postUrlCaller']) || 
-            !isset($data['postUrlTarget'])
+            !isset($data['currentPage']) || 
+            !isset($data['endpoint']) ||
+            !isset($data['session']) ||
+            !isset($data['subSys'])
         )
         {
             throw new Lynx_RequestException('request login thiếu tham số');
@@ -109,13 +111,16 @@ class login extends BaseController
         $params = $this->getQueryStringParams();
         $this->_data = array();
         
-        $url = !empty($params['u']) ? $params['u'] : '/__portal/authen';
-        $redirectUrl = !empty($params['t']) ? $params['t'] : '/home';
+        $subSysKey = isset($params['su']) ? $params['su'] : null;
+        $currentPage = isset($params['cp']) ? $params['cp'] : '/portal/account';
+        $sessionId = isset($params['se']) ? $params['se'] : null;
+        $endPoint = isset($params['ep']) ? $params['se'] : null;
         
         $this->_data['error'] = MultilLanguageManager::getInstance()->getLangViaScreen('login', User::getCurrentUser()->languageKey)->lblError;
-        $this->_data['postUrlCaller'] = $url;
-        $this->_data['postUrlTarget'] = $redirectUrl;
-        
+        $this->_data['su'] = $subSysKey;
+        $this->_data['cp'] = $currentPage;
+        $this->_data['se'] = $sessionId;
+        $this->_data['ep'] = $endPoint;
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
             $this->_data, true)
             ->setCss($this->_css)
@@ -253,25 +258,26 @@ class login extends BaseController
      */
     function onLoginComplete(){
         $data = $this->input->post();
-        if (!isset($data['postUrlCaller']) ||!isset($data['postUrlTarget']))
-        {
+        if (
+            !isset($data['currentPage']) || 
+            !isset($data['endpoint']) ||
+            !isset($data['session']) ||
+            !isset($data['subSys'])
+        ){
             throw new Lynx_RequestException(__CLASS__.'::onLoginComplete:request login thiếu tham số');
         }
         $this->set_obj_user_to_me($this->obj_user);
         $user = clone $this->obj_user;
         unset($user->id);
-        $dataResult['postUrl'] = $data['postUrlCaller'];
-        $dataResult['redirect']  = $data['postUrlTarget'];
-        $dataResult['dataJson'] = json_encode($user);
-        if($data['postUrlCaller'] == null){
-           redirect('/portal/account');
-           exit;
-        }
-        if($data['postUrlTarget'] == null){
-            //TODO:Địa chỉ subsystem/home.
+        if($data['endpoint'] == null || $data['endpoint'] = ''){
             redirect('/portal/account');
             exit;
         }
+        $dataResult['postUrl'] = $data['endpoint'];
+        $dataResult['redirect']  = $data['currentPage'];
+        $dataResult['secretKey'] =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
+        $dataResult['dataJson'] = json_encode($user);
+
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
     }
 }

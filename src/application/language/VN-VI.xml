@@ -57,6 +57,12 @@
     <portalaccount_account>
         <title>Thông tin tài khoản cá nhân</title>
     </portalaccount_account>
+    <portalaccount_active>
+        <title>Xác minh tài khoản</title>
+        <msgComplete>Xác minh tài khoản thành công</msgComplete>
+        <linkComplete>Trở về trang chủ</linkComplete>
+        <msgErrorActived>Tài khoản đã được active</msgErrorActived>
+    </portalaccount_active>
     <cart_showCart></cart_showCart>
     <cart_shipping></cart_shipping>
     <mail>

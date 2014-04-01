@@ -25,4 +25,12 @@ class MailManager {
         }
         $staff->setMailData($mailData)->setTo($target)->send();
     }
+    
+    /**
+     * @return MailManager  
+     */
+    static function initalAndSend($type,$target,$mailData){
+        $mail = new MailManager();
+        $mail->requestSendMail($type, $target, $mailData);
+    } 
 }

@@ -61,13 +61,17 @@
             <a href="javascript:void(0)" id="likfacebooklogin" link="<?php echo UrlManager::getInstanse()->getLoginFacebookUrl();?>"><img src="/images/Social_signin_facebook.png" /></a>
             <a href="#"><img src="/images/Social_signin_google.png" /></a>
             
-            <input name='postUrlCaller' type="hidden" value='<?php echo $postUrlCaller;?>'>
-            <input name='postUrlTarget' type="hidden" value='<?php echo $postUrlTarget;?>'>
+            <input name='currentPage' type="hidden" value='<?php echo $cp;?>'>
+            <input name='endpoint' type="hidden" value='<?php echo $ep;?>'>
+            <input name='session' type="hidden" value='<?php echo $se;?>'>
+            <input name='subSys' type="hidden" value='<?php echo $su;?>'>
         </form>
     </div>
     <form id='facebooklogin' action="/portal/login/facebook" method="post">
-        <input name='postUrlCaller' type="hidden" value='<?php echo $postUrlCaller;?>'>
-        <input name='postUrlTarget' type="hidden" value='<?php echo $postUrlTarget;?>'>
+        <input name='currentPage' type="hidden" value='<?php echo $cp;?>'>
+        <input name='endpoint' type="hidden" value='<?php echo $ep;?>'>
+        <input name='session' type="hidden" value='<?php echo $se;?>'>
+        <input name='subSys' type="hidden" value='<?php echo $su;?>'>
         <input name="postValue" type="hidden"/>
     </form>
 </div> 
