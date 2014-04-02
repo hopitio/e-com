@@ -6,6 +6,7 @@ class WishlistMapper extends MapperAbstract
 {
 
     protected $_autoloadDetails = false;
+    protected $_language;
 
     function __construct($domain = 'WishlistDomain')
     {
@@ -27,9 +28,10 @@ class WishlistMapper extends MapperAbstract
         return $this;
     }
 
-    function autoloadDetails($bool)
+    function autoloadDetails($bool = true, $language)
     {
         $this->_autoloadDetails = $bool;
+        $this->_language = $language;
         return $this;
     }
 
@@ -40,10 +42,10 @@ class WishlistMapper extends MapperAbstract
         {
             foreach ($instances as &$instance)
             {
-                $this->loadDetails($instance);
+                $this->loadDetails($instance, $this->_language);
             }
         }
-        return $instance;
+        return $instances;
     }
 
     function find($id, $fields = '*')
@@ -54,14 +56,14 @@ class WishlistMapper extends MapperAbstract
 
         if ($this->_autoloadDetails)
         {
-            $this->loadDetails($domain);
+            $this->loadDetails($domain, $this->_language);
         }
         return $domain;
     }
 
-    function loadDetails(WishlistDomain $wishlist)
+    function loadDetails(WishlistDomain $wishlist, $language)
     {
-        $details = WishListDetailMapper::make()->filterWishlist($wishlist->id)->findAll();
+        $details = WishListDetailMapper::make()->filterWishlist($wishlist->id)->autoloadAttributes(true, $language)->findAll();
         if (!$details)
         {
             return $wishlist;
@@ -71,6 +73,19 @@ class WishlistMapper extends MapperAbstract
             $wishlist->addWishlistDetail($detailInstance);
         }
         return $wishlist;
+    }
+
+    /**
+     * 
+     * @param array $rawData
+     * @return int ID|false
+     */
+    function insert($rawData = array())
+    {
+        $rawData['fk_customer'] = User::getCurrentUser()->id;
+        $rawData['name'] = 'main';
+        $rawData['date_created'] = DB::getDate();
+        return DB::insert('t_wishlist', $rawData);
     }
 
 }

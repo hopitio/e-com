@@ -30,10 +30,10 @@ class Query
     {
         $this->select($this->_getArrayVal($options, 'select', '*'))
                 ->from($this->_getArrayVal($options, 'from'))
-                ->limit($this->_getArrayVal($options, 'limit'))
-                ->offset($this->_getArrayVal($options, 'offset'))
                 ->orderBy($this->_getArrayVal($options, 'orderBy'))
-                ->groupBy($this->_getArrayVal($options, 'groupBy'));
+                ->groupBy($this->_getArrayVal($options, 'groupBy'))
+                ->limit($this->_getArrayVal($options, 'limit'))
+                ->offset($this->_getArrayVal($options, 'offset'));
         if (isset($options['where']))
         {
             $this->where($options['where']);
@@ -51,14 +51,6 @@ class Query
         {
             $sql .= "\nWHERE " . implode("\n    AND ", $this->_where);
         }
-        if ($this->_limit)
-        {
-            $sql .= "\nLIMIT {$this->_limit}";
-            if ($this->_offset)
-            {
-                $sql .= " OFFSET {$this->_offset}";
-            }
-        }
         if ($this->_orderBy)
         {
             $sql .= "\nORDER BY {$this->_orderBy}";
@@ -71,6 +63,15 @@ class Query
         {
             $sql .= "\nHAVING {$this->_having}";
         }
+        if ($this->_limit)
+        {
+            $sql .= "\nLIMIT {$this->_limit}";
+            if ($this->_offset)
+            {
+                $sql .= " OFFSET {$this->_offset}";
+            }
+        }
+
         return $sql;
     }
 
@@ -157,6 +158,7 @@ class Query
     public function groupBy($field)
     {
         $this->_groupBy = $field;
+        return $this;
     }
 
     public function having($condition)

@@ -18,19 +18,11 @@ class WishListDetailMapper extends ProductFixedMapper
         return $this;
     }
 
-    function insert($raw_data)
+    function filterProductID($productID)
     {
-        
-    }
-
-    function update($id, $raw_data)
-    {
-        
-    }
-
-    function delete($id)
-    {
-        
+        $this->_query->where('wd.fk_product=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $productID;
+        return $this;
     }
 
 }
