@@ -76,6 +76,13 @@ class DatabaseFixedValue{
     CONST SECURITY_QUESTION_NO3_ID = '3';
     CONST SECURITY_QUESTION_NO4_ID = '4';
     CONST SECURITY_QUESTION_NO5_ID = '5';
+    
+    CONST USER_HISTORY_ACTION_RETURN = 'RETURN';
+    CONST USER_HISTORY_ACTION_REGISTE = 'REGISTE';
+    CONST USER_HISTORY_ACTION_LOGIN = 'LOGIN';
+    CONST USER_HISTORY_ACTION_NONE = 'NONE';
+    CONST USER_HISTORY_ACTION_LOGOUT = 'LOGOUT';
+    CONST USER_HISTORY_ACTION_PAYMENT = 'PAYMENT';
 }
 class TableName{
     CONST t_user = 't_user';
@@ -96,6 +103,19 @@ class T_user{
     CONST status_reason = 'status_reason';
     CONST last_active = 'last_active';
     CONST platform_key = 'platform_key';
+}
+class T_user_history{
+    CONST tableName = 't_user_history';
+    CONST id = "id";
+    CONST fk_user = "fk_user";
+    CONST secret_key = "secret_key";
+    CONST client_ip ="client_ip";
+    CONST user_agrent = "user_agrent";
+    CONST last_activity = "last_activity";
+    CONST sub_system_name = "sub_system_name";
+    CONST description = "description";
+    CONST action_name = "action_name";
+    CONST session_id = 'session_id';
 }
 
 class T_user_setting{

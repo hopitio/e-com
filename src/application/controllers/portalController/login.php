@@ -278,6 +278,8 @@ class login extends BaseController
         $dataResult['secretKey'] =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
         $dataResult['dataJson'] = json_encode($user);
 
+        
+        
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
     }
 }

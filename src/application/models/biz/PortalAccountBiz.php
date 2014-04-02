@@ -41,7 +41,15 @@ class PortalAccountBiz extends PortalBaseBiz
         $mailData = array(
              'link' => $linkActive,
         );
+        
+        
+        
         MailManager::initalAndSend(MailManager::TYPE_RESG_COMFIRM, $account, $mailData);
+        
+        $history = new PortalUserHistoryBiz();
+        $user = new User();
+        $user->id = $newId;
+        $history->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_REGISTE,'REGISTER FROM PORTAL FORM',null,null);
         
         return $newId;
     }
@@ -60,14 +68,16 @@ class PortalAccountBiz extends PortalBaseBiz
         $DOB, $platformKey = DatabaseFixedValue::USER_PLATFORM_DEFAULT )
     {
         $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, $platformKey);
+        $history = new PortalUserHistoryBiz();
+        $history->createNewHistory(null,DatabaseFixedValue::USER_HISTORY_ACTION_REGISTE,'REGISTER FORM '.$platformKey,null,null);
         return  $this->activeUser($newId);
     }
 
     /**
      * insert new user.
      *
-     * @param string $firstname            
-     * @param string $lastname            
+     * @param string $firstname
+     * @param string $lastname
      * @param string $account            
      * @param string $password            
      * @param string $sex            
@@ -140,13 +150,13 @@ class PortalAccountBiz extends PortalBaseBiz
      * @param string $formPlatform
      * @return 
      */
-    function getLogin($username,$password,$formPlatform = null){
+    function getLogin($username,$password,$formPlatform = null,$toSubsys = null,$subSystemSessionId = null){
         $userModel = new PortalUserModel();
         $userModel->account = $username;
         $userModel->password = $password;
         $formPlatform = $formPlatform == null ? DatabaseFixedValue::USER_PLATFORM_DEFAULT : $formPlatform;
         $result = $formPlatform == DatabaseFixedValue::USER_PLATFORM_DEFAULT ? $userModel->selectUserByUserNameAndPassoword() : $userModel->selectUserByUserName();
-       
+
         if ($result)
         {
             $this->setLoginUser($result);

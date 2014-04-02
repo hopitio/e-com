@@ -11,4 +11,6 @@ class account extends BaseController
     function showPage(){
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->render('portalaccount/account');
     }
+    
+    
 }

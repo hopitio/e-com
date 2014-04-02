@@ -1,0 +1,122 @@
+﻿NOTE :
+Danh sách các key cần mã hóa.
+	secretKey
+		+ algo : md5.
+		+ parameter: user_id + salt + sessionId subsystem.
+	orderKey
+		+ algo : md5
+		+ parameter: orderid + sessionid + userid + salt.
+--------------------------------- Dành cho thao tác lấy dữ liệu chung của ---------------------
+1. Các api 
+	URL : 
+		+ portal : ~/portal/api/index
+		+ subsystem: ~/api/[Tự định nghĩa]
+	POST: 
+		{
+			c:'[functionName]',
+			....[Data]...
+		}
+	GET: Tự định nghĩa các API.
+	RESPONSE : Tự định nghĩa với các định dạng khác nhau cho từng API.
+
+
+--------------------------------- Dành cho thao tác loign ---------------------------------
+1. SubSystem redirect đến "portal login" trên portal : 
+	URL : ~/portal/login?su=[subsystemkey]&ep=[EndPoint]&cp=[currentPage]&se=[sessionID].
+	METHOD : GET 
+	QUERYSTRING 
+		+ ep : Là đường dẫn đón nhận dữ liệu post từ portal trả về.
+		+ cp : current page, page sẽ được redirect khi hoàn thành login.
+		+ se : session id của login hiện tại
+		+ su : key của subsystem.
+2. Quá trình thực hiện login trên portal.
+3. Portal sẽ post dữ liệu login về 1 "endpoint" trên subsystem.
+	URL : ~/__portal/login_callback
+	METHOD : POST
+	POSTDATA :
+		{
+		    secretKey : '[md5]',
+			targetPage: '[currentPage]',
+			user : {
+				fristname: 'LE THANH',
+				lastname: 'AN',
+				account: 'lethanhan.bkaptech@gmail.com',
+				sex : 'M',
+				DOB : '1990-03-25 00:00:00',
+				date_joined : '2014-03-31 00:00:00',
+				status : '1',
+				last_active = '2014-03-31 00:00:00',
+				platform_key = '0'
+			}			
+		}
+4. Subsytem tự chuyển về target page.
+
+------------------------------------ Dành cho thao tác thanh toán -----------------------------
+1. Subsystem thực hiện quá trình nhận thông tin về thanh toán : Đơn hàng, shipping. và gửi thông tin lên cho portal.
+	URL: ~/portal/gateway_payment
+	METHOD: POST
+	POSTDATA : 
+		{
+			secretKey: '[md5]',
+			orderKey : '[md5]'
+			su:'[subsystemkey]',
+			user:{
+				fristname: 'LE THANH',
+				lastname: 'AN',
+				account: 'lethanhan.bkaptech@gmail.com',
+				sex : 'M',
+				DOB : '1990-03-25 00:00:00',
+				date_joined : '2014-03-31 00:00:00',
+				status : '1',
+				last_active = '2014-03-31 00:00:00',
+				platform_key = '0'
+			},
+			products : [
+				{
+					id: '[productId]',
+					name : '[ProductName]',
+					image : '[ProductImageUrl]',
+					sortDes : '[description(Mô tả ngắn, có thể là information)]',
+					price :  '1000',
+					quality:  '10',
+					totalPrices : '10000'
+					actualPrice : '90000',
+				},
+				{
+					id: '[productId]',
+					name : '[ProductName]',
+					image : '[ProductImageUrl]',
+					sortDes : '[description(Mô tả ngắn, có thể là information)]',
+					price :  '1000',
+					quality:  '10',
+					totalPrices : '10000'
+					actualPrice : '90000',
+				}
+			],
+			shipping : {
+				shippingKey : '[shippingUniqueId-SubsytemId]',
+				shippingDisplayName : '[displayName]',
+				shippingPrices : '100',
+			}
+		}
+2. Portal thực hiện valid dữ liệu, và thanh toán với bên thứ 3.
+3. Xác nhận thông tin đơn hàng với subsystem.
+	URL : ~/__portal/valid_order
+	METHODS: POST
+	POSTDATA :
+		{
+			orderKey : '[md5]',
+			orderData : '[order_md5]'
+		}
+	RESPONSE :
+		{
+			orderKey : '[md5]',
+			response : {
+				valid : '[TRUE|FALSE]',
+				message : '[message]'
+			}
+		}
+4. Portal Xử lý response :
+	4.1 Valid thành công, thông báo message thành công trở về home của portal.
+	4.2 Invalid portal revert payment hiện tại - thông báo message - về home của portal.
+	

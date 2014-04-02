@@ -21,7 +21,6 @@ class PortalLoginBiz extends PortalBaseBiz
               return $this->setupSession($userModel);
             }
         }
-        $userNew = $this->insertFacebookAccountToProtal($facebookAccount);
         return $this->setupSession($userNew);
     }
     

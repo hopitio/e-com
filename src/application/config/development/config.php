@@ -398,5 +398,10 @@ $config['ConfirmRegisterMailler_temp'] = '/RegisterConfirm.txt';
 
 $config['temp_mail_folder'] = APPPATH.'temp/mail/';
 $config['path_to_active_account'] = 'http://localhost.com/portal/active?k={key}';
+
+$config['sub_system_name'] = array(
+    'default' => 'PORTAL',
+    'gift' => 'GIFT'
+);
 /* End of file config.php */
 /* Location: ./application/config/config.php */
