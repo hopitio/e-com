@@ -20,6 +20,8 @@ require_once APPPATH . "libraries" . DS . "domains" . DS . "FileDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "CartDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "AdministrativeDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "ShippingMethodDomain.php";
+require_once APPPATH . "libraries" . DS . "domains" . DS . "WishlistDetailDomain.php";
+require_once APPPATH . "libraries" . DS . "domains" . DS . "WishlistDomain.php";
 
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListtypeMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListMapper.php";
@@ -36,6 +38,8 @@ require_once APPPATH . "ORM" . DS . "mappers" . DS . "FileMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "CartMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "AdministrativeMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ShippingMethodMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistDetailMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistMapper.php";
 
 $portalConfig = new DBConfig;
 $portalConfig->type = 'mysqli';

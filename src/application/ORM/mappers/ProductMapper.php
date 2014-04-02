@@ -38,7 +38,7 @@ class ProductMapper extends MapperAbstract
      * @param type $language
      * @return static
      */
-    function autoloadAttributes($bool, $language = null)
+    function autoloadAttributes($bool = true, $language)
     {
         $this->_autoloadAttributes = $bool;
         $this->_attributeLanguage = $language;

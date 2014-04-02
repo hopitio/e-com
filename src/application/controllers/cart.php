@@ -29,7 +29,6 @@ class cart extends BaseController
 
     function showCart()
     {
-        //$this->_CI->session->set_userdata('cart_contents', array());
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setJavascript(array('/js/angular.min.js'))
                 ->render('cart/showCart');

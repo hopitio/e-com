@@ -3,7 +3,6 @@ defined('BASEPATH') or die('No direct script access allowed');
 /* @var $product ProductFixedDomain */
 $images = $product->getImages();
 $first_image = reset($images);
-$addToCartUrl = site_url('account/addToCart/');
 ?>
 <div>
     <h3><?php echo $product->getName() ?></h3>
@@ -36,7 +35,8 @@ $addToCartUrl = site_url('account/addToCart/');
 </div>
 <script>
     var scriptData = {};
-    scriptData.addToCartURL = '<?php echo $addToCartUrl ?>';
+    scriptData.addToCartURL = '<?php echo site_url('account/addToCart/') ?>';
+    scriptData.addToWishlistURL = '<?php echo site_url('wishlist/addToWishlist/') ?>';
 </script>
 <script>
     (function(window, scriptData, $, undefined) {
@@ -46,10 +46,22 @@ $addToCartUrl = site_url('account/addToCart/');
                     cache: false,
                     url: scriptData.addToCartURL + '/' + $(this).attr('data-id'),
                     success: function() {
-
+                        //TODO
                     },
                     error: function() {
-
+                        //TODO
+                    }
+                });
+            });
+            $('.add-to-wishlist').click(function() {
+                $.ajax({
+                    cache: false,
+                    url: scriptData.addToWishlistURL + '/' + $(this).attr('data-id'),
+                    success: function() {
+                        //TODO
+                    },
+                    error: function() {
+                        //TODO
                     }
                 });
             });

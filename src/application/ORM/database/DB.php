@@ -104,7 +104,7 @@ class DB
      */
     static public function insert($table, $data)
     {
-        $db = static::get_instance();
+        $db = static::getInstance();
         $fields = array_keys($data);
         $values = array_values($data);
 

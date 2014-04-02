@@ -16,7 +16,7 @@ class User{
     private $logout = "/logout";
     
     //Database mapping
-    public $id;
+    public $id = 1;
     public $firstname;
     public $lastname;
     public $account;

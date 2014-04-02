@@ -6,26 +6,49 @@ if (!defined('BASEPATH'))
 class wishlist extends BaseController
 {
 
-    function addToWishlist($productID)
-    {
-        $user = User::getCurrentUser();
-        $wishlist = WishlistMapper::make()->filterCustomer($user->id)->limit(1)->findAll();
-    }
-
     /** @return WishlistModel */
-    protected function _wishlistModel()
+    public $wishlistModel;
+
+    function __construct()
     {
-        return $this->load->model('Wishlist');
+        parent::__construct();
+        $this->load->model('modelEx/WishlistModel', 'wishlistModel');
     }
 
-    function show($id)
-    {
-        var_dump(User::getCurrentUser()->id);
-    }
-
-    function createWishlist()
+    function remove($wishlistDetailID)
     {
         
+    }
+
+    /**
+     * 
+     * @param type $wishlistID
+     * @return WishListDetailDomain
+     */
+    function wishlistDetailService($wishlistID)
+    {
+        header('Content-type: application/json');
+        $details = $this->wishlistModel->getAllDetails($wishlistID);
+        $json = array();
+        foreach ($details as $instance)
+        {
+            $json[] = array(
+                
+            );
+        }
+    }
+
+    function addToWishlist($productID)
+    {
+        $this->wishlistModel->addToWishlist($productID);
+    }
+
+    function show($id = null)
+    {
+        $data['wishlist'] = $this->wishlistModel->getOneWishlist();
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                ->setData($data, true)
+                ->render('wishlist/show');
     }
 
 }
