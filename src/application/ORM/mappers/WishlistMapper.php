@@ -73,4 +73,17 @@ class WishlistMapper extends MapperAbstract
         return $wishlist;
     }
 
+    /**
+     * 
+     * @param array $rawData
+     * @return int ID|false
+     */
+    function insert($rawData = array())
+    {
+        $rawData['fk_customer'] = User::getCurrentUser()->id;
+        $rawData['name'] = 'main';
+        $rawData['date_created'] = DB::getDate();
+        return DB::insert('t_wishlist', $rawData);
+    }
+
 }

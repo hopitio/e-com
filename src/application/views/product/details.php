@@ -30,7 +30,9 @@ $addToCartUrl = site_url('account/addToCart/');
     <?php var_dump('price', $product->getPrice('USD')->getTrueValue()) ?><br>
     <?php var_dump('quantity', $product->getQuantity()->getTrueValue()) ?>
 
-    <a href="javascript:;" class="add-to-cart" data-id="<?php echo $product->id ?>">Add to cart</a>
+    <a href="javascript:;" class="add-to-cart" data-id="<?php echo $product->id ?>">Add to Cart</a>
+    <a href="javascript:;" class="add-to-wishlist" data-id="<?php echo $product->id ?>">Add to Wishlist</a>
+    <a href="javascript:;" class="add-to-pin" data-id="<?php echo $product->id ?>">Pin</a>
 </div>
 <script>
     var scriptData = {};
@@ -40,7 +42,16 @@ $addToCartUrl = site_url('account/addToCart/');
     (function(window, scriptData, $, undefined) {
         $(function() {
             $('.add-to-cart').click(function() {
-                window.location = scriptData.addToCartURL + '/' + $(this).attr('data-id');
+                $.ajax({
+                    cache: false,
+                    url: scriptData.addToCartURL + '/' + $(this).attr('data-id'),
+                    success: function() {
+
+                    },
+                    error: function() {
+
+                    }
+                });
             });
         });
     })(window, scriptData, $);
