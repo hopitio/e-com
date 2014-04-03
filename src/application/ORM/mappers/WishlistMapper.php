@@ -35,6 +35,11 @@ class WishlistMapper extends MapperAbstract
         return $this;
     }
 
+    /**
+     * 
+     * @param type $fields
+     * @return WishlistDomain
+     */
     function findAll($fields = '*')
     {
         $instances = parent::findAll($fields);
@@ -48,6 +53,12 @@ class WishlistMapper extends MapperAbstract
         return $instances;
     }
 
+    /**
+     * 
+     * @param type $id
+     * @param type $fields
+     * @return WishlistDomain
+     */
     function find($id, $fields = '*')
     {
         $query = Query::make()->select($fields)->from('t_wishlist')->where('id=?');

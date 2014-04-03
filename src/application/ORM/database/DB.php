@@ -66,12 +66,12 @@ class DB
      */
     static public function update($table, $data, $where, $where_params = array())
     {
-        $db = static::get_instance();
+        $db = static::getInstance();
         $sql = "";
         $params = array_values($data);
         foreach ($data as $field => $value)
         {
-            $sql .=!$sql ? "UPDATE {$table} SET {$field}={$value}" : ",{$field}={$value}";
+            $sql .=!$sql ? "UPDATE {$table} SET {$field}=?" : ",{$field}=?";
         }
         $sql .= " Where $where";
         $params = array_merge($params, $where_params);
@@ -89,7 +89,7 @@ class DB
      */
     static public function delete($table, $where, $where_params = array())
     {
-        $db = static::get_instance();
+        $db = static::getInstance();
         $sql = "DELETE FROM {$table} WHERE $where";
         $db->Execute($sql, array_values($where_params));
         $affected = $db->Affected_Rows();
@@ -124,7 +124,7 @@ class DB
     static public function insertMany($table, $data)
     {
         $data = array_values($data);
-        $db = static::get_instance();
+        $db = static::getInstance();
         $fields = array_keys($data[0]);
         $sql = "INSERT INTO $table(" . implode(',', $fields) . ") VALUES\n(?" . str_repeat(',?', count($fields) - 1) . ")";
         $params = array_values($data[0]);

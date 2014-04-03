@@ -21,7 +21,13 @@ class WishlistModel extends BaseModel
                 ->findAll();
         if (!empty($duplicate))
         {
-            throw new Lynx_BusinessLogicException("product_already_exists");
+            $detailInstance = $duplicate[0];
+            /* @var $detailInstance WishlistDetailDomain */
+            if ($detailInstance->status)
+            {
+                throw new Lynx_BusinessLogicException("product_already_exists");
+            }
+            DB::delete('t_wishlist_detail', 'id=?', array($detailInstance->id));
         }
         return DB::insert('t_wishlist_detail', array(
                     'fk_wishlist' => $wishlist->id,
@@ -51,16 +57,33 @@ class WishlistModel extends BaseModel
     /**
      * 
      * @param type $wishlistID
-     * @return type
+     * @return WishlistDetailDomain
      */
     function getAllDetails($wishlistID)
     {
         $user = User::getCurrentUser();
         $details = WishListDetailMapper::make()
                 ->filterWishlist($wishlistID)
+                ->filterStatus(1)
                 ->autoloadAttributes(true, $user->languageKey)
                 ->findAll();
         return $details;
+    }
+
+    function updateDetailStatus($detailID, $status)
+    {
+        return DB::update('t_wishlist_detail', array('status' => $status ? 1 : 0), 'id=?', array($detailID));
+    }
+
+    /**
+     * 
+     * @param type $userID
+     * @param type $wishlistID
+     * @return bool
+     */
+    function isOwner($userID, $wishlistID)
+    {
+        return ((bool) DB::getInstance()->getOne("SELECT w.id FROM t_wishlist w WHERE w.fk_customer=? AND w.id=?", array($userID, $wishlistID)));
     }
 
 }

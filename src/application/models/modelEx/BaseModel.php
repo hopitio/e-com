@@ -7,15 +7,16 @@
  */
 class BaseModel extends CI_Model
 {
-    function __construct(){
+
+    function __construct()
+    {
         parent::__construct();
         $this->initalORM();
     }
-    
+
     public function initalORM()
     {
         $this->load->driver('cache');
-        DB::getInstance()->debug = 1;
     }
 
 }

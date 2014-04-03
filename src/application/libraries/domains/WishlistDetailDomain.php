@@ -14,5 +14,6 @@ class WishlistDetailDomain extends ProductFixedDomain
     public $type;
     public $note;
     public $fkProduct;
+    public $status;
 
 }

@@ -4,20 +4,66 @@ if (!defined('BASEPATH'))
 /* @var $wishlist WishlistDomain */
 ?>
 
-<?php foreach ($wishlist->getDetails() as $detailInstance): ?>
-    <div><?php echo $detailInstance->getName()->getTrueValue() ?></div>
-    <div>
-        <a href="javascript:;" class="add-to-cart" data-id="<?php echo $detailInstance->fkProduct ?>">Add to Cart</a>
-        <a href="javascript:;" class="remove-from-wishlist" data-id="<?php echo $detailInstance->id ?>">Remove</a>
+<div ng-app ng-controller="showWishlistController">
+    <div ng-show="undo">Your item has been removed from wishlist. <a href="javascript:;" ng-click="undoRemove()">Click here</a> to undo.</div>
+    <div ng-repeat="detailInstance in wislistDetails">
+        <div>{{detailInstance.name}}</div>
+        <div>{{detailInstance.price}}</div>
+        <div>
+            <a href="javascript:;" ng-click="addToCart(detailInstance.id)">Add to Cart</a>
+            <a href="javascript:;" ng-click="remove(detailInstance.id)">Remove</a>
+        </div>
     </div>
-<?php endforeach; ?>
+</div>
 <script>
     var scriptData = {};
+    scriptData.wishlistID = <?php echo $wishlist->id ?>;
     scriptData.addToCartURL = '<?php echo site_url('wishlist/addToCart') ?>/';
     scriptData.removeURL = '<?php echo site_url('wishlist/remove') ?>/';
+    scriptData.detailServiceURL = '<?php echo site_url('wishlist/wishlistDetailService/' . $wishlist->id) ?>/';
+    scriptData.undoURL = '<?php echo site_url('wishlist/undoRemove') ?>/';
 </script>
 <script>
     (function(window, $, scriptData, undefined) {
+        window.showWishlistController = function($scope, $http) {
+            $scope.wislistDetails = [];
+            $scope.undo;
+
+            function getWishlistDetail() {
+                $http.get(scriptData.detailServiceURL, {cache: false}).success(function(wislistDetails) {
+                    $scope.wislistDetails = wislistDetails;
+                }).error(function() {
+
+                });
+            }
+            getWishlistDetail();
+
+            $scope.addToCart = function(detailID) {
+                $http.get(scriptData.addToCartURL + detailID, {cache: false}).success(function() {
+                    getWishlistDetail();
+                }).error(function() {
+                    //TODO
+                });
+            };
+
+            $scope.remove = function(detailID) {
+                $http.get(scriptData.removeURL + detailID, {cache: false}).success(function() {
+                    getWishlistDetail();
+                    $scope.undo = detailID;
+                }).error(function() {
+                    //TODO
+                });
+            };
+
+            $scope.undoRemove = function() {
+                $http.get(scriptData.undoURL + $scope.undo, {cache: false}).success(function() {
+                    getWishlistDetail();
+                    $scope.undo = null;
+                }).error(function() {
+                    //TODO
+                });
+            };
+        };
         $(function() {
             $('.add-to-cart').click(function() {
                 $.ajax({

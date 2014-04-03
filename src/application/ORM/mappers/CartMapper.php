@@ -48,8 +48,12 @@ class CartMapper extends ProductFixedMapper
         if (isset($cartContents[$productID]))
         {
             unset($cartContents[$productID]);
+            $this->_setCartContents($cartContents);
         }
-        return $this;
+        else
+        {
+            throw new Exception("This Product is nolonger exists in your cart");
+        }
     }
 
     /**

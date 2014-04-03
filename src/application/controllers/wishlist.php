@@ -17,7 +17,12 @@ class wishlist extends BaseController
 
     function remove($wishlistDetailID)
     {
-        
+        $detailInstance = WishListDetailMapper::make()->find($wishlistDetailID);
+        if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
+        {
+            throw new Lynx_RequestException("You are not owner");
+        }
+        $this->wishlistModel->updateDetailStatus($wishlistDetailID, 0);
     }
 
     /**
@@ -32,10 +37,13 @@ class wishlist extends BaseController
         $json = array();
         foreach ($details as $instance)
         {
-            $json[] = array(
-                
-            );
+            /* @var $instance WishlistDetailDomain */
+            $obj = (array) $instance;
+            $obj['price'] = $instance->getPrice('USD')->getTrueValue();
+            $obj['name'] = $instance->getName()->getTrueValue();
+            $json[] = $obj;
         }
+        echo json_encode($json);
     }
 
     function addToWishlist($productID)
@@ -43,12 +51,43 @@ class wishlist extends BaseController
         $this->wishlistModel->addToWishlist($productID);
     }
 
+    function restoreWishlistDetail($detailID)
+    {
+        if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
+        {
+            throw new Lynx_RequestException("You are not owner");
+        }
+        $this->wishlistModel->restore($detailID);
+    }
+
+    function addToCart($detailID)
+    {
+        $detailInstance = WishListDetailMapper::make()->find($detailID);
+        if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
+        {
+            throw new Lynx_RequestException("You are not owner");
+        }
+        CartMapper::make()->addToCart($detailInstance->fkProduct);
+        $this->wishlistModel->remove($detailInstance->id);
+    }
+
     function show($id = null)
     {
         $data['wishlist'] = $this->wishlistModel->getOneWishlist();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data, true)
+                ->setJavascript(array('/js/angular.min.js'))
                 ->render('wishlist/show');
+    }
+
+    function undoRemove($detailID)
+    {
+        $detailInstance = WishListDetailMapper::make()->find($detailID);
+        if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
+        {
+            throw new Lynx_RequestException("You are not owner");
+        }
+        $this->wishlistModel->updateDetailStatus($detailID, 1);
     }
 
 }
