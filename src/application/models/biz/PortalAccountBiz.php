@@ -156,23 +156,26 @@ class PortalAccountBiz extends PortalBaseBiz
         $userModel->password = $password;
         $formPlatform = $formPlatform == null ? DatabaseFixedValue::USER_PLATFORM_DEFAULT : $formPlatform;
         $result = $formPlatform == DatabaseFixedValue::USER_PLATFORM_DEFAULT ? $userModel->selectUserByUserNameAndPassoword() : $userModel->selectUserByUserName();
-
         if ($result)
         {
-            $this->setLoginUser($result);
-            return true;
+            $user = new User();
+            $user->id = $userModel->id;
+            $user->account = $userModel->account;
+            $user->date_joined = $userModel->date_joined;
+            $user->DOB = $userModel->DOB;
+            $user->firstname = $userModel->firstname;
+            $user->lastname = $userModel->lastname;
+            $user->last_active = $userModel->last_active;
+            $user->lastname = $userModel->lastname;
+            $user->platform_key = $userModel->platform_key;
+            $user->sex = $userModel->sex;
+            $user->status = $userModel->status;
+            return $user;
         }
         else
         {
             return false;
         }
-    }
-    /**
-     * Set login user
-     */
-    private function setLoginUser()
-    {
-        
     }
     
     /**
@@ -324,8 +327,5 @@ class PortalAccountBiz extends PortalBaseBiz
         $portalUserSetting->value = $settingValue;
     }
     
-    function updatePassword(){
-    
-    }
 
 }

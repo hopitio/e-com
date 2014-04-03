@@ -86,13 +86,21 @@ class login extends BaseController
            $this->canNotLogin();
         }
         $portalAccountBiz = new PortalAccountBiz();
-        $isLoginResult = $portalAccountBiz->getLogin($us,$pw);
-        if ($isLoginResult)
+        $user = $portalAccountBiz->getLogin($us,$pw);
+        if ($user)
         {
-            $dataResult = array();
-            $user = new User();
             $this->obj_user->portalData = json_encode($user);
             $this->obj_user->is_authorized = true;
+            $this->obj_user->id =  $user->id;
+            $this->obj_user->account = $user->account;
+            $this->obj_user->firstname = $user->firstname;
+            $this->obj_user->lastname = $user->lastname;
+            $this->obj_user->sex = $user->sex;
+            $this->obj_user->platform_key = $user->platform_key;
+            $this->obj_user->status = $user->status;
+            $this->obj_user->last_active = $user->last_active;
+            $this->obj_user->DOB = $user->DOB;
+            
             $this->onLoginComplete();
             return;
         }

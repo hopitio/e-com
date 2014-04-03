@@ -10,5 +10,7 @@ require_once APPPATH.'models/biz/PortalBaseBiz.php';
 require_once APPPATH.'models/biz/PortalAccountBiz.php';
 require_once APPPATH.'models/biz/PortalLoginBiz.php';
 require_once APPPATH.'models/biz/PortalUserHistoryBiz.php';
+require_once APPPATH.'models/biz/PortalPassowordBiz.php';
+
 
 

@@ -8,7 +8,7 @@ button.button{background: transparent;border: 0;overflow: visible;cursor: pointe
 ul, li, dl, dd, dt {list-style: none outside none;}
 button::-moz-focus-inner {padding: 0;border: 0}
 a{text-decoration: none;}
-#wrap{margin:0px; padding:0px; position: relative; display: inline-block;width: 100%;min-height: 768px;text-align: center;}
+#wrap{margin:0px; padding:0px; position: relative; display: inline-block;width: 100%;text-align: center;}
 .headToolbar{text-align: center;background:white;}
 .w100percent{width:100%;}
 .wStaticPx{width:980px;}

@@ -22,10 +22,16 @@ class EncryptionStrategy {
      */
     private $_account;
     
-    function __construct($login,$order,$account){
+    /**
+     * 
+     * @var PasswordSecurity
+     */
+    private $_password;
+    function __construct($login,$order,$account,$password){
         $this->_account = $account;
         $this->_login = $login;
         $this->_order = $order;
+        $this->_password = $password;
     }
     
     /**
@@ -78,6 +84,25 @@ class EncryptionStrategy {
         return $this->_order->encrytOrderData($data);
     }
     
+    
+    /**
+     * Tạo reset mail item  
+     * @param unknown $user
+     * @param unknown $historyKey
+     * @return string
+     */
+    function encrytResetPassword($user, $historyKey){
+        return $this->_password->createChangePasswordencrytion($user, $historyKey);
+    }
+    
+    /**
+     * Giải mã ký tự khi reset password.
+     * @param string $key
+     */
+    function decrytResetPassword($key){
+        return $this->_password->accountActiveDencrytion($key);
+    }
+    
     /**
      * @return EncryptionStrategy
      */
@@ -85,6 +110,7 @@ class EncryptionStrategy {
         $login = new SecretLogin();
         $order = new SecretOrder();
         $account = new AccountSecurity();
-        return new EncryptionStrategy($login,$order,$account);
+        $password = new PasswordSecurity();
+        return new EncryptionStrategy($login,$order,$account,$password);
     }
 }

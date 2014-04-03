@@ -69,4 +69,7 @@
     <mail>
         <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
     </mail>
+    <portalaccount_changePassword>
+        <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
+    </portalaccount_changePassword>
 </data>

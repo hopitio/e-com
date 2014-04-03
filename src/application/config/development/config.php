@@ -395,9 +395,20 @@ $config['ConfirmRegisterMailler_smtp_port'] = '465';
 $config['ConfirmRegisterMailler_smtp_timeout'] = '1';
 $config['ConfirmRegisterMailler_temp'] = '/RegisterConfirm.txt';
 
+$config['ResetPasswordMailler_protocol'] = 'smtp';
+$config['ResetPasswordMailler_useragent'] = 'DEMO MAIL';
+$config['ResetPasswordMailler_smtp_host'] = 'ssl://smtp.gmail.com';
+$config['ResetPasswordMailler_smtp_fullName'] = 'HỆ THỐNG QUẢN LÝ MẬT KHẨU HỆ THỐNG';
+$config['ResetPasswordMailler_smtp_user'] = 'projecte2002@gmail.com';
+$config['ResetPasswordMailler_smtp_pass'] = '1234567$';
+$config['ResetPasswordMailler_smtp_port'] = '465';
+$config['ResetPasswordMailler_smtp_timeout'] = '1';
+$config['ResetPasswordMailler_temp'] = '/ResetPassword.txt';
+
 
 $config['temp_mail_folder'] = APPPATH.'temp/mail/';
 $config['path_to_active_account'] = 'http://localhost.com/portal/active?k={key}';
+$config['path_to_reset_password_reset'] = 'http://localhost.com/portal/reset_password?k={key}';
 
 $config['sub_system_name'] = array(
     'default' => 'PORTAL',

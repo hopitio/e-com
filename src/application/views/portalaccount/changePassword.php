@@ -1,5 +1,10 @@
 <div class="contentWarp wStaticPx">
         <div class="row-fluid">
+            <?php
+            if(isset($errormsg)){
+                echo $errormsg;
+            } 
+            ?>
                                 <div class="span4">
                                     <h4><i class="fa fa-cog"></i> Bảo mật </h4>
                                     <a href="/portal/change_password">Thay đổi mật khẩu </a><br>
@@ -25,5 +30,21 @@
 
                                     <br/>
                                 </div>
-        </div><!--row fluid-->
+        </div>
+        <div class="row-right">
+            <form method="post" style="text-align: left;">
+                <div>
+                 Mật khẩu cũ :  <input name="txtOldPass" type="password"/>
+                </div>
+                <div>
+                 Mật khẩu mới : <input name="txtNewPass" type="password"/>
+                </div>
+                <div>
+                 Mật khẩu confirm : <input name="txtConfrimNewPass" type="password"/>
+                </div>
+                <div>
+                    <button name="btnComfirm" value="" >Thay đổi mật khẩu</button>
+                </div>
+            </form>
+        </div>
 </div> 
