@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2014 at 06:07 PM
+-- Generation Time: Apr 04, 2014 at 03:00 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -153,23 +153,16 @@ CREATE TABLE IF NOT EXISTS `t_user` (
   `last_active` datetime DEFAULT NULL,
   `platform_key` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `t_user`
 --
 
 INSERT INTO `t_user` (`id`, `firstname`, `lastname`, `account`, `password`, `sex`, `DOB`, `date_joined`, `status`, `status_date`, `status_reason`, `last_active`, `platform_key`) VALUES
-(10, '', '', '', '', 'M', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', 0),
-(11, '', '', '', '', 'M', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', 0),
-(12, 'LÊ THANH ', 'AN ', 'le.thanh.an@vsi-international.com', 'aaaaa', 'M', '2014-03-11 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', 0),
-(13, 'LÊ THANH ', 'AN ', 'le.thanh.an@vsi-international.com', 'aaaaa', 'M', '2014-03-11 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 'Tạo mới tài khoản', '0000-00-00 00:00:00', 0),
-(14, 'LÊ THANH ', 'AN ', 'le.thanh.an@vsi-international.com', 'aaaaa', 'M', '2014-03-11 00:00:00', '2014-03-27 11:03:41', 0, '2014-03-27 11:03:41', 'Tạo mới tài khoản', '2014-03-27 11:03:41', 0),
-(15, 'LÊ THANH ', 'AN ', 'le.thanh.an@vsi-international.com', 'aaaaa', 'M', '2014-03-11 00:00:00', '2014-03-27 11:03:04', 0, '2014-03-27 11:03:04', 'Tạo mới tài khoản', '2014-03-27 11:03:04', 0),
-(16, 'âsdasd', 'ádasdasdasda', 'le.thanh.an@vsi-international.com', 'ádasd', 'M', '2014-03-06 00:00:00', '2014-03-28 12:03:11', 0, '2014-03-28 12:03:11', 'Tạo mới tài khoản', '2014-03-28 12:03:11', 0),
-(17, 'âsdasd', 'ádasdasdasda', 'le.thanh.an@vsi-international.com', 'ádasd', 'M', '2014-03-06 00:00:00', '2014-03-28 12:03:57', 0, '2014-03-28 12:03:57', 'Tạo mới tài khoản', '2014-03-28 12:03:57', 0),
-(18, 'âsdasd', 'ádasdasdasda', 'le.thanh.an@vsi-international.com', 'ádasd', 'M', '2014-03-06 00:00:00', '2014-03-28 12:03:56', 0, '2014-03-28 12:03:56', 'Tạo mới tài khoản', '2014-03-28 12:03:56', 0),
-(19, 'âsdasd', 'ádasdasdasda', 'le.thanh.an@vsi-international.com', 'ádasd', 'M', '2014-03-06 00:00:00', '2014-03-28 12:03:10', 0, '2014-03-28 12:03:10', 'Tạo mới tài khoản', '2014-03-28 12:03:10', 0);
+(42, 'Le Thanh ', 'an ', 'lethanhan.bkaptech@gmail.com', 'qweqweqwe', 'M', '0000-00-00 00:00:00', '2014-04-02 11:04:48', 0, '2014-04-02 11:04:48', 'Tạo mới tài khoản', '2014-04-02 11:04:48', 0),
+(43, 'Le Thanh ', 'an ', 'lethanhan.bkaptech@gmail.com', '123123123', 'M', '0000-00-00 00:00:00', '2014-04-02 11:04:31', 0, '2014-04-02 11:04:31', 'Tạo mới tài khoản', '2014-04-02 11:04:31', 0),
+(44, 'Le Thanh ', 'an ', 'lethanhan.bkaptech@gmail.com', '123123123', 'M', '0000-00-00 00:00:00', '2014-04-02 11:04:22', 1, '0000-00-00 00:00:00', 'Thực hiện việc active user', '2014-04-02 11:04:22', 0);
 
 -- --------------------------------------------------------
 
@@ -210,6 +203,42 @@ INSERT INTO `t_user_contact` (`id`, `fk_user`, `date_created`, `date_used`, `cou
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t_user_history`
+--
+
+CREATE TABLE IF NOT EXISTS `t_user_history` (
+  `id` char(30) COLLATE utf8_unicode_ci NOT NULL,
+  `fk_user` int(11) NOT NULL,
+  `secret_key` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `client_ip` char(20) COLLATE utf8_unicode_ci NOT NULL,
+  `user_agrent` char(50) COLLATE utf8_unicode_ci NOT NULL,
+  `last_activity` char(20) COLLATE utf8_unicode_ci NOT NULL,
+  `sub_system_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `action_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `session_id` char(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `t_user_history`
+--
+
+INSERT INTO `t_user_history` (`id`, `fk_user`, `secret_key`, `client_ip`, `user_agrent`, `last_activity`, `sub_system_name`, `description`, `action_name`, `session_id`) VALUES
+('00014e62-ba81-11e3-b1f6-f82fa8', 41, NULL, '127.0.0.1', '', '2014-04-02 11:04:16', 'PORTAL', 'USER LOGIN', 'LOGIN', '43873e6de55bf3553e51'),
+('073d01de-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:04', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '7f29022fdf73a8c57b20'),
+('16facc35-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:31', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '7f29022fdf73a8c57b20'),
+('2b92ec82-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:05', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '94812d1868491b680339'),
+('4e4ee931-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:04', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '783fca304d6f19c522cb'),
+('88f58cc5-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:42', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'f37ee3f9d322c7e77e8c'),
+('8e8744ac-bb4e-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:42', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'f10971af541b86425fd6'),
+('95323027-ba81-11e3-b1f6-f82fa8', 44, NULL, '127.0.0.1', '', '2014-04-02 11:04:26', 'PORTAL', 'REGISTER FROM PORTAL FORM', 'REGISTE', '1d3138b0cbe4a9140541'),
+('c2845f14-bb4e-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:09', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'd92c9832fb9acfa77c29'),
+('f55549b6-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:44', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '222df0475d1f45d29997');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `t_user_setting`
 --
 
@@ -219,33 +248,29 @@ CREATE TABLE IF NOT EXISTS `t_user_setting` (
   `setting_key` char(20) COLLATE utf8_unicode_ci NOT NULL,
   `value` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=129 ;
 
 --
 -- Dumping data for table `t_user_setting`
 --
 
 INSERT INTO `t_user_setting` (`id`, `fk_user`, `setting_key`, `value`) VALUES
-(11, 10, 'isRecivedEmail', 'Y'),
-(12, 10, 'AlternativeEmail', ''),
-(13, 11, 'isRecivedEmail', 'Y'),
-(14, 11, 'AlternativeEmail', ''),
-(15, 12, 'isRecivedEmail', 'Y'),
-(16, 12, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
-(17, 13, 'isRecivedEmail', 'Y'),
-(18, 13, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
-(19, 14, 'isRecivedEmail', 'Y'),
-(20, 14, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
-(21, 15, 'isRecivedEmail', 'Y'),
-(22, 15, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
-(23, 16, 'isRecivedEmail', 'Y'),
-(24, 16, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
-(25, 17, 'isRecivedEmail', 'Y'),
-(26, 17, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
-(27, 18, 'isRecivedEmail', 'Y'),
-(28, 18, 'AlternativeEmail', 'le.thanh.an@vsi-international.com'),
-(29, 19, 'isRecivedEmail', 'Y'),
-(30, 19, 'AlternativeEmail', 'le.thanh.an@vsi-international.com');
+(113, 41, 'isRecivedEmail', 'Y'),
+(114, 41, 'AlternativeEmail', 'lethanhan.bkaptech@gmail.com'),
+(115, 41, 'SQ', ''),
+(116, 41, 'SA', ''),
+(117, 42, 'isRecivedEmail', 'Y'),
+(118, 42, 'AlternativeEmail', 'lethanhan.bkaptech@gmail.com'),
+(119, 42, 'SQ', '0'),
+(120, 42, 'SA', 'asd'),
+(121, 43, 'isRecivedEmail', 'Y'),
+(122, 43, 'AlternativeEmail', 'lethanhan.bkaptech@gmail.com'),
+(123, 43, 'SQ', '0'),
+(124, 43, 'SA', 'asd'),
+(125, 44, 'isRecivedEmail', 'Y'),
+(126, 44, 'AlternativeEmail', 'lethanhan.bkaptech@gmail.com'),
+(127, 44, 'SQ', '0'),
+(128, 44, 'SA', 'asd');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

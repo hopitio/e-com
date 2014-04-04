@@ -34,4 +34,11 @@ class PasswordSecurity
         $data = rtrim($encryt1, "\0");
         return json_decode($data);
     }
+    
+    /**
+     * Tạo mật khẩu mặc định cho hệ thống.
+     */
+    function regenPassword(){
+        return md5(uniqid());
+    }
 }

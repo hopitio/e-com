@@ -100,7 +100,11 @@ class EncryptionStrategy {
      * @param string $key
      */
     function decrytResetPassword($key){
-        return $this->_password->accountActiveDencrytion($key);
+        return $this->_password->resetPasswrordDencrytion($key);
+    }
+    
+    function getNewpassWordforUser(){
+        return $this->_password->regenPassword();
     }
     
     /**
