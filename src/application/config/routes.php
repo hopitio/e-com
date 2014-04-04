@@ -32,6 +32,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
+        $route['portal/change_user_information'] = 'portalController/userInformation/showpage';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
