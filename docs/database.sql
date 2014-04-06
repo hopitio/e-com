@@ -227,6 +227,23 @@ CREATE TABLE `t_order` (
 
 /*Data for the table `t_order` */
 
+/*Table structure for table `t_order_evidence` */
+
+DROP TABLE IF EXISTS `t_order_evidence`;
+
+CREATE TABLE `t_order_evidence` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_user` int(11) DEFAULT NULL,
+  `checksum` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_expired` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_order_evidence` */
+
+insert  into `t_order_evidence`(`id`,`fk_user`,`checksum`,`date_created`,`date_expired`) values (1,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:24:30','2014-04-09 22:24:00'),(2,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:33:58','2014-04-09 22:33:00'),(3,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:40:03','2014-04-09 22:40:00'),(4,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:40:39','2014-04-09 22:40:00');
+
 /*Table structure for table `t_order_product` */
 
 DROP TABLE IF EXISTS `t_order_product`;
@@ -314,12 +331,13 @@ CREATE TABLE `t_product` (
   `fk_retailer` int(11) DEFAULT NULL,
   `fk_group` int(11) DEFAULT NULL,
   `is_group` tinyint(4) DEFAULT '0',
+  `discount` double DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_product` */
 
-insert  into `t_product`(`id`,`fk_category`,`fk_retailer`,`fk_group`,`is_group`) values (1,1,1,NULL,0),(2,1,1,NULL,0),(3,1,1,NULL,0),(4,1,1,NULL,0),(5,1,1,NULL,0),(6,1,1,NULL,0),(7,1,1,NULL,0),(8,1,1,NULL,0),(9,1,1,NULL,0),(10,1,1,NULL,0),(11,1,1,NULL,0),(12,1,1,NULL,0);
+insert  into `t_product`(`id`,`fk_category`,`fk_retailer`,`fk_group`,`is_group`,`discount`) values (1,1,1,NULL,0,0),(2,1,1,NULL,0,0),(3,1,1,NULL,0,0),(4,1,1,NULL,0,0),(5,1,1,NULL,0,0),(6,1,1,NULL,0,0),(7,1,1,NULL,0,0),(8,1,1,NULL,0,0),(9,1,1,NULL,0,0),(10,1,1,NULL,0,0),(11,1,1,NULL,0,0),(12,1,1,NULL,0,0);
 
 /*Table structure for table `t_product_attribute` */
 
@@ -494,9 +512,11 @@ CREATE TABLE `t_shipping_location` (
   `price` double DEFAULT NULL,
   `price_currency` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_shipping_location` */
+
+insert  into `t_shipping_location`(`id`,`fk_shipping_method`,`fk_location`,`price`,`price_currency`) values (1,1,1,10,'USD');
 
 /*Table structure for table `t_shipping_method` */
 
