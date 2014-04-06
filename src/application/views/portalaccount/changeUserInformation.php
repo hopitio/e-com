@@ -1,52 +1,32 @@
 <div class="contentWarp wStaticPx">
-        <div class="row-fluid">
-            <?php
-            if(isset($errormsg)){
-                echo $errormsg;
-            } 
-            ?>
-                                <div class="span4">
-                                    <h4><i class="fa fa-cog"></i> Bảo mật </h4>
-                                    <a href="/portal/change_password">Thay đổi mật khẩu </a><br>
-                                    <a href="#">Thay đổi câu hỏi bí mật</a><br>
-                                    <a href="#">Thay đổi mail thông báo</a><br/>
-                                    <br/>
-                                </div>
-                                
-                                <div class="span4">
-                                    <h4><i class="fa fa-user"></i> Thông tin tài khoản</h4>
-                                    <a href="#">Thay đổi thông tin cá nhân </a><br>
-                                    <a href="#">Thêm địa chỉ giao hàng</a><br>
-                                    <a href="#">Kiểm tra lược sử hoạt động</a><br/>
-                                    <a href="#">Wishlist các subsystem</a><br>
-                                    <a href="#">Pin sản phẩm</a><br>
-                                    <br/>
-                                </div>
-                                
-                                <div class="span4">
-                                    <h4><i class="fa fa-user"></i> Thông tin giao dịch và mua hàng</h4>
-                                    <a href="#">Trạng thái các giao dịch</a><br>
-                                    <a href="#">Lịch sử giao dịch</a><br>
-
-                                    <br/>
-                                </div>
-        </div>
+        <?php require_once APPPATH.'views/portalaccount/leftMenuAccount.php';?>
         <div class="row-right">
             <form method="post" style="text-align: left;">
+                <?php
+                    if(isset($errormsg))
+                    {
+                        echo $errormsg;
+                    } 
+                ?>
                 <div>
-                 HỌ VÀ TÊN ĐỆM :  <input name="txtFristname" type="password"/>
+                 HỌ VÀ TÊN ĐỆM :  <input name="txtFristname" type="text" value="<?php echo $fristName;?>"/>
                 </div>
                 <div>
-                 TÊN : <input name="txtLastName" type="password"/>
+                 TÊN : <input name="txtLastName" type="text" value="<?php echo $lastName;?>"/>
                 </div>
                 <div>
-                 DOB : <input name="txtConfrimNewPass" type="password"/>
+                 DOB : <input name="txtDOB" type="text" value="<?php echo $dob;?>"/>
                 </div>
                 <div>
-                 SEX : <input name="txtConfrimNewPass" type="password"/>
+                 SEX : 
+                    <select  name='sex' type="text"  >
+                        <option value="M" <?php if($sex == 'M') echo 'selected';?>>MALE</option>
+                        <option value="F" <?php if($sex == 'F') echo 'selected';?> >FAMALE</option>
+                        <option value="O" <?php if($sex == 'O') echo 'selected';?> >OTHER</option>
+                    </select> 
                 </div>
                 <div>
-                    <button name="btnComfirm" value="" >Thay đổi mật khẩu</button>
+                    <button name="btnComfirm" value="" >Thay đổi thông tin</button>
                 </div>
             </form>
         </div>

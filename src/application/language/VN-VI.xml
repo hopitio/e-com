@@ -76,4 +76,8 @@
     <portalaccount_resetPassword>
         
     </portalaccount_resetPassword>
+    <portalaccount_changeUserInformation>
+        
+    </portalaccount_changeUserInformation>
+    
 </data>

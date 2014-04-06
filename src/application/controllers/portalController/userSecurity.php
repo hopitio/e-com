@@ -1,12 +1,12 @@
 <?php
 /**
- * Chuyên trách xử lý các hoạt động post hoặc get liên quan đến user information.
+ * Chuyên trách xử lý các hoạt động liên quan đến cử lý security.
  * @author ANLT 
- * @since 20140404
+ * @since 20140405
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class userInformation extends BaseController
+class userSecurity extends BaseController
 {
     protected $authorization_required = TRUE;
     protected  $_css = array(

@@ -143,6 +143,21 @@ class PortalAccountBiz extends PortalBaseBiz
         return $result;
     }
     
+    private function mappingModelWithUser($user,$userModel){
+        $user->id = $userModel->id;
+        $user->account = $userModel->account;
+        $user->date_joined = $userModel->date_joined;
+        $user->DOB = $userModel->DOB;
+        $user->firstname = $userModel->firstname;
+        $user->lastname = $userModel->lastname;
+        $user->last_active = $userModel->last_active;
+        $user->lastname = $userModel->lastname;
+        $user->platform_key = $userModel->platform_key;
+        $user->sex = $userModel->sex;
+        $user->status = $userModel->status;
+        return $user;
+    }
+    
     /**
      * Kiểm tra dữ liệu login
      * @param string $username
@@ -159,17 +174,7 @@ class PortalAccountBiz extends PortalBaseBiz
         if ($result)
         {
             $user = new User();
-            $user->id = $userModel->id;
-            $user->account = $userModel->account;
-            $user->date_joined = $userModel->date_joined;
-            $user->DOB = $userModel->DOB;
-            $user->firstname = $userModel->firstname;
-            $user->lastname = $userModel->lastname;
-            $user->last_active = $userModel->last_active;
-            $user->lastname = $userModel->lastname;
-            $user->platform_key = $userModel->platform_key;
-            $user->sex = $userModel->sex;
-            $user->status = $userModel->status;
+            $user = $this->mappingModelWithUser($user,$userModel);
             return $user;
         }
         else
@@ -258,19 +263,6 @@ class PortalAccountBiz extends PortalBaseBiz
     }
 
     /**
-     * Thực hiện việc detele user.
-     * 
-     * @param string $userId            
-     * @param string $reason            
-     * @return mixed
-     */
-    function deleteUser($userId, $reason = 'Xóa User')
-    {
-        return $this->updateUserStatus($userId, 
-            DatabaseFixedValue::USER_STATUS_CLOSED, $reason);
-    }
-
-    /**
      * Chuyển user từ đăng ký thành user open.
      * 
      * @return mixed return array if active complete, unless return false;
@@ -327,5 +319,31 @@ class PortalAccountBiz extends PortalBaseBiz
         $portalUserSetting->value = $settingValue;
     }
     
+    /**
+     * update user information
+     * @param object $user current user.
+     * @param string $fristName
+     * @param string $lastName
+     * @param string $dob
+     * @param string $sex
+     */
+    function updateUserInformation($user,$fristName, $lastName,$dob,$sex){
+        $portalUserModel = new PortalUserModel();
+        $portalUserModel->id = $user->id;
+        $portalUserModel->getUserByUserId();
+        $portalUserModel->firstname = $fristName;
+        $portalUserModel->lastname = $lastName;
+        $portalUserModel->DOB = $dob;
+        $portalUserModel->sex = $sex;
+        $portalUserModel->updateUser();
+        
+        $portalUserHistoryBiz = new PortalUserHistoryBiz();
+        $portalUserHistoryBiz->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEINFORMATION ,'Thay đổi thông tin cá nhân',null,null);
+        
+        $user = new User();
+        $user = $this->mappingModelWithUser($user,$portalUserModel);
+        
+        return $user;
+    }
 
 }
