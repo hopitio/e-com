@@ -23,6 +23,7 @@ require_once APPPATH . "libraries" . DS . "domains" . DS . "ShippingLocationDoma
 require_once APPPATH . "libraries" . DS . "domains" . DS . "ShippingMethodDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "WishlistDetailDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "WishlistDomain.php";
+require_once APPPATH . "libraries" . DS . "domains" . DS . "UserAddressDomain.php";
 
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListtypeMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListMapper.php";

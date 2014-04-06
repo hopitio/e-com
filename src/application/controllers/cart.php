@@ -8,11 +8,13 @@ class cart extends BaseController
 {
 
     protected $_CI;
+    public $cartModel;
 
     function __construct()
     {
         parent::__construct();
         $this->_CI = get_instance();
+        $this->load->model('modelEx/cartModel');
     }
 
     protected $_cartMapper;
@@ -21,6 +23,7 @@ class cart extends BaseController
     {
         $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('id, name')->findAssoc();
         $data['shippingMethods'] = ShippingMethodMapper::make()->findAll();
+        $data['cartContents'] = CartMapper::make()->autoloadAttributes(true, User::getCurrentUser()->languageKey)->findAll();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data)
                 ->setJavascript(array('/js/angular.min.js'))
@@ -43,11 +46,20 @@ class cart extends BaseController
         {
             $obj = (array) $product;
             $obj['quantity'] = $product->quantity;
-            $obj['price'] = $product->getPrice('USD')->getTrueValue();
+            $obj['price'] = $product->calculatePrice('USD');
             $obj['name'] = $product->getName()->getTrueValue();
             $json[] = $obj;
         }
         echo json_encode($json);
+    }
+
+    function shippingPriceService()
+    {
+        header('Content-type: application/json');
+        $locationID = isset($_GET['location']) ? $_GET['location'] : null;
+        $shippingMethodCode = isset($_GET['shipping']) ? $_GET['shipping'] : null;
+        $price = $this->cartModel->calculateShippingPrice($shippingMethodCode, $locationID, 'USD');
+        echo json_encode((double) $price);
     }
 
     function updateQuantityService()

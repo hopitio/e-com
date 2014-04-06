@@ -9,17 +9,13 @@ class UserAddressDomain implements DomainInterface
     const TYPE_SHIPPING = 'shipping';
 
     /** Địa chỉ để thanh toán */
-    const TYPE_INVOICE = 'invoice';
+    const TYPE_BILLING = 'billing';
 
     public $id;
-    public $fkUser;
     public $dateCreated;
-    public $dateUsed;
-    public $countUsed;
     public $fullname;
-    public $company;
     public $streetAddress;
-    public $city;
+    public $fkCityDistrict;
     public $country;
     public $fkStateProvince;
     public $zipPostalCode;

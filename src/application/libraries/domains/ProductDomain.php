@@ -10,6 +10,7 @@ class ProductDomain implements DomainInterface
     public $fkRetailer;
     public $fkGroup;
     public $isGroup;
+    public $discount;
     protected $_attributes = array();
 
     function isGroup()

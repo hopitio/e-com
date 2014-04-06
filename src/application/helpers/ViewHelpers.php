@@ -41,4 +41,19 @@ class ViewHelpers
         return ob_get_clean();
     }
 
+    /**
+     * Hiển thị hidden
+     * @param type $name
+     * @param type $value
+     * @param type $id
+     */
+    function hidden($name, $value, $id = null)
+    {
+        ob_start();
+        ?>
+        <input type="hidden" name="<?php echo $name ?>" value="<?php echo $value ?>" <?php echo $id ? "id='$id'" : '' ?>>
+        <?php
+        return ob_get_clean();
+    }
+
 }

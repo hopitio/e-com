@@ -77,6 +77,16 @@ class ProductFixedDomain extends ProductDomain
         return false;
     }
 
+    /**
+     * Tính toán giá bán cuối cùng
+     * @param type $currency
+     * @return double
+     */
+    function calculatePrice($currency)
+    {
+        return ($this->getPrice($currency)->getTrueValue() - $this->discount);
+    }
+
     /** @return ProductAttributeDomain */
     function getWeight()
     {
