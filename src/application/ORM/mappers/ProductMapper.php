@@ -38,7 +38,7 @@ class ProductMapper extends MapperAbstract
      * @param type $language
      * @return static
      */
-    function autoloadAttributes($bool = true, $language)
+    function autoloadAttributes($bool, $language)
     {
         $this->_autoloadAttributes = $bool;
         $this->_attributeLanguage = $language;
@@ -53,12 +53,16 @@ class ProductMapper extends MapperAbstract
      */
     function find()
     {
-        $product = parent::find();
+        return parent::find();
+    }
+
+    function makeDomainCallback(&$domainInstance)
+    {
+        parent::makeDomainCallback($domainInstance);
         if ($this->_autoloadAttributes)
         {
-            $this->loadAttributes($product, $this->_attributeLanguage);
+            $this->loadAttributes($domainInstance);
         }
-        return $product;
     }
 
     /**
@@ -68,15 +72,7 @@ class ProductMapper extends MapperAbstract
      */
     function findAll()
     {
-        $products = parent::findAll();
-        if ($this->_autoloadAttributes)
-        {
-            foreach ($products as $p)
-            {
-                $this->loadAttributes($p, $this->_attributeLanguage);
-            }
-        }
-        return $products;
+        return parent::findAll();
     }
 
     protected function _getCategoryByCode($codename)

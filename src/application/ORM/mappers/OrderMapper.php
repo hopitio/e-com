@@ -70,17 +70,10 @@ class OrderMapper extends MapperAbstract
         return $this;
     }
 
+    /** @return OrderDomain */
     function findAll()
     {
-        $orders = parent::findAll();
-        if ($this->_autoloadOrderProduct)
-        {
-            foreach ($orders as &$order)
-            {
-                $this->loadOrderProduct($order);
-            }
-        }
-        return $orders;
+        return parent::findAll();
     }
 
     /** @return OrderDomain */

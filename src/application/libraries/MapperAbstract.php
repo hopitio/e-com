@@ -78,7 +78,17 @@ abstract class MapperAbstract
         $class = $this->_domain;
         $instance = new $class;
         $this->map($instance, $record);
+        $this->makeDomainCallback($instance);
         return $instance;
+    }
+
+    /**
+     * Xử lý Instance sau khi được tạo bởi find() | findAll() | makeDomain()
+     * @param DomainInterface $domainInstance
+     */
+    function makeDomainCallback(&$domainInstance)
+    {
+        
     }
 
     /**

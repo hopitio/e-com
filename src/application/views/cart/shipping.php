@@ -8,7 +8,6 @@ defined('BASEPATH') or die('No direct script access allowed');
         <div>
             <div>Name</div>
             <div>Transmit Time(after Payment is completed)</div>
-            <div>Fee</div>
         </div>
         <?php foreach ($shippingMethods as $method): ?>
             <?php
@@ -42,7 +41,7 @@ defined('BASEPATH') or die('No direct script access allowed');
 
     </fieldset>
     <fieldset>
-        <legend>Required fields</legend>
+        <legend>Shipping Address</legend>
         <div>
             <label>Fullname</label>
             <div>
