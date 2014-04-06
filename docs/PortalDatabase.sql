@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2014 at 03:00 AM
+-- Generation Time: Apr 06, 2014 at 04:06 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `t_user` (
 --
 
 INSERT INTO `t_user` (`id`, `firstname`, `lastname`, `account`, `password`, `sex`, `DOB`, `date_joined`, `status`, `status_date`, `status_reason`, `last_active`, `platform_key`) VALUES
-(42, 'Le Thanh ', 'an ', 'lethanhan.bkaptech@gmail.com', 'qweqweqwe', 'M', '0000-00-00 00:00:00', '2014-04-02 11:04:48', 0, '2014-04-02 11:04:48', 'Tạo mới tài khoản', '2014-04-02 11:04:48', 0),
+(42, 'Lê Thanh An ', 'an ', 'lethanhan.bkaptech@gmail.com', '123123123', 'F', '1990-05-23 00:00:00', '2014-04-02 11:04:48', 0, '2014-04-02 11:04:48', 'Tạo mới tài khoản', '2014-04-02 11:04:48', 0),
 (43, 'Le Thanh ', 'an ', 'lethanhan.bkaptech@gmail.com', '123123123', 'M', '0000-00-00 00:00:00', '2014-04-02 11:04:31', 0, '2014-04-02 11:04:31', 'Tạo mới tài khoản', '2014-04-02 11:04:31', 0),
 (44, 'Le Thanh ', 'an ', 'lethanhan.bkaptech@gmail.com', '123123123', 'M', '0000-00-00 00:00:00', '2014-04-02 11:04:22', 1, '0000-00-00 00:00:00', 'Thực hiện việc active user', '2014-04-02 11:04:22', 0);
 
@@ -207,7 +207,7 @@ INSERT INTO `t_user_contact` (`id`, `fk_user`, `date_created`, `date_used`, `cou
 --
 
 CREATE TABLE IF NOT EXISTS `t_user_history` (
-  `id` char(30) COLLATE utf8_unicode_ci NOT NULL,
+  `id` char(50) COLLATE utf8_unicode_ci NOT NULL,
   `fk_user` int(11) NOT NULL,
   `secret_key` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `client_ip` char(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -225,16 +225,17 @@ CREATE TABLE IF NOT EXISTS `t_user_history` (
 --
 
 INSERT INTO `t_user_history` (`id`, `fk_user`, `secret_key`, `client_ip`, `user_agrent`, `last_activity`, `sub_system_name`, `description`, `action_name`, `session_id`) VALUES
-('00014e62-ba81-11e3-b1f6-f82fa8', 41, NULL, '127.0.0.1', '', '2014-04-02 11:04:16', 'PORTAL', 'USER LOGIN', 'LOGIN', '43873e6de55bf3553e51'),
-('073d01de-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:04', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '7f29022fdf73a8c57b20'),
-('16facc35-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:31', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '7f29022fdf73a8c57b20'),
-('2b92ec82-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:05', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '94812d1868491b680339'),
-('4e4ee931-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:04', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '783fca304d6f19c522cb'),
-('88f58cc5-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:42', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'f37ee3f9d322c7e77e8c'),
-('8e8744ac-bb4e-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:42', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'f10971af541b86425fd6'),
-('95323027-ba81-11e3-b1f6-f82fa8', 44, NULL, '127.0.0.1', '', '2014-04-02 11:04:26', 'PORTAL', 'REGISTER FROM PORTAL FORM', 'REGISTE', '1d3138b0cbe4a9140541'),
-('c2845f14-bb4e-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:09', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'd92c9832fb9acfa77c29'),
-('f55549b6-bb4f-11e3-83ca-f82fa8', 42, NULL, '127.0.0.1', '', '2014-04-03 11:04:44', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '222df0475d1f45d29997');
+('656310ed-bc19-11e3-80cb-f82fa8c904ca', 43, NULL, '127.0.0.1', '', '2014-04-04 11:04:41', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '1373fd7f894351c4e6b7'),
+('7e946e46-bc19-11e3-80cb-f82fa8c904ca', 43, NULL, '127.0.0.1', '', '2014-04-04 11:04:23', 'PORTAL', 'Reset mật khẩu', 'RESETPASS', '1373fd7f894351c4e6b7'),
+('83574396-bcc5-11e3-a78d-f82fa8c904ca', 42, NULL, '127.0.0.1', '', '2014-04-05 08:04:44', 'PORTAL', 'Thay đổi thông tin cá nhân', 'CHANGEINFORMATION', '71b25cd75af2f2995d77'),
+('92ec7ebd-bcc5-11e3-a78d-f82fa8c904ca', 42, NULL, '127.0.0.1', '', '2014-04-05 08:04:11', 'PORTAL', 'Thay đổi thông tin cá nhân', 'CHANGEINFORMATION', '71b25cd75af2f2995d77'),
+('9d499b69-bc19-11e3-80cb-f82fa8c904ca', 43, NULL, '127.0.0.1', '', '2014-04-04 11:04:15', 'PORTAL', 'Reset mật khẩu', 'RESETPASS', 'fc8ec855ba5469f948f4'),
+('a6844376-bc19-11e3-80cb-f82fa8c904ca', 43, NULL, '127.0.0.1', '', '2014-04-04 11:04:30', 'PORTAL', 'Reset mật khẩu', 'RESETPASS', 'fc8ec855ba5469f948f4'),
+('bba440f5-bcc6-11e3-a78d-f82fa8c904ca', 42, NULL, '127.0.0.1', '', '2014-04-05 08:04:28', 'PORTAL', 'Thay đổi thông tin cá nhân', 'CHANGEINFORMATION', '7f4f5fe9ed0edd288f2c'),
+('bc157714-bc19-11e3-80cb-f82fa8c904ca', 43, NULL, '127.0.0.1', '', '2014-04-04 11:04:06', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'fc8ec855ba5469f948f4'),
+('c1f0ebce-bcc6-11e3-a78d-f82fa8c904ca', 42, NULL, '127.0.0.1', '', '2014-04-05 08:04:39', 'PORTAL', 'Thay đổi thông tin cá nhân', 'CHANGEINFORMATION', '7f4f5fe9ed0edd288f2c'),
+('c5faa980-bc19-11e3-80cb-f82fa8c904ca', 43, NULL, '127.0.0.1', '', '2014-04-04 11:04:23', 'PORTAL', 'Reset mật khẩu', 'RESETPASS', '5dd91e86d1e8fa881b52'),
+('df1e9405-bc19-11e3-80cb-f82fa8c904ca', 43, NULL, '127.0.0.1', '', '2014-04-04 11:04:05', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '5dd91e86d1e8fa881b52');
 
 -- --------------------------------------------------------
 
