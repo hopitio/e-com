@@ -248,7 +248,12 @@ class MY_Controller extends CI_Controller
     public function platform_login_url_with_params()
     {
         $dst = uri_string();
-        return $this->config->item('platform_login_url') . "&su=" . urlencode(base_url($dst));
+        //HOTFIX for phase 1, portal vs sub in one application
+        if(strpos($dst,'portal/') !== FALSE)
+        {
+            return $this->config->item('platform_login_url') . "?cp=" . urlencode(base_url($dst));
+        }
+        return $this->config->item('platform_login_url') . "&cp=" . urlencode(base_url($dst));
     }
 
     /**

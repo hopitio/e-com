@@ -89,7 +89,6 @@ class login extends BaseController
         $user = $portalAccountBiz->getLogin($us,$pw);
         if ($user)
         {
-            $this->obj_user->portalData = json_encode($user);
             $this->obj_user->is_authorized = true;
             $this->obj_user->id =  $user->id;
             $this->obj_user->account = $user->account;

@@ -16,6 +16,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
          $route['home'] = 'home/showHome';
          $route['logout'] = 'login/out';
          $route['sitemap'] = 'sitemap/showPage';
+         
+         $route['order/place_order'] = 'devPlaceOrder/showPage';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -33,6 +35,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
         $route['portal/change_user_information'] = 'portalController/userInformation/showpage';
+        $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -42,6 +45,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/login/facebook'] = 'portalController/loginfacebook/loginFb';
         $route['portal/change_password'] = 'portalController/password/updatePasswordPostData';
         $route['portal/change_user_information'] = 'portalController/userInformation/saveChange';
+        $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/getInformation';
+        
     }
 }
 //
