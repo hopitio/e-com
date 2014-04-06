@@ -369,7 +369,7 @@ $config['proxy_ips'] = '';
  */
 
 
-$config['platform_login_url'] = 'http://localhost/portal/login';
+$config['platform_login_url'] = 'http://localhost.com/portal/login';
 $config['platform_login_callback'] = 'http://localhost/__portal/callback';
 $config['platform_logout'] = '/logout';
 

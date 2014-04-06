@@ -60,6 +60,7 @@ Danh sách các key cần mã hóa.
 			secretKey: '[md5]',
 			orderKey : '[md5]'
 			su:'[subsystemkey]',
+			callback:'[callbackEndpoint]',
 			user:{
 				fristname: 'LE THANH',
 				lastname: 'AN',
@@ -78,7 +79,7 @@ Danh sách các key cần mã hóa.
 					image : '[ProductImageUrl]',
 					sortDes : '[description(Mô tả ngắn, có thể là information)]',
 					price :  '1000',
-					quality:  '10',
+					quantity:  '10',
 					totalPrices : '10000'
 					actualPrice : '90000',
 				},
@@ -88,7 +89,7 @@ Danh sách các key cần mã hóa.
 					image : '[ProductImageUrl]',
 					sortDes : '[description(Mô tả ngắn, có thể là information)]',
 					price :  '1000',
-					quality:  '10',
+					quantity:  '10',
 					totalPrices : '10000'
 					actualPrice : '90000',
 				}

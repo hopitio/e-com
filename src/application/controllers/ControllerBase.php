@@ -8,4 +8,14 @@ class BaseController extends MY_Controller{
         parse_str($_SERVER['QUERY_STRING'], $params);
         return $params;
     }
+    
+    /**
+     * 
+     * @param User $user
+     * @param string $secretKey
+     */
+    protected function authenicateBySecretKey($user,$secretKey)
+    {
+        
+    }
 }
