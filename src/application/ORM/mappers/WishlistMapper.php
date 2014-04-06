@@ -40,9 +40,9 @@ class WishlistMapper extends MapperAbstract
      * @param type $fields
      * @return WishlistDomain
      */
-    function findAll($fields = '*')
+    function findAll()
     {
-        $instances = parent::findAll($fields);
+        $instances = parent::findAll();
         if ($this->_autoloadDetails)
         {
             foreach ($instances as &$instance)
@@ -54,16 +54,11 @@ class WishlistMapper extends MapperAbstract
     }
 
     /**
-     * 
-     * @param type $id
-     * @param type $fields
      * @return WishlistDomain
      */
-    function find($id, $fields = '*')
+    function find()
     {
-        $query = Query::make()->select($fields)->from('t_wishlist')->where('id=?');
-        $record = DB::getInstance()->GetRow($query, array($id));
-        $domain = $this->makeDomain($record);
+        $domain = parent::find();
 
         if ($this->_autoloadDetails)
         {

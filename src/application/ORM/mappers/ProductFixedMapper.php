@@ -22,13 +22,11 @@ class ProductFixedMapper extends ProductMapper
     
     /**
      * 
-     * @param type $id
-     * @param type $fields
      * @return ProductFixedDomain
      */
-    function find($id, $fields = 'p.*')
+    function find()
     {
-        return parent::find($id, $fields);
+        return parent::find();
     }
 
 }

@@ -15,23 +15,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`eproject` /*!40100 DEFAULT CHARACTER SE
 
 USE `eproject`;
 
-/*Table structure for table `t_administrative_unit` */
-
-DROP TABLE IF EXISTS `t_administrative_unit`;
-
-CREATE TABLE `t_administrative_unit` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `unitname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `unitlevel` enum('province','city') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fk_parent` int(11) DEFAULT NULL,
-  `codename` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `t_administrative_unit` */
-
-insert  into `t_administrative_unit`(`id`,`unitname`,`unitlevel`,`fk_parent`,`codename`) values (1,'hanoi','province',NULL,'101');
-
 /*Table structure for table `t_category` */
 
 DROP TABLE IF EXISTS `t_category`;
@@ -200,7 +183,24 @@ CREATE TABLE `t_listtype` (
 
 /*Data for the table `t_listtype` */
 
-insert  into `t_listtype`(`id`,`name`,`codename`,`status`) values (1,'material','material',1),(2,'gift target','gift_target',1),(3,'occasion','occasion',1),(4,'currency','currency',1),(5,'source','source',1),(6,'shipping method','shipping_method',1),(7,'payment method','payment_method',1);
+insert  into `t_listtype`(`id`,`name`,`codename`,`status`) values (1,'material','material',1),(2,'gift target','gift_target',1),(3,'occasion','occasion',1),(4,'currency','currency',1),(5,'source','source',1),(7,'payment method','payment_method',1);
+
+/*Table structure for table `t_location` */
+
+DROP TABLE IF EXISTS `t_location`;
+
+CREATE TABLE `t_location` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `level` enum('province','city') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_parent` int(11) DEFAULT NULL,
+  `codename` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_location` */
+
+insert  into `t_location`(`id`,`name`,`level`,`fk_parent`,`codename`) values (1,'hanoi','province',NULL,'101');
 
 /*Table structure for table `t_order` */
 
@@ -483,6 +483,21 @@ CREATE TABLE `t_shipment_detail` (
 
 /*Data for the table `t_shipment_detail` */
 
+/*Table structure for table `t_shipping_location` */
+
+DROP TABLE IF EXISTS `t_shipping_location`;
+
+CREATE TABLE `t_shipping_location` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_shipping_method` int(11) DEFAULT NULL,
+  `fk_location` int(11) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `price_currency` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_shipping_location` */
+
 /*Table structure for table `t_shipping_method` */
 
 DROP TABLE IF EXISTS `t_shipping_method`;
@@ -490,16 +505,15 @@ DROP TABLE IF EXISTS `t_shipping_method`;
 CREATE TABLE `t_shipping_method` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fee` double DEFAULT NULL,
-  `fk_currency` int(11) DEFAULT NULL,
   `min_bday` tinyint(4) DEFAULT NULL,
   `max_bday` tinyint(4) DEFAULT NULL,
+  `sort` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_shipping_method` */
 
-insert  into `t_shipping_method`(`id`,`codename`,`fee`,`fk_currency`,`min_bday`,`max_bday`) values (1,'standard',5,14,1,3),(2,'premium',10,14,0,1),(3,'express',15,14,0,0);
+insert  into `t_shipping_method`(`id`,`codename`,`min_bday`,`max_bday`,`sort`) values (1,'standard',1,3,NULL),(2,'premium',0,1,NULL),(3,'express',0,0,NULL);
 
 /*Table structure for table `t_user` */
 
@@ -578,16 +592,16 @@ DROP TABLE IF EXISTS `t_wishlist`;
 CREATE TABLE `t_wishlist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fk_customer` int(11) DEFAULT NULL,
-  `name` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `remind_date` datetime DEFAULT NULL,
   `note` text COLLATE utf8_unicode_ci,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_wishlist` */
 
-insert  into `t_wishlist`(`id`,`fk_customer`,`name`,`remind_date`,`note`,`date_created`) values (1,2,0,NULL,NULL,NULL);
+insert  into `t_wishlist`(`id`,`fk_customer`,`name`,`remind_date`,`note`,`date_created`) values (6,1,'main',NULL,NULL,'2014-04-02 22:59:31'),(7,1,'main',NULL,NULL,'2014-04-04 00:10:23');
 
 /*Table structure for table `t_wishlist_detail` */
 
@@ -599,12 +613,13 @@ CREATE TABLE `t_wishlist_detail` (
   `type` enum('product','note','link') COLLATE utf8_unicode_ci DEFAULT NULL,
   `note` text COLLATE utf8_unicode_ci,
   `fk_product` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_wishlist_detail` */
 
-insert  into `t_wishlist_detail`(`id`,`fk_wishlist`,`type`,`note`,`fk_product`) values (1,1,'product',NULL,1),(2,1,'link','Something candles',NULL);
+insert  into `t_wishlist_detail`(`id`,`fk_wishlist`,`type`,`note`,`fk_product`,`status`) values (9,6,NULL,NULL,1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

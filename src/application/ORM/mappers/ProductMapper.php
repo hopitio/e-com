@@ -51,11 +51,9 @@ class ProductMapper extends MapperAbstract
      * @param type $fields
      * @return ProductDomain
      */
-    function find($id, $fields = 'p.*')
+    function find()
     {
-        $query = Query::make()->select($fields)->from('t_product p')->where('p.id=?');
-        $record = DB::getInstance()->GetRow($query, array($id));
-        $product = $this->makeDomain($record);
+        $product = parent::find();
         if ($this->_autoloadAttributes)
         {
             $this->loadAttributes($product, $this->_attributeLanguage);

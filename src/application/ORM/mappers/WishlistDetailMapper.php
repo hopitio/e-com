@@ -39,7 +39,7 @@ class WishListDetailMapper extends ProductFixedMapper
      * @param type $fields
      * @return WishlistDetailDomain
      */
-    function find($id, $fields = 'wd.*, p.fk_category, p.fk_retailer, p.fk_group, p.is_group')
+    function find()
     {
         $query = Query::make()->select($fields)
                 ->from('t_wishlist_detail wd')
@@ -47,6 +47,12 @@ class WishListDetailMapper extends ProductFixedMapper
                 ->where('wd.id=?');
         $record = DB::getInstance()->GetRow($query, array($id));
         return $this->makeDomain($record);
+    }
+
+    function select($fields = 'wd.*, p.fk_category, p.fk_retailer, p.fk_group, p.is_group')
+    {
+        parent::select($fields);
+        return $this;
     }
 
     /**

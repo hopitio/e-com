@@ -37,12 +37,9 @@ class FileMapper extends MapperAbstract
     }
 
     /**
-     * 
-     * @param type $id
-     * @param type $fields
      * @return FileDomain
      */
-    function find($id, $fields = '*')
+    function find()
     {
         $query = Query::make()->select($fields)->from('t_file')->where('id=?');
         $record = DB::getInstance()->GetRow($query, array($id));
