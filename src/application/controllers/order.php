@@ -16,14 +16,14 @@ class order extends BaseController
     /** @var CartModel */
     public $cartModel;
 
-    /** @var OrderEvidenceModel */
-    public $orderEvidenceModel;
+    /** @var OrderModel */
+    public $orderModel;
 
     function __construct()
     {
         parent::__construct();
         $this->load->model('modelEx/CartModel', 'cartModel');
-        $this->load->model('modelEx/OrderEvidenceModel', 'orderEvidenceModel');
+        $this->load->model('modelEx/OrderModel', 'orderModel');
     }
 
     function placeOrder()
@@ -39,61 +39,29 @@ class order extends BaseController
         $shippingMethod = isset($_POST['radShippingMethod']) ? $_POST['radShippingMethod'] : null;
         $shippingPrice = $this->cartModel->calculateShippingPrice($shippingMethod, $address->fkStateProvince);
 
-        $orderEvidenceID = $this->orderEvidenceModel->generateEvidence($address, $cartContents, $shippingMethod, $shippingPrice);
+        $orderEvidenceUID = $this->orderModel->generateEvidence($address, $cartContents, $shippingMethod, $shippingPrice);
 
         $data = array(
             'cartContents' => $cartContents,
             'address' => $address,
             'shippingMethod' => $shippingMethod,
-            'shippingPrice' => $shippingPrice
+            'shippingPrice' => $shippingPrice,
+            'orderEvidenceUID' => $orderEvidenceUID
         );
 
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data)->render('order/placeOrder');
     }
 
-    function showPage()
+    function verifyOrderEvidence()
     {
-        //MOCK
-
-        $mockData = array(
-            'secretKey' => '',
-            'orderKey' => '',
-            'su' => '',
-            'user' => $this->obj_user,
-            'callback' => '/callback',
-            'products' => array(
-                array(
-                    'id' => '',
-                    'name' => '',
-                    'image' => '',
-                    'sortDes' => '',
-                    'price' => '',
-                    'quantity' => '',
-                    'totalPrices' => '',
-                    'actualPrice' => ''
-                ),
-                array(
-                    'id' => '',
-                    'name' => '',
-                    'image' => '',
-                    'sortDes' => '',
-                    'price' => '',
-                    'quantity' => '',
-                    'totalPrices' => '',
-                    'actualPrice' => ''
-                )
-            ),
-            'shipping' => array(
-                'shippingKey' => '',
-                'shippingDisplayName' => '',
-                'shippingPrices' => '',
-            )
-        );
-
-        $data = array(
-            'json' => json_encode($mockData)
-        );
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data)->render('order/placeOrder');
+        $orderEvidenceKey = isset($_GET['evidencekey']) ? $_GET['evidencekey'] : null;
+        $checksum = isset($_GET['checksum']) ? $_GET['checksum'] : null;
+        if (!$orderEvidenceKey || !$checksum)
+        {
+            throw new Lynx_RequestException('Bad request');
+        }
+        $isValid = $this->orderModel->verifyOrderEvidence($orderEvidenceKey, $checksum);
+        echo json_encode($isValid);
     }
 
 }

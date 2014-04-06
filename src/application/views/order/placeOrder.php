@@ -5,9 +5,9 @@ defined('BASEPATH') or die('No direct script access allowed');
 $user = User::getCurrentUser();
 $json = array(
     'secretKey' => '',
-    'orderkey' => '',
+    'orderkey' => $orderEvidenceUID,
     'su' => 'projecte',
-    'callback' => site_url('order/portalConfirmation'),
+    'callback' => site_url('order/verifyOrderEvidence'),
     'user' => $user,
     'products' => array(),
     'shipping' => array(
