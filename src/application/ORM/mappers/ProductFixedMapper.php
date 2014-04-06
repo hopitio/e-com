@@ -9,17 +9,22 @@ class ProductFixedMapper extends ProductMapper
     {
         parent::__construct($domain);
     }
-    
-    /** 
+
+    /**
      * 
      * @param type $fields
      * @return ProductFixedDomain
      */
-    function findAll($fields = 'p.*')
+    function findAll()
     {
-        return parent::findAll($fields);
+        return parent::findAll();
     }
-    
+
+    function select($fields = 'p.*')
+    {
+        return parent::select($fields);
+    }
+
     /**
      * 
      * @return ProductFixedDomain

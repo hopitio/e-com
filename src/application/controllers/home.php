@@ -11,9 +11,9 @@ class home extends BaseController
     {
         $data['materials'] = ListMaterialMapper::make()->findAll();
         
-        $data['categories'] = CategoryMapper::make()->setLanguage("vi")->findAll();
+        $data['categories'] = CategoryMapper::make()->setLanguage("VN-VI")->findAll();
         
-        $data['products'] = ProductFixedMapper::make()->autoloadAttributes(true, "vi")->findAll();
+        $data['products'] = ProductFixedMapper::make()->autoloadAttributes(true, "VN-VI")->findAll();
         
         //$this->load->model('Category');
         //$cate = $this->Category->loadCategory();

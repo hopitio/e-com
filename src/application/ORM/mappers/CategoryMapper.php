@@ -23,9 +23,14 @@ class CategoryMapper extends MapperAbstract
      * @param string $fields '*'
      * @return CategoryDomain
      */
-    public function find($fields = 'c.*, cl.name, cl.description, cl.language, cl.name')
+    public function find()
     {
-        return parent::find($fields);
+        return parent::find();
+    }
+
+    function select($fields = 'c.*, cl.name, cl.description, cl.language, cl.name')
+    {
+        return parent::select($fields);
     }
 
     public function filterIdOrCode($idOrCode)
@@ -40,9 +45,9 @@ class CategoryMapper extends MapperAbstract
      * @param type $fields
      * @return \CategoryDomain[]
      */
-    public function findAll($fields = 'c.*, cl.name, cl.description, cl.language, cl.name')
+    public function findAll()
     {
-        return parent::findAll($fields);
+        return parent::findAll();
     }
 
     /**

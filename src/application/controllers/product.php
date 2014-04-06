@@ -9,7 +9,7 @@ class product extends BaseController
     function details($productID)
     {
         //query product
-        $product = ProductFixedMapper::make()->autoloadAttributes(true, 'VN-VI')->find($productID);
+        $product = ProductFixedMapper::make()->autoloadAttributes(true, 'VN-VI')->filterID($productID)->find();
         $data = array('product' => $product);
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data, true)

@@ -70,9 +70,9 @@ class OrderMapper extends MapperAbstract
         return $this;
     }
 
-    function findAll($fields = '*')
+    function findAll()
     {
-        $orders = parent::findAll($fields);
+        $orders = parent::findAll();
         if ($this->_autoloadOrderProduct)
         {
             foreach ($orders as &$order)
@@ -83,15 +83,10 @@ class OrderMapper extends MapperAbstract
         return $orders;
     }
 
-    function find($id, $fields = '*')
+    /** @return OrderDomain */
+    function find()
     {
-        $query = Query::make()->select($fields)->from('t_order')->where('id=?');
-        $record = DB::getInstance()->GetRow($query, array($id));
-        $domain = $this->makeDomain($record);
-        if ($this->_autoloadOrderProduct)
-        {
-            $this->loadOrderProduct($domain);
-        }
+        return parent::find();
     }
 
     function loadOrderProduct(OrderDomain $order)

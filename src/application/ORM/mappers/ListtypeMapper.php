@@ -23,15 +23,9 @@ class ListtypeMapper extends MapperAbstract
      * @param string $fields
      * @return ListtypeDomain
      */
-    function find($fields = '*')
+    function find()
     {
-        $query_options = array('select' => $fields, 'from' => 't_listtype');
-        $query = new Query($query_options);
-
-        is_numeric($id_or_code) ? $query->where('id=?') : $query->where('codename=?');
-        $record = DB::getInstance()->GetRow($query, array($id_or_code));
-
-        return $this->makeDomain($record);
+        return parent::find();
     }
 
     function filterStatus($isActive = true)

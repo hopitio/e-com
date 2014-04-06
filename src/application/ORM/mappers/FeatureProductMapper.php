@@ -18,9 +18,14 @@ class FeatureProductMapper extends ProductFixedMapper
      * @param type $fields
      * @return FeatureProductDomain
      */
-    function findAll($fields = "p.*, fp.id AS fid, fp.fk_product, fp.is_on_homepage, fp.sort")
+    function findAll()
     {
-        return parent::findAll($fields);
+        return parent::findAll();
+    }
+
+    function select($fields = "p.*, fp.id AS fid, fp.fk_product, fp.is_on_homepage, fp.sort")
+    {
+        return parent::select($fields);
     }
 
     /**
@@ -29,16 +34,9 @@ class FeatureProductMapper extends ProductFixedMapper
      * @param type $fields
      * @return FeatureProductDomain
      */
-    function find($fields = "p.*, fp.id AS fid, fp.fk_product, fp.is_on_homepage, fp.sort")
+    function find()
     {
-        $query = Query::make()
-                ->select($fields)
-                ->from('t_product p')
-                ->innerJoin('t_feature_product fp', 'p.id = fp.fk_product')
-                ->orderBy('fp.sort')
-                ->where('fp.id=?');
-        $record = DB::getInstance()->GetRow($query, array($feature_product_id));
-        return $this->makeDomain($record);
+        return parent::find();
     }
 
     function filterID($id)

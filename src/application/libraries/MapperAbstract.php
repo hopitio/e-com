@@ -104,7 +104,7 @@ abstract class MapperAbstract
     /**
      * 
      * @param type $fields
-     * @return \Domain[]
+     * @return Domain[]
      */
     public function findAll()
     {
@@ -126,9 +126,9 @@ abstract class MapperAbstract
      * @param type $fields
      * @return array(key => value)
      */
-    function findAssoc($fields)
+    function findAssoc()
     {
-        return DB::getInstance()->GetAssoc($this->_query->select($fields), $this->_queryParams);
+        return DB::getInstance()->GetAssoc($this->_query, $this->_queryParams);
     }
 
     /**

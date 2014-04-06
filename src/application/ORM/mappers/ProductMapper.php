@@ -66,9 +66,9 @@ class ProductMapper extends MapperAbstract
      * @param type $fields
      * @return ProductDomain
      */
-    function findAll($fields = 'p.*')
+    function findAll()
     {
-        $products = parent::findAll($fields);
+        $products = parent::findAll();
         if ($this->_autoloadAttributes)
         {
             foreach ($products as $p)

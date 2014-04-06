@@ -17,9 +17,15 @@ class CategoryAttributeMapper extends MapperAbstract
         parent::__construct('CategoryAttributeDomain', $query, $map);
     }
 
-    function findAll($fields = "ca.*, at.codename, at.datatype, at.fk_enum_ref, at.multi_language, at.repeating_group, at.weight, at.default")
+    function select($fields = "ca.*, at.codename, at.datatype, at.fk_enum_ref, at.multi_language, at.repeating_group, at.weight, at.default")
     {
-        parent::findAll($fields);
+        parent::select($fields);
+        return $this;
+    }
+
+    function findAll()
+    {
+        parent::findAll();
     }
 
     function filterCategoryID($categoryID)

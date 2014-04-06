@@ -17,7 +17,7 @@ class wishlist extends BaseController
 
     function remove($wishlistDetailID)
     {
-        $detailInstance = WishListDetailMapper::make()->find($wishlistDetailID);
+        $detailInstance = WishListDetailMapper::make()->filterID($wishlistDetailID)->find();
         if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
         {
             throw new Lynx_RequestException("You are not owner");
@@ -82,7 +82,7 @@ class wishlist extends BaseController
 
     function undoRemove($detailID)
     {
-        $detailInstance = WishListDetailMapper::make()->find($detailID);
+        $detailInstance = WishListDetailMapper::make()->filterID($detailID)->find();
         if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
         {
             throw new Lynx_RequestException("You are not owner");

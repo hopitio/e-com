@@ -28,7 +28,7 @@ class WishlistMapper extends MapperAbstract
         return $this;
     }
 
-    function autoloadDetails($bool = true, $language)
+    function autoloadDetails($bool, $language)
     {
         $this->_autoloadDetails = $bool;
         $this->_language = $language;

@@ -41,12 +41,7 @@ class WishListDetailMapper extends ProductFixedMapper
      */
     function find()
     {
-        $query = Query::make()->select($fields)
-                ->from('t_wishlist_detail wd')
-                ->innerJoin('t_product p', 'wd.fk_product=p.id')
-                ->where('wd.id=?');
-        $record = DB::getInstance()->GetRow($query, array($id));
-        return $this->makeDomain($record);
+       return parent::find();
     }
 
     function select($fields = 'wd.*, p.fk_category, p.fk_retailer, p.fk_group, p.is_group')
@@ -60,9 +55,9 @@ class WishListDetailMapper extends ProductFixedMapper
      * @param type $fields
      * @return WishlistDetailMapper
      */
-    function findAll($fields = 'wd.*, p.fk_category, p.fk_retailer, p.fk_group, p.is_group')
+    function findAll()
     {
-        return parent::findAll($fields);
+        return parent::findAll();
     }
 
 }

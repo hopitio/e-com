@@ -31,7 +31,12 @@ class PinMapper extends ProductFixedMapper
         }
     }
 
-    function findAll($fields = 'p.*')
+    function select($fields = 'p.*')
+    {
+        return parent::select($fields);
+    }
+
+    function findAll()
     {
         $this->_isSetUser();
         $this->_query->innerJoin('t_pin pin', 'pin.fk_user=' . $this->_user);

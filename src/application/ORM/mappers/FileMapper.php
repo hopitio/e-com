@@ -31,9 +31,9 @@ class FileMapper extends MapperAbstract
      * @param type $fields
      * @return FileDomain
      */
-    function findAll($fields = '*')
+    function findAll()
     {
-        return parent::findAll($fields);
+        return parent::findAll();
     }
 
     /**
@@ -41,9 +41,7 @@ class FileMapper extends MapperAbstract
      */
     function find()
     {
-        $query = Query::make()->select($fields)->from('t_file')->where('id=?');
-        $record = DB::getInstance()->GetRow($query, array($id));
-        return $this->makeDomain($record);
+        return parent::find();
     }
 
     function filterUser($userID)

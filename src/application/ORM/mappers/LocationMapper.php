@@ -18,36 +18,25 @@ class LocationMapper extends MapperAbstract
         parent::__construct($domain, $query, $map);
     }
 
-    /**
-     * 
-     * @param type $id
-     * @param type $fields
-     * @return AdministrativeDomain
-     */
-    function findById($id, $fields = '*')
+    function filterIdOrCode($idOrCode)
     {
-        $query = Query::make()->select($fields)->from(static::TABLE)->where('id=?');
-        $record = DB::getInstance()->GetRow($query, array($id));
-        return $this->makeDomain($record);
+        is_numeric($idOrCode) ? $this->_query->where('id=?', __FUNCTION__) : $this->_query->where('code=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $idOrCode;
+        return $this;
     }
 
     /**
-     * 
-     * @param type $codename
-     * @param type $fields
-     * @return AdministrativeDomain
+     * @return LocationDomain
      */
-    function findByCode($codename, $fields = '*')
+    function find()
     {
-        $query = Query::make()->select($fields)->from(static::TABLE)->where('codename=?');
-        $record = DB::getInstance()->GetRow($query, array($codename));
-        return $this->makeDomain($record);
+        return parent::find();
     }
 
     /**
      * 
      * @param type $fields
-     * @return AdministrativeDomain
+     * @return LocationDomain
      */
     function findAll($fields = '*')
     {
@@ -67,6 +56,5 @@ class LocationMapper extends MapperAbstract
         $this->_queryParams[__FUNCTION__] = $parentId;
         return $this;
     }
-
 
 }

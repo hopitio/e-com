@@ -19,14 +19,11 @@ class ShippingLocationMapper extends MapperAbstract
     }
 
     /**
-     * 
-     * @param type $id
-     * @param type $fields
      * @return ShippingLocationDomain
      */
-    function find($fields = '*')
+    function find()
     {
-        return parent::find($fields);
+        return parent::find();
     }
 
     /**
@@ -34,9 +31,9 @@ class ShippingLocationMapper extends MapperAbstract
      * @param type $fields
      * @return ShippingLocationDomain
      */
-    function findAll($fields = '*')
+    function findAll()
     {
-        return parent::findAll($fields);
+        return parent::findAll();
     }
 
     function filterShippingMethod($shippingMethodID)
