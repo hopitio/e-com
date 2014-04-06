@@ -19,7 +19,7 @@ class cart extends BaseController
 
     function shipping()
     {
-        $data['provinces'] = AdministrativeMapper::make()->filterLevel('province')->findAssoc('id, unitname');
+        $data['provinces'] = LocationMapper::make()->filterLevel('province')->findAssoc('id, unitname');
         $data['shippingMethods'] = ShippingMethodMapper::make()->findAll();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data)

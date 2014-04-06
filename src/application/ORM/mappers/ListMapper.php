@@ -16,37 +16,11 @@ class ListMapper extends MapperAbstract
         parent::__construct('ListDomain', $query, $map);
     }
 
-    /**
-     * 
-     * @param type $listtype id|codename
-     * @param type $codename
-     * @param type $fields
-     * @return ListDomain
-     */
-    function findByCodeName($listtype, $codename, $fields = '*')
+    function filterIdOrCode($idOrCode)
     {
-        if (!is_numeric($listtype))
-        {
-            $listtype = $this->_getListtypeByCode($listtype);
-        }
-        $query = Query::make()->select($fields)->from('t_list')->where('fk_listtype=? And codename=?');
-        $params = array($listtype, $codename);
-
-        $record = DB::getInstance()->GetRow($query, $params);
-        return $this->makeDomain($record);
-    }
-
-    /**
-     * 
-     * @param type $id
-     * @param string $fields
-     * @return ListDomain
-     */
-    function findById($id, $fields = '*')
-    {
-        $query = Query::make()->select($fields)->from('t_list')->where('id=?');
-        $record = DB::getInstance()->GetRow($query, array($id));
-        return $this->makeDomain($record);
+        is_numeric($idOrCode) ? $this->_query->where('id=?', __FUNCTION__) : $this->_query->where('codename=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $idOrCode;
+        return $this;
     }
 
     function filterListtype($listtype)

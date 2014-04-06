@@ -21,7 +21,6 @@ defined('BASEPATH') or die('No direct script access allowed');
                         <?php echo $method->codename ?>
                     </label>
                 </div>
-                <div><?php echo $method->fee ?></div>
                 <div>
                     <?php
                     if ($method->minBDay == 0 && $method->maxBDay == 0)

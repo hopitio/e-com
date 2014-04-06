@@ -12,5 +12,26 @@ class ShippingMethodDomain implements DomainInterface
     public $minBDay;
     public $maxBDay;
     public $currencyName;
+    protected $_shippingLocations = array();
+
+    /**
+     * 
+     * @param ShippingLocationDomain $instance
+     * @return LocationDomain
+     */
+    function addShippingLocation(ShippingLocationDomain $instance)
+    {
+        $this->_shippingLocations[] = $instance;
+        return $this;
+    }
+
+    /**
+     * 
+     * @return ShippingLocationDomain
+     */
+    function getShippingLocations()
+    {
+        return $this->_shippingLocations;
+    }
 
 }

@@ -5,12 +5,13 @@ defined('BASEPATH') or die('No direct script access allowed');
 class ShippingMethodMapper extends MapperAbstract
 {
 
+    protected $_autoloadShippingLocations = false;
+
     function __construct($domain = 'ShippingMethodDomain')
     {
         $query = Query::make()
-                ->from('t_shipping_method sm')
-                ->innerJoin('t_list lt', 'sm.fk_currency=lt.id')
-                ->orderBy('sm.id');
+                ->from('t_shipping_method')
+                ->orderBy('id');
 
         $map = array(
             'fkCurrency' => 'fk_currency',
@@ -24,36 +25,19 @@ class ShippingMethodMapper extends MapperAbstract
 
     /**
      * 
-     * @param type $id
      * @param type $fields
      * @return ShippingMethodDomain
      */
-    function findById($id, $fields = 'sm.*,lt.codename AS currency_name')
+    function find($fields = '*')
     {
-        $query = Query::make()
-                ->select($fields)
-                ->from('t_shipping_method sm')
-                ->innerJoin('t_list lt', 'sm.fk_currency=lt.id')
-                ->where('id=?', array($id));
-        $record = DB::getInstance()->GetRow($query);
-        return $this->makeDomain($record);
+        return parent::find($fields);
     }
 
-    /**
-     * 
-     * @param type $codename
-     * @param type $fields
-     * @return ShippingMethodDomain
-     */
-    function findByCode($codename, $fields = 'sm.*,lt.codename AS currency_name')
+    function filterCodename($codename)
     {
-        $query = Query::make()
-                ->select($fields)
-                ->from('t_shipping_method sm')
-                ->innerJoin('t_list lt', 'sm.fk_currency=lt.id')
-                ->where('codename=?', array($codename));
-        $record = DB::getInstance()->GetRow($query);
-        return $this->makeDomain($record);
+        $this->_query->where('codename=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $codename;
+        return $this;
     }
 
     /**
@@ -61,9 +45,28 @@ class ShippingMethodMapper extends MapperAbstract
      * @param type $fields
      * @return ShippingMethodDomain
      */
-    function findAll($fields = 'sm.*,lt.codename AS currency_name')
+    function findAll($fields = '*')
     {
-        return parent::findAll($fields);
+        $domains = parent::findAll($fields);
+        if ($this->_autoloadShippingLocations)
+        {
+            /* @var $domains ShippingMethodDomain */
+            foreach ($domains as $domain)
+            {
+                $shippingLocations = ShippingLocationMapper::make()->filterShippingMethod($domain->id)->findAll();
+                foreach ($shippingLocations as $shippingLocationInstance)
+                {
+                    $domain->addShippingLocation($shippingLocationInstance);
+                }
+            }
+        }
+        return $domains;
+    }
+
+    function autoloadShippingLocation($bool)
+    {
+        $this->_autoloadShippingLocations = $bool;
+        return $this;
     }
 
 }

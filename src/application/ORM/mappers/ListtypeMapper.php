@@ -12,13 +12,18 @@ class ListtypeMapper extends MapperAbstract
         )));
     }
 
+    function filterCodename($codename)
+    {
+        $this->_query->where('codename=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $codename;
+        return $this;
+    }
+
     /**
-     * 
-     * @param mixed $id_or_code
      * @param string $fields
-     * @return \ListtypeDomain
+     * @return ListtypeDomain
      */
-    function find($id_or_code, $fields = '*')
+    function find($fields = '*')
     {
         $query_options = array('select' => $fields, 'from' => 't_listtype');
         $query = new Query($query_options);
@@ -35,6 +40,5 @@ class ListtypeMapper extends MapperAbstract
         $this->_query->where($cond, __FUNCTION__);
         return $this;
     }
-    
 
 }

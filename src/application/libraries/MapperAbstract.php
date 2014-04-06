@@ -106,9 +106,9 @@ abstract class MapperAbstract
      * @param type $fields
      * @return \Domain[]
      */
-    public function findAll($fields = '*')
+    public function findAll()
     {
-        $recordset = DB::getInstance()->GetAll($this->_query->select($fields), $this->_queryParams);
+        $recordset = DB::getInstance()->GetAll($this->_query, $this->_queryParams);
         if (empty($recordset))
         {
             return array();
@@ -129,6 +129,29 @@ abstract class MapperAbstract
     function findAssoc($fields)
     {
         return DB::getInstance()->GetAssoc($this->_query->select($fields), $this->_queryParams);
+    }
+
+    /**
+     * @param string $fields
+     * @return DomainInterface 
+     */
+    function find()
+    {
+        $record = DB::getInstance()->GetRow($this->_query, $this->_queryParams);
+        return $this->makeDomain($record);
+    }
+
+    function select($fields = '*')
+    {
+        $this->_query->select($fields);
+        return $this;
+    }
+
+    function filterID($id)
+    {
+        $this->_query->where('id=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $id;
+        return $this;
     }
 
     public function limit($limit, $offset = 0)

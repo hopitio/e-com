@@ -29,7 +29,7 @@ class FeatureProductMapper extends ProductFixedMapper
      * @param type $fields
      * @return FeatureProductDomain
      */
-    function find($feature_product_id, $fields = "p.*, fp.id AS fid, fp.fk_product, fp.is_on_homepage, fp.sort")
+    function find($fields = "p.*, fp.id AS fid, fp.fk_product, fp.is_on_homepage, fp.sort")
     {
         $query = Query::make()
                 ->select($fields)
@@ -39,6 +39,12 @@ class FeatureProductMapper extends ProductFixedMapper
                 ->where('fp.id=?');
         $record = DB::getInstance()->GetRow($query, array($feature_product_id));
         return $this->makeDomain($record);
+    }
+
+    function filterID($id)
+    {
+        $this->_query->where('fp.id=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $id;
     }
 
     function filterOnHomePage($bool = true)

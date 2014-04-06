@@ -20,24 +20,19 @@ class CategoryMapper extends MapperAbstract
     }
 
     /**
-     * 
-     * @param mixed $id_or_code id của category hoặc code
      * @param string $fields '*'
-     * @return \CategoryDomain
+     * @return CategoryDomain
      */
-    public function find($id_or_code, $language, $fields = 'c.*, cl.name, cl.description, cl.language, cl.name')
+    public function find($fields = 'c.*, cl.name, cl.description, cl.language, cl.name')
     {
-        $query = Query::make(array(
-                    'select' => $fields,
-                    'from' => 't_category c'
-        ));
-        $query->innerJoin('t_category_language cl', 'cl.fk_category=c.id AND cl.language=?');
+        return parent::find($fields);
+    }
 
-        $params = array($language, $id_or_code);
-        is_numeric($id_or_code) ? $query->where('c.id=?') : $query->where('c.code=?');
-        $data = DB::getInstance()->GetRow($query, $params);
-
-        return $this->makeDomain($data);
+    public function filterIdOrCode($idOrCode)
+    {
+        is_numeric($idOrCode) ? $this->_query->where('c.id=?', __FUNCTION__) : $this->_query->where('c.code=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $idOrCode;
+        return $this;
     }
 
     /**
