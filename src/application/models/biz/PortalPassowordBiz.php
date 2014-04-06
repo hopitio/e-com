@@ -24,9 +24,8 @@ class PortalPassowordBiz extends PortalBaseBiz
         $portalUser->updateUser();
         
         $portalUserHistory = new PortalUserHistoryBiz();
-        $historyId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEPASS,'Thay đổi mật khẩu',null,null);
-        
-        $resetKey = SecurityManager::inital()->getEncrytion()->encrytResetPassword($user, $historyId);
+        $newId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEPASS,'Thay đổi mật khẩu',null,null);
+        $resetKey = SecurityManager::inital()->getEncrytion()->encrytResetPassword($user, $newId);
         $resetKey =  urlencode($resetKey);
         
         $link =  get_instance()->config->item('path_to_reset_password_reset');
@@ -60,9 +59,46 @@ class PortalPassowordBiz extends PortalBaseBiz
      * Thực hiện việc thay đổi password.
      * @param user $user
      */
-    function resetPassword($user,$encrytedKey)
+    function resetPassword(&$user,$encrytedKey)
     {
+        $decode = SecurityManager::inital()->getEncrytion()->decrytResetPassword($encrytedKey);
+        $userId = $decode->userid;
+        $historyKey = $decode->history;
+        $portalUserModel = new PortalUserModel();
+        $portalUserModel->id = $userId;
+        $result = $portalUserModel->getUserByUserId();
+        if(!$result){
+            return false;
+        }
         
+        $portalHistoryMode = new PortalUserHistoryModel();
+        $portalHistoryMode->id = $historyKey;
+        $portalHistoryMode->fk_user = $userId;
+        $result = $portalHistoryMode->getByHistoryId();
+        
+        if(!$result){
+            return false;
+        }
+        
+        if($portalHistoryMode->action_name != DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEPASS) {
+            return false;
+        }
+        $newPass = SecurityManager::inital()->getEncrytion()->getNewpassWordforUser();
+        $portalUser = new PortalUserModel();
+        $portalUser->id = $user->id;
+        $portalUser->getUserByUserId();
+        $portalUser->password = $newPass;
+        $portalUser->updateUser();
+        
+        $portalUserHistory = new PortalUserHistoryBiz();
+        $historyId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_RESETPASS,'Reset mật khẩu',null,null);
+        
+        $mailData = array(
+            'time'=>date(DatabaseFixedValue::DEFAULT_FORMAT_DATE),
+            'password'=>$newPass
+        );
+        
+        MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalUserModel->account , $mailData);
+        return true;
     }
-    
 }

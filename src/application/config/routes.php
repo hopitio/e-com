@@ -31,6 +31,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account'] = 'portalController/account/showPage';
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
+        $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
+        $route['portal/change_user_information'] = 'portalController/userInformation/showpage';
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -39,6 +41,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/login/facbook_callback'] = 'portalController/platform/facebook/authenCallback';
         $route['portal/login/facebook'] = 'portalController/loginfacebook/loginFb';
         $route['portal/change_password'] = 'portalController/password/updatePasswordPostData';
+        $route['portal/change_user_information'] = 'portalController/userInformation/saveChange';
     }
 }
 //

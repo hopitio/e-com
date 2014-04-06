@@ -44,8 +44,8 @@ class PortalUserHistoryBiz extends PortalBaseBiz
         $historyModel->fk_user = $user->id;
         $historyModel->last_activity = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $historyModel->sub_system_name = $subSystemNname == null ? $listSubSystem['default'] : $subSystemNname;
-        
-        return $historyModel->insertNewHistory(); 
+        $historyModel->insertNewHistory();
+        return $historyModel->id;
     }
     
 }

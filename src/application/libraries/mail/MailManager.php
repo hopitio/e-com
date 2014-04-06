@@ -7,6 +7,7 @@
 class MailManager {
     CONST TYPE_RESG_COMFIRM = 'RESGTER_COMFRIM';
     CONST TYPE_RESETPASSWORD_COMFRIM = 'RESETPASSWORD_COMFRIM';
+    CONST TYPE_NEWPASSWORD_NOFICATION = 'NEWPASSWORD_NOFICATION';
     
     /**
      * Người dùng request gửi mail.
@@ -22,6 +23,9 @@ class MailManager {
         	    break;
         	case self::TYPE_RESETPASSWORD_COMFRIM:
         	    $staff = new ResetPasswordRegisterMailler();
+        	    break;
+        	case self::TYPE_NEWPASSWORD_NOFICATION:
+        	    $staff = new NewPasswordMailler();
         	    break;
         	default:
         	    throw new Lynx_EmailException(__CLASS__.'::requestSendMail Không hỗ trợ định dạng mail này');

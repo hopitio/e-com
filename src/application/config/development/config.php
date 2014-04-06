@@ -398,12 +398,22 @@ $config['ConfirmRegisterMailler_temp'] = '/RegisterConfirm.txt';
 $config['ResetPasswordMailler_protocol'] = 'smtp';
 $config['ResetPasswordMailler_useragent'] = 'DEMO MAIL';
 $config['ResetPasswordMailler_smtp_host'] = 'ssl://smtp.gmail.com';
-$config['ResetPasswordMailler_smtp_fullName'] = 'HỆ THỐNG QUẢN LÝ MẬT KHẨU HỆ THỐNG';
+$config['ResetPasswordMailler_smtp_fullName'] = 'HỆ THỐNG QUẢN LÝ BẢO MẬT';
 $config['ResetPasswordMailler_smtp_user'] = 'projecte2002@gmail.com';
 $config['ResetPasswordMailler_smtp_pass'] = '1234567$';
 $config['ResetPasswordMailler_smtp_port'] = '465';
 $config['ResetPasswordMailler_smtp_timeout'] = '1';
 $config['ResetPasswordMailler_temp'] = '/ResetPassword.txt';
+
+$config['NewPasswordMailler_protocol'] = 'smtp';
+$config['NewPasswordMailler_useragent'] = 'DEMO MAIL';
+$config['NewPasswordMailler_smtp_host'] = 'ssl://smtp.gmail.com';
+$config['NewPasswordMailler_smtp_fullName'] = 'HỆ THỐNG QUẢN LÝ BẢO MẬT';
+$config['NewPasswordMailler_smtp_user'] = 'projecte2002@gmail.com';
+$config['NewPasswordMailler_smtp_pass'] = '1234567$';
+$config['NewPasswordMailler_smtp_port'] = '465';
+$config['NewPasswordMailler_smtp_timeout'] = '1';
+$config['NewPasswordMailler_temp'] = '/NewPassword.txt';
 
 
 $config['temp_mail_folder'] = APPPATH.'temp/mail/';
