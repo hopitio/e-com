@@ -237,12 +237,13 @@ CREATE TABLE `t_order_evidence` (
   `checksum` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
   `date_expired` datetime DEFAULT NULL,
+  `unique_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_order_evidence` */
 
-insert  into `t_order_evidence`(`id`,`fk_user`,`checksum`,`date_created`,`date_expired`) values (1,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:24:30','2014-04-09 22:24:00'),(2,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:33:58','2014-04-09 22:33:00'),(3,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:40:03','2014-04-09 22:40:00'),(4,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:40:39','2014-04-09 22:40:00');
+insert  into `t_order_evidence`(`id`,`fk_user`,`checksum`,`date_created`,`date_expired`,`unique_key`) values (1,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:24:30','2014-03-09 22:24:00','1'),(3,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:40:03','2014-04-09 22:40:00',NULL),(4,NULL,'84ccc4745a8f1bb963cc05d28c8597f6','2014-04-06 22:40:39','2014-04-09 22:40:00',NULL);
 
 /*Table structure for table `t_order_product` */
 
