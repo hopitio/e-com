@@ -19,6 +19,7 @@ class login extends BaseController
      */
     function indexPost(){
         $c = $this->input->post('c');
+       
         switch ($c){
         	case 'resg':
         	    $this->registerAccount();
@@ -27,8 +28,10 @@ class login extends BaseController
         	    $this->authenicate();
         	    break;
         	default:
-        	    throw new Lynx_RequestException(__CLASS__.'::indexPost: Sai paramater');
-        	    break;
+        	    echo var_export($this->input->post(),true);
+        	    die;
+        	    throw new Lynx_RequestException(__CLASS__.'::indexPost: Sai paramater '.var_export($c,true));
+        	break;
         }
     }
     
@@ -46,12 +49,13 @@ class login extends BaseController
         $subSysKey = isset($params['su']) ? $params['su'] : null;
         $currentPage = isset($params['cp']) ? $params['cp'] : '/portal/account';
         $sessionId = isset($params['se']) ? $params['se'] : null;
-        $endPoint = isset($params['ep']) ? $params['se'] : null;
+        $endPoint = isset($params['ep']) ? $params['ep'] : null;
 
         $this->_data['su'] = $subSysKey;
         $this->_data['cp'] = $currentPage;
         $this->_data['se'] = $sessionId;
         $this->_data['ep'] = $endPoint;
+        
         
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
             ->setData($this->_data, true)
@@ -99,9 +103,7 @@ class login extends BaseController
             $this->obj_user->status = $user->status;
             $this->obj_user->last_active = $user->last_active;
             $this->obj_user->DOB = $user->DOB;
-            
-            $this->onLoginComplete();
-            return;
+            $this->onLoginComplete($data);
         }
         else
         {
@@ -121,13 +123,14 @@ class login extends BaseController
         $subSysKey = isset($params['su']) ? $params['su'] : null;
         $currentPage = isset($params['cp']) ? $params['cp'] : '/portal/account';
         $sessionId = isset($params['se']) ? $params['se'] : null;
-        $endPoint = isset($params['ep']) ? $params['se'] : null;
+        $endPoint = isset($params['ep']) ? $params['ep'] : null;
         
         $this->_data['error'] = MultilLanguageManager::getInstance()->getLangViaScreen('login', User::getCurrentUser()->languageKey)->lblError;
         $this->_data['su'] = $subSysKey;
         $this->_data['cp'] = $currentPage;
         $this->_data['se'] = $sessionId;
         $this->_data['ep'] = $endPoint;
+        
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
             $this->_data, true)
             ->setCss($this->_css)
@@ -263,8 +266,8 @@ class login extends BaseController
     /**
      * Login hệ thống thành công.
      */
-    function onLoginComplete(){
-        $data = $this->input->post();
+    function onLoginComplete($data = null){
+        $data = $data == null ? $this->input->post() : $data;
         if (
             !isset($data['currentPage']) || 
             !isset($data['endpoint']) ||
@@ -276,16 +279,15 @@ class login extends BaseController
         $this->set_obj_user_to_me($this->obj_user);
         $user = clone $this->obj_user;
         unset($user->id);
-        if($data['endpoint'] == null || $data['endpoint'] = ''){
+        if($data['endpoint'] == null || $data['endpoint'] == ''){
             redirect('/portal/account');
             exit;
         }
-        $dataResult['postUrl'] = $data['endpoint'];
+        $dataResult = array();
+        $dataResult['url'] = $data['endpoint'];
         $dataResult['redirect']  = $data['currentPage'];
         $dataResult['secretKey'] =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
         $dataResult['dataJson'] = json_encode($user);
-
-        
         
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
     }

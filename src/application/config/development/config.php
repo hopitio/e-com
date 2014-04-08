@@ -369,9 +369,10 @@ $config['proxy_ips'] = '';
  */
 
 
-$config['platform_login_url'] = 'http://localhost.com/portal/login';
+$config['platform_login_url'] = 'http://localhost.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
 $config['platform_login_callback'] = 'http://localhost/__portal/callback';
 $config['platform_logout'] = '/logout';
+$config['subSystemName'] = 'GIFT';
 
 $config['platform_available_tickets_list_url'] = '';
 $config['platform_study_gear_sales_url'] = '';
