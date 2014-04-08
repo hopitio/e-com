@@ -1,6 +1,8 @@
 <?php
 
-class PinDomain implements DomainInterface
+defined('BASEPATH') or die('no direct script access allowed');
+
+class PinDomain extends ProductFixedDomain 
 {
     public $id;
     public $fkUser;

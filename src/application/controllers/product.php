@@ -15,5 +15,6 @@ class product extends BaseController
                 ->setData($data, true)
                 ->render('product/details');
     }
+    
 
 }

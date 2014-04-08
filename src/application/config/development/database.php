@@ -68,7 +68,7 @@ $db['lynx']['port']     = 3306;
 
 $db['portal']['hostname'] = '127.0.0.1';
 $db['portal']['username'] = 'root';
-$db['portal']['password'] = '';
+$db['portal']['password'] = 'root';
 $db['portal']['database'] = 'portal_e_project';
 $db['portal']['dbdriver'] = 'mysql';
 $db['portal']['dbprefix'] = '';

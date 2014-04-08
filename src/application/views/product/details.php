@@ -37,6 +37,7 @@ $first_image = reset($images);
     var scriptData = {};
     scriptData.addToCartURL = '<?php echo site_url('account/addToCart/') ?>';
     scriptData.addToWishlistURL = '<?php echo site_url('wishlist/addToWishlist/') ?>';
+    scriptData.addToPinURL = '<?php echo site_url('pin/pinProduct') ?>';
 </script>
 <script>
     (function(window, scriptData, $, undefined) {
@@ -61,6 +62,19 @@ $first_image = reset($images);
                         //TODO
                     },
                     error: function() {
+                        //TODO
+                    }
+                });
+            });
+            
+            $('.add-to-pin').click(function(){
+                $.ajax({
+                    cache: false,
+                    url: scriptData.addToPinURL + '/' + $(this).attr('data-id'),
+                    success: function(){
+                        //TODO
+                    },
+                    error: function(){
                         //TODO
                     }
                 });

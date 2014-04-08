@@ -24,6 +24,7 @@ require_once APPPATH . "libraries" . DS . "domains" . DS . "ShippingMethodDomain
 require_once APPPATH . "libraries" . DS . "domains" . DS . "WishlistDetailDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "WishlistDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "UserAddressDomain.php";
+require_once APPPATH . "libraries" . DS . "domains" . DS . "PinDomain.php";
 
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListtypeMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListMapper.php";
@@ -42,6 +43,7 @@ require_once APPPATH . "ORM" . DS . "mappers" . DS . "LocationMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ShippingMethodMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistDetailMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "PinMapper.php";
 
 $portalConfig = new DBConfig;
 $portalConfig->type = 'mysqli';

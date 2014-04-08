@@ -8,7 +8,7 @@ class WishlistModel extends BaseModel
     /**
      * 
      * @param type $productID
-     * @return type
+     * @return bool
      * @throws Lynx_BusinessLogicException Khi trùng product
      */
     function addToWishlist($productID)
@@ -29,10 +29,14 @@ class WishlistModel extends BaseModel
             }
             DB::delete('t_wishlist_detail', 'id=?', array($detailInstance->id));
         }
-        return DB::insert('t_wishlist_detail', array(
-                    'fk_wishlist' => $wishlist->id,
-                    'fk_product' => $productID
+        DB::insert('t_wishlist_detail', array(
+            'fk_wishlist' => $wishlist->id,
+            'fk_product' => $productID
         ));
+        if (DB::getInstance()->ErrorNo())
+        {
+            throw new Lynx_BusinessLogicException("error_occurs_during_insert");
+        }
     }
 
     /**
