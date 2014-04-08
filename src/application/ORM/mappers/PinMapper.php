@@ -8,14 +8,20 @@ class PinMapper extends ProductFixedMapper
     /** @var int $_user */
     protected $_user;
 
-    function __construct($domain = 'ProductFixedDomain')
+    function __construct($domain = 'PinDomain')
     {
         parent::__construct($domain);
+        $this->_map = array(
+            'fkUser' => 'fk_user',
+            'fkProduct' => 'fk_product'
+                ) + $this->_map;
+        $this->_query->orderBy('pin.id');
     }
 
     function setUser($user_id)
     {
         $this->_user = (int) $user_id;
+        $this->_query->innerJoin('t_pin pin', 'pin.fk_product = p.id AND pin.fk_user=' . $this->_user);
         return $this;
     }
 
@@ -31,28 +37,17 @@ class PinMapper extends ProductFixedMapper
         }
     }
 
-    function select($fields = 'p.*')
+    function select($fields = 'pin.*, p.*')
     {
-        return parent::select($fields);
+        parent::select($fields);
+        return $this;
     }
 
+    /** @return PinDomain */
     function findAll()
     {
         $this->_isSetUser();
-        $this->_query->innerJoin('t_pin pin', 'pin.fk_user=' . $this->_user);
-        return parent::findAll($fields);
-    }
-
-    function pin($product_id)
-    {
-        $this->_isSetUser();
-        return DB::insert('t_pin', array('fk_product' => $product_id, 'fk_user' => $this->_user));
-    }
-
-    function unpin($product_id)
-    {
-        $this->_isSetUser();
-        return DB::delete('t_pin', 'fk_user=? AND fk_product=?', array($this->_user, $product_id));
+        return parent::findAll();
     }
 
 }
