@@ -303,7 +303,8 @@ CREATE TABLE `t_pin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fk_user` int(11) DEFAULT NULL,
   `fk_product` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_pin` (`fk_user`,`fk_product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_pin` */
