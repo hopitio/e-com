@@ -62,7 +62,12 @@ class User{
      * Lấy đường dẫn sử dụng để login.
      */
     function getLoginAuthenUrl(){
-        return $this->authenUrl.'?u='.urlencode($this->callBack).'&t='.urlencode(Common::curPageURL()) ;
+        $url = $this->authenUrl;
+        $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
+        $url = str_replace('{ep}', urlencode($this->callBack), $url);
+        $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
+        $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
+        return $url;
     }
     /**
      * get logout
