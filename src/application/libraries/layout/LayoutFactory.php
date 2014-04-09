@@ -8,6 +8,8 @@ class LayoutFactory
     CONST TEMP_TOW_COL = 'TEMP_TOW_COL';
     
     CONST TEMP_PORTAL_ONE_COL = 'TEMP_PORTAL_ONE_COL';
+    
+    CONST TEMP_ADMIN = 'TEMP_ADMIN';
 
     /**
      * get template render.
@@ -28,6 +30,10 @@ class LayoutFactory
                 break;
             case self::TEMP_PORTAL_ONE_COL:
                 return new PortalOneColumnLayout();
+                break;
+            case self::TEMP_ADMIN:
+                return new AdminLayout();
+                break;
             default:
                 throw new Exception('Template not supported');
                 break;

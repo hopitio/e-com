@@ -16,6 +16,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
          $route['home'] = 'home/showHome';
          $route['logout'] = 'login/out';
          $route['sitemap'] = 'sitemap/showPage';
+         $route['__admin/login'] = 'admin/loginAdmin/showpage';
+         $route['__admin/mainpage'] = 'admin/mainpage/showpage';
          
          $route['order/place_order'] = 'devPlaceOrder/showPage';
     }
@@ -23,6 +25,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $route['__portal/callback'] = 'portalCallbackController/portalProcess/portalAuthen';
+        $route['__admin/login'] = 'admin/loginAdmin/login';
     }
     
     //portal/////////////////////////////////////////////////////////////////////////////////////

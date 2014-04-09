@@ -11,6 +11,6 @@ class BaseBiz extends CI_Model
     function __construct()
     {
         parent::__construct();
-        $this->_CI &= get_instance(); 
+        $this->_CI =& get_instance(); 
     }
 }
