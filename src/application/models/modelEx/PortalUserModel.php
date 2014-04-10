@@ -6,6 +6,7 @@
  */
 class PortalUserModel extends PortalBaseModel
 {
+    protected $_constIntanceName = 'T_user';
     public $id;
     public $firstname;
     public $lastname;
@@ -25,22 +26,7 @@ class PortalUserModel extends PortalBaseModel
      */
     function insert()
     {
-        $data = array(
-            T_user::firstname=>$this->firstname,
-            T_user::lastname=>$this->lastname,
-            T_user::account=>$this->account,
-            T_user::password=>$this->password,
-            T_user::sex=>$this->sex,
-            T_user::DOB=>$this->DOB,
-            T_user::date_joined=>$this->date_joined,
-            T_user::status=>$this->status,
-            T_user::status_date=>$this->status_date,
-            T_user::status_reason=>$this->status_reason,
-            T_user::last_active=>$this->last_active,
-            T_user::platform_key=>$this->platform_key
-        );
-        $this->_dbPortal->insert(T_user::tableName,$data);
-        return $this->_dbPortal->insert_id();
+        return parent::insert();
     }
     
     /**

@@ -6,6 +6,7 @@
  */
 class PortalUserHistoryModel extends PortalBaseModel
 {
+    protected $_constIntanceName = 'T_user_history';
     var $id;
     var $fk_user;
     var $secret_key;
@@ -21,19 +22,7 @@ class PortalUserHistoryModel extends PortalBaseModel
      * insert user history.
      */
     function insertNewHistory(){
-        $data = array(
-            T_user_history::id => $this->id,
-            T_user_history::fk_user => $this->fk_user,
-            T_user_history::client_ip => $this->client_ip,
-            T_user_history::secret_key => $this->secret_key,
-            T_user_history::last_activity => $this->last_activity,
-            T_user_history::sub_system_name => $this->sub_system_name,
-            T_user_history::description => $this->description,
-            T_user_history::action_name => $this->action_name,
-            T_user_history::session_id => $this->session_id
-        );
-        $this->_dbPortal->insert(T_user_history::tableName,$data);
-        return $this->_dbPortal->insert_id();
+        return parent::insert();
     }
     
     /**

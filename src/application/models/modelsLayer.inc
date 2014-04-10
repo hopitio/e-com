@@ -12,5 +12,7 @@ require_once APPPATH.'models/modelEx/PortalUserModel.php';
 require_once APPPATH.'models/modelEx/PortalUserSettingModel.php';
 require_once APPPATH.'models/modelEx/PortalUserHistory.php';
 require_once APPPATH.'models/modelEx/PortalCommonModel.php';
+require_once APPPATH.'models/modelEx/PortalProductModel.php';
+
 
 

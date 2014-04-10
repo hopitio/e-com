@@ -122,13 +122,84 @@ class T_user_history{
 }
 
 class T_user_setting{
-    CONST id = id;
+    CONST id = 'id';
     CONST tableName = 't_user_setting';
     CONST setting_key = 'setting_key';
     CONST value = 'value';
     CONST fk_user = 'fk_user';
 }
 
+class T_product{
+    CONST id = 'id';
+    CONST tableName = "t_product";
+    CONST sub_system_id = "sub_system_id";
+    CONST sort_description = "sort_description";
+    CONST sub_system_key = "sub_system_key";
+    CONST product_image_url = "product_image_url";
+}
+
+class T_invoice{
+    CONST id = 'id';
+    CONST tableName = "t_invoice";
+    CONST fk_order = 'fk_order';
+    CONST fk_customer = 'fk_customer';
+    CONST date_created = 'date_created';
+    CONST date_paid = 'date_paid';
+    CONST invoice_status = 'invoice_status';
+    CONST fk_contact = 'fk_contact';
+    CONST email_status = 'email_status';
+    CONST comment = 'comment';
+}
+
+class T_invoice_detail{
+    CONST id = 'id';
+    CONST tableName = "t_invoice_detail";
+    CONST fk_invoice = 'fk_invoice';
+    CONST fk_order = 'fk_order';
+    CONST quantity = 'quantity';
+}
+
+class T_order{
+    CONST tableName = "t_order";
+    CONST id = 'id';
+    CONST uid = 'uid';
+    CONST fk_customer = 'fk_customer';
+    CONST subtotal = 'subtotal';
+    CONST payment_currency = 'payment_currency';
+    CONST payment_method = 'payment_method';
+    CONST email_status = 'email_status';
+    CONST fk_order_status_history = 'fk_order_status_history';
+    CONST comment = 'comment';
+    CONST bonus = 'bonus';
+}
+
+class T_order_product{
+    CONST tableName = 't_order_product';
+    CONST id = 'id';
+    CONST fk_order = 'fk_order';
+    CONST orginal_price = 'orginal_price';
+    CONST price = 'price';
+    CONST quantity = 'quantity';
+    CONST fk_product = 'fk_product';
+}
+
+class T_order_status{
+    CONST tableName = 't_order_status';
+    CONST id = 'id';
+    CONST name = 'name';
+    CONST codename = 'codename';
+    CONST sort = 'sort';
+}
+class T_order_status_history{
+    const tableName = "t_order_status_history";
+    CONST id = 'id';
+    CONST fk_order = 'fk_order';
+    CONST fk_status = 'fk_status';
+    CONST date_happened = 'date_happened';
+    CONST fk_creator = 'fk_creator';
+    CONST date_created = 'date_created';
+    CONST is_mail_sent = 'is_mail_sent';
+}
 
 
 
