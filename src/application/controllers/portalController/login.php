@@ -291,4 +291,30 @@ class login extends BaseController
         
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
     }
+    
+    function verifyToken(){
+        $post = array();
+        foreach(explode('&', file_get_contents('php://input')) as $param){
+            @list($k, $v) = explode('=', $param);
+            if($k){
+                $post[$k] = $v;
+            }
+        }
+        if(!isset($post['token'])){
+            throw new Lynx_RequestException('Thiếu tham số token');
+        }
+        echo json_encode(array(
+            'is_authorized' => true,
+            'languageKey' => 'VN-VI',
+            'id' => 1,
+            'firstname' => null,
+            'lastname' => 'admin',
+            'account' => 'admin@localhost',
+            'sex' => 'M',
+            'DOB' => null,
+            'date_joined' => null,
+            'status' => null,
+            'last_active' => null
+        ));
+    }
 }

@@ -5,4 +5,5 @@ include_once (APPPATH . "libraries/layout/OneColumnLayout.php");
 include_once (APPPATH . "libraries/layout/PortalOneColumnLayout.php");
 include_once (APPPATH . "libraries/layout/TowColumnLayout.php");
 include_once (APPPATH . "libraries/layout/AdminLayout.php");
+include_once (APPPATH . "libraries/layout/ContentOnlyLayout.php");
 ?>

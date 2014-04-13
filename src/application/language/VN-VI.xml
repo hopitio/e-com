@@ -86,10 +86,23 @@
     <pin_showPage>
         
     </pin_showPage>
-        <admin_login>
+    <admin_login>
     
     </admin_login>
     <admin_mainpage>
     
     </admin_mainpage>
+    <portalAdmin_support>
+        
+    </portalAdmin_support>
+    <portalHelp_contact_us>
+        
+    </portalHelp_contact_us>
+    <portalHelp_contact_by_email>
+    </portalHelp_contact_by_email>
+    <portalHelp_contact_by_chat>
+    </portalHelp_contact_by_chat>
+    <portalHelp_start_chat>
+        
+    </portalHelp_start_chat>
 </data>

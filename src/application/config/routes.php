@@ -1,7 +1,8 @@
 <?php
-if (! defined('BASEPATH'))
+
+if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-    /*
+/*
  * | ------------------------------------------------------------------------- | URI ROUTING | ------------------------------------------------------------------------- | This file lets you re-map URI requests to specific controller functions. | | Typically there is a one-to-one relationship between a URL string | and its corresponding controller class/method. The segments in a | URL normally follow this pattern: | | example.com/class/method/id/ | | In some instances, however, you may want to remap this relationship | so that a different class/function is called than the one | corresponding to the URL. | | Please see the user guide for complete details: | | http://codeigniter.com/user_guide/general/routing.html | | ------------------------------------------------------------------------- | RESERVED ROUTES | ------------------------------------------------------------------------- | | There area two reserved routes: | | $route['default_controller'] = 'welcome'; | | This route indicates which controller class should be loaded if the | URI contains no data. In the above example, the "welcome" class | would be loaded. | | $route['404_override'] = 'errors/page_missing'; | | This route will tell the Router what URI segments to use if those provided | in the URL cannot be matched to a valid route. |
  */
 
@@ -10,24 +11,25 @@ $route['404_override'] = 'error/notFound';
 
 if (array_key_exists('REQUEST_METHOD', $_SERVER))
 {
-    
+
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-         $route['home'] = 'home/showHome';
-         $route['logout'] = 'login/out';
-         $route['sitemap'] = 'sitemap/showPage';
-         $route['__admin/login'] = 'admin/loginAdmin/showpage';
-         $route['__admin/mainpage'] = 'admin/mainpage/showpage';
-         
-         $route['order/place_order'] = 'devPlaceOrder/showPage';
+        $route['home'] = 'home/showHome';
+        $route['logout'] = 'login/out';
+        $route['sitemap'] = 'sitemap/showPage';
+        $route['__admin/login'] = 'admin/loginAdmin/showpage';
+        $route['__admin/mainpage'] = 'admin/mainpage/showpage';
+
+        $route['order/place_order'] = 'devPlaceOrder/showPage';
     }
-    
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $route['__portal/callback'] = 'portalCallbackController/portalProcess/portalAuthen';
+        $route['portal/verifyToken'] = 'portalController/login/verifyToken';
         $route['__admin/login'] = 'admin/loginAdmin/login';
     }
-    
+
     //portal/////////////////////////////////////////////////////////////////////////////////////
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
@@ -39,8 +41,14 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
         $route['portal/change_user_information'] = 'portalController/userInformation/showpage';
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
+        $route['portal/admin'] = 'portalAdmin/dashboard/showPage';
+        $route['portal/admin/support'] = 'portalAdmin/support/showPage';
+        $route['portal/help/contact_us'] = 'portalController/help/contact_us';
+        $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
+        $route['portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
+        
     }
-    
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $route['portal/login'] = 'portalController/login/indexPost';
@@ -49,7 +57,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/change_password'] = 'portalController/password/updatePasswordPostData';
         $route['portal/change_user_information'] = 'portalController/userInformation/saveChange';
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/getInformation';
-        
+        $route['portal/help/send_email'] = 'portalController/help/send_email';
+        $route['portal/help/start_chat'] = 'portalController/help/start_chat';
     }
 }
 //
