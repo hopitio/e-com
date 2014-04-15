@@ -26,6 +26,7 @@ class paymentChoiceUnauthen extends paymentChoice
     private function buildInformation()
     {
         $data = $this->input->post();
+        log_message('error',var_export($data,true));
         $this->session->set_userdata(self::TEMP_SESSION_KEY_ORDER,json_decode($data['order']));
     }
 }

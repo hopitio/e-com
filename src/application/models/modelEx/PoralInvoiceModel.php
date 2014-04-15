@@ -16,4 +16,10 @@ class PoralInvoiceModel extends PortalBaseModel
     var $fk_contact ;
     var $email_status ;
     var $comment ;
+    var $payment_method;
+    var $payment_fees;
+    var $payment_actual;
+    var $payment_convert_rate;
+    var $payment_currency_root;
+    var $payment_currency_target;
 }

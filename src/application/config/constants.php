@@ -149,6 +149,13 @@ class T_invoice{
     CONST fk_contact = 'fk_contact';
     CONST email_status = 'email_status';
     CONST comment = 'comment';
+    CONST payment_method = 'payment_method';
+    CONST payment_fees = 'payment_fees';
+    CONST payment_actual = 'payment_actual';
+    CONST payment_convert_rate = 'payment_convert_rate';
+    CONST payment_currency_root = 'payment_currency_root';
+    CONST payment_currency_target = 'payment_currency_target';
+    
 }
 
 class T_invoice_detail{
