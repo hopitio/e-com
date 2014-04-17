@@ -5,7 +5,7 @@ defined('BASEPATH') or die('no direct script access allowed');
     <div ng-repeat="customer in customers track by $index">
         <div>{{customer.fullname}}</div>
         <ul>
-            <li ng-repeat="message in customer.messages track by $index">{{message.body}}</li>
+            <li ng-repeat="message in customer.messages track by $index">{{message.userFullname}}: {{message.body}}</li>
         </ul>
         <div>
             <textarea ng-model="customer.typing"></textarea>
@@ -16,11 +16,11 @@ defined('BASEPATH') or die('no direct script access allowed');
 <script>
     var scriptData = {};
     scriptData.supportServiceURL = 'http://localhost:9090/support?token=123';
+    scriptData.userFullname = '<?php echo User::getCurrentUser()->getFullname(); ?>';
 </script>
 <script>
     (function(window, $, angular, io, scriptData, undefined) {
         angular.module('supportModule', []).factory('$support', supportFactory);
-
         function supportFactory($rootScope) {
             var exports = {
                 socket: null,
@@ -28,7 +28,6 @@ defined('BASEPATH') or die('no direct script access allowed');
                 on: null,
                 emit: null
             };
-
             exports.on = function(event, handler) {
                 exports.socket.on(event, function() {
                     var args = arguments;
@@ -57,10 +56,13 @@ defined('BASEPATH') or die('no direct script access allowed');
                 });
             }; //function
 
+            exports.getSocketID = function(){
+                return exports.socket.socket.sessionid;
+            };
+            
             return exports;
         } //function
     })(window, $, angular, io, scriptData);
-
     (function(window, $, scriptData, undefined) {
         window.portalAdminSupportCtrl = function($scope, $http, $support) {
             $scope.customers = {};
@@ -68,18 +70,17 @@ defined('BASEPATH') or die('no direct script access allowed');
             var onChatConnected = function() {
                 runOnce();
                 onChatConnected = runAlways;
-
                 function runOnce() {
                     $support.on('disconnect', onDisconnect);
                     $support.on('error', onError);
                     $support.on('presence', onPresence);
                     $support.on('chat-message', onChatMessage);
-
                     function onPresence(customerData) {
                         var customer = customerData;
                         customer.messages = [];
                         customer.typing;
                         $scope.customers[customerData.from] = customer;
+                        $support.emit('presence', {to: customerData.from, fullname: scriptData.userFullname});
                     } //function
 
                     function onChatMessage(message) {
@@ -107,13 +108,14 @@ defined('BASEPATH') or die('no direct script access allowed');
             $scope.sendMessage = function(customer) {
                 var message = {
                     body: customer.typing,
-                    to: customer.from
+                    to: customer.from,
+                    userFullname: scriptData.userFullname
                 };
                 customer.typing = null;
                 customer.messages.push(message);
                 $support.emit('chat-message', message);
             };
-
+            
         }; //controller
 
     })(window, $, scriptData);

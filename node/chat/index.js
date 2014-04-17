@@ -35,9 +35,13 @@ function onSupportConnect(socket) {
 
     function onChatMessage(message) {
         message.from = socket.id;
+        message.userFullname = $sm.get(socket, 'user').fullname;
         var customer = findCustomerBySocketID(message.to);
         if (!customer) {
-            socket.emit('presence', {from: message.to, status: 'unavailable'});
+            socket.emit('presence', {
+                from: message.to, 
+                status: 'unavailable'
+            });
             return;
         }
         customer.emit('chat-message', message);
@@ -95,7 +99,9 @@ function authenticate(role) {
     } //function
 
     function unauthorized() {
-        socket.emit('error', {type: 'unauthorized'});
+        socket.emit('error', {
+            type: 'unauthorized'
+        });
         socket.disconnect();
     } //function
 } //authenticateSupport
@@ -119,7 +125,9 @@ function onChatConnect(socket) {
             forward.to = socketSupporter.id;
             socketSupporter.emit('presence', forward);
         } else {
-            socket.emit('error', {type: 'service-unvailable'});
+            socket.emit('error', {
+                type: 'service-unvailable'
+            });
             socket.disconnect();
             return;
         }
@@ -128,10 +136,12 @@ function onChatConnect(socket) {
     function onChatMessage(message) {
         message.from = socket.id;
         message.to = $sm.get(socket, 'supporterSocketID');
-        console.log(message.to);
+        message.userFullname = $sm.get(socket, 'user').fullname;
         var supporter = findSupporterBySocketID(message.to);
         if (!supporter) {
-            socket.emit('error', {type: 'service-unavailable'});
+            socket.emit('error', {
+                type: 'service-unavailable'
+            });
             socket.disconnect();
             return;
         }

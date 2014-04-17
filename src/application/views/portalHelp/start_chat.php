@@ -6,10 +6,13 @@ defined('BASEPATH') or die('no direct script access allowed');
     <div ng-if="error">
         Your chat session has encountered some error. Please close this window and retry later!
     </div>
+    <div ng-if="!error && supporter">
+        You'r chatting with {{supporter}}
+    </div>
     <div>
         <ul>
             <li ng-repeat="message in messages track by $index">
-                {{message.body}}
+                {{message.userFullname}}: {{message.body}}
             </li>
         </ul>
         <div>
@@ -24,12 +27,13 @@ defined('BASEPATH') or die('no direct script access allowed');
     scriptData.serviceURL = 'http://localhost:9090/chat?token=123';
     scriptData.retryInterval = 10000;
     scriptData.retryTime = 3;
+    scriptData.userFullname = '<?php echo User::getCurrentUser()->getFullname(); ?>';
 </script>
 
 <script>
     (function(window, $, angular, io, scriptData) {
         angular.module('helpModule', [])
-                .factory('$chat', chatFactory);
+        .factory('$chat', chatFactory);
 
         function chatFactory($rootScope) {
             var exports = {
@@ -68,6 +72,10 @@ defined('BASEPATH') or die('no direct script access allowed');
                     });
                 }
             }; //function
+            
+            exports.getSocketID = function(){
+                return exports.socket.socket.sessionid;
+            };
 
             return exports;
         }
@@ -78,6 +86,7 @@ defined('BASEPATH') or die('no direct script access allowed');
             $scope.typing;
             $scope.messages = [];
             $scope.error;
+            $scope.supporter;
 
             var onConnect = function() {
                 runOnce();
@@ -97,7 +106,7 @@ defined('BASEPATH') or die('no direct script access allowed');
                     }
 
                     function onPresence(data) {
-
+                        $scope.supporter = data.fullname;
                     }
 
                     function onChatMessage(message) {
@@ -119,7 +128,8 @@ defined('BASEPATH') or die('no direct script access allowed');
 
             $scope.sendMessage = function() {
                 var message = {
-                    body: $scope.typing
+                    body: $scope.typing,
+                    userFullname: scriptData.userFullname
                 };
                 $scope.messages.push(message);
                 $scope.typing = null;
