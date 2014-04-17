@@ -4,10 +4,9 @@ defined('BASEPATH') or die('No direct script access allowed');
 /* @var $cartContents CartDomain */
 $user = User::getCurrentUser();
 $json = array(
-    'secretKey' => '',
+    'secretKey' => $user->secretKey,
     'orderkey' => $orderEvidenceUID,
     'su' => 'projecte',
-    'callback' => site_url('order/verifyOrderEvidence'),
     'user' => $user,
     'products' => array(),
     'shipping' => array(
@@ -31,6 +30,7 @@ foreach ($cartContents as $cartInstance)
         'actualPrice' => $cartInstance->calculatePrice('USD') * $cartInstance->quantity
     );
 }
+$json = json_encode($json);
 ?>
 <div class="contentWarp wStaticPx" style="min-height:500px;">
     <script type="text/javascript">
@@ -38,7 +38,7 @@ foreach ($cartContents as $cartInstance)
             document.getElementById("submit").submit();
         };
     </script>
-    <form id="submit" action="/portal/payment_choice" method="POST">
-        <input name='order' type="hidden" value="<?php echo $json; ?>" style="display:none;"/>
+    <form id="submit" action="<?php echo get_instance()->config->item('portal_payment_entry');?>" method="POST">
+        <input name='order' type="text" value='<?php echo $json; ?>' style="display:none;"/>
     </form>
 </div> 

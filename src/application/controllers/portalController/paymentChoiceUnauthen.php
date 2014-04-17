@@ -14,7 +14,8 @@ class paymentChoiceUnauthen extends paymentChoice
     function getInformation()
     {
         $data = $this->input->post();
-        $data = json_decode($data['order']);
+        var_dump($data);
+        $this->buildInformation();
         if(isset($data['secretKey']) && isset($data['user'])){
             if(!empty($data['secretKey'])){
                 $this->authenicateBySecretKey($data['user'], $data['secretKey']);

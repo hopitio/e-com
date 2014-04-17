@@ -12,7 +12,8 @@ class paymentChoice extends BaseController
     protected $authorization_required = TRUE;
     
     function showPage(){
-        //$this->authenicateBySecretKey($user, $secretKey);
-        
+       $data = $this->session->userdata(self::TEMP_SESSION_KEY_ORDER);
+       $this->session->unset_userdata(self::TEMP_SESSION_KEY_ORDER);
+       
     }
 }

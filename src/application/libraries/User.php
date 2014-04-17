@@ -27,6 +27,8 @@ class User{
     public $last_active;
     public $platform_key;
     
+    public $secretKey;
+    
     //END DATABASE
     function __construct(){
         $CI =& get_instance();

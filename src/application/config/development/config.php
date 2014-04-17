@@ -370,7 +370,7 @@ $config['proxy_ips'] = '';
 
 
 $config['platform_login_url'] = 'http://localhost.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
-$config['platform_login_callback'] = 'http://localhost/__portal/callback';
+$config['platform_login_callback'] = 'http://localhost.com/__portal/callback';
 $config['platform_logout'] = '/logout';
 $config['subSystemName'] = 'GIFT';
 
@@ -420,6 +420,7 @@ $config['NewPasswordMailler_temp'] = '/NewPassword.txt';
 $config['temp_mail_folder'] = APPPATH.'temp/mail/';
 $config['path_to_active_account'] = 'http://localhost.com/portal/active?k={key}';
 $config['path_to_reset_password_reset'] = 'http://localhost.com/portal/reset_password?k={key}';
+$config['portal_payment_entry'] = "http://localhost.com/portal/payment_choice";
 
 $config['sub_system_name'] = array(
     'default' => 'PORTAL',

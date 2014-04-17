@@ -121,7 +121,7 @@
                 <div class="col pay">
                     <span class="title">Chấp nhận thanh toán</span>
                     <ul>
-                        <li><a href="#"><img src="images/payment.png"></a></li>
+                        <li><a href="#"><img src="/images/payment.png"></a></li>
                     </ul>
                 </div>
             </div>
