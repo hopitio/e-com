@@ -103,6 +103,8 @@ class login extends BaseController
             $this->obj_user->status = $user->status;
             $this->obj_user->last_active = $user->last_active;
             $this->obj_user->DOB = $user->DOB;
+            $this->obj_user->secretKey =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
+            $this->set_obj_user_to_me($this->obj_user);
             $this->onLoginComplete($data);
         }
         else
@@ -277,19 +279,51 @@ class login extends BaseController
             throw new Lynx_RequestException(__CLASS__.'::onLoginComplete:request login thiếu tham số');
         }
         $this->set_obj_user_to_me($this->obj_user);
+        
+        $this->onLoginCompleteSaveHistory($data);
+        
+        $this->onLoginCompleteRedirect($data);
+        
         $user = clone $this->obj_user;
         unset($user->id);
-        if($data['endpoint'] == null || $data['endpoint'] == ''){
-            redirect('/portal/account');
-            exit;
-        }
         $dataResult = array();
         $dataResult['url'] = $data['endpoint'];
         $dataResult['redirect']  = $data['currentPage'];
-        $dataResult['secretKey'] =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
+        $user->secretKey =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
         $dataResult['dataJson'] = json_encode($user);
-        
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
+    }
+
+    
+    
+    function onLoginCompleteSaveHistory($data)
+    {
+        $user = clone $this->obj_user;
+        unset($user->id);
+        $data = $data == null ? $this->input->post() : $data;
+        $subName = '';
+        if (empty($data['subSys']))
+        {
+            $subName = 'default';
+        }
+        $portalHistory = new PortalUserHistoryBiz();
+        $portalHistory->createNewHistory($this->obj_user, 
+            DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN, date("Y-m-d H:i:s"), 
+            $subName, $user->secretKey);
+    }
+    
+    function onLoginCompleteRedirect($data){
+        if($data['endpoint'] == null || $data['endpoint'] == '')
+        {
+            if(!empty($data['currentPage']))
+            {
+                redirect($data['currentPage']);
+                exit;
+            }
+            redirect('/portal/account');
+            exit;
+        }
+        
     }
     
     function verifyToken(){

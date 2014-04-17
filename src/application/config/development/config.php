@@ -370,6 +370,7 @@ $config['proxy_ips'] = '';
 
 
 $config['platform_login_url'] = 'http://localhost.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
+$config['portal_login_url'] = 'http://localhost.com/portal/login?cp={cp}';
 $config['platform_login_callback'] = 'http://localhost.com/__portal/callback';
 $config['platform_logout'] = '/logout';
 $config['subSystemName'] = 'GIFT';
@@ -424,7 +425,7 @@ $config['portal_payment_entry'] = "http://localhost.com/portal/payment_choice";
 
 $config['sub_system_name'] = array(
     'default' => 'PORTAL',
-    'gift' => 'GIFT'
+    'GIFT' => 'GIFT'
 );
 /* End of file config.php */
 /* Location: ./application/config/config.php */

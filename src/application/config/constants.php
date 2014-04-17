@@ -169,11 +169,7 @@ class T_invoice_detail{
 class T_order{
     CONST tableName = "t_order";
     CONST id = 'id';
-    CONST uid = 'uid';
     CONST fk_customer = 'fk_customer';
-    CONST subtotal = 'subtotal';
-    CONST payment_currency = 'payment_currency';
-    CONST payment_method = 'payment_method';
     CONST email_status = 'email_status';
     CONST fk_order_status_history = 'fk_order_status_history';
     CONST comment = 'comment';
@@ -182,12 +178,17 @@ class T_order{
 
 class T_order_product{
     CONST tableName = 't_order_product';
-    CONST id = 'id';
+    CONST id  =  'id';
     CONST fk_order = 'fk_order';
-    CONST orginal_price = 'orginal_price';
-    CONST price = 'price';
-    CONST quantity = 'quantity';
-    CONST fk_product = 'fk_product';
+    CONST sub_key = 'sub_key';
+    CONST sub_id       = 'sub_id';
+    CONST product_name     = 'product_name';
+    CONST product_image    = 'product_image';
+    CONST short_description= 'short_description';
+    CONST price            = 'price';
+    CONST quantity        = 'quantity';
+    CONST total_price     = 'total_price';
+    CONST actual_price = 'actual_price';
 }
 
 class T_order_status{

@@ -34,6 +34,8 @@ class loginfacebook extends login
         $this->obj_user->status = $user->status;
         $this->obj_user->last_active = $user->last_active;
         $this->obj_user->DOB = $user->DOB;
+        $this->obj_user->secretKey =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
+        $this->set_obj_user_to_me($this->obj_user);
         
         $history = new PortalUserHistoryBiz();
         $subSystemSessionId = $this->input->post('se');
@@ -42,7 +44,7 @@ class loginfacebook extends login
         if($toSubsys != null){
             $secrectKey = SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id , $subSystemSessionId);
         }
-        $history->createNewHistory(null,DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN,'USER LOGIN',$toSubsys,$secrectKey);
+        $history->createNewHistory($this->obj_user,DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN,'USER LOGIN',$toSubsys,$secrectKey);
         
         $this->onLoginComplete();
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');

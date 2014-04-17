@@ -14,11 +14,11 @@ class paymentChoiceUnauthen extends paymentChoice
     function getInformation()
     {
         $data = $this->input->post();
-        var_dump($data);
+        $data = json_decode($data['order']);
         $this->buildInformation();
-        if(isset($data['secretKey']) && isset($data['user'])){
-            if(!empty($data['secretKey'])){
-                $this->authenicateBySecretKey($data['user'], $data['secretKey']);
+        if(isset($data->secretKey) && isset($data->user)){
+            if(!empty($data->secretKey)){
+                $this->authenicateBySecretKey($data->user, $data->su);
             }
         }
         redirect('portal/payment_choice_open');
@@ -29,5 +29,9 @@ class paymentChoiceUnauthen extends paymentChoice
         $data = $this->input->post();
         log_message('error',var_export($data,true));
         $this->session->set_userdata(self::TEMP_SESSION_KEY_ORDER,json_decode($data['order']));
+    }
+    
+    function showPageRedirect(){
+        redirect('portal/payment_choice_open');
     }
 }

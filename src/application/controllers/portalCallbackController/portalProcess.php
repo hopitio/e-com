@@ -13,7 +13,7 @@ class portalProcess extends BaseController
     public function portalAuthen()
     {
         $data = $this->input->post();
-        if (! isset($data['user']) || ! isset($data['secretKey']) || !isset($data['targetPage']))
+        if (! isset($data['user']) || !isset($data['targetPage']))
         {
             throw new Lynx_RequestException('request login thiếu tham số');
         }
@@ -31,7 +31,7 @@ class portalProcess extends BaseController
         $this->obj_user->platform_key =$dataDecode->platform_key;
         $this->obj_user->sex = $dataDecode->sex;
         $this->obj_user->status = $dataDecode->status;
-        $this->obj_user->secretKey = $data['secretKey'];
+        $this->obj_user->secretKey = $dataDecode->secretKey;
         $this->obj_user->is_authorized = true;
         $this->set_obj_user_to_me($this->obj_user);
         redirect($redirectURL);

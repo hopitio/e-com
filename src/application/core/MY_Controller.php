@@ -251,9 +251,9 @@ class MY_Controller extends CI_Controller
         //HOTFIX for phase 1, portal vs sub in one application
         if(strpos($dst,'portal/') !== FALSE)
         {
-            return $this->config->item('platform_login_url') . "?cp=" . urlencode(base_url($dst));
+            return str_replace('{cp}',urlencode(base_url($dst)),$this->config->item('portal_login_url'));
         }
-        return $this->config->item('platform_login_url') . "&cp=" . urlencode(base_url($dst));
+        return user::getCurrentUser()->getLoginAuthenUrl();
     }
 
     /**

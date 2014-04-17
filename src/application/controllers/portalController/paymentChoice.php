@@ -14,6 +14,8 @@ class paymentChoice extends BaseController
     function showPage(){
        $data = $this->session->userdata(self::TEMP_SESSION_KEY_ORDER);
        $this->session->unset_userdata(self::TEMP_SESSION_KEY_ORDER);
+       unset($data->user);
+       
        
     }
 }

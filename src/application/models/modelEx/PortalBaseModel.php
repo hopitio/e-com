@@ -117,7 +117,7 @@ class PortalBaseModel extends CI_Model
         foreach ($objects as $obj)
         {
             if(get_class($this) != get_class($obj)){
-                throw new Lynx_Exception(__CLASS__ . ' '. __FUNCTION__ . 'Gói dữ liệu chưa đúng');
+                throw new Lynx_Exception(__CLASS__ . ' '. __FUNCTION__ . ' Gói dữ liệu chưa đúng');
             }
             $oneRow = array();
             foreach ($propertiesList as $property){
@@ -131,5 +131,28 @@ class PortalBaseModel extends CI_Model
             array_push($data, $oneRow);
         }
         return $this->_dbPortal->insert_batch($class::tableName,$data);
+    }
+    
+    /**
+     * 
+     * @param array $result
+     */
+    protected function autoMappingObj($result)
+    {
+        $refl = new ReflectionClass($this->_constIntanceName);
+        $propertiesList = $refl->getConstants();
+        $class = $this->_constIntanceName;
+        $data = array();
+        foreach ($propertiesList as $property){
+        
+            if($property == $class::tableName || !isset($this->$property) )
+            {
+                continue;
+            }
+            if(isset($result->$property)){
+            	continue;
+            }
+            $this->$property = $result->$property;
+        }
     }
 }

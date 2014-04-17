@@ -40,6 +40,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
         $route['portal/change_user_information'] = 'portalController/userInformation/showpage';
+        $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
         $route['portal/admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/admin/support'] = 'portalAdmin/support/showPage';

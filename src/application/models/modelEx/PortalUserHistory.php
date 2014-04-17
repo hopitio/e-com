@@ -91,4 +91,33 @@ class PortalUserHistoryModel extends PortalBaseModel
         }
         return  true;
     }
+    
+    function getUserLastAction(){
+        $condition = array();
+        if (isset($this->secret_key))
+        {
+            $condition[T_user_history::secret_key] = $this->secret_key;
+        }
+        if (isset($this->secret_key))
+        {
+            $condition[T_user_history::sub_system_name] = $this->secret_key;
+        }
+        
+        if (isset($this->secret_key))
+        {
+            $condition[T_user_history::action_name] = $this->action_name;
+        }
+        
+        $this->_dbPortal->order_by(T_user_history::last_activity, 'asc');
+        $queryResult = $this->_dbPortal->get_where(T_user_history::tableName, 
+            $condition, 1);
+        $result = $queryResult->result();
+        if(count($result) <= 0)
+        {
+            return false;
+        }else {
+            $this->autoMappingObj($result);
+            return true;
+        }
+    }
 }
