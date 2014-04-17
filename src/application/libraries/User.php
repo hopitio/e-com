@@ -78,4 +78,8 @@ class User{
     function getLogout(){
         return $this->logout.'?u='.urlencode(Common::curPageURL());
     }
+    
+    function getFullname(){
+        return $this->firstname . ' ' . $this->lastname;
+    }
 }
