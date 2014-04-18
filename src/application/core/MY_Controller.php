@@ -72,6 +72,7 @@ class MY_Controller extends CI_Controller
         }
         try
         {
+            $this->config->load('paymentConfig');
             $this->config->load('maintenance');
             if ($this->config->item('under_maintenance'))
                 throw new Lynx_MaintenanceException('BẢO TRÌ HỆ THỐNG');

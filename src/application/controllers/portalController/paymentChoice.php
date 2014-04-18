@@ -14,8 +14,28 @@ class paymentChoice extends BaseController
     function showPage(){
        $data = $this->session->userdata(self::TEMP_SESSION_KEY_ORDER);
        $this->session->unset_userdata(self::TEMP_SESSION_KEY_ORDER);
-       unset($data->user);
+       if(!isset($data) || $data == null)
+       {
+            throw new Lynx_BusinessLogicException(__CLASS__.' '.__FUNCTION__. '  Sai dữ liệu payment' );
+       }
+       $paymentManager = new PortalPaymentManager();
+       $paymentManager->createNewOrder($data, $data->su);
        
-       
+       $dataview = array();
+       $dataview['order'] = $data;
+       $dataview['user'] = User::getCurrentUser();
+       $dataview['currency'] = $this->config->item('support_currency');
+       $dataview['payment'] = $this->config->item('payment_gateway_supported');
+       LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataview)->render('portalOrder/orderCheckinComplete');
+    }
+    
+    function createInvoice()
+    {
+        
+    }
+    
+    function saveInvoice()
+    {
+        
     }
 }

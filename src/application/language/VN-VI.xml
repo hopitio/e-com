@@ -73,36 +73,16 @@
         <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
         <newpasswordNofication>Nhận thông tin về mật khẩu.</newpasswordNofication>
     </portalaccount_changePassword>
-    <portalaccount_resetPassword>
-        
-    </portalaccount_resetPassword>
-    <portalaccount_changeUserInformation>
-        
-    </portalaccount_changeUserInformation>
-    
-    <order_placeOrder>
-    
-    </order_placeOrder>
-    <pin_showPage>
-        
-    </pin_showPage>
-    <admin_login>
-    
-    </admin_login>
-    <admin_mainpage>
-    
-    </admin_mainpage>
-    <portalAdmin_support>
-        
-    </portalAdmin_support>
-    <portalHelp_contact_us>
-        
-    </portalHelp_contact_us>
-    <portalHelp_contact_by_email>
-    </portalHelp_contact_by_email>
-    <portalHelp_contact_by_chat>
-    </portalHelp_contact_by_chat>
-    <portalHelp_start_chat>
-        
-    </portalHelp_start_chat>
+    <portalaccount_resetPassword></portalaccount_resetPassword>
+    <portalaccount_changeUserInformation></portalaccount_changeUserInformation>
+    <order_placeOrder></order_placeOrder>
+    <pin_showPage></pin_showPage>
+    <admin_login></admin_login>
+    <admin_mainpage></admin_mainpage>
+    <portalAdmin_support></portalAdmin_support>
+    <portalHelp_contact_us></portalHelp_contact_us>
+    <portalHelp_contact_by_email></portalHelp_contact_by_email>
+    <portalHelp_contact_by_chat></portalHelp_contact_by_chat>
+    <portalHelp_start_chat></portalHelp_start_chat>
+    <portalOrder_orderCheckinComplete></portalOrder_orderCheckinComplete>
 </data>

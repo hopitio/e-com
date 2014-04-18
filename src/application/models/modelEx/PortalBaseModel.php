@@ -121,15 +121,15 @@ class PortalBaseModel extends CI_Model
             }
             $oneRow = array();
             foreach ($propertiesList as $property){
-            
-                if($property == $class::tableName || !isset($this->$property) || $this->$property == null)
+                if($property == $class::tableName || !isset($obj->$property) || $obj->$property == null)
                 {
                     continue;
                 }
-                $oneRow[$property] = $this->$property;
+                $oneRow[$property] = $obj->$property;
             }
             array_push($data, $oneRow);
         }
+        
         return $this->_dbPortal->insert_batch($class::tableName,$data);
     }
     

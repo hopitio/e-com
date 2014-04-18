@@ -3,7 +3,7 @@
  * @author ANLT
  * @since 20140409
  */
-class PoralOrderStatusHistoryModel extends PortalBaseModel
+class PortalOrderStatusHistoryModel extends PortalBaseModel
 {
     protected $_constIntanceName = 'T_order_status_history';
     var $id ;
@@ -13,4 +13,9 @@ class PoralOrderStatusHistoryModel extends PortalBaseModel
     var $fk_creator ;
     var $date_created ;
     var $is_mail_sent ;
+    
+    function insertNewHistory(){
+        $this->id = (new PortalCommonModel())->getUUID();
+       return parent::insert();
+    }
 }

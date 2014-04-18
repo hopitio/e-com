@@ -86,6 +86,9 @@ class DatabaseFixedValue{
     CONST USER_HISTORY_ACTION_CHANGEPASS = 'CHANGEPASS';
     CONST USER_HISTORY_ACTION_RESETPASS = 'RESETPASS';
     CONST USER_HISTORY_ACTION_CHANGEINFORMATION = 'CHANGEINFORMATION';
+    
+    CONST ORDER_CONTACT_STATUS_PAY = 'PAY';
+    CONST ORDER_CONTACT_STATUS_SHIPPING = 'SHIP';
 }
 class TableName{
     CONST t_user = 't_user';
@@ -207,6 +210,44 @@ class T_order_status_history{
     CONST fk_creator = 'fk_creator';
     CONST date_created = 'date_created';
     CONST is_mail_sent = 'is_mail_sent';
+}
+class T_user_contact{
+    const tableName = "t_user_contact";
+    CONST id = "id";
+    CONST fk_user = "fk_user";
+    CONST date_created = "date_created";
+    CONST date_used = "date_used";
+    CONST count_used = "count_used";
+    CONST prefix = "prefix";
+    CONST firstname = "firstname";
+    CONST middlename = "middlename";
+    CONST lastname = "lastname";
+    CONST suffix = "suffix";
+    CONST company = "company";
+    CONST street_address = "street_address";
+    CONST city = "city";
+    CONST country = "country";
+    CONST state_province = "state_province";
+    CONST zip_postal_code = "zip_postal_code";
+    CONST telephone = "telephone";
+    CONST fax = "fax";
+    CONST vat_number = "vat_number";
+}
+class T_order_contact{
+    const tableName = "t_order_contact";
+    CONST id = "id";
+    CONST fk_order = "fk_order";
+    CONST fk_user_contact = "fk_user_contact";
+    CONST contact_status = "contact_status";
+}
+class T_order_shipping{
+    const tableName = "t_order_shipping";
+    CONST id = "id";
+    CONST fk_order = "fk_order";
+    CONST sub_key = "sub_key";
+    CONST sub_id = "sub_id";
+    CONST shipping_display_name = "shipping_display_name";
+    CONST shipping_price = "shipping_price";
 }
 
 

@@ -62,14 +62,35 @@ DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fk_customer` int(11) DEFAULT NULL,
-  `email_status` char(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_user_contact` int(11) DEFAULT NULL,
   `fk_order_status_history` int(11) DEFAULT NULL,
+  `email_status` char(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `comment` text COLLATE utf8_unicode_ci,
   `bonus` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_order` */
+
+insert  into `t_order`(`id`,`fk_customer`,`fk_user_contact`,`fk_order_status_history`,`email_status`,`comment`,`bonus`) values (3,42,NULL,NULL,NULL,NULL,NULL),(4,42,NULL,NULL,NULL,NULL,NULL),(5,42,NULL,NULL,NULL,NULL,NULL),(6,42,NULL,NULL,NULL,NULL,NULL),(7,42,NULL,NULL,NULL,NULL,NULL),(8,42,NULL,NULL,NULL,NULL,NULL);
+
+/*Table structure for table `t_order_contact` */
+
+DROP TABLE IF EXISTS `t_order_contact`;
+
+CREATE TABLE `t_order_contact` (
+  `id` char(50) COLLATE utf8_unicode_ci NOT NULL,
+  `fk_order` int(11) DEFAULT NULL,
+  `fk_user_contact` int(11) DEFAULT NULL,
+  `contact_status` enum('PAY','SHIP') COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_order` (`fk_order`),
+  KEY `fk_user_contact` (`fk_user_contact`),
+  CONSTRAINT `t_order_contact_ibfk_1` FOREIGN KEY (`fk_order`) REFERENCES `t_order` (`id`),
+  CONSTRAINT `t_order_contact_ibfk_2` FOREIGN KEY (`fk_user_contact`) REFERENCES `t_user_contact` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_order_contact` */
 
 /*Table structure for table `t_order_product` */
 
@@ -92,6 +113,26 @@ CREATE TABLE `t_order_product` (
 
 /*Data for the table `t_order_product` */
 
+insert  into `t_order_product`(`id`,`fk_order`,`sub_key`,`sub_id`,`product_name`,`product_image`,`short_description`,`price`,`quantity`,`total_price`,`actual_price`) values ('4f4d0351-c6b8-11e3-9740-fc4dd45603ff',8,'GIFT',NULL,'Pha lê dâu','http://localhost.com/index.php/uploads/2014/3/27/image4.jpg','mo ta sp',10,1,10,10);
+
+/*Table structure for table `t_order_shipping` */
+
+DROP TABLE IF EXISTS `t_order_shipping`;
+
+CREATE TABLE `t_order_shipping` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_order` int(11) DEFAULT NULL,
+  `sub_key` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sub_id` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `shipping_display_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `shipping_price` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_order` (`fk_order`),
+  CONSTRAINT `t_order_shipping_ibfk_1` FOREIGN KEY (`fk_order`) REFERENCES `t_order` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_order_shipping` */
+
 /*Table structure for table `t_order_status` */
 
 DROP TABLE IF EXISTS `t_order_status`;
@@ -113,7 +154,7 @@ insert  into `t_order_status`(`id`,`name`,`codename`,`sort`) values (1,'initiate
 DROP TABLE IF EXISTS `t_order_status_history`;
 
 CREATE TABLE `t_order_status_history` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` char(50) COLLATE utf8_unicode_ci NOT NULL,
   `fk_order` int(11) DEFAULT NULL,
   `fk_status` int(11) DEFAULT NULL,
   `date_happened` datetime DEFAULT NULL,
@@ -124,6 +165,8 @@ CREATE TABLE `t_order_status_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_order_status_history` */
+
+insert  into `t_order_status_history`(`id`,`fk_order`,`fk_status`,`date_happened`,`fk_creator`,`date_created`,`is_mail_sent`) values ('149278fb-c6b8-11e3-9740-fc4dd45603ff',6,1,NULL,42,'2014-04-18 12:04:47',0),('337e32c0-c6b8-11e3-9740-fc4dd45603ff',7,1,NULL,42,'2014-04-18 12:04:39',0),('4f4bc85e-c6b8-11e3-9740-fc4dd45603ff',8,1,NULL,42,'2014-04-18 12:04:25',0),('56ba6bed-c6b7-11e3-9740-fc4dd45603ff',3,1,NULL,42,'2014-04-18 12:04:28',0),('8799c565-c6b7-11e3-9740-fc4dd45603ff',4,1,NULL,42,'2014-04-18 12:04:50',0),('ccf99545-c6b7-11e3-9740-fc4dd45603ff',5,1,NULL,42,'2014-04-18 12:04:47',0);
 
 /*Table structure for table `t_user` */
 
@@ -201,7 +244,7 @@ CREATE TABLE `t_user_history` (
 
 /*Data for the table `t_user_history` */
 
-insert  into `t_user_history`(`id`,`fk_user`,`secret_key`,`client_ip`,`user_agrent`,`last_activity`,`sub_system_name`,`description`,`action_name`,`session_id`) values ('085783a2-c5e5-11e3-b6d9-fc4dd45603ff',42,'8eb9072a7b7dbe4d48acbc9416f0452c','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 11:04:02','GIFT','2014-04-17 11:02:02','LOGIN','b83475b5161d4f7126ac'),('25f38fce-c5e4-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:43','GIFT','2014-04-17 10:55:43','LOGIN','d79c59f121b88f322f86'),('3312197f-c5e4-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:05','GIFT','2014-04-17 10:56:05','LOGIN','eecfb93635ed645546be'),('47e4e31b-c5e4-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:40','GIFT','2014-04-17 10:56:40','LOGIN','eecfb93635ed645546be'),('656310ed-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:41','PORTAL','Thay đổi mật khẩu','CHANGEPASS','1373fd7f894351c4e6b7'),('78fedd84-c5f1-11e3-b6d9-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 12:04:05','PORTAL','2014-04-17 12:31:05','LOGIN','28a3fe82e7ea81cf3c66'),('7e946e46-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:23','PORTAL','Reset mật khẩu','RESETPASS','1373fd7f894351c4e6b7'),('83574396-bcc5-11e3-a78d-f82fa8c904ca',42,NULL,'127.0.0.1','','2014-04-05 08:04:44','PORTAL','Thay đổi thông tin cá nhân','CHANGEINFORMATION','71b25cd75af2f2995d77'),('83a740db-c5e5-11e3-b6d9-fc4dd45603ff',42,'f6e3811b480d97a3254a3e247bb3ea08','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 11:04:29','GIFT','2014-04-17 11:05:29','LOGIN','690f1f965c5d0a3abbc2'),('925d5b3d-c5ea-11e3-b6d9-fc4dd45603ff',42,'199945b95e03ca9af9405280e0eb9368','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-17 11:04:41','GIFT','2014-04-17 11:41:41','LOGIN','10cc48187ca65cafe9bb'),('92ec7ebd-bcc5-11e3-a78d-f82fa8c904ca',42,NULL,'127.0.0.1','','2014-04-05 08:04:11','PORTAL','Thay đổi thông tin cá nhân','CHANGEINFORMATION','71b25cd75af2f2995d77'),('9d499b69-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:15','PORTAL','Reset mật khẩu','RESETPASS','fc8ec855ba5469f948f4'),('9f54403e-c5ef-11e3-b6d9-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 12:04:51','PORTAL','2014-04-17 12:17:51','LOGIN','e91d43dcfeb56f9db883'),('a6844376-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:30','PORTAL','Reset mật khẩu','RESETPASS','fc8ec855ba5469f948f4'),('b90744fd-c5e4-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:49','GIFT','2014-04-17 10:59:49','LOGIN','402bfbbc57f419ef7f16'),('bba440f5-bcc6-11e3-a78d-f82fa8c904ca',42,NULL,'127.0.0.1','','2014-04-05 08:04:28','PORTAL','Thay đổi thông tin cá nhân','CHANGEINFORMATION','7f4f5fe9ed0edd288f2c'),('bc157714-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:06','PORTAL','Thay đổi mật khẩu','CHANGEPASS','fc8ec855ba5469f948f4'),('c1f0ebce-bcc6-11e3-a78d-f82fa8c904ca',42,NULL,'127.0.0.1','','2014-04-05 08:04:39','PORTAL','Thay đổi thông tin cá nhân','CHANGEINFORMATION','7f4f5fe9ed0edd288f2c'),('c5faa980-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:23','PORTAL','Reset mật khẩu','RESETPASS','5dd91e86d1e8fa881b52'),('c7c899b2-c5ef-11e3-b6d9-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 12:04:59','PORTAL','2014-04-17 12:18:59','LOGIN','5ac433c0e08b7628663f'),('df1e9405-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:05','PORTAL','Thay đổi mật khẩu','CHANGEPASS','5dd91e86d1e8fa881b52'),('e245c0ab-c5ec-11e3-b6d9-fc4dd45603ff',42,'f6e3811b480d97a3254a3e247bb3ea08','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 11:04:15','GIFT','2014-04-17 11:58:15','LOGIN','95f38127eb5bcdb707e2'),('ea14c951-c5e3-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:02','GIFT','2014-04-17 10:54:02','LOGIN','9c7bede93e99b2dd0863');
+insert  into `t_user_history`(`id`,`fk_user`,`secret_key`,`client_ip`,`user_agrent`,`last_activity`,`sub_system_name`,`description`,`action_name`,`session_id`) values ('085783a2-c5e5-11e3-b6d9-fc4dd45603ff',42,'8eb9072a7b7dbe4d48acbc9416f0452c','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 11:04:02','GIFT','2014-04-17 11:02:02','LOGIN','b83475b5161d4f7126ac'),('146ee02b-c6b8-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 12:04:47','PORTAL','2014-04-18 12:12:47','LOGIN','01494f14e68c8b24f859'),('201b935e-c6b6-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 11:04:47','PORTAL','2014-04-18 11:58:47','LOGIN','2f5ef1abd99937f6026f'),('25f38fce-c5e4-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:43','GIFT','2014-04-17 10:55:43','LOGIN','d79c59f121b88f322f86'),('3312197f-c5e4-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:05','GIFT','2014-04-17 10:56:05','LOGIN','eecfb93635ed645546be'),('335c7fcf-c6b8-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 12:04:38','PORTAL','2014-04-18 12:13:38','LOGIN','8d34cbacb96c8546ea5c'),('47e4e31b-c5e4-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:40','GIFT','2014-04-17 10:56:40','LOGIN','eecfb93635ed645546be'),('4f2a47fa-c6b8-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 12:04:25','PORTAL','2014-04-18 12:14:25','LOGIN','8d34cbacb96c8546ea5c'),('569bcb0a-c6b7-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 12:04:28','PORTAL','2014-04-18 12:07:28','LOGIN','dcc5b600ddb03e87743e'),('656310ed-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:41','PORTAL','Thay đổi mật khẩu','CHANGEPASS','1373fd7f894351c4e6b7'),('78fedd84-c5f1-11e3-b6d9-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 12:04:05','PORTAL','2014-04-17 12:31:05','LOGIN','28a3fe82e7ea81cf3c66'),('7c2ad050-c6b6-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 12:04:22','PORTAL','2014-04-18 12:01:22','LOGIN','524716f41fb524bc3667'),('7e946e46-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:23','PORTAL','Reset mật khẩu','RESETPASS','1373fd7f894351c4e6b7'),('83574396-bcc5-11e3-a78d-f82fa8c904ca',42,NULL,'127.0.0.1','','2014-04-05 08:04:44','PORTAL','Thay đổi thông tin cá nhân','CHANGEINFORMATION','71b25cd75af2f2995d77'),('83a740db-c5e5-11e3-b6d9-fc4dd45603ff',42,'f6e3811b480d97a3254a3e247bb3ea08','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 11:04:29','GIFT','2014-04-17 11:05:29','LOGIN','690f1f965c5d0a3abbc2'),('87788d38-c6b7-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 12:04:50','PORTAL','2014-04-18 12:08:50','LOGIN','3180351d04d76b237ce1'),('925d5b3d-c5ea-11e3-b6d9-fc4dd45603ff',42,'199945b95e03ca9af9405280e0eb9368','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-17 11:04:41','GIFT','2014-04-17 11:41:41','LOGIN','10cc48187ca65cafe9bb'),('92ec7ebd-bcc5-11e3-a78d-f82fa8c904ca',42,NULL,'127.0.0.1','','2014-04-05 08:04:11','PORTAL','Thay đổi thông tin cá nhân','CHANGEINFORMATION','71b25cd75af2f2995d77'),('9d499b69-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:15','PORTAL','Reset mật khẩu','RESETPASS','fc8ec855ba5469f948f4'),('9f54403e-c5ef-11e3-b6d9-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 12:04:51','PORTAL','2014-04-17 12:17:51','LOGIN','e91d43dcfeb56f9db883'),('a6844376-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:30','PORTAL','Reset mật khẩu','RESETPASS','fc8ec855ba5469f948f4'),('a852698e-c6a4-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 09:04:45','PORTAL','2014-04-18 09:53:45','LOGIN','9a427d3c7252a26fa13b'),('ab947be6-c6b6-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 12:04:41','PORTAL','2014-04-18 12:02:41','LOGIN','da32bd185e9eac2d93a3'),('b90744fd-c5e4-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:49','GIFT','2014-04-17 10:59:49','LOGIN','402bfbbc57f419ef7f16'),('bba440f5-bcc6-11e3-a78d-f82fa8c904ca',42,NULL,'127.0.0.1','','2014-04-05 08:04:28','PORTAL','Thay đổi thông tin cá nhân','CHANGEINFORMATION','7f4f5fe9ed0edd288f2c'),('bc157714-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:06','PORTAL','Thay đổi mật khẩu','CHANGEPASS','fc8ec855ba5469f948f4'),('c1f0ebce-bcc6-11e3-a78d-f82fa8c904ca',42,NULL,'127.0.0.1','','2014-04-05 08:04:39','PORTAL','Thay đổi thông tin cá nhân','CHANGEINFORMATION','7f4f5fe9ed0edd288f2c'),('c5faa980-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:23','PORTAL','Reset mật khẩu','RESETPASS','5dd91e86d1e8fa881b52'),('c7c899b2-c5ef-11e3-b6d9-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 12:04:59','PORTAL','2014-04-17 12:18:59','LOGIN','5ac433c0e08b7628663f'),('ccda5227-c6b7-11e3-9740-fc4dd45603ff',42,'7cb72bdf8dfc294422c8d51176c4b68f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53','2014-04-18 12:04:46','PORTAL','2014-04-18 12:10:46','LOGIN','6352c94c1d0b41aa345e'),('df1e9405-bc19-11e3-80cb-f82fa8c904ca',43,NULL,'127.0.0.1','','2014-04-04 11:04:05','PORTAL','Thay đổi mật khẩu','CHANGEPASS','5dd91e86d1e8fa881b52'),('e245c0ab-c5ec-11e3-b6d9-fc4dd45603ff',42,'f6e3811b480d97a3254a3e247bb3ea08','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 11:04:15','GIFT','2014-04-17 11:58:15','LOGIN','95f38127eb5bcdb707e2'),('ea14c951-c5e3-11e3-b6d9-fc4dd45603ff',42,NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko','2014-04-17 10:04:02','GIFT','2014-04-17 10:54:02','LOGIN','9c7bede93e99b2dd0863');
 
 /*Table structure for table `t_user_setting` */
 
