@@ -18,10 +18,10 @@ class LocationMapper extends MapperAbstract
         parent::__construct($domain, $query, $map);
     }
 
-    function filterIdOrCode($idOrCode)
+    function filterCode($code)
     {
-        is_numeric($idOrCode) ? $this->_query->where('id=?', __FUNCTION__) : $this->_query->where('code=?', __FUNCTION__);
-        $this->_queryParams[__FUNCTION__] = $idOrCode;
+        $this->_query->where('codename=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $code;
         return $this;
     }
 

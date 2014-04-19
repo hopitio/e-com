@@ -30,23 +30,23 @@ class order extends BaseController
     {
         $cartContents = CartMapper::make()->autoloadAttributes(true, User::getCurrentUser()->languageKey)->findAll();
 
-        $address = new UserAddressDomain;
-        $address->fullname = isset($_POST['txtFullame']) ? $_POST['txtFullname'] : null;
-        $address->telephone = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
-        $address->streetAddress = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
-        $address->cityDistrict = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
-        $address->fkStateProvince = isset($_POST['selProvinceCity']) ? $_POST['selProvinceCity'] : null;
+        $shippingAddress = new stdClass();
+        $shippingAddress->fullname = isset($_POST['txtFullame']) ? $_POST['txtFullname'] : null;
+        $shippingAddress->telephone = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
+        $shippingAddress->streetAddress = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
+        $shippingAddress->cityDistrict = array(null, isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null);
+        $shippingAddress->stateProvince = array(isset($_POST['selProvinceCity']) ? $_POST['selProvinceCity'] : null);
+        $shippingAddress->stateProvince[] = LocationMapper::make()->filterCode($shippingAddress->stateProvince[0])->find()->name;
         $shippingMethod = isset($_POST['radShippingMethod']) ? $_POST['radShippingMethod'] : null;
-        $shippingPrice = $this->cartModel->calculateShippingPrice($shippingMethod, $address->fkStateProvince);
-
-        $orderEvidenceUID = $this->orderModel->generateEvidence($address, $cartContents, $shippingMethod, $shippingPrice);
+        $shippingPrice = $this->cartModel->calculateShippingPrice($shippingMethod, $shippingAddress->stateProvince[0]);
+        $orderEvidenceUID = $this->orderModel->generateEvidence($shippingAddress, $cartContents, $shippingMethod, $shippingPrice);
 
         $data = array(
             'cartContents' => $cartContents,
-            'address' => $address,
+            'addresses' => array('shipping' => $shippingAddress),
             'shippingMethod' => $shippingMethod,
             'shippingPrice' => $shippingPrice,
-            'orderEvidenceUID' => $orderEvidenceUID
+            'orderEvidenceUID' => $orderEvidenceUID,
         );
 
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data)->render('order/placeOrder');

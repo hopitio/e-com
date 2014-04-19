@@ -13,7 +13,7 @@ class OrderModel extends BaseModel
      * @param string $shippingPrice
      * @return md5 uid
      */
-    function generateEvidence(UserAddressDomain $address, $cartContents, $shippingMethod, $shippingPrice)
+    function generateEvidence($address, $cartContents, $shippingMethod, $shippingPrice)
     {
         $user = User::getCurrentUser();
         $stringToHash = $user->account;

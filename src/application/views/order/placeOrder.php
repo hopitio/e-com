@@ -13,7 +13,8 @@ $json = array(
         'shippingKey' => $shippingMethod . '-' . 'projecte',
         'shippingDisplayName' => $shippingMethod,
         'shippingPrice' => $shippingPrice
-    )
+    ),
+    'addresses' => $addresses
 );
 
 foreach ($cartContents as $cartInstance)
@@ -38,7 +39,7 @@ $json = json_encode($json);
             document.getElementById("submit").submit();
         };
     </script>
-    <form id="submit" action="<?php echo get_instance()->config->item('portal_payment_entry');?>" method="POST">
+    <form id="submit" action="<?php echo get_instance()->config->item('portal_payment_entry'); ?>" method="POST">
         <input name='order' type="text" value='<?php echo $json; ?>' style="display:none;"/>
     </form>
 </div> 

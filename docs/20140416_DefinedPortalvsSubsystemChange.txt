@@ -100,9 +100,14 @@ Danh sách các key cần mã hóa.
 				shippingDisplayName : '[displayName]',
 				shippingPrices : '100',
 			}
-			contact :{
-				/*
-				*/
+			addresses :{
+				shipping: {
+					fullname: [nguyen van a],
+					telephone: 1232312,
+					streetAddress: '[3 hoang mai]',
+					cityDistrict: [101, 'hanoi'],
+					stateProvince: [10101, 'hoang mai']
+				}
 			}
 		}
 2. Portal thực hiện valid dữ liệu, và thanh toán với bên thứ 3.

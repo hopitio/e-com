@@ -16,5 +16,8 @@ class product extends BaseController
                 ->render('product/details');
     }
     
-
+    function test(){
+    }
+    
+    
 }
