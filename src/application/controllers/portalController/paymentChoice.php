@@ -18,8 +18,12 @@ class paymentChoice extends BaseController
        {
             throw new Lynx_BusinessLogicException(__CLASS__.' '.__FUNCTION__. '  Sai dữ liệu payment' );
        }
+       
        $paymentManager = new PortalPaymentManager();
+       $tempData = $paymentManager->getPaymentByPaymentKey($data);
+       $data = $tempData->data;
        $paymentManager->createNewOrder($data, $data->su);
+       $paymentManager->updatePaymentTempToProcessed($tempData);
        
        $dataview = array();
        $dataview['order'] = $data;
@@ -29,12 +33,7 @@ class paymentChoice extends BaseController
        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataview)->render('portalOrder/orderCheckinComplete');
     }
     
-    function createInvoice()
-    {
-        
-    }
-    
-    function saveInvoice()
+    function updateInvoice()
     {
         
     }

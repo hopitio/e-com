@@ -27,7 +27,9 @@ class paymentChoiceUnauthen extends paymentChoice
     private function buildInformation()
     {
         $data = $this->input->post();
-        $this->session->set_userdata(self::TEMP_SESSION_KEY_ORDER,json_decode($data['order']));
+        $paymentBiz = new PortalPaymentManager();
+        $theKey  = $paymentBiz->insertTemp($data['order']);
+        $this->session->set_userdata(self::TEMP_SESSION_KEY_ORDER,$theKey);
     }
     
     function showPageRedirect(){

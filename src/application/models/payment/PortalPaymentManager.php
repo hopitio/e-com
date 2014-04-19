@@ -1,5 +1,5 @@
 <?php
-class PortalPaymentManager extends PortalPaymentBiz{
+class PortalPaymentManager extends PortalBizPayment{
     /**
      * order information
      * @param unknown $orderInformation
@@ -10,14 +10,21 @@ class PortalPaymentManager extends PortalPaymentBiz{
         $orderId = $this->insertOrder($orderInformation);
         
         $products =  $orderInformation->products;
+        $portalProducts = $this->saveProducts($products);
+        $protalTax = $this->saveTax($portalProducts,$products);
+        $contactInformation = '';
+        $portalContactId = $this->insertContact($contactInformation);
         
-        $this->saveProducts($products, $subSystemKey, $orderId);
+        $order = '';
+        $portalOrderId = $this->insertOrder($order,$subSystemKey);
+        $invoiceId = $this->insertInvoice($portalOrderId);
+        $invoiceProduct = $this->insertInvoiceProducts($invoiceId, $portalProducts);
+        $shippingPostData = '';
+        $invoiceShipping = $this->insertInvoiceShipping($invoiceId, $portalContactId, $shippingPostData);
+        $otherCostData = '';
+        $invoiceOtherCost = $this->insertOtherCosts($invoiceId,$otherCostData);
         
-        $this->insertContact($orderInformation, $orderId);
-        
-        $this->insertShipping($orderInformation, $orderId);
-        
-        return true;
+        return $invoiceId;
     }
     
     /**
@@ -25,54 +32,61 @@ class PortalPaymentManager extends PortalPaymentBiz{
      * @param array $products
      * @param string $subSystemKey
      * @param string $orderId
+     * @return array.
      */
-    function saveProducts($products,$subSystemKey,$orderId)
+    private function saveProducts($products)
     {
-        $productsModel = new PortalOrderProductModel();
-        $orderProducts = array();
-        
-        foreach ($products as $product)
+        $productsModel = new PortalModelProduct();
+        $objects = array();
+        foreach ($objects as $obj)
         {
-            $productModel = new PortalOrderProductModel();
-            $productModel->fk_order = $orderId;
-            $productModel->actual_price = $product->actualPrice;
-            $productModel->price = $product->price;
-            $productModel->product_image = $product->image;
-            $productModel->product_name = $product->name;
-            $productModel->quantity = $product->quantity;
-            $productModel->short_description = $product->shortDesc;
-            if(!isset($this->config->item('sub_system_name')[$subSystemKey])){
-                throw new Lynx_BusinessLogicException(__CLASS__. ' ' . __FUNCTION__.' hệ thống không hỗ trợ sub system này');
-            }
-            $productModel->sub_id = $product->id;
-            $productModel->sub_key = $this->config->item('sub_system_name')[$subSystemKey]; 
-            $productModel->total_price = $product->totalPrice;
-            array_push($orderProducts, $productModel);
+            $product = new PortalModelProduct();
+            $product->name = $obj->name;
+            $product->price = $obj->name;
+            $product->quantity = $obj->name;
+            $product->short_description = $obj->name;
+            $product->sub_id = $obj->name;
+            $product->sub_image = $obj->name;
+            $product->totalprice = $obj->name;
+            array_push($objects, $product);
         }
+        $returnValue = $productsModel->bacthInsert($objects);
         
-        return $productsModel->insertBacthOrdeProduct($orderProducts);
+        return $returnValue;
+    }
+    
+    /**
+     * 
+     * @param array $products
+     * @param array $postDataProducts
+     */
+    private function saveTax($products,$postDataProducts){
+        $portalModelTax = new PortalModelTax();
+        $taxsData = array();
+        foreach($products as $product){
+            $portalModelTaxItem = new PortalModelTax();
+            $portalModelTaxItem->sub_tax_name = 'dump';
+            $portalModelTaxItem->sub_tax_id = 1;
+            $portalModelTaxItem->sub_tax_value = 0.11;
+            array_push($taxsData, $portalModelTaxItem);
+        }
+        $returnValueTax = $portalModelTax->bacthInsert($taxsData);
+        return $taxsData;
     }
     
     /**
      * Object insert new order.
      * @param object $orderInformation
      */
-    function insertOrder($orderInformation)
+    private function insertOrder($orderInformation,$subKey)
     {
          $userId = User::getCurrentUser()->id;
-         $portalOrder = new PortalOrderModel();
-         $portalOrder->fk_customer =  $userId ;
+         $portalOrder = new PortalModelOrder();
+         $portalOrder->sub_key = $subKey;
+         $portalOrder->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+         $portalOrder->created_user = $userId;
+         $portalOrder->fk_user = $userId;
          $orderId = $portalOrder->insertNewOrder();
-         
-         $portalOrderStatusHistoryModel = new PortalOrderStatusHistoryModel();
-         $portalOrderStatusHistoryModel->fk_order = $orderId;
-         $portalOrderStatusHistoryModel->fk_creator = $userId;
-         $portalOrderStatusHistoryModel->fk_status = 1;//Hard code for ID.
-         $portalOrderStatusHistoryModel->date_created = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-         $portalOrderStatusHistoryModel->is_mail_sent = 0;
-         $portalOrderStatusHistoryModel->insertNewHistory();
-
-         
          return $orderId;
     }
     
@@ -81,40 +95,101 @@ class PortalPaymentManager extends PortalPaymentBiz{
      * @param object $orderInformation
      * @param string $orderId
      */
-    function insertContact($orderInformation,$orderId){
-        $portaluserContact = new PortalUserContactModel();
-        $portaluserContact->firstname = User::getCurrentUser()->firstname;
-        $portaluserContact->lastname = User::getCurrentUser()->firstname;
-        $userContactId = $portaluserContact->insertNewContact();
-        
-        $portalPayOrderContact = new PortalOrderContactModel();
-        $portalPayOrderContact->fk_order = $orderId;
-        $portalPayOrderContact->fk_user_contact = $userContactId;
-        $portalPayOrderContact->contact_status = DatabaseFixedValue::ORDER_CONTACT_STATUS_PAY;
-        
-        $portalShipOrderContact = new PortalOrderContactModel();
-        $portalShipOrderContact->fk_order = $orderId;
-        $portalShipOrderContact->fk_user_contact = $userContactId;
-        $portalShipOrderContact->contact_status = DatabaseFixedValue::ORDER_CONTACT_STATUS_SHIPPING;
-        
-        $portalOrderContact = new PortalOrderContactModel();
-        $result = $portalOrderContact->bachInsertContact(array($portalPayOrderContact,$portalShipOrderContact));
-        return  $result;
+    function insertContact($contactInformation){
+        $portalContactModel = new PortalModelUserContact();
+        $contactId = $portalContactModel->insertNewContact();
+        return  null;
+    }
+    /**
+     * 
+     * @param string $invoiceId
+     * @param array $products
+     */
+    private function insertInvoiceProducts($invoiceId,$products)
+    {
+        $invoiceProduct = new PortalModelInvoiceProduct();
+        $invoiceProductsInsert = array();
+        foreach ($products as $product)
+        {
+            $invoiceProductNew = new PortalModelInvoiceProduct();
+            $invoiceProductNew->fk_product = $product->id;
+            $invoiceProductNew->fk_invoice = $invoiceId;
+            array_push($invoiceProductsInsert, $invoiceProductNew);
+        }
+        return $invoiceProduct->bacthInsert($invoiceProductsInsert);
     }
     
-    function insertShipping($orderInformation,$orderId)
+    /**
+     * 
+     * @param string $invoiceId
+     * @param array $shippingData
+     * @param array $shippingPostData
+     * @return NULL
+     */
+    function insertInvoiceShipping($invoiceId,$shippingData,$shippingPostData)
     {
-        $portalOrderShipping = new PortalOrderShippingModel();
-        $portalOrderShipping->fk_order = $orderId;
-        $portalOrderShipping->shipping_display_name = $orderInformation->shipping->shippingDisplayName;
-        $portalOrderShipping->shipping_price = $orderInformation->shipping->shippingPrice;
-        $portalOrderShipping->sub_id = $orderInformation->shipping->shippingKey;
-        if(!isset($this->config->item('sub_system_name')[$orderInformation->su])){
-            throw new Lynx_BusinessLogicException(__CLASS__. '' . __FUNCTION__.' hệ thống không hỗ trợ sub system này');
-        }
-        $portalOrderShipping->sub_key = $this->config->item('sub_system_name')[$orderInformation->su];
+        $shiping = new PortalModelInvoiceShipping();
         
-        return $portalOrderShipping->insertNewShipping();
+        return null;
     } 
+    
+    /**
+     * Insert Other cost
+     * @return NULL
+     */
+    private function insertOtherCosts($invoiceId,$otherCostCollection){
+        $portalModelOtherCost = new PortalModelInvoiceOtherCost();
+        return null;
+    }
+    /**
+     * return temp key
+     * @param string order post data (json)
+     */
+    function insertTemp($data)
+    {
+        $session = get_instance()->session->all_userdata();
+        $dataDecoded = json_decode($data);
+        $paymentTemp = new PortalModelPaymentTemp();
+        $paymentTemp->data = $data;
+        $paymentTemp->fk_user = $data->user->id;
+        $paymentTemp->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $paymentTemp->ip_address = $session[];
+        $paymentTemp->session_id = $session[];
+        $paymentTemp->user_agrent = $session[];
+        return $paymentTemp->insert();
+    }
+    
+    /**
+     * Lấy dữ liệu payment bởi payment key.
+     * @param string $paymentKey
+     * @return PortalModelPaymentTemp
+     */
+    function getPaymentByPaymentKey($paymentKey){
+        $portalPaymetModel = new PortalModelPaymentTemp();
+        $portalPaymetModel->id = $paymentKey;
+        $portalPaymetModel->getOneById();
+        return $portalPaymetModel;
+    }
+    
+    private function insertInvoice($orderId)
+    {
+        $invoiceModel = new PortalModelInvoice();
+        $invoiceModel->fk_order = $orderId;
+        $invoiceModel->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $invoiceModel->created_user = User::getCurrentUser()->id;
+        $invoiceModel->invoice_type = DatabaseFixedValue::INVOICE_TYPE_INPUT;
+        $invoiceId = $invoiceModel->insert();
+        return $invoiceId;
+    }
+    /**
+     * 
+     * @param PortalModelPaymentTemp $paymentTempModel
+     */
+    public function updatePaymentTempToProcessed($paymentTempModel)
+    {
+        $paymentTempModel->processed_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $paymentTempModel->updateById();
+    }
+    
 
 }

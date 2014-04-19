@@ -1,5 +1,5 @@
 <?php
-class PortalPaymentTemp extends PortalModelBase
+class PortalModelPaymentTemp extends PortalModelBase
 {
     var $_constIntanceName = 'T_payment_temp';
     var $id;
@@ -9,4 +9,6 @@ class PortalPaymentTemp extends PortalModelBase
     var $session_id;
     var $ip_address;
     var $user_agrent;
+    var $processed_date;
+    var $cancelled_date;
 }

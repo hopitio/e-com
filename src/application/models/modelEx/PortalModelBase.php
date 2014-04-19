@@ -24,7 +24,7 @@ class PortalModelBase extends CI_Model
     /**
      * get function
      */
-    protected function getOneById()
+    public function getOneById()
     {
         if(!isset($this->_constIntanceName) || $this->_constIntanceName == null){
             throw new Lynx_Exception('Model không hỗ trợ');
@@ -51,7 +51,7 @@ class PortalModelBase extends CI_Model
         return true;
     }
     
-    protected function insert()
+    public function insert()
     {
         if(!isset($this->_constIntanceName) || $this->_constIntanceName == null){
             throw new Lynx_Exception('Model không hỗ trợ');
@@ -75,7 +75,7 @@ class PortalModelBase extends CI_Model
         return $this->_dbPortal->insert_id();
     }
     
-    protected function updateById(){
+    public function updateById(){
         if(!isset($this->_constIntanceName) || $this->_constIntanceName == null){
             throw new Lynx_Exception('Model không hỗ trợ');
         }
@@ -102,7 +102,7 @@ class PortalModelBase extends CI_Model
      * 
      * @param array $array là danh sách của model tương ứng
      */
-    protected function bacthInsert($objects)
+    public function bacthInsert($objects)
     {
         if(!isset($this->_constIntanceName) || $this->_constIntanceName == null){
             throw new Lynx_Exception(__CLASS__ . ' '. __FUNCTION__ . 'Model không hỗ trợ');
@@ -137,7 +137,7 @@ class PortalModelBase extends CI_Model
      * 
      * @param array $result
      */
-    protected function autoMappingObj($result)
+    public function autoMappingObj($result)
     {
         $refl = new ReflectionClass($this->_constIntanceName);
         $propertiesList = $refl->getConstants();

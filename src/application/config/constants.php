@@ -89,6 +89,9 @@ class DatabaseFixedValue{
     
     CONST ORDER_CONTACT_STATUS_PAY = 'PAY';
     CONST ORDER_CONTACT_STATUS_SHIPPING = 'SHIP';
+    
+    CONST INVOICE_TYPE_INPUT = "INPUT";
+    CONST INVOICE_TYPE_OUTPUT = "OUTPUT";
 }
 class TableName{
     CONST t_user = 't_user';
@@ -206,6 +209,8 @@ class T_payment_temp{
     CONST session_id = "session_id";
     CONST ip_address = "ip_address";
     CONST user_agrent = "user_agrent";
+    CONST processed_date = "processed_date";
+    CONST cancelled_date = "cancelled_date";
 }
 
 
