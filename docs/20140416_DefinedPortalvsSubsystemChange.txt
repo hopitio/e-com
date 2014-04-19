@@ -100,6 +100,10 @@ Danh sách các key cần mã hóa.
 				shippingDisplayName : '[displayName]',
 				shippingPrices : '100',
 			}
+			contact :{
+				/*
+				*/
+			}
 		}
 2. Portal thực hiện valid dữ liệu, và thanh toán với bên thứ 3.
 3. Xác nhận thông tin đơn hàng với subsystem.

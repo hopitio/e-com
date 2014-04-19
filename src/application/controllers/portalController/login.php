@@ -309,7 +309,7 @@ class login extends BaseController
         $portalHistory = new PortalUserHistoryBiz();
         $portalHistory->createNewHistory($this->obj_user, 
             DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN, date("Y-m-d H:i:s"), 
-            $subName, $user->secretKey);
+            $data['subSys'], $user->secretKey);
     }
     
     function onLoginCompleteRedirect($data){

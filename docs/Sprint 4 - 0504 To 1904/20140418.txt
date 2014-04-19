@@ -1,0 +1,27 @@
+﻿---- Những cái đã làm dc trong sprint 3 :
+		+ Payment hoàn thành 		
+		+ Hoàn thành add new sản phẩm 
+		+ Admin login
+		+ Payment history 
+---- Trong sprint 5 :
+		Mình chỉ tập chung vào cắt HTML và dựng được mà hình ở subsystem cho ổn.
+			+ home
+			+ list
+			+ details 
+		Hoàn thành cho user add thêm sản phẩm.
+		
+		
+---- NOTE 
+		-> CN có estimate phần thêm sản phẩm.
+		-> Thêm cái contact vào cho payment post data. - TA
+		-> Hỗ trợ từng loại thuế và đính kèm vào payment post data. - TA
+		-> Admin có thể thêm invoice.
+		-> Trong trường hợp trả tiền.  vẫn coi là invoice
+		-> Thêm bảng invoice other. 
+		-> invoice cần k history : chỉ cần thông tin tương tự ship.
+		-> shipping cũng cần không cần history : chỉ cần ngày tạo ngày ship và ngày canncel .
+		-> CN có giao diện
+---- Ý tưởng :
+		- Cần thông báo cho admin danh sách các seller cần thông báo. 
+		- Admin có thể thông báo cho khách hàng rằng tiền dc chuyển.
+		- 

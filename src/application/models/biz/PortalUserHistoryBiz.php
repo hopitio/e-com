@@ -31,7 +31,6 @@ class PortalUserHistoryBiz extends PortalBaseBiz
             $user = User::getCurrentUser();
         }
         $session = get_instance()->session->all_userdata();
-        //var_export($session); die;
         $portalCommon = new PortalCommonModel();
         $listSubSystem = get_instance()->config->item('sub_system_name');
         if (!isset($listSubSystem[$subSystemNname]))
