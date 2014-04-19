@@ -7,12 +7,14 @@ require_once APPPATH.'models/biz/BaseBiz.php';
 require_once APPPATH.'models/biz/AdminAccountBiz.php';
 
 //portal
-require_once APPPATH.'models/biz/PortalBaseBiz.php';
-require_once APPPATH.'models/biz/PortalAccountBiz.php';
-require_once APPPATH.'models/biz/PortalLoginBiz.php';
-require_once APPPATH.'models/biz/PortalUserHistoryBiz.php';
-require_once APPPATH.'models/biz/PortalPassowordBiz.php';
-require_once APPPATH.'models/biz/PortalPaymentBiz.php';
+
+require_once APPPATH.'models/biz/PortalBizBase.php';
+require_once APPPATH.'models/biz/PortalBizAccount.php';
+require_once APPPATH.'models/biz/PortalBizLogin.php';
+require_once APPPATH.'models/biz/PortalBizPassoword.php';
+require_once APPPATH.'models/biz/PortalBizPayment.php';
+require_once APPPATH.'models/biz/PortalBizUserHistory.php';
+
 
 
 

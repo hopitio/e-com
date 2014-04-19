@@ -14,7 +14,6 @@ class PortalPaymentManager extends PortalBizPayment{
         $protalTax = $this->saveTax($portalProducts,$products);
         $contactInformation = '';
         $portalContactId = $this->insertContact($contactInformation);
-        
         $order = '';
         $portalOrderId = $this->insertOrder($order,$subSystemKey);
         $invoiceId = $this->insertInvoice($portalOrderId);
@@ -129,7 +128,6 @@ class PortalPaymentManager extends PortalBizPayment{
     function insertInvoiceShipping($invoiceId,$shippingData,$shippingPostData)
     {
         $shiping = new PortalModelInvoiceShipping();
-        
         return null;
     } 
     
@@ -153,9 +151,9 @@ class PortalPaymentManager extends PortalBizPayment{
         $paymentTemp->data = $data;
         $paymentTemp->fk_user = $data->user->id;
         $paymentTemp->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-        $paymentTemp->ip_address = $session[];
-        $paymentTemp->session_id = $session[];
-        $paymentTemp->user_agrent = $session[];
+        $paymentTemp->ip_address = $session['ip_address'];
+        $paymentTemp->session_id = $session['session_id'];
+        $paymentTemp->user_agrent = $session['user_agent'];
         return $paymentTemp->insert();
     }
     
