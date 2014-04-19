@@ -299,7 +299,7 @@ class login extends BaseController
     function onLoginCompleteSaveHistory($data)
     {
         $user = clone $this->obj_user;
-        unset($user->id);
+        
         $data = $data == null ? $this->input->post() : $data;
         $subName = '';
         if (empty($data['subSys']))

@@ -5,7 +5,7 @@
  * @author ANLT
  * @since 20140425
  */
-class PortalAccountBiz extends PortalBaseBiz
+class PortalBizAccount extends PortalBizBase
 {
 
     function __construct()
@@ -29,7 +29,7 @@ class PortalAccountBiz extends PortalBaseBiz
     {
         $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT,$question, $answer);
         //$this->activeUser($newId);
-        $portalUserModel = new PortalUserModel();
+        $portalUserModel = new PortalModelUser();
         $portalUserModel->id = $newId;
         $portalUserModel->getUserByUserId();
         
@@ -46,7 +46,7 @@ class PortalAccountBiz extends PortalBaseBiz
         
         MailManager::initalAndSend(MailManager::TYPE_RESG_COMFIRM, $account, $mailData);
         
-        $history = new PortalUserHistoryBiz();
+        $history = new PortalBizUserHistory();
         $user = new User();
         $user->id = $newId;
         $history->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_REGISTE,'REGISTER FROM PORTAL FORM',null,null);
@@ -68,7 +68,7 @@ class PortalAccountBiz extends PortalBaseBiz
         $DOB, $platformKey = DatabaseFixedValue::USER_PLATFORM_DEFAULT )
     {
         $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, $platformKey);
-        $history = new PortalUserHistoryBiz();
+        $history = new PortalBizUserHistory();
         $history->createNewHistory(null,DatabaseFixedValue::USER_HISTORY_ACTION_REGISTE,'REGISTER FORM '.$platformKey,null,null);
         return  $this->activeUser($newId);
     }
@@ -88,7 +88,7 @@ class PortalAccountBiz extends PortalBaseBiz
     private function insertNewUser($firstname, $lastname, $account, $password, 
         $sex, $DOB, $platformKey, $question = '', $answer = '')
     {
-        $userModel = new PortalUserModel();
+        $userModel = new PortalModelUser();
         $userModel->firstname = $firstname;
         $userModel->lastname = $lastname;
         $userModel->account = $account;
@@ -110,28 +110,28 @@ class PortalAccountBiz extends PortalBaseBiz
 
     private function insertSettingKey($newId,$alterEmail,$question = '', $answer = ''){
         //Insert user setting.
-        $portalUserSetting = new PortalUserSettingModel();
+        $portalUserSetting = new PortalModelUserSetting();
         
         //Tự động gửi mail key
-        $isreceiveEmailSetting = new PortalUserSettingModel();
+        $isreceiveEmailSetting = new PortalModelUserSetting();
         $isreceiveEmailSetting->fk_user = $newId;
         $isreceiveEmailSetting->setting_key = DatabaseFixedValue::USER_SETTING_KEY_RecivedEmail;
         $isreceiveEmailSetting->value = DatabaseFixedValue::USER_SETTING_KEY_RecivedEmail_HAVERECIVE;
         
         //Alter mail
-        $isAlterEmailSetting = new PortalUserSettingModel();
+        $isAlterEmailSetting = new PortalModelUserSetting();
         $isAlterEmailSetting->fk_user = $newId;
         $isAlterEmailSetting->setting_key = DatabaseFixedValue::USER_SETTING_KEY_AlternativeEmail;
         $isAlterEmailSetting->value = $alterEmail;
         
         //Security Question.
-        $questionSetting = new PortalUserSettingModel();
+        $questionSetting = new PortalModelUserSetting();
         $questionSetting->fk_user = $newId;
         $questionSetting->setting_key = DatabaseFixedValue::SECURITY_QUESTION_SETTINGKEY;
         $questionSetting->value = $question;
         
         //Security Answer.
-        $questionAns = new PortalUserSettingModel();
+        $questionAns = new PortalModelUserSetting();
         $questionAns->fk_user = $newId;
         $questionAns->setting_key = DatabaseFixedValue::SECURITY_ANSWER_SETTINGKEY;
         $questionAns->value = $answer;
@@ -166,7 +166,7 @@ class PortalAccountBiz extends PortalBaseBiz
      * @return 
      */
     function getLogin($username,$password,$formPlatform = null,$toSubsys = null,$subSystemSessionId = null){
-        $userModel = new PortalUserModel();
+        $userModel = new PortalModelUser();
         $userModel->account = $username;
         $userModel->password = $password;
         $formPlatform = $formPlatform == null ? DatabaseFixedValue::USER_PLATFORM_DEFAULT : $formPlatform;
@@ -213,7 +213,7 @@ class PortalAccountBiz extends PortalBaseBiz
      */
     private function getUserInformation($userId)
     {
-        $userModel = new PortalUserModel();
+        $userModel = new PortalModelUser();
         $userModel->id = $userId;
         $queryResultFlag = $userModel->getUserByUserId();
         if ($queryResultFlag)
@@ -234,7 +234,7 @@ class PortalAccountBiz extends PortalBaseBiz
      */
     function updateLastActive($userId)
     {
-        $userModel = new PortalUserModel();
+        $userModel = new PortalModelUser();
         $userModel->id = $userId;
         $userModel->getUserByUserId();
         
@@ -250,7 +250,7 @@ class PortalAccountBiz extends PortalBaseBiz
      */
     private function updateUserStatus($userId, $status, $reason)
     {
-        $userModel = new PortalUserModel();
+        $userModel = new PortalModelUser();
         $userModel->id = $userId;
         $userModel->getUserByUserId();
         
@@ -269,7 +269,7 @@ class PortalAccountBiz extends PortalBaseBiz
      */
     function activeUser($userId)
     {
-        $userModel = new PortalUserModel();
+        $userModel = new PortalModelUser();
         $userModel->id = $userId;
         $userModel->getUserByUserId();
         if ($userModel->status != DatabaseFixedValue::USER_STATUS_REGISTED)
@@ -295,7 +295,7 @@ class PortalAccountBiz extends PortalBaseBiz
         $actived = 'actived';
         $data = SecurityManager::inital()->getEncrytion()->accountActiveDencrytion($requestString);
         $userID = $data->userid;
-        $portalModel = new PortalUserModel();
+        $portalModel = new PortalModelUser();
         $portalModel->id = $userID;
         $portalModel->getUserByUserId();
         
@@ -313,7 +313,7 @@ class PortalAccountBiz extends PortalBaseBiz
      */
     private function updateSettingAccount($userId,$settingKey,$settingValue)
     {
-        $portalUserSetting = new PortalUserSettingModel();
+        $portalUserSetting = new PortalModelUserSetting();
         $portalUserSetting->id = $userId;
         $portalUserSetting->setting_key =  $settingKey;
         $portalUserSetting->value = $settingValue;
@@ -328,7 +328,7 @@ class PortalAccountBiz extends PortalBaseBiz
      * @param string $sex
      */
     function updateUserInformation($user,$fristName, $lastName,$dob,$sex){
-        $portalUserModel = new PortalUserModel();
+        $portalUserModel = new PortalModelUser();
         $portalUserModel->id = $user->id;
         $portalUserModel->getUserByUserId();
         $portalUserModel->firstname = $fristName;
@@ -337,7 +337,7 @@ class PortalAccountBiz extends PortalBaseBiz
         $portalUserModel->sex = $sex;
         $portalUserModel->updateUser();
         
-        $portalUserHistoryBiz = new PortalUserHistoryBiz();
+        $portalUserHistoryBiz = new PortalBizUserHistory();
         $portalUserHistoryBiz->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEINFORMATION ,'Thay đổi thông tin cá nhân',null,null);
         
         $user = new User();

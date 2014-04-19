@@ -4,7 +4,7 @@
  * @author ANLT
  * @since 20140402
  */
-class PortalUserHistoryModel extends PortalBaseModel
+class PortalModelUserHistory extends PortalModelBase
 {
     protected $_constIntanceName = 'T_user_history';
     var $id;

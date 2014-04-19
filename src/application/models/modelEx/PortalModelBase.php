@@ -4,7 +4,7 @@
  * @author ANLT
  * @since 20140325
  */
-class PortalBaseModel extends CI_Model
+class PortalModelBase extends CI_Model
 {
     CONST PORTAL_DB_GROUP = 'portal';
     protected  $_dbPortal;

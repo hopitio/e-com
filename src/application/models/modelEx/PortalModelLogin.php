@@ -4,7 +4,7 @@
  * @author ANLT
  * @since 20140317
  */
-class PortalLoginModel extends PortalBaseModel
+class PortalModelLogin extends PortalModelBase
 {
     
     
@@ -15,7 +15,7 @@ class PortalLoginModel extends PortalBaseModel
      * @return bool
      */
     function Login($us,$pw){
-        $portalUserModel = new PortalUserModel();
+        $portalUserModel = new PortalModelUser();
         $portalUserModel->account = $us;
         $portalUserModel->password = $us;
         $portalUserModel->selectUserByUserNameAndPassoword();

@@ -4,7 +4,7 @@
  * @author ANLT
  * @since 20140402
  */
-class PortalCommonModel extends PortalBaseModel
+class PortalModelCommon extends PortalModelBase
 {
     /**
      * Lấy key không trùng lặp

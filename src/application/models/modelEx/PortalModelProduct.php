@@ -3,15 +3,17 @@
  * @author ANLT
  * @since 20140409
  */
-class PortalProductModel extends PortalBaseModel
+class PortalModelProduct extends PortalModelBase
 {
     protected $_constIntanceName = 'T_product';
     var $id;
-    var $tablename;
-    var $sub_system_id;
-    var $sort_description;
-    var $sub_system_key;
-    var $product_image_url;
+    var $sub_id;
+    var $name;
+    var $sub_image;
+    var $short_description;
+    var $price;
+    var $quantity;
+    var $totalprice;
     
     /**
      * 

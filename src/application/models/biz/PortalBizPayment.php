@@ -5,7 +5,7 @@
  * @author ANLT
  * @since 20140426
  */
-class PortalPaymentBiz extends PortalBaseBiz
+class PortalBizPayment extends PortalBizBase
 {
     
 }

@@ -20,8 +20,9 @@ class loginfacebook extends login
     
     //login with facebook.
     function loginFb(){
+        $data = $this->input->post();
         $facebookMe = json_decode( $this->input->post('postValue'));
-        $logunBiz = new PortalLoginBiz();
+        $logunBiz = new PortalBizLogin();
         $user = $logunBiz->loginFacebook($facebookMe);
 
         $this->obj_user->is_authorized = true;
@@ -37,7 +38,7 @@ class loginfacebook extends login
         $this->obj_user->secretKey =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
         $this->set_obj_user_to_me($this->obj_user);
         
-        $history = new PortalUserHistoryBiz();
+        $history = new PortalBizUserHistory();
         $subSystemSessionId = $this->input->post('se');
         $toSubsys = $this->input->post('su');
         $secrectKey = null;
@@ -47,7 +48,7 @@ class loginfacebook extends login
         $history->createNewHistory($this->obj_user,DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN,'USER LOGIN',$toSubsys,$secrectKey);
         
         $this->onLoginComplete();
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
+        //LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
     }
 
 

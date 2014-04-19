@@ -5,14 +5,14 @@
  * @author ANLT
  * @since 20140426
  */
-class PortalLoginBiz extends PortalBaseBiz
+class PortalBizLogin extends PortalBizBase
 {
     /**
      * Xử lý thao tác login bằng facebook.
      */
     function loginFacebook($facebookAccount)
     {
-        $userModel = new PortalUserModel();
+        $userModel = new PortalModelUser();
         $userModel->account = $facebookAccount->email;
         $result = $userModel->selectUserByUserName();
         $key = T_user::platform_key;
@@ -21,11 +21,11 @@ class PortalLoginBiz extends PortalBaseBiz
               return $this->setupSession($userModel);
             }
         }
-        return $this->setupSession($userNew);
+        return $this->setupSession($userModel);
     }
     
     private function insertFacebookAccountToProtal($facebookAccount){
-        $accountBiz = new PortalAccountBiz();
+        $accountBiz = new PortalBizAccount();
         $firstname = $facebookAccount->first_name.' '.$facebookAccount->middle_name;
         $lastname = $facebookAccount->last_name;
         $account = $facebookAccount->email;

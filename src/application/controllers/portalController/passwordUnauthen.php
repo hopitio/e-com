@@ -17,7 +17,7 @@ class passwordUnauthen extends password
         if(!isset($data['k'])){
             throw new Lynx_RequestException('Request hệ thông khác so với yêu cầu vui lòng liên hệ admin.');
         }
-        $passwordBiz = new PortalPassowordBiz();
+        $passwordBiz = new PortalBizPassoword();
         $result = $passwordBiz->resetPassword($this->obj_user, $data['k']);
         $viewdata = array();
         if(!$result){

@@ -4,7 +4,7 @@
  * @author ANLT
  * @since 201403
  */
-class PortalBaseBiz extends CI_Model
+class PortalBizBase extends CI_Model
 {
     function __construct(){
         parent::__construct();

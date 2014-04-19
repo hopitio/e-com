@@ -5,7 +5,7 @@
  * @author ANLT
  * @since 20140402
  */
-class PortalUserHistoryBiz extends PortalBaseBiz
+class PortalBizUserHistory extends PortalBizBase
 {
     /**
      * Create new history id for user id.
@@ -31,7 +31,7 @@ class PortalUserHistoryBiz extends PortalBaseBiz
             $user = User::getCurrentUser();
         }
         $session = get_instance()->session->all_userdata();
-        $portalCommon = new PortalCommonModel();
+        $portalCommon = new PortalModelCommon();
         $listSubSystem = get_instance()->config->item('sub_system_name');
         if (!isset($listSubSystem[$subSystemNname]))
         {
@@ -39,7 +39,7 @@ class PortalUserHistoryBiz extends PortalBaseBiz
                 __CLASS__ . ' ' . __FUNCTION__ .
                      ' Sub System không hỗ trợ trong hệ thống');
         }
-        $historyModel = new PortalUserHistoryModel();
+        $historyModel = new PortalModelUserHistory();
         $historyModel->id = $portalCommon->getUUID();
         $historyModel->action_name = $actionName == null? DatabaseFixedValue::USER_HISTORY_ACTION_NONE : $actionName;
         $historyModel->client_ip = $session['ip_address'];
@@ -60,7 +60,7 @@ class PortalUserHistoryBiz extends PortalBaseBiz
      */
     function checkLoginHistory($secrectKey,$subSystem)
     {
-        $historyModel = new PortalUserHistoryModel();
+        $historyModel = new PortalModelUserHistory();
         $historyModel->sub_system_name = $subSystem;
         $historyModel->action_name = DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN;
         $historyModel->action_name = $secrectKey;
@@ -71,7 +71,7 @@ class PortalUserHistoryBiz extends PortalBaseBiz
             return false;
         }
         if($queryStatus){
-            $portalUserModel = new PortalUserModel();
+            $portalUserModel = new PortalModelUser();
             $portalUserModel->id = $historyModel->fk_user;
             $portalUserModel->getUserByUserId();
             return $portalUserModel;

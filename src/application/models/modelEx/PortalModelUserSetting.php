@@ -4,7 +4,7 @@
  * @author ANLT
  * @since 20140327
  */
-class PortalUserSettingModel extends PortalBaseModel
+class PortalModelUserSetting extends PortalModelBase
 {
     public $id;
     public $fk_user;

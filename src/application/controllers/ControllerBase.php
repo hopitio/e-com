@@ -22,7 +22,7 @@ class BaseController extends MY_Controller{
                 __CLASS__ . ' ' . __FUNCTION__ . 'secretKey không phù hợp');
         }
         
-        $portalHistory = new PortalUserHistoryBiz();
+        $portalHistory = new PortalBizUserHistory();
         $userQuery = $portalHistory->checkLoginHistory($user->secretKey, 
             $subSystemName);
         if (! $userQuery)

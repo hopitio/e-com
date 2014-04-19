@@ -132,52 +132,82 @@ class T_user_setting{
     CONST fk_user = 'fk_user';
 }
 
-class T_product{
-    CONST id = 'id';
+class T_product
+{
     CONST tableName = "t_product";
-    CONST sub_system_id = "sub_system_id";
-    CONST sort_description = "sort_description";
-    CONST sub_system_key = "sub_system_key";
-    CONST product_image_url = "product_image_url";
+    CONST id = "id";
+    CONST sub_id = "sub_id";
+    CONST name = "name";
+    CONST sub_image = "sub_image";
+    CONST short_description = "short_description";
+    CONST price = "price";
+    CONST quantity = "quantity";
+    CONST totalprice = "totalprice";
 }
 
 class T_invoice{
-    CONST id = 'id';
     CONST tableName = "t_invoice";
-    CONST fk_order = 'fk_order';
-    CONST fk_customer = 'fk_customer';
-    CONST date_created = 'date_created';
-    CONST date_paid = 'date_paid';
-    CONST invoice_status = 'invoice_status';
-    CONST fk_contact = 'fk_contact';
-    CONST email_status = 'email_status';
-    CONST comment = 'comment';
-    CONST payment_method = 'payment_method';
-    CONST payment_fees = 'payment_fees';
-    CONST payment_actual = 'payment_actual';
-    CONST payment_convert_rate = 'payment_convert_rate';
-    CONST payment_currency_root = 'payment_currency_root';
-    CONST payment_currency_target = 'payment_currency_target';
-    
+    CONST id = "id";
+    CONST fk_order = "fk_order";
+    CONST created_user = "created_user";
+    CONST created_date = "created_date";
+    CONST paid_date = "paid_date";
+    CONST cancelled_date = "cancelled_date";
+    CONST rejected_date = "rejected_date";
+    CONST comment = "comment";
+    CONST payment_method = "payment_method";
+    CONST payment_currency = "payment_currency";
+    CONST invoice_type = "invoice_type";
 }
-
-class T_invoice_detail{
-    CONST id = 'id';
-    CONST tableName = "t_invoice_detail";
-    CONST fk_invoice = 'fk_invoice';
-    CONST fk_order = 'fk_order';
-    CONST quantity = 'quantity';
+class T_invoice_other_cost{
+    CONST tableName = "t_invoice_other_cost";
+    CONST id = "id";
+    CONST fk_invoice = "fk_invoice";
+    CONST value = "value";
+    CONST comment = "comment";
 }
-
+class T_invoice_product{
+    CONST tableName = "t_invoice_product";
+    CONST id = "id";
+    CONST fk_invoice = "fk_invoice";
+    CONST fk_product = "fk_product";
+}
+class T_invoice_shipping{
+    CONST tableName = "t_invoice_shipping";
+    CONST id = "id";
+    CONST fk_invoice = "fk_invoice";
+    CONST fk_user_contact = "fk_user_contact";
+    CONST created_user = "created_user";
+    CONST display_name = "display_name";
+    CONST price = "price";
+    CONST status = "status";
+    CONST created_date = "created_date";
+    CONST ship_date = "ship_date";
+    CONST complete_date = "complete_date";
+    CONST shipping_type = "shipping_type";
+}
 class T_order{
     CONST tableName = "t_order";
-    CONST id = 'id';
-    CONST fk_customer = 'fk_customer';
-    CONST email_status = 'email_status';
-    CONST fk_order_status_history = 'fk_order_status_history';
-    CONST comment = 'comment';
-    CONST bonus = 'bonus';
+    CONST id = "id" ;
+    CONST sub_key = "sub_key" ;
+    CONST fk_user = "fk_user" ;
+    CONST created_user = "created_user" ;
+    CONST created_date = "created_date" ;
+    CONST shiped_date = "shiped_date" ;
+    CONST canceled_date = "canceled_date" ;
+    CONST completed_date = "completed_date" ;
 }
+class T_payment_temp{
+    CONST tableName = 't_order_product';
+    CONST id = "id";
+    CONST fk_user = "fk_user";
+    CONST created_date = "created_date";
+    CONST data = "data";
+    CONST session_id = "session_id";
+    CONST ip_address = "ip_address";
+    CONST user_agrent = "user_agrent";
+}
+
 
 class T_order_product{
     CONST tableName = 't_order_product';
@@ -233,22 +263,17 @@ class T_user_contact{
     CONST fax = "fax";
     CONST vat_number = "vat_number";
 }
-class T_order_contact{
-    const tableName = "t_order_contact";
+class T_tax{
+    const tableName = "t_tax";
     CONST id = "id";
-    CONST fk_order = "fk_order";
-    CONST fk_user_contact = "fk_user_contact";
-    CONST contact_status = "contact_status";
+    CONST fk_product = "fk_product";
+    CONST sub_tax_id = "sub_tax_id";
+    CONST sub_tax_name = "sub_tax_name";
+    CONST sub_tax_value = "sub_tax_value";
 }
-class T_order_shipping{
-    const tableName = "t_order_shipping";
-    CONST id = "id";
-    CONST fk_order = "fk_order";
-    CONST sub_key = "sub_key";
-    CONST sub_id = "sub_id";
-    CONST shipping_display_name = "shipping_display_name";
-    CONST shipping_price = "shipping_price";
-}
+
+
+
 
 
 
