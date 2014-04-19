@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-class loginAdmin extends ControllerBase
+class AdminControllerAbstract extends BaseController
 {
     protected $authorization_required = false;
     /**

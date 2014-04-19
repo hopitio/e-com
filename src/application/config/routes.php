@@ -19,7 +19,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['sitemap'] = 'sitemap/showPage';
         $route['__admin/login'] = 'admin/loginAdmin/showpage';
         $route['__admin/mainpage'] = 'admin/mainpage/showpage';
-
+        $route['admin/product'] = 'admin/product/show_list';
+        $route['admin/product/show_list'] = 'admin/product/show_list';
         $route['order/place_order'] = 'devPlaceOrder/showPage';
     }
 
@@ -47,7 +48,6 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
         $route['portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
-        
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
