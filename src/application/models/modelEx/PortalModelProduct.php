@@ -24,18 +24,23 @@ class PortalModelProduct extends PortalModelBase
     }
     
     /**
-     * 
-     * @param array<id> $arrayId
-     * @return trả về false nếu như không có kết quả trả về, trả về dữ liệu nếu hoàn thành.
+     * get all products of once invoices.
+     * @param array $invoiceIdCollection
      */
-    function getProducts($arrayId)
+    function getProductsOfInvoices($invoiceIdCollection)
     {
-        $this->_dbPortal->where_in(T_product::id,$arrayId);
-        $queryResult = $this->_dbPortal->get(T_product::tablename);
-        $result = $queryResult->result();
-        if(count($result) <= 0){
-            return false;
-        }
+        $invoiceIdCollection = implode(',' , $invoiceIdCollection );
+        $sql = "SELECT 
+                    t_product.* ,
+                    t_invoice_product.fk_invoice AS `invoice_id`,
+                    t_invoice_product.id AS t_invoice_product_id
+                  FROM 
+                    t_product INNER JOIN t_invoice_product 
+                    ON t_product.id = t_invoice_product.fk_product
+                  WHERE 
+                    `t_invoice_product`.`fk_invoice` IN  ('{$invoiceIdCollection}')";
+        $query =  $this->_dbPortal->query($sql);
+        $result = $query->result();
         return $result;
     }
 }

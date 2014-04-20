@@ -1,14 +1,15 @@
 <?php
 class PortalPaymentManager extends PortalBizPayment{
+    
     /**
      * order information
      * @param unknown $orderInformation
      * @param unknown $subSystemKey
      * @return boolean
      */
-    function createNewOrder($orderInformation,$subSystemKey){
+    function createNewOrder($orderInformation,$subSystemKey = null,$secrectKey = null){
+        $subSystemKey == null ? $this->config->item('sub_system_name')['default'] : $this->config->item('sub_system_name')[$subSystemKey];
         $orderId = $this->insertOrder($orderInformation);
-        
         $products =  $orderInformation->products;
         $portalProducts = $this->saveProducts($products);
         $protalTax = $this->saveTax($portalProducts,$products);
@@ -22,7 +23,9 @@ class PortalPaymentManager extends PortalBizPayment{
         $invoiceShipping = $this->insertInvoiceShipping($invoiceId, $portalContactId, $shippingPostData);
         $otherCostData = '';
         $invoiceOtherCost = $this->insertOtherCosts($invoiceId,$otherCostData);
-        
+        $this->insertOrderStatus($portalOrderId,User::getCurrentUser()->id);
+        $portalUserHistory = new PortalBizUserHistory();
+        $portalUserHistory->createNewHistory(user::getCurrentUser(),DatabaseFixedValue::USER_HISTORY_ACTION_ORDER,'',$subSystemKey,$secrectKey);
         return $invoiceId;
     }
     
@@ -97,7 +100,7 @@ class PortalPaymentManager extends PortalBizPayment{
     function insertContact($contactInformation){
         $portalContactModel = new PortalModelUserContact();
         $contactId = $portalContactModel->insertNewContact();
-        return  null;
+        return  $contactId;
     }
     /**
      * 
@@ -186,7 +189,22 @@ class PortalPaymentManager extends PortalBizPayment{
     public function updatePaymentTempToProcessed($paymentTempModel)
     {
         $paymentTempModel->processed_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-        $paymentTempModel->updateById();
+        return $paymentTempModel->updateById();
+        
+    }
+    
+    /**
+     * 
+     * @param unknown $orderId
+     * @param unknown $userId
+     */
+    public function insertOrderStatus($orderId,$userId)
+    {
+        $portalModelOrderStatus = new PortalModelOrderStatus();
+        $portalModelOrderStatus->status = DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED;
+        $portalModelOrderStatus->updated_user = $userId;
+        $portalModelOrderStatus->updated_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        return $portalModelOrderStatus->insert();
     }
     
 
