@@ -9,5 +9,6 @@ class TaxDomain implements DomainInterface
     public $costFixed;
     public $language;
     public $name;
+    public $codename;
 
 }

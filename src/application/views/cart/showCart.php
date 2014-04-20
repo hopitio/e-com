@@ -10,7 +10,8 @@ defined('BASEPATH') or die('No direct script access allowed');
     <div ng-repeat="product in products">
         <div>Name: {{product.name}}</div>
         <div>Price: {{product.price}}</div>
-        <div>*: {{product.price * product.quantity}}</div>
+        <div>Taxes: {{product.taxes}}</div>
+        <div>*: {{(product.price + product.taxes) * product.quantity}}</div>
         <div>
             <input 
                 type="text" name="txtProductQuantity[{{product.id}}]" txtquantity product="product"
@@ -86,7 +87,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                 var total = 0;
                 for (var i in $scope.products) {
                     var product = $scope.products[i];
-                    total += product.price * product.quantity;
+                    total += (product.price + product.taxes) * product.quantity;
                 }
                 return total;
             };

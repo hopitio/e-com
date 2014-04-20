@@ -11,6 +11,11 @@ class ProductFixedDomain extends ProductDomain
         return $this->_getAttributeByName('name');
     }
 
+    function getSKU()
+    {
+        return $this->_getAttributeByName('SKU');
+    }
+
     /** @return ProductAttributeDomain */
     function getDescription()
     {
@@ -85,6 +90,17 @@ class ProductFixedDomain extends ProductDomain
     function calculatePrice($currency)
     {
         return ($this->getPrice($currency)->getTrueValue() - $this->discount);
+    }
+
+    function calculateTaxes($toCurrency = 'USD')
+    {
+        $total = 0;
+        $price = $this->calculatePrice($toCurrency);
+        foreach ($this->_taxes as $tax)
+        {
+            $total += $tax->costPercent * $price + $tax->costFixed;
+        }
+        return $total;
     }
 
     /** @return ProductAttributeDomain */

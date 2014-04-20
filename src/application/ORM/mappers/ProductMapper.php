@@ -115,9 +115,17 @@ class ProductMapper extends MapperAbstract
         }
     }
 
-    function loadTaxes($domain)
+    /**
+     * 
+     * @param ProductDomain $domain
+     */
+    function loadTaxes(&$domain)
     {
-        $taxes = TaxMapper::make()->filterSeller($sellerID);
+        $taxes = TaxMapper::make()->setLanguage($this->_attributeLanguage)->filterProduct($domain->id)->findAll();
+        foreach ($taxes as $tax)
+        {
+            $domain->addTax($tax);
+        }
     }
 
     /**

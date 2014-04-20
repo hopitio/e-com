@@ -5,31 +5,40 @@ defined('BASEPATH') or die('No direct script access allowed');
 $user = User::getCurrentUser();
 $json = array(
     'secretKey' => $user->secretKey,
-    'orderkey' => $orderEvidenceUID,
-    'su' => 'GIFT',
-    'user' => $user,
-    'products' => array(),
-    'shipping' => array(
-        'shippingKey' => $shippingMethod . '-' . 'projecte',
+    'orderkey'  => $orderEvidenceUID,
+    'su'        => 'GIFT',
+    'user'      => $user,
+    'products'  => array(),
+    'shipping'  => array(
+        'shippingKey'         => $shippingMethod . '-' . 'projecte',
         'shippingDisplayName' => $shippingMethod,
-        'shippingPrice' => $shippingPrice
+        'shippingPrice'       => $shippingPrice
     ),
     'addresses' => $addresses
 );
 
 foreach ($cartContents as $cartInstance)
 {
-    $images = $cartInstance->getImages();
-    $json['products'][] = array(
-        'id' => $cartInstance->id,
-        'name' => $cartInstance->getName()->getTrueValue(),
-        'image' => site_url($images[0]->getTrueValue()),
-        'shortDesc' => $cartInstance->getDescription()->getTrueValue(),
-        'price' => $cartInstance->getPrice('USD')->getTrueValue(),
-        'quantity' => $cartInstance->quantity,
-        'totalPrice' => $cartInstance->getPrice('USD')->getTrueValue() * $cartInstance->quantity,
-        'actualPrice' => $cartInstance->calculatePrice('USD') * $cartInstance->quantity
+    $images       = $cartInstance->getImages();
+    $json_product = array(
+        'id'          => $cartInstance->id,
+        'name'        => $cartInstance->getName()->getTrueValue(),
+        'image'       => site_url($images[0]->getTrueValue()),
+        'shortDesc'   => $cartInstance->getDescription()->getTrueValue(),
+        'price'       => $cartInstance->getPrice('USD')->getTrueValue(),
+        'quantity'    => $cartInstance->quantity,
+        'totalPrice'  => $cartInstance->getPrice('USD')->getTrueValue() * $cartInstance->quantity,
+        'actualPrice' => $cartInstance->calculatePrice('USD') * $cartInstance->quantity,
+        'taxes'       => array()
     );
+    foreach ($cartInstance->taxes() as $tax)
+    {
+        $json_product['taxes'][] = array(
+            'name'     => $tax->name,
+            'totalTax' => $json_product['actualPrice'] * $tax->costPercent + $tax->costFixed * $cartInstance->quantity
+        );
+    }
+    $json['products'][] = $json_product;
 }
 $json = json_encode($json);
 ?>

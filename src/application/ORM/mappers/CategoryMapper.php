@@ -5,18 +5,20 @@ defined('BASEPATH') or die('No direct script access allowed');
 class CategoryMapper extends MapperAbstract
 {
 
-    public function __construct()
+    public function __construct($domain = 'CategoryDomain')
     {
         $query = Query::make()
+                ->select('c.*, cl.name, cl.description, cl.language, cl.name')
                 ->from('t_category c')
                 ->innerJoin('t_category_language cl', 'c.id=cl.fk_category')
                 ->orderBy('c.path');
 
         $map = array(
-            'fkParent' => 'fk_parent'
+            'fkParent'    => 'fk_parent',
+            'isContainer' => 'is_container'
         );
 
-        parent::__construct('CategoryDomain', $query, $map);
+        parent::__construct($domain, $query, $map);
     }
 
     /**
@@ -81,8 +83,19 @@ class CategoryMapper extends MapperAbstract
 
     function filterParent($parent_id)
     {
-        $this->_query->where('c.fk_parent = ?', 'child_of');
-        $this->_queryParams['child_of'] = $parent_id;
+        if ($parent_id === NULL)
+        {
+            $this->_query->where('c.fk_parent IS NULL', 'child_of');
+            if (isset($this->_queryParams['child_of']))
+            {
+                unset($this->_queryParams['child_of']);
+            }
+        }
+        else
+        {
+            $this->_query->where('c.fk_parent = ?', 'child_of');
+            $this->_queryParams['child_of'] = $parent_id;
+        }
         return $this;
     }
 

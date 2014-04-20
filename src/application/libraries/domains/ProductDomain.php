@@ -13,6 +13,9 @@ class ProductDomain implements DomainInterface
     public $discount;
     protected $_attributes = array();
 
+    /** @var TaxDomain */
+    protected $_taxes      = array();
+
     function isGroup()
     {
         return ((bool) $this->isGroup);
@@ -39,6 +42,29 @@ class ProductDomain implements DomainInterface
         return ($name ? $this->_getAllAttributes() : $this->_getAttributeByName($name));
     }
 
+    function addTax(TaxDomain $tax)
+    {
+        $this->_taxes[$tax->codename] = $tax;
+    }
+
+
+    /**
+     * 
+     * @param type $name
+     * @return TaxDomain
+     */
+    function taxes($name = null)
+    {
+        if ($name)
+        {
+            return isset($this->_taxes[$name]) ? $this->_taxes[$name] : false;
+        }
+        else
+        {
+            return $this->_taxes;
+        }
+    }
+
     /**
      * @return ProductAttributeDomain
      */
@@ -54,7 +80,5 @@ class ProductDomain implements DomainInterface
     {
         return (isset($this->_attributes[$name]) ? $this->_attributes[$name] : false);
     }
-
-
 
 }

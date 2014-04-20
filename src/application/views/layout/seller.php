@@ -60,6 +60,7 @@
                             <a href="#">My Account</a>
                             <ul class="accessPannel">
                                 <?php
+                                $user = User::getCurrentUser();
                                 if ($user->is_authorized)
                                 {
                                     echo '<li><a href="' . $user->getLogout() . '">Đăng Xuất</a></li>';

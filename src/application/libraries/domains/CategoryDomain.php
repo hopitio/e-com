@@ -17,4 +17,7 @@ class CategoryDomain implements DomainInterface
     public $description;
     public $language;
 
+    /** true nếu chứa category khác, false nếu chứa product */
+    public $isContainer;
+
 }

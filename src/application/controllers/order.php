@@ -29,8 +29,9 @@ class order extends BaseController
     function placeOrder()
     {
         $cartContents = CartMapper::make()
-                ->autoloadAttributes()
                 ->setLanguage(User::getCurrentUser()->languageKey)
+                ->autoloadTaxes()
+                ->autoloadAttributes()
                 ->findAll();
 
         $shippingAddress                  = new stdClass();

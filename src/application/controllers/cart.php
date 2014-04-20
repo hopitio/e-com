@@ -21,11 +21,12 @@ class cart extends BaseController
 
     function shipping()
     {
-        $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name')->findAssoc();
+        $data['provinces']       = LocationMapper::make()->filterLevel('province')->select('codename, name')->findAssoc();
         $data['shippingMethods'] = ShippingMethodMapper::make()->findAll();
-        $data['cartContents'] = CartMapper::make()
+        $data['cartContents']    = CartMapper::make()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes()
+                ->autoloadTaxes()
                 ->findAll();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data)
@@ -45,15 +46,19 @@ class cart extends BaseController
         header('Content-Type: application/json');
         $products = CartMapper::make()
                 ->setLanguage(User::getCurrentUser()->languageKey)
-                ->autoloadAttributes()->findAll();
-        $json = array();
+                ->autoloadAttributes()
+                ->autoloadTaxes()
+                ->findAll();
+        $json     = array();
         foreach ($products as $product)
         {
-            $obj = (array) $product;
+            /* @var $product ProductFixedDomain */
+            $obj             = (array) $product;
             $obj['quantity'] = $product->quantity;
-            $obj['price'] = $product->calculatePrice('USD');
-            $obj['name'] = $product->getName()->getTrueValue();
-            $json[] = $obj;
+            $obj['price']    = $product->calculatePrice('USD');
+            $obj['name']     = $product->getName()->getTrueValue();
+            $obj['taxes']      = $product->calculateTaxes('USD');
+            $json[]          = $obj;
         }
         echo json_encode($json);
     }
@@ -61,9 +66,9 @@ class cart extends BaseController
     function shippingPriceService()
     {
         header('Content-type: application/json');
-        $locationID = isset($_GET['location']) ? $_GET['location'] : null;
+        $locationID         = isset($_GET['location']) ? $_GET['location'] : null;
         $shippingMethodCode = isset($_GET['shipping']) ? $_GET['shipping'] : null;
-        $price = $this->cartModel->calculateShippingPrice($shippingMethodCode, $locationID, 'USD');
+        $price              = $this->cartModel->calculateShippingPrice($shippingMethodCode, $locationID, 'USD');
         echo json_encode((double) $price);
     }
 

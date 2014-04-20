@@ -44,8 +44,8 @@ abstract class MapperAbstract
     public function __construct($domain, Query $query, $map = null)
     {
         $this->_domain = $domain;
-        $this->_query = $query;
-        $this->_map = $map;
+        $this->_query  = $query;
+        $this->_map    = $map;
     }
 
     /**
@@ -75,7 +75,7 @@ abstract class MapperAbstract
      */
     public function makeDomain($record)
     {
-        $class = $this->_domain;
+        $class    = $this->_domain;
         $instance = new $class;
         $this->map($instance, $record);
         $this->makeDomainCallback($instance);
@@ -105,7 +105,7 @@ abstract class MapperAbstract
             {
                 continue;
             }
-            $field = $this->_map[$prop];
+            $field          = $this->_map[$prop];
             $return[$field] = $value;
         }
         return $return;
@@ -174,6 +174,13 @@ abstract class MapperAbstract
     {
         $this->_query->offset($offset);
         return $this;
+    }
+
+    function count($fields = 'COUNT(*)')
+    {
+        $query = clone $this->_query;
+        $query->select($fields)->limit(0);
+        return DB::getInstance()->GetOne($query, $this->_queryParams);
     }
 
 }
