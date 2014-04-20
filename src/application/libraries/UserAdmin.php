@@ -16,4 +16,17 @@ class UserAdmin extends User
     function getLoginAuthenUrl(){
         return '/__admin/login';
     }
+    
+    /**
+     * 
+     * @return AdminUser
+     */
+    static function getCurrentUser(){
+        $objUser = get_instance()->session->userdata(USER_SESSION);
+        if(is_a($objUser, 'UserAdmin')){
+            return $objUser;
+        }else{
+            return new User();
+        }
+    }
 }
