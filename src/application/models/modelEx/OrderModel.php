@@ -47,7 +47,7 @@ class OrderModel extends BaseModel
      */
     function verifyOrderEvidence($orderEvidenceKey, $checksum)
     {
-        $query = Query::make()
+        $query = Query::make()  
                 ->select('id')
                 ->from('t_order_evidence')
                 ->where('unique_key=? AND checksum=? AND date_expired > NOW()');

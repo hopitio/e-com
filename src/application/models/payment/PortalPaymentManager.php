@@ -44,16 +44,16 @@ class PortalPaymentManager extends PortalBizPayment{
         {
             $product = new PortalModelProduct();
             $product->name = $obj->name;
-            $product->price = $obj->name;
-            $product->quantity = $obj->name;
-            $product->short_description = $obj->name;
-            $product->sub_id = $obj->name;
-            $product->sub_image = $obj->name;
-            $product->totalprice = $obj->name;
+            $product->price = $obj->price;
+            $product->quantity = $obj->quantity;
+            $product->short_description = $obj->sortDes;
+            $product->sub_id = $obj->id;
+            $product->sub_image = $obj->image;
+            $product->totalprice = $obj->totalPrices;
+            $product->actual_price = $obj->actualPrice;
             array_push($objects, $product);
         }
         $returnValue = $productsModel->bacthInsert($objects);
-        
         return $returnValue;
     }
     
@@ -98,9 +98,20 @@ class PortalPaymentManager extends PortalBizPayment{
      * @param string $orderId
      */
     function insertContact($contactInformation){
-        $portalContactModel = new PortalModelUserContact();
-        $contactId = $portalContactModel->insertNewContact();
-        return  $contactId;
+        
+        $userContact = array();
+        if(isset($contactInformation->shipping)){
+            $portalContactModel = new PortalModelUserContact();
+            $portalContactModel->full_name = $contactInformation->shipping->fullname;
+            $portalContactModel->telephone = $contactInformation->shipping->telephone;
+            $portalContactModel->street_address = $contactInformation->shipping->streetAddress;
+            $portalContactModel->city_district = $contactInformation->shipping->cityDistrict;
+            $portalContactModel->state_province = $contactInformation->shipping->stateProvince;
+            $portalContactModel->date_created = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+            $contactId = $portalContactModel->insert();
+            $userContact['shipping'] = $contactId;
+        }  
+        return  $userContact;
     }
     /**
      * 
@@ -128,10 +139,45 @@ class PortalPaymentManager extends PortalBizPayment{
      * @param array $shippingPostData
      * @return NULL
      */
-    function insertInvoiceShipping($invoiceId,$shippingData,$shippingPostData)
+    function insertInvoiceShipping($invoiceId,$userContacts,$contactPostData)
     {
         $shiping = new PortalModelInvoiceShipping();
-        return null;
+        $postDataShippingInformation = $contactPostData->shipping;
+        $arrayShippingDetails = array();
+        foreach ($userContacts as $contactType => $contactDetail)
+        {
+            $shippingItem = new PortalModelInvoiceShipping();
+            switch($contactType)
+            {
+                case 'shipping' :
+                    $shippingItem->fk_user_contact = $contactDetail;
+                    $shippingItem->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+                    $shippingItem->created_user = User::getCurrentUser()->id;
+                    $shippingItem->fk_invoice = $invoiceId;
+                    $shippingItem->status = DatabaseFixedValue::SHIPPING_STATUS_ACTIVE;
+                    $shippingItem->shipping_type = DatabaseFixedValue::SHIPPING_TYPE_SHIP;
+                    $shippingItem->price = $postDataShippingInformation->shippingPrices;
+                    $shippingItem->display_name = $postDataShippingInformation->shippingDisplayName;
+                    $shippingItem->sub_id = $postDataShippingInformation->shippingKey;
+                break;
+                case 'pay':
+                    $shippingItem->fk_user_contact = $contactDetail;
+                    $shippingItem->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+                    $shippingItem->created_user = User::getCurrentUser()->id;
+                    $shippingItem->fk_invoice = $invoiceId;
+                    $shippingItem->status = DatabaseFixedValue::SHIPPING_STATUS_ACTIVE;
+                    $shippingItem->shipping_type = DatabaseFixedValue::SHIPPING_TYPE_PAY;
+                    break;
+                default:
+                    continue;
+                break;
+            }
+            
+            if(isset($shippingItem->created_date)){
+                array_push($arrayShippingDetails, $shippingItem);
+            }
+        }
+        return $shiping->bacthInsert($arrayShippingDetails);
     } 
     
     /**

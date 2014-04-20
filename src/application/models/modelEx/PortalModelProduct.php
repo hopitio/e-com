@@ -13,7 +13,8 @@ class PortalModelProduct extends PortalModelBase
     var $short_description;
     var $price;
     var $quantity;
-    var $totalprice;
+    var $total_price;
+    var $actual_price;
     
     /**
      * 

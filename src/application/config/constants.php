@@ -98,6 +98,11 @@ class DatabaseFixedValue{
     CONST ORDER_STATUS_ORDER_CANCELLED = 'ORDER_CANCELLED';
     CONST ORDER_STATUS_REJECTED = 'REJECTED';
     
+    CONST SHIPPING_STATUS_ACTIVE = "ACTIVE";
+    CONST SHIPPING_STATUS_INACTIVE = "INACTIVE";
+    CONST SHIPPING_TYPE_PAY = "PAY";
+    CONST SHIPPING_TYPE_SHIP = "SHIP";
+    
 }
 class TableName{
     CONST t_user = 't_user';
@@ -151,7 +156,8 @@ class T_product
     CONST short_description = "short_description";
     CONST price = "price";
     CONST quantity = "quantity";
-    CONST totalprice = "totalprice";
+    CONST total_price = "total_price";
+    CONST actual_price = "actual_price";
 }
 
 class T_invoice{
@@ -184,6 +190,7 @@ class T_invoice_product{
 class T_invoice_shipping{
     CONST tableName = "t_invoice_shipping";
     CONST id = "id";
+    CONST sub_id = "sub_id";
     CONST fk_invoice = "fk_invoice";
     CONST fk_user_contact = "fk_user_contact";
     CONST created_user = "created_user";
