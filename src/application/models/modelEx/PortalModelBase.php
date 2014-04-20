@@ -150,9 +150,73 @@ class PortalModelBase extends CI_Model
                 continue;
             }
             if(isset($result->$property)){
-            	continue;
+                continue;
             }
             $this->$property = $result->$property;
         }
     }
+    /**
+     * lấy dữ liệu trong trường hợp có nhiều điều kiện. chỉ lấy từ 1 table.
+     * @param string $orderProperty
+     * @param string $orderLogic
+     * @param number $limit
+     * @param number $offset
+     * @return multitype:
+     */
+    public function getMutilCondition($orderProperty = null,$orderLogic = 'asc',$limit = 0, $offset = 0)
+    {
+        $condition = array();
+        $refl = new ReflectionClass($this->_constIntanceName);
+        $propertiesList = $refl->getConstants();
+        $class = $this->_constIntanceName;
+        foreach ($propertiesList as $property){
+            if($property == $class::tableName || !isset($this->$property) || $this->$property == null)
+            {
+                continue;
+            }
+            $condition[$property] = $this->$$property;
+        }
+        if ($orderProperty != null)
+        {
+            $this->_dbPortal->order_by($orderProperty, $orderLogic);
+        }
+        if($limit != 0){
+            if($offset != 0){
+                $this->_dbPortal->limit($limit, $offset);
+            }else{
+                $this->_dbPortal->limit($limit);
+            }
+        }
+        $queryResult = $this->_dbPortal->get_where($class::tableName,$condition);
+        $result = $queryResult->result();
+        $objCollection = array();
+        foreach ($result as $row)
+        {
+            $item = clone $this;
+            $item->autoMappingObj($row);
+            array_push($objCollection, $item);
+        }
+        return $objCollection;
+    }
+    
+    /**
+     * Get Where in expected one col
+     * @param unknown $property
+     * @param unknown $values
+     * @return multitype:
+     */
+    protected function getWhereIn($property,$values)
+    {
+        $this->_dbPortal->where_in($property,$values);
+        $query = $this->_dbPortal->get();
+        $result = $query->result();
+        $queryResult = array();
+        foreach ($result as $row)
+        {
+            $item = clone $this;
+            array_push($queryResult,$item->autoMappingObj($row));
+        }
+        return  $queryResult;
+    }
+
 }

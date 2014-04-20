@@ -83,15 +83,21 @@ class DatabaseFixedValue{
     CONST USER_HISTORY_ACTION_NONE = 'NONE';
     CONST USER_HISTORY_ACTION_LOGOUT = 'LOGOUT';
     CONST USER_HISTORY_ACTION_PAYMENT = 'PAYMENT';
+    CONST USER_HISTORY_ACTION_ORDER = 'PAYMENT';
     CONST USER_HISTORY_ACTION_CHANGEPASS = 'CHANGEPASS';
     CONST USER_HISTORY_ACTION_RESETPASS = 'RESETPASS';
     CONST USER_HISTORY_ACTION_CHANGEINFORMATION = 'CHANGEINFORMATION';
     
-    CONST ORDER_CONTACT_STATUS_PAY = 'PAY';
-    CONST ORDER_CONTACT_STATUS_SHIPPING = 'SHIP';
-    
     CONST INVOICE_TYPE_INPUT = "INPUT";
     CONST INVOICE_TYPE_OUTPUT = "OUTPUT";
+    
+    CONST ORDER_STATUS_VERIFYING = 'VERIFYING';
+    CONST ORDER_STATUS_SHIPPING = 'SHIPPING';
+    CONST ORDER_STATUS_DELIVERED = 'DELIVERED';
+    CONST ORDER_STATUS_ORDER_PLACED = 'ORDER_PLACED';
+    CONST ORDER_STATUS_ORDER_CANCELLED = 'ORDER_CANCELLED';
+    CONST ORDER_STATUS_REJECTED = 'REJECTED';
+    
 }
 class TableName{
     CONST t_user = 't_user';
@@ -228,13 +234,13 @@ class T_order_product{
     CONST total_price     = 'total_price';
     CONST actual_price = 'actual_price';
 }
-
 class T_order_status{
     CONST tableName = 't_order_status';
-    CONST id = 'id';
-    CONST name = 'name';
-    CONST codename = 'codename';
-    CONST sort = 'sort';
+    CONST id = "id";
+    CONST status = "status";
+    CONST updated_user = "updated_user";
+    CONST updated_date = "updated_date";
+    CONST comment = "comment";
 }
 class T_order_status_history{
     const tableName = "t_order_status_history";
@@ -276,7 +282,6 @@ class T_tax{
     CONST sub_tax_name = "sub_tax_name";
     CONST sub_tax_value = "sub_tax_value";
 }
-
 
 
 

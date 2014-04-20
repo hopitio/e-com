@@ -7,4 +7,8 @@ class PortalModelTax extends PortalModelBase
     var $sub_tax_id;
     var $sub_tax_name;
     var $sub_tax_value;
+    
+    function getInvoiceByProductIds($productIds){
+        return parent::getWhereIn(T_tax::fk_product, $productIds);
+    }
 }
