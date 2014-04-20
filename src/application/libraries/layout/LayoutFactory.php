@@ -3,11 +3,12 @@
 class LayoutFactory
 {
 
-    CONST TEMP_ONE_COl = 'TEMP_ONE_COL';
-    CONST TEMP_TOW_COL = 'TEMP_TOW_COL';
+    CONST TEMP_ONE_COl        = 'TEMP_ONE_COL';
+    CONST TEMP_TOW_COL        = 'TEMP_TOW_COL';
     CONST TEMP_PORTAL_ONE_COL = 'TEMP_PORTAL_ONE_COL';
-    CONST TEMP_ADMIN = 'TEMP_ADMIN';
-    CONST TEMP_CONTENT_ONLY = 'TEMP_CONTENT_ONLY';
+    CONST TEMP_ADMIN          = 'TEMP_ADMIN';
+    CONST TEMP_CONTENT_ONLY   = 'TEMP_CONTENT_ONLY';
+    CONST TEMP_SELLER         = 'TEMP_SELLER';
 
     /**
      * get template render.
@@ -18,8 +19,7 @@ class LayoutFactory
      */
     static function getLayout($templateName = self::TEMP_ONE_COl)
     {
-        switch ($templateName)
-        {
+        switch ($templateName) {
             case self::TEMP_ONE_COl:
                 return new OneColumnLayout();
                 break;
@@ -35,6 +35,8 @@ class LayoutFactory
             case self::TEMP_CONTENT_ONLY:
                 return new ContentOnlyLayout();
                 break;
+            case self::TEMP_SELLER:
+                return new SellerLayout;
             default:
                 throw new Exception('Template not supported');
                 break;

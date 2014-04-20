@@ -28,24 +28,27 @@ class order extends BaseController
 
     function placeOrder()
     {
-        $cartContents = CartMapper::make()->autoloadAttributes(true, User::getCurrentUser()->languageKey)->findAll();
+        $cartContents = CartMapper::make()
+                ->autoloadAttributes()
+                ->setLanguage(User::getCurrentUser()->languageKey)
+                ->findAll();
 
-        $shippingAddress = new stdClass();
-        $shippingAddress->fullname = isset($_POST['txtFullame']) ? $_POST['txtFullname'] : null;
-        $shippingAddress->telephone = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
-        $shippingAddress->streetAddress = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
-        $shippingAddress->cityDistrict = array(null, isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null);
-        $shippingAddress->stateProvince = array(isset($_POST['selProvinceCity']) ? $_POST['selProvinceCity'] : null);
+        $shippingAddress                  = new stdClass();
+        $shippingAddress->fullname        = isset($_POST['txtFullame']) ? $_POST['txtFullname'] : null;
+        $shippingAddress->telephone       = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
+        $shippingAddress->streetAddress   = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
+        $shippingAddress->cityDistrict    = array(null, isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null);
+        $shippingAddress->stateProvince   = array(isset($_POST['selProvinceCity']) ? $_POST['selProvinceCity'] : null);
         $shippingAddress->stateProvince[] = LocationMapper::make()->filterCode($shippingAddress->stateProvince[0])->find()->name;
-        $shippingMethod = isset($_POST['radShippingMethod']) ? $_POST['radShippingMethod'] : null;
-        $shippingPrice = $this->cartModel->calculateShippingPrice($shippingMethod, $shippingAddress->stateProvince[0]);
-        $orderEvidenceUID = $this->orderModel->generateEvidence($shippingAddress, $cartContents, $shippingMethod, $shippingPrice);
+        $shippingMethod                   = isset($_POST['radShippingMethod']) ? $_POST['radShippingMethod'] : null;
+        $shippingPrice                    = $this->cartModel->calculateShippingPrice($shippingMethod, $shippingAddress->stateProvince[0]);
+        $orderEvidenceUID                 = $this->orderModel->generateEvidence($shippingAddress, $cartContents, $shippingMethod, $shippingPrice);
 
         $data = array(
-            'cartContents' => $cartContents,
-            'addresses' => array('shipping' => $shippingAddress),
-            'shippingMethod' => $shippingMethod,
-            'shippingPrice' => $shippingPrice,
+            'cartContents'     => $cartContents,
+            'addresses'        => array('shipping' => $shippingAddress),
+            'shippingMethod'   => $shippingMethod,
+            'shippingPrice'    => $shippingPrice,
             'orderEvidenceUID' => $orderEvidenceUID,
         );
 
@@ -55,7 +58,7 @@ class order extends BaseController
     function verifyOrderEvidence()
     {
         $orderEvidenceKey = isset($_GET['evidencekey']) ? $_GET['evidencekey'] : null;
-        $checksum = isset($_GET['checksum']) ? $_GET['checksum'] : null;
+        $checksum         = isset($_GET['checksum']) ? $_GET['checksum'] : null;
         if (!$orderEvidenceKey || !$checksum)
         {
             throw new Lynx_RequestException('Bad request');

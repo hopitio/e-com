@@ -6,7 +6,8 @@ class ProductMapper extends MapperAbstract
 {
 
     protected $_autoloadAttributes = false;
-    protected $_attributeLanguage = null;
+    protected $_attributeLanguage  = null;
+    protected $_autoloadTaxes      = false;
 
     function __construct($domain = 'ProductDomain')
     {
@@ -15,8 +16,8 @@ class ProductMapper extends MapperAbstract
         $map = array(
             'fkCategory' => 'fk_category',
             'fkRetailer' => 'fk_retailer',
-            'fkGroup' => 'fk_group',
-            'isGroup' => 'is_group',
+            'fkGroup'    => 'fk_group',
+            'isGroup'    => 'is_group',
         );
 
         parent::__construct($domain, $query, $map);
@@ -30,18 +31,36 @@ class ProductMapper extends MapperAbstract
         }
         $this->_query->where('p.fk_category=?', __FUNCTION__);
         $this->_queryParams[__FUNCTION__] = $category;
+        return $this;
+    }
+
+    function filterSeller($sellerID)
+    {
+        $this->_query->where('p.fk_seller=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $sellerID;
+        return $this;
+    }
+
+    function setLanguage($lang)
+    {
+        $this->_attributeLanguage = $lang;
+        return $this;
     }
 
     /**
      * 
      * @param type $bool
-     * @param type $language
      * @return static
      */
-    function autoloadAttributes($bool, $language)
+    function autoloadAttributes($bool = true)
     {
         $this->_autoloadAttributes = $bool;
-        $this->_attributeLanguage = $language;
+        return $this;
+    }
+
+    function autoloadTaxes($bool = true)
+    {
+        $this->_autoloadTaxes = $bool;
         return $this;
     }
 
@@ -62,6 +81,10 @@ class ProductMapper extends MapperAbstract
         if ($this->_autoloadAttributes)
         {
             $this->loadAttributes($domainInstance);
+        }
+        if ($this->_autoloadTaxes)
+        {
+            $this->loadTaxes($domainInstance);
         }
     }
 
@@ -90,6 +113,11 @@ class ProductMapper extends MapperAbstract
         {
             $product->addAttribute($attr);
         }
+    }
+
+    function loadTaxes($domain)
+    {
+        $taxes = TaxMapper::make()->filterSeller($sellerID);
     }
 
     /**

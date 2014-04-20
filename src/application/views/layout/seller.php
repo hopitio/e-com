@@ -21,8 +21,12 @@
         <!-- Jquery UI -->
         <script src="/js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
+        <!--datatable-->
+        <script src="/js/jquery.datatable/js/jquery.dataTables.min.js"></script>
+        <script src="/js/jquery.datatable/js/dataTables.custom.js"></script>
 
         <!-- Css -->
+        <link rel="stylesheet" type="text/css" href="/js/jquery.datatable/css/jquery.dataTables.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
 
         <script type="text/javascript">

@@ -12,7 +12,8 @@ class PinModel extends BaseModel
     function getAllPin()
     {
         return PinMapper::make()
-                        ->autoloadAttributes(true, User::getCurrentUser()->languageKey)
+                        ->autoloadAttributes()
+                        ->setLanguage(User::getCurrentUser()->languageKey)
                         ->setUser(User::getCurrentUser()->id)
                         ->select('p.*')
                         ->findAll();

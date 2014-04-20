@@ -23,7 +23,10 @@ class cart extends BaseController
     {
         $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name')->findAssoc();
         $data['shippingMethods'] = ShippingMethodMapper::make()->findAll();
-        $data['cartContents'] = CartMapper::make()->autoloadAttributes(true, User::getCurrentUser()->languageKey)->findAll();
+        $data['cartContents'] = CartMapper::make()
+                ->setLanguage(User::getCurrentUser()->languageKey)
+                ->autoloadAttributes()
+                ->findAll();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data)
                 ->setJavascript(array('/js/angular.min.js'))
@@ -40,7 +43,9 @@ class cart extends BaseController
     function cartProductsService()
     {
         header('Content-Type: application/json');
-        $products = CartMapper::make()->autoloadAttributes(true, 'VN-VI')->findAll();
+        $products = CartMapper::make()
+                ->setLanguage(User::getCurrentUser()->languageKey)
+                ->autoloadAttributes()->findAll();
         $json = array();
         foreach ($products as $product)
         {

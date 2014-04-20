@@ -15,27 +15,24 @@ class OrderModel extends BaseModel
      */
     function generateEvidence($address, $cartContents, $shippingMethod, $shippingPrice)
     {
-        $user = User::getCurrentUser();
+        $user         = User::getCurrentUser();
         $stringToHash = $user->account;
-        $now = DB::getDate();
-        $expire = date_add(date_create($now), new DateInterval('P3D'))->format('Y-m-d H:i');
-        foreach (get_object_vars($address) as $item)
-        {
-            $stringToHash .= $item;
-        }
+        $now          = DB::getDate();
+        $expire       = date_add(date_create($now), new DateInterval('P3D'))->format('Y-m-d H:i');
+        $stringToHash .= json_encode($address);
         foreach ($cartContents as $cartInstance)
         {
             $stringToHash .= $cartInstance->id . $cartInstance->quantity . $cartInstance->calculatePrice('USD');
         }
         $stringToHash .= $shippingMethod . $shippingPrice;
         $checksum = md5($stringToHash);
-        $uid = md5(uniqid());
+        $uid      = md5(uniqid());
         DB::insert('t_order_evidence', array(
-            'fk_user' => $user->id,
-            'checksum' => $checksum,
+            'fk_user'      => $user->id,
+            'checksum'     => $checksum,
             'date_created' => $now,
             'date_expired' => $expire,
-            'unique_key' => $uid
+            'unique_key'   => $uid
         ));
         return $uid;
     }
@@ -47,12 +44,12 @@ class OrderModel extends BaseModel
      */
     function verifyOrderEvidence($orderEvidenceKey, $checksum)
     {
-        $query = Query::make()
+        $query  = Query::make()
                 ->select('id')
                 ->from('t_order_evidence')
                 ->where('unique_key=? AND checksum=? AND date_expired > NOW()');
         $record = DB::getInstance()->GetOne($query, array($orderEvidenceKey, $checksum));
-        $ret = ((bool) $record);
+        $ret    = ((bool) $record);
         //cleanup
         DB::delete('t_order_evidence', 'unique_key=? AND checksum=? AND date_expired > NOW()', array($orderEvidenceKey, $checksum));
         return $ret;

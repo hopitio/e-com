@@ -69,7 +69,8 @@ class WishlistModel extends BaseModel
         $details = WishListDetailMapper::make()
                 ->filterWishlist($wishlistID)
                 ->filterStatus(1)
-                ->autoloadAttributes(true, $user->languageKey)
+                ->autoloadAttributes()
+                ->setLanguage($user->languageKey)
                 ->findAll();
         return $details;
     }
