@@ -89,7 +89,7 @@ class login extends BaseController
         {
            $this->canNotLogin();
         }
-        $portalAccountBiz = new PortalAccountBiz();
+        $portalAccountBiz = new PortalBizAccount();
         $user = $portalAccountBiz->getLogin($us,$pw);
         if ($user)
         {
@@ -213,7 +213,7 @@ class login extends BaseController
             return;
         }
     
-        $accBiz = new PortalAccountBiz();
+        $accBiz = new PortalBizAccount();
         $id = $accBiz->insertNewUserNormal($fristName, $lastName, $email, $password, $sex, $dob, $question, $answer);
         if($id){
             LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->render('registercomplete');
@@ -306,7 +306,7 @@ class login extends BaseController
         {
             $subName = 'default';
         }
-        $portalHistory = new PortalUserHistoryBiz();
+        $portalHistory = new PortalBizUserHistory();
         $portalHistory->createNewHistory($this->obj_user, 
             DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN, date("Y-m-d H:i:s"), 
             $data['subSys'], $user->secretKey);
