@@ -83,6 +83,7 @@ Danh sách các key cần mã hóa.
 					quantity:  '10',
 					totalPrices : '10000'
 					actualPrice : '90000',
+					taxes: [{name: 'VAT', tax: '2'}] //Từng loại thuế và tổng loại thuế đó trên sản phẩm * số lg
 				},
 				{
 					id: '[productId]',
@@ -93,6 +94,7 @@ Danh sách các key cần mã hóa.
 					quantity:  '10',
 					totalPrices : '10000'
 					actualPrice : '90000',
+					taxes: [{name: 'VAT', tax: '2'}] //Từng loại thuế và tổng loại thuế đó trên sản phẩm * số lg
 				}
 			],
 			shipping : {
