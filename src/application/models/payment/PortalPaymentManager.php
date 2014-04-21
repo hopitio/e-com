@@ -9,24 +9,34 @@ class PortalPaymentManager extends PortalBizPayment{
      */
     function createNewOrder($orderInformation,$subSystemKey = null,$secrectKey = null){
         $subSystemKey == null ? $this->config->item('sub_system_name')['default'] : $this->config->item('sub_system_name')[$subSystemKey];
-        $orderId = $this->insertOrder($orderInformation);
+        $portalOrderId = $this->insertOrder($orderInformation,$subSystemKey);
+        
         $products =  $orderInformation->products;
         $portalProducts = $this->saveProducts($products);
         $protalTax = $this->saveTax($portalProducts,$products);
-        $contactInformation = '';
-        $portalContactId = $this->insertContact($contactInformation);
-        $order = '';
-        $portalOrderId = $this->insertOrder($order,$subSystemKey);
+        
+        $contactInformation = $orderInformation->addresses;
+        $portalContactIds = $this->insertContact($contactInformation);
+        
+        
+        
         $invoiceId = $this->insertInvoice($portalOrderId);
         $invoiceProduct = $this->insertInvoiceProducts($invoiceId, $portalProducts);
-        $shippingPostData = '';
-        $invoiceShipping = $this->insertInvoiceShipping($invoiceId, $portalContactId, $shippingPostData);
-        $otherCostData = '';
+        
+        $contactInformationPostData = $orderInformation->addresses;
+        $shippingPostData = $orderInformation->shipping;
+        $invoiceShipping = $this->insertInvoiceShipping($invoiceId, $portalContactIds, $contactInformationPostData,$shippingPostData);
+        
+        $otherCostData = null;
         $invoiceOtherCost = $this->insertOtherCosts($invoiceId,$otherCostData);
         $this->insertOrderStatus($portalOrderId,User::getCurrentUser()->id);
         $portalUserHistory = new PortalBizUserHistory();
         $portalUserHistory->createNewHistory(user::getCurrentUser(),DatabaseFixedValue::USER_HISTORY_ACTION_ORDER,'',$subSystemKey,$secrectKey);
-        return $invoiceId;
+        $returndata = array(
+            'invoiceId' => $invoiceId,
+            'orderId' => $portalOrderId
+            );
+        return $returndata;
     }
     
     /**
@@ -40,20 +50,21 @@ class PortalPaymentManager extends PortalBizPayment{
     {
         $productsModel = new PortalModelProduct();
         $objects = array();
-        foreach ($objects as $obj)
+        foreach ($products as $obj)
         {
             $product = new PortalModelProduct();
             $product->name = $obj->name;
             $product->price = $obj->price;
             $product->quantity = $obj->quantity;
-            $product->short_description = $obj->sortDes;
+            $product->short_description = $obj->shortDesc;
             $product->sub_id = $obj->id;
             $product->sub_image = $obj->image;
-            $product->totalprice = $obj->totalPrices;
+            $product->total_price = $obj->totalPrice;
             $product->actual_price = $obj->actualPrice;
             array_push($objects, $product);
         }
         $returnValue = $productsModel->bacthInsert($objects);
+        
         return $returnValue;
     }
     
@@ -88,7 +99,7 @@ class PortalPaymentManager extends PortalBizPayment{
          $portalOrder->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
          $portalOrder->created_user = $userId;
          $portalOrder->fk_user = $userId;
-         $orderId = $portalOrder->insertNewOrder();
+         $orderId = $portalOrder->insert();
          return $orderId;
     }
     
@@ -105,8 +116,8 @@ class PortalPaymentManager extends PortalBizPayment{
             $portalContactModel->full_name = $contactInformation->shipping->fullname;
             $portalContactModel->telephone = $contactInformation->shipping->telephone;
             $portalContactModel->street_address = $contactInformation->shipping->streetAddress;
-            $portalContactModel->city_district = $contactInformation->shipping->cityDistrict;
-            $portalContactModel->state_province = $contactInformation->shipping->stateProvince;
+            $portalContactModel->city_district = implode(',' ,  $contactInformation->shipping->cityDistrict);
+            $portalContactModel->state_province = implode(',' ,   $contactInformation->shipping->stateProvince);
             $portalContactModel->date_created = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
             $contactId = $portalContactModel->insert();
             $userContact['shipping'] = $contactId;
@@ -139,7 +150,7 @@ class PortalPaymentManager extends PortalBizPayment{
      * @param array $shippingPostData
      * @return NULL
      */
-    function insertInvoiceShipping($invoiceId,$userContacts,$contactPostData)
+    function insertInvoiceShipping($invoiceId,$userContacts,$contactPostData,$shippingInformation)
     {
         $shiping = new PortalModelInvoiceShipping();
         $postDataShippingInformation = $contactPostData->shipping;
@@ -156,9 +167,9 @@ class PortalPaymentManager extends PortalBizPayment{
                     $shippingItem->fk_invoice = $invoiceId;
                     $shippingItem->status = DatabaseFixedValue::SHIPPING_STATUS_ACTIVE;
                     $shippingItem->shipping_type = DatabaseFixedValue::SHIPPING_TYPE_SHIP;
-                    $shippingItem->price = $postDataShippingInformation->shippingPrices;
-                    $shippingItem->display_name = $postDataShippingInformation->shippingDisplayName;
-                    $shippingItem->sub_id = $postDataShippingInformation->shippingKey;
+                    $shippingItem->price = $shippingInformation->shippingPrice;
+                    $shippingItem->display_name = $shippingInformation->shippingDisplayName;
+                    $shippingItem->sub_id = $shippingInformation->shippingKey;
                 break;
                 case 'pay':
                     $shippingItem->fk_user_contact = $contactDetail;
@@ -186,7 +197,9 @@ class PortalPaymentManager extends PortalBizPayment{
      */
     private function insertOtherCosts($invoiceId,$otherCostCollection){
         $portalModelOtherCost = new PortalModelInvoiceOtherCost();
-        return null;
+        if($otherCostCollection == null){
+            return null;
+        }
     }
     /**
      * return temp key
@@ -198,7 +211,7 @@ class PortalPaymentManager extends PortalBizPayment{
         $dataDecoded = json_decode($data);
         $paymentTemp = new PortalModelPaymentTemp();
         $paymentTemp->data = $data;
-        $paymentTemp->fk_user = $data->user->id;
+        $paymentTemp->fk_user = $dataDecoded->user->id;
         $paymentTemp->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $paymentTemp->ip_address = $session['ip_address'];
         $paymentTemp->session_id = $session['session_id'];
@@ -248,6 +261,7 @@ class PortalPaymentManager extends PortalBizPayment{
     {
         $portalModelOrderStatus = new PortalModelOrderStatus();
         $portalModelOrderStatus->status = DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED;
+        $portalModelOrderStatus->fk_order = $orderId;
         $portalModelOrderStatus->updated_user = $userId;
         $portalModelOrderStatus->updated_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         return $portalModelOrderStatus->insert();

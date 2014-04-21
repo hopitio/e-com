@@ -214,7 +214,7 @@ class T_order{
     CONST completed_date = "completed_date" ;
 }
 class T_payment_temp{
-    CONST tableName = 't_order_product';
+    CONST tableName = 't_payment_temp';
     CONST id = "id";
     CONST fk_user = "fk_user";
     CONST created_date = "created_date";
@@ -244,6 +244,7 @@ class T_order_product{
 class T_order_status{
     CONST tableName = 't_order_status';
     CONST id = "id";
+    CONST fk_order = "fk_order";
     CONST status = "status";
     CONST updated_user = "updated_user";
     CONST updated_date = "updated_date";

@@ -81,7 +81,7 @@ Danh sách các key cần mã hóa.
 					sortDes : '[description(Mô tả ngắn, có thể là information)]',
 					price :  '1000',
 					quantity:  '10',
-					totalPrices : '10000'
+					totalPrice : '10000'
 					actualPrice : '90000',
 					taxes: [{name: 'VAT', tax: '2'}] //Từng loại thuế và tổng loại thuế đó trên sản phẩm * số lg
 				},
@@ -92,7 +92,7 @@ Danh sách các key cần mã hóa.
 					sortDes : '[description(Mô tả ngắn, có thể là information)]',
 					price :  '1000',
 					quantity:  '10',
-					totalPrices : '10000'
+					totalPrice : '10000'
 					actualPrice : '90000',
 					taxes: [{name: 'VAT', tax: '2'}] //Từng loại thuế và tổng loại thuế đó trên sản phẩm * số lg
 				}
@@ -100,7 +100,7 @@ Danh sách các key cần mã hóa.
 			shipping : {
 				shippingKey : '[shippingUniqueId-SubsytemId]',
 				shippingDisplayName : '[displayName]',
-				shippingPrices : '100',
+				shippingPrice : '100',
 			}
 			addresses :{
 				shipping: {

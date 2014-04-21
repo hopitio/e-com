@@ -14,6 +14,7 @@ require_once APPPATH.'models/biz/PortalBizLogin.php';
 require_once APPPATH.'models/biz/PortalBizPassoword.php';
 require_once APPPATH.'models/biz/PortalBizPayment.php';
 require_once APPPATH.'models/biz/PortalBizUserHistory.php';
+require_once APPPATH.'models/biz/PortalBizPaymentHistory.php';
 
 
 

@@ -48,6 +48,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
         $route['portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
+        $route['portal/payment/history/(:any)'] = 'portalController/paymentHistory/showPage/$1';
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -60,6 +61,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/getInformation';
         $route['portal/help/send_email'] = 'portalController/help/send_email';
         $route['portal/help/start_chat'] = 'portalController/help/start_chat';
+        $route['portal/order/submit'] = 'portalController/paymentChoice/submitOrder';
+       
     }
 }
 //

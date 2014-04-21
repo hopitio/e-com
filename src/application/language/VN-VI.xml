@@ -87,4 +87,5 @@
     <portalOrder_orderCheckinComplete></portalOrder_orderCheckinComplete>
     <seller_show_products></seller_show_products>
     <seller_add_product></seller_add_product>
+    <portalOrder_orderHistory></portalOrder_orderHistory>
 </data>

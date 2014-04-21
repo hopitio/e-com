@@ -22,6 +22,8 @@ require_once APPPATH.'models/modelEx/PortalModelUser.php';
 require_once APPPATH.'models/modelEx/PortalModelUserContact.php';
 require_once APPPATH.'models/modelEx/PortalModelUserHistory.php';
 require_once APPPATH.'models/modelEx/PortalModelUserSetting.php';
+require_once APPPATH.'models/modelEx/PortalModelOrderStatus.php';
+
 
 //payment portal
 require_once APPPATH.'models/payment/payment.inc';

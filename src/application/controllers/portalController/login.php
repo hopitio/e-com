@@ -28,8 +28,6 @@ class login extends BaseController
         	    $this->authenicate();
         	    break;
         	default:
-        	    echo var_export($this->input->post(),true);
-        	    die;
         	    throw new Lynx_RequestException(__CLASS__.'::indexPost: Sai paramater '.var_export($c,true));
         	break;
         }
@@ -299,17 +297,16 @@ class login extends BaseController
     function onLoginCompleteSaveHistory($data)
     {
         $user = clone $this->obj_user;
-        
         $data = $data == null ? $this->input->post() : $data;
         $subName = '';
-        if (empty($data['subSys']))
+        if (empty($data['subSys']) || !isset($data['subSys']))
         {
             $subName = 'default';
         }
         $portalHistory = new PortalBizUserHistory();
         $portalHistory->createNewHistory($this->obj_user, 
             DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN, date("Y-m-d H:i:s"), 
-            $data['subSys'], $user->secretKey);
+            $subName, $user->secretKey);
     }
     
     function onLoginCompleteRedirect($data){

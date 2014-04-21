@@ -34,21 +34,14 @@ class PortalModelBase extends CI_Model
         $propertiesList = $refl->getConstants();
         $class = $this->_constIntanceName;
         $id = $class::id;
-        $this->_dbPortal->where($class::id,$this->$id);
+        $this->_dbPortal->where($id,$this->id);
         $query = $this->_dbPortal->get($class::tableName);
-        
         $result = $query->result();
-        if(count($result) <= 0){
-            return false;
-        }
-        foreach($propertiesList as $property)
+        if(count($result) > 0)
         {
-            if(isset($this->$property))
-            {
-                $this->$property = $result[0]->$property;
-            }
+            $this->autoMappingObj($result[0]);
         }
-        return true;
+        return $this;
     }
     
     public function insert()
@@ -107,14 +100,14 @@ class PortalModelBase extends CI_Model
         if(!isset($this->_constIntanceName) || $this->_constIntanceName == null){
             throw new Lynx_Exception(__CLASS__ . ' '. __FUNCTION__ . 'Model không hỗ trợ');
         }
-        
+        $ids = array();
         $refl = new ReflectionClass($this->_constIntanceName);
         $propertiesList = $refl->getConstants();
         $class = $this->_constIntanceName;
         $id = $class::id;
         
         $data = array();
-        foreach ($objects as $obj)
+        foreach ($objects as &$obj)
         {
             if(get_class($this) != get_class($obj)){
                 throw new Lynx_Exception(__CLASS__ . ' '. __FUNCTION__ . ' Gói dữ liệu chưa đúng');
@@ -127,10 +120,13 @@ class PortalModelBase extends CI_Model
                 }
                 $oneRow[$property] = $obj->$property;
             }
+            
+            $this->_dbPortal->insert($class::tableName,$oneRow);
+            $oneRow[$id] = $this->_dbPortal->insert_id();
+            $obj->id = $oneRow[$id];
             array_push($data, $oneRow);
         }
-        
-        return $this->_dbPortal->insert_batch($class::tableName,$data);
+        return $objects;
     }
     
     /**
@@ -141,15 +137,13 @@ class PortalModelBase extends CI_Model
     {
         $refl = new ReflectionClass($this->_constIntanceName);
         $propertiesList = $refl->getConstants();
+        
         $class = $this->_constIntanceName;
         $data = array();
-        foreach ($propertiesList as $property){
-        
-            if($property == $class::tableName || !isset($this->$property) )
+        foreach ($propertiesList as $property)
+        {
+            if($property == $class::tableName || !isset($result->$property) )
             {
-                continue;
-            }
-            if(isset($result->$property)){
                 continue;
             }
             $this->$property = $result->$property;

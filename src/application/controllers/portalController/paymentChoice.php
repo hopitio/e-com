@@ -21,8 +21,8 @@ class paymentChoice extends BaseController
        
        $paymentManager = new PortalPaymentManager();
        $tempData = $paymentManager->getPaymentByPaymentKey($data);
-       $data = $tempData->data;
-       $paymentManager->createNewOrder($data, $data->su);
+       $data = json_decode($tempData->data);
+       $portalOrderData = $paymentManager->createNewOrder($data, $data->su,$data->secretKey);
        $paymentManager->updatePaymentTempToProcessed($tempData);
        
        $dataview = array();
@@ -30,11 +30,21 @@ class paymentChoice extends BaseController
        $dataview['user'] = User::getCurrentUser();
        $dataview['currency'] = $this->config->item('support_currency');
        $dataview['payment'] = $this->config->item('payment_gateway_supported');
+       $dataview['portalOrder'] = $portalOrderData;
        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataview)->render('portalOrder/orderCheckinComplete');
     }
     
-    function updateInvoice()
+    function submitOrder()
     {
+        $data = $this->input->post();
+        
+        $orderId = $data['orderId'];
+        $invoiceId = $data['invoiceId'];
+        $paymentMethod = $data['paymentChoice'];
+        
+        $paymentBiz = new PortalBizPayment();
+        $paymentBiz->paymentOrderComplete($orderId, $invoiceId, $paymentMethod);
+        redirect('/portal/account');
         
     }
 }

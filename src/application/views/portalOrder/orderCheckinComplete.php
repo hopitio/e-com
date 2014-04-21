@@ -1,4 +1,4 @@
-<form method="post">
+<form action="/portal/order/submit" method="post">
 
 <div>
     Đơn hàng của : <?php echo $user->firstname . ' ' . $user->lastname;?>
@@ -80,7 +80,7 @@
             $total = $totalPrices + $totalfree;
         ?>
         <tr>
-            <td><input type="radio" name="paymentChoice" value="<?php echo $paymentKey;?>" /></td>
+            <td><input checked type="radio" name="paymentChoice" value="<?php echo $paymentKey;?>" /></td>
             <td><?php echo $payment[$paymentKey]['displayName'];?></td>
             <td><?php echo $freeSynx;?></td>
             <td><?php echo $totalfree; ?></td>
@@ -88,5 +88,8 @@
         </tr>
         <?php } ?>
 </table>
+<input name="orderId" value="<?php echo $portalOrder['orderId'];?>" type="hidden"/>
+<input name="invoiceId" value="<?php echo $portalOrder['invoiceId'];?>" type="hidden"/>
+    <button>NEXT</button>
 </form>
 
