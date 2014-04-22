@@ -1,0 +1,117 @@
+@CHARSET "UTF-8";
+.container .banner{
+	display:inline-block;
+	width:100%;
+}
+.banner .slide
+{
+    width:100%;
+    background: #EFF5F8;
+    display:inline-block;
+    height:545px;
+}
+.banner .suggest{
+    width:100%;
+    background: white;
+    display:inline-block;
+    height:45px;
+	background: transparent url('../images/suggest-bg.png') repeat-x top left;
+}
+.suggest .suggetWarp{
+    display:inline-block;
+}
+.suggest .suggestItem{
+	width:33%;
+    display:inline-block;
+	height:60px;
+	margin-top:-20px;
+}
+.suggest .step1{
+    background: transparent url('../images/suggest-setp1-bg.png') no-repeat center top;
+}
+.suggest .step2{
+    background: transparent url('../images/suggest-setp2-bg.png') no-repeat center top;
+}
+.suggest .step3{
+    background: transparent url('../images/suggest-setp3-bg.png') no-repeat center top;
+}
+.container .hotProducts{
+    height:430px;
+	display:inline-block;
+}
+.hotProducts .hotItemsContainer{
+    height:370px;
+	padding:15px;
+	background-color: #F3F3F3;
+	width:100%;
+}
+.hotItemsContainer .head{
+	background: transparent url('../images/line.png') repeat-x center left;
+    
+}
+.hotItemsContainer .head span{
+	background-color: #F3F3F3;
+    color: #5C850F;
+	float:left;
+	font-size:22px;
+	font-weight: bold;
+}
+.listItem{
+    display:inline-block;
+}
+.listItem .item{
+    width:260px;
+	height:306px;
+	background: white;
+	margin-left:13px;
+	float:left;
+	padding:12px;
+	border-radius:7px;
+	border: solid 1px #E7E7E7;
+}
+.item img{
+    border: solid 1px #E7E7E7;
+	width: 100%;
+	height:215px;
+}
+.item .detailContainer{
+    margin-top:15px;
+}
+.detailContainer .name{
+    width: 160px;
+	float: left;
+	font-size:15px;
+	text-align:left;
+	color:black;
+	font-weight: bold;
+	line-height:17px;
+}
+.detailContainer .price{
+    color:#F0B21C;
+	font-family: arial;
+	font-size: 20px;
+	font-weight: bold;
+	float:right;
+	line-height:22px;
+	margin-top:-4px;
+}
+.detailContainer .userName{
+    float: left;
+    font-size:13px;
+    text-align:left;
+    width:100%;
+	line-height:15px;
+}
+.detailContainer .star{
+    float:left;
+    width:150px;
+    text-align: left;
+}
+.detailContainer .view{
+    float:right;
+    text-align: right;
+	font-size:12px;
+	padding-left:20px;
+    background: transparent url('../images/view-icon.png') no-repeat center left;
+	line-height: 12px;
+}

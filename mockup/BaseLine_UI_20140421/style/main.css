@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+* {margin: 0px; padding: 0px;text-align: center;font-family: Levenim MT;color:#939393; font-size: 14px;font-weight: normal;font-style: normal;text-decoration: none;}
+body{background-color: white;}
+.container{}
+.staticWidth{width:1200px;}
+.head{
+    display:inline-block;
+    width:100%;
+}
+.head .headWarp{
+    display:inline-block;
+}
+
+.head .logo{
+    background: transparent url('../images/logo.png') no-repeat top left;
+    float:left;
+    width:254px;
+    height: 50px;
+    display:inline-block;
+    margin:14px 0px;
+}
+.head .headLeft{
+    float:right;
+    margin-top: 45px;
+}
+.head .headLeft .sell,.liveChat,.language .label{
+    font-size: 12px;
+    line-height: 22px;
+}
+.head .headLeft .sell,.liveChat,.language{
+    margin-left: 10px;
+    float:left;
+}
+.head .headLeft .liveChat{
+    background: transparent url('../images/chat-icon.png') no-repeat top left;
+    padding-left:24px;
+}
+.head .headLeft .sell{
+    background: transparent url('../images/sell-icon.png') no-repeat top left;
+    padding-left:20px;
+}
+.head .headMenu {
+    width:100%;
+    height:43px;
+    background:#5c850f;
+}
+.headMenu .menuWarp
+{
+    display:inline-block;
+	height:43px;
+}
+.headMenu .menuWarp .category{
+    width:145px;
+	margin-right:15px;
+	float:left;
+	text-align: right;
+	color:#c3df63;
+	line-height:44px;
+	font-size:16px;
+}
+.headMenu .menuWarp .searchForm{
+    padding: 3px 5px;
+    width:700px;
+    height:37px;
+    float:left;
+    background: #448e41;
+}
+.searchForm input,.searchForm span {
+    float:left;
+    line-height:40px;
+    color:#c3df63;
+    padding:0px 15px;
+	font-size:16px;
+}
+.searchForm input{
+    height:33px;
+	width:560px;
+}
+.searchForm span{
+    margin-left:10px;
+}
+.menuWarp .loginLabel{
+    padding-left:10px;
+    float:left;
+}
+.menuWarp .loginLabel a{
+	line-height:44px;
+	font-size:12px;
+	color:#c3df63;
+}
+.menuWarp .miniCart{
+    line-height:44px;
+    font-size:12px;
+    color:#c3df63;
+    float:right;
+    padding-left:30px;
+    background: transparent url('../images/cart-mini-icon.png') no-repeat center left;
+}
+
