@@ -36,17 +36,18 @@
     background: transparent url('../images/suggest-setp3-bg.png') no-repeat center top;
 }
 .container .hotProducts{
-    height:430px;
+    height:435px;
 	display:inline-block;
+	background: transparent url('../images/hot-footer.png') no-repeat center 395px;
 }
 .hotProducts .hotItemsContainer{
-    height:370px;
+    width:1170px;
+    height:365px;
 	padding:15px;
 	background-color: #F3F3F3;
-	width:100%;
 }
 .hotItemsContainer .head{
-	background: transparent url('../images/line.png') repeat-x center left;
+	background: transparent url('../images/line.png') repeat-x 0px 13px;
     
 }
 .hotItemsContainer .head span{
@@ -54,24 +55,23 @@
     color: #5C850F;
 	float:left;
 	font-size:22px;
-	font-weight: bold;
 }
 .listItem{
     display:inline-block;
 }
 .listItem .item{
-    width:260px;
-	height:306px;
+    width:255px;
+	height:302px;
 	background: white;
-	margin-left:13px;
+	margin:0px 4px 0px 4px;
 	float:left;
-	padding:12px;
+	padding:13px;
 	border-radius:7px;
 	border: solid 1px #E7E7E7;
 }
 .item img{
     border: solid 1px #E7E7E7;
-	width: 100%;
+	width: 255px;
 	height:215px;
 }
 .item .detailContainer{
@@ -80,11 +80,10 @@
 .detailContainer .name{
     width: 160px;
 	float: left;
-	font-size:15px;
+	font-size:14px;
 	text-align:left;
 	color:black;
 	font-weight: bold;
-	line-height:17px;
 }
 .detailContainer .price{
     color:#F0B21C;
@@ -92,20 +91,24 @@
 	font-size: 20px;
 	font-weight: bold;
 	float:right;
-	line-height:22px;
 	margin-top:-4px;
 }
 .detailContainer .userName{
     float: left;
-    font-size:13px;
+    font-size:12px;
     text-align:left;
     width:100%;
-	line-height:15px;
 }
 .detailContainer .star{
     float:left;
     width:150px;
     text-align: left;
+    height:20px;
+}
+.detailContainer .star img{
+    height:20px;
+	border:none;
+	width:auto;
 }
 .detailContainer .view{
     float:right;
@@ -114,4 +117,125 @@
 	padding-left:20px;
     background: transparent url('../images/view-icon.png') no-repeat center left;
 	line-height: 12px;
+	margin-top:4px;
+}
+.container .listProducts
+{
+    width:1170px;
+	padding:0px 15px 0px 15px;
+    display:inline-block;
+    margin-bottom:37px;
+}
+.listProducts .head{
+    height: 35px;
+	background: transparent url('../images/list-product-head-bg.png') no-repeat center bottom;
+}
+.listProducts .head span{
+    font-size: 22px;
+    line-height: 31px;
+    padding: 4px 80px 0px 5px;
+	float:left;
+	background-color: #D1E380;
+	color:#5B850F;
+}
+.listProducts .navigateLink a{
+	font-size: 14px;
+	line-height: 46px;
+	color:#5B850F;
+	float:right;
+}
+.listProducts .itemConatiner{
+    display:inline-block;
+}
+
+.listProducts .item{
+    width:255px;
+    height:302px;
+    background: white;
+    margin:0px 4px 0px 4px;
+    float:left;
+    padding:13px;
+    border-radius:7px;
+    border: solid 1px #E7E7E7;
+	margin-bottom:30px;
+}
+.item img{
+    border: solid 1px #E7E7E7;
+    width: 255px;
+    height:215px;
+}
+.item .detailContainer{
+    margin-top:15px;
+}
+.detailContainer .name{
+    width: 160px;
+    float: left;
+    font-size:14px;
+    text-align:left;
+    color:black;
+    font-weight: bold;
+}
+.detailContainer .price{
+    color:#F0B21C;
+    font-family: arial;
+    font-size: 20px;
+    font-weight: bold;
+    float:right;
+    margin-top:-4px;
+}
+.detailContainer .userName{
+    float: left;
+    font-size:12px;
+    text-align:left;
+    width:100%;
+}
+.detailContainer .star{
+    float:left;
+    width:150px;
+    text-align: left;
+    height:20px;
+}
+.detailContainer .star img{
+    height:20px;
+    border:none;
+    width:auto;
+}
+.detailContainer .view{
+    float:right;
+    text-align: right;
+    font-size:12px;
+    padding-left:20px;
+    background: transparent url('../images/view-icon.png') no-repeat center left;
+    line-height: 12px;
+    margin-top:4px;
+}
+.listProducts div.towCol{
+    width:580px;
+	padding:0px;
+	border:none;
+	height:330px;
+	margin: 0px 8px 30px 0px;
+}
+.listProducts div.towCol img{
+    width:580px;
+	height:330px;
+}
+
+.container .slideGroup{
+    width:1170px;
+    display:inline-block;
+    margin-bottom: 40px;
+}
+.container .slideGroup .item{
+    float:left;
+	margin:0px 8px;
+}
+.container .slideGroup div.first-child{
+    margin:0px 8px 0px 0px;
+}
+.container .slideGroup div.last-child{
+    margin:0px 0px 0px 8px;
+}
+.container .slideGroup .item img{
+    width: 375px;
 }
