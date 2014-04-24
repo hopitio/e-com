@@ -1,83 +1,89 @@
 @CHARSET "UTF-8";
-.container .banner{
+.lynx_container .lynx_banner{
 	display:inline-block;
 	width:100%;
 }
-.banner .slide
+.lynx_banner .lynx_slide
 {
     width:100%;
     background: #EFF5F8;
     display:inline-block;
     height:545px;
 }
-.banner .suggest{
+.lynx_banner .lynx_suggest{
     width:100%;
     background: white;
     display:inline-block;
     height:45px;
 	background: transparent url('../images/suggest-bg.png') repeat-x top left;
 }
-.suggest .suggetWarp{
+.lynx_suggest .lynx_suggetWarp{
     display:inline-block;
 }
-.suggest .suggestItem{
+.lynx_suggest .lynx_suggestItem{
 	width:33%;
     display:inline-block;
 	height:60px;
 	margin-top:-20px;
 }
-.suggest .step1{
+.lynx_suggest .lynx_step1{
     background: transparent url('../images/suggest-setp1-bg.png') no-repeat center top;
 }
-.suggest .step2{
+.lynx_suggest .lynx_step2{
     background: transparent url('../images/suggest-setp2-bg.png') no-repeat center top;
 }
-.suggest .step3{
+.lynx_suggest .lynx_step3{
     background: transparent url('../images/suggest-setp3-bg.png') no-repeat center top;
 }
-.container .hotProducts{
+.lynx_container .lynx_hotProducts{
     height:435px;
 	display:inline-block;
 	background: transparent url('../images/hot-footer.png') no-repeat center 395px;
 }
-.hotProducts .hotItemsContainer{
-    width:1170px;
-    height:365px;
+.lynx_hotProducts .lynx_hotItemsContainer{
+    width:1200px;
+    height:395px;
 	padding:15px;
 	background-color: #F3F3F3;
 }
-.hotItemsContainer .head{
+.lynx_hotItemsContainer .lynx_head{
 	background: transparent url('../images/line.png') repeat-x 0px 13px;
     
 }
-.hotItemsContainer .head span{
+.lynx_hotItemsContainer .lynx_head span{
 	background-color: #F3F3F3;
     color: #5C850F;
 	float:left;
 	font-size:22px;
 }
-.listItem{
-    display:inline-block;
+.lynx_listItem{
+	
 }
-.listItem .item{
-    width:255px;
-	height:302px;
+.lynx_listItem .lynx_item{
+    width:282px;
+	height:329px;
 	background: white;
-	margin:0px 4px 0px 4px;
+	margin:0px 6px 0px 6px;
 	float:left;
 	padding:13px;
 	border-radius:7px;
 	border: solid 1px #E7E7E7;
 }
-.item img{
+.lynx_listItem .lynx_hotFirst{
+    margin-left: 0px;
+}
+.lynx_listItem .lynx_hotLast{
+    margin-right: 0px;
+}
+.lynx_item img{
     border: solid 1px #E7E7E7;
 	width: 255px;
 	height:215px;
 }
-.item .detailContainer{
+.lynx_item .lynx_detailContainer{
     margin-top:15px;
 }
-.detailContainer .name{
+.lynx_detailContainer .lynx_name{
     width: 160px;
 	float: left;
 	font-size:14px;
@@ -85,7 +91,7 @@
 	color:black;
 	font-weight: bold;
 }
-.detailContainer .price{
+.lynx_detailContainer .lynx_price{
     color:#F0B21C;
 	font-family: arial;
 	font-size: 20px;
@@ -93,24 +99,24 @@
 	float:right;
 	margin-top:-4px;
 }
-.detailContainer .userName{
+.lynx_detailContainer .lynx_userName{
     float: left;
     font-size:12px;
     text-align:left;
     width:100%;
 }
-.detailContainer .star{
+.lynx_detailContainer .lynx_star{
     float:left;
     width:150px;
     text-align: left;
     height:20px;
 }
-.detailContainer .star img{
+.lynx_detailContainer .lynx_star img{
     height:20px;
 	border:none;
 	width:auto;
 }
-.detailContainer .view{
+.lynx_detailContainer .lynx_view{
     float:right;
     text-align: right;
 	font-size:12px;
@@ -119,18 +125,18 @@
 	line-height: 12px;
 	margin-top:4px;
 }
-.container .listProducts
+.lynx_container .lynx_listProducts
 {
-    width:1170px;
+    width:1200px;
 	padding:0px 15px 0px 15px;
     display:inline-block;
     margin-bottom:37px;
 }
-.listProducts .head{
+.lynx_listProducts .lynx_head{
     height: 35px;
 	background: transparent url('../images/list-product-head-bg.png') no-repeat center bottom;
 }
-.listProducts .head span{
+.lynx_listProducts .lynx_head span{
     font-size: 22px;
     line-height: 31px;
     padding: 4px 80px 0px 5px;
@@ -138,36 +144,39 @@
 	background-color: #D1E380;
 	color:#5B850F;
 }
-.listProducts .navigateLink a{
+.lynx_listProducts .lynx_navigateLink{
+    width:100%;
+    display:inline-block;
+}
+.lynx_listProducts .lynx_navigateLink a{
 	font-size: 14px;
 	line-height: 46px;
 	color:#5B850F;
 	float:right;
 }
-.listProducts .itemConatiner{
-    display:inline-block;
+.lynx_listProducts .lynx_itemConatiner{
 }
 
-.listProducts .item{
-    width:255px;
-    height:302px;
+.lynx_listProducts .lynx_item{
+    width:280px;
+    height:329px;
     background: white;
-    margin:0px 4px 0px 4px;
+    margin:0px 5px 0px 5px;
     float:left;
     padding:13px;
     border-radius:7px;
     border: solid 1px #E7E7E7;
 	margin-bottom:30px;
 }
-.item img{
+.lynx_item img{
     border: solid 1px #E7E7E7;
     width: 255px;
     height:215px;
 }
-.item .detailContainer{
+.lynx_item .lynx_detailContainer{
     margin-top:15px;
 }
-.detailContainer .name{
+.lynx_detailContainer .lynx_name{
     width: 160px;
     float: left;
     font-size:14px;
@@ -175,7 +184,7 @@
     color:black;
     font-weight: bold;
 }
-.detailContainer .price{
+.lynx_detailContainer .lynx_price{
     color:#F0B21C;
     font-family: arial;
     font-size: 20px;
@@ -183,24 +192,24 @@
     float:right;
     margin-top:-4px;
 }
-.detailContainer .userName{
+.lynx_detailContainer .lynx_userName{
     float: left;
     font-size:12px;
     text-align:left;
     width:100%;
 }
-.detailContainer .star{
+.lynx_detailContainer .lynx_star{
     float:left;
     width:150px;
     text-align: left;
     height:20px;
 }
-.detailContainer .star img{
+.lynx_detailContainer .lynx_star img{
     height:20px;
     border:none;
     width:auto;
 }
-.detailContainer .view{
+.lynx_detailContainer .lynx_view{
     float:right;
     text-align: right;
     font-size:12px;
@@ -209,33 +218,49 @@
     line-height: 12px;
     margin-top:4px;
 }
-.listProducts div.towCol{
+.lynx_listProducts div.lynx_towCol{
     width:580px;
 	padding:0px;
 	border:none;
-	height:330px;
 	margin: 0px 8px 30px 0px;
 }
-.listProducts div.towCol img{
-    width:580px;
-	height:330px;
+.lynx_listProducts div.lynx_towCol img{
+    width:578px;
+	height:329px;
 }
 
-.container .slideGroup{
-    width:1170px;
+.lynx_container .lynx_slideGroup{
+    width:1200px;
     display:inline-block;
     margin-bottom: 40px;
 }
-.container .slideGroup .item{
+.lynx_container .lynx_slideGroup .lynx_item{
     float:left;
 	margin:0px 8px;
 }
-.container .slideGroup div.first-child{
+.lynx_container .lynx_slideGroup div.lynx_first-child{
     margin:0px 8px 0px 0px;
 }
-.container .slideGroup div.last-child{
+.lynx_container .lynx_slideGroup div.lynx_last-child{
     margin:0px 0px 0px 8px;
 }
-.container .slideGroup .item img{
+.lynx_container .lynx_slideGroup .lynx_item img{
     width: 375px;
+}
+.lynx_hotProducts .lynx_hotSildeButton{
+    height:395px;
+	width:37px;
+	display:inline-block;
+	cursor: pointer;
+}
+.lynx_hotProducts .lynx_left{
+    float:left;
+	margin-left: -44px;
+	background: transparent url('../images/hot-products-button-left.fw.png') no-repeat center left;
+}
+.lynx_hotProducts .lynx_right{
+    float:right;
+	margin-top:-395px;
+    margin-right: -44px;
+	background: transparent url('../images/hot-products-button-right.fw.png') no-repeat center left;
 }
