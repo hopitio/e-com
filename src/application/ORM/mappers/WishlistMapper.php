@@ -40,9 +40,9 @@ class WishlistMapper extends MapperAbstract
      * @param type $fields
      * @return WishlistDomain
      */
-    function findAll()
+    function findAll($callback = null)
     {
-        $instances = parent::findAll();
+        $instances = parent::findAll($callback);
         if ($this->_autoloadDetails)
         {
             foreach ($instances as &$instance)
@@ -56,9 +56,9 @@ class WishlistMapper extends MapperAbstract
     /**
      * @return WishlistDomain
      */
-    function find()
+    function find($callback = null)
     {
-        $domain = parent::find();
+        $domain = parent::find($callback);
 
         if ($this->_autoloadDetails)
         {

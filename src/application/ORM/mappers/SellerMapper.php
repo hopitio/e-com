@@ -35,13 +35,13 @@ class SellerMapper extends MapperAbstract
     }
 
     /** @return SellerDomain */
-    function find()
+    function find($callback = null)
     {
         if (!$this->user)
         {
             throw new Lynx_BusinessLogicException(get_class($this) . '::setUser()  chưa được gọi');
         }
-        return parent::find();
+        return parent::find($callback);
     }
 
     function makeDomainCallback(&$domainInstance)

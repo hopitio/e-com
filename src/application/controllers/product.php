@@ -13,10 +13,11 @@ class product extends BaseController
                         ->setLanguage(User::getCurrentUser()->languageKey)
                         ->autoloadAttributes()
                         ->filterID($productID)->find();
-        $data    = array('product' => $product);
+        $data = array('product' => $product);
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data, true)
                 ->render('product/details');
     }
+
 
 }

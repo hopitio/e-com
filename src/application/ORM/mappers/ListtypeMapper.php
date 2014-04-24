@@ -23,9 +23,9 @@ class ListtypeMapper extends MapperAbstract
      * @param string $fields
      * @return ListtypeDomain
      */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     function filterStatus($isActive = true)

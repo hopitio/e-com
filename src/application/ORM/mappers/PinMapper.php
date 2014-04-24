@@ -12,7 +12,7 @@ class PinMapper extends ProductFixedMapper
     {
         parent::__construct($domain);
         $this->_map = array(
-            'fkUser' => 'fk_user',
+            'fkUser'    => 'fk_user',
             'fkProduct' => 'fk_product'
                 ) + $this->_map;
         $this->_query->orderBy('pin.id');
@@ -37,17 +37,17 @@ class PinMapper extends ProductFixedMapper
         }
     }
 
-    function select($fields = 'pin.*, p.*')
+    function select($fields = 'pin.*, p.*', $reset = false)
     {
-        parent::select($fields);
+        parent::select($fields, $reset);
         return $this;
     }
 
     /** @return PinDomain */
-    function findAll()
+    function findAll($callback = null)
     {
         $this->_isSetUser();
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
 }

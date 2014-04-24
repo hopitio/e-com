@@ -28,9 +28,9 @@ class LocationMapper extends MapperAbstract
     /**
      * @return LocationDomain
      */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     /**

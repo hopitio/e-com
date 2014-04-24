@@ -6,8 +6,8 @@ class ProductMapper extends MapperAbstract
 {
 
     protected $_autoloadAttributes = false;
-    protected $_attributeLanguage  = null;
-    protected $_autoloadTaxes      = false;
+    protected $_attributeLanguage = null;
+    protected $_autoloadTaxes = false;
 
     function __construct($domain = 'ProductDomain')
     {
@@ -70,9 +70,9 @@ class ProductMapper extends MapperAbstract
      * @param type $fields
      * @return ProductDomain
      */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     function makeDomainCallback(&$domainInstance)
@@ -93,9 +93,9 @@ class ProductMapper extends MapperAbstract
      * @param type $fields
      * @return ProductDomain
      */
-    function findAll()
+    function findAll($callback = null)
     {
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
     protected function _getCategoryByCode($codename)

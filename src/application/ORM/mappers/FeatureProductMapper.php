@@ -18,14 +18,14 @@ class FeatureProductMapper extends ProductFixedMapper
      * @param type $fields
      * @return FeatureProductDomain
      */
-    function findAll()
+    function findAll($callback = null)
     {
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
-    function select($fields = "p.*, fp.id AS fid, fp.fk_product, fp.is_on_homepage, fp.sort")
+    function select($fields = "p.*, fp.id AS fid, fp.fk_product, fp.is_on_homepage, fp.sort", $reset = false)
     {
-        return parent::select($fields);
+        return parent::select($fields, $reset);
     }
 
     /**
@@ -34,9 +34,9 @@ class FeatureProductMapper extends ProductFixedMapper
      * @param type $fields
      * @return FeatureProductDomain
      */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     function filterID($id)

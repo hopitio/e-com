@@ -82,6 +82,28 @@ class ProductFixedDomain extends ProductDomain
         return false;
     }
 
+    function getPriceString($currency)
+    {
+        $prices = $this->_getAttributeByName('price');
+        $value = 0;
+        if (!$prices)
+        {
+            return false;
+        }
+        foreach ($prices as $priceCurrency)
+        {
+            if (strtoupper($priceCurrency->valueVarchar) == strtoupper($currency))
+            {
+                $value = $priceCurrency->getTrueValue();
+                switch ($currency) {
+                    case 'USD':
+                        return '$' . $value;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * Tính toán giá bán cuối cùng
      * @param type $currency

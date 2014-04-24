@@ -28,9 +28,9 @@ class ShippingMethodMapper extends MapperAbstract
      * @param type $fields
      * @return ShippingMethodDomain
      */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     function filterCodename($codename)
@@ -45,9 +45,9 @@ class ShippingMethodMapper extends MapperAbstract
      * @param type $fields
      * @return ShippingMethodDomain
      */
-    function findAll()
+    function findAll($callback = null)
     {
-        $domains = parent::findAll();
+        $domains = parent::findAll($callback);
         if ($this->_autoloadShippingLocations)
         {
             /* @var $domains ShippingMethodDomain */

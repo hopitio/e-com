@@ -71,15 +71,15 @@ class OrderMapper extends MapperAbstract
     }
 
     /** @return OrderDomain */
-    function findAll()
+    function findAll($callback = null)
     {
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
     /** @return OrderDomain */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     function loadOrderProduct(OrderDomain $order)

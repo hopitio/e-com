@@ -21,9 +21,9 @@ class ShippingLocationMapper extends MapperAbstract
     /**
      * @return ShippingLocationDomain
      */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     /**
@@ -31,9 +31,9 @@ class ShippingLocationMapper extends MapperAbstract
      * @param type $fields
      * @return ShippingLocationDomain
      */
-    function findAll()
+    function findAll($callback = null)
     {
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
     function filterShippingMethod($shippingMethodID)

@@ -14,7 +14,7 @@ class ProductDomain implements DomainInterface
     protected $_attributes = array();
 
     /** @var TaxDomain */
-    protected $_taxes      = array();
+    protected $_taxes = array();
 
     function isGroup()
     {
@@ -46,7 +46,6 @@ class ProductDomain implements DomainInterface
     {
         $this->_taxes[$tax->codename] = $tax;
     }
-
 
     /**
      * 

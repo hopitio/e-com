@@ -6,7 +6,7 @@ class Query
 {
 
     static protected $_instance;
-    protected $_select;
+    protected $_select = array();
     protected $_from;
     protected $_join = array();
     protected $_where = array();
@@ -42,7 +42,8 @@ class Query
 
     public function __toString()
     {
-        $sql = "SELECT {$this->_select} FROM {$this->_from}";
+        $fields = implode(',', $this->_select);
+        $sql = "SELECT {$fields} FROM {$this->_from}";
         if (!empty($this->_join))
         {
             $sql .= "\n" . implode("\n    ", $this->_join);
@@ -75,9 +76,16 @@ class Query
         return $sql;
     }
 
-    public function select($fields = '*')
+    public function select($fields = '*', $reset = false)
     {
-        $this->_select = $fields;
+        if ($reset)
+        {
+            $this->_select = array($fields);
+        }
+        else
+        {
+            $this->_select[] = $fields;
+        }
         return $this;
     }
 

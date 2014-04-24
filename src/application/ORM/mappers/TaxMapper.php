@@ -43,7 +43,7 @@ class TaxMapper extends MapperAbstract
      * 
      * @return TaxDomain
      */
-    function findAll()
+    function findAll($callback = null)
     {
         if (!$this->language)
         {
@@ -55,14 +55,14 @@ class TaxMapper extends MapperAbstract
         {
             $this->_query->innerJoin('t_product_tax pt', 'pt.fk_tax = tax.id AND pt.fk_product=' . intval($this->filterProductID));
         }
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
     /**
      * 
      * @return TaxDomain
      */
-    function find()
+    function find($callback = null)
     {
         if (!$this->language)
         {
@@ -70,7 +70,7 @@ class TaxMapper extends MapperAbstract
         }
 
         $this->_query->innerJoin('t_tax_language tl', "tax.id = tl.fk_tax AND tl.language='{$this->language}'");
-        return parent::find();
+        return parent::find($callback);
     }
 
 }

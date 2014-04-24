@@ -44,8 +44,8 @@ abstract class MapperAbstract
     public function __construct($domain, Query $query, $map = null)
     {
         $this->_domain = $domain;
-        $this->_query  = $query;
-        $this->_map    = $map;
+        $this->_query = $query;
+        $this->_map = $map;
     }
 
     /**
@@ -75,7 +75,7 @@ abstract class MapperAbstract
      */
     public function makeDomain($record)
     {
-        $class    = $this->_domain;
+        $class = $this->_domain;
         $instance = new $class;
         $this->map($instance, $record);
         $this->makeDomainCallback($instance);
@@ -105,18 +105,13 @@ abstract class MapperAbstract
             {
                 continue;
             }
-            $field          = $this->_map[$prop];
+            $field = $this->_map[$prop];
             $return[$field] = $value;
         }
         return $return;
     }
 
-    /**
-     * 
-     * @param type $fields
-     * @return Domain[]
-     */
-    public function findAll()
+    public function findAll($callback = null)
     {
         $recordset = DB::getInstance()->GetAll($this->_query, $this->_queryParams);
         if (empty($recordset))
@@ -126,7 +121,12 @@ abstract class MapperAbstract
         $domains = array();
         foreach ($recordset as $record)
         {
-            $domains[] = $this->makeDomain($record);
+            $domain = $this->makeDomain($record);
+            $domains[] = $domain;
+            if (is_callable($callback))
+            {
+                call_user_func($callback, $record, $domain);
+            }
         }
         return $domains;
     }
@@ -141,19 +141,20 @@ abstract class MapperAbstract
         return DB::getInstance()->GetAssoc($this->_query, $this->_queryParams);
     }
 
-    /**
-     * @param string $fields
-     * @return DomainInterface 
-     */
-    function find()
+    function find($callback)
     {
         $record = DB::getInstance()->GetRow($this->_query, $this->_queryParams);
-        return $this->makeDomain($record);
+        $domain = $this->makeDomain($record);
+        if (is_callable($callback))
+        {
+            call_user_func($callback, $record, $domain);
+        }
+        return $domain;
     }
 
-    function select($fields = '*')
+    function select($fields = '*', $reset = false)
     {
-        $this->_query->select($fields);
+        $this->_query->select($fields, $reset);
         return $this;
     }
 
@@ -181,6 +182,12 @@ abstract class MapperAbstract
         $query = clone $this->_query;
         $query->select($fields)->limit(0);
         return DB::getInstance()->GetOne($query, $this->_queryParams);
+    }
+
+    /** @return Query */
+    function getQuery()
+    {
+        return $this->_query;
     }
 
 }

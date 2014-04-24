@@ -31,17 +31,17 @@ class FileMapper extends MapperAbstract
      * @param type $fields
      * @return FileDomain
      */
-    function findAll()
+    function findAll($callback = null)
     {
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
     /**
      * @return FileDomain
      */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     function filterUser($userID)

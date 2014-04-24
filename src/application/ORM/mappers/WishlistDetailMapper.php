@@ -39,14 +39,14 @@ class WishListDetailMapper extends ProductFixedMapper
      * @param type $fields
      * @return WishlistDetailDomain
      */
-    function find()
+    function find($callback = null)
     {
-       return parent::find();
+       return parent::find($callback);
     }
 
-    function select($fields = 'wd.*, p.fk_category, p.fk_retailer, p.fk_group, p.is_group')
+    function select($fields = 'wd.*, p.fk_category, p.fk_retailer, p.fk_group, p.is_group', $reset = false)
     {
-        parent::select($fields);
+        parent::select($fields, $reset);
         return $this;
     }
 
@@ -55,9 +55,9 @@ class WishListDetailMapper extends ProductFixedMapper
      * @param type $fields
      * @return WishlistDetailMapper
      */
-    function findAll()
+    function findAll($callback = null)
     {
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
 }

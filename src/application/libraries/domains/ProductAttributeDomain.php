@@ -21,8 +21,7 @@ class ProductAttributeDomain extends ProductAttributeTypeDomain
 
     function getTrueValue()
     {
-        switch ($this->dataType)
-        {
+        switch ($this->dataType) {
             case static::DT_ENUM:
                 if ($this->_trueValue === false)
                 {
@@ -38,7 +37,7 @@ class ProductAttributeDomain extends ProductAttributeTypeDomain
             case static::DT_FILE:
                 if ($this->_trueValue === false)
                 {
-                    $this->_trueValue = FileMapper::make()->find($this->valueNumber);
+                    $this->_trueValue = FileMapper::make()->filterID($this->valueNumber)->find();
                 }
                 return $this->_trueValue;
             default:

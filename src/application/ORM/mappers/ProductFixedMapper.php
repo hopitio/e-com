@@ -10,28 +10,39 @@ class ProductFixedMapper extends ProductMapper
         parent::__construct($domain);
     }
 
+    function orderBySales($mode = 'DESC')
+    {
+        $this->_query
+                ->select('pa_hot.value_number AS sales_count')
+                ->innerJoin('t_product_attribute pa_hot', 'pa_hot.fk_product=p.id')
+                ->innerJoin('t_product_attribute_type pat_hot', 'pa_hot.fk_attribute_type = pat_hot.id AND pat_hot.codename= ?')
+                ->orderBy('pa_hot.value_number ' . $mode);
+        $this->_queryParams[__FUNCTION__] = 'sales';
+        return $this;
+    }
+
     /**
      * 
      * @param type $fields
      * @return ProductFixedDomain
      */
-    function findAll()
+    function findAll($callback = null)
     {
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
-    function select($fields = 'p.*')
+    function select($fields = 'p.*', $reset = false)
     {
-        return parent::select($fields);
+        return parent::select($fields, $reset);
     }
 
     /**
      * 
      * @return ProductFixedDomain
      */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
 }

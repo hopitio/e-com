@@ -23,9 +23,9 @@ class CategoryAttributeMapper extends MapperAbstract
         return $this;
     }
 
-    function findAll()
+    function findAll($callback = null)
     {
-        parent::findAll();
+        parent::findAll($callback);
     }
 
     function filterCategoryID($categoryID)

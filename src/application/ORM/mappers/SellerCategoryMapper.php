@@ -19,9 +19,9 @@ class SellerCategoryMapper extends CategoryMapper
     }
 
     /** @return SellerCategoryDomain */
-    function find()
+    function find($callback = null)
     {
-        return parent::find();
+        return parent::find($callback);
     }
 
     /**
@@ -29,14 +29,14 @@ class SellerCategoryMapper extends CategoryMapper
      * @return SellerCategoryDomain
      * @throws Lynx_BusinessLogicException
      */
-    function findAll()
+    function findAll($callback = null)
     {
         if (!$this->sellerID)
         {
             throw new Lynx_BusinessLogicException(get_class($this) . '::filterSeller chưa được gọi');
         }
         $this->_query->leftJoin('t_seller_category sc', 'c.id = sc.fk_category AND sc.fk_seller = ' . intval($this->sellerID));
-        return parent::findAll();
+        return parent::findAll($callback);
     }
 
 }

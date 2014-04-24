@@ -21,51 +21,26 @@ defined('BASEPATH') or die('No direct script access allowed');
                 <strong>
                     <span ng-repeat="tab in hotItemTabs">
                         <ng ng-if="$index > 0">&nbsp;&nbsp;</ng>
-                        <a href="javascript:;" ng-click="setHotTab($index)" ng-class="{active: isHotTabActive($index)}">{{tab[0]}}</a>&nbsp;&nbsp;
+                        <a href="javascript:;" ng-click="setHotTab($index)" ng-class="{
+                                    active: isHotTabActive($index)
+                                }">{{tab[0]}}</a>&nbsp;&nbsp;
                         <ng ng-if="$index < hotItemTabs.length - 1"><?php echo htmlentities('/') ?></ng>
                     </span>
                 </strong>
             </div>
             <div class="lynx_listItem">
-                <div class="lynx_item lynx_hotFirst">
-                    <img src="#" />
-                    <div class="lynx_detailContainer">
-                        <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                        <div class="lynx_price">$123,99</div>
-                        <div class="lynx_userName">Lê Thanh An </div>
-                        <div class="lynx_star"><img src="images/star.png" /></div>
-                        <div class="lynx_view">12471</div>
-                    </div>
-                </div>
-                <div class="lynx_item">
-                    <img src="#" />
-                    <div class="lynx_detailContainer">
-                        <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                        <div class="lynx_price">$123,99</div>
-                        <div class="lynx_userName">Lê Thanh An </div>
-                        <div class="lynx_star"><img src="images/star.png" /></div>
-                        <div class="lynx_view">12471</div>
-                    </div>
-                </div>
-                <div class="lynx_item">
-                    <img src="#" />
-                    <div class="lynx_detailContainer">
-                        <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                        <div class="lynx_price">$123,99</div>
-                        <div class="lynx_userName">Lê Thanh An </div>
-                        <div class="lynx_star"><img src="images/star.png" /></div>
-                        <div class="lynx_view">12471</div>
-                    </div>
-                </div>
-                <div class="lynx_item lynx_hotLast">
-                    <img src="#" />
-                    <div class="lynx_detailContainer">
-                        <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                        <div class="lynx_price">$123,99</div>
-                        <div class="lynx_userName">Lê Thanh An </div>
-                        <div class="lynx_star"><img src="images/star.png" /></div>
-                        <div class="lynx_view">12471</div>
-                    </div>
+                <div class="lynx_item" 
+                     ng-repeat="product in hotItemTabs[activeHotTab][2]"
+                     ng-class="{lynx_hotFirst: !$index, lynx_hotLast: $index == hotItemTabs[activeHotTab][2].length - 1}">
+                    <a href="{{product.url}}" title="{{product.name}}"><img src="{{product.thumbnail}}"></a>
+                        <div class="lynx_detailContainer">
+                            <div class="lynx_name"><a href="{{product.url}}" title="{{product.name}}">{{product.name}}</a></div>
+                            <div class="lynx_price">{{product.priceString}}</div>
+                            <div class="lynx_userName">{{product.seller_name}}</div>
+                            <!--<div class="lynx_star"><img src="images/star.png" /></div>-->
+                            <div class="lynx_view">12471</div>
+                        </div>
+                    
                 </div>
             </div>
         </div>
@@ -290,7 +265,7 @@ defined('BASEPATH') or die('No direct script access allowed');
         this.hotItemTabs = [
             ['HOT', '<?php echo site_url('home/hot_service') ?>'],
             ['NEW', '<?php echo site_url('home/new_service') ?>'],
-            ['SALE', '<?php echo site_url('sale_service') ?>']
+            ['SALE', '<?php echo site_url('home/sale_service') ?>']
         ];
     }
 </script>
