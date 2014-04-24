@@ -48,14 +48,12 @@
 }
 .lynx_hotItemsContainer .lynx_head{
 	background: transparent url('../images/line.png') repeat-x 0px 13px;
-    
 }
-.lynx_hotItemsContainer .lynx_head span{
-	background-color: #F3F3F3;
-    color: #5C850F;
-	float:left;
-	font-size:22px;
-}
+.lynx_hotItemsContainer .lynx_head span{float:left;background-color: #F3F3F3}
+.lynx_hotItemsContainer .lynx_head span:first-child{padding-left:10px;}
+.lynx_hotItemsContainer .lynx_head span, .lynx_hotItemsContainer .lynx_head span *,.lynx_hotItemsContainer .lynx_head span a{;color: #5C850F;}
+.lynx_hotItemsContainer .lynx_head *{font-size:22px;}
+.lynx_hotItemsContainer .lynx_head span a.active{color: #F0B21C;} 
 .lynx_listItem{
 	
 }

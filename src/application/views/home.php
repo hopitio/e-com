@@ -1,215 +1,296 @@
 <?php
 defined('BASEPATH') or die('No direct script access allowed');
-/* @var $materials \ListDomain */
 ?>
-<div class="bannerContainer">
-    <div class="banner">
-        <div class="bannerWarper">
-            <ul class="bxBannerslider">
-                <li>
-                    <a href="#">
-                        <div class="sliderItemContainer">
-                            <div class="itemContent">
-                                <div class="leftContent">
-                                    <img alt="" width="100%" src="/images/Sp-1.png"/>
-                                </div>
-                                <div class="rightContent">
-                                    <div class="rightContentTitle">Sản phẩm đang khuyến mại</div>
-                                    <div class="rightContentDes">
-                                        <span class="DesTitle">Sản phẩm khuyến mại</span>
-                                        <span class="Des">Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="sliderItemContainer">   
-                            <div class="itemContent">
-                                <div class="leftContent">
-                                    <img alt="" width="100%" src="/images/Sp-1.png"/>
-                                </div>
-                                <div class="rightContent">
-                                    <div class="rightContentTitle">Sản phẩm đang khuyến mại</div>
-                                    <div class="rightContentDes">
-                                        <span class="DesTitle">Sản phẩm khuyến mại</span>
-                                        <span class="Des">Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại Sản phẩm khuyến mại</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+<div id="home-ctrl" ng-controller="HomeCtrl">
+    <div class="lynx_banner">
+        <div class="lynx_slide">
+        </div>
+        <div class="lynx_suggest">
+            <div class="lynx_suggetWarp lynx_staticWidth">
+                <div class="lynx_suggestItem lynx_step1"></div>
+                <div class="lynx_suggestItem lynx_step2"></div>
+                <div class="lynx_suggestItem lynx_step3"></div>
+            </div>
         </div>
     </div>
-
-    <div class="suggetConatinerDetails" style="display:none;" anchor="step1">
-        <a href="#"><div class="col" ><img src="/images/sl1.png"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl2.png"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl4.png"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl3.jpg"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl5.png"/></div></a>
-    </div>
-
-    <div class="suggetConatinerDetails" style="display:none;" anchor="step2">
-        <a href="#"><div class="col" ><img src="/images/sl6.jpg"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl7.jpg"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl8.jpg"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl3.jpg"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl5.png"/></div></a>
-    </div>
-
-    <div class="suggetConatinerDetails" style="display:none;" anchor="step3">
-        <a href="#"><div class="col" ><img src="/images/sl1.png"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl2.png"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl8.jpg"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl3.jpg"/></div></a>
-        <a href="#"><div class="col" ><img src="/images/sl7.jpg"/></div></a>
-    </div>
-
-    <div class="suggestContainer">
-        <ul class="suggestWarp wStaticPx">
-            <li class="step1" id="step1"> <div class="iconMapping" style="display:none;"></div> <span>Chọn ngày lễ</span></li>
-            <li class="step2" id="step2"> <div class="iconMapping" style="display:none;"></div><span>Chọn đối tượng</span></li>
-            <li class="step3" id="step3"> <div class="iconMapping" style="display:none;"></div><span>Chọn Quà</span></li>
-        </ul>
-    </div>
-</div>
-<div class="contentWarp wStaticPx">
-    <div class="leftContainer">
-        <div class="menu" >
-            <h3>Nguyên liệu</h3>
-            <ul class="cate">
-                <?php foreach ($materials as $material): ?>
-                    <li><a href="#"><i class="fa  fa-chevron-circle-right"></i><?php echo $material->name ?></a></li>
-                <?php endforeach; ?>
-            </ul>
+    <div class="lynx_hotProducts">
+        <div class="lynx_hotSildeButton lynx_left">
         </div>
-
-        <div class="menu" >
-            <h3>Danh Mục</h3>
-            <ul class="cate">
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS</a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books</a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel</a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
-            </ul>
+        <div class="lynx_hotItemsContainer">
+            <div class="lynx_head">
+                <strong>
+                    <span ng-repeat="tab in hotItemTabs">
+                        <ng ng-if="$index > 0">&nbsp;&nbsp;</ng>
+                        <a href="javascript:;" ng-click="setHotTab($index)" ng-class="{active: isHotTabActive($index)}">{{tab[0]}}</a>&nbsp;&nbsp;
+                        <ng ng-if="$index < hotItemTabs.length - 1"><?php echo htmlentities('/') ?></ng>
+                    </span>
+                </strong>
+            </div>
+            <div class="lynx_listItem">
+                <div class="lynx_item lynx_hotFirst">
+                    <img src="#" />
+                    <div class="lynx_detailContainer">
+                        <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                        <div class="lynx_price">$123,99</div>
+                        <div class="lynx_userName">Lê Thanh An </div>
+                        <div class="lynx_star"><img src="images/star.png" /></div>
+                        <div class="lynx_view">12471</div>
+                    </div>
+                </div>
+                <div class="lynx_item">
+                    <img src="#" />
+                    <div class="lynx_detailContainer">
+                        <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                        <div class="lynx_price">$123,99</div>
+                        <div class="lynx_userName">Lê Thanh An </div>
+                        <div class="lynx_star"><img src="images/star.png" /></div>
+                        <div class="lynx_view">12471</div>
+                    </div>
+                </div>
+                <div class="lynx_item">
+                    <img src="#" />
+                    <div class="lynx_detailContainer">
+                        <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                        <div class="lynx_price">$123,99</div>
+                        <div class="lynx_userName">Lê Thanh An </div>
+                        <div class="lynx_star"><img src="images/star.png" /></div>
+                        <div class="lynx_view">12471</div>
+                    </div>
+                </div>
+                <div class="lynx_item lynx_hotLast">
+                    <img src="#" />
+                    <div class="lynx_detailContainer">
+                        <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                        <div class="lynx_price">$123,99</div>
+                        <div class="lynx_userName">Lê Thanh An </div>
+                        <div class="lynx_star"><img src="images/star.png" /></div>
+                        <div class="lynx_view">12471</div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="menu" >
-            <h3>Danh Mục</h3>
-            <ul class="cate">
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS</a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books</a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>ELECTRONICS </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Sports & Outdoors </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Apparel</a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Books </a></li>
-                <li><a href="#"><i class="fa  fa-chevron-circle-right"></i>Movies & TV </a></li>
-            </ul>
+        <div class="lynx_hotSildeButton lynx_right">
         </div>
     </div>
-    <div class="rowContent">
-        <div class="boxHeader boxNew">
-            <span>Sản phẩm mới</span>
+    <div class="lynx_listProducts">
+        <div class="lynx_head">
+            <span>SHOPPING MALL</span>
         </div>
-        <div class="container">
-
-            <div class="productItem">
-                <img src="/images/images4.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
+        <div class="lynx_navigateLink">
+            <a href="#">VIEW ALL >></a>
+        </div>
+        <div class="lynx_itemConatiner">
+            <div class="lynx_item lynx_towCol">
+                <a href="#"><img src="images/child-slide-item-demo.png"/></a>
+            </div>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
                 </div>
             </div>
-            <div class="productItem">
-                <img src="/images/images2.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
                 </div>
             </div>
-            <div class="productItem">
-                <img src="/images/images2.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
                 </div>
             </div>
-
-            <div class="productItem">
-                <img src="/images/images3.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
                 </div>
             </div>
-            <div class="productItem">
-                <img src="/images/images2.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
                 </div>
             </div>
-            <div class="productItem">
-                <img src="/images/images2.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                </div>
-            </div>
-            <!-- <div class="rowContentCol"> -->
-            <div class="productItem">
-                <img src="/images/images.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                </div>
-            </div>
-            <div class="productItem">
-                <img src="/images/images4.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
-                </div>
-            </div>
-            <div class="productItem">
-                <img src="/images/images3.jpg"/>
-                <div class="title">Sản phẩm demo </div>
-                <div class="des">&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo Sản phẩm demo ...</div>
-                <div class="bottom">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Gía :</span><span class="prices"> 300,000 VND</span>
-                    <button class="button"><span><span>Thêm vào giỏ hàng</span></span> </button><button class="button buttonSilver"><span><span>Chi tiết</span></span> </button>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="lynx_slideGroup">
+        <div class="lynx_item first-child"><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_item"><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_item last-child"><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
+    </div>
+    <div class="lynx_listProducts">
+        <div class="lynx_head">
+            <span>VIETNAM CULTURE</span>
+        </div>
+        <div class="lynx_navigateLink">
+            <a href="#">VIEW ALL >></a>
+        </div>
+        <div class="lynx_itemConatiner">
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
+                </div>
+            </div>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
+                </div>
+            </div>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
+                </div>
+            </div>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
+                </div>
+            </div>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
+                </div>
+            </div>
+            <div class="lynx_item lynx_oneCol">
+                <img src="#" />
+                <div class="lynx_detailContainer">
+                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
+                    <div class="lynx_price">$123,99</div>
+                    <div class="lynx_userName">Lê Thanh An </div>
+                    <div class="lynx_star"><img src="images/star.png" /></div>
+                    <div class="lynx_view">12471</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lynx_slideGroup">
+        <div class="lynx_item first-child"><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_item"><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_item last-child"><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
+    </div>
+    <div class="lynx_footer">
+        <div class="lynx_content">
+            <div class="lynx_col1">
+                <img class="lynx_logo" src="images/logo-footer.png"/>
+                <span class="lynx_contact">
+                    Sfriendly.com /  Sfriendly.vn <br/>
+                    Phone: 098 999 999 <br/>
+                    Email: sale@sf
+                </span>
+                <a href="#" class="lynx_share"><img src="images/share-face.png" /></a>
+                <a href="#" class="lynx_share"><img src="images/share-tiwwer.png" /></a>
+                <a href="#" class="lynx_share"><img src="images/share-google.png" /></a>
+                <a href="#" class="lynx_share"><img src="images/share-plumber.png" /></a>
+            </div>
+            <div class="lynx_col2">
+                <div class="lynx_cell">
+                    <ul>
+                        <span>Make Money With Us</span>
+                        <li> Sell </li>
+                        <li> Advertise with us </li>
+                    </ul>
+                    <ul>
+                        <span>Customer Service</span>
+                        <li> FAQs </li>
+                        <li> Contact Info </li>
+                        <li> Shipping and Returns </li>
+                        <li> Safe Shopping  </li>
+                        <li> Guarantee  Secure Shopping    </li>
+                    </ul>
+                </div>
+                <div class="lynx_cell">
+                    <ul>
+                        <span>About Sfriendly</span>
+                        <li>About</li>
+                        <li>Jobs</li>
+                        <li>Customer Testimonials</li>
+                        <li>Associates Program</li>
+                        <li>Glossary of Terms</li>
+                        <li>Daily Shoe Digest</li>
+                    </ul>
+                    <ul>
+                        <span>Feedback</span>
+                        <li>How do you like our website?</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lynx_col3">
+                <img src="images/Payment-follow.fw.png"/>
+            </div>
+        </div>
+        <div class="lynx_copyright">
+            <div class="lynx_copycontent">
+                Copyright © 2014 Sfriendly.com. All rights Reserved
+            </div>
+        </div>
+    </div>
+    <div class="lynx_cart">
+        <span>CART 0</span>
+    </div>
+</div><!--homeCtrl-->
+<script>
+    function scriptData() {
+        this.hotItemTabs = [
+            ['HOT', '<?php echo site_url('home/hot_service') ?>'],
+            ['NEW', '<?php echo site_url('home/new_service') ?>'],
+            ['SALE', '<?php echo site_url('sale_service') ?>']
+        ];
+    }
+</script>

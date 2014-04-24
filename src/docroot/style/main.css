@@ -207,3 +207,11 @@ body .lynx_cart span{
 	color:#26336A;
 	display:inline-block;
 }
+strong, strong *{font-weight: bold;}
+.center, .center *{text-align: center;}
+.left, .left *{text-align:left;}
+.right, .right *{text-align: right;}
+.preload{display:none;}
+img.loading{width:32px;height:32px;}
+
+.lynx_category  > .dropdown-toggle > span{color: #c3df63;}

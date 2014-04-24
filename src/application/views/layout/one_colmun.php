@@ -34,15 +34,17 @@
                 <div class="lynx_headMenu">
                     <div class="lynx_menuWarp lynx_staticWidth">
 
-                        <div class="lynx_category dropdown" ng-controller="SortController">
-                            <span class="dropdown-toggle"> 
-                                <span ng-click="click()">MENU</span>  
+                        <div class="lynx_category dropdown" ng-controller="SortController" id="sort-controller">
+                            <span class="dropdown-toggle" ng-click="loadCategories()"> 
+                                <span>MENU</span><span class="caret"></span>  
                             </span>
-                            <ul class="dropdown-menu">
-                                <li>aaa</li>
-                                <li>aaa</li>
-                                <li>aaa</li>
-                                <li>aaa</li>
+                            <ul class="dropdown-menu" class="preload">
+                                <li ng-if="!categories.length" class="center">
+                                    <img src="/images/loading.gif" alt="Loading..." class="loading">
+                                </li>
+                                <li ng-repeat="category in categories" class="left">
+                                    <a href="{{category.url}}" title="{{category.name}}">{{category.name}}</a>
+                                </li>
                             </ul>
                         </div>
 
@@ -64,6 +66,12 @@
             </div>
 
         </div>
+        <script type="text/javascript">
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo site_url('category/categories_service') ?>';
+            }
+        </script>
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
         <script type='text/javascript' src="/js/angular.min.js"></script>
         <script type='text/javascript' src="/js/angular-route.min.js"></script>
@@ -75,11 +83,7 @@
 
         <script type='text/javascript' src="/js/controller/SortController.js"></script>
 
-        <script type="text/javascript">
-                                    function Config() {
-                                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                                    }
-        </script>
+
         <!-- Thêm các js riêng biệt -->
         <?php
         foreach ($view->javascript as $jsItem)

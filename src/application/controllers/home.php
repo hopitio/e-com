@@ -10,15 +10,13 @@ class home extends BaseController
 
     public function showHome()
     {
-        $data['materials'] = ListMaterialMapper::make()->findAll();
-
-        $data['categories'] = CategoryMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->findAll();
-
-        $data['products'] = ProductFixedMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->autoloadAttributes()->findAll();
-
         //$this->load->model('Category');
         //$cate = $this->Category->loadCategory();
-        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setCss(array("/style/homePage.css"))->setData($data)->render('home');
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                ->setJavascript(array(
+                    '/js/controller/HomeCtrl.js'
+                ))
+                ->render('home');
         //LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setCss(array("/style/homePage.css"))->setData()->render('home');
     }
 
