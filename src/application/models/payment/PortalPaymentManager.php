@@ -8,7 +8,8 @@ class PortalPaymentManager extends PortalBizPayment{
      * @return boolean
      */
     function createNewOrder($orderInformation,$subSystemKey = null,$secrectKey = null){
-        $subSystemKey == null ? $this->config->item('sub_system_name')['default'] : $this->config->item('sub_system_name')[$subSystemKey];
+        $subSystemName =  $this->config->item('sub_system_name');
+        $subSystemKey == null ? $subSystemName['default'] : $subSystemName[$subSystemKey];
         $portalOrderId = $this->insertOrder($orderInformation,$subSystemKey);
         
         $products =  $orderInformation->products;

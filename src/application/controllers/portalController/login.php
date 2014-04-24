@@ -297,12 +297,14 @@ class login extends BaseController
     function onLoginCompleteSaveHistory($data)
     {
         $user = clone $this->obj_user;
-        $data = $data == null ? $this->input->post() : $data;
+        $data =  $this->input->post();
         $subName = '';
+        $subName = $data['subSys'];
         if (empty($data['subSys']) || !isset($data['subSys']))
         {
             $subName = 'default';
         }
+        
         $portalHistory = new PortalBizUserHistory();
         $portalHistory->createNewHistory($this->obj_user, 
             DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN, date("Y-m-d H:i:s"), 

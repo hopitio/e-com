@@ -33,6 +33,7 @@ class PortalBizUserHistory extends PortalBizBase
         $session = get_instance()->session->all_userdata();
         $portalCommon = new PortalModelCommon();
         $listSubSystem = get_instance()->config->item('sub_system_name');
+        
         if (!isset($listSubSystem[$subSystemNname]))
         {
             throw new Lynx_RequestException(
