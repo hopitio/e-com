@@ -1,28 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html ng-app="lynx">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=320; initial-scale=1; maximum-scale=1; minimum-scale=1 user-scalable=no" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title: '';?></title>
-        <script src="/js/jquery-1.11.0.min.js"></script>
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/style/home.css" media="all">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
         
-        <!-- perfect srollbar -->
-        <script src="/js/perfect-scrollbar.with-mousewheel.min.js"></script>
-        <link href="/style/perfect-scrollbar.min.css" rel="stylesheet" />
-        
-        <!-- bxSlider-->
-        <script src="/js/jquery.bxslider.js"></script>
-        <link href="/style/jquery.bxslider.css" rel="stylesheet" />
-        
-        <!-- Jquery UI -->
-        <script src="/js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="/js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" media="all">
-        
-        <!-- Css -->
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         
         
+        <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
+        <script type='text/javascript' src="/js/angular.min.js"></script>
+        <script type='text/javascript' src="/js/angular-route.min.js"></script>
+        <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+        <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src="/js/filters.js"></script>
+        <script type='text/javascript' src="/js/directives.js"></script>
+        <script type='text/javascript' src="/js/app.js"></script>
+
         <script src="/js/main.js"></script>
         <?php
         //Thêm các js riêng biệt
@@ -46,87 +47,80 @@
         </script>
     </head>
     <body>
-        <div id="wrap">
-         <div class="topbar">
-            <div class="container wStaticPx">
-                <ul class="headerButtonList">
-                 <li class="myAcc">
-                   <a href="#">My Account</a>
-                   <ul class="accessPannel">
-                    <li><a href="#">Đăng nhập</a></li>
-                    <li><a href="#">WishList</a></li>
-                    <li><a href="#">Đăng sản phẩm</a></li>
-                   </ul>
-                 </li>
-                 <li class="lang"><a href="#">EN</a>
-                   <ul class="accessPannel">
-                    <li><a href="#">EN</a></li>
-                    <li><a href="#">VN</a></li>
-                    <li><a href="#">KOR</a></li>
-                   </ul>
-                </li>
-               <li class="money"><a href="#">Dollar</a>
-                <ul class="accessPannel">
-                 <li><a href="#">EN</a></li>
-                 <li><a href="#">VN</a></li>
-                 <li><a href="#">KOR</a></li>
-                </ul>
-              </li>
-
-            </ul>
-                <div class="headerMobileView">
-                    <div class="shortcutButton"><i class="fa fa-list"></i></div>
-                    <div class="shortcutSearch"><i class="fa fa-search"></i></div>
-                    <div class="shortcutCart"><i class="fa fa-shopping-cart"></i></div>
+    <div class="lynx_container">
+        <div class="lynx_head">
+            <div class="lynx_headWarp lynx_staticWidth">
+                <div class="lynx_logo"></div>
+                <div class="lynx_headLeft">
+                    <span class="lynx_sell"> SELL</span>
+                    <span class="lynx_liveChat"> LIVE CHAT</span>
+                    <div class="lynx_language">
+                        <span class="lynx_label">LANGUAGE : </span>
+                         
+                    </div>
+                </div>
+            </div>
+            <div class="lynx_headMenu">
+                <div class="lynx_menuWarp lynx_staticWidth">
                 </div>
             </div>
         </div>
-
-        <div class="content">
-            <?php require_once APPPATH.'views/'.$view->view.'.php';?>
-        </div>
-        
-        <div class="foot">
-            <div class="footWarp wStaticPx">
-                <div class="col">
-                    <span class="title">Liên hệ</span>
-                    <ul>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                    </ul>
+    <?php require_once APPPATH.'views/'.$view->view.'.php';?>
+         <div class="lynx_footer">
+            <div class="lynx_content">
+                <div class="lynx_col1">
+                    <img class="lynx_logo" src="/images/logo-footer.png"/>
+                    <span class="lynx_contact">
+                          Sfriendly.com /  Sfriendly.vn <br/>
+                          Phone: 098 999 999 <br/>
+                          Email: sale@sf
+                    </span>
+                    <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
+                    <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
+                    <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
+                    <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
                 </div>
-                <div class="col">
-                    <span class="title">Liên hệ</span>
-                    <ul>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                    </ul>
+                <div class="lynx_col2">
+                    <div class="lynx_cell">
+                        <ul>
+                            <span>Make Money With Us</span>
+                            <li> Sell </li>
+                            <li> Advertise with us </li>
+                        </ul>
+                        <ul>
+    	                    <span>Customer Service</span>
+    	                    <li> FAQs </li>
+    	                    <li> Contact Info </li>
+    	                    <li> Shipping and Returns </li>
+    	                    <li> Safe Shopping  </li>
+    	                    <li> Guarantee  Secure Shopping    </li>
+                        </ul>
+                    </div>
+                    <div class="lynx_cell">
+    	                <ul>
+    	                    <span>About Sfriendly</span>
+    	                    <li>About</li>
+    	                    <li>Jobs</li>
+    	                    <li>Customer Testimonials</li>
+    	                    <li>Associates Program</li>
+    	                    <li>Glossary of Terms</li>
+    	                    <li>Daily Shoe Digest</li>
+    	                </ul>
+    	                <ul>
+    	                    <span>Feedback</span>
+    	                    <li>How do you like our website?</li>
+    	                </ul>
+                    </div>
                 </div>
-                <div class="col">
-                    <span class="title">Liên hệ</span>
-                    <ul>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                        <li><a href="#">Link liên hệ 1</a></li>
-                    </ul>
-                </div>
-                <div class="col pay">
-                    <span class="title">Chấp nhận thanh toán</span>
-                    <ul>
-                        <li><a href="#"><img src="/images/payment.png"></a></li>
-                    </ul>
+                <div class="lynx_col3">
+                <img src="/images/Payment-follow.fw.png"/>
                 </div>
             </div>
-        </div>
-        
+            <div class="lynx_copyright">
+                <div class="lynx_copycontent">
+                    Copyright © 2014 Sfriendly.com. All rights Reserved
+                </div>
+            </div>
         </div>
     </body>
 </html>

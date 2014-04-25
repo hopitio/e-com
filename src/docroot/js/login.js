@@ -8,7 +8,14 @@
 $(document).ready(function(){
     $('#likfacebooklogin').click(facebookAuthenicate);
 });
-
+$(function(){
+    $(document).on('click','#submitResg',function(){
+        $('#resg').submit();
+    });
+    $(document).on('click','#submitLogin',function(){
+        $('#login').submit();
+    });
+});
 function facebookAuthenicate()
 {
     FB.getLoginStatus(function(response) {

@@ -12,7 +12,8 @@ class password extends BaseController
     );
     
     function showpageChangePassword(){
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setCss($this->_css)->render('portalaccount/changePassword');
+        $js = array('/js/controller/ChangePasswordController.js');
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setJavascript($js)->setCss($this->_css)->render('portalaccount/changePassword');
     }
     
     /**
@@ -45,7 +46,8 @@ class password extends BaseController
     private function errorMessage($msg){
        $data = array();
        $data['errormsg'] = $msg;
-       LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data)->setCss($this->_css)->render('portalaccount/changePassword');
+       $js = array('/js/controller/ChangePasswordController.js');
+       LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setJavascript($js)->setData($data)->setCss($this->_css)->render('portalaccount/changePassword');
     }
     
     /**

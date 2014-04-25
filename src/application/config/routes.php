@@ -49,6 +49,12 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
         $route['portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
         $route['portal/payment/history/(:any)'] = 'portalController/paymentHistory/showPage/$1';
+        
+        $route['portal/account/lost_password'] = 'portalController/lostPassword/showPage';
+        $route['portal/policy'] = 'portalController/lostPassword/showPage';
+        $route['portal/change_question'] = "portalController/question/showPage";
+        $route['portal/contacts'] = "portalController/contact/showPage";
+        
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')

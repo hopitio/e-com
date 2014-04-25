@@ -1,4 +1,4 @@
-<div class="contentWarp wStaticPx">
+<div class="lynx_contentWarp lynx_staticWidth">
         <?php 
             if(isset($error)){
                 echo $error;

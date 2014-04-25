@@ -1,6 +1,6 @@
-<div class="contentWarp wStaticPx">
+<div class="lynx_contentWarp lynx_staticWidth">
         <?php require_once APPPATH.'views/portalaccount/leftMenuAccount.php';?>
-        <div class="row-right">
+        <div class="lynx_row-right">
             <form method="post" style="text-align: left;">
                 <?php
                     if(isset($errormsg))
