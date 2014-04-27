@@ -2,8 +2,13 @@
     window.HomeCtrl = function($scope, $http) {
         $scope.activeHotTab = 0;
         $scope.hotItemTabs = scriptData.hotItemTabs;
+        $scope.sections = [];
 
         $('#home-ctrl .preload').removeClass('preload');
+
+        $http.get(scriptData.sectionURL, {cache: false}).success(function(sections) {
+            $scope.sections = sections;
+        });
 
         $scope.setHotTab = function(index) {
             $scope.activeHotTab = index;
@@ -16,7 +21,7 @@
                 });
             }
         };
-        
+
         $scope.setHotTab(0);
 
         $scope.isHotTabActive = function(index) {

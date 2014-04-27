@@ -8,7 +8,7 @@ class TaxMapper extends MapperAbstract
 
     function __construct($domain = 'TaxDomain')
     {
-        $query = Query::make()->select('*')->from('t_tax tax');
+        $query = Query::make()->select('*', true)->from('t_tax tax');
 
         $map = array(
             'fkSeller'    => 'fk_seller',

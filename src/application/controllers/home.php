@@ -82,4 +82,35 @@ class home extends BaseController
         
     }
 
+    function section_service()
+    {
+        header('Content-type: application/json');
+        $sections = SectionMapper::make()
+                ->setLanguage(User::getCurrentUser()->languageKey)
+                ->autoloadProducts()
+                ->findAll();
+
+        $json = array();
+        foreach ($sections as $section)
+        {
+            $section_array = get_object_vars($section);
+            $section_array['url'] = site_url("section/show/{$section->id}");
+            $section_array['products'] = array();
+            foreach ($section->getProducts() as $product)
+            {
+                $images = $product->getImages();
+                $product_array = get_object_vars($product);
+                $product_array['name'] = strval($product->getName());
+                $product_array['thumbnail'] = $images ? strval($images[0]->getTrueValue()) : '';
+                $product_array['priceString'] = strval($product->getPriceString('USD'));
+                $product_array['url'] = site_url('product/details') . '/' . $product->id;
+
+                $section_array['products'][] = $product_array;
+            }
+            $json[] = $section_array;
+        }
+
+        echo json_encode($json);
+    }
+
 }

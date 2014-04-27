@@ -8,7 +8,7 @@
     width:100%;
     background: #EFF5F8;
     display:inline-block;
-    height:545px;
+    height:450px;
 }
 .lynx_banner .lynx_suggest{
     width:100%;
@@ -145,16 +145,18 @@
     color:#5B850F;
 }
 .lynx_listProducts .lynx_navigateLink{
-    width:100%;
     display:inline-block;
+    float:right;
+    
 }
 .lynx_listProducts .lynx_navigateLink a{
     font-size: 14px;
-    line-height: 46px;
+    line-height: 30px;
     color:#5B850F;
     float:right;
 }
 .lynx_listProducts .lynx_itemConatiner{
+    padding-top:20px;
 }
 
 .lynx_listProducts .lynx_item{
@@ -222,7 +224,7 @@
     width:580px;
     padding:0px;
     border:none;
-    margin: 0px 8px 30px 0px;
+    margin: 0px 0px 30px 0px;
 }
 .lynx_listProducts div.lynx_towCol img{
     width:578px;

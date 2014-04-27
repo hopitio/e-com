@@ -27,16 +27,21 @@
                         <span class="lynx_sell"> SELL</span>
                         <span class="lynx_liveChat"> LIVE CHAT</span>
                         <div class="lynx_language">
-                            <span class="lynx_label">LANGUAGE : [HERE]</span> 
+                            <span class="lynx_label">
+                                <label for="sel-language" style="font-weight: normal;">LANGUAGE :</label>
+                                <select id="sel-language">
+                                    <option value="EN-US">English</option>
+                                    <option value="VN-VI">Tiếng Việt</option>
+                                </select>
+                            </span> 
                         </div>
                     </div>
                 </div>
-                <div class="lynx_headMenu">
+                <div class="lynx_headMenu"  ng-controller="HeadCtrl" id="head-ctrl">
                     <div class="lynx_menuWarp lynx_staticWidth">
-
-                        <div class="lynx_category dropdown" ng-controller="SortController" id="sort-controller">
-                            <span class="dropdown-toggle" ng-click="loadCategories()"> 
-                                <span>MENU</span><span class="caret"></span>  
+                        <div class="lynx_category dropdown dropdown-hover">
+                            <span class="dropdown-toggle " ng-mouseover="loadCategories()"> 
+                                <span>MENU<span class="caret"></span> </span> 
                             </span>
                             <ul class="dropdown-menu" class="preload">
                                 <li ng-if="!categories.length" class="center">
@@ -52,14 +57,61 @@
                             <input type="text" />
                             <span class="lynx_search">SEARCH</span>
                         </div>
-                        <div class="lynx_loginLabel">
-                            <a href="#">Hello, Sign in your account</a>
+                        <div class="lynx_loginLabel dropdown dropdown-hover">
+                            <?php
+                            $user = User::getCurrentUser();
+                            ?>
+                            <?php if ($user->is_authorized): ?>
+                                <span class="dropdown-toggle" ng-click="loadCategories()"> 
+                                    <a href="javascript:;">Hello, <?php echo $user->lastname ?> your account<span class="caret"></span></a> 
+                                </span>
+                                <ul class="dropdown-menu left">
+                                    <li>
+                                        <a href="<?php echo site_url('portal/account/edit') ?>">Your Account</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo site_url('portal/order/show') ?>">Your Order</a>
+                                    </li>
+                                    <div class="divider"></div>
+                                    <li>
+                                        <a href="<?php echo site_url('wishlist/show') ?>">Your Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo site_url('pin/show') ?>">Your Pinlist</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="<?php echo site_url('portal/signout') ?>">Not <?php echo $user->lastname ?>? Sign Out</a>
+                                    </li>
+                                </ul>
+                            <?php else: ?>
+                                <a href="<?php echo site_url('portal/login') ?>">Hello, Sign in your account</a>
+                            <?php endif; ?>
                         </div>
-                        <div class="lynx_miniCart">
-                            (0 Item)
+                        <div class="lynx_miniCart dropdown dropdown-hover">
+                            <span class="dropdown-toggle" id='cart-dropdown'>({{cart.length}} Item)<span class='caret'></span></span>
+                            <ul class="dropdown-menu">
+                                <li ng-if="!cart.length" style='line-height: 20px'>
+                                    You haven't picked any Product.
+                                </li>
+                                <li class="left cart-menu" ng-repeat="product in cart">
+                                    <a href="{{product.url}}">
+                                        <img src="{{product.thumbnail}}" width="40" height="40">
+                                        {{product.name}}<br>
+                                        Quantity: {{product.quantity}}
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="<?php echo site_url('cart/show') ?>">View Cart ({{cart.length}} Items)</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                </div>
+                    <div class="lynx_cart" id="lynx_cart">
+                        <span>CART {{cart.length}}</span>
+                    </div>
+                </div><!--head ctrl-->
             </div>
             <div class="content">
                 <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
@@ -119,9 +171,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="lynx_cart">
-                    <span>CART 0</span>
-                </div>
             </div>
 
         </div>
@@ -129,6 +178,7 @@
             function Config() {
                 this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
                 this.categoryService = '<?php echo site_url('category/categories_service') ?>';
+                this.cartService = '<?php echo site_url('cart/cartProductsService') ?>';
             }
         </script>
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
@@ -137,11 +187,11 @@
         <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
-        <script type='text/javascript' src="/js/app.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
-        
+        <script type='text/javascript' src="/js/app.js"></script>
 
-        <script type='text/javascript' src="/js/controller/SortController.js"></script>
+
+        <script type='text/javascript' src="/js/controller/HeadCtrl.js"></script>
 
 
         <!-- Thêm các js riêng biệt -->
