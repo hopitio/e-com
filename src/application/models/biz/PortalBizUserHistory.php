@@ -33,6 +33,7 @@ class PortalBizUserHistory extends PortalBizBase
         $session = get_instance()->session->all_userdata();
         $portalCommon = new PortalModelCommon();
         $listSubSystem = get_instance()->config->item('sub_system_name');
+        $subSystemNname = $subSystemNname == null ? 'default' : $subSystemNname;
         
         if (!isset($listSubSystem[$subSystemNname]))
         {
@@ -79,6 +80,19 @@ class PortalBizUserHistory extends PortalBizBase
         }else{
             return false;
         }
+    }
+    
+    /**
+     * lấy số lần đăng nhập cuối cùng 
+     * @param User $user
+     */
+    function getLastLoginTime($user,$countTime)
+    {
+        $portalHistoryModel = new PortalModelUserHistory();
+        $portalHistoryModel->fk_user =  $user->id;
+        $portalHistoryModel->action_name = DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN;
+        $model = $portalHistoryModel->getMutilCondition(T_user_history::last_activity,'DESC',$countTime,0);
+        return $model;
     }
     
 }

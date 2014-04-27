@@ -1,28 +1,37 @@
-<div class="lynx_contentWarp lynx_staticWidth" ng-controller="ChangePasswordController">
+<div class="lynx_contentWarp lynx_staticWidth" ng-controller="UserInformationController">
         <?php require_once APPPATH.'views/portalaccount/leftMenuAccount.php';?>
         <div class="lynx_row-right">
             <div class="lynx_row-head">
-                <span>Thay đổi mật khẩu</span>
+                <span><?php echo $language[$view->view]->lblInformationTitle;?></span>
             </div>
-            <div class="lynx_row-content">
+            
+            <div class="lynx_row-content" ng-show="onLoadUserInformation">
+                <div  ng-if="onLoadUserInformation" class="center"><img src="/images/loading.gif" alt="Loading..." class="loading"></div>
+            </div>
+            
+            <div class="lynx_row-content" ng-show="!onLoadUserInformation">
+                  <alert ng-show="userInformationError != undefined" type="danger" close="closeAlertUserinformation('error');" >{{userInformationError}}</alert>
+                  <alert ng-show="userInformationSucess != undefined" type="success" close="closeAlertUserinformation('susscess');">{{userInformationSucess}}</alert>
                 <div class="lynx_row">
-                    <span> HỌ VÀ TÊN ĐỆM </span><input name="txtFristname" type="text" value="<?php echo $fristName;?>"/>
+                    <span class="lynx_lblFromtitle"> <?php echo $language[$view->view]->lblFristName;?> </span><input name="txtFristname" type="text" ng-model="userInformation.fristName"/>
                 </div>
                 <div class="lynx_row">
-                    <span>  TÊN : </span><input name="txtLastName" type="text" value="<?php echo $lastName;?>"/>
+                    <span class="lynx_lblFromtitle"> <?php echo $language[$view->view]->lblLastName;?> </span><input name="txtLastName" type="text" ng-model="userInformation.lastName"/>
                 </div>
                 <div class="lynx_row">
-                    <span> DOB : </span><input name="txtDOB" type="text" value="<?php echo $dob;?>"/>
+                    <div class="lynx_lblFromtitle lynx_datePicketLbl"> <?php echo $language[$view->view]->lblDob;?> </div>
+                    <div style="display:inline-block; ">
+                      <div class="well well-sm" ng-model="warpDate">
+                          <datepicker min="minDate" show-weeks="showWeeks"></datepicker>
+                      </div>
+                    </div>
+                    <!-- <input name="txtDOB" type="text" ng-model="userInformation.dob"/> -->
                 </div>
                 <div class="lynx_row">
-                    <span>SEX </span><select  name='sex' type="text"  >
-                        <option value="M" <?php if($sex == 'M') echo 'selected';?>>MALE</option>
-                        <option value="F" <?php if($sex == 'F') echo 'selected';?> >FAMALE</option>
-                        <option value="O" <?php if($sex == 'O') echo 'selected';?> >OTHER</option>
-                    </select> 
+                    <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblSex;?> </span><select ng-model="userInformation.sex" ng-options="sex.key as sex.display for sex in sexCollection"></select>
                 </div>
                 <div class="lynx_row">
-                    <button id="btnComfirm" class="lynx_button btn btn-primary" type="submit">Thay đổi Thông tin cá nhân</button>
+                    <button id="btnComfirm" ng-click="updateInformation()" class="lynx_button btn btn-primary" type="submit"><?php echo $language[$view->view]->btnSaveInformation;?></button>
                 </div>
             </div>
         </div>
@@ -30,28 +39,10 @@
         
         <div class="lynx_row-right">
             <div class="lynx_row-head">
-                <span>Danh sách địa chỉ</span>
+                <span><?php echo $language[$view->view]->lblContactsTitle;?></span>
             </div>
             <div class="lynx_row-content">
-                <div class="lynx_row">
-                    <span> HỌ VÀ TÊN ĐỆM </span><input name="txtFristname" type="text" value="<?php echo $fristName;?>"/>
-                </div>
-                <div class="lynx_row">
-                    <span>  TÊN : </span><input name="txtLastName" type="text" value="<?php echo $lastName;?>"/>
-                </div>
-                <div class="lynx_row">
-                    <span> DOB : </span><input name="txtDOB" type="text" value="<?php echo $dob;?>"/>
-                </div>
-                <div class="lynx_row">
-                    <span>SEX </span><select  name='sex' type="text"  >
-                        <option value="M" <?php if($sex == 'M') echo 'selected';?>>MALE</option>
-                        <option value="F" <?php if($sex == 'F') echo 'selected';?> >FAMALE</option>
-                        <option value="O" <?php if($sex == 'O') echo 'selected';?> >OTHER</option>
-                    </select> 
-                </div>
-                <div class="lynx_row">
-                    <button id="btnComfirm" class="lynx_button btn btn-primary" type="submit">Thay đổi Thông tin cá nhân</button>
-                </div>
+               
             </div>
         </div>
 </div> 

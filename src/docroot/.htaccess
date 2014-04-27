@@ -1,5 +1,5 @@
 RewriteEngine on
 RewriteBase /
-RewriteCond $1 !^(index\.php|test\.php|images|genghis|phpmyadmin|css|uploads|audios|style|js|mp3|robots\.txt|favicon\.ico)
-RewriteCond %{REQUEST_FILENAME} !^(.*)\.(gif|png|jpg|jpeg|html|css|js|mp3|zip|tgz|wav)$ [NC]
+RewriteCond $1 !^(index\.php|test\.php|images|bootstrap-3.1.1-dist|fonts|genghis|phpmyadmin|css|uploads|audios|style|js|mp3|robots\.txt|favicon\.ico)
+RewriteCond %{REQUEST_FILENAME} !^(.*)\.(gif|png|jpg|jpeg|html|css|js|mp3|zip|tgz|wav|woff|ttf|svg|eot)$ [NC]
 RewriteRule ^(.*)$ index.php?/$1 [L,QSA]

@@ -55,6 +55,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         //$route['portal/contacts'] = "portalController/contact/showPage";
         $route['portal/account/user_information'] = 'portalController/userInformation/showPage';
         $route['portal/account/security'] = "portalController/userSecurity/showPage";
+        $route['portal/account/last_login/(:num)'] = "portalController/userSecurity/getUserLastLoginTimeXhr/$1";
+        $route['portal/account/get_user_information'] = "portalController/userInformation/getUserInformationXhr";
         
     }
 
@@ -69,7 +71,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/help/send_email'] = 'portalController/help/send_email';
         $route['portal/help/start_chat'] = 'portalController/help/start_chat';
         $route['portal/order/submit'] = 'portalController/paymentChoice/submitOrder';
-       
+        $route['portal/account/update_password'] = 'portalController/userSecurity/updatePasswordPostDataXhr';
+        $route['portal/account/update_alert_email'] = 'portalController/userSecurity/updateAlertEmailXhr';
+        $route['portal/account/update_user_information'] = 'portalController/userInformation/updateUserinformationXhr';
     }
 }
 //

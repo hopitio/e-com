@@ -333,11 +333,19 @@ a.lynx_sort-menu {
     width: 990px;
 	padding:10px;
 }
-.lynx_row-content div.lynx_row span {
+.lynx_row-content div.lynx_row span.lynx_lblFromtitle {
     display:inline-block;
     width:200px;
     text-align: left;
 }
+.lynx_row-content .lynx_datePicketLbl{
+    width: 200px;
+    float: left;
+}
 .lynx_row-content div.lynx_row{margin-bottom:10px;}
-.lynx_row-content div.lynx_row button{margin-left:200px;}
-    
+.lynx_row-content div.lynx_row button.lynx_button{margin-left:200px;}
+.lynx_historyTable{width:100%;}
+.lynx_historyTable span{display:inline-block;text-align: left;}
+.lynx_historyTable .lynx_colSys{width:100px;}
+.lynx_historyTable .lynx_colIp{width:100px;}
+.lynx_historyTable .lynx_colTime{width:200px;}
