@@ -282,10 +282,11 @@ a.lynx_sort-menu {
 .lynx_contentWarp {
 	display: inline-block;
 	min-height: 205px;
+	margin: 20px 0 40px 0;
 }
 
 .lynx_contentWarp .lynx_row-fluid {
-	width: 315px;
+	width: 209px;
 	float: left;
 }
 
@@ -298,24 +299,45 @@ a.lynx_sort-menu {
 }
 
 .lynx_row-right {
-	float: left;
-	background: #FBFBFB;
-    border-right: 1px solid #DDDDDD;
-    border-left: 1px solid #DDDDDD;
-    color: #3A3A3A;
-    height: 510px;
-    width: 885px;
+	float: right;
+	margin-bottom:10px;
 }
 .lynx_row-right div{
 	text-align: left;
-	margin: 10px 10px 10px 10px;
 	
 }
-.lynx_row-right div span{
+
+.lynx_row-right .lynx_row-head
+{
+    width:100%;
+    height: 35px;
+    background: transparent url('../images/list-product-head-bg.png') repeat center bottom;
+}
+
+.lynx_row-right .lynx_row-head span
+{
+    font-size: 22px;
+	line-height: 31px;
+	padding: 4px 80px 0px 5px;
+	float: left;
+	color: #5B850F;
+}
+
+.lynx_row-right .lynx_row-content 
+{
+	background: #FBFBFB;
+    border-right: 1px solid #DDDDDD;
+    border-left: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+    color: #3A3A3A;
+    width: 990px;
+	padding:10px;
+}
+.lynx_row-content div.lynx_row span {
+    display:inline-block;
     width:200px;
-	text-align:left;
-	display: inline-block;
+    text-align: left;
 }
-.lynx_row-right div button{
-	margin-left:200px;
-}
+.lynx_row-content div.lynx_row{margin-bottom:10px;}
+.lynx_row-content div.lynx_row button{margin-left:200px;}
+    

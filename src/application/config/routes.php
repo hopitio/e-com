@@ -40,7 +40,6 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
-        $route['portal/change_user_information'] = 'portalController/userInformation/showpage';
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
         $route['portal/admin'] = 'portalAdmin/dashboard/showPage';
@@ -50,10 +49,12 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
         $route['portal/payment/history/(:any)'] = 'portalController/paymentHistory/showPage/$1';
         
-        $route['portal/account/lost_password'] = 'portalController/lostPassword/showPage';
+        //$route['portal/account/lost_password'] = 'portalController/lostPassword/showPage';
         $route['portal/policy'] = 'portalController/lostPassword/showPage';
-        $route['portal/change_question'] = "portalController/question/showPage";
-        $route['portal/contacts'] = "portalController/contact/showPage";
+        //$route['portal/change_question'] = "portalController/question/showPage";
+        //$route['portal/contacts'] = "portalController/contact/showPage";
+        $route['portal/account/user_information'] = 'portalController/userInformation/showPage';
+        $route['portal/account/security'] = "portalController/userSecurity/showPage";
         
     }
 
@@ -62,8 +63,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/login'] = 'portalController/login/indexPost';
         $route['portal/login/facbook_callback'] = 'portalController/platform/facebook/authenCallback';
         $route['portal/login/facebook'] = 'portalController/loginfacebook/loginFb';
-        $route['portal/change_password'] = 'portalController/password/updatePasswordPostData';
-        $route['portal/change_user_information'] = 'portalController/userInformation/saveChange';
+        //$route['portal/change_password'] = 'portalController/password/updatePasswordPostData';
+        //$route['portal/change_user_information'] = 'portalController/userInformation/saveChange';
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/getInformation';
         $route['portal/help/send_email'] = 'portalController/help/send_email';
         $route['portal/help/start_chat'] = 'portalController/help/start_chat';

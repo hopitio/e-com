@@ -8,12 +8,14 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
 
 class userSecurity extends BaseController
 {
+
+    /*
     protected $authorization_required = TRUE;
     protected  $_css = array(
         '/style/myaccount.css',
         '/style/span.css'
     );
-    function showpage()
+    function showPage()
     {
         $viewdata = array();
         $viewdata['fristName'] = $this->obj_user->firstname;
@@ -77,5 +79,33 @@ class userSecurity extends BaseController
         }
         
         return null;
+    }
+
+      
+     */
+    protected $authorization_required = TRUE;
+    protected  $_css = array(
+        '/style/myaccount.css'
+    );
+    protected $_js = array('/js/controller/SecurityAccountController.js');
+    protected $_data = [];
+    
+    /**
+     * show information page
+     */
+    function showPage(){
+    
+//         $viewdata = array();
+//         $viewdata['fristName'] = $this->obj_user->firstname;
+//         $viewdata['lastName'] = $this->obj_user->lastname;
+//         $viewdata['sex'] = $this->obj_user->sex;
+//         $viewdata['dob'] = $this->obj_user->DOB;
+//         $this->_data = $viewdata;
+        
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+        ->setData($this->_data)
+        ->setJavascript($this->_js)
+        ->setCss($this->_css)
+        ->render('portalaccount/userSecurity');
     }
 }

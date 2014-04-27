@@ -13,14 +13,14 @@ class userInformation extends BaseController
         '/style/myaccount.css',
         '/style/span.css'
     );
-    function showpage()
+    function showPage()
     {
         $viewdata = array();
         $viewdata['fristName'] = $this->obj_user->firstname;
         $viewdata['lastName'] = $this->obj_user->lastname;
         $viewdata['sex'] = $this->obj_user->sex;
         $viewdata['dob'] = $this->obj_user->DOB;
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setCss($this->_css)->setData($viewdata)->render('portalaccount/changeUserInformation');
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setCss($this->_css)->setData($viewdata)->render('portalaccount/userInformation');
     }
     
     function saveChange(){

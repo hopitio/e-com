@@ -69,12 +69,8 @@
     <mail>
         <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
     </mail>
-    <portalaccount_changePassword>
-        <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
-        <newpasswordNofication>Nhận thông tin về mật khẩu.</newpasswordNofication>
-    </portalaccount_changePassword>
+    
     <portalaccount_resetPassword></portalaccount_resetPassword>
-    <portalaccount_changeUserInformation></portalaccount_changeUserInformation>
     <order_placeOrder></order_placeOrder>
     <pin_showPage></pin_showPage>
     <admin_login></admin_login>
@@ -87,9 +83,9 @@
     <portalOrder_orderCheckinComplete></portalOrder_orderCheckinComplete>
     <seller_show_products></seller_show_products>
     <seller_add_product></seller_add_product>
-    <portalOrder_orderHistory></portalOrder_orderHistory>
     <portalaccount_lostPassword></portalaccount_lostPassword>
     <portalHelp_policy></portalHelp_policy>
-    <portalaccount_changeQuestion></portalaccount_changeQuestion>
-    <portalaccount_changeContact></portalaccount_changeContact>
+    
+    <portalaccount_userSecurity></portalaccount_userSecurity>
+    <portalaccount_userInformation></portalaccount_userInformation>
 </data>
