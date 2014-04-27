@@ -14,10 +14,11 @@ class ProductMapper extends MapperAbstract
         $query = Query::make()->from('t_product p');
 
         $map = array(
-            'fkCategory' => 'fk_category',
-            'fkRetailer' => 'fk_retailer',
-            'fkGroup'    => 'fk_group',
-            'isGroup'    => 'is_group',
+            'fkCategory'  => 'fk_category',
+            'fkRetailer'  => 'fk_retailer',
+            'fkGroup'     => 'fk_group',
+            'isGroup'     => 'is_group',
+            'dateCreated' => 'date_created'
         );
 
         parent::__construct($domain, $query, $map);
@@ -61,6 +62,21 @@ class ProductMapper extends MapperAbstract
     function autoloadTaxes($bool = true)
     {
         $this->_autoloadTaxes = $bool;
+        return $this;
+    }
+
+    function filterDateRange($greater_than_date, $lesser_than_date)
+    {
+        if ($greater_than_date)
+        {
+            $this->_query->where('date_created >=?', __FUNCTION__ . 'greater');
+            $this->_queryParams[__FUNCTION__ . 'from'] = $greater_than_date;
+        }
+        if ($lesser_than_date)
+        {
+            $this->_query->where('date_created <=?', __FUNCTION__ . 'lesser');
+            $this->_queryParams[__FUNCTION__ . 'to'] = $lesser_than_date;
+        }
         return $this;
     }
 

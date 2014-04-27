@@ -387,7 +387,7 @@ $config['languagePath'] = 'language/';
 $config['facebook_app_id'] = '1392515564358247';
 $config['facebook_authen_url'] = 'https://www.facebook.com/dialog/oauth?client_id=[YOUR_APP_ID]&redirect_uri=http://localhost/portal/login/facbook_callback';
 
-$config['ConfirmRegisterMailler_protocol'] = 'smtp';   
+$config['ConfirmRegisterMailler_protocol'] = 'smtp';
 $config['ConfirmRegisterMailler_useragent'] = 'DEMO MAIL';
 $config['ConfirmRegisterMailler_smtp_host'] = 'ssl://smtp.gmail.com';
 $config['ConfirmRegisterMailler_smtp_fullName'] = 'MAIL HỆ THỐNG';
@@ -418,14 +418,16 @@ $config['NewPasswordMailler_smtp_timeout'] = '1';
 $config['NewPasswordMailler_temp'] = '/NewPassword.txt';
 
 
-$config['temp_mail_folder'] = APPPATH.'temp/mail/';
+$config['temp_mail_folder'] = APPPATH . 'temp/mail/';
 $config['path_to_active_account'] = 'http://localhost.com/portal/active?k={key}';
 $config['path_to_reset_password_reset'] = 'http://localhost.com/portal/reset_password?k={key}';
 $config['portal_payment_entry'] = "http://localhost.com/portal/payment_choice";
 
 $config['sub_system_name'] = array(
     'default' => 'PORTAL',
-    'GIFT' => 'GIFT'
+    'GIFT'    => 'GIFT'
 );
+
+$config['limit_hot'] = 4;
 /* End of file config.php */
 /* Location: ./application/config/config.php */

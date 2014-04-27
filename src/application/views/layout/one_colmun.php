@@ -63,6 +63,65 @@
             </div>
             <div class="content">
                 <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
+                <div class="lynx_footer">
+                    <div class="lynx_content">
+                        <div class="lynx_col1">
+                            <img class="lynx_logo" src="/images/logo-footer.png"/>
+                            <span class="lynx_contact">
+                                Sfriendly.com /  Sfriendly.vn <br/>
+                                Phone: 098 999 999 <br/>
+                                Email: sale@sf
+                            </span>
+                            <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
+                            <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
+                            <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
+                            <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
+                        </div>
+                        <div class="lynx_col2">
+                            <div class="lynx_cell">
+                                <ul>
+                                    <span>Make Money With Us</span>
+                                    <li> Sell </li>
+                                    <li> Advertise with us </li>
+                                </ul>
+                                <ul>
+                                    <span>Customer Service</span>
+                                    <li> FAQs </li>
+                                    <li> Contact Info </li>
+                                    <li> Shipping and Returns </li>
+                                    <li> Safe Shopping  </li>
+                                    <li> Guarantee  Secure Shopping    </li>
+                                </ul>
+                            </div>
+                            <div class="lynx_cell">
+                                <ul>
+                                    <span>About Sfriendly</span>
+                                    <li>About</li>
+                                    <li>Jobs</li>
+                                    <li>Customer Testimonials</li>
+                                    <li>Associates Program</li>
+                                    <li>Glossary of Terms</li>
+                                    <li>Daily Shoe Digest</li>
+                                </ul>
+                                <ul>
+                                    <span>Feedback</span>
+                                    <li>How do you like our website?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lynx_col3">
+                            <img src="/images/Payment-follow.fw.png"/>
+                        </div>
+                    </div>
+                    <div class="lynx_copyright">
+                        <div class="lynx_copycontent">
+                            Copyright © 2014 Sfriendly.com. All rights Reserved
+                        </div>
+                    </div>
+                </div>
+                <div class="lynx_cart">
+                    <span>CART 0</span>
+                </div>
             </div>
 
         </div>
@@ -78,8 +137,9 @@
         <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
-        <script type='text/javascript' src="/js/directives.js"></script>
         <script type='text/javascript' src="/js/app.js"></script>
+        <script type='text/javascript' src="/js/directives.js"></script>
+        
 
         <script type='text/javascript' src="/js/controller/SortController.js"></script>
 

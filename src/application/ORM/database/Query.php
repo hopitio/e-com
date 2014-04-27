@@ -52,10 +52,6 @@ class Query
         {
             $sql .= "\nWHERE " . implode("\n    AND ", $this->_where);
         }
-        if ($this->_orderBy)
-        {
-            $sql .= "\nORDER BY {$this->_orderBy}";
-        }
         if ($this->_groupBy)
         {
             $sql .= "\nGROUP BY {$this->_groupBy}";
@@ -64,6 +60,11 @@ class Query
         {
             $sql .= "\nHAVING {$this->_having}";
         }
+        if ($this->_orderBy)
+        {
+            $sql .= "\nORDER BY {$this->_orderBy}";
+        }
+
         if ($this->_limit)
         {
             $sql .= "\nLIMIT {$this->_limit}";

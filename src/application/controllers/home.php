@@ -8,6 +8,9 @@ class home extends BaseController
 
     protected $authorization_required = FALSE;
 
+    /** @var ProductModel */
+    public $product_model;
+
     public function showHome()
     {
         //$this->load->model('Category');
@@ -25,14 +28,15 @@ class home extends BaseController
         header('Content-type: application/json');
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
-                ->orderBySales()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes()
                 ->limit(4);
         $mapper
-                ->select('seller.name AS seller_name')
                 ->getQuery()
-                ->innerJoin('t_seller seller', 'seller.id = p.fk_seller');
+                ->select('seller.name AS seller_name')
+                ->innerJoin('t_seller seller', 'seller.id = p.fk_seller')
+                ->innerJoin('t_hot h', 'h.fk_product = p.id')
+                ->orderBy('h.sort');
         $products = $mapper->findAll(function($record, ProductFixedDomain $domain)
         {
             $domain->seller_name = $record['seller_name'];
@@ -54,6 +58,26 @@ class home extends BaseController
     }
 
     function new_service()
+    {
+        $this->load->model('modelEx/ProductModel', 'product_model');
+        $products = $this->product_model->getAllNewProduct();
+        $json = array();
+
+        /* @var $products ProductFixedDomain */
+        foreach ($products as $product)
+        {
+            $images = $product->getImages();
+            $obj = get_object_vars($product);
+            $obj['name'] = strval($product->getName());
+            $obj['thumbnail'] = $images ? strval($images[0]->getTrueValue()) : '';
+            $obj['priceString'] = strval($product->getPriceString('USD'));
+            $obj['url'] = site_url('product/details') . '/' . $product->id;
+            $json[] = $obj;
+        }
+        echo json_encode($json);
+    }
+
+    function sale_service()
     {
         
     }

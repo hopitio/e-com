@@ -2,6 +2,7 @@
 
 defined('BASEPATH') or die('No direct script access allowed');
 
+require_once __DIR__ . DIRECTORY_SEPARATOR . "adodb5" . DIRECTORY_SEPARATOR . "adodb-exceptions.inc.php";
 require_once __DIR__ . DIRECTORY_SEPARATOR . "adodb5" . DIRECTORY_SEPARATOR . "adodb.inc.php";
 
 class DB
