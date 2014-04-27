@@ -119,6 +119,21 @@ CREATE TABLE `t_file` (
 
 insert  into `t_file`(`id`,`fk_user`,`fk_parent`,`url`,`is_dir`,`date_modified`,`internal_path`,`name`) values (1,1,NULL,'/uploads/2014/3/27/image4.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(2,1,NULL,'/uploads/2014/3/27/image.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(3,1,NULL,'/uploads/2014/3/27/image2.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(4,1,NULL,'/uploads/2014/3/27/image3.jpg',0,'2014-03-27 22:09:19',NULL,NULL);
 
+/*Table structure for table `t_hot` */
+
+DROP TABLE IF EXISTS `t_hot`;
+
+CREATE TABLE `t_hot` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_product` int(11) DEFAULT NULL,
+  `sort` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_hot` */
+
+insert  into `t_hot`(`id`,`fk_product`,`sort`) values (1,1,1),(2,2,2),(3,3,3),(4,4,4);
+
 /*Table structure for table `t_invoice` */
 
 DROP TABLE IF EXISTS `t_invoice`;
@@ -337,12 +352,13 @@ CREATE TABLE `t_product` (
   `fk_group` int(11) DEFAULT NULL,
   `is_group` tinyint(4) DEFAULT '0',
   `discount` double DEFAULT '0',
+  `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_product` */
 
-insert  into `t_product`(`id`,`fk_category`,`fk_seller`,`fk_group`,`is_group`,`discount`) values (1,1,1,NULL,0,0),(2,1,1,NULL,0,0),(3,1,1,NULL,0,0),(4,1,1,NULL,0,0),(5,1,1,NULL,0,0),(6,1,1,NULL,0,0),(7,1,1,NULL,0,0),(8,1,1,NULL,0,0),(9,1,1,NULL,0,0),(10,1,1,NULL,0,0),(11,1,1,NULL,0,0),(12,1,1,NULL,0,0);
+insert  into `t_product`(`id`,`fk_category`,`fk_seller`,`fk_group`,`is_group`,`discount`,`date_created`) values (1,1,1,NULL,0,0,'2014-04-18 10:36:58'),(2,1,1,NULL,0,0,'2014-04-18 10:36:58'),(3,1,1,NULL,0,0,'2014-04-23 10:36:58'),(4,1,1,NULL,0,0,'2014-04-19 10:36:58'),(5,1,1,NULL,0,0,'2014-04-25 10:36:58'),(6,1,1,NULL,0,0,'2014-04-15 10:36:58'),(7,1,1,NULL,0,0,'2014-04-27 10:36:58'),(8,1,1,NULL,0,0,'2014-04-21 10:36:58'),(9,1,1,NULL,0,0,'2014-04-25 10:36:58'),(10,1,1,NULL,0,0,'2014-04-22 10:36:58'),(11,1,1,NULL,0,0,'2014-04-21 10:36:58'),(12,1,1,NULL,0,0,'2014-04-24 10:36:58');
 
 /*Table structure for table `t_product_attribute` */
 
@@ -358,7 +374,7 @@ CREATE TABLE `t_product_attribute` (
   `language` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `value_varchar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=278 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=275 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_product_attribute` */
 
@@ -456,6 +472,55 @@ CREATE TABLE `t_role` (
 /*Data for the table `t_role` */
 
 insert  into `t_role`(`id`,`name`,`codename`) values (1,'Admin','admin'),(2,'Customer','customer'),(3,'Guest','guest'),(4,'Retailer','retailer');
+
+/*Table structure for table `t_section` */
+
+DROP TABLE IF EXISTS `t_section`;
+
+CREATE TABLE `t_section` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `display_image` text COLLATE utf8_unicode_ci,
+  `display_image_href` text COLLATE utf8_unicode_ci,
+  `display_image_title` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_section` */
+
+insert  into `t_section`(`id`,`display_image`,`display_image_href`,`display_image_title`) values (1,'/images/child-slide-item-demo.png','#','title');
+
+/*Table structure for table `t_section_language` */
+
+DROP TABLE IF EXISTS `t_section_language`;
+
+CREATE TABLE `t_section_language` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `language` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `fk_section` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_section_language` */
+
+insert  into `t_section_language`(`id`,`language`,`name`,`description`,`fk_section`) values (1,'EN-US','Shopping mall','shopping mall description',1),(2,'VN-VI','Mua sắm','mô ta cho mua sam',1);
+
+/*Table structure for table `t_section_product` */
+
+DROP TABLE IF EXISTS `t_section_product`;
+
+CREATE TABLE `t_section_product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_section` int(11) DEFAULT NULL,
+  `fk_product` int(11) DEFAULT NULL,
+  `sort` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_section_product` */
+
+insert  into `t_section_product`(`id`,`fk_section`,`fk_product`,`sort`) values (1,1,4,1),(2,1,5,2),(3,1,6,3),(4,1,7,4),(5,1,8,5),(6,1,9,6);
 
 /*Table structure for table `t_seller` */
 
