@@ -32,6 +32,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
      * @param array $invoices
      */
     function getProductsOfInvoices($invoices){
+       
         $portalProduct = new PortalModelProduct();
         $invoicesId = array();
         foreach ($invoices as $invoice){
@@ -79,7 +80,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
         foreach ($products as $product){
             array_push($productIds, $product->id);
         }
-        return $portalModelTax->getInvoiceByProductIds($productIds);
+        return $portalModelTax->getTaxByProductIds($productIds);
     }
     
     function getUserOrderWithStatus($user,$orderStatus = 'all')
@@ -87,6 +88,124 @@ class PortalBizPaymentHistory extends PortalBizBase{
         $orderStatus = $orderStatus == 'all' ? null : $orderStatus;
         $portalModelOrder = new PortalModelOrder();
         $portalModelOrder->fk_user = $user->id;
-        return $portalModelOrder->getOrderWithStatus($orderStatus);
+        $orders = array();
+        $status = $portalModelOrder->getOrderWithStatus($orderStatus);
+        
+        foreach ($status as $orderStatus)
+        {
+            $status = $orderStatus->status; 
+            unset($orderStatus->status);
+            $order = new PortalModelOrder();
+            $order->autoMappingObj($orderStatus);
+            $order->status = $status;
+            array_push($orders, $order);
+        }
+        unset($orderStatus);
+        foreach ($orders as &$order)
+        {
+            $order->invoices = $this->getOrderInforamtion($order->id);
+        }
+        unset($order);
+        foreach ($orders as &$order){
+            $this->preGetUserOrderWithStatusResult($orders);
+        }
+        return $orders;
+    }
+    
+    
+    /**
+     * get Order ID.
+     * @param unknown $orderId
+     */
+    function getOrderInforamtion($orderId){
+        $portalInvoice = new PortalModelInvoice();
+        $invoices = $portalInvoice->getInvociesByOrderIds(array($orderId));
+        $products = $this->getProductsOfInvoices($invoices);
+        $taxs = $this->getTaxOfProducts($products);
+        foreach ($products as &$product){
+            $product->taxs = array();
+            foreach ($taxs as $tax){
+                if($tax->fk_product == $product->id){
+                    array_push($product->taxs, $tax);
+                }
+            }
+        }
+        unset($product);
+        
+        foreach ($invoices as &$invocie)
+        {
+            $invocie->products = array();
+            foreach ($products as $product){
+                 if($product->invoice_id == $invocie->id){
+                     array_push($invocie->products, $product);
+                 }
+            }
+        }
+        unset($invocie);
+        
+        $shippings = $this->getShippingOfInvoices($invoices);
+        foreach ($invoices as &$invocie)
+        {
+            $invocie->shippings = array();
+            foreach ($shippings as $shipping){
+                if($shipping->fk_invoice == $invocie->id){
+                    array_push($invocie->shippings, $shipping);
+                }
+            }
+        }
+        unset($invocie);
+        
+        $otherCosts = $this->getOtherCostOfInvoices($invoices);
+        foreach ($invoices as &$invocie)
+        {
+            $invocie->otherCosts = array();
+            foreach ($otherCosts as $otherCost){
+                if($otherCost->fk_invoice == $invocie->id){
+                    array_push($invocie->otherCosts, $otherCost);
+                }
+            }
+        }
+        unset($invocie);
+        
+        return $invoices;
+    }
+    
+    private  function preGetUserOrderWithStatusResult($orders){
+        foreach ($orders as &$order)
+        {
+            $cost = 0;
+            foreach ($order->invoices as &$invoice){
+                $this->preInvoice($invoice);
+                if($invoice->invoice_type == "input"){
+                    $cost += $invoice->totalCost;
+                }else{
+                    $cost -= $invoice->totalCost;
+                }
+            }
+            $order->cost = $cost;
+        }
+        return $order;
+    }
+    private function preInvoice(&$invoice){
+        $invoice->totalCost = 0;
+        foreach ($invoice->products as &$product)
+        {
+            $product->totalTax = 0;
+            foreach ($product->taxs as $tax)
+            {
+                $product->totalTax += $tax->sub_tax_value;
+            }
+            $invoice->totalCost += ($product->totalTax + $product->total_price);
+        }
+        
+        foreach ($invoice->otherCosts as $otherCost)
+        {
+            $invoice->totalCost += $otherCost->value;
+        }
+        
+        foreach ($invoice->shippings as $shipping)
+        {
+            $invoice->totalCost += $shipping->price;
+        }
     }
 }

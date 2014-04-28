@@ -1,7 +1,7 @@
 <?php
 class PortalModelPaymentTemp extends PortalModelBase
 {
-    var $_constIntanceName = 'T_payment_temp';
+    protected $_constIntanceName = 'T_payment_temp';
     var $id;
     var $fk_user;
     var $created_date;

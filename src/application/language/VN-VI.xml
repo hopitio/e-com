@@ -139,4 +139,12 @@
         <msgUpdateContactError>Chỉnh sửa địa chỉ Không thành công</msgUpdateContactError>
         <msgUpdateContactSucess>Cập nhật địa chỉ Thành công</msgUpdateContactSucess>
     </portalaccount_userInformation>
+    <portalaccount_userOrderHistory>
+        <orderStatusOrderPlace>Chưa xác thực</orderStatusOrderPlace>
+        <orderStatusVerifying>Đang chờ xác thực</orderStatusVerifying>
+        <orderStatusShipping>Đang chuyển hàng</orderStatusShipping>
+        <orderStatusDelivered>Đã hoàn thành</orderStatusDelivered>
+        <orderStatusRejected>Không được chấp nhận</orderStatusRejected>
+        <orderStatusOrderCancelled>Đã hủy do yêu cầu của khác hàng</orderStatusOrderCancelled>
+    </portalaccount_userOrderHistory>
 </data>

@@ -5,5 +5,4 @@ class PortalModelInvoiceProduct extends PortalModelBase
     var $id;
     var $fk_invoice;
     var $fk_product;
-    
 }

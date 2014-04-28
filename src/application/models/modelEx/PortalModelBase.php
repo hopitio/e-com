@@ -131,7 +131,7 @@ class PortalModelBase extends CI_Model
     
     /**
      * 
-     * @param array $result
+     * @param array row of query result
      */
     public function autoMappingObj($result)
     {
@@ -201,14 +201,19 @@ class PortalModelBase extends CI_Model
      */
     protected function getWhereIn($property,$values)
     {
+        if(count($values) == 0)
+        {
+            return;
+        } 
         $this->_dbPortal->where_in($property,$values);
-        $query = $this->_dbPortal->get();
+        $query = $this->_dbPortal->get($this->_constIntanceName);
         $result = $query->result();
         $queryResult = array();
         foreach ($result as $row)
         {
             $item = clone $this;
-            array_push($queryResult,$item->autoMappingObj($row));
+            $item->autoMappingObj($row);
+            array_push($queryResult,$item);
         }
         return  $queryResult;
     }
