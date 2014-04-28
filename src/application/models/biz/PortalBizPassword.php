@@ -5,7 +5,7 @@
  * @author ANLT
  * @since 20140426
  */
-class PortalBizPassoword extends PortalBizBase
+class PortalBizPassword extends PortalBizBase
 {
     /**
      * Hàm thay đổi password.
@@ -23,8 +23,10 @@ class PortalBizPassoword extends PortalBizBase
         $portalUser->password = $newPass;
         $portalUser->updateUser();
         
-        $portalUserHistory = new PortalModelUserHistory();
-        $newId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEPASS,'Thay đổi mật khẩu',null,null);
+        $portalUserHistory = new PortalBizUserHistory();
+        $newId = $portalUserHistory->createNewHistory($user, 
+            DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEPASS, 
+            'Thay đổi mật khẩu', null, null);
         $resetKey = SecurityManager::inital()->getEncrytion()->encrytResetPassword($user, $newId);
         $resetKey =  urlencode($resetKey);
         

@@ -157,7 +157,7 @@ class PortalModelBase extends CI_Model
      * @param number $offset
      * @return multitype:
      */
-    public function getMutilCondition($orderProperty = null,$orderLogic = 'asc',$limit = 0, $offset = 0)
+    public function getMutilCondition($orderProperty = null,$orderLogic = 'asc',$limit = null, $offset = null)
     {
         $condition = array();
         $refl = new ReflectionClass($this->_constIntanceName);
@@ -168,15 +168,15 @@ class PortalModelBase extends CI_Model
             {
                 continue;
             }
-            $condition[$property] = $this->$$property;
+            $condition[$property] = $this->$property;
         }
         if ($orderProperty != null)
         {
             $this->_dbPortal->order_by($orderProperty, $orderLogic);
         }
-        if($limit != 0){
-            if($offset != 0){
-                $this->_dbPortal->limit($limit, $offset);
+        if($limit != null){
+            if($offset != null){
+                $this->_dbPortal->limit($offset,$limit);
             }else{
                 $this->_dbPortal->limit($limit);
             }

@@ -86,6 +86,47 @@
     <portalaccount_lostPassword></portalaccount_lostPassword>
     <portalHelp_policy></portalHelp_policy>
     
-    <portalaccount_userSecurity></portalaccount_userSecurity>
-    <portalaccount_userInformation></portalaccount_userInformation>
+    <portalaccount_userSecurity>
+    
+        <errorMsgWorngOldPassword>Mật khẩu cũ không khớp</errorMsgWorngOldPassword>
+        <errorMsgWorngNewPassword>Mật khẩu mới không khớp</errorMsgWorngNewPassword>
+        <errorMsgWorngComparePassword>Mật khẩu mới không hợp lệ</errorMsgWorngComparePassword>
+        <msgUpdatePasswordComplete>Cập nhật mật khẩu thành công</msgUpdatePasswordComplete>
+        <passwordTitle>Thay đổi mật khẩu : </passwordTitle>
+        <passwordOld>Mật khẩu cũ: </passwordOld>
+        <passwordNew>Mật khẩu mới: </passwordNew>
+        <passwordRepeat>Nhập lại mật khẩu mới: </passwordRepeat>
+        <btnSavePassword>Cập nhật mật khẩu</btnSavePassword>
+        
+        <emailInvalidMsg>COMMING SOOM...</emailInvalidMsg>
+        <emailTitle>Thay đổi mail thông báo</emailTitle>
+        <lblEmail>Email</lblEmail>
+        <btnEmail>Cập nhật email</btnEmail>
+        
+        <loginHistoryTitle>10 lần đăng nhập gần đây nhất</loginHistoryTitle>
+        <historyIpColTitle>IP</historyIpColTitle>
+        <historyTimeColTitle>Thời gian</historyTimeColTitle>
+        <historyUserAgrentColTitle>User Agrent</historyUserAgrentColTitle>
+        <historySystemColTitle>Hệ thống</historySystemColTitle>
+        
+    </portalaccount_userSecurity>
+    <portalaccount_userInformation>
+        <sexM>Nam</sexM>
+        <sexF>Nữ</sexF>
+        <sexO>Khác</sexO>
+        <userInformationMsgFirstname>Họ và tên đệm không hợp lệ</userInformationMsgFirstname>
+        <userInformationMsgLastName>Tên không hợp lệ</userInformationMsgLastName>
+        <userInformationMsgDob>Ngày sinh không hợp lệ</userInformationMsgDob>
+        <userInformationMsgSex>Giới tính không hợp lệ</userInformationMsgSex>
+        <userInformationMsgSucess>Cập nhật thông tin thành công</userInformationMsgSucess>
+        
+        <lblInformationTitle>Thông tin cá nhân</lblInformationTitle>
+        <lblFristName>Họ và tên đệm</lblFristName>
+        <lblLastName>Tên</lblLastName>
+        <lblDob>Ngày sinh</lblDob>
+        <lblSex>Giới tính</lblSex>
+        <btnSaveInformation>Lưu thay đổi</btnSaveInformation>
+        
+        <lblContactsTitle>Danh sách địa chỉ</lblContactsTitle>
+    </portalaccount_userInformation>
 </data>

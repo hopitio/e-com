@@ -50,18 +50,6 @@ class password extends BaseController
        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setJavascript($js)->setData($data)->setCss($this->_css)->render('portalaccount/changePassword');
     }
     
-    /**
-     * Hỗ trợ việc valid dữ liệu
-     * @param string $username
-     * @param string $password
-     * @return bool
-     */
-    private function isValidResetPasswordData($password){
-        $case = preg_match('@[a-z0-9A-Z]@', $password);
-        if(!$case || strlen($password) < 8) {
-            return false;
-        }
-        return true;
-    }
+    
    
 }

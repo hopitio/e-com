@@ -72,4 +72,5 @@ class PortalBizLogin extends PortalBizBase
         $user->DOB = $resultAccount->DOB;
         return $user;
     }
+    
 }
