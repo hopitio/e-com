@@ -128,5 +128,15 @@
         <btnSaveInformation>Lưu thay đổi</btnSaveInformation>
         
         <lblContactsTitle>Danh sách địa chỉ</lblContactsTitle>
+        <lblContactsFullname>Họ tên đầy đủ</lblContactsFullname>
+        <lblContactsTelephone>Số điện thoại</lblContactsTelephone>
+        <lblContactsStateProvince>Tỉnh</lblContactsStateProvince>
+        <lblContactsCity>Thành phố</lblContactsCity>
+        <lblContactsAddress>Địa chỉ cụ thể</lblContactsAddress>
+        
+        <btnAddNewContact>Thêm mới địa chỉ</btnAddNewContact>
+        <btnUpdateContact>Chỉnh sửa địa chỉ</btnUpdateContact>
+        <msgUpdateContactError>Chỉnh sửa địa chỉ Không thành công</msgUpdateContactError>
+        <msgUpdateContactSucess>Cập nhật địa chỉ Thành công</msgUpdateContactSucess>
     </portalaccount_userInformation>
 </data>

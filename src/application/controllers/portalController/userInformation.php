@@ -112,4 +112,32 @@ class userInformation extends BaseController
         $this->output->set_content_type('application/json')->set_output(json_encode($asyn, true));
     }
     
+    function getUserContactXhr(){
+        $portalBizContact = new PortalBizContact();
+        $return = $portalBizContact->getUserContacts(User::getCurrentUser());
+        $async = new AsyncResult();
+        $async->isError = false;
+        $async->data = $return;
+        $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
+    }
+    
+    function saveUserinformationXhr(){
+        $language = MultilLanguageManager::getInstance()->getLangViaScreen('portalaccount/userInformation', $this->obj_user->languageKey);
+        $portalBizContact = new PortalBizContact();
+        $data = json_decode($this->input->post('result'));
+        $return = $portalBizContact->saveContact(User::getCurrentUser(), 
+            $data->id, $data->full_name, $data->telephone, $data->state_province, 
+            $data->city_district, $data->street_address);
+        
+        $async = new AsyncResult();
+        if($return){
+            $async->isError = false;
+            $async->data = array('msg'=>$language->msgUpdateContactSucess->__toString());
+        }else{
+            $async->isError = true;
+            $async->errorMessage = $language->msgUpdateContactError->__toString();
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
+    }
+    
 }

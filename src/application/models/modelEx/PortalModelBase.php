@@ -41,7 +41,7 @@ class PortalModelBase extends CI_Model
         {
             $this->autoMappingObj($result[0]);
         }
-        return $this;
+        return count($result);
     }
     
     public function insert()

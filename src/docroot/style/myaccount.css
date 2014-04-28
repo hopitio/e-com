@@ -349,3 +349,23 @@ a.lynx_sort-menu {
 .lynx_historyTable .lynx_colSys{width:100px;}
 .lynx_historyTable .lynx_colIp{width:100px;}
 .lynx_historyTable .lynx_colTime{width:200px;}
+.lynx_rowGroup {
+	border-bottom: solid 1px gray;
+}
+.lynx_contactList{
+    cursor: pointer;
+}
+.lynx_contactList .lynx_left{
+	float:left;
+	width:50%;
+}
+.lynx_contactList .lynx_right{
+    float:left;
+    width:50%;
+}
+.modal-body .lynx_row{
+	text-align: left;
+}
+.modal-body .alert div{
+	text-align: left;
+}

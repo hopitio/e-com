@@ -57,6 +57,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/security'] = "portalController/userSecurity/showPage";
         $route['portal/account/last_login/(:num)'] = "portalController/userSecurity/getUserLastLoginTimeXhr/$1";
         $route['portal/account/get_user_information'] = "portalController/userInformation/getUserInformationXhr";
+        $route['portal/account/get_user_contacts'] = "portalController/userInformation/getUserContactXhr";
         
     }
 
@@ -74,6 +75,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/update_password'] = 'portalController/userSecurity/updatePasswordPostDataXhr';
         $route['portal/account/update_alert_email'] = 'portalController/userSecurity/updateAlertEmailXhr';
         $route['portal/account/update_user_information'] = 'portalController/userInformation/updateUserinformationXhr';
+        $route['portal/account/save_contact'] = 'portalController/userInformation/saveUserinformationXhr';
+        
     }
 }
 //

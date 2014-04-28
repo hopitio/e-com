@@ -1,10 +1,12 @@
-function UserInformationController($scope,$http)
+function UserInformationController($scope,$modal,$http)
 {
     $scope.onLoadUserInformation = false; 
     $scope.userInformationError = undefined;
     $scope.userInformationSucess = undefined;
-    
-    
+    $scope.onLoadUserContact = false;
+    $scope.userContactError = undefined;
+    $scope.userContactSucess = undefined;
+    var modalInstance;
     $scope.getUserInformation = function(){
         userInformationServiceClient = new UserInformationServiceClient($http);
         userInformationServiceClient.getUserInformation(getUserInformationSucessCallback,getUserInormationErrorCallback);
@@ -61,8 +63,94 @@ function UserInformationController($scope,$http)
         $scope.onLoadUserInformation = false;
     }
     
+    $scope.getUserContacts = function(){
+        userInformationServiceClient = new UserInformationServiceClient($http);
+        userInformationServiceClient.getUserContacts(getUserContactSucessCallback,getUserContactErrorCallback);
+        $scope.onLoadUserContact = true;
+    }
     
+    function getUserContactSucessCallback(result){
+        $scope.onLoadUserContact = false;
+        if(result.isError){
+            $scope.userContactError = result.errorMessage;
+        }else{
+            $scope.userContacts = result.data;
+        }
+    }
+    function getUserContactErrorCallback(xhr,status){
+        $scope.onLoadUserContact = false;
+    }
     
+    $scope.openModalContactDialog = function(item){
+        modalInstance = $modal.open({
+                        templateUrl: 'ModalContactDialog.html',
+                        controller: ModalContactDialog,
+                        resolve: {
+                            item:function () {
+                                return item;
+                            }
+                        }
+                    });
+        modalInstance.result.then(function () {
+            $scope.getUserContacts();
+          }, function () {});
+    }
+
     $scope.getUserInformation();
+    $scope.getUserContacts();
+    
+    
 }
-UserInformationController.$inject = ['$scope','$http'];
+
+var ModalContactDialog = function ($scope, $http, $modalInstance, item)
+{
+    $scope.contact = item;
+    if(item == undefined){
+        $scope.contact = {};
+        $scope.contact.id = null;
+        $scope.contact.full_name = '';
+        $scope.contact.telephone = '';
+        $scope.contact.state_province = '';
+        $scope.contact.city_district = '';
+        $scope.contact.street_address = '';
+    }
+    $scope.onLoadContact = false;
+    $scope.updateContactError = undefined;
+    $scope.updateContactSucess = undefined;
+    
+    $scope.ok = function () {
+        userInformationServiceClient = new UserInformationServiceClient($http);
+        userInformationServiceClient.saveContact($scope.contact,updateUserContactSucessCallback,updateUserContactErrorCallback);
+        $scope.onLoadContact = true;
+      };
+      
+    function updateUserContactSucessCallback(result){
+        $scope.onLoadContact = false;
+        if(result.isError){
+            $scope.updateContactError = result.errorMessage;
+        }else{
+            $scope.updateContactSucess = result.data.msg;
+        }
+    }
+    
+    function updateUserContactErrorCallback(xhr,state){
+        $scope.onLoadContact = false;
+        
+    }
+    
+    $scope.closeAlertSaveContact = function(type){
+        if(type == 'error'){
+            $scope.updateContactError = undefined;
+        }else{
+            $scope.updateContactSucess = undefined;
+        }
+    }
+    
+    $scope.cancel = function () {
+        $modalInstance.close();
+    };
+    
+}
+
+UserInformationController.$inject = ['$scope','$modal','$http'];
+ModalContactDialog.$inject = ['$scope','$http','$modalInstance','item'];

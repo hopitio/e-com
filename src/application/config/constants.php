@@ -265,22 +265,11 @@ class T_user_contact{
     CONST id = "id";
     CONST fk_user = "fk_user";
     CONST date_created = "date_created";
-    CONST date_used = "date_used";
-    CONST count_used = "count_used";
-    CONST prefix = "prefix";
-    CONST firstname = "firstname";
-    CONST middlename = "middlename";
-    CONST lastname = "lastname";
-    CONST suffix = "suffix";
-    CONST company = "company";
-    CONST street_address = "street_address";
-    CONST city = "city";
-    CONST country = "country";
-    CONST state_province = "state_province";
-    CONST zip_postal_code = "zip_postal_code";
+    CONST full_name = "full_name";
     CONST telephone = "telephone";
-    CONST fax = "fax";
-    CONST vat_number = "vat_number";
+    CONST street_address = "street_address";
+    CONST city_district = "city_district";
+    CONST state_province = "state_province";
 }
 class T_tax{
     const tableName = "t_tax";
