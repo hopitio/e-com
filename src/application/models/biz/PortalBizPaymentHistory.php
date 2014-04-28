@@ -184,6 +184,25 @@ class PortalBizPaymentHistory extends PortalBizBase{
             }
             $order->cost = $cost;
         }
+        foreach ($orders as &$order)
+        {
+            $order->uniqueProducts = array();
+            $arrayAllProducts = array();
+            foreach ($order->invoices as &$invoice){
+                $arrayAllProducts = array_merge($arrayAllProducts,$invoice->products);
+            }
+            foreach ($arrayAllProducts as $productInvoice)
+            {
+                foreach ($order->uniqueProducts as $product)
+                {
+                    if($product->id == $productInvoice->id)
+                    {
+                    	continue 2;
+                    }
+                }
+                array_push($order->uniqueProducts, $productInvoice);
+            }
+        }
         return $order;
     }
     private function preInvoice(&$invoice){

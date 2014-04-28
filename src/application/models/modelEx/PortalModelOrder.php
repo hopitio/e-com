@@ -19,7 +19,8 @@ class PortalModelOrder extends PortalModelBase
                 	 WHERE t_order_status.fk_order = t_order.id
                 	 ORDER BY t_order_status.updated_date DESC 
                 	 LIMIT 0, 1)
-                {$statusQuery}";
+                {$statusQuery}
+                ORDER BY t_order_status.updated_date DESC";
         $query = $this->_dbPortal->query($sql);
         return $query->result();
     }

@@ -1,7 +1,9 @@
 
-function UserOrderHistoryController($scope,$http)
+function UserOrderHistoryController($scope,$modal,$http)
 {
     $scope.onLoadOrder = false;
+    $scope.template = "ModalOrderList.html";
+    var modalInstance ;
     $scope.loadAllOrder = function(){
         userOrderHistoryServiceClient = new UserOrderHistoryServiceClient($http);
         userOrderHistoryServiceClient.getAllOrderHistory('all', getAllOrderHistorySucessCallback, getAllOrderHistoryErrorCallback);
@@ -23,6 +25,20 @@ function UserOrderHistoryController($scope,$http)
     $scope.parseInt = function(val){
         return parseInt(val);
     }
+    $scope.preStatusOrder = function(val){
+       return val.replace("_", " ");
+    }
     $scope.loadAllOrder();
+    
+    $scope.showOrderDetail = function(order)
+    {
+        $scope.template = "ModalOrderDetail.html";
+        $scope.order = order;
+    }
+    $scope.backToList = function (){
+        $scope.template = "ModalOrderList.html";
+        $scope.order = undefined;
+    }
 }
-UserOrderHistoryController.$inject = ['$scope','$http'];
+
+UserOrderHistoryController.$inject = ['$scope','$modal','$http'];
