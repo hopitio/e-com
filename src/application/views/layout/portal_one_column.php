@@ -20,9 +20,9 @@
         <script type='text/javascript' src="/js/angular-route.min.js"></script>
         <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src="/js/app.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
-        <script type='text/javascript' src="/js/app.js"></script>
 
         <script src="/js/main.js"></script>
         <?php

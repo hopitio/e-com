@@ -1,6 +1,5 @@
 'use strict';
 
 /* App Module */
-angular.module('lynx', ['mainFilters','ui.bootstrap','ngRoute']).
-    config(['$routeProvider', function($routeProvider) {  
-}]);
+var lynxApp = angular.module('lynx', ['mainFilters','ui.bootstrap','ngRoute'])
+lynxApp.config(['$routeProvider', function($routeProvider) {  }]);

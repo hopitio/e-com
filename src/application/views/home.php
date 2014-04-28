@@ -31,9 +31,8 @@ defined('BASEPATH') or die('No direct script access allowed');
             </div>
             <div class="lynx_listItem" >
                 <div class="lynx_item" 
-                     ng-repeat="product in hotItemTabs[activeHotTab][2]" product="product"
-                     ng-class="{
-                                 lynx_hotFirst: !$index, lynx_hotLast: $index == hotItemTabs[activeHotTab][2].length - 1}">
+                     ng-repeat="product in hotItemTabs[activeHotTab][2]" product
+                     ng-class="{lynx_hotFirst: !$index, lynx_hotLast: $index == hotItemTabs[activeHotTab][2].length - 1}">
                 </div>
             </div>
         </div>
