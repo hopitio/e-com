@@ -1,11 +1,11 @@
 
-function UserOrderHistoryController($scope,$modal,$http)
+function PortalUserOrderHistoryController($scope,$modal,$http)
 {
     $scope.onLoadOrder = false;
     $scope.template = "ModalOrderList.html";
     var modalInstance ;
     $scope.loadAllOrder = function(){
-        userOrderHistoryServiceClient = new UserOrderHistoryServiceClient($http);
+        userOrderHistoryServiceClient = new PortalUserOrderHistoryServiceClient($http);
         userOrderHistoryServiceClient.getAllOrderHistory('all', getAllOrderHistorySucessCallback, getAllOrderHistoryErrorCallback);
         $scope.onLoadOrder = true;
     }
@@ -42,4 +42,4 @@ function UserOrderHistoryController($scope,$modal,$http)
 
 }
 
-UserOrderHistoryController.$inject = ['$scope','$modal','$http'];
+PortalUserOrderHistoryController.$inject = ['$scope','$modal','$http'];

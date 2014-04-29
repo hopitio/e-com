@@ -1,4 +1,4 @@
-<div class="lynx_contentWarp lynx_staticWidth" ng-controller="UserInformationController">
+<div class="lynx_contentWarp lynx_staticWidth" ng-controller="PortalUserInformationController">
         <?php require_once APPPATH.'views/portalaccount/leftMenuAccount.php';?>
         <div class="lynx_row-right">
             <div class="lynx_row-head">

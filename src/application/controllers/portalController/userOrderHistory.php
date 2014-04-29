@@ -12,8 +12,8 @@ class userOrderHistory extends BaseController
     protected  $_css = array(
         '/style/myaccount.css'
     );
-    protected $_js = array('/js/controller/UserOrderHistoryController.js'
-                            ,'/js/services/UserOrderHistoryServiceClient.js');
+    protected $_js = array('/js/controller/PortalUserOrderHistoryController.js'
+                            ,'/js/services/PortalUserOrderHistoryServiceClient.js');
     protected $_data = [];
     
     /**

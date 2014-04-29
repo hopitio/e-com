@@ -1,4 +1,4 @@
-function UserInformationServiceClient($http)
+function PortalUserInformationServiceClient($http)
 {
     this.getUserInformation = function(sucessCallback,errorCallback)
     {

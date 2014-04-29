@@ -1,11 +1,10 @@
-
-function UserSecurityAccountController($scope,$http)
+function PortalUserSecurityAccountController($scope,$http)
 {
    $scope.onUpdatingPassword = false;
    $scope.onUpdatingEmail = false;
    $scope.onGetHistory = false;
    $scope.updatePassword = function(){
-       userSecurityServiceClient =  new UserSecurityServiceClient($http);
+       userSecurityServiceClient =  new PortalUserSecurityServiceClient($http);
        oldPass = $scope.oldPass;
        newPass = $scope.newPass;
        comfrimPass = $scope.newComfirmPass;
@@ -37,7 +36,7 @@ function UserSecurityAccountController($scope,$http)
    }
    
    $scope.updateAlertEmail = function(){
-       userSecurityServiceClient =  new UserSecurityServiceClient($http);
+       userSecurityServiceClient =  new PortalUserSecurityServiceClient($http);
        userSecurityServiceClient.updateAlertEmail($scope.email,updateAlertEmailSusscessCallback,updateAlertEmailErrorCallback);
        $scope.onUpdatingEmail = true;
    }
@@ -65,7 +64,7 @@ function UserSecurityAccountController($scope,$http)
    }
    
    $scope.showHistory = function(){
-       userSecurityServiceClient =  new UserSecurityServiceClient($http);
+       userSecurityServiceClient =  new PortalUserSecurityServiceClient($http);
        userSecurityServiceClient.getUserLoginHistory(10,getHistorySucessCallback,getHistoryErrorCallback);
        $scope.onGetHistory = true;
    }
@@ -82,4 +81,4 @@ function UserSecurityAccountController($scope,$http)
    $scope.showHistory();
    
 }
-UserSecurityAccountController.$inject = ['$scope','$http'];
+PortalUserSecurityAccountController.$inject = ['$scope','$http'];

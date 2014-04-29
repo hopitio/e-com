@@ -24,7 +24,7 @@ class password extends BaseController
        $oldPass = $data['txtOldPass'];
        $newPass = $data['txtNewPass'];
        $comfirmPass = $data['txtConfrimNewPass'];
-       $portalPassworBiz = new PortalBizPassoword();
+       $portalPassworBiz = new PortalBizPassword();
        if($newPass != $comfirmPass){
             $this->errorMessage('Mật khẩu mới không khớp');
             return;

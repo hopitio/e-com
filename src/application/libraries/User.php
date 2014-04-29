@@ -11,6 +11,7 @@ class User{
 
     public $is_authorized = false;
     public $languageKey = 'VN-VI';
+    public $currencyKey = 'VND';
     private $authenUrl = '/portal/login';
     private $callBack = '/__portal/authen';
     private $logout = "/logout";

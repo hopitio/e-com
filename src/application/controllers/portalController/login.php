@@ -101,6 +101,8 @@ class login extends BaseController
             $this->obj_user->status = $user->status;
             $this->obj_user->last_active = $user->last_active;
             $this->obj_user->DOB = $user->DOB;
+            $this->obj_user->languageKey = $user->languageKey;
+            $this->obj_user->currencyKey = $user->currencyKey;
             $this->obj_user->secretKey =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
             $this->set_obj_user_to_me($this->obj_user);
             $this->onLoginComplete($data);
@@ -212,7 +214,7 @@ class login extends BaseController
         }
     
         $accBiz = new PortalBizAccount();
-        $id = $accBiz->insertNewUserNormal($fristName, $lastName, $email, $password, $sex, $dob, $question, $answer);
+        $id = $accBiz->insertNewUserNormal($this->obj_user,$fristName, $lastName, $email, $password, $sex, $dob, $question, $answer);
         if($id){
             LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->render('registercomplete');
         }else{

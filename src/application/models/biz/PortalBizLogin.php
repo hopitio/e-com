@@ -34,7 +34,7 @@ class PortalBizLogin extends PortalBizBase
         $sex = $genderFB == 'male' ? 'M' : $genderFB == 'female' ? 'F' : 0;
         $DOBFB = isset($facebookAccount->birthday) ? $facebookAccount->birthday : null;
         $DOB = $this->convertFbDate($DOBFB);
-        $user = $accountBiz->insertNewUserFormPlatform($firstname, $lastname, $account, $password, $sex, $DOB,DatabaseFixedValue::USER_PLATFORM_FACEBOOK);
+        $user = $accountBiz->insertNewUserFormPlatform($user,$firstname, $lastname, $account, $password, $sex, $DOB,DatabaseFixedValue::USER_PLATFORM_FACEBOOK);
         return $user;
     }
     

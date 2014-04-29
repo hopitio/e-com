@@ -1,4 +1,4 @@
-function UserSecurityServiceClient($http){
+function PortalUserSecurityServiceClient($http){
     
     this.updatePassword = function(oldPass,newPass,comfirmPass,sucessCallback,errorCallback)
     {

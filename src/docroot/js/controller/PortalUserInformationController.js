@@ -1,4 +1,4 @@
-function UserInformationController($scope,$modal,$http)
+function PortalUserInformationController($scope,$modal,$http)
 {
     $scope.onLoadUserInformation = false; 
     $scope.userInformationError = undefined;
@@ -8,8 +8,8 @@ function UserInformationController($scope,$modal,$http)
     $scope.userContactSucess = undefined;
     var modalInstance;
     $scope.getUserInformation = function(){
-        userInformationServiceClient = new UserInformationServiceClient($http);
-        userInformationServiceClient.getUserInformation(getUserInformationSucessCallback,getUserInormationErrorCallback);
+        portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
+        portalUserInformationServiceClient.getUserInformation(getUserInformationSucessCallback,getUserInormationErrorCallback);
         $scope.onLoadUserInformation = true;
     }
     
@@ -45,8 +45,8 @@ function UserInformationController($scope,$modal,$http)
         var d1 = new Date($scope.warpDate);
         $scope.userInformation.dob = d1.yyyymmdd() + ' 00:00:00';
         
-        userInformationServiceClient = new UserInformationServiceClient($http);
-        userInformationServiceClient.updateUserInformation($scope.userInformation,updateUserInformationSucessCallback,updateUserInformationErrorCallback);
+        portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
+        portalUserInformationServiceClient.updateUserInformation($scope.userInformation,updateUserInformationSucessCallback,updateUserInformationErrorCallback);
         $scope.onLoadUserInformation = true;
     }
     
@@ -64,8 +64,8 @@ function UserInformationController($scope,$modal,$http)
     }
     
     $scope.getUserContacts = function(){
-        userInformationServiceClient = new UserInformationServiceClient($http);
-        userInformationServiceClient.getUserContacts(getUserContactSucessCallback,getUserContactErrorCallback);
+        portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
+        portalUserInformationServiceClient.getUserContacts(getUserContactSucessCallback,getUserContactErrorCallback);
         $scope.onLoadUserContact = true;
     }
     
@@ -119,8 +119,8 @@ var ModalContactDialog = function ($scope, $http, $modalInstance, item)
     $scope.updateContactSucess = undefined;
     
     $scope.ok = function () {
-        userInformationServiceClient = new UserInformationServiceClient($http);
-        userInformationServiceClient.saveContact($scope.contact,updateUserContactSucessCallback,updateUserContactErrorCallback);
+        portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
+        portalUserInformationServiceClient.saveContact($scope.contact,updateUserContactSucessCallback,updateUserContactErrorCallback);
         $scope.onLoadContact = true;
       };
       
@@ -152,5 +152,5 @@ var ModalContactDialog = function ($scope, $http, $modalInstance, item)
     
 }
 
-UserInformationController.$inject = ['$scope','$modal','$http'];
+PortalUserInformationController.$inject = ['$scope','$modal','$http'];
 ModalContactDialog.$inject = ['$scope','$http','$modalInstance','item'];

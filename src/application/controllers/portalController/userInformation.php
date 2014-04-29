@@ -12,8 +12,8 @@ class userInformation extends BaseController
     protected  $_css = array(
         '/style/myaccount.css'
     );
-    protected $_js = array('/js/controller/UserInformationController.js'
-                            ,'/js/services/UserInformationServiceClient.js');
+    protected $_js = array('/js/controller/PortalUserInformationController.js'
+                            ,'/js/services/PortalUserInformationServiceClient.js');
     protected $_data = [];
     
     function showPage()

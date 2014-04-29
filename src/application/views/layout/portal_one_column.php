@@ -25,6 +25,8 @@
         <script type='text/javascript' src="/js/directives.js"></script>
 
         <script src="/js/main.js"></script>
+        <script src="/js/controller/PortalHeadController.js"></script>
+        <script src="/js/services/PortalCommonServiceClient.js"></script>
         <?php
         //Thêm các js riêng biệt
         foreach ($view->javascript as $jsItem)
@@ -48,7 +50,7 @@
     </head>
     <body>
     <div class="lynx_container">
-        <div class="lynx_head">
+        <div class="lynx_head" ng-controller="PortalHeadController">
             <div class="lynx_headWarp lynx_staticWidth">
                 <div class="lynx_logo"></div>
                 <div class="lynx_headLeft">
@@ -56,7 +58,7 @@
                     <span class="lynx_liveChat"> LIVE CHAT</span>
                     <div class="lynx_language">
                         <span class="lynx_label">LANGUAGE : 
-                            <select id="sel-language">
+                            <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)">
                                 <option value="EN-US">English</option>
                                 <option value="VN-VI">Tiếng Việt</option>
                             </select>

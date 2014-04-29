@@ -121,19 +121,19 @@
         <userInformationMsgSex>Giới tính không hợp lệ</userInformationMsgSex>
         <userInformationMsgSucess>Cập nhật thông tin thành công</userInformationMsgSucess>
         
-        <lblInformationTitle>Thông tin cá nhân</lblInformationTitle>
-        <lblFristName>Họ và tên đệm</lblFristName>
-        <lblLastName>Tên</lblLastName>
-        <lblDob>Ngày sinh</lblDob>
-        <lblSex>Giới tính</lblSex>
-        <btnSaveInformation>Lưu thay đổi</btnSaveInformation>
+        <lblInformationTitle>User Information</lblInformationTitle>
+        <lblFristName>First Name</lblFristName>
+        <lblLastName>Last name</lblLastName>
+        <lblDob>Date of birth</lblDob>
+        <lblSex>Genner</lblSex>
+        <btnSaveInformation>Save change</btnSaveInformation>
         
-        <lblContactsTitle>Danh sách địa chỉ</lblContactsTitle>
-        <lblContactsFullname>Họ tên đầy đủ</lblContactsFullname>
-        <lblContactsTelephone>Số điện thoại</lblContactsTelephone>
-        <lblContactsStateProvince>Tỉnh</lblContactsStateProvince>
-        <lblContactsCity>Thành phố</lblContactsCity>
-        <lblContactsAddress>Địa chỉ cụ thể</lblContactsAddress>
+        <lblContactsTitle>Contact list</lblContactsTitle>
+        <lblContactsFullname>Full name</lblContactsFullname>
+        <lblContactsTelephone>Phone</lblContactsTelephone>
+        <lblContactsStateProvince>State</lblContactsStateProvince>
+        <lblContactsCity>City</lblContactsCity>
+        <lblContactsAddress>Street anddress</lblContactsAddress>
         
         <btnAddNewContact>Thêm mới địa chỉ</btnAddNewContact>
         <btnUpdateContact>Chỉnh sửa địa chỉ</btnUpdateContact>

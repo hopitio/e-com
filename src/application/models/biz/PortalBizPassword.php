@@ -92,7 +92,7 @@ class PortalBizPassword extends PortalBizBase
         $portalUser->password = $newPass;
         $portalUser->updateUser();
         
-        $portalUserHistory = new PortalModelUserHistory();
+        $portalUserHistory = new PortalBizUserHistory();
         $historyId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_RESETPASS,'Reset mật khẩu',null,null);
         
         $mailData = array(

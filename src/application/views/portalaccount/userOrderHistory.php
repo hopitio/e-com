@@ -1,4 +1,4 @@
-<div class="lynx_contentWarp lynx_staticWidth" ng-controller="UserOrderHistoryController" >
+<div class="lynx_contentWarp lynx_staticWidth" ng-controller="PortalUserOrderHistoryController" >
         <?php require_once APPPATH.'views/portalaccount/leftMenuAccount.php';?>
         <div ng-include="template">
         </div>

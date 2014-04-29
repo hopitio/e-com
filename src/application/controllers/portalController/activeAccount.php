@@ -22,7 +22,7 @@ class activeAccount extends BaseController
             return;
         }
         
-        $accountBiz = new PortalAccountBiz();
+        $accountBiz = new PortalBizAccount();
         $activeStatus =  $accountBiz->activeUserByRequest($key);
         
         //er_actived|er_active_error|actived

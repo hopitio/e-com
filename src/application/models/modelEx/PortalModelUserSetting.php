@@ -6,6 +6,7 @@
  */
 class PortalModelUserSetting extends PortalModelBase
 {
+    protected $_constIntanceName = 'T_user_setting';
     public $id;
     public $fk_user;
     public $setting_key;

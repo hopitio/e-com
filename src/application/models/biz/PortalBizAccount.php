@@ -24,10 +24,10 @@ class PortalBizAccount extends PortalBizBase
      * @param string $DOB
      *            //format YYYY-MM-DD HH:MM:SS
      */
-    function insertNewUserNormal($firstname, $lastname, $account, $password, $sex, 
+    function insertNewUserNormal($user,$firstname, $lastname, $account, $password, $sex, 
         $DOB, $question = '', $answer = '')
     {
-        $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT,$question, $answer);
+        $newId = $this->insertNewUser($user,$firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT,$question, $answer);
         //$this->activeUser($newId);
         $portalUserModel = new PortalModelUser();
         $portalUserModel->id = $newId;
@@ -64,10 +64,10 @@ class PortalBizAccount extends PortalBizBase
      * @param string $DOB
      *            //format YYYY-MM-DD HH:MM:SS
      */
-    function insertNewUserFormPlatform($firstname, $lastname, $account, $password, $sex, 
+    function insertNewUserFormPlatform($user,$firstname, $lastname, $account, $password, $sex, 
         $DOB, $platformKey = DatabaseFixedValue::USER_PLATFORM_DEFAULT )
     {
-        $newId = $this->insertNewUser($firstname, $lastname, $account, $password, $sex, $DOB, $platformKey);
+        $newId = $this->insertNewUser($user,$firstname, $lastname, $account, $password, $sex, $DOB, $platformKey);
         $history = new PortalBizUserHistory();
         $history->createNewHistory(null,DatabaseFixedValue::USER_HISTORY_ACTION_REGISTE,'REGISTER FORM '.$platformKey,null,null);
         return  $this->activeUser($newId);
@@ -85,7 +85,7 @@ class PortalBizAccount extends PortalBizBase
      *            //format YYYY-MM-DD HH:MM:SS
      * @param string $phoneno            
      */
-    private function insertNewUser($firstname, $lastname, $account, $password, 
+    private function insertNewUser($user,$firstname, $lastname, $account, $password, 
         $sex, $DOB, $platformKey, $question = '', $answer = '')
     {
         $userModel = new PortalModelUser();
@@ -103,12 +103,12 @@ class PortalBizAccount extends PortalBizBase
         $userModel->platform_key = $platformKey;
         $newId = $userModel->insert();
         
-        $this->insertSettingKey($newId, $userModel->account, $question, $answer);
+        $this->insertSettingKey($user,$newId, $userModel->account, $question, $answer);
         
         return $newId;
     }
 
-    private function insertSettingKey($newId,$alterEmail,$question = '', $answer = ''){
+    private function insertSettingKey($user,$newId,$alterEmail,$question = '', $answer = ''){
         //Insert user setting.
         $portalUserSetting = new PortalModelUserSetting();
         
@@ -136,13 +136,31 @@ class PortalBizAccount extends PortalBizBase
         $questionAns->setting_key = DatabaseFixedValue::SECURITY_ANSWER_SETTINGKEY;
         $questionAns->value = $answer;
         
+        //Language key.
+        $languagekey = new PortalModelUserSetting();
+        $languagekey->fk_user = $newId;
+        $languagekey->setting_key = DatabaseFixedValue::LANGUAGE_SETTINGKEY;
+        $languagekey->value = $user->languageKey;
+        
+        //Currency key.
+        $currencyKey = new PortalModelUserSetting();
+        $currencyKey->fk_user = $newId;
+        $currencyKey->setting_key = DatabaseFixedValue::CURRENCY_SETTINGKEY;
+        $currencyKey->value = $user->currencyKey;
+        
         $settingArray = array();
-        array_push($settingArray, $isreceiveEmailSetting, $isAlterEmailSetting,$questionSetting,$questionAns);
+        array_push($settingArray, $isreceiveEmailSetting, $isAlterEmailSetting,$questionSetting,$questionAns,$languagekey,$currencyKey);
         $result = $portalUserSetting->insertBatch($settingArray);
         
         return $result;
     }
     
+    /**
+     * 
+     * @param User $user
+     * @param unknown $userModel
+     * @return User
+     */
     private function mappingModelWithUser($user,$userModel){
         $user->id = $userModel->id;
         $user->account = $userModel->account;
@@ -174,7 +192,20 @@ class PortalBizAccount extends PortalBizBase
         if ($result)
         {
             $user = new User();
+            $portalModelUserSetting = new PortalModelUserSetting();
+            $portalModelUserSetting->fk_user = $user->id;
+            $settings = $portalModelUserSetting->getMutilCondition();
+            foreach ($settings as $setting)
+            {
+                if($setting->setting_key == DatabaseFixedValue::CURRENCY_SETTINGKEY){
+                    $user->currencyKey = $setting->value;
+                }
+                if($setting->setting_key == DatabaseFixedValue::LANGUAGE_SETTINGKEY){
+                    $user->languageKey = $setting->value;
+                }
+            }
             $user = $this->mappingModelWithUser($user,$userModel);
+            log_message('error',var_export($user,true));
             return $user;
         }
         else
