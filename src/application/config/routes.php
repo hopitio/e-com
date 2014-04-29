@@ -36,7 +36,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     {
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
-        $route['portal/account'] = 'portalController/account/showPage';
+        
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
@@ -53,6 +53,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/policy'] = 'portalController/lostPassword/showPage';
         //$route['portal/change_question'] = "portalController/question/showPage";
         //$route['portal/contacts'] = "portalController/contact/showPage";
+        $route['portal/account'] = 'portalController/userInformation/showPage';
         $route['portal/account/user_information'] = 'portalController/userInformation/showPage';
         $route['portal/account/security'] = "portalController/userSecurity/showPage";
         $route['portal/account/last_login/(:num)'] = "portalController/userSecurity/getUserLastLoginTimeXhr/$1";

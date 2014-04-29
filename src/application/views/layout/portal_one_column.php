@@ -55,7 +55,12 @@
                     <span class="lynx_sell"> SELL</span>
                     <span class="lynx_liveChat"> LIVE CHAT</span>
                     <div class="lynx_language">
-                        <span class="lynx_label">LANGUAGE : </span>
+                        <span class="lynx_label">LANGUAGE : 
+                            <select id="sel-language">
+                                <option value="EN-US">English</option>
+                                <option value="VN-VI">Tiếng Việt</option>
+                            </select>
+                        </span>
                          
                     </div>
                 </div>

@@ -10,11 +10,11 @@
                 <span ng-click="backToList()">
                     <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
                    <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
-                    Thông báo
+                    <?php echo $language[$view->view]->lblTitleNotify; ?>
                 </span>
             </div>
             <div class="lynx_row-content" >
-                Không có thông tin invoice
+                <?php echo $language[$view->view]->lblNotifyNoneInvoice; ?>
             </div>
         </div>
 
@@ -23,12 +23,12 @@
                 <span ng-show="invoice.invoice_type == 'input'" ng-click="backToList()">
                    <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
                    <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
-                    Hóa đơn thanh toán
+                    <?php echo $language[$view->view]->lblInvoicePay; ?>
                 </span>
                 <span ng-show="invoice.invoice_type != 'input'" ng-click="backToList()">
                    <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
                    <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
-                    Hóa đơn trả hàng
+                    <?php echo $language[$view->view]->lblInvoiceReturn; ?>
                 </span>
             </div>
             <div class="lynx_row-content" >
@@ -37,38 +37,38 @@
                         <div class="lynx_row">
                             
                             <div class="lynx_row ">
-                                <span class="lynx_inHightLine">Tổng giá trị hóa đơn </span>:&nbsp;<span class="hightLine">{{invoice.totalCost}}</span>
+                                <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblInvoiceTotal; ?> </span>:&nbsp;<span class="hightLine">{{invoice.totalCost}}</span>
                             </div>
                             <div class="lynx_row ">
-                                <span class="lynx_inHightLine">Mã hóa đơn </span>:&nbsp;<span>{{invoice.id}}</span>
+                                <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblInvoiceId; ?> </span>:&nbsp;<span>{{invoice.id}}</span>
                             </div>
                             <div class="lynx_row">
-                                <span class="lynx_inHightLine">Ngày tạo </span>:&nbsp;{{invoice.created_date}}
+                                <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblCreatedDate; ?> </span>:&nbsp;{{invoice.created_date}}
                             </div>
                             <div class="lynx_row">
-                                <span class="lynx_inHightLine">Ngày thanh toán</span>:&nbsp;{{invoice.paid_date}}
+                                <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblPaidDate; ?></span>:&nbsp;{{invoice.paid_date}}
                             </div>
                             <div class="lynx_row">
-                                <span class="lynx_inHightLine">Phương thức thanh toán</span>:&nbsp;{{invoice.payment_method}}
+                                <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblPaidType; ?></span>:&nbsp;{{invoice.payment_method}}
                             </div>
                         </div>
                     </div>
                     <div class="lynx_invoiceList_right">
                         <div class="lynx_InvoiceTable lynx_right">
-                            <span class="lynx_colDes">MÔ TẢ</span>
-                            <span class="lynx_colTax">Thuế</span>
-                            <span class="lynx_colPrice">GIÁ</span>
+                            <span class="lynx_colDes"><?php echo $language[$view->view]->lblDesTitle; ?></span>
+                            <span class="lynx_colTax"><?php echo $language[$view->view]->lblTaxTitle; ?></span>
+                            <span class="lynx_colPrice"><?php echo $language[$view->view]->lblPriceTitle; ?></span>
                         </div>
                         <div class="lynx_InvoiceTable lynx_right" ng-repeat="product in invoice.products">
                             <span class="lynx_colDes">
                                 <div class="lynx_invoiceProduct">
                                     <div class="lynx_productImage"><img width="100px" height="100px" ng-src="{{product.sub_image}}"/></div>
-                                    <div class="lynx_productDetail"><span>Name : </span> {{product.name}}</div>
-                                    <div class="lynx_productDetail"><span>Quantity : </span> {{product.quantity}}</div>
-                                    <div class="lynx_productDetail"><span>short_description : </span> {{product.short_description}}</div>
+                                    <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblNameProduct; ?> : </span> {{product.name}}</div>
+                                    <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblQuanityProduct; ?> : </span> {{product.quantity}}</div>
+                                    <div class="lynx_productDetail">{{product.short_description}}</div>
                                     <div class="lynx_productDetail">
-                                            <i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine">Chi tiết sản phẩm </span>&nbsp;&nbsp;&nbsp;
-                                            <i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine">Viết bình luân về sản phẩm </span>
+                                        <i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine"><?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
+                                        <i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine"><?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
                                     </div>
                                 </div>
                             </span>
@@ -84,13 +84,13 @@
                         
                         <div class="lynx_InvoiceTable lynx_right" ng-repeat="shipping in invoice.shippings" >
                             <span class="lynx_colDes">
-                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle">Loại ship : </span> {{shipping.shipping_type}}</div>
-                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle">Người nhận : </span> {{shipping.contact.full_name}}</div>
-                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle">SDT Người nhận : </span> {{shipping.contact.telephone}}</div>
-                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle">Quốc gia : </span> {{shipping.contact.state_province}}</div>
-                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle">Thành phố : </span> {{shipping.contact.city_district}}</div>
-                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle">Địa chỉ cụ thể : </span> {{shipping.contact.street_address}}</div>
-                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle">Status : </span> {{shipping.status}}</div>
+                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblShippingType; ?> : </span> {{shipping.shipping_type}} - {{shipping.display_name}}</div>
+                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblPersonInCharge; ?> : </span> {{shipping.contact.full_name}}</div>
+                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblPersonPhone; ?> : </span> {{shipping.contact.telephone}}</div>
+                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblState; ?> : </span> {{shipping.contact.state_province}}</div>
+                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblCity; ?> : </span> {{shipping.contact.city_district}}</div>
+                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblDetail; ?> : </span> {{shipping.contact.street_address}}</div>
+                                <div class="lynx_productDetail"><span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblStatus; ?> : </span> {{shipping.status}}</div>
                             </span>
                             <span class="lynx_colTax"></span>
                             <span class="lynx_colPrice">{{shipping.price}}</span>
@@ -106,12 +106,12 @@
             <div class="lynx_row-head">
                 <span ng-click="backToList()">
                     <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
-                   <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
-                    Thông báo
+                    <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
+                    <?php echo $language[$view->view]->lblTitleNotify; ?>
                 </span>
             </div>
             <div class="lynx_row-content" >
-                Bạn chưa có order nào.
+                <?php echo $language[$view->view]->lblNotifyNoneOrder; ?>
             </div>
         </div>
 
@@ -125,35 +125,35 @@
                             <span class="lynx_inHightLine">{{preStatusOrder(order.status)}}</span>
                         </div>
                         <div class="lynx_row">
-                            <span class="lynx_inHightLine">Order Number : </span>{{order.id}}
+                            <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderId; ?> : </span>{{order.id}}
                         </div>  
                         <div class="lynx_row">
-                            <span class="lynx_inHightLine">Created data : </span>{{order.created_date}}
+                            <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderCreatedDate; ?> : </span>{{order.created_date}}
                         </div>
                         <div class="lynx_row ">
-                           <span class="lynx_inHightLine">Total : </span> <span class="hightLine">{{order.cost}}</span>
+                           <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderTotalPrices; ?> : </span> <span class="hightLine">{{order.cost}}</span>
                         </div>
                         <div class="lynx_row ">
-                           <span class="lynx_spanButton lynx_inHightLine" ng-click="showOrderDetail(order)" ><i class="glyphicon glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>  Chi tiết order </span>
+                           <span class="lynx_spanButton lynx_inHightLine" ng-click="showOrderDetail(order)" ><i class="glyphicon glyphicon glyphicon-list-alt" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrdeDetail; ?> </span>
                         </div>
                     </div>
                 </div>
                 <div class="lynx_invoiceList_right">
                     <div class="lynx_InvoiceTable lynx_right">
-                        <span class="lynx_colDes">MÔ TẢ</span>
-                        <span class="lynx_colTax">Thuế</span>
-                        <span class="lynx_colPrice">GIÁ</span>
+                        <span class="lynx_colDes"><?php echo $language[$view->view]->lblDesTitle; ?></span>
+                        <span class="lynx_colTax"><?php echo $language[$view->view]->lblTaxTitle; ?></span>
+                        <span class="lynx_colPrice"><?php echo $language[$view->view]->lblPriceTitle; ?></span>
                     </div>
                     <div class="lynx_InvoiceTable lynx_right" ng-repeat="product in order.uniqueProducts">
                         <span class="lynx_colDes lynx_right">
                             <div class="lynx_invoiceProduct">
                                 <div class="lynx_productImage"><img width="100px" height="100px" ng-src="{{product.sub_image}}"/></div>
-                                <div class="lynx_productDetail"><span>Name : </span> {{product.name}}</div>
-                                <div class="lynx_productDetail"><span>Quantity : </span> {{product.quantity}}</div>
-                                <div class="lynx_productDetail"><span>short_description : </span> {{product.short_description}}</div>
+                                <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblNameProduct; ?> : </span> {{product.name}}</div>
+                                <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblQuanityProduct; ?> : </span> {{product.quantity}}</div>
+                                <div class="lynx_productDetail">{{product.short_description}}</div>
                                 <div class="lynx_productDetail">
-                                        <i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine">Chi tiết sản phẩm </span>&nbsp;&nbsp;&nbsp;
-                                        <i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine">Viết bình luân về sản phẩm </span>
+                                        <i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine"><?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
+                                        <i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine"><?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
                                 </div>
                             </div>
                         </span>

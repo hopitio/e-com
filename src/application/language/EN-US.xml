@@ -1,12 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-	<home>
-	    <label>abc{0}</label>
-	</home>
-	<login>
-	    <label>abc{0}</label>
-	</login>
-	<Details>
-	    <label>abc{0}</label>
-	</Details>
+    <home>
+        <title>PROJECT E</title>
+    </home>
+    <login>
+        <title>PROJECT E Đăng nhập</title>
+        <loginTitle>Đăng nhập</loginTitle>
+        <registeTitle>Đăng Ký</registeTitle>
+        <lblUs>Tên Đăng nhập : </lblUs>
+        <lblPs>Mật khẩu :</lblPs>
+        <btnLogin>Đăng nhập</btnLogin>
+        <lblForgetPassword>Bạn không thể đăng nhập tài khoản </lblForgetPassword>
+        <lblCreateNewAccount>Đăng ký tài khoản mới </lblCreateNewAccount>
+        <lblError>Tên đăng nhập hoặc mật khẩu không đúng.</lblError>
+        <lblCreateFristName>Họ và tên đệm </lblCreateFristName>
+        <lblCreateLastName> Tên </lblCreateLastName>
+        <lblDOB>Ngày sinh </lblDOB>
+        <lblEmail>Email </lblEmail>
+        <lblPassword>Mật khẩu </lblPassword>
+        <lblPasswordRetry> Nhập lại mật khẩu </lblPasswordRetry>
+        <lblSex>Giới tính </lblSex>
+        <lblSexM>Nam</lblSexM>
+        <lblSexF>Nữ</lblSexF>
+        <lblSexO>Khác</lblSexO>
+        <lblQuestion>Câu hỏi bí mật</lblQuestion>
+        <lblQ0>Bạn thích chơi game nào nhất ?</lblQ0>
+        <lblQ1>Tên thuở nhỏ của bạn là gì ? </lblQ1>
+        <lblQ2>Trường cấp 3 của bạn là gì ?</lblQ2>
+        <lblQ3>Cuốn sách mà bạn thích nhất ?</lblQ3>
+        <lblQ4>Tên vật nuôi của bạn là gì ?</lblQ4>
+        <lblQ5>Bạn thích con vật nào nhất ?</lblQ5>
+        <lblanswer>Trả lời</lblanswer>
+        <btnResg>Đồng ý điều khoản sử dụng và Đăng ký </btnResg>
+        <lblLinkPolice>Chi tiết điều khoản sử dụng và điều lệ của website.</lblLinkPolice>
+        <msgWoringEmail>Email sai địng dạng hoặc dài quá 254 ký tự</msgWoringEmail>
+        <msgWoringPass>Mật khẩu không khớp và chỉ chứa ký tự từ 0-9, A-Z </msgWoringPass>
+        <msgWoringFristName>Họ và tên đệm dài quá 50 ký tự</msgWoringFristName>
+        <msgWoringLastName>Tên dài quá 50 ký tự</msgWoringLastName>
+        <msgWoringAns>Tên dài quá 50 ký tự</msgWoringAns>
+    </login>
+    <registercomplete>
+        <title>Register complete</title>
+        <des>Bạn đã đăng ký thành công vui lòng kiểm tra mail để xác nhận đăng ký này.</des>
+    </registercomplete>
+    <Details>
+        <label>abc{0}</label>
+    </Details>
+    <layout>
+        <demo>DEMO DATA</demo>
+    </layout>
+    <sitemap>
+        <title>Sitemap</title>
+    </sitemap>
+    <product_details>
+        <productInfomation>Thông tin sản phẩm</productInfomation>
+    </product_details>
+    <wishlist_show></wishlist_show>
+    <portalaccount_account>
+        <title>Thông tin tài khoản cá nhân</title>
+    </portalaccount_account>
+    <portalaccount_active>
+        <title>Xác minh tài khoản</title>
+        <msgComplete>Xác minh tài khoản thành công</msgComplete>
+        <linkComplete>Trở về trang chủ</linkComplete>
+        <msgErrorActived>Tài khoản đã được active</msgErrorActived>
+    </portalaccount_active>
+    <cart_showCart></cart_showCart>
+    <cart_shipping></cart_shipping>
+    <mail>
+        <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
+    </mail>
+    
+    <portalaccount_resetPassword></portalaccount_resetPassword>
+    <order_placeOrder></order_placeOrder>
+    <pin_showPage></pin_showPage>
+    <admin_login></admin_login>
+    <admin_mainpage></admin_mainpage>
+    <portalAdmin_support></portalAdmin_support>
+    <portalHelp_contact_us></portalHelp_contact_us>
+    <portalHelp_contact_by_email></portalHelp_contact_by_email>
+    <portalHelp_contact_by_chat></portalHelp_contact_by_chat>
+    <portalHelp_start_chat></portalHelp_start_chat>
+    <portalOrder_orderCheckinComplete></portalOrder_orderCheckinComplete>
+    <seller_show_products></seller_show_products>
+    <seller_add_product></seller_add_product>
+    <portalaccount_lostPassword></portalaccount_lostPassword>
+    <portalHelp_policy></portalHelp_policy>
+    
+    <portalaccount_userSecurity>
+    
+        <errorMsgWorngOldPassword>Mật khẩu cũ không khớp</errorMsgWorngOldPassword>
+        <errorMsgWorngNewPassword>Mật khẩu mới không khớp</errorMsgWorngNewPassword>
+        <errorMsgWorngComparePassword>Mật khẩu mới không hợp lệ</errorMsgWorngComparePassword>
+        <msgUpdatePasswordComplete>Cập nhật mật khẩu thành công</msgUpdatePasswordComplete>
+        <passwordTitle>Thay đổi mật khẩu : </passwordTitle>
+        <passwordOld>Mật khẩu cũ: </passwordOld>
+        <passwordNew>Mật khẩu mới: </passwordNew>
+        <passwordRepeat>Nhập lại mật khẩu mới: </passwordRepeat>
+        <btnSavePassword>Cập nhật mật khẩu</btnSavePassword>
+        
+        <emailInvalidMsg>COMMING SOOM...</emailInvalidMsg>
+        <emailTitle>Thay đổi mail thông báo</emailTitle>
+        <lblEmail>Email</lblEmail>
+        <btnEmail>Cập nhật email</btnEmail>
+        
+        <loginHistoryTitle>10 lần đăng nhập gần đây nhất</loginHistoryTitle>
+        <historyIpColTitle>IP</historyIpColTitle>
+        <historyTimeColTitle>Thời gian</historyTimeColTitle>
+        <historyUserAgrentColTitle>User Agrent</historyUserAgrentColTitle>
+        <historySystemColTitle>Hệ thống</historySystemColTitle>
+        
+    </portalaccount_userSecurity>
+    <portalaccount_userInformation>
+        <sexM>Nam</sexM>
+        <sexF>Nữ</sexF>
+        <sexO>Khác</sexO>
+        <userInformationMsgFirstname>Họ và tên đệm không hợp lệ</userInformationMsgFirstname>
+        <userInformationMsgLastName>Tên không hợp lệ</userInformationMsgLastName>
+        <userInformationMsgDob>Ngày sinh không hợp lệ</userInformationMsgDob>
+        <userInformationMsgSex>Giới tính không hợp lệ</userInformationMsgSex>
+        <userInformationMsgSucess>Cập nhật thông tin thành công</userInformationMsgSucess>
+        
+        <lblInformationTitle>Thông tin cá nhân</lblInformationTitle>
+        <lblFristName>Họ và tên đệm</lblFristName>
+        <lblLastName>Tên</lblLastName>
+        <lblDob>Ngày sinh</lblDob>
+        <lblSex>Giới tính</lblSex>
+        <btnSaveInformation>Lưu thay đổi</btnSaveInformation>
+        
+        <lblContactsTitle>Danh sách địa chỉ</lblContactsTitle>
+        <lblContactsFullname>Họ tên đầy đủ</lblContactsFullname>
+        <lblContactsTelephone>Số điện thoại</lblContactsTelephone>
+        <lblContactsStateProvince>Tỉnh</lblContactsStateProvince>
+        <lblContactsCity>Thành phố</lblContactsCity>
+        <lblContactsAddress>Địa chỉ cụ thể</lblContactsAddress>
+        
+        <btnAddNewContact>Thêm mới địa chỉ</btnAddNewContact>
+        <btnUpdateContact>Chỉnh sửa địa chỉ</btnUpdateContact>
+        <msgUpdateContactError>Chỉnh sửa địa chỉ Không thành công</msgUpdateContactError>
+        <msgUpdateContactSucess>Cập nhật địa chỉ Thành công</msgUpdateContactSucess>
+    </portalaccount_userInformation>
+    <portalaccount_userOrderHistory>
+        <orderStatusOrderPlace>Chưa xác thực</orderStatusOrderPlace>
+        <orderStatusVerifying>Đang chờ xác thực</orderStatusVerifying>
+        <orderStatusShipping>Đang chuyển hàng</orderStatusShipping>
+        <orderStatusDelivered>Đã hoàn thành</orderStatusDelivered>
+        <orderStatusRejected>Không được chấp nhận</orderStatusRejected>
+        <orderStatusOrderCancelled>Đã hủy do yêu cầu của khác hàng</orderStatusOrderCancelled>
+        
+        <lblTitleNotify>Thông báo</lblTitleNotify>
+        <lblNotifyNoneOrder>Bạn chưa có order nào</lblNotifyNoneOrder>
+        <lblNotifyNoneInvoice>Bạn chưa có order nào</lblNotifyNoneInvoice>
+        <lblOrderId>Mã đơn hàng</lblOrderId>
+        <lblOrderCreatedDate>Ngày tạo</lblOrderCreatedDate>
+        <lblOrderTotalPrices>Tổng giá trị</lblOrderTotalPrices>
+        <btnOrdeDetail>Chi tiết đơn hàng</btnOrdeDetail>
+        <lblNameProduct>Tên</lblNameProduct>
+        <lblQuanityProduct>Số lượng</lblQuanityProduct>
+        <btnProductDetail>Chi tiết sản phẩm</btnProductDetail>
+        <btnProductWriteReview>Viết review về sản phẩm</btnProductWriteReview>
+        <lblDesTitle>Mô tả</lblDesTitle>
+        <lblTaxTitle>Thuế</lblTaxTitle>
+        <lblPriceTitle>Giá</lblPriceTitle>
+        <lblInvoicePay>Hóa đơn thanh toán</lblInvoicePay>
+        <lblInvoiceReturn>Hóa đơn Trả hàng</lblInvoiceReturn>
+        <lblInvoiceTotal>Tổng giá trị hóa đơn</lblInvoiceTotal>
+        <lblInvoiceId>Mã Hóa đơn</lblInvoiceId>
+        <lblCreatedDate>Ngày tạo</lblCreatedDate>
+        <lblPaidDate>Ngày thanh toán</lblPaidDate>
+        <lblPaidType>Phương thức thanh toán</lblPaidType>
+        <lblShippingType>Hình thức vận chuyển</lblShippingType>
+        <lblPersonInCharge>Người nhận</lblPersonInCharge>
+        <lblPersonPhone>SĐT Người nhận</lblPersonPhone>
+        <lblPersonPhone>SĐT Người nhận</lblPersonPhone>
+        <lblState>Quốc gia</lblState>
+        <lblDetail>Quốc gia</lblDetail>
+        <lblCity>Thành phố</lblCity>
+        <lblStatus>Tình trạng</lblStatus>
+    </portalaccount_userOrderHistory>
 </data>

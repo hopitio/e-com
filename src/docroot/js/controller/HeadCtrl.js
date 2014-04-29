@@ -19,6 +19,7 @@ window.HeadCtrl = function($scope, $http) {
         });
         $scope.loadCategories = new Function;
     };
+    
 };
 HeadCtrl.$inject = ['$scope', '$http'];
 
