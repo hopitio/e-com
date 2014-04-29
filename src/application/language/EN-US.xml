@@ -88,7 +88,10 @@
     <portalHelp_policy></portalHelp_policy>
     
     <portalaccount_userSecurity>
-    
+        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
+        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
+        <title>Bảo mật tài khoản - PROJECT E</title>
         <errorMsgWorngOldPassword>Mật khẩu cũ không khớp</errorMsgWorngOldPassword>
         <errorMsgWorngNewPassword>Mật khẩu mới không khớp</errorMsgWorngNewPassword>
         <errorMsgWorngComparePassword>Mật khẩu mới không hợp lệ</errorMsgWorngComparePassword>
@@ -112,6 +115,10 @@
         
     </portalaccount_userSecurity>
     <portalaccount_userInformation>
+        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
+        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
+        <title>Thông tin cá nhân - PROJECT E</title>
         <sexM>Nam</sexM>
         <sexF>Nữ</sexF>
         <sexO>Khác</sexO>
@@ -121,19 +128,19 @@
         <userInformationMsgSex>Giới tính không hợp lệ</userInformationMsgSex>
         <userInformationMsgSucess>Cập nhật thông tin thành công</userInformationMsgSucess>
         
-        <lblInformationTitle>User Information</lblInformationTitle>
-        <lblFristName>First Name</lblFristName>
-        <lblLastName>Last name</lblLastName>
-        <lblDob>Date of birth</lblDob>
-        <lblSex>Genner</lblSex>
-        <btnSaveInformation>Save change</btnSaveInformation>
+        <lblInformationTitle>Thông tin cá nhân</lblInformationTitle>
+        <lblFristName>Họ và tên đệm</lblFristName>
+        <lblLastName>Tên</lblLastName>
+        <lblDob>Ngày sinh</lblDob>
+        <lblSex>Giới tính</lblSex>
+        <btnSaveInformation>Lưu thay đổi</btnSaveInformation>
         
-        <lblContactsTitle>Contact list</lblContactsTitle>
-        <lblContactsFullname>Full name</lblContactsFullname>
-        <lblContactsTelephone>Phone</lblContactsTelephone>
-        <lblContactsStateProvince>State</lblContactsStateProvince>
-        <lblContactsCity>City</lblContactsCity>
-        <lblContactsAddress>Street anddress</lblContactsAddress>
+        <lblContactsTitle>Danh sách địa chỉ</lblContactsTitle>
+        <lblContactsFullname>Họ tên đầy đủ</lblContactsFullname>
+        <lblContactsTelephone>Số điện thoại</lblContactsTelephone>
+        <lblContactsStateProvince>Tỉnh</lblContactsStateProvince>
+        <lblContactsCity>Thành phố</lblContactsCity>
+        <lblContactsAddress>Địa chỉ cụ thể</lblContactsAddress>
         
         <btnAddNewContact>Thêm mới địa chỉ</btnAddNewContact>
         <btnUpdateContact>Chỉnh sửa địa chỉ</btnUpdateContact>
@@ -141,6 +148,10 @@
         <msgUpdateContactSucess>Cập nhật địa chỉ Thành công</msgUpdateContactSucess>
     </portalaccount_userInformation>
     <portalaccount_userOrderHistory>
+        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
+        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
+        <title>Lịch sử giao dịch - PROJECT E</title>
         <orderStatusOrderPlace>Chưa xác thực</orderStatusOrderPlace>
         <orderStatusVerifying>Đang chờ xác thực</orderStatusVerifying>
         <orderStatusShipping>Đang chuyển hàng</orderStatusShipping>

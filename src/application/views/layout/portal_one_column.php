@@ -54,13 +54,13 @@
             <div class="lynx_headWarp lynx_staticWidth">
                 <div class="lynx_logo"></div>
                 <div class="lynx_headLeft">
-                    <span class="lynx_sell"> SELL</span>
-                    <span class="lynx_liveChat"> LIVE CHAT</span>
+                    <span class="lynx_sell"> <?php echo $language['layout']->lblHeadSell;?></span>
+                    <span class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat;?></span>
                     <div class="lynx_language">
-                        <span class="lynx_label">LANGUAGE : 
-                            <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)">
-                                <option value="EN-US">English</option>
-                                <option value="VN-VI">Tiếng Việt</option>
+                        <span class="lynx_label"><?php echo $language['layout']->lblLanguage;?> : 
+                            <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language='<?php echo User::getCurrentUser()->languageKey;?>'">
+                                <option value="EN-US"  >English</option>
+                                <option value="VN-VI"  >Tiếng Việt</option>
                             </select>
                         </span>
                          

@@ -47,7 +47,9 @@
         <label>abc{0}</label>
     </Details>
     <layout>
-        <demo>DEMO DATA</demo>
+        <lblHeadSell>NGƯỜI BÁN</lblHeadSell>
+        <lblLiveChat>LIVE CHAT</lblLiveChat>
+        <lblLanguage>NGÔN NGỮ</lblLanguage>
     </layout>
     <sitemap>
         <title>Sitemap</title>
@@ -88,6 +90,9 @@
     <portalHelp_policy></portalHelp_policy>
     
     <portalaccount_userSecurity>
+        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
+        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
         <title>Bảo mật tài khoản - PROJECT E</title>
         <errorMsgWorngOldPassword>Mật khẩu cũ không khớp</errorMsgWorngOldPassword>
         <errorMsgWorngNewPassword>Mật khẩu mới không khớp</errorMsgWorngNewPassword>
@@ -112,6 +117,9 @@
         
     </portalaccount_userSecurity>
     <portalaccount_userInformation>
+        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
+        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
         <title>Thông tin cá nhân - PROJECT E</title>
         <sexM>Nam</sexM>
         <sexF>Nữ</sexF>
@@ -142,6 +150,9 @@
         <msgUpdateContactSucess>Cập nhật địa chỉ Thành công</msgUpdateContactSucess>
     </portalaccount_userInformation>
     <portalaccount_userOrderHistory>
+        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
+        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
         <title>Lịch sử giao dịch - PROJECT E</title>
         <orderStatusOrderPlace>Chưa xác thực</orderStatusOrderPlace>
         <orderStatusVerifying>Đang chờ xác thực</orderStatusVerifying>
