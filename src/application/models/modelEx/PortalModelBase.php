@@ -203,7 +203,7 @@ class PortalModelBase extends CI_Model
     {
         if(count($values) == 0)
         {
-            return;
+            return array();
         } 
         $this->_dbPortal->where_in($property,$values);
         $query = $this->_dbPortal->get($this->_constIntanceName);

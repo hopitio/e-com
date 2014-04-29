@@ -45,14 +45,32 @@ class PortalBizPaymentHistory extends PortalBizBase{
      * 
      * @param unknown $invocies
      */
-    function getShippingOfInvoices($invocies)
+    function getShippingOfInvoices($invocies,$isGetContact = false)
     {
         $portalModelShipping = new PortalModelInvoiceShipping();
         $invociesId = array();
         foreach ($invocies as $invoice){
             array_push($invociesId, $invoice->id);
         }
-        return $portalModelShipping->getShippingOfInvoicesId($invociesId);
+        $shippings = $portalModelShipping->getShippingOfInvoicesId($invociesId);
+        $portalModelContact = new PortalModelUserContact();
+        
+        if($isGetContact){
+            $contactIds = array();
+            foreach ($shippings as $shipping){
+                array_push($contactIds, $shipping->fk_user_contact);
+            }
+            $contacts = $portalModelContact->getContactByContactIds($contactIds);
+            foreach ($shippings as &$shipping){
+                $shipping->contact = null;
+                foreach ($contacts as $contact){
+                    if($shipping->fk_user_contact == $contact->id){
+                        $shipping->contact = $contact;
+                    }
+                }
+            }
+        }
+        return $shippings;
     }
     
     /**
@@ -143,7 +161,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
         }
         unset($invocie);
         
-        $shippings = $this->getShippingOfInvoices($invoices);
+        $shippings = $this->getShippingOfInvoices($invoices,true);
         foreach ($invoices as &$invocie)
         {
             $invocie->shippings = array();
@@ -153,6 +171,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
                 }
             }
         }
+        
         unset($invocie);
         
         $otherCosts = $this->getOtherCostOfInvoices($invoices);
@@ -205,6 +224,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
         }
         return $order;
     }
+    
     private function preInvoice(&$invoice){
         $invoice->totalCost = 0;
         foreach ($invoice->products as &$product)

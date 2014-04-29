@@ -39,6 +39,7 @@ function UserOrderHistoryController($scope,$modal,$http)
         $scope.template = "ModalOrderList.html";
         $scope.order = undefined;
     }
+
 }
 
 UserOrderHistoryController.$inject = ['$scope','$modal','$http'];

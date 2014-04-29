@@ -11,4 +11,12 @@ class PortalModelUserContact extends PortalModelBase
     var $city_district;
     var $state_province;
     
+    /**
+     * 
+     * @param array $shippingIds
+     */
+    function getContactByContactIds($contactIds)
+    {
+        return parent::getWhereIn(T_user_contact::id, $contactIds);
+    }
 }
