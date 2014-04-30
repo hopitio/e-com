@@ -1,0 +1,147 @@
+@CHARSET "UTF-8";
+.lynx_navigationBar{
+    text-align: left;
+    display: inline-block;
+	margin: 15px auto auto auto;
+	
+}
+.lynx_navigationBar span{
+    line-height:23px;
+    font-size: 16px;
+	color:black;
+}
+.lynx_productHeadContainer{
+    display:inline-block;
+}
+.lynx_productHead{
+    height:500px;
+	border:1px solid #CCCCCC;
+	border-radius: 5px;
+}
+.lynx_productHeadContainer{
+    margin:10px auto 40px auto;
+	padding: 0px 80px 0px 80px;
+}
+.lynx_productHeadContainer .lynx_productImageContainer{
+	padding:20px;
+    width:690px;
+    float:left;
+}
+.lynx_productHeadContainer .lynx_productChoicePannel{
+    width:310px;
+	float:right;
+	background: #F5F5F5;
+}
+.lynx_productImageContainer  .lynx_productImageHead{
+    height:45px;
+	display: inline-bock;
+}
+.lynx_productImageHead .lynx_star {
+	float:left;
+}
+
+.lynx_productImageHead .lynx_star img{
+    height:20px;
+}
+.lynx_productImageHead .lynx_title{
+    float: left;
+	color:black;
+	padding-left:60px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.lynx_productImageHead .lynx_pin {
+	float:right;
+}
+.lynx_productImageHead .lynx_pin span{
+	color:#5B850F;
+	font-size: 17px;
+	font-weight: bold;
+	float:left;
+}
+.lynx_productImageHead .lynx_pin span.lynx_pinIcon{
+	margin-top:-12px;
+	margin-right:-10px;
+	margin-left:10px;
+}
+.lynx_listProducts .lynx_productDetailDescription
+{
+	font-family:Myriad Pro;
+	font-size:14px;
+	padding:30px 0px 30px 0px;
+    color:black;
+    border-bottom: 1px dashed #D9D9D9;
+}
+.lynx_relativeProduct{
+    border-bottom: 1px dashed #D9D9D9;
+}
+
+.lynx_reviewContainer{
+    margin:20px auto 70px auto;
+	display:inline-block;
+}
+.lynx_reviewContainer .lynx_reviewHead {
+    text-align: left;
+}
+
+.lynx_reviewContainer .lynx_reviewHead span{
+	font-size: 14px;
+	color:black;
+	padding:0px 5px;
+}
+.lynx_reviewContainer .lynx_reviewHead span.lynx_reviewButton{
+    float:right;
+}
+.lynx_reviewContainer .lynx_reviewHead span.lynx_reviewOrderActive{
+    font-weight: bold;
+}
+.lynx_reviewContainer .lynx_reviewSysComment{
+	text-align: left;
+    width:100%;
+	margin:10px auto;
+}
+.lynx_reviewContainer .lynx_reviewSysComment span
+{
+    font-size: 17px;
+	color:black;
+	line-height: 24px;
+}
+.lynx_reviewContainer .lynx_reviewSysComment span.lynx_hightligth{
+	color:red;
+	font-weight: bold;
+}
+
+.lynx_reviewContainer .lynx_reviewList{
+	
+}
+.lynx_reviewList .lynx_reviewItem{
+	height: 180px;
+}
+.lynx_reviewItem .lynx_reviewContent{
+	background:#E5E9DB;
+    border-radius: 3px;
+	padding:10px;
+	display: inline-block;
+	text-align: left;
+}
+.lynx_reviewItem .lynx_reviewContent img{
+	float:left;
+    margin:0px 10px;
+	height: 100px;
+	width:130px
+}
+.lynx_reviewItem .lynx_reviewContent span{
+    color: black;
+	text-align: left;
+}
+.lynx_reviewItem .lynx_reviewFoot{
+	text-align: left;
+	padding-left:100px;
+	height:40px;
+	padding-top:20px;
+	background: transparent url('../images/review-foot.fw.png') no-repeat top left;
+}
+.lynx_reviewItem .lynx_reviewFoot span.lynx_hightLight{
+    color:#F24D4D;
+}
+
