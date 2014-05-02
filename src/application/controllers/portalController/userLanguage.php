@@ -8,7 +8,7 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
 
 class userLanguage extends BaseController
 {
-    protected $authorization_required = TRUE;
+    protected $authorization_required = FALSE;
     protected  $_css = array(
         '/style/myaccount.css'
     );

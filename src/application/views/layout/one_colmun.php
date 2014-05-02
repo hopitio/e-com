@@ -1,43 +1,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html ng-app="lynx">
     <head >
-        <meta charset="utf-8">
+       <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Project E Mockup UI</title>
+        
+        <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title: '';?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/home.css" media="all">
-        <!-- Thêm các css riêng biệt -->
-        <?php
-        foreach ($view->css as $item)
-        {
-            echo '<link rel="stylesheet" type="text/css" href="' . $item . '" media="all">';
-        }
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
+        
+        <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
+
+        
+        <?php 
+        //Thêm các js riêng biệt
+            foreach ($view->css as $item)
+            {
+                echo '<link rel="stylesheet" type="text/css" href="'.$item.'" media="all">';
+            }
         ?>
+
     </head>
     <body>
         <div class="lynx_container">
-            <div class="lynx_head">
+            <div class="lynx_head"  ng-controller="HeadCtrl" id="head-ctrl">
                 <div class="lynx_headWarp lynx_staticWidth">
                     <div class="lynx_logo"></div>
                     <div class="lynx_headLeft">
-                        <span class="lynx_sell"> SELL</span>
-                        <span class="lynx_liveChat"> LIVE CHAT</span>
+                        <span class="lynx_sell"> <?php echo $language['layout']->lblHeadSell;?></span>
+                        <span class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat;?></span>
                         <div class="lynx_language">
-                            <span class="lynx_label">
-                                <label for="sel-language" style="font-weight: normal;">LANGUAGE :</label>
-                                <select id="sel-language">
-                                    <option value="EN-US">English</option>
-                                    <option value="VN-VI">Tiếng Việt</option>
+                            <span class="lynx_label"><?php echo $language['layout']->lblLanguage;?> : 
+                                <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language='<?php echo User::getCurrentUser()->languageKey;?>'">
+                                    <option value="EN-US"  >English</option>
+                                    <option value="VN-VI"  >Tiếng Việt</option>
                                 </select>
-                            </span> 
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="lynx_headMenu"  ng-controller="HeadCtrl" id="head-ctrl">
+                <div class="lynx_headMenu" >
                     <div class="lynx_menuWarp lynx_staticWidth">
                         <div class="lynx_category dropdown dropdown-hover">
                             <span class="dropdown-toggle " ng-mouseover="loadCategories()"> 
@@ -181,6 +186,8 @@
                 this.cartService = '<?php echo site_url('cart/cartProductsService') ?>';
             }
         </script>
+        
+        
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
         <script type='text/javascript' src="/js/angular.min.js"></script>
         <script type='text/javascript' src="/js/angular-route.min.js"></script>
@@ -189,17 +196,15 @@
         <script type='text/javascript' src="/js/app.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
-        
 
-
-        <script type='text/javascript' src="/js/controller/HeadCtrl.js"></script>
-
-
-        <!-- Thêm các js riêng biệt -->
+        <script src="/js/main.js"></script>
+        <script src="/js/controller/HeadCtrl.js"></script>
+        <script src="/js/services/CommonServiceClient.js"></script>
         <?php
+        //Thêm các js riêng biệt
         foreach ($view->javascript as $jsItem)
         {
-            echo '<script src="' . $jsItem . '"></script>';
+            echo '<script src="'. $jsItem .'"></script>';
         }
         ?>
     </body>

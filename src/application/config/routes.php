@@ -79,6 +79,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/update_user_information'] = 'portalController/userInformation/updateUserinformationXhr';
         $route['portal/account/save_contact'] = 'portalController/userInformation/saveUserinformationXhr';
         $route['portal/language/submit_change'] = 'portalController/userLanguage/submitChangeXhr';
+        $route['language/submit_change'] = 'userLanguage/submitChangeXhr';
         
     }
 }

@@ -20,6 +20,24 @@ window.HeadCtrl = function($scope, $http) {
         $scope.loadCategories = new Function;
     };
     
+    $scope.changeLanguage = function(languageKey){
+        commonServiceClient = new CommonServiceClient($http);
+        commonServiceClient.updateLanguage(languageKey, updateLanguageSucessCallback, updateLanguageErrorCallback);
+    }
+    
+    function updateLanguageSucessCallback(result)
+    {
+        if(result.isError){
+            
+        }else{
+            location.reload();
+        }
+    }
+    
+    function updateLanguageErrorCallback(xhr,status){
+        
+    }
+    
 };
 HeadCtrl.$inject = ['$scope', '$http'];
 
