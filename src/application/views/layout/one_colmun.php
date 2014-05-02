@@ -46,7 +46,7 @@
                     <div class="lynx_menuWarp lynx_staticWidth">
                         <div class="lynx_category dropdown dropdown-hover">
                             <span class="dropdown-toggle " ng-mouseover="loadCategories()"> 
-                                <span>MENU<span class="caret"></span> </span> 
+                                <span><?php echo$language['layout']->lblMenu->__toString(); ?><span class="caret"></span> </span> 
                             </span>
                             <ul class="dropdown-menu" class="preload">
                                 <li ng-if="!categories.length" class="center">
@@ -60,7 +60,7 @@
 
                         <div class="lynx_searchForm">
                             <input type="text" />
-                            <span class="lynx_search">SEARCH</span>
+                            <span class="lynx_search"><?php echo$language['layout']->lblSearch->__toString(); ?></span>
                         </div>
                         <div class="lynx_loginLabel dropdown dropdown-hover">
                             <?php
@@ -68,53 +68,56 @@
                             ?>
                             <?php if ($user->is_authorized): ?>
                                 <span class="dropdown-toggle" ng-click="loadCategories()"> 
-                                    <a href="javascript:;">Hello, <?php echo $user->lastname ?> your account<span class="caret"></span></a> 
+                                    <a href="javascript:;">
+                                        <?php echo str_replace('{1}',$user->lastname,$language['layout']->lblUserStatus->__toString());?><span class="caret"></span>
+                                        
+                                    </a> 
                                 </span>
                                 <ul class="dropdown-menu left">
                                     <li>
-                                        <a href="<?php echo site_url('portal/account/edit') ?>">Your Account</a>
+                                        <a href="<?php echo site_url('portal/account/edit'); ?>"><?php echo$language['layout']->lblUserAccount->__toString(); ?></a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url('portal/order/show') ?>">Your Order</a>
+                                        <a href="<?php echo site_url('portal/order/show'); ?>"><?php echo$language['layout']->lblUserOrder->__toString(); ?></a>
                                     </li>
                                     <div class="divider"></div>
                                     <li>
-                                        <a href="<?php echo site_url('wishlist/show') ?>">Your Wishlist</a>
+                                        <a href="<?php echo site_url('wishlist/show'); ?>"><?php echo$language['layout']->lblUserWishlist->__toString(); ?></a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url('pin/show') ?>">Your Pinlist</a>
+                                        <a href="<?php echo site_url('pin/show'); ?>"><?php echo$language['layout']->lblUserPinlist->__toString(); ?></a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="<?php echo site_url('portal/signout') ?>">Not <?php echo $user->lastname ?>? Sign Out</a>
+                                        <a href="<?php echo site_url('portal/signout'); ?>"><?php echo$language['layout']->lblUserLogout->__toString(); ?></a>
                                     </li>
                                 </ul>
                             <?php else: ?>
-                                <a href="<?php echo site_url('portal/login') ?>">Hello, Sign in your account</a>
+                                <a href="<?php echo site_url('portal/login') ?>"><?php echo $language['layout']->lblUserStatusNotSign->__toString();?></a>
                             <?php endif; ?>
                         </div>
                         <div class="lynx_miniCart dropdown dropdown-hover">
-                            <span class="dropdown-toggle" id='cart-dropdown'>({{cart.length}} Item)<span class='caret'></span></span>
+                            <span class="dropdown-toggle" id='cart-dropdown'><?php echo $language['layout']->lblViewCart->__toString(); ?><span class='caret'></span></span>
                             <ul class="dropdown-menu">
                                 <li ng-if="!cart.length" style='line-height: 20px'>
-                                    You haven't picked any Product.
+                                    <?php echo $language['layout']->lblCartAlert->__toString(); ?>
                                 </li>
                                 <li class="left cart-menu" ng-repeat="product in cart">
                                     <a href="{{product.url}}">
                                         <img src="{{product.thumbnail}}" width="40" height="40">
                                         {{product.name}}<br>
-                                        Quantity: {{product.quantity}}
+                                        <?php echo $language['layout']->lblCartQuantity->__toString(); ?> : {{product.quantity}}
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="<?php echo site_url('cart/show') ?>">View Cart ({{cart.length}} Items)</a>
+                                    <a href="<?php echo site_url('cart/show') ?>"><?php echo $language['layout']->lblViewCartWidthProductNumber->__toString(); ?> </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="lynx_cart" id="lynx_cart">
-                        <span>CART {{cart.length}}</span>
+                        <span><?php echo $language['layout']->lblCart; ?> {{cart.length}}</span>
                     </div>
                 </div><!--head ctrl-->
             </div>
@@ -135,37 +138,37 @@
                             <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
                         </div>
                         <div class="lynx_col2">
-                            <div class="lynx_cell">
-                                <ul>
-                                    <span>Make Money With Us</span>
-                                    <li> Sell </li>
-                                    <li> Advertise with us </li>
-                                </ul>
-                                <ul>
-                                    <span>Customer Service</span>
-                                    <li> FAQs </li>
-                                    <li> Contact Info </li>
-                                    <li> Shipping and Returns </li>
-                                    <li> Safe Shopping  </li>
-                                    <li> Guarantee  Secure Shopping    </li>
-                                </ul>
-                            </div>
-                            <div class="lynx_cell">
-                                <ul>
-                                    <span>About Sfriendly</span>
-                                    <li>About</li>
-                                    <li>Jobs</li>
-                                    <li>Customer Testimonials</li>
-                                    <li>Associates Program</li>
-                                    <li>Glossary of Terms</li>
-                                    <li>Daily Shoe Digest</li>
-                                </ul>
-                                <ul>
-                                    <span>Feedback</span>
-                                    <li>How do you like our website?</li>
-                                </ul>
-                            </div>
+                        <div class="lynx_cell">
+                            <ul>
+                                <span><?php echo $language['layout']->lblMakeMoneyWithUs;?></span>
+                                <li> <?php echo $language['layout']->lblSell;?> </li>
+                                <li> <?php echo $language['layout']->lblAdve;?> </li>
+                            </ul>
+                            <ul>
+        	                    <span><?php echo $language['layout']->lblCustomerService;?></span>
+        	                    <li> <?php echo $language['layout']->lblFAQs;?> </li>
+        	                    <li> <?php echo $language['layout']->lblContact;?> </li>
+        	                    <li> <?php echo $language['layout']->lblShippingvsReturn;?> </li>
+        	                    <li> <?php echo $language['layout']->lblSafeShopping;?>  </li>
+        	                    <li> <?php echo $language['layout']->lblGuaranteeSecureShopping;?>    </li>
+                            </ul>
                         </div>
+                        <div class="lynx_cell">
+        	                <ul>
+        	                    <span><?php echo $language['layout']->lblAboutSfriendly;?></span>
+        	                    <li><?php echo $language['layout']->lblAbout;?></li>
+        	                    <li><?php echo $language['layout']->lblJobs;?></li>
+        	                    <li><?php echo $language['layout']->lblCustomerTestimonials;?></li>
+        	                    <li><?php echo $language['layout']->lblAssociatesProgram;?></li>
+        	                    <li><?php echo $language['layout']->lblGlossaryofTerms;?></li>
+        	                    <li><?php echo $language['layout']->lblDailyShowDigest;?></li>
+        	                </ul>
+        	                <ul>
+        	                    <span><?php echo $language['layout']->lblFeedback;?></span>
+        	                    <li><?php echo $language['layout']->lblHowLikeOurWebsite;?></li>
+        	                </ul>
+                        </div>
+                    </div>
                         <div class="lynx_col3">
                             <img src="/images/Payment-follow.fw.png"/>
                         </div>

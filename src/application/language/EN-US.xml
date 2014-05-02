@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <home>
-        <title>PROJECT E</title>
+        <title>Sfriendly</title>
+        <lblViewAll>XEM TẤT CẢ >></lblViewAll>
+        <lblHot>Hot</lblHot>
+        <lblNew>Mới</lblNew>
+        <lblSale>Giảm giá</lblSale>
     </home>
     <login>
         <title>PROJECT E Đăng nhập</title>
@@ -47,8 +51,44 @@
         <label>abc{0}</label>
     </Details>
     <layout>
-        <demo>DEMO DATA</demo>
+        <lblHeadSell>NGƯỜI BÁN</lblHeadSell>
+        <lblLiveChat>LIVE CHAT</lblLiveChat>
+        <lblLanguage>NGÔN NGỮ</lblLanguage>
+        
+        <lblMakeMoneyWithUs>Hợp tác và phát triển</lblMakeMoneyWithUs>
+        <lblSell>Bán sản phẩm</lblSell>
+        <lblAdve>Liên hệ quảng cáo</lblAdve>
+        <lblCustomerService>Khách hàng</lblCustomerService>
+        <lblFAQs>FAQs</lblFAQs>
+        <lblContact>Liên hệ</lblContact>
+        <lblShippingvsReturn>Vận chuyển và trả hàng </lblShippingvsReturn>
+        <lblSafeShopping>Mua bán an toàn</lblSafeShopping>
+        <lblGuaranteeSecureShopping>Đảm bảo bán hàng</lblGuaranteeSecureShopping>
+        <lblAboutSfriendly>Về Sfriendly</lblAboutSfriendly>
+        <lblAbout>Về chúng tôi</lblAbout> 
+        <lblJobs>Công việc</lblJobs>
+        <lblCustomerTestimonials>Khách hàng thực</lblCustomerTestimonials>
+        <lblAssociatesProgram>Chương trình đối tác</lblAssociatesProgram>
+        <lblGlossaryofTerms>Thuật ngữ</lblGlossaryofTerms>
+        <lblDailyShowDigest>Gian hàng hằng ngày</lblDailyShowDigest>
+        <lblFeedback>Feedback</lblFeedback>
+        <lblHowLikeOurWebsite>Góp ý cho website</lblHowLikeOurWebsite>
+        <lblCart>Giỏ hàng</lblCart>
+        <lblViewCartWidthProductNumber>Xem giỏ hàng ({{cart.length}} sản phẩm)</lblViewCartWidthProductNumber>
+        <lblViewCart>{{cart.length}} sản phẩm</lblViewCart>
+        <lblCartAlert>Bạn chưa có sản phẩm nào trong giỏ hàng</lblCartAlert>
+        <lblCartQuantity>Số lượng</lblCartQuantity>
+        <lblUserStatus>Chào, {1} tài khoản của bạn</lblUserStatus>
+        <lblUserStatusNotSign>Chào, bạn chưa đăng nhập</lblUserStatusNotSign>
+        <lblUserLogout>Đăng xuất</lblUserLogout>
+        <lblUserAccount>Thông tin tài khoản</lblUserAccount>
+        <lblUserOrder>Thông tin order</lblUserOrder>
+        <lblUserWishlist>Wishlist</lblUserWishlist>
+        <lblUserPinlist>Pinlist</lblUserPinlist>
+        <lblSearch>Tìm kiếm</lblSearch>
+        <lblMenu>Danh mục</lblMenu>
     </layout>
+    
     <sitemap>
         <title>Sitemap</title>
     </sitemap>

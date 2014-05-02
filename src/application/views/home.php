@@ -43,7 +43,7 @@ defined('BASEPATH') or die('No direct script access allowed');
         <div class="lynx_head">
             <span>{{section.name}}</span>
             <div class="lynx_navigateLink">
-            <a href="{{section.url}}">VIEW ALL >></a>
+            <a href="{{section.url}}"><?php echo $language[$view->view]->lblViewAll;?></a>
         </div>
         </div>
         
@@ -213,9 +213,9 @@ defined('BASEPATH') or die('No direct script access allowed');
 <script>
     function scriptData() {
         this.hotItemTabs = [
-            ['HOT', '<?php echo site_url('home/hot_service') ?>'],
-            ['NEW', '<?php echo site_url('home/new_service') ?>'],
-            ['SALE', '<?php echo site_url('home/sale_service') ?>']
+            ['<?php echo $language[$view->view]->lblHot;?>', '<?php echo site_url('home/hot_service') ?>'],
+            ['<?php echo $language[$view->view]->lblNew;?>', '<?php echo site_url('home/new_service') ?>'],
+            ['<?php echo $language[$view->view]->lblSale;?>', '<?php echo site_url('home/sale_service') ?>']
         ];
         this.sectionURL = '<?php echo site_url('home/section_service') ?>';
     }
