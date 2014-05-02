@@ -1,0 +1,30 @@
+﻿- Vấn đề cần giải quyết :
+  + Home Phần item số 2 chưa dc định nghĩa biz -> cần A.Hoàng giải quyết ngay.
+  + Các silde trên home chưa được định nghĩa -> cần A.Hoàng giải quyết ngay về biz
+  + Trang home chưa có đường dẫn dẫn tới màn hình list. 
+  + Các trang tĩnh chưa có thông tin  cần A.Hoàng cung cấp nội dung. 
+  + Sản phẩm chưa có các thông tin như : Lượng view, rate, seller.   -> cần TA giải quyết ngay.
+  + cung cấp image thanh toán để sử dụng đa ngôn ngữ 
+  + "Mua sắm" trên home éo tìm dc 
+  
+Danh sách các trang tĩnh mà A.Hoàng cần cung cấp 
+Make Money With Us-----------
+>>Sell
+>>Advertise with us
+Customer Service-------------
+>>FAQs 
+>>Contact Info
+>>Shipping and Returns
+>>Safe Shopping
+>>Guarantee  Secure Shopping 
+About Sfriendly--------------
+>>About
+>>Jobs
+>>Customer Testimonials
+>>Associates Program
+>>Glossary of Terms
+>>Daily Shoe Digest
+>>Feedback
+>>How do you like our website?
+	
+  

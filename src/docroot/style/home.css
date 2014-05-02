@@ -55,10 +55,10 @@
 .lynx_hotItemsContainer .lynx_head *{font-size:22px;}
 .lynx_hotItemsContainer .lynx_head span a.active{color: #F0B21C;} 
 .lynx_listItem{
-
+    display: inline-block;
 }
-.lynx_listItem .lynx_item{
-    width:282px;
+.lynx_listItem div.lynx_item{
+    width:280px;
     height:329px;
     background: white;
     margin:0px 6px 0px 6px;
@@ -144,11 +144,7 @@
     background-color: #D1E380;
     color:#5B850F;
 }
-.lynx_listProducts .lynx_navigateLink{
-    display:inline-block;
-    float:right;
-    
-}
+
 .lynx_listProducts .lynx_navigateLink a{
     font-size: 14px;
     line-height: 30px;
