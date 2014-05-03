@@ -23,12 +23,16 @@ class CartMapper extends ProductFixedMapper
         }
     }
 
-    function addToCart($productID)
+    function addToCart($productID, $qty = 1)
     {
         $cartContents = $this->_getCartContents();
         if (!isset($cartContents[$productID]))
         {
-            $cartContents[$productID] = 1;
+            $cartContents[$productID] = $qty;
+        }
+        else
+        {
+            $cartContents[$productID] += $qty;
         }
         $this->_setCartContents($cartContents);
         return $this;

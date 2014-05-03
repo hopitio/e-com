@@ -1,85 +1,109 @@
 <?php
-defined('BASEPATH') or die('No direct script access allowed');
+defined('BASEPATH') or die('no direct script access allowed');
+
 /* @var $product ProductFixedDomain */
-$images = $product->getImages();
-$first_image = reset($images);
+$images = array();
+foreach ($product->getImages() as $attr)
+{
+    $images[] = (string) $attr->getTrueValue();
+}
 ?>
-<div>
-    <h3><?php echo $product->getName() ?></h3>
-</div>
-
-<div>
-    <div>
-        <img src="<?php echo $first_image->getTrueValue() ?>">
+<div id="product-details-ctrl" ng-controller="productDetailsCtrl">
+    <div class="lynx_productHeadContainer lynx_staticWidth">
+        <div class="lynx_productImageContainer lynx_productHead">
+            <div class="lynx_productImageHead">
+                <div class="lynx_star" ><img src="/images/star.png"></div>
+                <div class="lynx_title" ><?php echo $product->getName() ?>  </div>
+                <div class="lynx_pin" >
+                    <?php if ($product->countPin): ?>
+                        <span> <?php echo $product->countPin ?> PIN</span>
+                    <?php endif; ?>
+                    <span class="lynx_pinIcon"><img src="/images/pin.png" > </span>
+                </div>
+            </div>
+            <div class="lynx_imageList">
+                <img ng-repeat="imageURL in productImages" src="{{imageURL}}" alt="product thumbnail #{{$index}}" 
+                     ng-class="{lynx_selectedImage: isImageSelected($index)}" ng-click="selectImage($index)">
+            </div>
+            <div class="lynx_image">
+                <img src="{{productImages[selectedImage]}}"/>
+            </div>
+        </div>
+        <form class="lynx_productChoicePannel lynx_productHead" method="post" id="frm-main">
+            <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
+            <div class="lynx_productName"> <?php echo $product->getName()->getTrueValue() ?> </div>
+            <div class="lynx_productPrice"> <?php echo $product->getPriceString('USD') ?> </div>
+            <div class="lynx_productShipping"> Ships Free ! </div>
+    <!--        <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
+            <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
+            <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>-->
+            <div class="lynx_productQuantity">
+                <span class="lynx_quantityLabel">Quantity</span>
+                <span class="lynx_productQuantityInput">
+                    <select name="sel_qty" id="sel_qty"  class="lynx_productChocie lynx_cbxChoie">
+                        <?php foreach (range(1, 30) as $int): ?>
+                            <option value="<?php echo $int ?>"><?php echo $int ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </span>
+            </div>
+            <div class="lynx_productButtonBuy"> 
+                <input type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
+                       data-action="<?php echo site_url('order/shipping') ?>">
+            </div>
+            <div class="lynx_productButtonAddTo"> 
+                <span class="lynx_actionTitle">Add to : </span>
+                <div class="row">
+                    <div style="width:42%;float:left;margin-left: 15px;">
+                        <input type="button" name="addToCart" value="CART" class="lynx_blueButton form-control submit" 
+                               data-action="<?php echo site_url('cart/addToCart') ?>">
+                    </div>
+                    <div style="width:42%;float:left;margin-left:15px;">
+                        <input type="button" name="addToWishlist" value="WISHLIST" 
+                               class="lynx_blueButton form-control submit" data-action="<?php echo site_url('wishlist/addToWishlist') ?>">
+                    </div>
+                </div>
+            </div>
+            <div class="lynx_productShare"> 
+                <span class="lynx_share">Share: </span>
+                <span class="lynx_shareFace">&nbsp;</span>
+                <span class="lynx_shareTiwster">&nbsp;</span>
+                <span class="lynx_sharePlumber">&nbsp;</span>
+                <span class="lynx_shareMail">&nbsp;</span>
+            </div>
+        </form>
     </div>
-    <div>
-        <?php while ($image = next($images)): ?>
-            <img src="<?php echo $image->getTrueValue() ?>">
-        <?php endwhile; ?>
+    <div class="lynx_listProducts">
+        <ul class="lynx_head">
+            <li class="active"><a href="#tab-description">DESCRIPTION</a></li>
+            <li><a href="#tab-2">PRO DETAILS</a></li>
+            <li><a href="#tab-3">WARRANTY & SUPPORT</a></li>
+        </ul>
+        <div class="lynx_itemConatiner lynx_productDetailDescription">
+            <?php echo $product->getDescription() ?>
+        </div>
     </div>
-</div>
-<div>
-    <h4>Thông tin chi tiết</h4>
-    <p>
-        <?php echo $product->getDescription() ?>
-    </p>
-</div>
-<div>
-    <h4><?php echo $product->getName() ?></h4>
-    <?php var_dump('price', $product->getPrice('USD')->getTrueValue()) ?><br>
-    <?php var_dump('quantity', $product->getQuantity()->getTrueValue()) ?>
+    <div class="lynx_slideItemsContainer lynx_relativeProduct">
+        <div class="lynx_head">
+            <h3>Related Products</h3>
+        </div>
+        <div class="lynx_listItem">
+            <div class="lynx_sildeButton lynx_left">
+            </div>
+            <div class="lynx_item" ng-repeat="product in relatedProducts" product="product" 
+                 ng-class="{lynx_slideFirst: !$index, lynx_slideLast: $index == relatedProducts.length - 1}">
+            </div>
+            <div class="lynx_sildeButton lynx_right">
+            </div>
+        </div>
 
-    <a href="javascript:;" class="add-to-cart" data-id="<?php echo $product->id ?>">Add to Cart</a>
-    <a href="javascript:;" class="add-to-wishlist" data-id="<?php echo $product->id ?>">Add to Wishlist</a>
-    <a href="javascript:;" class="add-to-pin" data-id="<?php echo $product->id ?>">Pin</a>
-</div>
+    </div>
+</div><!--ng-controller -->
 <script>
-    var scriptData = {};
-    scriptData.addToCartURL = '<?php echo site_url('account/addToCart/') ?>';
-    scriptData.addToWishlistURL = '<?php echo site_url('wishlist/addToWishlist/') ?>';
-    scriptData.addToPinURL = '<?php echo site_url('pin/pinProduct') ?>';
-</script>
-<script>
-    (function(window, scriptData, $, undefined) {
-        $(function() {
-            $('.add-to-cart').click(function() {
-                $.ajax({
-                    cache: false,
-                    url: scriptData.addToCartURL + '/' + $(this).attr('data-id'),
-                    success: function() {
-                        //TODO
-                    },
-                    error: function() {
-                        //TODO
-                    }
-                });
-            });
-            $('.add-to-wishlist').click(function() {
-                $.ajax({
-                    cache: false,
-                    url: scriptData.addToWishlistURL + '/' + $(this).attr('data-id'),
-                    success: function() {
-                        //TODO
-                    },
-                    error: function() {
-                        //TODO
-                    }
-                });
-            });
-            
-            $('.add-to-pin').click(function(){
-                $.ajax({
-                    cache: false,
-                    url: scriptData.addToPinURL + '/' + $(this).attr('data-id'),
-                    success: function(){
-                        //TODO
-                    },
-                    error: function(){
-                        //TODO
-                    }
-                });
-            });
-        });
-    })(window, scriptData, $);
+    var scriptData = {
+        images: <?php echo json_encode($images) ?>,
+        productID: <?php echo $product->id ?>,
+        relatedURL: '<?php echo site_url('product/related_products_service') ?>/'
+    };
 
 </script>

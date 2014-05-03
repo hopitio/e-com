@@ -59,7 +59,7 @@ class cart extends BaseController
             $obj['price'] = $product->calculatePrice('USD');
             $obj['name'] = (string) $product->getName()->getTrueValue();
             $obj['taxes'] = $product->calculateTaxes('USD');
-            $obj['thumbnail'] = (string)$images[0]->getTrueValue();
+            $obj['thumbnail'] = (string) $images[0]->getTrueValue();
             $json[] = $obj;
         }
         echo json_encode($json);
@@ -83,8 +83,14 @@ class cart extends BaseController
         }
     }
 
-    function addToCart($productID)
+    function addToCart($productID = NULL)
     {
+        $qty = 1;
+        if ($this->input->post())
+        {
+            $qty = (int) $this->input->post('sel_qty');
+            $productID = (int) $this->input->post('hdn_product');
+        }
         CartMapper::make()->addToCart($productID);
         redirect($this->_controller . '/showCart');
     }

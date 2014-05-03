@@ -1,0 +1,324 @@
+@CHARSET "UTF-8";
+.lynx_navigationBar{
+    text-align: left;
+    display: inline-block;
+    margin: 15px auto auto auto;
+
+}
+.lynx_navigationBar span{
+    line-height:23px;
+    font-size: 16px;
+    color:black;
+}
+.lynx_productHeadContainer{
+    display:inline-block;
+}
+.lynx_productHead{
+    height: 500px;
+    border:1px solid #CCCCCC;
+    border-radius: 5px;
+}
+.lynx_productHeadContainer{
+    margin:10px auto 40px auto;
+    padding: 0px 80px 0px 80px;
+}
+.lynx_productHeadContainer .lynx_productImageContainer{
+    padding:20px;
+    width:690px;
+    float:left;
+}
+.lynx_productHeadContainer .lynx_productChoicePannel{
+    width:310px;
+    padding:12px 30px;
+    float:right;
+    background: #F5F5F5;
+}
+.lynx_productImageContainer  .lynx_productImageHead{
+    height:45px;
+    display: inline-bock;
+}
+.lynx_productImageHead .lynx_star {
+    float:left;
+}
+
+.lynx_productImageHead .lynx_star img{
+    height:20px;
+}
+.lynx_productImageHead .lynx_title{
+    float: left;
+    color:black;
+    padding-left:15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.lynx_productImageHead .lynx_pin {
+    float:right;
+}
+.lynx_productImageHead .lynx_pin span{
+    color:#5B850F;
+    font-size: 17px;
+    font-weight: bold;
+    float:left;
+}
+.lynx_productImageHead .lynx_pin span.lynx_pinIcon{
+    margin-top:-12px;
+    margin-right:-10px;
+    margin-left:10px;
+}
+.lynx_listProducts .lynx_productDetailDescription
+{
+    font-family:Myriad Pro;
+    font-size:14px;
+    padding:30px 0px 30px 0px;
+    color:black;
+    border-bottom: 1px dashed #D9D9D9;
+    text-align: left;
+}
+.lynx_relativeProduct{
+    border-bottom: 1px dashed #D9D9D9;
+}
+
+.lynx_reviewContainer{
+    margin:20px auto 70px auto;
+    display:inline-block;
+}
+.lynx_reviewContainer .lynx_reviewHead {
+    text-align: left;
+}
+
+.lynx_reviewContainer .lynx_reviewHead span{
+    font-size: 14px;
+    color:black;
+    padding:0px 5px;
+}
+.lynx_reviewContainer .lynx_reviewHead span.lynx_reviewButton{
+    float:right;
+}
+.lynx_reviewContainer .lynx_reviewHead span.lynx_reviewOrderActive{
+    font-weight: bold;
+}
+.lynx_reviewContainer .lynx_reviewSysComment{
+    text-align: left;
+    width:100%;
+    margin:10px auto;
+}
+.lynx_reviewContainer .lynx_reviewSysComment span
+{
+    font-size: 17px;
+    color:black;
+    line-height: 24px;
+}
+.lynx_reviewContainer .lynx_reviewSysComment span.lynx_hightligth{
+    color:red;
+    font-weight: bold;
+}
+
+.lynx_reviewContainer .lynx_reviewList{
+
+}
+.lynx_reviewList .lynx_reviewItem{
+    height: 180px;
+}
+.lynx_reviewItem .lynx_reviewContent{
+    background:#E5E9DB;
+    border-radius: 3px;
+    padding:10px;
+    display: inline-block;
+    text-align: left;
+}
+.lynx_reviewItem .lynx_reviewContent img{
+    float:left;
+    margin:0px 10px;
+    height: 100px;
+    width:130px
+}
+.lynx_reviewItem .lynx_reviewContent span{
+    color: black;
+    text-align: left;
+}
+.lynx_reviewItem .lynx_reviewFoot{
+    text-align: left;
+    padding-left:100px;
+    height:40px;
+    padding-top:20px;
+    background: transparent url('../images/review-foot.fw.png') no-repeat top left;
+}
+.lynx_reviewItem .lynx_reviewFoot span.lynx_hightLight{
+    color:#F24D4D;
+}
+.lynx_productImageContainer .lynx_imageList {
+    float:left;
+    width:75px;
+    height:410px; 
+    overflow:hidden;
+}
+.lynx_productImageContainer .lynx_imageList img{
+    margin: 3px auto;
+    cursor: pointer;
+    width:56px;
+    box-sizing: content-box;
+    border:2px solid #fff;
+}
+
+
+.lynx_productImageContainer .lynx_imageList img.lynx_selectedImage
+{
+    border: solid 2px #607D11;
+    cursor: text;
+    border-radius: 3px;
+}
+.lynx_productImageContainer .lynx_image{
+    float:left;
+    height:410px;
+    margin-left: 20px;
+}
+.lynx_productImageContainer .lynx_image img{
+    width:480px;
+    height:360px;
+}
+.lynx_productChoicePannel .lynx_productName
+{
+    font-size:24px;
+    color: black;
+    font-weight: bold;
+    line-height: normal;
+}
+.lynx_productChoicePannel .lynx_productPrice
+{
+    font-size:34px;
+    color: #EFB11B;
+    font-weight: bold;
+    line-height: 37px;
+    margin:20px 0 10px 0;
+}
+
+.lynx_productChoicePannel .lynx_productShipping
+{
+    font-size:18px;
+    color: #007BB5;
+    font-style:italic;
+    line-height: 26px;
+}
+
+.lynx_productChoicePannel .lynx_productChocie
+{
+    margin-top:15px;
+}
+.lynx_productChocie select, .lynx_productQuantity select
+{
+    color:#85CCED;
+    height:26px;
+    line-height: 26px;
+    font-size: 15px;
+    padding:2px 10px;   
+    border:none;
+    border-radius: 0;
+}
+
+.lynx_productQuantity select{color:#007BB6;font-weight: bold; }
+
+.lynx_productChoicePannel .lynx_productQuantity
+{
+    margin-top:10px;
+}
+.lynx_quantityLabel{
+    line-height: 40px;
+    color: #007BB5;
+    font-size: 19px;
+    display: inline-block;
+}
+.lynx_productQuantity .lynx_productQuantityInput{
+    width:40px;
+    display:inline-block;
+} 
+.lynx_productQuantity .lynx_productQuantityInput input
+{
+    width:100%;
+    color:#007BB5;
+    font-size: 18px;
+    font-weight: bold;
+    border:none;
+
+}
+.lynx_productQuantityInput .lynx_quantityBack,.lynx_productQuantityInput .lynx_quantityNext
+{
+    width:20px;
+    height:18px;
+    display: inline-block;
+    float:left;
+    cursor: pointer;
+}
+.lynx_productQuantityInput .lynx_quantityBack{
+    background: transparent url('../images/arrow-back.fw.png') no-repeat top left;
+}
+.lynx_productQuantityInput .lynx_quantityNext{
+    background: transparent url('../images/arrow-next.fw.png') no-repeat top left;
+}
+.lynx_productButtonBuy{
+    margin-top: 15px;
+}
+.lynx_productButtonBuy .lynx_blueButton,.lynx_productButtonAddTo .lynx_blueButton{
+    background: #007BB6;
+    color:white;
+    font-size: 18px;
+    cursor: pointer;
+    display: block;
+    border-radius: 0;
+    border:0;
+}
+.lynx_productButtonBuy .lynx_blueButton{
+    height:50px;
+    font-weight: bold;
+    display: block;
+}
+.lynx_productButtonAddTo .lynx_blueButton{
+    display: block;
+    font-weight: normal;
+    height: 50px;
+    line-height: 38px;
+}
+.lynx_productButtonAddTo {
+    margin-top:15px;
+}
+.lynx_productButtonAddTo .lynx_actionTitle{
+    display: inline-block;
+    width:250px;
+    font-size: 18px;
+    line-height:18px;
+    color:#007BB5;
+    text-align: left;
+    margin-bottom:5px;
+}
+.lynx_productShare {
+    height:22px;
+    margin-top: 10px;
+}
+.lynx_productShare span{
+    display: inline-block;
+    min-width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+.lynx_productShare span.lynx_share{
+    color:black;
+    height:22px;
+    cursor: text;
+}
+.lynx_productShare span.lynx_shareFace{
+    background: transparent url('../images/share-icon.fw.png') no-repeat top left;
+}
+.lynx_productShare span.lynx_shareTiwster{
+    background: transparent url('../images/share-icon.fw.png') no-repeat -26px 0px;
+}
+.lynx_productShare span.lynx_sharePlumber{
+    background: transparent url('../images/share-icon.fw.png') no-repeat -51px 0px;
+}
+.lynx_productShare span.lynx_shareMail{
+    background: transparent url('../images/share-icon.fw.png') no-repeat -75px 0px;
+}
+
+.lynx_listProducts .lynx_head li{width:293px;}
+
+.lynx_relativeProduct {
+    border-bottom: 1px dashed #D9D9D9;
+}

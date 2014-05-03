@@ -38,4 +38,38 @@ class ProductModel extends BaseModel
                 });
     }
 
+    function updateCountView($userID, $productID)
+    {
+        $app = get_instance();
+        $db = DB::getInstance();
+        $userID = (int) $userID;
+        $sessionKey = __METHOD__ . $productID . date_create(DB::getDate())->format('d-m-Y');
+
+        if ($app->session->userdata($sessionKey))
+        {
+            //chỉ cập nhật 1 lần trong ngày
+            return;
+        }
+
+        $db->StartTrans();
+        $recordID = $db->GetOne("SELECT id FROM t_product_view WHERE fk_user=? AND fk_product=?", array($userID, $productID));
+        if (!$recordID)
+        {
+            DB::insert('t_product_view', array(
+                'fk_product' => $productID,
+                'fk_user'    => $userID,
+                'count_view' => 1
+            ));
+        }
+        else
+        {
+            $db->Execute("UPDATE t_product_view SET count_view = count_view + 1 WHERE fk_user=? AND fk_product=?", array($userID, $productID));
+        }
+
+        if ($db->CompleteTrans())
+        {
+            $app->session->set_userdata($sessionKey, true);
+        }
+    }
+
 }

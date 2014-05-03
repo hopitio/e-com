@@ -30,7 +30,13 @@ class CategoryMapper extends MapperAbstract
         return parent::find($callback);
     }
 
-    function select($fields = 'c.*, cl.name, cl.description, cl.language, cl.name', $reset =false)
+    function filterID($id)
+    {
+        $this->_query->where('c.id=' . intval($id), __FUNCTION__);
+        return $this;
+    }
+
+    function select($fields = 'c.*, cl.name, cl.description, cl.language, cl.name', $reset = false)
     {
         return parent::select($fields, $reset);
     }

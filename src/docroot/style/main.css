@@ -35,9 +35,9 @@ li{list-style: none;}
     float:left;
 }
 .lynx_head .lynx_language select{
-	margin-top:-2px;
-	padding:0px;
-	margin:0px;
+    margin-top:-2px;
+    padding:0px;
+    margin:0px;
 }
 .lynx_head .lynx_headLeft .lynx_liveChat{
     background: transparent url('../images/chat-icon.png') no-repeat top left;
@@ -233,3 +233,62 @@ img.loading{width:32px;height:32px;}
 .lynx_loginLabel > a{display: inline-block;height: 43px;}
 .lynx_miniCart:hover {background-color: #448e41}
 .dropdown-menu{margin-top:0;}
+.lynx_item{position: relative;}
+.lynx_item .lynx_item_pin{position: absolute; right: 23px;top:21px;background: url('/images/pin.png');width: 34px;height:45px;display:none;}
+.lynx_item:hover .lynx_item_pin{display: block;}
+.lynx_listProducts .lynx_head li.active {
+    background: #B2CC4B;
+}
+.lynx_listProducts .lynx_head li {
+    float: left;
+    background-color: #D1E380;
+    margin-right: 10px;
+    font-weight: bold;
+}
+.lynx_listProducts .lynx_head li a{
+    font-size: 18px;
+    line-height: 27px;
+    padding-top: 5px;
+    display: block;
+    text-decoration: none;
+}
+.lynx_container .lynx_slideItemsContainer {
+    width: 1200px;
+    height: 395px;
+    display: inline-block;
+    margin: auto;
+}
+.lynx_listProducts .lynx_head li a, .lynx_listProducts .lynx_head li a:hover, .lynx_listProducts .lynx_head li a:visited{ color:#5C850F;}
+.lynx_slideItemsContainer .lynx_head {
+    margin-left: 20px;
+}
+.lynx_head {
+    display: inline-block;
+    width: 100%;
+}
+.lynx_slideItemsContainer .lynx_listItem {
+    display: inline-block;
+}
+.lynx_listItem .lynx_left {
+    float: left;
+    margin-left: -44px;
+    background: transparent url('../images/hot-products-button-left.fw.png') no-repeat center left;
+}
+.lynx_sildeButton {
+    height: 329px;
+    width: 37px;
+    display: inline-block;
+    cursor: pointer;
+}
+.lynx_listItem .lynx_right {
+    float: right;
+    margin-top: 0px;
+    margin-right: -44px;
+    background: transparent url('../images/hot-products-button-right.fw.png') no-repeat center left;
+}
+.lynx_slideItemsContainer .lynx_head h3 {
+    float: left;
+    font-size: 18px;
+    color: black;
+    margin: 0 0 10px 0;
+}

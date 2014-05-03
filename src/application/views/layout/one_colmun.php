@@ -114,7 +114,39 @@
                 </div><!--head ctrl-->
             </div>
             <div class="content">
+                <?php if ($view->breadcrums): ?>
+                    <div class="lynx_navigationBar lynx_staticWidth">
+                        <?php foreach ($view->breadcrums as $label => $url): ?>
+                            <?php
+                            $i = isset($i) ? $i + 1 : 0;
+                            ?>
+                            <span class="lynx_navigationItem">
+                                <?php if ($url != NULL): ?>
+                                    <a href="<?php echo $url ?>" title="<?php echo $label ?>"><?php echo $label ?></a>
+                                <?php else: ?>
+                                    <?php echo $label ?>
+                                <?php endif; ?>
+                                <?php if ($i < count($view->breadcrums) - 1): ?>
+                                    <?php echo htmlentities('>>') ?>
+                                <?php endif; ?>
+                            </span>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?><!--breadcrums-->
                 <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
+                <div id="modal_general" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <center><img class="loading" src="/images/loading.gif"></center>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
                 <div class="lynx_footer">
                     <div class="lynx_content">
                         <div class="lynx_col1">
@@ -186,10 +218,11 @@
         <script type='text/javascript' src="/js/angular-route.min.js"></script>
         <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src="/js/main.js"></script>
         <script type='text/javascript' src="/js/app.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
-        
+
 
 
         <script type='text/javascript' src="/js/controller/HeadCtrl.js"></script>

@@ -20,6 +20,7 @@ abstract class AbstractLayout
     protected $_layout = '';
     protected $_data = array();
     protected $_autoLoadLanguage = true;
+    protected $_breadcrums = array();
 
     function __construct()
     {
@@ -45,8 +46,15 @@ abstract class AbstractLayout
         $item->view = $view;
         $item->css = $this->_css;
         $item->javascript = $this->_javascript;
+        $item->breadcrums = $this->_breadcrums;
         $data['view'] = $item;
         return $data;
+    }
+
+    function setBreadcrums($arr)
+    {
+        $this->_breadcrums = $arr;
+        return $this;
     }
 
     /**

@@ -20,4 +20,9 @@ class CategoryDomain implements DomainInterface
     /** true nếu chứa category khác, false nếu chứa product */
     public $isContainer;
 
+    function getURL()
+    {
+        return '/category/show/' . $this->id;
+    }
+
 }

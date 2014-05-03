@@ -12,6 +12,8 @@ class ProductDomain implements DomainInterface
     public $isGroup;
     public $discount;
     public $dateCreated;
+    public $countPin;
+    public $countView;
     protected $_attributes = array();
 
     /** @var TaxDomain */

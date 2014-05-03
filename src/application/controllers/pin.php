@@ -46,6 +46,7 @@ class pin extends BaseController
 
     function pinProduct($productID)
     {
+        
         $this->pinModel->pin(User::getCurrentUser()->id, $productID);
     }
 

@@ -46,9 +46,17 @@ class wishlist extends BaseController
         echo json_encode($json);
     }
 
-    function addToWishlist($productID)
+    function addToWishlist($productID = NULL)
     {
+        if ($this->input->post())
+        {
+            $productID = (int) $this->input->post('hdn_product');
+        }
         $this->wishlistModel->addToWishlist($productID);
+        if ($this->input->post())
+        {
+            redirect('/wishlist/show');
+        }
     }
 
     function restoreWishlistDetail($detailID)

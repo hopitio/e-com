@@ -18,10 +18,18 @@ class ProductMapper extends MapperAbstract
             'fkRetailer'  => 'fk_retailer',
             'fkGroup'     => 'fk_group',
             'isGroup'     => 'is_group',
-            'dateCreated' => 'date_created'
+            'dateCreated' => 'date_created',
+            'countPin'    => 'count_pin',
+            'countView'   => 'count_view'
         );
 
         parent::__construct($domain, $query, $map);
+    }
+
+    function filterRelatedProduct($productID)
+    {
+        //TODO
+        return $this;
     }
 
     function filterCategory($category)
@@ -170,6 +178,13 @@ class ProductMapper extends MapperAbstract
                 ->filterRepeatingGroup(true)
                 ->setLanguage($language);
         return $attrMapper->findAll();
+    }
+
+    function selectCountView()
+    {
+        $query = Query::make()->select("SUM(count_view)", true)->from('t_product_view')->where('fk_product=p.id');
+        $this->_query->select("($query) AS count_view");
+        return $this;
     }
 
 }

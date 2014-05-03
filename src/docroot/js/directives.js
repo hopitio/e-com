@@ -1,20 +1,17 @@
 'use strict';
 
 /* directives */
-lynxApp.directive('product', function () {
-		return {
-		    templateUrl: 'js/directives/product.html',
-			scope: {
-				product: '='
-			}
-		};
-});
-	
-lynxApp.directive('shit', function () {
-		return {
-			template: '121212121212',
-			scope: {
-				product: '='
-			}
-		};
+lynxApp.directive('product', function() {
+    function link(scope, elem, attr) {
+        $('.lynx_item_pin', elem).click(function() {
+            showAjaxModal('Product Pinned', '/pin/pinProduct/' + scope.product.id);
+        });
+    }
+    return {
+        link: link,
+        templateUrl: '/js/directives/product.html',
+        scope: {
+            product: '='
+        }
+    };
 });

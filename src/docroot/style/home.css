@@ -136,14 +136,6 @@
     height: 35px;
     background: transparent url('../images/list-product-head-bg.png') no-repeat center bottom;
 }
-.lynx_listProducts .lynx_head span{
-    font-size: 22px;
-    line-height: 31px;
-    padding: 4px 80px 0px 5px;
-    float:left;
-    background-color: #D1E380;
-    color:#5B850F;
-}
 .lynx_listProducts .lynx_navigateLink{
     display:inline-block;
     float:right;

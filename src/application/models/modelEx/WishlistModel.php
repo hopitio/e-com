@@ -25,7 +25,7 @@ class WishlistModel extends BaseModel
             /* @var $detailInstance WishlistDetailDomain */
             if ($detailInstance->status)
             {
-                throw new Lynx_BusinessLogicException("product_already_exists");
+                return;
             }
             DB::delete('t_wishlist_detail', 'id=?', array($detailInstance->id));
         }
