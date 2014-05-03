@@ -63,7 +63,6 @@
                                 <option value="VN-VI"  >Tiếng Việt</option>
                             </select>
                         </span>
-                         
                     </div>
                 </div>
             </div>
@@ -90,32 +89,32 @@
                 <div class="lynx_col2">
                     <div class="lynx_cell">
                         <ul>
-                            <span>Make Money With Us</span>
-                            <li> Sell </li>
-                            <li> Advertise with us </li>
+                            <span><?php echo $language['layout']->lblMakeMoneyWithUs;?></span>
+                            <li> <?php echo $language['layout']->lblSell;?> </li>
+                            <li> <?php echo $language['layout']->lblAdve;?> </li>
                         </ul>
                         <ul>
-    	                    <span>Customer Service</span>
-    	                    <li> FAQs </li>
-    	                    <li> Contact Info </li>
-    	                    <li> Shipping and Returns </li>
-    	                    <li> Safe Shopping  </li>
-    	                    <li> Guarantee  Secure Shopping    </li>
+    	                    <span><?php echo $language['layout']->lblCustomerService;?></span>
+    	                    <li> <?php echo $language['layout']->lblFAQs;?> </li>
+    	                    <li> <?php echo $language['layout']->lblContact;?> </li>
+    	                    <li> <?php echo $language['layout']->lblShippingvsReturn;?> </li>
+    	                    <li> <?php echo $language['layout']->lblSafeShopping;?>  </li>
+    	                    <li> <?php echo $language['layout']->lblGuaranteeSecureShopping;?>    </li>
                         </ul>
                     </div>
                     <div class="lynx_cell">
     	                <ul>
-    	                    <span>About Sfriendly</span>
-    	                    <li>About</li>
-    	                    <li>Jobs</li>
-    	                    <li>Customer Testimonials</li>
-    	                    <li>Associates Program</li>
-    	                    <li>Glossary of Terms</li>
-    	                    <li>Daily Shoe Digest</li>
+    	                    <span><?php echo $language['layout']->lblAboutSfriendly;?></span>
+    	                    <li><?php echo $language['layout']->lblAbout;?></li>
+    	                    <li><?php echo $language['layout']->lblJobs;?></li>
+    	                    <li><?php echo $language['layout']->lblCustomerTestimonials;?></li>
+    	                    <li><?php echo $language['layout']->lblAssociatesProgram;?></li>
+    	                    <li><?php echo $language['layout']->lblGlossaryofTerms;?></li>
+    	                    <li><?php echo $language['layout']->lblDailyShowDigest;?></li>
     	                </ul>
     	                <ul>
-    	                    <span>Feedback</span>
-    	                    <li>How do you like our website?</li>
+    	                    <span><?php echo $language['layout']->lblFeedback;?></span>
+    	                    <li><?php echo $language['layout']->lblHowLikeOurWebsite;?></li>
     	                </ul>
                     </div>
                 </div>

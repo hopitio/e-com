@@ -93,13 +93,13 @@ li{list-style: none;}
     padding-left:10px;
     float:left;
 }
-.lynx_menuWarp .lynx_loginLabel > a{
+.lynx_menuWarp .lynx_loginLabel a{
     line-height:44px;
     font-size:12px;
     color:#c3df63;
 }
 .lynx_menuWarp .lynx_miniCart{
-    line-height:43px;
+    line-height:44px;
     font-size:12px;
     color:#c3df63;
     float:right;
@@ -110,7 +110,7 @@ li{list-style: none;}
 .lynx_footer{
     height:330px;
     background: #EFF0E2;
-
+    
 }
 .lynx_footer .lynx_content{
     width:1200px;
@@ -174,8 +174,8 @@ li{list-style: none;}
     height:190px;
 }
 .lynx_footer .lynx_content .lynx_col3 img{
-    margin-left: 30px;
-    margin-top: -10px;
+   margin-left: 30px;
+   margin-top: -10px;
 }
 
 .lynx_footer .lynx_content .lynx_col3 *{
@@ -211,6 +211,164 @@ body .lynx_cart span{
     float:left;
     color:#26336A;
     display:inline-block;
+}
+
+.lynx_container .lynx_listProducts
+{
+    width:1200px;
+    padding:0px 15px 0px 15px;
+    display:inline-block;
+    margin-bottom:30px;
+}
+.lynx_listProducts .lynx_head{
+    height: 35px;
+    background: transparent url('../images/list-product-head-bg.png') no-repeat center bottom;
+}
+.lynx_listProducts .lynx_head span{
+    font-size: 22px;
+    line-height: 28px;
+    padding: 4px 80px 0px 5px;
+    float:left;
+    background-color: #D1E380;
+    color:#5B850F;
+    margin-right:10px;
+}
+.lynx_listProducts .lynx_head span.active{
+    background:#B2CC4B;
+    
+}
+
+.lynx_listProducts .lynx_navigateLink a{
+    font-size: 14px;
+    line-height: 46px;
+    color:#5B850F;
+    float:right;
+}
+.lynx_listProducts .lynx_itemConatiner{
+    text-align: left;
+}
+
+.lynx_container .lynx_slideItemsContainer{
+    width:1200px;
+    height:395px;
+    display:inline-block;
+    margin:auto;
+}
+.lynx_slideItemsContainer .lynx_head{
+    margin-left:20px;
+    
+}
+.lynx_slideItemsContainer .lynx_head span{
+    float:left;
+    font-size:18px;
+    color:black;
+    margin-bottom:10px;   
+    
+}
+.lynx_slideItemsContainer .lynx_listItem{
+    display:inline-block;
+}
+.lynx_listItem .lynx_item{
+    width:282px;
+    height:329px;
+    background: white;
+    margin:0px 6px 0px 6px;
+    float:left;
+    padding:13px;
+    border-radius:7px;
+    border: solid 1px #E7E7E7;
+}
+.lynx_item img{
+    border: solid 1px #E7E7E7;
+    width: 255px;
+    height:215px;
+}
+.lynx_listItem .lynx_slideFirst{
+    margin-left: 0px;
+}
+.lynx_listItem .lynx_slideLast{
+    margin-right: 0px;
+}
+.lynx_item .lynx_detailContainer{
+    margin-top:15px;
+}
+.lynx_detailContainer .lynx_name{
+    width: 160px;
+    float: left;
+    font-size:14px;
+    text-align:left;
+    color:black;
+    font-weight: bold;
+}
+.lynx_detailContainer .lynx_price{
+    color:#F0B21C;
+    font-family: arial;
+    font-size: 20px;
+    font-weight: bold;
+    float:right;
+    margin-top:-4px;
+}
+.lynx_detailContainer .lynx_userName{
+    float: left;
+    font-size:12px;
+    text-align:left;
+    width:100%;
+}
+.lynx_detailContainer .lynx_star{
+    float:left;
+    width:150px;
+    text-align: left;
+    height:20px;
+}
+.lynx_detailContainer .lynx_star img{
+    height:20px;
+    border:none;
+    width:auto;
+}
+.lynx_detailContainer .lynx_view{
+    float:right;
+    text-align: right;
+    font-size:12px;
+    padding-left:20px;
+    background: transparent url('../images/view-icon.png') no-repeat center left;
+    line-height: 12px;
+    margin-top:4px;
+}
+.lynx_listProducts div.lynx_towCol{
+    width:580px;
+    padding:0px;
+    border:none;
+    margin: 0px 8px 30px 0px;
+}
+.lynx_listProducts div.lynx_towCol img{
+    width:578px;
+    height:329px;
+}
+.lynx_sildeButton{
+    height:329px;
+    width:37px;
+    display:inline-block;
+    cursor: pointer;
+}
+.lynx_listItem .lynx_left{
+    float:left;
+    margin-left: -44px;
+    background: transparent url('../images/hot-products-button-left.fw.png') no-repeat center left;
+}
+.lynx_listItem .lynx_right{
+    float:right;
+    margin-top:0px;
+    margin-right: -44px;
+    background: transparent url('../images/hot-products-button-right.fw.png') no-repeat center left;
+}
+body span.lynx_spanButton{
+    color:#5C850F !important;  
+    font-size: 15px !important; 
+    line-height: 15px !important; 
+    padding:10px !important;
+    padding-top:12px !important; 
+    background: #E4E8DC !important; 
+    cursor: pointer !important;
 }
 strong, strong *{font-weight: bold;}
 .center, .center *{text-align: center;}
