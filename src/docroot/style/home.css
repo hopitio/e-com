@@ -51,7 +51,7 @@
 }
 .lynx_hotItemsContainer .lynx_head span{float:left;background-color: #F3F3F3}
 .lynx_hotItemsContainer .lynx_head span:first-child{padding-left:10px;}
-.lynx_hotItemsContainer .lynx_head span, .lynx_hotItemsContainer .lynx_head span *,.lynx_hotItemsContainer .lynx_head span a{;color: #5C850F;}
+.lynx_hotItemsContainer .lynx_head span, .lynx_hotItemsContainer .lynx_head span *,.lynx_hotItemsContainer .lynx_head span a{;color: #3D79A5;}
 .lynx_hotItemsContainer .lynx_head *{font-size:22px;}
 .lynx_hotItemsContainer .lynx_head span a.active{color: #F0B21C;} 
 .lynx_listItem{
@@ -146,14 +146,14 @@
     line-height: 31px;
     padding: 4px 80px 0px 5px;
     float:left;
-    background-color: #D1E380;
-    color:#5B850F;
+    background-color: #3E79A6;
+    color:white;
 }
 
 .lynx_listProducts .lynx_navigateLink a{
     font-size: 14px;
     line-height: 30px;
-    color:#5B850F;
+    color:#3D79A5;
     float:right;
 }
 .lynx_listProducts .lynx_itemConatiner{

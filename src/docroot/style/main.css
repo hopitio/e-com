@@ -50,7 +50,7 @@ li{list-style: none;}
 .lynx_head .lynx_headMenu {
     width:100%;
     height:43px;
-    background:#5c850f;
+    background:#66A7D9;
 }
 .lynx_headMenu .lynx_menuWarp
 {
@@ -62,7 +62,7 @@ li{list-style: none;}
     margin-right:15px;
     float:left;
     text-align: right;
-    color:#c3df63;
+    color:white;
     line-height:44px;
     font-size:20px;
     cursor: pointer;
@@ -72,12 +72,12 @@ li{list-style: none;}
     width:700px;
     height:43px;
     float:left;
-    background: #448e41;
+    background: #F3CA05;
 }
 .lynx_searchForm input,.lynx_searchForm span {
     float:left;
     line-height:40px;
-    color:#c3df63;
+    color:white;
     padding:0px 10px;
     font-size:20px;
     cursor: pointer;
@@ -96,12 +96,12 @@ li{list-style: none;}
 .lynx_menuWarp .lynx_loginLabel a{
     line-height:44px;
     font-size:12px;
-    color:#c3df63;
+    color:white;
 }
 .lynx_menuWarp .lynx_miniCart{
     line-height:44px;
     font-size:12px;
-    color:#c3df63;
+    color:white;
     float:right;
     padding-left:30px;
     background: transparent url('../images/cart-mini-icon.png') no-repeat center left;
@@ -109,7 +109,7 @@ li{list-style: none;}
 }
 .lynx_footer{
     height:330px;
-    background: #EFF0E2;
+    background: #E8F0F5;
     
 }
 .lynx_footer .lynx_content{
@@ -181,10 +181,10 @@ li{list-style: none;}
 .lynx_footer .lynx_content .lynx_col3 *{
     float:left;
     text-align: left;
-    color: black;
+    color: white;
 }
 .lynx_footer .lynx_copyright{
-    background: #5B850F;
+    background: #65A7D9;
 }
 .lynx_footer .lynx_copyright .lynx_copycontent {
     text-align: left;
@@ -377,29 +377,29 @@ strong, strong *{font-weight: bold;}
 .preload{display:none;}
 img.loading{width:32px;height:32px;}
 
-.lynx_category  > .dropdown-toggle > span, .lynx_category  > .dropdown-toggle > span > span{color: #c3df63;}
+.lynx_category  > .dropdown-toggle > span, .lynx_category  > .dropdown-toggle > span > span{color:white ;}
 .lynx_loginLabel {line-height: 43px;}
 .dropdown-toggle > a,.dropdown-toggle > a .caret{color:#c3df63}
 .lynx_loginLabel span a{line-height: 43px;display: inline-block;}
 .lynx_loginLabel a:hover{text-decoration: none;}
 .lynx_miniCart .dropdown-menu{left:auto;right: 0;}
 .dropdown-menu{min-width:250px;}
-.lynx_miniCart > span, .lynx_miniCart  > span *{color:#c3df63; }
+.lynx_miniCart > span, .lynx_miniCart  > span *{color:white; }
 #lynx_cart{cursor: pointer;}
 .lynx_category .dropdown-toggle{line-height:43px;display:inline-block;padding: 0 10px;}
-.lynx_category .dropdown-toggle:hover{background-color: #448e41}
+
 .lynx_loginLabel > a{display: inline-block;height: 43px;}
-.lynx_miniCart:hover {background-color: #448e41}
+
 .dropdown-menu{margin-top:0;}
 .lynx_item{position: relative;}
 .lynx_item .lynx_item_pin{position: absolute; right: 23px;top:21px;background: url('/images/pin.png');width: 34px;height:45px;display:none;}
 .lynx_item:hover .lynx_item_pin{display: block;}
 .lynx_listProducts .lynx_head li.active {
-    background: #B2CC4B;
+    background: #3E79A6;
 }
 .lynx_listProducts .lynx_head li {
     float: left;
-    background-color: #D1E380;
+    background-color: #7BB0D9;
     margin-right: 10px;
     font-weight: bold;
 }
@@ -416,7 +416,9 @@ img.loading{width:32px;height:32px;}
     display: inline-block;
     margin: auto;
 }
-.lynx_listProducts .lynx_head li a, .lynx_listProducts .lynx_head li a:hover, .lynx_listProducts .lynx_head li a:visited{ color:#5C850F;}
+.lynx_listProducts .lynx_head li a, .lynx_listProducts .lynx_head li a:hover, .lynx_listProducts .lynx_head li a:visited{ 
+	color:White;
+}
 .lynx_slideItemsContainer .lynx_head {
     margin-left: 20px;
 }
