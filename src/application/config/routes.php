@@ -22,6 +22,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['admin/product'] = 'admin/product/show_list';
         $route['admin/product/show_list'] = 'admin/product/show_list';
         $route['order/place_order'] = 'devPlaceOrder/showPage';
+        
+        $route['__mockup/list'] = 'testingController/getMockupScreenList';
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')

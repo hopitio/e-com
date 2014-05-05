@@ -452,3 +452,50 @@ img.loading{width:32px;height:32px;}
     color: black;
     margin: 0 0 10px 0;
 }
+
+
+.lynx_tabControl{
+    width:100%;
+    display: inline-block;
+	float: left;
+	background: transparent url('../images/list-product-head-bg.png') repeat-x center bottom;
+}
+
+.lynx_tabControl ul li{
+	display:inline-block;
+	float:left;
+	background: #7BB0D9;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.lynx_tabControl ul li span{
+    color:white;
+}
+
+.lynx_tabControl ul li.lynx_tabActive{
+    background: #3E79A6;
+}
+
+.lynx_seamlessTab{
+	height:48px;
+}
+.lynx_seamlessTab ul{
+    padding:0px;
+	margin:0px;
+}
+.lynx_seamlessTab ul li{
+    height:45px;
+	padding:6px 0px;
+}
+.lynx_seamlessTab ul li span{
+    line-height: 21px;
+	font-size: 13px;
+	display: inline-block;
+	padding : 6px 20px 6px 12px;
+	border-right: 1px solid #3E79A6;
+}
+.lynx_seamlessTab ul li:last-child span{
+    border: none;
+}
+
