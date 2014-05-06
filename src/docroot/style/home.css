@@ -45,6 +45,8 @@
     height:395px;
     padding:15px;
     background-color: #F3F3F3;
+    overflow: hidden;
+    position: relative;
 }
 .lynx_hotItemsContainer .lynx_head{
     background: transparent url('../images/line.png') repeat-x 0px 13px;
@@ -56,6 +58,11 @@
 .lynx_hotItemsContainer .lynx_head span a.active{color: #F0B21C;} 
 .lynx_listItem{
     display: inline-block;
+    height:329px;
+    overflow: hidden;
+    position: absolute;
+    left:15px;
+    top:50px;
 }
 .lynx_listItem div.lynx_item{
     width:280px;
@@ -139,7 +146,7 @@
 .lynx_listProducts .lynx_navigateLink{
     display:inline-block;
     float:right;
-    
+
 }
 .lynx_listProducts .lynx_head span{
     font-size: 22px;

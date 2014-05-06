@@ -30,8 +30,7 @@ class home extends BaseController
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
                 ->setLanguage(User::getCurrentUser()->languageKey)
-                ->autoloadAttributes()
-                ->limit(4);
+                ->autoloadAttributes();
         $mapper
                 ->getQuery()
                 ->select('seller.name AS seller_name')

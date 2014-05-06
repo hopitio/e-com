@@ -40,16 +40,15 @@ defined('BASEPATH') or die('No direct script access allowed');
         <div class="lynx_hotSildeButton lynx_right">
         </div>
     </div>
+
     <div class="lynx_listProducts" ng-repeat="section in sections">
         <div class="lynx_head">
             <span>{{section.name}}</span>
             <div class="lynx_navigateLink">
                 <a href="{{section.url}}">VIEW ALL >></a>
             </div>
-            <a href="{{section.url}}"><?php echo $language[$view->view]->lblViewAll;?></a>
+            <a href="{{section.url}}"><?php echo $language[$view->view]->lblViewAll; ?></a>
         </div>
-        </div>
-
         <div class="lynx_itemConatiner">
             <div class="lynx_item lynx_towCol" ng-if="section.displayImage">
                 <a href="{{section.displayImageHref}}" title="{{section.displayImageTitle}}"><img src="{{section.displayImage}}"/></a>
@@ -215,9 +214,9 @@ defined('BASEPATH') or die('No direct script access allowed');
 <script>
     function scriptData() {
         this.hotItemTabs = [
-            ['<?php echo $language[$view->view]->lblHot;?>', '<?php echo site_url('home/hot_service') ?>'],
-            ['<?php echo $language[$view->view]->lblNew;?>', '<?php echo site_url('home/new_service') ?>'],
-            ['<?php echo $language[$view->view]->lblSale;?>', '<?php echo site_url('home/sale_service') ?>']
+            ['<?php echo $language[$view->view]->lblHot; ?>', '<?php echo site_url('home/hot_service') ?>'],
+            ['<?php echo $language[$view->view]->lblNew; ?>', '<?php echo site_url('home/new_service') ?>'],
+            ['<?php echo $language[$view->view]->lblSale; ?>', '<?php echo site_url('home/sale_service') ?>']
         ];
         this.sectionURL = '<?php echo site_url('home/section_service') ?>';
     }
