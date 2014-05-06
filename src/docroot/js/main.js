@@ -91,6 +91,75 @@ $(function() {
     });
 });
 
+function productSlider(selector) {
+    var $slider = $(selector);
+    var currentPage = 0;
+    var pages = [-15];
+
+    //tinh toan trang
+    var $wrapper = $('.lynx_slideItemsContainer', $slider);
+    var $itemContainer = $('.lynx_listItem', $wrapper);
+    var itemContainerWidth = 0;
+    var startPosLeft = 15;
+    $itemContainer.css('left', -pages[0]);
+    var wrapperWidth = $wrapper.width();
+    var $btnLeft = $('.lynx_left', $slider);
+    var $btnRight = $('.lynx_right', $slider);
+
+    var $items = $('.lynx_item', $itemContainer);
+    $items.each(function() {
+        var $this = $(this);
+        var marginLeft = parseFloat($this.css('marginLeft').replace('px', ''));
+        var marginRight = parseFloat($this.css('marginRight').replace('px', ''));
+        itemContainerWidth += $this.outerWidth() + marginLeft + marginRight;
+    });
+    $itemContainer.width(itemContainerWidth);
+
+    do {
+        startPosLeft = Math.min(startPosLeft + wrapperWidth + pages[0], itemContainerWidth - wrapperWidth + pages[0]);
+        if (startPosLeft > 0)
+            pages.push(startPosLeft);
+    } while (startPosLeft < itemContainerWidth - wrapperWidth + pages[0]);
+    watchSlide();
+
+    var timeoutSlide;
+    function slidePage(direction) {
+        if (timeoutSlide)
+            clearTimeout(timeoutSlide);
+        setTimeout(function() {
+            if (direction > 0)
+                currentPage = Math.min(pages.length - 1, currentPage + 1);
+            else
+                currentPage = Math.max(0, currentPage - 1);
+            $itemContainer.animate({'left': -pages[currentPage]});
+            watchSlide();
+        }, 100);
+
+    } //function
+
+    $slider.data().init_slide = true;
+
+    $btnLeft.unbind('click').click(function() {
+        slidePage(-1);
+    });
+    $btnRight.unbind('click').click(function() {
+        slidePage(+1);
+    });
+
+    function watchSlide() {
+        $btnRight.show();
+        if (pages.length > 1 && currentPage > 0)
+            $btnLeft.show();
+        else
+            $btnLeft.hide();
+        if (pages.length > 1 && currentPage < pages.length - 1)
+            $btnRight.show();
+        else
+            $btnRight.hide();
+    }
+
+} //product slider
+
 
 
 

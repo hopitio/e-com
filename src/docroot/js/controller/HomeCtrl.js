@@ -1,5 +1,5 @@
 (function(window, $, scriptData) {
-    window.HomeCtrl = function($scope, $http) {
+    window.HomeCtrl = function($scope, $http, $timeout) {
         $scope.activeHotTab = 0;
         $scope.hotItemTabs = scriptData.hotItemTabs;
         $scope.sections = [];
@@ -18,6 +18,14 @@
                 $http.get(hotConfig[1], {cache: false}).success(function(products) {
                     for (var i in products)
                         hotConfig[2].push(products[i]);
+
+                    $timeout(function() {
+                        productSlider('.lynx_hotProducts');
+                    });
+                });
+            } else {
+                $timeout(function() {
+                    productSlider('.lynx_hotProducts');
                 });
             }
         };
@@ -30,5 +38,3 @@
     };
 
 })(window, $, new scriptData);
-
-

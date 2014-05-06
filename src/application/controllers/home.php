@@ -16,7 +16,6 @@ class home extends BaseController
         //$this->load->model('Category');
         //$cate = $this->Category->loadCategory();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
-                ->setCss(array('/style/home.css'))
                 ->setJavascript(array(
                     '/js/controller/HomeCtrl.js'
                 ))
@@ -30,8 +29,7 @@ class home extends BaseController
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
                 ->setLanguage(User::getCurrentUser()->languageKey)
-                ->autoloadAttributes()
-                ->limit(4);
+                ->autoloadAttributes();
         $mapper
                 ->getQuery()
                 ->select('seller.name AS seller_name')
