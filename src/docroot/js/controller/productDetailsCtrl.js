@@ -1,4 +1,4 @@
-function productDetailsCtrl($scope, $http) {
+function productDetailsCtrl($scope, $http, $timeout) {
     $scope.productImages = scriptData.images;
     $scope.selectedImage = 0;
     $scope.productID = scriptData.productID;
@@ -16,6 +16,9 @@ function productDetailsCtrl($scope, $http) {
     $scope.getRelatedProducts = function() {
         $http.get($scope.relatedService + $scope.productID).success(function(products) {
             $scope.relatedProducts = products;
+            $timeout(function() {
+                productSlider('.lynx_hotProducts');
+            });
         });
     };
     $scope.getRelatedProducts();

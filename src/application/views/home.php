@@ -16,8 +16,10 @@ defined('BASEPATH') or die('No direct script access allowed');
     </div>
     <div class="lynx_hotProducts">
         <div class="lynx_hotSildeButton lynx_left">
+        </div>        
+        <div class="lynx_hotSildeButton lynx_right">
         </div>
-        <div class="lynx_hotItemsContainer">
+        <div class="lynx_slideItemsContainer">
             <div class="lynx_head" >
                 <strong>
                     <span ng-repeat="tab in hotItemTabs">
@@ -37,17 +39,14 @@ defined('BASEPATH') or die('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <div class="lynx_hotSildeButton lynx_right">
-        </div>
     </div>
 
     <div class="lynx_listProducts" ng-repeat="section in sections">
         <div class="lynx_head">
             <span>{{section.name}}</span>
             <div class="lynx_navigateLink">
-                <a href="{{section.url}}">VIEW ALL >></a>
+                 <a href="{{section.url}}"><?php echo $language[$view->view]->lblViewAll; ?></a>
             </div>
-            <a href="{{section.url}}"><?php echo $language[$view->view]->lblViewAll; ?></a>
         </div>
         <div class="lynx_itemConatiner">
             <div class="lynx_item lynx_towCol" ng-if="section.displayImage">
@@ -57,154 +56,7 @@ defined('BASEPATH') or die('No direct script access allowed');
             </div>
         </div>
     </div>
-    <div class="lynx_listProducts">
-        <div class="lynx_head">
-            <span>SHOPPING MALL</span>
-        </div>
-        <div class="lynx_navigateLink">
-            <a href="#">VIEW ALL >></a>
-        </div>
-        <div class="lynx_itemConatiner">
-            <div class="lynx_item lynx_towCol">
-                <a href="#"><img src="/images/child-slide-item-demo.png"/></a>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="lynx_slideGroup">
-        <div class="lynx_item first-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
-        <div class="lynx_item"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
-        <div class="lynx_item last-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
-    </div>
-    <div class="lynx_listProducts">
-        <div class="lynx_head">
-            <span>VIETNAM CULTURE</span>
-        </div>
-        <div class="lynx_navigateLink">
-            <a href="#">VIEW ALL >></a>
-        </div>
-        <div class="lynx_itemConatiner">
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-            <div class="lynx_item lynx_oneCol">
-                <img src="#" />
-                <div class="lynx_detailContainer">
-                    <div class="lynx_name">Tên sản phẩm Tên sản phẩm</div>
-                    <div class="lynx_price">$123,99</div>
-                    <div class="lynx_userName">Lê Thanh An </div>
-                    <div class="lynx_star"><img src="/images/star.png" /></div>
-                    <div class="lynx_view">12471</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <div class="lynx_slideGroup">
         <div class="lynx_item first-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
         <div class="lynx_item"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>

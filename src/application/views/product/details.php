@@ -83,17 +83,19 @@ foreach ($product->getImages() as $attr)
             <?php echo $product->getDescription() ?>
         </div>
     </div>
-    <div class="lynx_slideItemsContainer lynx_relativeProduct">
-        <div class="lynx_head">
-            <h3>Related Products</h3>
+
+    <div class="lynx_hotProducts">
+        <div class="lynx_hotSildeButton lynx_left">
         </div>
-        <div class="lynx_listItem">
-            <div class="lynx_sildeButton lynx_left">
+        <div class="lynx_hotSildeButton lynx_right">
+        </div>
+        <div class="lynx_slideItemsContainer">
+            <div class="lynx_head" >
+                <h3>Related Products</h3>
             </div>
-            <div class="lynx_item" ng-repeat="product in relatedProducts" product="product" 
-                 ng-class="{lynx_slideFirst: !$index, lynx_slideLast: $index == relatedProducts.length - 1}">
-            </div>
-            <div class="lynx_sildeButton lynx_right">
+            <div class="lynx_listItem">
+                <div class="lynx_item" ng-repeat="product in relatedProducts" product="product" 
+                     ng-class="{lynx_slideFirst: !$index, lynx_slideLast: $index == relatedProducts.length - 1}"></div>
             </div>
         </div>
 

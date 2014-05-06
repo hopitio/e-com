@@ -16,7 +16,6 @@ class home extends BaseController
         //$this->load->model('Category');
         //$cate = $this->Category->loadCategory();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
-                ->setCss(array('/style/home.css'))
                 ->setJavascript(array(
                     '/js/controller/HomeCtrl.js'
                 ))

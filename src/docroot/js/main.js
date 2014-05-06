@@ -97,14 +97,14 @@ function productSlider(selector) {
     var pages = [-15];
 
     //tinh toan trang
-    var $wrapper = $('.lynx_hotItemsContainer', $slider);
+    var $wrapper = $('.lynx_slideItemsContainer', $slider);
     var $itemContainer = $('.lynx_listItem', $wrapper);
     var itemContainerWidth = 0;
     var startPosLeft = 15;
     $itemContainer.css('left', -pages[0]);
     var wrapperWidth = $wrapper.width();
-    var $btnLeft = $slider.children('.lynx_hotSildeButton.lynx_left:first');
-    var $btnRight = $slider.children('.lynx_hotSildeButton.lynx_right:first');
+    var $btnLeft = $('.lynx_left', $slider);
+    var $btnRight = $('.lynx_right', $slider);
 
     var $items = $('.lynx_item', $itemContainer);
     $items.each(function() {
@@ -147,6 +147,7 @@ function productSlider(selector) {
     });
 
     function watchSlide() {
+        $btnRight.show();
         if (pages.length > 1 && currentPage > 0)
             $btnLeft.show();
         else

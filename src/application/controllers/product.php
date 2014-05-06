@@ -60,7 +60,7 @@ class product extends BaseController
         $mapper->getQuery()
                 ->select('seller.name AS seller_name')
                 ->innerJoin('t_seller seller', 'p.fk_seller = seller.id')
-                ->limit(4);
+                ->limit(9);
         $products = $mapper->findAll(function($record, ProductFixedDomain $instance)
         {
             $instance->seller_name = $record['seller_name'];
