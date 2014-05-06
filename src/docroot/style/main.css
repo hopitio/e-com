@@ -272,7 +272,7 @@ body .lynx_cart span{
     width:282px;
     height:329px;
     background: white;
-    margin:0px 6px 0px 6px;
+    margin:0px 6px 12px 6px;
     float:left;
     padding:13px;
     border-radius:7px;
@@ -452,6 +452,12 @@ img.loading{width:32px;height:32px;}
     color: black;
     margin: 0 0 10px 0;
 }
+.lynx_listItem div.lynx_itemAdve,.lynx_itemAdve img{
+    width:575px;
+    height:329px;
+    border:none;
+    padding: 0px;
+}
 
 
 .lynx_tabControl{
@@ -499,3 +505,14 @@ img.loading{width:32px;height:32px;}
     border: none;
 }
 
+.lynx_adveGroup{
+    width:100%;
+    display:inline-block;
+}
+.lynx_adveGroup .lynx_adveItem,.lynx_adveGroup .lynx_adveItem img{
+    width:380px;
+	height:215px;
+	display:inline-block;
+	float: left;
+	margin-right: 12px;
+}

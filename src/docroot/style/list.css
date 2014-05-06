@@ -90,3 +90,118 @@
     width:100%;
 	float:left;
 }
+.lynx_listFilter .lynx_filterContent{
+	padding:0px 15px 15px 15px;
+    display:inline-block;
+    text-align: left;
+	width:100%;
+}
+.lynx_listFilter .lynx_filterContent ul{
+    display:inline-block;
+	width:100%;
+	margin:0px;
+}
+.lynx_listFilter .lynx_filterContent ul li{
+    display:inline-block;
+	min-width: 50px;
+	height:36px;
+	float: left;
+	text-align: left;
+	line-height: 36px;
+	color:black;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.lynx_listFilter .lynx_filterContent ul.lynx_filterChoiceRow li{
+    width: 125px;
+}
+.lynx_listFilter .lynx_filterContent ul.lynx_filterSelectRow li{
+    width: 150px;
+}
+
+.lynx_listFilter .lynx_filterContent ul li img{
+    width:16px;
+    height:16px;
+    margin-top:-2px;
+    margin-right:5px; 
+}
+.lynx_listFilter .lynx_filterContent ul li.lynx_filterFieldName{
+    width:100px;
+}
+.lynx_listFilter .lynx_filterContent ul li.lynx_filterExtendButton{
+    width:16px;
+	text-align:right;
+    float:right;
+}
+.lynx_listFilter .lynx_filterContent ul li .lynx_extendButton{
+    width:16px;
+    height:16px;
+    display:inline-block;
+    background: transparent url('../images/btn-extendFilter.fw.png') no-repeat top left;
+	margin-top: 10px;
+}
+.lynx_searchResult{
+    width:100%;
+	float:left;
+	display:inline-block;
+	margin-top:15px;
+}
+.lynx_searchResult .lynx_sort,.lynx_searchResult .lynx_sort ul,.lynx_searchResult .lynx_sort ul li
+{
+    float:left;
+    display:inline-block;
+	margin-bottom:0px;
+	height:40px;
+}
+.lynx_searchResult .lynx_sort ul li{
+    opacity: 0.25;
+	margin-left: 10px;
+}
+.lynx_searchResult .lynx_sort ul li a
+{
+    display:inline-block; 
+    margin-top:10px;
+    line-height:20px;
+    font-size: 11px;
+    color:black;
+    padding-left:25px;
+    cursor: pointer;
+}
+.lynx_searchResult .lynx_sort ul li a.lynx_sorterNew{
+    background: transparent url('../images/search_sort_icon.png') no-repeat 0px 0px;
+}
+.lynx_searchResult .lynx_sort ul li a.lynx_sorterSellOnline{
+    background: transparent url('../images/search_sort_icon.png') no-repeat 0px -20px;
+}
+.lynx_searchResult .lynx_sort ul li a.lynx_sorterPriceAsc{
+    background: transparent url('../images/search_sort_icon.png') no-repeat 0px -40px;
+}
+.lynx_searchResult .lynx_sort ul li a.lynx_sorterPriceDesc{
+    background: transparent url('../images/search_sort_icon.png') no-repeat 0px -60px;
+}
+.lynx_searchResult .lynx_sort ul li a.lynx_sorterSaleAsc{
+    background: transparent url('../images/search_sort_icon.png') no-repeat 0px -80px;
+}
+.lynx_searchResult .lynx_sort ul li a.lynx_sorterHot{
+    background: transparent url('../images/search_sort_icon.png') no-repeat 0px -100px;
+}
+.lynx_searchResult .lynx_sort ul li a.lynx_sorterMostLiked{
+    background: transparent url('../images/search_sort_icon.png') no-repeat 0px -120px;
+}
+.lynx_searchResult .lynx_sort ul li.lynx_sortActive,.lynx_searchResult .lynx_sort ul li:hover{
+    opacity: 1;
+}
+.lynx_listItem{
+    float:left;
+}
+.lynx_searchResult .lynx_showMore{
+    padding:10px 75px;
+    color:#EBB737;
+    border: solid 1px #EBB737;
+    display:inline-block;
+    border-radius:3px;
+	cursor: pointer;
+}
+.lynx_adveGroup{margin:30px auto 15px auto;}
+
