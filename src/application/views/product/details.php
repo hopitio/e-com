@@ -66,7 +66,7 @@ foreach ($product->getImages() as $attr)
             </div>
             <div class="lynx_productShare"> 
                 <span class="lynx_share">Share: </span>
-                <span class="lynx_shareFace">&nbsp;</span>
+                <span class="lynx_shareFace" ng-click="shareFacbook()">&nbsp;</span>
                 <span class="lynx_shareTiwster">&nbsp;</span>
                 <span class="lynx_sharePlumber">&nbsp;</span>
                 <span class="lynx_shareMail">&nbsp;</span>
@@ -98,8 +98,14 @@ foreach ($product->getImages() as $attr)
                      ng-class="{lynx_slideFirst: !$index, lynx_slideLast: $index == relatedProducts.length - 1}"></div>
             </div>
         </div>
-
     </div>
+    
+    <div class="lynx_facebookReview">
+        <div class="fb-comments" data-width="1200" data-href="<?php echo Common::curPageURL();?>" data-numposts="10" data-colorscheme="light">
+        
+        </div>
+    </div>
+    
 </div><!--ng-controller -->
 <script>
     var scriptData = {
@@ -107,5 +113,4 @@ foreach ($product->getImages() as $attr)
         productID: <?php echo $product->id ?>,
         relatedURL: '<?php echo site_url('product/related_products_service') ?>/'
     };
-
 </script>

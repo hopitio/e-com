@@ -229,15 +229,16 @@
         <script type='text/javascript' src="/js/app.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
-
-
-
+        
         <script type='text/javascript' src="/js/controller/HeadCtrl.js"></script>
-
-
-        <script src="/js/main.js"></script>
+        
         <script src="/js/controller/HeadCtrl.js"></script>
         <script src="/js/services/CommonServiceClient.js"></script>
+        <script type="text/javascript">
+           function Config(){
+               this.facebookApplicationKey  = '<?php echo get_instance()->config->item('facebook_app_id');?>';
+           }
+        </script>
         <?php
         //Thêm các js riêng biệt
         foreach ($view->javascript as $jsItem)
