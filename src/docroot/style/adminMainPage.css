@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+.lynx_dashboard{
+    display: inline-block;
+    min-height:  500px;
+}
+.lynx_adminBlock{
+    display: inline-block;
+    color: white;
+    height:200px;
+    min-width: 200px;
+    margin: 10px;
+
+}
+.lynx_blockWidth400{
+    width: 400px; 
+}
+.lynx_blockWidth200{
+    width: 200px; 
+}
+
+.lynx_sellerManager{
+
+}
+.lynx_blockRed{
+    background-color: red;
+}
+.lynx_blockGray{
+    background-color: #E8F0F5;
+}
