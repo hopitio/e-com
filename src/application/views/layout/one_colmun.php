@@ -10,8 +10,6 @@
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
-
-        
         <?php 
         //Thêm các js riêng biệt
             foreach ($view->css as $item)

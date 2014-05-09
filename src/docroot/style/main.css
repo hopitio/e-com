@@ -222,14 +222,13 @@ body .lynx_cart span{
 
 .lynx_container .lynx_listProducts
 {
-    width:1200px;
-    padding:0px 15px 0px 15px;
+    width:1170px;
     display:inline-block;
     margin-bottom:30px;
 }
 .lynx_listProducts .lynx_head{
     height: 35px;
-    background: transparent url('../images/list-product-head-bg.png') no-repeat center bottom;
+    background: transparent url('../images/list-product-head-bg.png') repeat-x center bottom;
 }
 .lynx_listProducts .lynx_head span{
     font-size: 22px;
@@ -522,4 +521,26 @@ img.loading{width:32px;height:32px;}
 	display:inline-block;
 	float: left;
 	margin-right: 12px;
+}
+.lynx_listItem{
+    display: inline-block;
+	width:1200px;
+}
+.lynx_slideGroup{
+    width:1170px;
+    display:inline-block;
+    margin-bottom: 40px;
+}
+.lynx_slideGroup .lynx_item{
+    float:left;
+    margin:0px 14px;
+}
+.lynx_slideGroup div.lynx_first-child{
+    margin:0px 8px 0px 0px;
+}
+.lynx_slideGroup div.lynx_last-child{
+    margin:0px 0px 0px 8px;
+}
+.lynx_slideGroup .lynx_item img{
+    width: 375px;
 }
