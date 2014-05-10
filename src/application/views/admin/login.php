@@ -1,4 +1,4 @@
-<form id="frmLogin" method="post">
+    1<form id="frmLogin" method="post">
 <?php if(isset($error)){
     echo $error;
 }?><br/>

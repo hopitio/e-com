@@ -4,7 +4,7 @@ require_once $system_path.'core/Model.php';
 //SUB SYSTEM
 require_once APPPATH.'models/modelEx/BaseModel.php';
 require_once APPPATH.'models/modelEx/AdminAccountModel.php';
-
+require_once APPPATH.'models/modelEx/SellerModel.php';
 
 //portal
 require_once APPPATH.'models/modelEx/PortalModelBase.php';

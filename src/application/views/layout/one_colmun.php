@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         <?php 
         //Thêm các js riêng biệt
@@ -223,15 +224,16 @@
         <script type='text/javascript' src="/js/angular-route.min.js"></script>
         <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src="/js/ng-grid.min.js"></script>
         <script type='text/javascript' src="/js/main.js"></script>
         <script type='text/javascript' src="/js/app.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
         
-        <script type='text/javascript' src="/js/controller/HeadCtrl.js"></script>
         
-        <script src="/js/controller/HeadCtrl.js"></script>
-        <script src="/js/services/CommonServiceClient.js"></script>
+        <script type='text/javascript' src="/js/controller/HeadCtrl.js"></script>
+        <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
+        
         <script type="text/javascript">
            function Config(){
                this.facebookApplicationKey  = '<?php echo get_instance()->config->item('facebook_app_id');?>';
