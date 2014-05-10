@@ -19,6 +19,7 @@ class home extends BaseController
                 ->setJavascript(array(
                     '/js/controller/HomeCtrl.js'
                 ))
+                ->setCss(array('/style/home.css'))
                 ->render('home');
         //LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setCss(array("/style/homePage.css"))->setData()->render('home');
     }

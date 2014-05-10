@@ -48,6 +48,15 @@ defined('BASEPATH') or die('No direct script access allowed');
                  <a href="{{section.url}}"><?php echo $language[$view->view]->lblViewAll; ?></a>
             </div>
         </div>
+        <div class="lynx_listItem">
+            <div class="lynx_item lynx_itemAdve" ng-if="section.displayImage">
+                    <a href="{{section.displayImageHref}}" title="{{section.displayImageTitle}}"><img src="{{section.displayImage}}"/></a>
+            </div>
+            <div class="lynx_item" ng-repeat="product in section.products" product="product">
+
+           </div>
+        </div>
+        <!--   
         <div class="lynx_itemConatiner">
             <div class="lynx_item lynx_towCol" ng-if="section.displayImage">
                 <a href="{{section.displayImageHref}}" title="{{section.displayImageTitle}}"><img src="{{section.displayImage}}"/></a>
@@ -55,12 +64,15 @@ defined('BASEPATH') or die('No direct script access allowed');
             <div class="lynx_item lynx_oneCol" ng-repeat="product in section.products" product="product">
             </div>
         </div>
+         -->
+        
+        
     </div>
     
     <div class="lynx_slideGroup">
-        <div class="lynx_item first-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_item lynx_first-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
         <div class="lynx_item"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
-        <div class="lynx_item last-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_item lynx_last-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
     </div>
 </div><!--homeCtrl-->
 <script>

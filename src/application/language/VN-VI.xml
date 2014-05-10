@@ -229,5 +229,7 @@
         <lblCity>Thành phố</lblCity>
         <lblStatus>Tình trạng</lblStatus>
     </portalaccount_userOrderHistory>
+    <product_list></product_list>
+    <admin_sellerFind></admin_sellerFind>
     <category_show></category_show>
 </data>

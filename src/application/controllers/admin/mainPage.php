@@ -5,9 +5,18 @@ if (! defined('BASEPATH'))
 class mainpage extends BaseController
 {
     protected $authorization_required = TRUE;
+    protected $css = array(); 
+    protected $js = array();
     function showpage()
     {
-        LayoutFactory::getLayout(LayoutFactory::TEMP_ADMIN)->render('admin/mainpage');
+        $this->css[] = '/style/adminMainPage.css';
+        $this->js[] = '/js/controller/AdminMainPageController.js';
+        $this->js[] = '/js/services/AdminMainPageServiceClient.js';
+        
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ADMIN)
+        ->setCss($this->css)
+        ->setJavascript($this->js)
+        ->render('admin/mainpage');
     }
     
    
