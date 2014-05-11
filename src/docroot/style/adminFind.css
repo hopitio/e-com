@@ -9,7 +9,7 @@
 }
 .lynx_fromSearchSeller span,.lynx_fromSearchSeller input{
     float:left;
-	text-align: left;
+    text-align: left;
 }
 .lynx_fromSearchSeller span{
     margin-right: 10px;
@@ -24,4 +24,9 @@
 	float: left;
 	margin: 0px 10px;
 	
+}
+.lynx_actionSellerButton{
+   font-size: 20px;
+   margin: 5px;
+   cursor: pointer;
 }

@@ -1,45 +1,65 @@
 function SellerFindController($scope,$http)
 {
+    $scope.userId = '';
+    $scope.sellerName = '';
     $scope.filterOptions = {
             filterText: "",
             useExternalFilter: true
     }; 
     $scope.totalServerItems = 0;
     $scope.pagingOptions = {
-        pageSizes: [250, 500, 1000],
-        pageSize: 250,
-        currentPage: 1
+        pageSizes: [10, 20, 30, 50, 100],
+        pageSize: 10,
+        currentPage: 1,
     };  
+    $scope.gridOptions = {
+            data: 'sellerData',
+            enablePaging: true,
+            showFooter: true,
+            totalServerItems: 'totalServerItems',
+            pagingOptions: $scope.pagingOptions,
+            filterOptions: $scope.filterOptions,
+            multiSelect: false,
+            columnDefs: [
+                         {field: 'name',displayName: 'Tên'},
+                         {field: 'logo',displayName: 'Logo', cellTemplate: 'cellImageTemplate.html'},
+                         {field: 'email',displayName: 'Email'},
+                         {field: 'phoneno',displayName: 'Phoneno'},
+                         {field: 'fk_manager',displayName: 'User Id'},
+                         {field: 'id',displayName: '',cellTemplate: 'cellIdTemplate.html'},
+                         ]
+        };
+
     
-    $scope.setPagingData = function(data, page, pageSize){  
-        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-        $scope.sellerData = pagedData;
-        $scope.totalServerItems = data.length;
+    $scope.setPagingData = function(data, total){  
+        $scope.sellerData = data;
+        $scope.totalServerItems = total;
         if (!$scope.$$phase) {
             $scope.$apply();
         }
     };
     
-    $scope.getPagedDataAsync = function (pageSize, page, searchText) {
-        setTimeout(function () {
-            var data;
-            if (searchText) {
-                var ft = searchText.toLowerCase();
-                $http.get('http://angular-ui.github.io/ng-grid/jsonFiles/largeLoad.json').success(function (largeLoad) {        
-                    data = largeLoad.filter(function(item) {
-                        return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
-                    });
-                    $scope.setPagingData(data,page,pageSize);
-                });            
-            } else {
-                $http.get('http://angular-ui.github.io/ng-grid/jsonFiles/largeLoad.json').success(function (largeLoad) {
-                    $scope.setPagingData(largeLoad,page,pageSize);
-                });
-            }
-        }, 100);
+    $scope.getPagedDataAsync = function (pageSize, page) {
+        sellerFindServiceClient = new SellerFindServiceClient($http);
+        sellerFindServiceClient.getSeller($scope.userId,$scope.sellerName,pageSize,page-1,
+                getSellerSucessCallback,getSellerErrorCallback);
     };
     
-    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+    $scope.find = function(){
+        sellerFindServiceClient = new SellerFindServiceClient($http);
+        sellerFindServiceClient.getSeller($scope.userId,$scope.sellerName,pageSize,0,
+                getSellerSucessCallback,getSellerErrorCallback);
+    }
+    
+    function getSellerSucessCallback(data){
+        if(!data.isError){
+            $scope.setPagingData(data.data['SELLER'], data.data['COUNT']);
+        }
+    }
+    
+    function getSellerErrorCallback(xhr,status){
+        
+    }
     
     $scope.$watch('pagingOptions', function (newVal, oldVal) {
         if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
@@ -52,13 +72,6 @@ function SellerFindController($scope,$http)
         }
     }, true);
     
-    $scope.gridOptions = {
-        data: 'sellerData',
-        enablePaging: true,
-        showFooter: true,
-        totalServerItems: 'totalServerItems',
-        pagingOptions: $scope.pagingOptions,
-        filterOptions: $scope.filterOptions
-    };
+    
 }
 SellerFindController.$inject = ['$scope','$http'];
