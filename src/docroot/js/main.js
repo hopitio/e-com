@@ -94,13 +94,13 @@ $(function() {
 function productSlider(selector) {
     var $slider = $(selector);
     var currentPage = 0;
-    var pages = [-15];
+    var pages = [0];
 
     //tinh toan trang
     var $wrapper = $('.lynx_slideItemsContainer', $slider);
     var $itemContainer = $('.lynx_listItem', $wrapper);
     var itemContainerWidth = 0;
-    var startPosLeft = 15;
+    var startPosLeft = 0;
     $itemContainer.css('left', -pages[0]);
     var wrapperWidth = $wrapper.width();
     var $btnLeft = $('.lynx_left', $slider);

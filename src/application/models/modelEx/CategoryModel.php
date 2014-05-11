@@ -49,4 +49,10 @@ class CategoryModel extends BaseModel
     {
         return $this->cache->get(self::CACHE_KEY);
     }
+
+    function getAllTopLevelCategories($language)
+    {
+        return CategoryMapper::make()->filterParent(NULL)->setLanguage($language)->findAll();
+    }
+
 }

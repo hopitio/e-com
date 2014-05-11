@@ -322,3 +322,12 @@
 .lynx_relativeProduct {
     border-bottom: 1px dashed #D9D9D9;
 }
+
+.lynx_hotProducts .lynx_slideItemsContainer{
+    background: none;
+}
+.lynx_slideItemsContainer .lynx_head{
+    background: none;
+    margin:0;
+}
+.lynx_slideItemsContainer .lynx_head h3{text-transform: uppercase;  }

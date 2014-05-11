@@ -62,11 +62,18 @@ class SectionMapper extends MapperAbstract
         if ($this->_autoloadProducts)
         {
             $mapper = ProductFixedMapper::make()
+                    ->select('p.*', true)
                     ->autoloadAttributes()
+                    ->selectCountView()
                     ->setLanguage($this->_language);
             $mapper->getQuery()
+                    ->select('seller.name AS seller_name')
+                    ->innerJoin('t_seller seller', 'seller.id = p.fk_seller')
                     ->innerJoin('t_section_product sp', 'sp.fk_product = p.id AND sp.fk_section=' . $domainInstance->id);
-            $products = $mapper->findAll();
+            $products = $mapper->findAll(function($record, ProductFixedDomain $domain)
+            {
+                $domain->seller_name = $record['seller_name'];
+            });
             $domainInstance->setProducts($products);
         }
     }

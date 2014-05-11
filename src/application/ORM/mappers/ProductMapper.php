@@ -32,6 +32,12 @@ class ProductMapper extends MapperAbstract
         return $this;
     }
 
+    function filterContainerCategory($category)
+    {
+        $this->_query->innerJoin('t_category c', 'p.fk_category=c.id AND c.fk_parent=' . intval($category));
+        return $this;
+    }
+
     function filterCategory($category)
     {
         if (!is_numeric($category))
@@ -70,6 +76,14 @@ class ProductMapper extends MapperAbstract
     function autoloadTaxes($bool = true)
     {
         $this->_autoloadTaxes = $bool;
+        return $this;
+    }
+
+    function orderByPrice($desc = false)
+    {
+        $priceAttrID = DB::getInstance()->GetOne("SELECT id FROM t_product_attribute_type WHERE codename=?", array('price'));
+        $this->_query->innerJoin('t_product_attribute pattr', 'p.id = pattr.fk_product AND fk_attribute_type=' . intval($priceAttrID))
+                ->orderBy('pattr.value_number ' . ($desc ? 'DESC' : ''));
         return $this;
     }
 

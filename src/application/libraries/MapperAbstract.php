@@ -180,7 +180,7 @@ abstract class MapperAbstract
     function count($fields = 'COUNT(*)')
     {
         $query = clone $this->_query;
-        $query->select($fields)->limit(0);
+        $query->select($fields, true)->limit(0)->orderBy(NULL);
         return DB::getInstance()->GetOne($query, $this->_queryParams);
     }
 

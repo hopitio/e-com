@@ -17,6 +17,15 @@ class CategoryDomain implements DomainInterface
     public $description;
     public $language;
 
+    /** @var SimpleXMLElement */
+    public $dom_side_images;
+
+    /** @var SimpleXMLElement */
+    public $dom_slide_image;
+
+    /** @var SimpleXMLElement */
+    public $dom_product_section_images;
+
     /** true nếu chứa category khác, false nếu chứa product */
     public $isContainer;
 

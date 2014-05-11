@@ -22,7 +22,6 @@ class CategoryMapper extends MapperAbstract
     }
 
     /**
-     * @param string $fields '*'
      * @return CategoryDomain
      */
     public function find($callback = null)
@@ -35,8 +34,9 @@ class CategoryMapper extends MapperAbstract
         $this->_query->where('c.id=' . intval($id), __FUNCTION__);
         return $this;
     }
+    
 
-    function select($fields = 'c.*, cl.name, cl.description, cl.language, cl.name', $reset = false)
+    function select($fields = 'c.*, cl.name, cl.description, cl.language, cl.name, cl.slide_images, cl.side_images,cl.product_section_image', $reset = true)
     {
         return parent::select($fields, $reset);
     }

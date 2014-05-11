@@ -29,6 +29,7 @@ class home extends BaseController
         header('Content-type: application/json');
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
+                ->selectCountView()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes();
         $mapper

@@ -26,6 +26,7 @@ class ProductModel extends BaseModel
         }
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
+                ->selectCountView()
                 ->autoloadAttributes()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->filterDateRange($date, null);
