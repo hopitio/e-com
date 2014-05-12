@@ -16,7 +16,7 @@ class PasswordSecurity
      */
     function createChangePasswordencrytion($user,$historyKey){
         $data=array(
-        	'userid' => $user->id,
+            'userid' => $user->id,
             'history' => $historyKey
         );
         $string = json_encode($data);

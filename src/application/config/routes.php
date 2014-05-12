@@ -43,9 +43,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     //portal/////////////////////////////////////////////////////////////////////////////////////
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
+        $route['portal/page/(:any)'] = 'staticPage/showPage/$1';
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
-        
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
@@ -88,6 +88,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/save_contact'] = 'portalController/userInformation/saveUserinformationXhr';
         $route['portal/language/submit_change'] = 'portalController/userLanguage/submitChangeXhr';
         $route['language/submit_change'] = 'userLanguage/submitChangeXhr';
+        $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
     }
 }
 //

@@ -87,6 +87,8 @@ li{list-style: none;}
 .lynx_searchForm input{
     height:37px;
     width:560px;
+    text-align: left;
+    color: black;
 }
 .lynx_searchForm span{
     margin-left:10px;

@@ -185,7 +185,7 @@
                             <div class="lynx_cell">
                                 <ul>
                                     <span><?php echo $language['layout']->lblAboutSfriendly; ?></span>
-                                    <li><?php echo $language['layout']->lblAbout; ?></li>
+                                    <li><a href="/portal/page/about_us"><?php echo $language['layout']->lblAbout; ?></a></li>
                                     <li><?php echo $language['layout']->lblJobs; ?></li>
                                     <li><?php echo $language['layout']->lblCustomerTestimonials; ?></li>
                                     <li><?php echo $language['layout']->lblAssociatesProgram; ?></li>

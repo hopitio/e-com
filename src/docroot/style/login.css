@@ -4,9 +4,6 @@ span input{text-align: left;}
     display:inline-block;
 	min-height: 205px;
 }
-
-
-
 .lynx_box {
 	background: #FBFBFB;
 	border-right: 1px solid #DDDDDD;
@@ -56,6 +53,7 @@ form input[type='text'],input[type='password'] {
 .lynx_rightContent form h2 {
 	text-align: left;
 	margin: 20px 0px 10px 0px;
+	font-size: 14px;
 }
 
 .lynx_rightContent form .lynx_button {
@@ -80,7 +78,7 @@ form input[type='text'],input[type='password'] {
 .lynx_contentWarp .lynx_rightContent h4,.lynx_leftContent h4 {
 	color: red;
 	margin-top: 20px;
-	font: 20px;
+	font-size: 14px;
 }
 
 .lynx_contentWarp .lynx_rightContent h4 i {

@@ -49,7 +49,7 @@
             <input type="hidden" name='c' value='login' />
             <h3> <?php echo $language[$view->view]->loginTitle;?></h3>
             <?php if(isset($error)){
-                echo '<h4> <i class="lynx_fa fa-comment"></i>'.$error.'</h4>';
+                echo '<h4> <i class="glyphicon glyphicon-exclamation-sign"></i>'.$error.'</h4>';
             }?>
             <h2> <?php echo $language[$view->view]->lblUs;?></h2>
             <input name='txtUs' type="text">

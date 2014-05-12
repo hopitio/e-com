@@ -136,6 +136,7 @@ class login extends BaseController
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
             $this->_data, true)
             ->setCss($this->_css)
+            ->setJavascript($this->_js)
             ->render('login');
     }
 
@@ -208,6 +209,7 @@ class login extends BaseController
             $css = array('');
             LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
             ->setData($erroData, true)
+            ->setJavascript($this->_js)
             ->setCss($this->_css)
             ->render('login');
             return;

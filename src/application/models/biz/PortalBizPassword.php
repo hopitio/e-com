@@ -103,4 +103,30 @@ class PortalBizPassword extends PortalBizBase
         MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalUserModel->account , $mailData);
         return true;
     }
+    
+    function verifyAndResetPasswordEmail($email)
+    {
+        $portalModelUser = new PortalModelUser();
+        $portalModelUser->account = $email;
+        
+        $portalModelUsers = $portalModelUser->getMutilCondition();
+        if(!isset($portalModelUsers[0])){
+            return false;
+        }
+        $portalModelUsers = $portalModelUsers[0];
+        $newPass = SecurityManager::inital()->getEncrytion()->getNewpassWordforUser();
+        $portalModelUsers->password = $newPass;
+        $portalModelUsers->updateUser();
+        $user = new User();
+        $user->id = $portalModelUsers->id;
+        $portalUserHistory = new PortalBizUserHistory();
+        $historyId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_RESETPASS,'Reset mật khẩu',null,null);
+        $mailData = array(
+            'time'=>date(DatabaseFixedValue::DEFAULT_FORMAT_DATE),
+            'password'=>$newPass
+        );
+        
+        MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalModelUsers->account , $mailData);
+        return true;
+    }
 }
