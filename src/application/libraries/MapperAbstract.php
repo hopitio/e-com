@@ -133,7 +133,6 @@ abstract class MapperAbstract
 
     /**
      * 
-     * @param type $fields
      * @return array(key => value)
      */
     function findAssoc()

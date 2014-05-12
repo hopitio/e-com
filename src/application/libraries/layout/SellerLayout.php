@@ -29,6 +29,7 @@ class SellerLayout extends AbstractLayout
     public function __construct()
     {
         parent::__construct();
+        $this->setCss(array('/plugins/DataTables-1.10.0/media/css/jquery.dataTables.min.css'));
         $this->_layout = 'layout/seller';
     }
 

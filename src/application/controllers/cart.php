@@ -21,7 +21,7 @@ class cart extends BaseController
 
     function shipping()
     {
-        $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name')->findAssoc();
+        $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name', true)->findAssoc();
         $data['shippingMethods'] = ShippingMethodMapper::make()->findAll();
         $data['cartContents'] = CartMapper::make()
                 ->setLanguage(User::getCurrentUser()->languageKey)
@@ -37,7 +37,7 @@ class cart extends BaseController
     function showCart()
     {
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
-                ->setJavascript(array('/js/angular.min.js'))
+                ->setJavascript(array('/js/controller/showCartCtrl.js'))
                 ->render('cart/showCart');
     }
 

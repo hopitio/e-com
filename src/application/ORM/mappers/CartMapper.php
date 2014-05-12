@@ -21,6 +21,8 @@ class CartMapper extends ProductFixedMapper
             //không lấy sp nào do không có phần tử trong cart
             $this->_query->where('1=2', 'cart');
         }
+        $this->_query->select('p.*, seller.name AS seller_name, seller.sid', true)
+                ->innerJoin('t_seller seller', 'p.fk_seller = seller.id');
     }
 
     function addToCart($productID, $qty = 1)
@@ -81,14 +83,16 @@ class CartMapper extends ProductFixedMapper
     }
 
     /**
-     * 
-     * @param string $fields
      * @return CartDomain
      */
-    function findAll($fields = '*')
+    function findAll($callback = null)
     {
         $cartContents = $this->_getCartContents();
-        $domains = parent::findAll($fields);
+        $domains = parent::findAll(function($rawData, $instance)
+                {
+                    $instance->sellerName = $rawData['seller_name'];
+                    $instance->sid = $rawData['sid'];
+                });
         foreach ($domains as $instance)
         {
             /* @var $instance CartDomain */

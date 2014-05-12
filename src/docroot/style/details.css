@@ -266,6 +266,7 @@
     border-radius: 0;
     border:0;
 }
+.lynx_blueButton {text-align: center;}
 .lynx_productButtonBuy .lynx_blueButton{
     height:50px;
     font-weight: bold;

@@ -83,7 +83,9 @@ Danh sách các key cần mã hóa.
 					quantity:  '10',
 					totalPrice : '10000'
 					actualPrice : '90000',
-					taxes: [{name: 'VAT', tax: '2'}] //Từng loại thuế và tổng loại thuế đó trên sản phẩm * số lg
+					taxes: [{name: 'VAT', tax: '2'}] //Từng loại thuế và tổng loại thuế đó trên sản phẩm * số lg,
+					sellerName: 'ten nha ban le hien thi ra ngoai',
+					sid: 'ma nha ban le dung chung cho toan bo he thong'
 				},
 				{
 					id: '[productId]',
@@ -94,7 +96,9 @@ Danh sách các key cần mã hóa.
 					quantity:  '10',
 					totalPrice : '10000'
 					actualPrice : '90000',
-					taxes: [{name: 'VAT', tax: '2'}] //Từng loại thuế và tổng loại thuế đó trên sản phẩm * số lg
+					taxes: [{name: 'VAT', tax: '2'}] //Từng loại thuế và tổng loại thuế đó trên sản phẩm * số lg,
+					sellerName: 'ten nha ban le hien thi ra ngoai',
+					sid: 'ma nha ban le dung chung cho toan bo he thong'
 				}
 			],
 			shipping : {

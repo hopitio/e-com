@@ -19,7 +19,7 @@ $json = array(
 
 foreach ($cartContents as $cartInstance)
 {
-    $images       = $cartInstance->getImages();
+    $images = $cartInstance->getImages();
     $json_product = array(
         'id'          => $cartInstance->id,
         'name'        => $cartInstance->getName()->getTrueValue(),
@@ -29,7 +29,9 @@ foreach ($cartContents as $cartInstance)
         'quantity'    => $cartInstance->quantity,
         'totalPrice'  => $cartInstance->getPrice('USD')->getTrueValue() * $cartInstance->quantity,
         'actualPrice' => $cartInstance->calculatePrice('USD') * $cartInstance->quantity,
-        'taxes'       => array()
+        'taxes'       => array(),
+        'sellerName'  => $cartInstance->sellerName,
+        'sid'         => $cartInstance->sid
     );
     foreach ($cartInstance->taxes() as $tax)
     {
@@ -40,6 +42,7 @@ foreach ($cartContents as $cartInstance)
     }
     $json['products'][] = $json_product;
 }
+var_dump($json);die;
 $json = json_encode($json);
 ?>
 <div class="contentWarp wStaticPx" style="min-height:500px;">

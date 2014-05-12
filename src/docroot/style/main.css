@@ -608,3 +608,10 @@ img.loading{width:32px;height:32px;}
 .lynx_listProducts .lynx_listItem{
     padding-top:12px;
 }
+.row-wrapper{width:1200px;margin: 0 auto;}
+table th, table td{text-align: left;}
+a *{color:#428bca;}
+a:hover{text-decoration: none;}
+tr.checked{background-color: #FFFFCC !important;}
+.table-actions{text-align: left;padding: 10px 0;}
+input,textarea,select{text-align: left;font-weight:normal;}
