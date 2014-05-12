@@ -1,1 +1,4 @@
-<div class="lynx_contentWarp">COMMING SOOM ...............</div>
+<div class="lynx_contentWarp">
+    <div class="lynx_lostPasswordContainer ">
+    </div>
+</div>

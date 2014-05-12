@@ -189,7 +189,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
         return $invoices;
     }
     
-    private  function preGetUserOrderWithStatusResult($orders){
+    private function preGetUserOrderWithStatusResult($orders){
         foreach ($orders as &$order)
         {
             $cost = 0;
@@ -225,7 +225,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
         return $order;
     }
     
-    private function preInvoice(&$invoice){
+    public function preInvoice(&$invoice){
         $invoice->totalCost = 0;
         foreach ($invoice->products as &$product)
         {
@@ -247,4 +247,5 @@ class PortalBizPaymentHistory extends PortalBizBase{
             $invoice->totalCost += $shipping->price;
         }
     }
+
 }

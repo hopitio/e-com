@@ -14,6 +14,8 @@ require_once APPPATH . 'libraries/AsyncResult.php';
 require_once APPPATH . 'controllers/ControllerBase.php';
 require_once APPPATH . 'models/biz.inc';
 require_once APPPATH . 'models/modelsLayer.inc';
+require_once APPPATH . 'libraries/thirdParty/nganluong/nganluong.inc';
+//require_once APPPATH . 'libraries/nusoap/nusoap.inc';
 
 
 /**

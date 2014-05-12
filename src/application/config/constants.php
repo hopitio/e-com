@@ -172,6 +172,7 @@ class T_invoice{
     CONST cancelled_date = "cancelled_date";
     CONST rejected_date = "rejected_date";
     CONST comment = "comment";
+    CONST payment_id = "payment_id";
     CONST payment_method = "payment_method";
     CONST payment_currency = "payment_currency";
     CONST invoice_type = "invoice_type";

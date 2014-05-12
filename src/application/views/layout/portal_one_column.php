@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/home.css" media="all">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
-        
+        <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         
         
@@ -23,7 +23,7 @@
         <script type='text/javascript' src="/js/app.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
-
+        <script type='text/javascript' src="/js/ng-grid.min.js"></script>
         <script src="/js/main.js"></script>
         <script src="/js/controller/PortalHeadController.js"></script>
         <script src="/js/services/PortalCommonServiceClient.js"></script>

@@ -56,9 +56,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
         $route['portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
-       
         
-        //$route['portal/account/lost_password'] = 'portalController/lostPassword/showPage';
+        $route['portal/account/lost_password'] = 'portalController/lostPassword/showPage';
         $route['portal/policy'] = 'portalController/lostPassword/showPage';
         //$route['portal/change_question'] = "portalController/question/showPage";
         //$route['portal/contacts'] = "portalController/contact/showPage";
