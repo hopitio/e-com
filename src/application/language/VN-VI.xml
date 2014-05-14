@@ -233,4 +233,7 @@
     <admin_sellerFind></admin_sellerFind>
     <category_show></category_show>
     <page></page>
+    <portalPayment_orderVefiry></portalPayment_orderVefiry>
+    <portalPayment_paymentChoice></portalPayment_paymentChoice>
+    <portalPayment_orderReview></portalPayment_orderReview>
 </data>

@@ -42,7 +42,6 @@ foreach ($cartContents as $cartInstance)
     }
     $json['products'][] = $json_product;
 }
-var_dump($json);die;
 $json = json_encode($json);
 ?>
 <div class="contentWarp wStaticPx" style="min-height:500px;">

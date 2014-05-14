@@ -19,8 +19,6 @@ class PortalPaymentManager extends PortalBizPayment{
         $contactInformation = $orderInformation->addresses;
         $portalContactIds = $this->insertContact($contactInformation);
         
-        
-        
         $invoiceId = $this->insertInvoice($portalOrderId);
         $invoiceProduct = $this->insertInvoiceProducts($invoiceId, $portalProducts);
         

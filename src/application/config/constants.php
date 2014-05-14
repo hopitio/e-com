@@ -105,6 +105,7 @@ class DatabaseFixedValue{
     CONST SHIPPING_TYPE_PAY = "PAY";
     CONST SHIPPING_TYPE_SHIP = "SHIP";
     
+    CONST PAYMENT_BY_NGANLUONG = "PAYMENT_BY_NGANLUONG";
 }
 class TableName{
     CONST t_user = 't_user';
@@ -160,6 +161,9 @@ class T_product
     CONST quantity = "quantity";
     CONST total_price = "total_price";
     CONST actual_price = "actual_price";
+    CONST seller_id = "seller_id";
+    CONST seller_name = "seller_name";
+    
 }
 
 class T_invoice{

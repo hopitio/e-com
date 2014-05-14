@@ -66,10 +66,11 @@
                                     <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblNameProduct; ?> : </span> {{product.name}}</div>
                                     <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblQuanityProduct; ?> : </span> {{product.quantity}}</div>
                                     <div class="lynx_productDetail">{{product.short_description}}</div>
-                                    <div class="lynx_productDetail">
-                                        <i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine"><?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
-                                        <i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine"><?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
-                                    </div>
+                                    
+                                </div>
+                                <div class="lynx_invoiceProduct lynx_incoiceProductButton" style="float:left; margin-top:10px">
+                                     <span class="lynx_spanButton lynx_inHightLine"><i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
+                                     <span class="lynx_spanButton lynx_inHightLine"><i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
                                 </div>
                             </span>
                             <span class="lynx_colTax">{{product.totalTax}}</span>
@@ -151,11 +152,11 @@
                                 <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblNameProduct; ?> : </span> {{product.name}}</div>
                                 <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblQuanityProduct; ?> : </span> {{product.quantity}}</div>
                                 <div class="lynx_productDetail">{{product.short_description}}</div>
-                                <div class="lynx_productDetail">
-                                        <i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine"><?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
-                                        <i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<span class="lynx_spanButton lynx_inHightLine"><?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
-                                </div>
                             </div>
+                            <div class="lynx_productDetail lynx_incoiceProductButton">
+                                <span class="lynx_spanButton lynx_inHightLine"><i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
+                                <span class="lynx_spanButton lynx_inHightLine"><i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
+                                </div>
                         </span>
                         <span class="lynx_colTax">{{product.totalTax}}</span>
                         <span class="lynx_colPrice">{{parseInt(product.total_price) + product.totalTax}}</span>

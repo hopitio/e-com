@@ -429,3 +429,7 @@ a.lynx_sort-menu {
 .lynx_spanButton{
 	cursor: pointer;
 }
+.lynx_incoiceProductButton{
+    float:left;
+	margin-top:10px;
+}

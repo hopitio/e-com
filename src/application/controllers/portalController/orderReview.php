@@ -6,7 +6,7 @@
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class paymentChoice extends BaseController
+class orderReview extends BaseController
 {
     protected $authorization_required = false;
     protected $css = array('/style/portalOrder.css');
@@ -15,6 +15,7 @@ class paymentChoice extends BaseController
         $postData = $this->input->post();
         $orderId = $postData['orderId'];
         $invoiceId = $postData['invoiceId'];
+       
         $portalBizOrderHistory = new PortalBizPaymentHistory();
         $orderInformation = $portalBizOrderHistory->getOrderAllInformation($orderId);
         if($orderInformation == null){
@@ -24,15 +25,18 @@ class paymentChoice extends BaseController
         
         $dataView = array();
         $dataView['order'] = $orderInformation;
-        $dataView['payment'] = $this->config->item('payment_gateway_supported');
+        
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
         ->setData($dataView)
         ->setCss($this->css)
         ->setJavascript($this->js)
-        ->render('portalPayment/paymentChoice');
+        ->render('portalPayment/orderReview');
     }
     
     private function calutionForviewView(&$orderInfor,$invoiceId){
+        $postData = $this->input->post();
+        $paymentKey = $postData['paymentChoice'];
+        $payment = $this->config->item('payment_gateway_supported');
         $invoice = null;
         foreach ($orderInfor->invoices as $invoiceItem){
             if($invoiceItem->id == $invoiceId){
@@ -42,6 +46,19 @@ class paymentChoice extends BaseController
         }
         unset($orderInfor->invoices);
         $orderInfor->invoice = $invoice;
+        $totalPrices = $orderInfor->invoice->totalCost;
+        $freeSynx = $payment[$paymentKey]['isPercent'] == '1' ?  ($payment[$paymentKey]['value'] * 100).'%' : $payment[$paymentKey]['value'].' ';
+        $totalfree = $payment[$paymentKey]['isPercent'] == '1' ? ($payment[$paymentKey]['value'] * $totalPrices) : $payment[$paymentKey]['value'];
+        $totalPrices = $totalPrices + $totalfree;
+        
+        $modelOtherCost = new PortalModelInvoiceOtherCost();
+        $modelOtherCost->comment = DatabaseFixedValue::PAYMENT_BY_NGANLUONG;
+        $modelOtherCost->fk_invoice = $invoiceId;
+        $modelOtherCost->value = $totalfree;
+        
+        $orderInfor->invoice->otherCosts[] = $modelOtherCost;
+        $orderInfor->totalPrices = $totalPrices;
+        
     }
 
 }

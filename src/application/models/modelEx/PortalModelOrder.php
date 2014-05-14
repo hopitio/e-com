@@ -24,4 +24,19 @@ class PortalModelOrder extends PortalModelBase
         $query = $this->_dbPortal->query($sql);
         return $query->result();
     }
+    
+    function getOrderWithCurrentStatus(){
+        $sql = "SELECT	t_order.*,t_order_status.status
+        FROM t_order INNER JOIN t_order_status ON t_order.id = t_order_status.fk_order
+        WHERE t_order.id = {$this->id}
+        AND  t_order_status.id =
+            (SELECT t_order_status.id
+            FROM t_order_status
+            WHERE t_order_status.fk_order = t_order.id
+            ORDER BY t_order_status.updated_date DESC
+            LIMIT 0, 1)
+        ORDER BY t_order_status.updated_date DESC";
+        $query = $this->_dbPortal->query($sql);
+        return $query->result();
+    }
 }

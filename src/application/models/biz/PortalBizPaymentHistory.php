@@ -130,6 +130,34 @@ class PortalBizPaymentHistory extends PortalBizBase{
         return $orders;
     }
     
+    function getOrderAllInformation($orderId){
+        $portalModelOrder = new PortalModelOrder();
+        $portalModelOrder->id = $orderId;
+        $orders = array();
+        $status = $portalModelOrder->getOrderWithCurrentStatus($orderId);
+        foreach ($status as $orderStatus)
+        {
+            $status = $orderStatus->status;
+            unset($orderStatus->status);
+            $order = new PortalModelOrder();
+            $order->autoMappingObj($orderStatus);
+            $order->status = $status;
+            array_push($orders, $order);
+        }
+        unset($orderStatus);
+        foreach ($orders as &$order)
+        {
+            $order->invoices = $this->getOrderInforamtion($order->id);
+        }
+        unset($order);
+        foreach ($orders as &$order){
+            $this->preGetUserOrderWithStatusResult($orders);
+        }
+        if(count($orders)>0){
+            return $orders[0];
+        }
+        return null;
+    }
     
     /**
      * get Order ID.

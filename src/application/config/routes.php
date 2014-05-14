@@ -49,8 +49,6 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
-        $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
-        $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
         $route['portal/admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/admin/support'] = 'portalAdmin/support/showPage';
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
@@ -59,8 +57,6 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         
         $route['portal/account/lost_password'] = 'portalController/lostPassword/showPage';
         $route['portal/policy'] = 'portalController/lostPassword/showPage';
-        //$route['portal/change_question'] = "portalController/question/showPage";
-        //$route['portal/contacts'] = "portalController/contact/showPage";
         $route['portal/account'] = 'portalController/userInformation/showPage';
         $route['portal/account/user_information'] = 'portalController/userInformation/showPage';
         $route['portal/account/security'] = "portalController/userSecurity/showPage";
@@ -69,6 +65,11 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/get_user_contacts'] = "portalController/userInformation/getUserContactXhr";
         $route['portal/account/order_history'] = 'portalController/userOrderHistory/showPage';
         $route['portal/account/order_history/(:any)'] = 'portalController/userOrderHistory/getOrderHistory/$1';
+        
+        $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
+        $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
+        
+        $route['portal/order_place/verify'] = 'portalController/orderPlace/orderPlaceVerifyOrder';
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -76,9 +77,6 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/login'] = 'portalController/login/indexPost';
         $route['portal/login/facbook_callback'] = 'portalController/platform/facebook/authenCallback';
         $route['portal/login/facebook'] = 'portalController/loginfacebook/loginFb';
-        //$route['portal/change_password'] = 'portalController/password/updatePasswordPostData';
-        //$route['portal/change_user_information'] = 'portalController/userInformation/saveChange';
-        $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/getInformation';
         $route['portal/help/send_email'] = 'portalController/help/send_email';
         $route['portal/help/start_chat'] = 'portalController/help/start_chat';
         $route['portal/order/submit'] = 'portalController/paymentChoice/submitOrder';
@@ -89,6 +87,12 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/language/submit_change'] = 'portalController/userLanguage/submitChangeXhr';
         $route['language/submit_change'] = 'userLanguage/submitChangeXhr';
         $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
+        
+        
+        $route['portal/order_place/portal_get_information'] = 'portalController/orderPlace/getInformation';
+        $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
+        $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
+        
     }
 }
 //
