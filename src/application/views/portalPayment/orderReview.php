@@ -1,4 +1,4 @@
-<form id="frmsub" action="portal/order_place/review" method="post">
+<form id="frmsub" action="/portal/order_place/submit_order_gateway" method="post">
 <div class="lynx_paymentComplete lynx_staticWidth" ng-controller="PortalOrderComplete">
     <h3>Xác nhận đơn hàng</h3>
     <div class="lynx_orderInformation">
@@ -15,7 +15,6 @@
                         <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Họ và tên  :</span><span class="lynx_fieldValue"><?php echo $contact->full_name;?></span></div>
                         <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Số điện thoại  :</span><span class="lynx_fieldValue"><?php echo $contact->telephone;?></span></div>
                         <div class="lynx_orderInformationRow">
-                            <span class="lynx_fieldName">Quốc gia  :</span><span class="lynx_fieldValue"></span>
                             <span class="lynx_fieldName">Tỉnh/Thành phố  :</span><span class="lynx_fieldValue"><?php echo $contact->state_province;?></span>
                             <span class="lynx_fieldName">Quận huyện  :</span><span class="lynx_fieldValue"><?php echo $contact->city_district;?></span>
                         </div>
@@ -38,7 +37,6 @@
                         <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Họ và tên  :</span><span class="lynx_fieldValue"><?php echo $contact->full_name;?></span></div>
                         <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Số điện thoại  :</span><span class="lynx_fieldValue"><?php echo $contact->telephone;?></span></div>
                         <div class="lynx_orderInformationRow">
-                            <span class="lynx_fieldName">Quốc gia  :</span><span class="lynx_fieldValue"></span>
                             <span class="lynx_fieldName">Tỉnh/Thành phố  :</span><span class="lynx_fieldValue"><?php echo $contact->state_province;?></span>
                             <span class="lynx_fieldName">Quận huyện  :</span><span class="lynx_fieldValue"><?php echo $contact->city_district;?></span>
                         </div>
@@ -67,7 +65,6 @@
                 			<td style="width:100px">GIÁ (VND)</td>
                 			<td style="width:100px">GIÁ THỰC (VND)</td>
                 			<td style="width:100px">TỔNG GIÁ (VND)</td>
-                			
                 		</tr>
                 	</thead>
                 	<tbody>
@@ -91,13 +88,13 @@
                 			</td>
                 			<td><?php echo $product->quantity; ?></td>
                 			<td><?php echo $order->sub_key; ?></td>
-                			<td><?php echo $product->price; ?></td>
-                			<td><?php echo $product->actual_price; ?></td>
+                			<td><?php echo number_format($product->price); ?></td>
+                			<td><?php echo number_format($product->actual_price); ?></td>
                 			<td>
-                			     <?php echo $product->total_price; ?>
+                			     <?php echo number_format($product->total_price); ?>
                 			     <?php 
                 			        foreach ($product->taxs as $tax){
-                                        echo '+'.$tax->sub_tax_value."({$tax->sub_tax_name})";
+                                        echo '+'.number_format($tax->sub_tax_value)."({$tax->sub_tax_name})";
                                     }
                 			     ?>
                 			</td>
@@ -107,7 +104,6 @@
                 	<tfoot>
                 		<tr>
                 			<td>Tổng giá</td>
-                			<td><?php echo $totalPricesAll;?>(VND)</td>
                 			<td></td>
                 			<td></td>
                 			<td></td>
@@ -115,6 +111,7 @@
                 			<td></td>
                 			<td></td>
                 			<td></td>
+                			<td><?php echo number_format($totalPricesAll);?>(VND)</td>
                 		</tr>
                 	</tfoot>
                 </table>
@@ -141,18 +138,19 @@
                 	            <td><?php echo $shipping->id;?></td>
                     		    <td ><?php echo $shipping->shipping_type;?></td>
                     		    <td ><?php echo $shipping->display_name;?></td>
-                    		    <td><?php echo $shipping->price;?></td>
+                    		    <td><?php echo number_format($shipping->price);?></td>
                 	           <?php
                 	       }
+                	       $totalPricesAll += $allShippingPrice;
                 	   ?>
                             
                     </tbody>
                 	<tfoot>
                 		<tr>
                 			<td>Tổng</td>
-                		    <td><?php echo $allShippingPrice;?>(VND)</td>
                 		    <td></td>
-                		    <td> </td>
+                		    <td></td>
+                		    <td><?php echo $allShippingPrice;?>(VND)</td>
                 		</tr>
                 	</tfoot>
                 </table>
@@ -173,29 +171,40 @@
                 	   <?php 
                 	       $allCostPrice = 0;
                 	       foreach ($order->invoice->otherCosts as $cost){
-                            $allCostPrice+=$shipping->price;
+                            $allCostPrice += $cost->value;
                 	           ?>
+                	           <tr>
                 	            <td><?php echo $cost->id;?></td>
                     		    <td ><?php echo $cost->comment;?></td>
-                    		    <td><?php echo $cost->value;?></td>
+                    		    <td><?php echo number_format($cost->value);?></td>
+                    		    </tr>
                 	           <?php
                 	       }
+                	       $totalPricesAll += $allCostPrice;
                 	   ?>
                             
                     </tbody>
                 	<tfoot>
                 		<tr>
                 			<td>Tổng</td>
-                		    <td><?php echo $allCostPrice;?>(VND)</td>
                 		    <td></td>
+                		    <td><?php echo number_format(ceil($allCostPrice));?>(VND)</td>
                 		</tr>
                 	</tfoot>
                 </table>
             </div>
         </div>
+
+         <div class="lynx_orderInformationBlock">
+            <h4>Hóa đơn</h4>
+            <div class="lynx_orderInformationRow">
+             <span class="lynx_fieldName">Tổng giá trị đơn hàng  :</span><span class="lynx_fieldValue"><?php echo number_format(ceil($totalPricesAll));?>(VND)</span>
+            </div>
+        </div>
+        
         <div class="lynx_orderInformationBlock">
             <div class="lynx_orderInformationRow lynx_buttonRow">
-                    <button id="btnComfirm" class="btn btn-default btn-sm" type="submit">Quay trở lại</button>
+                    <button id="btnBack" class="btn btn-default btn-sm" type="button">Quay trở lại</button>
                     <button id="btnComfirm" class="lynx_button btn btn-primary" type="submit">THANH TOÁN ĐƠN HÀNG</button>
             </div>
         </div>
@@ -203,4 +212,16 @@
 </div>
 <input name="orderId" value="<?php echo $order->id;?>" type="hidden"/>
 <input name="invoiceId" value="<?php echo $order->invoice->id;?>" type="hidden"/>
+<input name="paymentChoice" value="<?php echo $paymentChoice;?>" type="hidden"/>
 </form>
+<form id="frmBack" action="/portal/order_place/payment_choice" method="post">
+    <input name="orderId" value="<?php echo $order->id;?>" type="hidden"/>
+    <input name="invoiceId" value="<?php echo $order->invoice->id;?>" type="hidden"/>
+</form>
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('#btnBack').click(function(){
+                    $('#frmBack').submit();
+                });
+        });
+</script>

@@ -60,6 +60,8 @@ class PortalPaymentManager extends PortalBizPayment{
             $product->sub_image = $obj->image;
             $product->total_price = $obj->totalPrice;
             $product->actual_price = $obj->actualPrice;
+            $product->seller_id = $obj->sid;
+            $product->seller_name = $obj->sellerName;
             array_push($objects, $product);
         }
         $returnValue = $productsModel->bacthInsert($objects);
@@ -75,12 +77,20 @@ class PortalPaymentManager extends PortalBizPayment{
     private function saveTax($products,$postDataProducts){
         $portalModelTax = new PortalModelTax();
         $taxsData = array();
-        foreach($products as $product){
-            $portalModelTaxItem = new PortalModelTax();
-            $portalModelTaxItem->sub_tax_name = 'dump';
-            $portalModelTaxItem->sub_tax_id = 1;
-            $portalModelTaxItem->sub_tax_value = 0.11;
-            array_push($taxsData, $portalModelTaxItem);
+        foreach($postDataProducts as $product){
+            foreach ($products as $portalProduct){
+                if($portalProduct->sub_id == $product->id){
+                    foreach ($product->taxes as $tax){
+                        $portalModelTaxItem = new PortalModelTax();
+                        $portalModelTaxItem->fk_product = $portalProduct->id;
+                        $portalModelTaxItem->sub_tax_name = $tax->name;
+                        $portalModelTaxItem->sub_tax_value = $tax->totalTax;
+                        array_push($taxsData, $portalModelTaxItem);
+                    }
+                }
+                
+            }
+            
         }
         $returnValueTax = $portalModelTax->bacthInsert($taxsData);
         return $taxsData;

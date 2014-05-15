@@ -106,6 +106,8 @@ class DatabaseFixedValue{
     CONST SHIPPING_TYPE_SHIP = "SHIP";
     
     CONST PAYMENT_BY_NGANLUONG = "PAYMENT_BY_NGANLUONG";
+    CONST PAYMENT_BY_VISA = "PAYMENT_BY_VISA";
+    CONST PAYMENT_BY_ONEPAY = "PAYMENT_BY_ONEPAY";
 }
 class TableName{
     CONST t_user = 't_user';

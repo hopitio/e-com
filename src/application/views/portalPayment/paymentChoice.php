@@ -4,7 +4,7 @@
     <div class="lynx_orderInformation">
         <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Mã đơn hàng  : </span><span class="lynx_fieldValue"><?php echo $order->id;?></span> <span class="lynx_fieldName">Mã hóa đơn  : </span><span class="lynx_fieldValue"><?php echo $order->invoice->id;?></span></div>
         <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Ngày tạo  : </span><span class="lynx_fieldValue"><?php echo $order->created_date;?></span></div>
-        <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Tổng giá trị  : </span><span class="lynx_fieldValue"><?php echo $order->invoice->totalCost;?></span></div>
+        <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Tổng giá trị  : </span><span class="lynx_fieldValue"><?php echo number_format(ceil($order->invoice->totalCost));?></span></div>
         <div class="lynx_orderInformationBlock">
             <h4>Hình thức thanh toán </h4>
             <div class="lynx_orderInformationRow">
@@ -29,8 +29,8 @@
                             <td><input checked type="radio" name="paymentChoice" value="<?php echo $paymentKey;?>" /></td>
                             <td><?php echo $payment[$paymentKey]['displayName'];?></td>
                             <td><?php echo $freeSynx;?></td>
-                            <td><?php echo $totalfree; ?></td>
-                            <td><?php echo $total; ?></td>
+                            <td><?php echo number_format(ceil($totalfree)); ?></td>
+                            <td><?php echo number_format(ceil($total)); ?></td>
                         </tr>
                         <?php } ?>
                 </table>

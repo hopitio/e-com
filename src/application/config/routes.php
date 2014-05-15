@@ -92,6 +92,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/portal_get_information'] = 'portalController/orderPlace/getInformation';
         $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
         $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
+        $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
         
     }
 }

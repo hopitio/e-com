@@ -25,7 +25,7 @@ class orderReview extends BaseController
         
         $dataView = array();
         $dataView['order'] = $orderInformation;
-        
+        $dataView['paymentChoice'] = $postData['paymentChoice'];
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
         ->setData($dataView)
         ->setCss($this->css)
@@ -52,13 +52,54 @@ class orderReview extends BaseController
         $totalPrices = $totalPrices + $totalfree;
         
         $modelOtherCost = new PortalModelInvoiceOtherCost();
-        $modelOtherCost->comment = DatabaseFixedValue::PAYMENT_BY_NGANLUONG;
+        switch($paymentKey){
+        	case 'visaAndMaster':
+        	    $modelOtherCost->comment = DatabaseFixedValue::PAYMENT_BY_VISA;
+        	    break;
+        	case 'NganLuong':
+        	    $modelOtherCost->comment = DatabaseFixedValue::PAYMENT_BY_NGANLUONG;
+        	    break;
+        	case 'Onepay' :
+        	    $modelOtherCost->comment = DatabaseFixedValue::PAYMENT_BY_ONEPAY;
+        	    break;
+        	default:
+        	    $modelOtherCost->comment = DatabaseFixedValue::PAYMENT_BY_NGANLUONG;
+        	    break;
+        }
+        
         $modelOtherCost->fk_invoice = $invoiceId;
         $modelOtherCost->value = $totalfree;
-        
         $orderInfor->invoice->otherCosts[] = $modelOtherCost;
         $orderInfor->totalPrices = $totalPrices;
-        
+    }
+    
+    function submitOrder(){
+        $postData = $this->input->post();
+        $orderId = $postData['orderId'];
+        $invoiceId = $postData['invoiceId'];
+        $portalBizOrderHistory = new PortalBizPaymentHistory();
+        $orderInformation = $portalBizOrderHistory->getOrderAllInformation($orderId);
+        if($orderInformation == null){
+            throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__.' Không tìm thấy order với key = '.$orderId);
+        }
+        $this->calutionForviewView($orderInformation,$invoiceId);
+        $otherCosts =  end($orderInformation->invoice->otherCosts);
+        $otherCosts->insert();
+        $paymentKey = $postData['paymentChoice'];
+        $orderBiz = new PortalBizPayment();
+        $orderBiz->paymentOrderComplete($orderId, $invoiceId, $paymentKey);
+        switch ($paymentKey){
+        	case 'NganLuong':
+        	    $this->procInformationNganLuong($orderId, $invoiceId);
+        	    break;
+        }
+    }
+    
+    private function procInformationNganLuong($orderId,$invoiceId){
+        $portalPaymentNganLuong = new PortalPaymentNganLuong();
+        $url = $portalPaymentNganLuong->getCheckOutUrl($invoiceId, $orderId);
+        redirect($url);
+        exit;
     }
 
 }
