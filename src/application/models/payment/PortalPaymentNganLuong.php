@@ -32,12 +32,19 @@ class PortalPaymentNganLuong{
         $transaction_info = "Giao dịch tại SFRIENDLY.COM";
         $currency = "vnd";
         $quantity = $this->getQuantity($order);
-        $tax = ceil($this->getTax($order));
+        //$tax = ceil($this->getTax($order));
+        $tax = 0;
         $discount = ceil($this->getDiscount($order));
         $fee_cal = ceil($this->getOtherCost($order));
         $fee_shipping = ceil($this->getShipping($order));
         $order_description = $this->getDesc($order);
         $buyer_info = $this->getBuyerInfo($order);
+        
+        if(ENVIRONMENT == 'development'){
+            $price = 2000;
+            $tax = 1;
+            $fee_shipping = 1;
+        }
         log_message('ERROR',"NGANLUONG :order_ code({$order_code}) price({$price}) transaction_info({$transaction_info}) 
                             quantity({$quantity}) currency({$currency}) tax({$tax}) 
                             discount({$discount}) fee_cal({$fee_cal}) fee_shipping({$fee_shipping}) 
