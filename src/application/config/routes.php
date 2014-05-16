@@ -72,6 +72,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/verify'] = 'portalController/orderPlace/orderPlaceVerifyOrder';
         $route['portal/order/nganluong_callback'] = 'portalController/orderNganLuongCallback/showPage';
         
+        $route['portal/order/nganluong_sync'] = 'portalController/syncNganLuong/index';
         
     }
 
