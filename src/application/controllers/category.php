@@ -26,7 +26,7 @@ class category extends BaseController
 
     function show($id)
     {
-        $this->load->model('ModelEx/CategoryModel', 'categoryModel');
+        $this->load->model('modelEx/CategoryModel', 'categoryModel');
         $user = User::getCurrentUser();
         $top_categories = $this->categoryModel->getAllTopLevelCategories($user->languageKey);
         $category = CategoryMapper::make()->select()->filterID($id)->setLanguage($user->languageKey)->find(function($rawData, $instance)
