@@ -70,6 +70,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
         
         $route['portal/order_place/verify'] = 'portalController/orderPlace/orderPlaceVerifyOrder';
+        $route['portal/order/nganluong_callback'] = 'portalController/orderNganLuongCallback/showPage';
+        
+        
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')

@@ -22,9 +22,9 @@ $config['payment_gateway_supported'] = array(
 );
 $config['ngan_luong'] = array(
     'NGANLUONG_URL' => 'https://www.nganluong.vn/checkout.php',
-    'MERCHANT_ID'=> '24338',
-    'MERCHANT_PASS'=>'12345612',
-    'receiver' => 'hoannet@gmail.com',
+    'MERCHANT_ID'=> '33804',
+    'MERCHANT_PASS'=>'1234567$',
+    'receiver' => 'transaction@sfriendly.com',
     'return_url' => ''
 );
 /* End of file config.php */
