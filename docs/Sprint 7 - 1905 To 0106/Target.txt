@@ -1,0 +1,11 @@
+﻿- Hoàn thành được: pin, wishlist, cart. 
+- Hoàn thiện 3 màn hình hiện có sẵn: home, detail, list.
+- Hoàn thiện được payment vs ngân lượng. 
+- Đưa sản phẩm lên chạy thử.
+- Phần Admin sub 
+	+ Quản lý seller : Tìm kiếm, DeActive
+	+ Quản lý sản phẩm : Tìm kiếm, DeActive 
+	+ Quảng cáo 
+- Phần admin của portal :
+	+ Quản lý được user : DeActive, tìm kiếm, Information detail
+	+ Quản lý được đơn hàng: chuyển qua các state khác nhau, tìm kiếm.
