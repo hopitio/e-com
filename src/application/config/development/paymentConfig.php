@@ -25,7 +25,7 @@ $config['ngan_luong'] = array(
     'MERCHANT_ID'=> '33804',
     'MERCHANT_PASS'=>'1234567$',
     'receiver' => 'transaction@sfriendly.com',
-    'return_url' => ''
+    'return_url' => 'http://sfriendly.com/portal/order/nganluong_callback'
 );
 /* End of file config.php */
 /* Location: ./application/config/maintenance.php */
