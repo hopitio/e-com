@@ -85,14 +85,14 @@ class PortalPaymentNganLuong{
     }
     
     private function getTax($order){
-        $tax = 0;
+        $taxPrices = 0;
         foreach ($order->invoice->products as $orderProducts){
             foreach ($orderProducts->taxs as $tax)
             {
-                $tax += $tax->value;
+                $taxPrices += $tax->sub_tax_value;
             }
         }
-        return $tax;
+        return $taxPrices;
     }
     
     private function getDiscount($order){
