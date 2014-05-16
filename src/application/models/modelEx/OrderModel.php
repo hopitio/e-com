@@ -22,7 +22,7 @@ class OrderModel extends BaseModel
         $stringToHash .= json_encode($address);
         foreach ($cartContents as $cartInstance)
         {
-            $stringToHash .= $cartInstance->id . $cartInstance->quantity . $cartInstance->calculatePrice('USD');
+            $stringToHash .= $cartInstance->id . $cartInstance->quantity . $cartInstance->calculatePrice('VND');
         }
         $stringToHash .= $shippingMethod . $shippingPrice;
         $checksum = md5($stringToHash);

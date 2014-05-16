@@ -18,10 +18,10 @@ if (!defined('BASEPATH'))
 <script>
     var scriptData = {};
     scriptData.wishlistID = <?php echo $wishlist->id ?>;
-    scriptData.addToCartURL = '<?php echo site_url('wishlist/addToCart') ?>/';
-    scriptData.removeURL = '<?php echo site_url('wishlist/remove') ?>/';
-    scriptData.detailServiceURL = '<?php echo site_url('wishlist/wishlistDetailService/' . $wishlist->id) ?>/';
-    scriptData.undoURL = '<?php echo site_url('wishlist/undoRemove') ?>/';
+    scriptData.addToCartURL = '<?php echo base_url('wishlist/addToCart') ?>/';
+    scriptData.removeURL = '<?php echo base_url('wishlist/remove') ?>/';
+    scriptData.detailServiceURL = '<?php echo base_url('wishlist/wishlistDetailService/' . $wishlist->id) ?>/';
+    scriptData.undoURL = '<?php echo base_url('wishlist/undoRemove') ?>/';
 </script>
 <script>
     (function(window, $, scriptData, undefined) {

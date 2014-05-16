@@ -26,7 +26,7 @@ $first_image = reset($images);
 </div>
 <div>
     <h4><?php echo $product->getName() ?></h4>
-    <?php var_dump('price', $product->getPrice('USD')->getTrueValue()) ?><br>
+    <?php var_dump('price', $product->getPrice('VND')->getTrueValue()) ?><br>
     <?php var_dump('quantity', $product->getQuantity()->getTrueValue()) ?>
 
     <a href="javascript:;" class="add-to-cart" data-id="<?php echo $product->id ?>">Add to Cart</a>

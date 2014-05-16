@@ -13,7 +13,7 @@ class cartModel extends BaseModel
      * @return double
      * @throws Lynx_RequestException
      */
-    function calculateShippingPrice($shippingMethodCode, $locationCode, $toCurrency = 'USD')
+    function calculateShippingPrice($shippingMethodCode, $locationCode, $toCurrency = 'VND')
     {
         $query = Query::make()
                 ->select('sl.price, sl.price_currency')

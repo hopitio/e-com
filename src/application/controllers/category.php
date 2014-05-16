@@ -17,7 +17,7 @@ class category extends BaseController
         $json = array();
         foreach ($categories as $cate)
         {
-            $cate->url = site_url('category/show/' . $cate->id);
+            $cate->url = base_url('category/show/' . $cate->id);
             $json[] = $cate;
         }
         header('content-type: application/json');
@@ -133,7 +133,7 @@ class category extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->getTrueValue()) : '';
-            $obj['priceString'] = strval($product->getPriceString('USD'));
+            $obj['priceString'] = strval($product->getPriceString('VND'));
             $obj['url'] = '/product/details/' . $product->id;
             $json[] = $obj;
         }

@@ -60,7 +60,7 @@ class seller extends BaseController
                 $product->id,
                 $product->getName()->getTrueValue(),
                 $sku,
-                $product->getPriceString('USD'),
+                $product->getPriceString('VND'),
                 'url' => '/product/details/' . $product->id
             );
         }

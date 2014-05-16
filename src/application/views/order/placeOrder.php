@@ -3,6 +3,7 @@ defined('BASEPATH') or die('No direct script access allowed');
 
 /* @var $cartContents CartDomain */
 $user = User::getCurrentUser();
+$user->fullname = $user->getFullname();
 $json = array(
     'secretKey' => $user->secretKey,
     'orderkey'  => $orderEvidenceUID,
@@ -23,12 +24,12 @@ foreach ($cartContents as $cartInstance)
     $json_product = array(
         'id'          => $cartInstance->id,
         'name'        => $cartInstance->getName()->getTrueValue(),
-        'image'       => site_url($images[0]->getTrueValue()),
+        'image'       => base_url($images[0]->getTrueValue()),
         'shortDesc'   => $cartInstance->getDescription()->getTrueValue(),
-        'price'       => $cartInstance->getPrice('USD')->getTrueValue(),
+        'price'       => $cartInstance->getPrice('VND')->getTrueValue(),
         'quantity'    => $cartInstance->quantity,
-        'totalPrice'  => $cartInstance->getPrice('USD')->getTrueValue() * $cartInstance->quantity,
-        'actualPrice' => $cartInstance->calculatePrice('USD') * $cartInstance->quantity,
+        'totalPrice'  => $cartInstance->getPrice('VND')->getTrueValue() * $cartInstance->quantity,
+        'actualPrice' => $cartInstance->calculatePrice('VND') * $cartInstance->quantity,
         'taxes'       => array(),
         'sellerName'  => $cartInstance->sellerName,
         'sid'         => $cartInstance->sid

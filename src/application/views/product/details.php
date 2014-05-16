@@ -32,7 +32,7 @@ foreach ($product->getImages() as $attr)
         <form class="lynx_productChoicePannel lynx_productHead" method="post" id="frm-main">
             <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
             <div class="lynx_productName"> <?php echo $product->getName()->getTrueValue() ?> </div>
-            <div class="lynx_productPrice"> <?php echo $product->getPriceString('USD') ?> </div>
+            <div class="lynx_productPrice"> <?php echo $product->getPriceString('VND') ?> </div>
             <div class="lynx_productShipping"> Ships Free ! </div>
     <!--        <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
@@ -49,18 +49,18 @@ foreach ($product->getImages() as $attr)
             </div>
             <div class="lynx_productButtonBuy"> 
                 <input type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
-                       data-action="<?php echo site_url('order/shipping') ?>">
+                       data-action="<?php echo base_url('order/shipping') ?>">
             </div>
             <div class="lynx_productButtonAddTo"> 
                 <span class="lynx_actionTitle">Add to : </span>
                 <div class="row">
                     <div style="width:42%;float:left;margin-left: 15px;">
                         <input type="button" name="addToCart" value="CART" class="lynx_blueButton form-control submit" 
-                               data-action="<?php echo site_url('cart/addToCart') ?>">
+                               data-action="<?php echo base_url('cart/addToCart') ?>">
                     </div>
                     <div style="width:42%;float:left;margin-left:15px;">
                         <input type="button" name="addToWishlist" value="WISHLIST" 
-                               class="lynx_blueButton form-control submit" data-action="<?php echo site_url('wishlist/addToWishlist') ?>">
+                               class="lynx_blueButton form-control submit" data-action="<?php echo base_url('wishlist/addToWishlist') ?>">
                     </div>
                 </div>
             </div>
@@ -111,6 +111,6 @@ foreach ($product->getImages() as $attr)
     var scriptData = {
         images: <?php echo json_encode($images) ?>,
         productID: <?php echo $product->id ?>,
-        relatedURL: '<?php echo site_url('product/related_products_service') ?>/'
+        relatedURL: '<?php echo base_url('product/related_products_service') ?>/'
     };
 </script>

@@ -8,7 +8,7 @@ defined('BASEPATH') or die('no direct script allowed');
         <div>
             <div>{{product.name}}</div>
             <div>{{product.description}}</div>
-            <div>USD{{product.price}}</div>
+            <div>VND{{product.price}}</div>
             <div>{{product.quantity}}</div>
             <div>
                 <a href="javascript:;" ng-click="addToCart(product.id);">Add to Cart</a>
@@ -20,11 +20,11 @@ defined('BASEPATH') or die('no direct script allowed');
 </div>
 <script>
     var scriptData = {};
-    scriptData.service = '<?php echo site_url('pin/getAllPinService') ?>';
-    scriptData.addToCart = '<?php echo site_url('pin/addToCart') ?>/';
-    scriptData.moveToWishlist = '<?php echo site_url('pin/moveToWishlist') ?>/';
-    scriptData.remove = '<?php echo site_url('pin/unpin') ?>/';
-    scriptData.pin = '<?php echo site_url('pin/pinProduct') ?>/';
+    scriptData.service = '<?php echo base_url('pin/getAllPinService') ?>';
+    scriptData.addToCart = '<?php echo base_url('pin/addToCart') ?>/';
+    scriptData.moveToWishlist = '<?php echo base_url('pin/moveToWishlist') ?>/';
+    scriptData.remove = '<?php echo base_url('pin/unpin') ?>/';
+    scriptData.pin = '<?php echo base_url('pin/pinProduct') ?>/';
 </script>
 <script>
     (function(window, $, scriptData, undefined) {

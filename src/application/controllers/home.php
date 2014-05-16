@@ -51,8 +51,8 @@ class home extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->getTrueValue()) : '';
-            $obj['priceString'] = strval($product->getPriceString('USD'));
-            $obj['url'] = site_url('product/details') . '/' . $product->id;
+            $obj['priceString'] = strval($product->getPriceString('VND'));
+            $obj['url'] = base_url('product/details') . '/' . $product->id;
             $json[] = $obj;
         }
         echo json_encode($json);
@@ -71,8 +71,8 @@ class home extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->getTrueValue()) : '';
-            $obj['priceString'] = strval($product->getPriceString('USD'));
-            $obj['url'] = site_url('product/details') . '/' . $product->id;
+            $obj['priceString'] = strval($product->getPriceString('VND'));
+            $obj['url'] = base_url('product/details') . '/' . $product->id;
             $json[] = $obj;
         }
         echo json_encode($json);
@@ -95,7 +95,7 @@ class home extends BaseController
         foreach ($sections as $section)
         {
             $section_array = get_object_vars($section);
-            $section_array['url'] = site_url("section/show/{$section->id}");
+            $section_array['url'] = base_url("section/show/{$section->id}");
             $section_array['products'] = array();
             foreach ($section->getProducts() as $product)
             {
@@ -103,8 +103,8 @@ class home extends BaseController
                 $product_array = get_object_vars($product);
                 $product_array['name'] = strval($product->getName());
                 $product_array['thumbnail'] = $images ? strval($images[0]->getTrueValue()) : '';
-                $product_array['priceString'] = strval($product->getPriceString('USD'));
-                $product_array['url'] = site_url('product/details') . '/' . $product->id;
+                $product_array['priceString'] = strval($product->getPriceString('VND'));
+                $product_array['url'] = base_url('product/details') . '/' . $product->id;
 
                 $section_array['products'][] = $product_array;
             }

@@ -72,25 +72,25 @@
                                 </span>
                                 <ul class="dropdown-menu left">
                                     <li>
-                                        <a href="<?php echo site_url('portal/account/edit'); ?>"><?php echo$language['layout']->lblUserAccount->__toString(); ?></a>
+                                        <a href="<?php echo base_url('portal/account/edit'); ?>"><?php echo$language['layout']->lblUserAccount->__toString(); ?></a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url('portal/order/show'); ?>"><?php echo$language['layout']->lblUserOrder->__toString(); ?></a>
+                                        <a href="<?php echo base_url('portal/order/show'); ?>"><?php echo$language['layout']->lblUserOrder->__toString(); ?></a>
                                     </li>
                                     <div class="divider"></div>
                                     <li>
-                                        <a href="<?php echo site_url('wishlist/show'); ?>"><?php echo$language['layout']->lblUserWishlist->__toString(); ?></a>
+                                        <a href="<?php echo base_url('wishlist/show'); ?>"><?php echo$language['layout']->lblUserWishlist->__toString(); ?></a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url('pin/show'); ?>"><?php echo$language['layout']->lblUserPinlist->__toString(); ?></a>
+                                        <a href="<?php echo base_url('pin/show'); ?>"><?php echo$language['layout']->lblUserPinlist->__toString(); ?></a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="<?php echo site_url('portal/signout'); ?>"><?php echo$language['layout']->lblUserLogout->__toString(); ?></a>
+                                        <a href="<?php echo base_url('portal/signout'); ?>"><?php echo$language['layout']->lblUserLogout->__toString(); ?></a>
                                     </li>
                                 </ul>
                             <?php else: ?>
-                                <a href="<?php echo site_url('portal/login') ?>"><?php echo $language['layout']->lblUserStatusNotSign->__toString(); ?></a>
+                                <a href="<?php echo base_url('portal/login') ?>"><?php echo $language['layout']->lblUserStatusNotSign->__toString(); ?></a>
                             <?php endif; ?>
                         </div>
                         <div class="lynx_miniCart dropdown dropdown-hover">
@@ -108,7 +108,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="<?php echo site_url('cart/show') ?>"><?php echo $language['layout']->lblViewCartWidthProductNumber->__toString(); ?> </a>
+                                    <a href="<?php echo base_url('cart/show') ?>"><?php echo $language['layout']->lblViewCartWidthProductNumber->__toString(); ?> </a>
                                 </li>
                             </ul>
                         </div>
@@ -214,8 +214,8 @@
         <script type="text/javascript">
             function Config() {
                 this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                this.categoryService = '<?php echo site_url('category/categories_service') ?>';
-                this.cartService = '<?php echo site_url('cart/cartProductsService') ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
             }
         </script>
 

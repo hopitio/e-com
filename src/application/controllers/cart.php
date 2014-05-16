@@ -14,7 +14,7 @@ class cart extends BaseController
     {
         parent::__construct();
         $this->_CI = get_instance();
-        $this->load->model('modelEx/cartModel');
+        $this->load->model('modelEx/CartModel');
     }
 
     protected $_cartMapper;

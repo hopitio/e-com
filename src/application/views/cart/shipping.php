@@ -4,7 +4,7 @@ defined('BASEPATH') or die('No direct script access allowed');
 /* @var $cartContents CartDomain */
 ?>
 <div ng-app ng-controller="shippingCtrl">
-    <form method="post" action="<?php echo site_url('order/placeOrder') ?>">
+    <form method="post" action="<?php echo base_url('order/placeOrder') ?>">
         <fieldset>
             <legend>Shipping Address</legend>
             <div>
@@ -94,8 +94,8 @@ defined('BASEPATH') or die('No direct script access allowed');
             <?php $orderSubtotal = 0; ?>
             <?php foreach ($cartContents as $cartProductInstance): ?>
                 <?php
-                $price           = $cartProductInstance->calculatePrice('USD');
-                $taxes           = $cartProductInstance->calculateTaxes('USD');
+                $price           = $cartProductInstance->calculatePrice('VND');
+                $taxes           = $cartProductInstance->calculateTaxes('VND');
                 $productSubtotal = ($price + $taxes) * $cartProductInstance->quantity;
                 $orderSubtotal+=$productSubtotal;
                 ?>
@@ -125,8 +125,8 @@ defined('BASEPATH') or die('No direct script access allowed');
 
 <script>
     var scriptData = {};
-    scriptData.cartURL = '<?php echo site_url('cart/showCart') ?>';
-    scriptData.priceURL = '<?php echo site_url('cart/shippingPriceService') ?>';
+    scriptData.cartURL = '<?php echo base_url('cart/showCart') ?>';
+    scriptData.priceURL = '<?php echo base_url('cart/shippingPriceService') ?>';
 </script>
 <script>
     (function(window, scriptData, $, undefined) {

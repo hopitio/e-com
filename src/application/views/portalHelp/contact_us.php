@@ -6,7 +6,7 @@ How would you like to contact us?
 <form>
     <div>
         <h4>E-mail</h4>
-        <input id="send-email" type="submit" value="Send us an e-mail" data-action="<?php echo site_url('/portal/help/contact_by_email') ?>">
+        <input id="send-email" type="submit" value="Send us an e-mail" data-action="<?php echo base_url('/portal/help/contact_by_email') ?>">
     </div>
     <div>
         <h4>Chat</h4>
@@ -16,7 +16,7 @@ How would you like to contact us?
 
 <script>
     var scriptData = {};
-    scriptData.chatURL = '<?php echo site_url('/portal/help/contact_by_chat') ?>';
+    scriptData.chatURL = '<?php echo base_url('/portal/help/contact_by_chat') ?>';
 </script>
 <script>
     (function(window, $, scriptData) {

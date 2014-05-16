@@ -6,7 +6,7 @@ defined('BASEPATH') or die;
 </style>
 <a href='javascript:;' onclick='window.close();'>x</a>
 <div class='status' id="status-ready">
-    <form method='post' action='<?php echo site_url('portal/help/start_chat') ?>'>
+    <form method='post' action='<?php echo base_url('portal/help/start_chat') ?>'>
         <input type='hidden' name='token' id='token'>
         <div>
             <label>What is your problem(s)</label>

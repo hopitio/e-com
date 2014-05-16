@@ -10,14 +10,14 @@
             </label>
         </div>
     </div>
-    <form method="get" action="<?php echo site_url('seller/product_details/') ?>">
+    <form method="get" action="<?php echo base_url('seller/product_details/') ?>">
         <input type="hidden" name="category" value="{{selectedCategory}}">
         <input type="submit" value="Choose this category" ng-disabled="!selectedCategory">
     </form>
 </div>
 <script>
     var Config = function() {
-        this.categoryService = '<?php echo site_url('seller/category_service/') ?>';
+        this.categoryService = '<?php echo base_url('seller/category_service/') ?>';
     };
 </script>
 

@@ -30,9 +30,9 @@ defined('BASEPATH') or die('No direct script access allowed');
 
 <script>
     var scriptData = {};
-    scriptData.serviceURL = '<?php echo site_url('cart/cartProductsService') ?>';
-    scriptData.checkoutURL = '<?php echo site_url('cart/shipping') ?>';
-    scriptData.updateQuantityURL = '<?php echo site_url('cart/updateQuantityService') ?>';
-    scriptData.removeFromCartURL = '<?php echo site_url('cart/removeFromCart') ?>/';
-    scriptData.addToCartURL = '<?php echo site_url('cart/addToCart') ?>/';
+    scriptData.serviceURL = '<?php echo base_url('cart/cartProductsService') ?>';
+    scriptData.checkoutURL = '<?php echo base_url('cart/shipping') ?>';
+    scriptData.updateQuantityURL = '<?php echo base_url('cart/updateQuantityService') ?>';
+    scriptData.removeFromCartURL = '<?php echo base_url('cart/removeFromCart') ?>/';
+    scriptData.addToCartURL = '<?php echo base_url('cart/addToCart') ?>/';
 </script>

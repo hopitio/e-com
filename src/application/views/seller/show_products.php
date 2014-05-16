@@ -23,7 +23,7 @@
 
 <script>
     var Config = function() {
-        this.service = '<?php echo site_url('seller/show_products_service') ?>';
+        this.service = '<?php echo base_url('seller/show_products_service') ?>';
     };
 
     (function(window, $, config) {
