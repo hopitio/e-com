@@ -8,4 +8,6 @@ include_once (APPPATH . "libraries/layout/TowColumnLayout.php");
 include_once (APPPATH . "libraries/layout/AdminLayout.php");
 include_once (APPPATH . "libraries/layout/ContentOnlyLayout.php");
 include_once (APPPATH . "libraries/layout/SellerLayout.php");
+include_once (APPPATH . "libraries/layout/PortalAdminLayout.php");
+
 ?>

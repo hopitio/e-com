@@ -49,7 +49,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
-        $route['portal/admin'] = 'portalAdmin/dashboard/showPage';
+        
         $route['portal/admin/support'] = 'portalAdmin/support/showPage';
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
@@ -74,6 +74,11 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         
         $route['portal/order/nganluong_sync'] = 'portalController/syncNganLuong/index';
         
+        $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
+        $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
+        $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
+        
+        
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -97,7 +102,10 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
         $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
         $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
+        $route['portal/__admin/user_find_post_xhr'] ="portalAdmin/userList/searchUserInformationXhr";
         
+        $route['portal/__admin/user/(:num)/contact'] = 'portalAdmin/userDetail/contact/$1';
+        $route['portal/__admin/user/(:num)/history'] = 'portalAdmin/userDetail/history/$1';
     }
 }
 //

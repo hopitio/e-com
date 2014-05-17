@@ -9,6 +9,7 @@ class LayoutFactory
     CONST TEMP_ADMIN          = 'TEMP_ADMIN';
     CONST TEMP_CONTENT_ONLY   = 'TEMP_CONTENT_ONLY';
     CONST TEMP_SELLER         = 'TEMP_SELLER';
+    CONST TEMP_PORTAL_ADMIN_ONE_COLUMN = 'TEMP_PORTAL_ADMIN_ONE_COLUMN';
 
     /**
      * get template render.
@@ -37,6 +38,10 @@ class LayoutFactory
                 break;
             case self::TEMP_SELLER:
                 return new SellerLayout;
+                break;
+            case self::TEMP_PORTAL_ADMIN_ONE_COLUMN:
+                return new PortalAdminLayout();
+                break;
             default:
                 throw new Exception('Template not supported');
                 break;

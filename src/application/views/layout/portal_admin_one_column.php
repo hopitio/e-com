@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/style/portalAdmin.css" media="all">
         
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
         <script type='text/javascript' src="/js/angular.min.js"></script>

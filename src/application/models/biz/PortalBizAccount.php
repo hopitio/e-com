@@ -235,6 +235,7 @@ class PortalBizAccount extends PortalBizBase
         $query = $this->getUserInformation($user->id);
         return $query;
     }
+    
 
     /**
      * Get user by userID
@@ -242,7 +243,7 @@ class PortalBizAccount extends PortalBizBase
      * @param string $userId            
      * @return array Query Result.
      */
-    private function getUserInformation($userId)
+    public function getUserInformation($userId)
     {
         $userModel = new PortalModelUser();
         $userModel->id = $userId;
@@ -377,8 +378,13 @@ class PortalBizAccount extends PortalBizBase
         return $user;
     }
     
-    function findUser($userId,$account,$fullName,$lastname){
-        
+    function findUser($userId,$account,$firstName,$lastname, $limit, $offset){
+        $portalModel  = new PortalModelUser();
+        return $portalModel->findUsers($userId, $account, $firstName, $lastname, $limit, $offset);
+    }
+    function findUserCount($userId,$account,$firstName,$lastname){
+        $portalModel  = new PortalModelUser();
+        return $portalModel->findUsersCount($userId, $account, $firstName, $lastname);
     }
 
 }
