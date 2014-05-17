@@ -77,8 +77,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
         $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
-        
-        
+        $route['portal/__admin/user/(:num)/contact'] = 'portalAdmin/userDetail/contact/$1';
+        $route['portal/__admin/user/(:num)/setting'] = 'portalAdmin/userDetail/setting/$1';
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -104,8 +104,10 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
         $route['portal/__admin/user_find_post_xhr'] ="portalAdmin/userList/searchUserInformationXhr";
         
-        $route['portal/__admin/user/(:num)/contact'] = 'portalAdmin/userDetail/contact/$1';
+        
         $route['portal/__admin/user/(:num)/history'] = 'portalAdmin/userDetail/history/$1';
+        $route['portal/__admin/user/(:num)/reject_login'] = 'portalAdmin/userDetail/rejectLoginAccount/$1';
+        $route['portal/__admin/user/(:num)/open_login'] = 'portalAdmin/userDetail/openLoginAccount/$1';
     }
 }
 //

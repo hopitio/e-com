@@ -1,6 +1,9 @@
 <div class="lynx_portalAdminContainer lynx_staticWidth" ng-controller="PortalUserListController">
     <?php require_once APPPATH.'views/portalAdmin/menu.php'; ?>
     <div class="lynx_portalAdminContent">
+        <div class="lynx_row">
+            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
         <h4>TÌM KIẾM TÀI KHOẢN</h4>
         <div class="lynx_row">
             <span class="lynx_fieldName">ID</span>
@@ -23,8 +26,8 @@
     </div>
 </div>
 <script type="text/ng-template" id="actionCell.html" >
-    <i ng-click="" title="Thông tin tài khoản người sử dụng" class="glyphicon glyphicon-user" style="cursor: pointer;font-size:15px; margin:5px;opacity: 0.25;"></i>
-    <i ng-click="" title="Hủy quyền Đăng sản phẩm" class="glyphicon glyphicon-remove" style="cursor: pointer;font-size:15px; margin:5px;"></i>
-    <i ng-click="" title="Phục hồi quyền đăng sản phẩm" class="glyphicon glyphicon-flash" style="cursor: pointer;font-size:15px; margin:5px;"></i>
+    <a href="{{row.getProperty('detailUrl')}}"><i title="Thông tin tài khoản người sử dụng" class="glyphicon glyphicon-user" style="cursor: pointer;font-size:15px; margin:5px;"></i></a>
+    <i ng-click="rejectLoginStatus(row.getProperty('id'))" title="Hủy quyền đăng nhập" class="glyphicon glyphicon-remove" style="cursor: pointer;font-size:15px; margin:5px;"></i>
+    <i ng-click="openLoginStatus(row.getProperty('id'))" title="Mở quyền đăng nhập" class="glyphicon glyphicon-flash" style="cursor: pointer;font-size:15px; margin:5px;"></i>
 </script>
 

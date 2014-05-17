@@ -9,6 +9,8 @@ function PortalUserListController($scope,$http)
             filterText: "",
             useExternalFilter: true
     }; 
+    $scope.alerts = [];
+    
     $scope.totalServerItems = 0;
     $scope.pagingOptions = {
         pageSizes: [10, 20, 30, 50, 100],
@@ -22,7 +24,6 @@ function PortalUserListController($scope,$http)
             showFooter: true,
             totalServerItems: 'totalServerItems',
             pagingOptions: $scope.pagingOptions,
-            filterOptions: $scope.filterOptions,
             multiSelect: false,
             columnDefs: [
                          {field: 'id',displayName: 'ID'},
@@ -75,11 +76,36 @@ function PortalUserListController($scope,$http)
           $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
         }
     }, true);
-    $scope.$watch('filterOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal) {
-          $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+    
+    $scope.openLoginStatus = function(userId){
+        $scope.alerts = [];
+        portalUserListServiceClient = new PortalUserListServiceClient($http);
+        portalUserListServiceClient.updateUserOpenLogin(userId, loginUpdateCallback, loginUpdateErrorCallback);
+    };
+    
+    $scope.rejectLoginStatus = function(userId){
+        $scope.alerts = [];
+        portalUserListServiceClient = new PortalUserListServiceClient($http);
+        portalUserListServiceClient.updateUserRejectLogin(userId, loginUpdateCallback, loginUpdateErrorCallback);
+    };
+    
+    function loginUpdateCallback(data){
+        if(!data.isError){
+            $scope.alerts.push({type:'success' , msg: 'Cập nhật thành công.'});
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+        }else{
+            $scope.alerts.push({type:'danger' , msg: data.errorMessage});
         }
-    }, true);
+    }
+    
+    function loginUpdateErrorCallback(xhr,status){
+        
+    }
+    
+    $scope.closeAlert = function(index){
+        $scope.alerts.splice(index, 1);
+    };
+    
     
 }
 PortalUserListController.$inject = ['$scope','$http'];

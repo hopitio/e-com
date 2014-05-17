@@ -141,6 +141,7 @@ class T_user_history{
     CONST description = "description";
     CONST action_name = "action_name";
     CONST session_id = 'session_id';
+    CONST action_date = 'action_date';
 }
 
 class T_user_setting{

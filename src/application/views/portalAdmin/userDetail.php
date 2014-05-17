@@ -1,6 +1,9 @@
 <div class="lynx_portalAdminContainer lynx_staticWidth" ng-controller="PortalUserController">
     <?php require_once APPPATH.'views/portalAdmin/menu.php'; ?>
     <div class="lynx_portalAdminContent">
+        <div class="lynx_row">
+            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
         <h4>TÀI KHOẢN</h4>
         <div class="lynx_row">
             <span class="lynx_fieldName">ID : </span>
@@ -31,6 +34,12 @@
            
         <h4>Lịch sử</h4>
         <div class="lynx_row">
+             <span class="lynx_fieldName">Từ ngày : </span>
+            <span class="lynx_fieldValue"><input type="text" /></span>
+            <span class="lynx_fieldName">Đến ngày : </span>
+            <span class="lynx_fieldValue"><input type="text" /></span>
+        </div>
+        <div class="lynx_row">
             <div style="height:250px" class="gridStyle" ng-grid="gridOptionsHistory"></div>
         </div>
         <h4>Địa chỉ</h4>
@@ -42,7 +51,8 @@
             <div style="height:250px" class="gridStyle" ng-grid="gridOptionsSetting"></div>
         </div>
         <div class="lynx_row lynx_rowButton">
-            <button id="btnComfirm" class="lynx_button btn btn-primary" type="submit" >Hủy quyền đăng nhập</button>
+            <button ng-show="user.status == 1" ng-click="rejectLogin()" id="btnComfirm" class="lynx_button btn btn-primary" type="submit" >Hủy quyền đăng nhập</button>
+            <button ng-show="user.status != 1" ng-click="openLogin()" id="btnComfirm" class="lynx_button btn" type="submit" >Chấp nhận quyền đăng nhập</button>
         </div>
     </div>
 </div>
