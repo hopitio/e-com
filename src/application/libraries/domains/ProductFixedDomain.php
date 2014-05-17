@@ -73,11 +73,11 @@ class ProductFixedDomain extends ProductDomain
     function getPriceString($currency)
     {
         $price = $this->_getAttributeByName('price')->getTrueValue();
-        $value = 0;
         if (!$price)
         {
             return false;
         }
+        $value = $price;
 
         switch ($currency) {
             case 'USD':
