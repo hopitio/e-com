@@ -67,40 +67,25 @@ class ProductFixedDomain extends ProductDomain
     /** @return ProductAttributeDomain */
     function getPrice($currency)
     {
-        $prices = $this->_getAttributeByName('price');
-        if (!$prices)
-        {
-            return false;
-        }
-        foreach ($prices as $priceCurrency)
-        {
-            if (strtoupper($priceCurrency->valueVarchar) == strtoupper($currency))
-            {
-                return $priceCurrency;
-            }
-        }
-        return false;
+        return $price = $this->_getAttributeByName('price');
     }
 
     function getPriceString($currency)
     {
-        $prices = $this->_getAttributeByName('price');
-        $value = 0;
-        if (!$prices)
+        $price = $this->_getAttributeByName('price')->getTrueValue();
+        if (!$price)
         {
             return false;
         }
-        foreach ($prices as $priceCurrency)
-        {
-            if (strtoupper($priceCurrency->valueVarchar) == strtoupper($currency))
-            {
-                $value = $priceCurrency->getTrueValue();
-                switch ($currency) {
-                    case 'USD':
-                        return '$' . $value;
-                }
-            }
+        $value = $price;
+
+        switch ($currency) {
+            case 'USD':
+                return '$' . $value;
+            case 'VND':
+                return $value . 'VND';
         }
+
         return false;
     }
 
