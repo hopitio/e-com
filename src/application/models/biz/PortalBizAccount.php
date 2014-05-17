@@ -376,5 +376,9 @@ class PortalBizAccount extends PortalBizBase
         
         return $user;
     }
+    
+    function findUser($userId,$account,$fullName,$lastname){
+        
+    }
 
 }

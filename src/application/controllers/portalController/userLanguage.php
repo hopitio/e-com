@@ -39,7 +39,6 @@ class userLanguage extends BaseController
         $asyncResult = new AsyncResult();
         $asyncResult->isError = false;
         $asyncResult->data = true;
-        log_message('error',var_export($this->obj_user,true));
         $this->output->set_content_type('application/json')->set_output(json_encode($asyncResult, true));
     }
 }
