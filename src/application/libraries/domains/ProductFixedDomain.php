@@ -67,19 +67,7 @@ class ProductFixedDomain extends ProductDomain
     /** @return ProductAttributeDomain */
     function getPrice($currency)
     {
-        $prices = $this->_getAttributeByName('price');
-        if (!$prices)
-        {
-            return false;
-        }
-        foreach ($prices as $priceCurrency)
-        {
-            if (strtoupper($priceCurrency->valueVarchar) == strtoupper($currency))
-            {
-                return $priceCurrency;
-            }
-        }
-        return false;
+        return $price = $this->_getAttributeByName('price');
     }
 
     function getPriceString($currency)
