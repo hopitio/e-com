@@ -21,12 +21,12 @@ $config['payment_gateway_supported'] = array(
     ),
 );
 $config['ngan_luong'] = array(
-    'NGANLUONG_URL' => 'https://www.nganluong.vn/checkout.php',
+    'NGANLUONG_URL' => 'http://localhost.com/portal/__mock/ngan_luong_payment',
     'MERCHANT_ID'=> '33812',
     'MERCHANT_PASS'=>'qazwsxedc',
     'receiver' => 'transaction@sfriendly.com',
-    'return_url' => 'http://sfriendly.com/portal/order/nganluong_callback',
-    'order_name' => 'SFRIENDLY'
+    'return_url' => 'http://localhost.com/portal/order/nganluong_callback',
+    'order_name' => 'SFRIENDLY',
 );
 /* End of file config.php */
 /* Location: ./application/config/maintenance.php */

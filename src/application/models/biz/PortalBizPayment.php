@@ -82,7 +82,7 @@ class PortalBizPayment extends PortalBizBase
        $invocieModel = new PortalModelInvoice();
        $invocieModel->id = $invoiceId;
        $invocieModel->getOneById();
-       
+       $invocieModel->payment_id = $paymentId;
        $invocieModel->paid_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
        $invocieModel->payment_method = $paymentMethod;
        return $invocieModel->updateById();

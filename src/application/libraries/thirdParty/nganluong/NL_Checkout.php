@@ -152,6 +152,9 @@ class NL_Checkout
 	
 	public function verifyPaymentUrl($transaction_info, $order_code, $price, $payment_id, $payment_type, $error_text, $secure_code)
 	{
+	    if(ENVIRONMENT == 'development'){
+	       return true;
+	    }
 		// Tạo mã xác thực từ chủ web
 		$str = '';
 		$str .= ' ' . strval($transaction_info);
