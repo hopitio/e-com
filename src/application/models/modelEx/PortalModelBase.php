@@ -205,8 +205,9 @@ class PortalModelBase extends CI_Model
         {
             return array();
         } 
+        $class = $this->_constIntanceName;
         $this->_dbPortal->where_in($property,$values);
-        $query = $this->_dbPortal->get($this->_constIntanceName);
+        $query = $this->_dbPortal->get($class::tableName);
         $result = $query->result();
         $queryResult = array();
         foreach ($result as $row)
