@@ -39,25 +39,40 @@ class syncNganLuong extends BaseController
         else // Thanh toán thành công
         {
             // Trường hợp là thanh toán tạm giữ. Hãy đưa thông báo thành công và cập nhật hóa đơn phù hợp
-            if($payment_type == 2)
-            {
-                // Lập trình thông báo thành công và cập nhật hóa đơn
-            }
+//             if($payment_type == 2)
+//             {
+//                 // Lập trình thông báo thành công và cập nhật hóa đơn
+//             }
             // Trường hợp thanh toán ngay. Hãy đưa thông báo thành công và cập nhật hóa đơn phù hợp
-            elseif($payment_type == 1)
-            {
-                // Lập trình thông báo thành công và cập nhật hóa đơn
-            }
+//             elseif($payment_type == 1)
+//             {
+//                 // Lập trình thông báo thành công và cập nhật hóa đơn
+//             }
+            $nganLuongConfig = get_instance()->config->item('ngan_luong');
+            $order_code = str_replace($nganLuongConfig['order_name'],'',$order_code);
+            $order_code = str_replace(' ','',$order_code);
+            list($orderId,$invoiceId) = explode('-',$order_code);
+            $portalBizPayment = new PortalBizPayment();
+            $portalBizPayment = new PortalBizPayment();
+                $portalBizPayment->updateOrderToVerify(false, $orderId, $invoiceId);
+                $portalBizPayment->updatePaymentMethod($invoiceId, $payment_id, DatabaseFixedValue::PAYMENT_BY_NGANLUONG);            
+            return 1;
         }
     }
     
     function RefundOrder($transaction_info, $order_code, $payment_id, $refund_payment_id, $refund_amount, $refund_type, $refund_description, $secure_code)
     {
         $error = 'Chưa xác minh';
-    
+        $nganLuongConfig = get_instance()->config->item('ngan_luong');
         $md5 = $transaction_info." ".$order_code." ".$payment_id." ".$refund_payment_id." ".$refund_amount." ".$refund_type." ".$refund_description." ".PASSCODE;
         if (md5($md5) == strtolower($secure_code)) {
             $error = 'Thành công';
+            $order_code = str_replace($nganLuongConfig['order_name'],'',$order_code);
+            $order_code = str_replace(' ','',$order_code);
+            list($orderId,$invoiceId) = explode('-',$order_code);
+            $portalBizPayment = new PortalBizPayment();
+            $portalBizPayment->updateOrderToReject(false, $orderId, $invoiceId);
+            
         } else {
             $error = 'Tham số truyền bị thay đổi';
         }
@@ -74,7 +89,6 @@ class syncNganLuong extends BaseController
             'secure_code'   => $secure_code,
             'error'     => $error
         );
-        $content = serialize($params);
         log_message('INFO',__FILE__.' '.__LINE__.' '.var_export($params,true));
         return array('error'=>$error);
     }

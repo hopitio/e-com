@@ -27,7 +27,7 @@ class PortalPaymentNganLuong{
             }
         }
         
-        $order_code = "SFRIENDLY {$orderId} - {$invocieId}";
+        $order_code =  $nganLuongConfig['order_name']." {$orderId} - {$invocieId}";
         $price = ceil($this->getPrices($order));
         $transaction_info = "Giao dịch tại SFRIENDLY.COM";
         $currency = "vnd";

@@ -236,4 +236,5 @@
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
     <portalPayment_paymentChoice></portalPayment_paymentChoice>
     <portalPayment_orderReview></portalPayment_orderReview>
+    <portalPayment_paymentSuccess></portalPayment_paymentSuccess>
 </data>
