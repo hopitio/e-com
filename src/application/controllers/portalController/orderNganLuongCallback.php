@@ -24,8 +24,8 @@ class orderNganLuongCallback extends BaseController
             $secure_code =$_GET['secure_code'];
             //Khai báo đối tượng của lớp NL_Checkout
             $nl= new NL_Checkout();
-            $nl->merchant_site_code = MERCHANT_ID;
-            $nl->secure_pass = MERCHANT_PASS;
+            $nl->merchant_site_code = $nganLuongConfig['MERCHANT_ID'];
+            $nl->secure_pass = $nganLuongConfig['MERCHANT_PASS'];;
             //Tạo link thanh toán đến nganluong.vn
             $checkpay= $nl->verifyPaymentUrl($transaction_info, $order_code, $price, $payment_id, $payment_type, $error_text, $secure_code);
             if ($checkpay) {
