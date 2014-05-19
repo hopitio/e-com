@@ -418,6 +418,7 @@ a.lynx_sort-menu {
 }
 .lynx_InvoiceList .lynx_invoiceList_left{
 	float:left;
+	width:265px;
 }
 .lynx_InvoiceList .lynx_invoiceList_right{
 	float:right;
