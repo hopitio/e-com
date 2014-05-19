@@ -344,7 +344,7 @@ a.lynx_sort-menu {
     width: 200px;
     float: left;
 }
-.lynx_row-content div.lynx_row{margin-bottom:10px;width:265px;word-break: break-all;}
+.lynx_row-content div.lynx_row{margin-bottom:10px;}
 .lynx_row-content div.lynx_row button.lynx_button{margin-left:200px;}
 .lynx_historyTable{width:100%;}
 .lynx_historyTable span{display:inline-block;text-align: left;}
