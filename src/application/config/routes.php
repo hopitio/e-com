@@ -111,9 +111,10 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/user/(:num)/history'] = 'portalAdmin/userDetail/history/$1';
         $route['portal/__admin/user/(:num)/reject_login'] = 'portalAdmin/userDetail/rejectLoginAccount/$1';
         $route['portal/__admin/user/(:num)/open_login'] = 'portalAdmin/userDetail/openLoginAccount/$1';
+        $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';
         
         $route['portal/order/nganluong_sync'] = 'portalController/syncNganLuong/index';
-        $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';
+        
     }
 }
 //

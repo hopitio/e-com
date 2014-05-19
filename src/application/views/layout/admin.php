@@ -89,18 +89,18 @@
                         </div>
                         <div class="lynx_cell">
         	                <ul>
-        	                    <span><?php echo $language['layout']->lblAboutSfriendly;?></span>
-        	                    <li><?php echo $language['layout']->lblAbout;?></li>
-        	                    <li><?php echo $language['layout']->lblJobs;?></li>
-        	                    <li><?php echo $language['layout']->lblCustomerTestimonials;?></li>
-        	                    <li><?php echo $language['layout']->lblAssociatesProgram;?></li>
-        	                    <li><?php echo $language['layout']->lblGlossaryofTerms;?></li>
-        	                    <li><?php echo $language['layout']->lblDailyShowDigest;?></li>
-        	                </ul>
-        	                <ul>
-        	                    <span><?php echo $language['layout']->lblFeedback;?></span>
-        	                    <li><?php echo $language['layout']->lblHowLikeOurWebsite;?></li>
-        	                </ul>
+                                <span><?php echo $language['layout']->lblAboutSfriendly;?></span>
+                                <li><?php echo $language['layout']->lblAbout;?></li>
+                                <li><?php echo $language['layout']->lblJobs;?></li>
+                                <li><?php echo $language['layout']->lblCustomerTestimonials;?></li>
+                                <li><?php echo $language['layout']->lblAssociatesProgram;?></li>
+                                <li><?php echo $language['layout']->lblGlossaryofTerms;?></li>
+                                <li><?php echo $language['layout']->lblDailyShowDigest;?></li>
+                            </ul>
+                            <ul>
+                                <span><?php echo $language['layout']->lblFeedback;?></span>
+                                <li><?php echo $language['layout']->lblHowLikeOurWebsite;?></li>
+                            </ul>
                         </div>
                     </div>
                         <div class="lynx_col3">

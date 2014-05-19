@@ -7,9 +7,9 @@ class syncNganLuong extends BaseController
     function __construct(){
         parent::__construct();
         $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
-        $ns = $protocol.$_SERVER['HTTP_HOST'].'/nganluong_server/sync';
+        $ns = $protocol.$_SERVER['HTTP_HOST'].'/portal/order/nganluong_sync';
         $this->nusoap_server = new soap_server(); // create soap server object
-        $this->nusoap_server->configureWSDL("NGAN LUONG SYNC WEBSERVICE POWER BY LYNX TEAM ", $ns); // wsdl cinfiguration
+        $this->nusoap_server->configureWSDL("NGAN LUONG SYNC WEBSERVICE POWER BY LYNX TEAM ", $ns, $ns); // wsdl cinfiguration
         $this->nusoap_server->wsdl->schemaTargetNamespace = $ns; // server namespace
         $this->nusoap_server->register('UpdateOrder',array('transaction_info'=>'xsd:string','order_code'=>'xsd:string','payment_id'=>'xsd:int','payment_type'=>'xsd:int','secure_code'=>'xsd:string'),array('result'=>'xsd:int'),$ns);
         $this->nusoap_server->register('RefundOrder',array('transaction_info'=>'xsd:string','order_code'=>'xsd:string','payment_id'=>'xsd:int','refund_payment_id'=>'xsd:int','payment_type'=>'xsd:int','secure_code'=>'xsd:string'),array('result'=>'xsd:int'),$ns);
@@ -28,7 +28,7 @@ class syncNganLuong extends BaseController
         global $secure_pass;
     
         // test lưu log kiểm tra  gọi cập nhật order:
-        log_message('info', " Kết quả: ".$transaction_info." ".$order_code." ".$payment_id." ".$payment_type);
+        log_message('INFO', " UpdateOrder: ".$transaction_info." ".$order_code." ".$payment_id." ".$payment_type);
     
         // Kiểm tra chuỗi bảo mật
         $secure_code_new = md5($transaction_info.' '.$order_code.' '.$payment_id.' '.$payment_type.' '.$secure_pass);
