@@ -14,7 +14,7 @@ class userOrderHistory extends BaseController
     );
     protected $_js = array('/js/controller/PortalUserOrderHistoryController.js'
                             ,'/js/services/PortalUserOrderHistoryServiceClient.js');
-    protected $_data = [];
+    protected $_data = array();
     
     /**
      * show information page
