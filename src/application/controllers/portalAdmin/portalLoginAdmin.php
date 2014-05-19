@@ -2,7 +2,7 @@
 if (! defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class portalLoginAdmin extends AdminControllerAbstract
+class portalLoginAdmin extends PortalAdminControllerAbstract
 {
     protected $authorization_required = FALSE;
     function showpage()
