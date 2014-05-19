@@ -110,7 +110,7 @@ class userSecurity extends BaseController
         $portalBizUserHistory = new PortalBizUserHistory();
         $result = new AsyncResult();
         $result->isError = false;
-        $result->data = $portalBizUserHistory->getLastLoginTime(User::getCurrentUser(),$time);
+        $result->data = $portalBizUserHistory->getLastLoginTime(User::getCurrentUser()->id,$time);
         $this->output->set_content_type('application/json')->set_output(json_encode($result, true));
     }
 }

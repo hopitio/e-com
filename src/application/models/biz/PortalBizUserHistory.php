@@ -86,10 +86,10 @@ class PortalBizUserHistory extends PortalBizBase
      * lấy số lần đăng nhập cuối cùng 
      * @param User $user
      */
-    function getLastLoginTime($userId,$user,$countTime)
+    function getLastLoginTime($userId,$countTime)
     {
         $portalHistoryModel = new PortalModelUserHistory();
-        $portalHistoryModel->fk_user =  $user->id;
+        $portalHistoryModel->fk_user =  $userId;
         $portalHistoryModel->action_name = DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN;
         $model = $portalHistoryModel->getMutilCondition(T_user_history::last_activity,'DESC',$countTime,0);
         return $model;
