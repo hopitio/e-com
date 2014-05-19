@@ -4,7 +4,7 @@
  */
 defined('BASEPATH') or die('no direct script access allowed');
 
-class userDetail extends BaseController
+class userDetail extends PortalAdminControllerAbstract
 {
 
     protected $js = array(

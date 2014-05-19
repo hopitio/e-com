@@ -80,8 +80,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/user/(:num)/contact'] = 'portalAdmin/userDetail/contact/$1';
         $route['portal/__admin/user/(:num)/setting'] = 'portalAdmin/userDetail/setting/$1';
         
-        
         $route['portal/__mock/ngan_luong_payment'] = 'mock/mockNganLuongPayment/mockPaymentNganLuong';
+        $route['portal/__admin/login'] = 'admin/loginAdmin/showpage';
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -113,6 +113,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/user/(:num)/open_login'] = 'portalAdmin/userDetail/openLoginAccount/$1';
         
         $route['portal/order/nganluong_sync'] = 'portalController/syncNganLuong/index';
+        $route['portal/__admin/login'] = 'admin/loginAdmin/login';
     }
 }
 //

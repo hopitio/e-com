@@ -4,7 +4,7 @@
  */
 defined('BASEPATH') or die('no direct script access allowed');
 
-class dashboard extends BaseController
+class dashboard extends PortalAdminControllerAbstract
 {
 
     function __construct()

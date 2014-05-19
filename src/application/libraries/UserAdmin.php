@@ -14,7 +14,11 @@ class UserAdmin extends User
      * Lấy đường dẫn sử dụng để login.
      */
     function getLoginAuthenUrl(){
-        return '/__admin/login';
+        if(strpos($_SERVER['REQUEST_URI'],'/portal/')){
+            return '/portal/__admin/login';
+        }else{
+            return '/__admin/login';
+        }
     }
     
     /**

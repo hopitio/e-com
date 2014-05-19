@@ -1,6 +1,6 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
-abstract class AdminControllerAbstract extends BaseController
+abstract class PortalAdminControllerAbstract extends BaseController
 {
     protected $authorization_required = false;
     /**
@@ -16,8 +16,8 @@ abstract class AdminControllerAbstract extends BaseController
     public function init()
     {
         parent::init();
-
-        if(!is_a($this->obj_user,UserAdmin))
+         
+        if(!is_a($this->obj_user,'UserAdmin'))
         {
             throw new Lynx_AuthenticationException('Không có quyền truy cập admin');
         }

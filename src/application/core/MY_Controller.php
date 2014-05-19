@@ -11,11 +11,13 @@ require_once APPPATH . 'libraries/mail/mail.inc';
 require_once APPPATH . 'libraries/security/security.inc';
 require_once APPPATH . 'libraries/Database.inc';
 require_once APPPATH . 'libraries/AsyncResult.php';
-require_once APPPATH . 'controllers/ControllerBase.php';
 require_once APPPATH . 'models/biz.inc';
 require_once APPPATH . 'models/modelsLayer.inc';
 require_once APPPATH . 'libraries/nusoap/nusoap.inc';
 require_once APPPATH . 'libraries/thirdParty/nganluong/nganluong.inc';
+
+require_once APPPATH . 'controllers/ControllerBase.php';
+require_once APPPATH . 'controllers/portalAdmin/PortalAdminControllerAbstract.php';
 
 
 
