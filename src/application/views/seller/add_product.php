@@ -24,7 +24,7 @@
 <script>
     (function(window, $, angular, config) {
         window.addProductCtrl = function($scope, $http) {
-            $scope.categoryTree = [];
+            $scope.categoryTree = array();
             $scope.selectedCategory;
 
             $http.get(config.categoryService, {cache: false}).success(function(categoryData) {

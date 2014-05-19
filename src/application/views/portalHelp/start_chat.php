@@ -84,7 +84,7 @@ defined('BASEPATH') or die('no direct script access allowed');
     (function(window, $, Math, scriptData) {
         window.chatCtrl = function($scope, $chat) {
             $scope.typing;
-            $scope.messages = [];
+            $scope.messages = array();
             $scope.error;
             $scope.supporter;
 
