@@ -15,7 +15,7 @@ class userSecurity extends BaseController
     );
     protected $_js = array('/js/controller/PortalUserSecurityAccountController.js'
                             ,'/js/services/PortalUserSecurityServiceClient.js');
-    protected $_data = [];
+    protected $_data = array();
     
     /**
      * show information page
