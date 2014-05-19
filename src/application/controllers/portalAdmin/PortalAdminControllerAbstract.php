@@ -19,7 +19,8 @@ abstract class PortalAdminControllerAbstract extends BaseController
          
         if(!is_a($this->obj_user,'UserAdmin'))
         {
-            throw new Lynx_AuthenticationException('Không có quyền truy cập admin');
+            $this->obj_user = new UserAdmin();
+            $this->set_obj_user_to_me($this->obj_user);
         }
         // authorization
         if ($this->authorization_required)

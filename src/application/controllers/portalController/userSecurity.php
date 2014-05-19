@@ -21,14 +21,7 @@ class userSecurity extends BaseController
      * show information page
      */
     function showPage(){
-    
-//         $viewdata = array();
-//         $viewdata['fristName'] = $this->obj_user->firstname;
-//         $viewdata['lastName'] = $this->obj_user->lastname;
-//         $viewdata['sex'] = $this->obj_user->sex;
-//         $viewdata['dob'] = $this->obj_user->DOB;
-//         $this->_data = $viewdata;
-        
+
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
         ->setData($this->_data)
         ->setJavascript($this->_js)
