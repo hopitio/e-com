@@ -8,7 +8,7 @@ class contact extends BaseController
         '/style/myaccount.css'
     );
     protected $_js = array('/js/controller/ChangeContactController.js');
-    protected $_data = [];
+    protected $_data = array();
     /**
      * show information page
      */

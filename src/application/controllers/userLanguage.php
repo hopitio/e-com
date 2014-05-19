@@ -13,7 +13,7 @@ class userLanguage extends BaseController
         '/style/myaccount.css'
     );
     protected $_js = array();
-    protected $_data = [];
+    protected $_data = array();
     
     function submitChangeXhr(){
         $newLanguage = $this->input->post('languageKey');
