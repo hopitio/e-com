@@ -8,10 +8,10 @@ if (!defined('BASEPATH'))
 
 $route['default_controller'] = "home/showHome";
 $route['404_override'] = 'error/notFound';
+$route['portal/order/nganluong_sync'] = 'portalController/syncNganLuong';
 
 if (array_key_exists('REQUEST_METHOD', $_SERVER))
 {
-
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
         $route['home'] = 'home/showHome';
@@ -72,8 +72,6 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/verify'] = 'portalController/orderPlace/orderPlaceVerifyOrder';
         $route['portal/order/nganluong_callback'] = 'portalController/orderNganLuongCallback/showPage';
         
-        $route['portal/order/nganluong_sync'] = 'portalController/syncNganLuong/index';
-        
         $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
         $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
@@ -113,7 +111,6 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/user/(:num)/open_login'] = 'portalAdmin/userDetail/openLoginAccount/$1';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';
         
-        $route['portal/order/nganluong_sync'] = 'portalController/syncNganLuong/index';
         
     }
 }
