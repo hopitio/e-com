@@ -83,7 +83,7 @@ class SectionMapper extends MapperAbstract
      * @param type $callback
      * @return SectionDomain
      */
-    function find($callback)
+    function find($callback = null)
     {
         $this->onBeforeQuery();
         return parent::find($callback);

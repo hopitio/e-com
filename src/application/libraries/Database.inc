@@ -1,6 +1,7 @@
 <?php
 
 defined("DS") or define("DS", DIRECTORY_SEPARATOR);
+require_once APPPATH . 'libraries' . DS . 'caculation' . DS . 'caculation.ini.php';
 
 require_once APPPATH . "ORM" . DS . "database" . DS . "DB.php";
 require_once APPPATH . "ORM" . DS . "database" . DS . "Query.php";
@@ -16,6 +17,7 @@ require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductAttributeType
 require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductAttributeDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "TaxDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductDomain.php";
+require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductImageDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductFixedDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "FeatureProductDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "CategoryDomain.php";
@@ -40,6 +42,7 @@ require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListMaterialMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductAttributeTypeMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductAttributeMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "TaxMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductImageMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductFixedMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "FeatureProductMapper.php";

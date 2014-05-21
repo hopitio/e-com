@@ -62,6 +62,12 @@ class ProductMapper extends MapperAbstract
         return $this;
     }
 
+    function filterStatus($int)
+    {
+        $this->_query->where('`status`=' . intval($int));
+        return $this;
+    }
+
     /**
      * 
      * @param type $bool
@@ -118,7 +124,8 @@ class ProductMapper extends MapperAbstract
         parent::makeDomainCallback($domainInstance);
         if ($this->_autoloadAttributes)
         {
-            $this->loadAttributes($domainInstance);
+            $this->loadAttributes($domainInstance, $this->_attributeLanguage);
+            $this->loadImages($domainInstance);
         }
         if ($this->_autoloadTaxes)
         {
@@ -164,6 +171,12 @@ class ProductMapper extends MapperAbstract
         {
             $domain->addTax($tax);
         }
+    }
+
+    function loadImages(&$domain)
+    {
+        $images = ProductImageMapper::make()->filterProduct($domain->id)->findAll();
+        $domain->setImages(is_array($images) ? $images : array());
     }
 
     /**

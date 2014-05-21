@@ -25,7 +25,7 @@ class ProductAttributeDomain extends ProductAttributeTypeDomain
             case static::DT_ENUM:
                 if ($this->_trueValue === false)
                 {
-                    $this->_trueValue = ListMapper::make()->findById($this->valueEnum);
+                    $this->_trueValue = ListMapper::make()->filterID($this->valueEnum)->find();
                 }
                 return $this->_trueValue;
             case static::DT_NUMBER:
@@ -41,7 +41,7 @@ class ProductAttributeDomain extends ProductAttributeTypeDomain
                 }
                 return $this->_trueValue;
             default:
-                throw new Exception("Data type not supported");
+                return "Datatype '{$this->dataType}' not supported";
         }
     }
 

@@ -15,7 +15,8 @@ class CategoryMapper extends MapperAbstract
 
         $map = array(
             'fkParent'    => 'fk_parent',
-            'isContainer' => 'is_container'
+            'isContainer' => 'is_container',
+            'pathSort'    => 'path_sort'
         );
 
         parent::__construct($domain, $query, $map);
@@ -34,7 +35,6 @@ class CategoryMapper extends MapperAbstract
         $this->_query->where('c.id=' . intval($id), __FUNCTION__);
         return $this;
     }
-    
 
     function select($fields = 'c.*, cl.name, cl.description, cl.language, cl.name, cl.slide_images, cl.side_images,cl.product_section_image', $reset = true)
     {

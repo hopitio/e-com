@@ -53,13 +53,13 @@ class cart extends BaseController
         foreach ($products as $product)
         {
             /* @var $product ProductFixedDomain */
-            $images = $product->getImages();
+            $images = $product->getImages('thumbnail');
             $obj = (array) $product;
             $obj['quantity'] = $product->quantity;
-            $obj['price'] = $product->calculatePrice('USD');
+            $obj['price'] = $product->getFinalPriceMoney('VND')->getAmount();
             $obj['name'] = (string) $product->getName()->getTrueValue();
-            $obj['taxes'] = $product->calculateTaxes('USD');
-            $obj['thumbnail'] = (string) $images[0]->getTrueValue();
+            $obj['taxes'] = $product->calculateTaxes('VND')->getAmount();
+            $obj['thumbnail'] = (string) $images[0]->url;
             $json[] = $obj;
         }
         echo json_encode($json);

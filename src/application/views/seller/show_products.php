@@ -11,7 +11,7 @@
             <th width="10%" class="center"><input type="checkbox" class="chk-all" data-target="chk" data-container="main-table"></th>
             <th width="10%">ID</th>
             <th width="40%">Name</th>
-            <th width="15%">SKU</th>
+            <th width="15%">SKU|UPC</th>
             <th width="10%">Price</th>
             <th width="15%">Action</th>
         </tr>

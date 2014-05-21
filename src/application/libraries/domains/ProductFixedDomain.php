@@ -11,9 +11,14 @@ class ProductFixedDomain extends ProductDomain
         return $this->_getAttributeByName('name');
     }
 
-    function getSKU()
+    function getStorageCode()
     {
-        return $this->_getAttributeByName('SKU');
+        return $this->_getAttributeByName('storage_code');
+    }
+
+    function getStorageCodeType()
+    {
+        return $this->_getAttributeByName('storage_code_type');
     }
 
     /** @return ProductAttributeDomain */
@@ -26,12 +31,6 @@ class ProductFixedDomain extends ProductDomain
     function getTags()
     {
         return $this->_getAttributeByName('tag');
-    }
-
-    /** @return ProductAttributeDomain */
-    function getImages()
-    {
-        return $this->_getAttributeByName('image');
     }
 
     /** @return ProductAttributeDomain */
@@ -64,50 +63,58 @@ class ProductFixedDomain extends ProductDomain
         return $this->_getAttributeByName('occasion');
     }
 
-    /** @return ProductAttributeDomain */
-    function getPrice($currency)
+    /**
+     * 
+     * @param string $currency [optional] default 'VND'
+     * @return Money
+     */
+    function getPriceMoney($currency = 'VND')
     {
-        return $price = $this->_getAttributeByName('price');
+        $attr = $this->_getAttributeByName('price');
+        $price = $attr ? $attr->getTrueValue() : 0;
+        $money = new Money($price, new Currency('VND'));
+
+        return $money->convert(new Currency($currency));
     }
 
-    function getPriceString($currency)
+    function getMetaTitle()
     {
-        $price = $this->_getAttributeByName('price')->getTrueValue();
-        if (!$price)
-        {
-            return false;
-        }
-        $value = $price;
+        return $this->_getAttributeByName('meta_title');
+    }
 
-        switch ($currency) {
-            case 'USD':
-                return '$' . $value;
-            case 'VND':
-                return $value . 'VND';
-        }
+    function getMetaKeywords()
+    {
+        return $this->_getAttributeByName('meta_keywords');
+    }
 
-        return false;
+    function getMetaDescription()
+    {
+        return $this->_getAttributeByName('meta_description');
     }
 
     /**
-     * Tính toán giá bán cuối cùng
-     * @param type $currency
-     * @return double
+     * 
+     * @param string $toCurrency [optional] default 'VND'
+     * @return Money
      */
-    function calculatePrice($currency)
-    {
-        return ($this->getPrice($currency)->getTrueValue() - $this->discount);
-    }
-
     function calculateTaxes($toCurrency = 'USD')
     {
-        $total = 0;
-        $price = $this->calculatePrice($toCurrency);
+        $total = new Money(0, new Currency('VND'));
+        $price = $this->getPriceMoney('VND');
         foreach ($this->_taxes as $tax)
         {
-            $total += $tax->costPercent * $price + $tax->costFixed;
+            $total = $total->add($price->multiply($tax->costPercent))->add(new Money($tax->costFixed, new Currency('VND')));
         }
-        return $total;
+        return $total->convert(new Currency($toCurrency));
+    }
+
+    /**
+     * @param string $currency [optional] default 'VND'
+     * @return Money
+     */
+    function getFinalPriceMoney($currency = 'VND')
+    {
+        return $this->getPriceMoney($currency)->add($this->calculateTaxes($currency));
     }
 
     /** @return ProductAttributeDomain */

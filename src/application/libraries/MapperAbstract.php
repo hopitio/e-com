@@ -133,14 +133,14 @@ abstract class MapperAbstract
 
     /**
      * 
-     * @return array(key => value)
+     * @return array key => value
      */
     function findAssoc()
     {
         return DB::getInstance()->GetAssoc($this->_query, $this->_queryParams);
     }
 
-    function find($callback)
+    function find($callback = null)
     {
         $record = DB::getInstance()->GetRow($this->_query, $this->_queryParams);
         $domain = $this->makeDomain($record);
