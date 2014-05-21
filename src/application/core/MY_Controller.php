@@ -16,6 +16,10 @@ require_once APPPATH . 'models/modelsLayer.inc';
 require_once APPPATH . 'libraries/nusoap/nusoap.inc';
 require_once APPPATH . 'libraries/thirdParty/nganluong/nganluong.inc';
 
+require_once APPPATH . 'libraries/AbstractUser.php';
+require_once APPPATH . 'libraries/User.php';
+require_once APPPATH . 'libraries/UserAdmin.php';
+
 require_once APPPATH . 'controllers/ControllerBase.php';
 require_once APPPATH . 'controllers/portalAdmin/PortalAdminControllerAbstract.php';
 require_once APPPATH . 'controllers/admin/AdminControllerAbstract.php';
@@ -36,6 +40,7 @@ class MY_Controller extends CI_Controller
         'status_code' => 'not_authorized',
         'status_message' => 'LỖI XÁC MINH',
     );
+    protected $is_admin_page = FALSE;
     protected $_languageResource;
     protected $obj_user;
     protected $obj_setting;
@@ -225,14 +230,39 @@ class MY_Controller extends CI_Controller
         $this->set_obj_user_to_me();
         $this->set_datetimes_to_me();
 
+        
         // authorization
-        if ($this->authorization_required)
-        {
-            if (!$this->obj_user->is_authorized)
-            {
+        if($this->is_admin_page){
+            if(get_class($this->obj_user) != 'UserAdmin'){
+                $this->obj_user = new UserAdmin();
+                $this->set_obj_user_to_me($this->obj_user);
                 throw new Lynx_AuthenticationException('Không có quyền truy cập');
+            }else{
+                if ($this->authorization_required)
+                {
+                    if (!$this->obj_user->is_authorized)
+                    {
+                        throw new Lynx_AuthenticationException('Không có quyền truy cập');
+                    }
+                }
+            }
+        }else{
+            if(get_class($this->obj_user) != 'User'){
+                $this->obj_user = new User();
+                $this->set_obj_user_to_me($this->obj_user);
+                throw new Lynx_AuthenticationException('Không có quyền truy cập');
+            }else{
+                if ($this->authorization_required)
+                {
+                    if (!$this->obj_user->is_authorized)
+                    {
+                        throw new Lynx_AuthenticationException('Không có quyền truy cập');
+                    }
+                }
             }
         }
+        
+
     }
 
     /**
@@ -261,9 +291,15 @@ class MY_Controller extends CI_Controller
         //HOTFIX for phase 1, portal vs sub in one application
         if(strpos($dst,'portal/') !== FALSE)
         {
-            return str_replace('{cp}',urlencode(base_url($dst)),$this->config->item('portal_login_url'));
+            if(!$this->is_admin_page){
+                return str_replace('{cp}',urlencode(base_url($dst)),$this->config->item('portal_login_url'));
+            }else{
+                return str_replace('{cp}',urlencode(base_url($dst)),$this->config->item('portal_admin_login_url'));
+            }
+        }else{
+            return $this->obj_user->getLoginUrl();
         }
-        return user::getCurrentUser()->getLoginAuthenUrl();
+       
     }
 
     /**
@@ -297,7 +333,7 @@ class MY_Controller extends CI_Controller
      */
     protected function set_obj_user_to_me($objUser = null)
     {
-        $objUser = $objUser == null ? User::getCurrentUser() : $objUser;
+        $objUser = $objUser == null ? AbstractUser::getCurrentUser($this->is_admin_page) : $objUser;
         $this->obj_user = $objUser;
         $this->session->set_userdata(USER_SESSION, $objUser);
         return;

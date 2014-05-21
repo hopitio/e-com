@@ -1,5 +1,6 @@
 <?php
 class BaseController extends MY_Controller{
+    protected  $is_admin_page = FALSE;
     /**
      * Lấy thông tin Query string.
      * @return array

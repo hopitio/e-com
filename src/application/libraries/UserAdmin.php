@@ -8,11 +8,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * @author ANLT <lethanhan.bkaptech@gmail.com>
  * @copyright 2014
 */
-class UserAdmin extends User
+class UserAdmin extends AbstractUser
 {
-    /**
-     * Lấy đường dẫn sử dụng để login.
-     */
     function getLoginAuthenUrl(){
         if(strpos($_SERVER['REQUEST_URI'],'/portal/')){
             return '/portal/__admin/login';
@@ -20,17 +17,5 @@ class UserAdmin extends User
             return '/__admin/login';
         }
     }
-    
-    /**
-     * 
-     * @return AdminUser
-     */
-    static function getCurrentUser(){
-        $objUser = get_instance()->session->userdata(USER_SESSION);
-        if(is_a($objUser, 'UserAdmin')){
-            return $objUser;
-        }else{
-            return new User();
-        }
-    }
+
 }
