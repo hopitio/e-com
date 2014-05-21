@@ -39,7 +39,8 @@
 	
 }
 .lynx_row .lynx_fieldName {
-    width: 200px;
+    width: 100px;
+	display:inline-block;
     margin-right:10px;
 	margin-bottom:10px;
 	text-align: left;

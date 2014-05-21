@@ -11,5 +11,5 @@ function PortalUserOrderHistoryServiceClient($http){
               errorCallback(xhr,status);
           }
       });
-    }
+    };
 }

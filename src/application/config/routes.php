@@ -80,6 +80,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         
         $route['portal/__mock/ngan_luong_payment'] = 'mock/mockNganLuongPayment/mockPaymentNganLuong';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/showpage';
+        $route['portal/__admin/order_find'] = 'portalAdmin/orderList/showpage';
+        //$route['portal/__admin/order/(:num)/invoice'] = 'portalAdmin/orderList/getOrderDetailXhr';
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -103,15 +105,14 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
         $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
         $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
+        
         $route['portal/__admin/user_find_post_xhr'] ="portalAdmin/userList/searchUserInformationXhr";
-        
-        
         $route['portal/__admin/user/(:num)/history'] = 'portalAdmin/userDetail/history/$1';
         $route['portal/__admin/user/(:num)/reject_login'] = 'portalAdmin/userDetail/rejectLoginAccount/$1';
         $route['portal/__admin/user/(:num)/open_login'] = 'portalAdmin/userDetail/openLoginAccount/$1';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';
         
-        
+        $route['portal/__admin/order_find_post_xhr'] ="portalAdmin/orderList/findOrderXhr";
     }
 }
 //

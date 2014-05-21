@@ -39,4 +39,48 @@ class PortalModelOrder extends PortalModelBase
         $query = $this->_dbPortal->query($sql);
         return $query->result();
     }
+    
+    function findOrder($userAccount, $orderId, $createdDateStart, $createdDateEnd, $limit, $offset){
+        $sql = "SELECT t_order.*,t_user.id AS t_user_id, t_user.account AS t_user_account
+                FROM t_order INNER JOIN t_user ON t_order.fk_user = t_user.id
+                WHERE 
+                    (? = '' OR t_user.account LIKE CONCAT('%',?,'%'))
+                    AND 
+                    (? = '' OR t_order.id LIKE CONCAT('%',?,'%'))
+                    AND 
+                    (? = '1970-01-01' OR t_order.created_date > ?)
+                    AND
+                    (? = '1970-01-01' OR t_order.created_date < ?)
+                ORDER BY t_order.created_date DESC
+                LIMIT {$offset},{$limit}";
+        $param = array(
+            $userAccount,$userAccount,
+            $orderId,$orderId,
+            $createdDateStart,$createdDateStart,
+            $createdDateEnd,$createdDateEnd
+        );
+        $query = $this->_dbPortal->query($sql,$param);
+        return $query->result();
+    }
+    function findOrderCount($userAccount, $orderId, $createdDateStart, $createdDateEnd){
+        $sql = "SELECT count(t_order.id) as count
+                FROM t_order INNER JOIN t_user ON t_order.fk_user = t_user.id
+                WHERE
+                    (? = '' OR t_user.account LIKE CONCAT('%',?,'%'))
+                    AND
+                    (? = '' OR t_order.id LIKE CONCAT('%',?,'%'))
+                    AND
+                    (? = '1970-01-01' OR t_order.created_date > ?)
+                    AND
+                    (? = '1970-01-01' OR t_order.created_date < ?)";
+        $param = array(
+            $userAccount,$userAccount,
+            $orderId,$orderId,
+            $createdDateStart,$createdDateStart,
+            $createdDateEnd,$createdDateEnd
+        );
+        $query = $this->_dbPortal->query($sql,$param);
+
+        return $query->result();
+    }
 }

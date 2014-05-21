@@ -15,7 +15,6 @@ abstract class AbstractUser{
      * Lấy đường dẫn sử dụng để login
      */
     function getLoginUrl(){
-        
         return $this->getLoginAuthenUrl();
     }
     
@@ -23,7 +22,6 @@ abstract class AbstractUser{
      * Lấy đường dẫn sử dụng để login.
      */
     static function getCurrentUser($is_admin = FALSE){
-
         $objUser = get_instance()->session->userdata(USER_SESSION);
         if($is_admin){
             if(is_a($objUser, 'UserAdmin')){
