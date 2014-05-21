@@ -68,11 +68,11 @@ class product extends BaseController
         $json = array();
         foreach ($products as $product)
         {
-            $images = $product->getImages();
+            $images = $product->getImages('thumbnail');
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
-            $obj['thumbnail'] = $images ? strval($images[0]->getTrueValue()) : '';
-            $obj['priceString'] = strval($product->getPriceString('VND'));
+            $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
+            $obj['priceString'] = strval($product->getPriceMoney('VND'));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $json[] = $obj;
         }

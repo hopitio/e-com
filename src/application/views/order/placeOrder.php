@@ -20,16 +20,16 @@ $json = array(
 
 foreach ($cartContents as $cartInstance)
 {
-    $images = $cartInstance->getImages();
+    $images = $cartInstance->getImages('thumbnail');
     $json_product = array(
         'id'          => $cartInstance->id,
         'name'        => $cartInstance->getName()->getTrueValue(),
-        'image'       => base_url($images[0]->getTrueValue()),
+        'image'       => base_url($images[0]->url),
         'shortDesc'   => $cartInstance->getDescription()->getTrueValue(),
-        'price'       => $cartInstance->getPrice('VND')->getTrueValue(),
+        'price'       => $cartInstance->getPriceMoney('VND')->getAmount(),
         'quantity'    => $cartInstance->quantity,
-        'totalPrice'  => $cartInstance->getPrice('VND')->getTrueValue() * $cartInstance->quantity,
-        'actualPrice' => $cartInstance->calculatePrice('VND') * $cartInstance->quantity,
+        'totalPrice'  => $cartInstance->getPriceMoney('VND')->getAmount() * $cartInstance->quantity,
+        'actualPrice' => $cartInstance->getPriceMoney('VND')->getAmount() * $cartInstance->quantity,
         'taxes'       => array(),
         'sellerName'  => $cartInstance->sellerName,
         'sid'         => $cartInstance->sid

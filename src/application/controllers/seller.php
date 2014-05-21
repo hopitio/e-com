@@ -3,6 +3,12 @@
 class seller extends BaseController
 {
 
+    /** @var ProductModel */
+    public $productModel;
+
+    /** @var FileModel */
+    public $fileModel;
+
     /** @var SellerDomain */
     protected $sellerInstance;
 
@@ -28,9 +34,6 @@ class seller extends BaseController
     {
         LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER)
                 //->setData(array('categories' => $this->sellerInstance->getCategories()))
-                ->setJavascript(array(
-                    '/js/angular.min.js'
-                ))
                 ->render('seller/show_products');
     }
 
@@ -53,15 +56,15 @@ class seller extends BaseController
 
         foreach ($products as $product)
         {
-            $sku = $product->getSKU() ? $product->getSKU()->getTrueValue() : '';
+            $storageCode = (string) $product->getStorageCode();
 
             $aaData[] = array(
                 $product->id,
                 $product->id,
                 $product->getName()->getTrueValue(),
-                $sku,
-                $product->getPriceString('VND'),
-                'url' => '/product/details/' . $product->id
+                $storageCode,
+                format_money($product->getPriceMoney('VND')->getAmount()),
+                'url' => '/seller/product_details/' . $product->id
             );
         }
 
@@ -73,9 +76,110 @@ class seller extends BaseController
         
     }
 
-    function product_details($productID)
+    function tax_product_service()
     {
-        
+        $productID = $this->input->get('productID');
+        $language = $this->input->get('language');
+        if (!$productID || !$language)
+        {
+            throw new Lynx_RequestException('$productID hoac $language null');
+        }
+        header('Content-type: application/json');
+        $taxes = TaxMapper::make()
+                ->select('tax.*, tl.name, tl.language', true)
+                ->filterProduct($productID)
+                ->setLanguage($language)
+                ->findAll();
+        echo json_encode($taxes);
+    }
+
+    protected function getProductModel()
+    {
+        $this->load->model('modelEx/ProductModel', 'productModel');
+    }
+
+    protected function getFileModel()
+    {
+        $this->load->model('modelEx/FileModel', 'fileModel');
+    }
+
+    function update_product($redirect)
+    {
+        $this->getProductModel();
+        $this->getFileModel();
+        $data = array(
+            'seller'          => $this->sellerInstance->id,
+            'id'              => (int) $this->input->post('hdnProductID'),
+            'language'        => $this->input->post('hdnLanguage'),
+            'storageCodeType' => $this->input->post('selCodeType'),
+            'status'          => $this->input->post('chkStatus'),
+            'attr'            => $this->input->post('pattr')
+        );
+        $data['categoryID'] = $data['id'] ? $this->input->post('radCate') : $this->input->post('hdnCategory');
+        $data['storateCode'] = $data['storageCodeType'] ? $this->input->post('txtCode') : null;
+        $files = isset($_FILES) && !empty($_FILES) ? $_FILES : array();
+        $productID = $this->productModel->updateProduct($data);
+        foreach ($files as $fileInfo)
+        {
+            if (!$fileInfo['name'] || !is_uploaded_file($fileInfo['tmp_name']) || !file_exists($fileInfo['tmp_name']))
+            {
+                continue;
+            }
+            $fileID = $this->fileModel->handleImageUpload($fileInfo);
+            $this->productModel->addProductImage($productID, $fileID);
+        }
+        if ($redirect == 'apply')
+        {
+            redirect('/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' .$this->input->post('hdnTab'));
+        }
+        elseif ($redirect == 'save_n_quit')
+        {
+            redirect('/seller/show_products');
+        }
+    }
+
+    function product_details($productID = 0)
+    {
+        $language = $this->input->get('language');
+        if (!$language)
+        {
+            $language = 'VN-VI';
+        }
+        $product = ProductFixedMapper::make()
+                ->autoloadAttributes()
+                ->setLanguage($language)
+                ->filterID($productID)
+                ->find();
+        if ($productID && !$product->id)
+        {
+            throw new Lynx_RoutingException("Product not found");
+        }
+        $categories = CategoryMapper::make()->setLanguage($language)->findAll();
+        $taxes = TaxMapper::make()
+                ->filterSeller(User::getCurrentUser()->id)
+                ->setLanguage($language)
+                ->select('tax.*, tl.language, tl.name', true)
+                ->findAll();
+        LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER)
+                ->setData(array(
+                    'product'     => $product,
+                    'lang'        => $language,
+                    'categories'  => $categories,
+                    'taxeOptions' => $taxes
+                ))
+                ->render('seller/product_details');
+    }
+
+    function addTax()
+    {
+        $this->getProductModel();
+        $this->productModel->addTax($this->input->post('productID'), $this->input->post('taxID'));
+    }
+
+    function deleteTax()
+    {
+        $this->getProductModel();
+        $this->productModel->deleteTax($this->input->post('productID'), $this->input->post('taxID'));
     }
 
     function category_service($parentCategory = NULL)
@@ -89,9 +193,6 @@ class seller extends BaseController
     {
         LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER)
                 //->setData(array('categories' => $this->sellerInstance->getCategories()))
-                ->setJavascript(array(
-                    '/js/angular.min.js'
-                ))
                 ->render('seller/add_product');
     }
 

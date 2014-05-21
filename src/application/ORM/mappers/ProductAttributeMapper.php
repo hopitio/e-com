@@ -12,16 +12,16 @@ class ProductAttributeMapper extends MapperAbstract
                 ->innerJoin('t_product_attribute_type pat', 'pa.fk_attribute_type = pat.id');
 
         $map = array(
-            'fkProduct' => 'fk_product',
+            'fkProduct'       => 'fk_product',
             'fkAttributeType' => 'fk_attribute_type',
-            'valueNumber' => 'value_number',
-            'valueEnum' => 'value_enum',
-            'valueText' => 'value_text',
-            'valueVarchar' => 'value_varchar',
-            'dataType' => 'datatype',
-            'fkEnumRef' => 'fk_enum_ref',
-            'multiLanguage' => 'multi_language',
-            'repeatingGroup' => 'repeating_group'
+            'valueNumber'     => 'value_number',
+            'valueEnum'       => 'value_enum',
+            'valueText'       => 'value_text',
+            'valueVarchar'    => 'value_varchar',
+            'dataType'        => 'datatype',
+            'fkEnumRef'       => 'fk_enum_ref',
+            'multiLanguage'   => 'multi_language',
+            'repeatingGroup'  => 'repeating_group'
         );
 
         parent::__construct('ProductAttributeDomain', $query, $map);
@@ -31,6 +31,21 @@ class ProductAttributeMapper extends MapperAbstract
     {
         $this->_query->where('fk_product=?', __FUNCTION__);
         $this->_queryParams[__FUNCTION__] = $product_id;
+        return $this;
+    }
+
+    function filterAttributeType($idOrCode)
+    {
+        if (is_numeric($idOrCode))
+        {
+            $this->_query->where('pat.id=?', __FUNCTION__);
+            $idOrCode = intval($idOrCode);
+        }
+        else
+        {
+            $this->_query->where('pat.codename=?', __FUNCTION__);
+        }
+        $this->_queryParams[__FUNCTION__] = $idOrCode;
         return $this;
     }
 

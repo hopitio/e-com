@@ -3,9 +3,9 @@ defined('BASEPATH') or die('no direct script access allowed');
 
 /* @var $product ProductFixedDomain */
 $images = array();
-foreach ($product->getImages() as $attr)
+foreach ($product->getImages('baseImage') as $attr)
 {
-    $images[] = (string) $attr->getTrueValue();
+    $images[] = (string) $attr->url;
 }
 ?>
 <div id="product-details-ctrl" ng-controller="productDetailsCtrl">
@@ -32,7 +32,7 @@ foreach ($product->getImages() as $attr)
         <form class="lynx_productChoicePannel lynx_productHead" method="post" id="frm-main">
             <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
             <div class="lynx_productName"> <?php echo $product->getName()->getTrueValue() ?> </div>
-            <div class="lynx_productPrice"> <?php echo $product->getPriceString('VND') ?> </div>
+            <div class="lynx_productPrice"> <?php echo $product->getPriceMoney('VND') ?> </div>
             <div class="lynx_productShipping"> Ships Free ! </div>
     <!--        <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>

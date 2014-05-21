@@ -1,5 +1,21 @@
 <?php
 defined('BASEPATH') or die('No direct script access allowed');
+require_once __DIR__ . '/HTMLAbstract.php';
+require_once __DIR__ . '/ControlAbstract.php';
+require_once __DIR__ . '/InputAbstract.php';
+require_once __DIR__ . '/HTMLDecoratorAbstract.php';
+
+require_once __DIR__ . '/RadioInput.php';
+require_once __DIR__ . '/CheckboxInput.php';
+require_once __DIR__ . '/TextboxInput.php';
+require_once __DIR__ . '/SelectControl.php';
+require_once __DIR__ . '/SelectEnumControl.php';
+require_once __DIR__ . '/TextareaControl.php';
+require_once __DIR__ . '/ckEditorControl.php';
+
+require_once __DIR__ . '/LabelDecorator.php';
+require_once __DIR__ . '/ControlGroupDecorator.php';
+require_once __DIR__ . '/WrapDecorator.php';
 
 class ViewHelpers
 {

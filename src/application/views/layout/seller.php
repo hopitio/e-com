@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/style/seller.css" media="all">
         <?php
         //Thêm các js riêng biệt
         foreach ($view->css as $item)
@@ -21,6 +22,25 @@
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
         <script src="/plugins/DataTables-1.10.0/media/js/jquery.dataTables.min.js"></script>
         <script src="/plugins/DataTables-1.10.0/media/js/custom.dataTables.js"></script>
+
+        <script type="text/javascript">
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+
+            }
+        </script>
+
+
+        <script type='text/javascript' src="/js/angular.min.js"></script>
+        <script type='text/javascript' src="/js/angular-route.min.js"></script> 
+        <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+        <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src="/js/ng-grid.min.js"></script>
+        <script type='text/javascript' src="/plugins/ckeditor/ckeditor.js"></script>
+        <script type='text/javascript' src="/js/main.js"></script>
+        <script type='text/javascript' src="/js/app.js"></script>
+        <script type='text/javascript' src="/js/filters.js"></script>
+        <script type='text/javascript' src="/js/directives.js"></script>
     </head>
     <body>
         <div class="lynx_container">
@@ -146,23 +166,7 @@
             </div>
         </div>
 
-        <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
 
-            }
-        </script>
-
-
-        <script type='text/javascript' src="/js/angular.min.js"></script>
-        <script type='text/javascript' src="/js/angular-route.min.js"></script>
-        <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
-        <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-        <script type='text/javascript' src="/js/ng-grid.min.js"></script>
-        <script type='text/javascript' src="/js/main.js"></script>
-        <script type='text/javascript' src="/js/app.js"></script>
-        <script type='text/javascript' src="/js/filters.js"></script>
-        <script type='text/javascript' src="/js/directives.js"></script>
 
 
         <script type='text/javascript' src="/js/controller/HeadCtrl.js"></script>

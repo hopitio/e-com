@@ -13,6 +13,6 @@ class ListDomain implements DomainInterface
 
     function __toString()
     {
-        return $this->name;
+        return (string)$this->name;
     }
 }

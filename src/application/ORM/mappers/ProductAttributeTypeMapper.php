@@ -9,12 +9,12 @@ class ProductAttributeTypeMapper extends MapperAbstract
     {
         $query = Query::make()->from('t_product_attribute_type');
         $map = array(
-            'dataType' => 'data_type',
-            'fkEnumRef' => 'fk_enum_ref',
-            'multiLanguage' => 'multi_language',
+            'dataType'       => 'datatype',
+            'fkEnumRef'      => 'fk_enum_ref',
+            'multiLanguage'  => 'multi_language',
             'repeatingGroup' => 'repeating_group'
         );
-        parent::__construct('ProductAttributeTypeMapper', $query, $map);
+        parent::__construct('ProductAttributeTypeDomain', $query, $map);
     }
 
     function filterMultiLanguage($on_off)
@@ -30,6 +30,13 @@ class ProductAttributeTypeMapper extends MapperAbstract
         return $this;
     }
 
+    function filterCode($code)
+    {
+        $this->_query->where('codename=?', __FUNCTION__);
+        $this->_queryParams[__FUNCTION__] = $code;
+        return $this;
+    }
+
     function filterRepeatingGroup($on_off)
     {
         if ($on_off)
@@ -41,6 +48,18 @@ class ProductAttributeTypeMapper extends MapperAbstract
             $this->_query->where(null, __FUNCTION__);
         }
         return $this;
+    }
+
+    /** @return ProductAttributeTypeDomain */
+    function find($callback = null)
+    {
+        return parent::find($callback);
+    }
+
+    /** @return ProductAttributeTypeDomain */
+    function findAll($callback = null)
+    {
+        return parent::findAll($callback);
     }
 
 }

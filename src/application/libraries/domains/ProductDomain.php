@@ -14,7 +14,11 @@ class ProductDomain implements DomainInterface
     public $dateCreated;
     public $countPin;
     public $countView;
+    public $status;
     protected $_attributes = array();
+
+    /** @var ProductImage */
+    protected $_images = array();
 
     /** @var TaxDomain */
     protected $_taxes = array();
@@ -35,6 +39,36 @@ class ProductDomain implements DomainInterface
             $this->_attributes[$attr->codename] = $attr;
         }
         return $this;
+    }
+
+    function setImages($arr)
+    {
+        $this->_images = $arr;
+        return $this;
+    }
+
+    function addImage(ProductImageDomain $img)
+    {
+        $this->_images[] = $img;
+        return $this;
+    }
+
+    /**
+     * 
+     * @param string $type thumbnail | baseImage | smallImage | mainImage
+     * @return ProductImageDomain
+     */
+    function getImages($type = null)
+    {
+        $ret = array();
+        foreach ($this->_images as $img)
+        {
+            if ($type === null || $img->{$type} == 1)
+            {
+                $ret[] = $img;
+            }
+        }
+        return $ret;
     }
 
     /**

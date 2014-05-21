@@ -39,7 +39,7 @@ class wishlist extends BaseController
         {
             /* @var $instance WishlistDetailDomain */
             $obj = (array) $instance;
-            $obj['price'] = $instance->getPrice('VND')->getTrueValue();
+            $obj['price'] = $instance->getPriceMoney('VND')->getAmount();
             $obj['name'] = $instance->getName()->getTrueValue();
             $json[] = $obj;
         }

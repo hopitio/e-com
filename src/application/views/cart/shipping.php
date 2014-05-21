@@ -94,8 +94,8 @@ defined('BASEPATH') or die('No direct script access allowed');
             <?php $orderSubtotal = 0; ?>
             <?php foreach ($cartContents as $cartProductInstance): ?>
                 <?php
-                $price           = $cartProductInstance->calculatePrice('VND');
-                $taxes           = $cartProductInstance->calculateTaxes('VND');
+                $price           = $cartProductInstance->getPriceMoney('VND')->getAmount();
+                $taxes           = $cartProductInstance->calculateTaxes('VND')->getAmount();
                 $productSubtotal = ($price + $taxes) * $cartProductInstance->quantity;
                 $orderSubtotal+=$productSubtotal;
                 ?>
