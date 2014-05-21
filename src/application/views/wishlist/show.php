@@ -26,7 +26,7 @@ if (!defined('BASEPATH'))
 <script>
     (function(window, $, scriptData, undefined) {
         window.showWishlistController = function($scope, $http) {
-            $scope.wislistDetails = [];
+            $scope.wislistDetails = array();
             $scope.undo;
 
             function getWishlistDetail() {

@@ -29,7 +29,7 @@ defined('BASEPATH') or die('no direct script allowed');
 <script>
     (function(window, $, scriptData, undefined) {
         window.pinShowCtrl = function($scope, $http) {
-            $scope.pinList = [];
+            $scope.pinList = array();
             $scope.undoRemoveID;
             function getList() {
                 $http.get(scriptData.service, {cache: false}).success(function(list) {

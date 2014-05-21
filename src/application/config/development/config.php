@@ -184,7 +184,7 @@ $config['directory_trigger'] = 'd'; // experimental not currently in use
   | your log files will fill up very fast.
   |
  */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 4;
 
 /*
   |--------------------------------------------------------------------------
@@ -371,6 +371,8 @@ $config['proxy_ips'] = '';
 
 $config['platform_login_url'] = 'http://localhost.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
 $config['portal_login_url'] = 'http://localhost.com/portal/login?cp={cp}';
+$config['portal_admin_login_url'] = 'http://localhost.com/portal/__admin/login?cp={cp}';
+
 $config['platform_login_callback'] = 'http://localhost.com/__portal/callback';
 $config['platform_logout'] = '/logout';
 $config['subSystemName'] = 'GIFT';

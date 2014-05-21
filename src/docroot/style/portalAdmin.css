@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+.lynx_portalAdminContainer{
+    margin: auto;
+	display:inline-block;
+}
+
+.lynx_portalAdminContainer *{
+    text-align: left;
+}
+.lynx_adminLeftMenu{
+    width:240px;
+	float:left;
+}
+.lynx_portalAdminContent {
+    min-height:205px;
+	width:960px;
+	float:left;
+    background: #FBFBFB;
+	border-right: 1px solid #DDDDDD;
+	border-left: 1px solid #DDDDDD;
+	color: #3A3A3A;
+	position: relative;
+	padding:10px;
+}
+.lynx_portalAdminContent h4{
+    border-bottom: 1px solid #DDDDDD;
+	padding-bottom:5px;
+}
+.lynx_portalAdminContent .lynx_row{
+	width:100%;
+    display: inline-block;
+	margin-bottom:10px;
+}
+.lynx_rowButton{
+	text-align: center;
+	display: block;
+}
+.lynx_rowButton button{
+	
+}
+.lynx_row .lynx_fieldName {
+    width: 200px;
+    margin-right:10px;
+	margin-bottom:10px;
+	text-align: left;
+}
+.lynx_row .lynx_fieldValue {
+    margin-right:30px;
+	margin-bottom:10px;
+	text-align: left;
+}

@@ -7,7 +7,7 @@
  * @author ANLT <lethanhan.bkaptech@gmail.com>
  * @copyright 2014
  */
-class User{
+ class User extends AbstractUser{
 
     public $is_authorized = false;
     public $languageKey = 'VN-VI';
@@ -49,22 +49,10 @@ class User{
     }
     
     /**
-     * Get current user in session.
-     * @return User
-     */
-    static function getCurrentUser(){
-        $objUser = get_instance()->session->userdata(USER_SESSION);
-        if(is_a($objUser, 'User')){
-            return $objUser;
-        }else{
-            return new User();
-        }
-    }
-    
-    /**
      * Lấy đường dẫn sử dụng để login.
      */
     function getLoginAuthenUrl(){
+        
         $url = $this->authenUrl;
         $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
         $url = str_replace('{ep}', urlencode($this->callBack), $url);
@@ -72,6 +60,7 @@ class User{
         $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
         return $url;
     }
+    
     /**
      * get logout
      * @return string

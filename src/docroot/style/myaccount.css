@@ -341,7 +341,7 @@ a.lynx_sort-menu {
     text-align: left;
 }
 .lynx_row-content .lynx_datePicketLbl{
-    width: 200px;
+    width: 200px; 
     float: left;
 }
 .lynx_row-content div.lynx_row{margin-bottom:10px;}
@@ -418,6 +418,7 @@ a.lynx_sort-menu {
 }
 .lynx_InvoiceList .lynx_invoiceList_left{
 	float:left;
+	width:265px;
 }
 .lynx_InvoiceList .lynx_invoiceList_right{
 	float:right;

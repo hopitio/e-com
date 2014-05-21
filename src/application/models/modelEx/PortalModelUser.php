@@ -180,4 +180,63 @@ class PortalModelUser extends PortalModelBase
             return true;
         }
     }
+    
+    
+    function findUsers($id,$account,$firstname,$lastname, $limit, $offset)
+    {
+        $sql = "SELECT * FROM t_user
+                    WHERE 
+                    	(t_user.id = ? OR t_user.id LIKE CONCAT('%',?,'%')) 
+                    	AND 
+                    	(t_user.firstname = ? OR t_user.firstname LIKE CONCAT('%',?,'%')) 
+                    	AND
+                    	(t_user.lastname = ? OR t_user.lastname LIKE CONCAT('%',?,'%')) 
+                    	AND
+                    	(t_user.account = ? OR t_user.account LIKE CONCAT('%',?,'%'))
+                    LIMIT {$offset},{$limit}";
+        $param = array($id,$id,$firstname,$firstname,$lastname,$lastname,$account,$account);
+        $query = $this->_dbPortal->query($sql,$param);
+        $results = $query->result();
+        $users = array();
+        foreach ($results as $result)
+        {
+            $user = new PortalModelUser();
+            $user->autoMappingObj($result);
+            $users[] = $user;
+        }
+        return $users;
+    }
+
+    function findUsersCount($id, $account, $firstname, $lastname)
+    {
+        $sql = "SELECT COUNT(id) as id FROM t_user
+        WHERE
+        (t_user.id = ? OR t_user.id LIKE CONCAT('%',?,'%'))
+        AND
+        (t_user.firstname = ? OR t_user.firstname LIKE CONCAT('%',?,'%'))
+        AND
+        (t_user.lastname = ? OR t_user.lastname LIKE CONCAT('%',?,'%'))
+        AND
+        (t_user.account = ? OR t_user.account LIKE CONCAT('%',?,'%'))";
+        $param = array(
+            $id,
+            $id,
+            $account,
+            $account,
+            $firstname,
+            $firstname,
+            $lastname,
+            $lastname
+        );
+        $query = $this->_dbPortal->query($sql, $param);
+        $results = $query->result();
+        $usersCount = 0;
+        foreach ($results as $result)
+        {
+             $usersCount = $result->id;
+        }
+        return $usersCount;
+    }
+    
+    
 }

@@ -86,11 +86,11 @@
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="<?php echo base_url('portal/signout'); ?>"><?php echo$language['layout']->lblUserLogout->__toString(); ?></a>
+                                        <a href="<?php echo $user->getLogout(); ?>"><?php echo$language['layout']->lblUserLogout->__toString(); ?></a>
                                     </li>
                                 </ul>
                             <?php else: ?>
-                                <a href="<?php echo base_url('portal/login') ?>"><?php echo $language['layout']->lblUserStatusNotSign->__toString(); ?></a>
+                                <a href="<?php echo $user->getLoginAuthenUrl(); ?>"><?php echo $language['layout']->lblUserStatusNotSign->__toString(); ?></a>
                             <?php endif; ?>
                         </div>
                         <div class="lynx_miniCart dropdown dropdown-hover">

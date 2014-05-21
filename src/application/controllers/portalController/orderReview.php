@@ -86,8 +86,6 @@ class orderReview extends BaseController
         $otherCosts =  end($orderInformation->invoice->otherCosts);
         $otherCosts->insert();
         $paymentKey = $postData['paymentChoice'];
-        $orderBiz = new PortalBizPayment();
-        $orderBiz->paymentOrderComplete($orderId, $invoiceId, $paymentKey);
         switch ($paymentKey){
         	case 'NganLuong':
         	    $this->procInformationNganLuong($orderId, $invoiceId);

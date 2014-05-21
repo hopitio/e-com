@@ -189,6 +189,10 @@ class PortalBizAccount extends PortalBizBase
         $userModel->password = $password;
         $formPlatform = $formPlatform == null ? DatabaseFixedValue::USER_PLATFORM_DEFAULT : $formPlatform;
         $result = $formPlatform == DatabaseFixedValue::USER_PLATFORM_DEFAULT ? $userModel->selectUserByUserNameAndPassoword() : $userModel->selectUserByUserName();
+        if($userModel->status != DatabaseFixedValue::USER_STATUS_OPENED)
+        {
+            return false;
+        }
         if ($result)
         {
             $user = new User();
@@ -205,7 +209,6 @@ class PortalBizAccount extends PortalBizBase
                 }
             }
             $user = $this->mappingModelWithUser($user,$userModel);
-            log_message('error',var_export($user,true));
             return $user;
         }
         else
@@ -235,6 +238,7 @@ class PortalBizAccount extends PortalBizBase
         $query = $this->getUserInformation($user->id);
         return $query;
     }
+    
 
     /**
      * Get user by userID
@@ -242,7 +246,7 @@ class PortalBizAccount extends PortalBizBase
      * @param string $userId            
      * @return array Query Result.
      */
-    private function getUserInformation($userId)
+    public function getUserInformation($userId)
     {
         $userModel = new PortalModelUser();
         $userModel->id = $userId;
@@ -377,8 +381,31 @@ class PortalBizAccount extends PortalBizBase
         return $user;
     }
     
-    function findUser($userId,$account,$fullName,$lastname){
-        
+    function findUser($userId,$account,$firstName,$lastname, $limit, $offset){
+        $portalModel  = new PortalModelUser();
+        return $portalModel->findUsers($userId, $account, $firstName, $lastname, $limit, $offset);
+    }
+    function findUserCount($userId,$account,$firstName,$lastname){
+        $portalModel  = new PortalModelUser();
+        return $portalModel->findUsersCount($userId, $account, $firstName, $lastname);
+    }
+    
+    private function updateLoginStatus($userid,$status,$msg){
+        $portalAccount = new PortalModelUser();
+        $portalAccount->id = $userid;
+        $portalAccount->getOneById();
+        $portalAccount->status_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $portalAccount->status_reason = $msg;
+        $portalAccount->status = $status;
+        return $portalAccount->updateById();
+    }
+    
+    function updateToRejectLoginStatus($userid){
+        return $this->updateLoginStatus($userid,DatabaseFixedValue::USER_STATUS_CLOSED,'Admin khóa tài khoản');
+    }
+    
+    function updateToOpenLoginStatus($userid){
+        return $this->updateLoginStatus($userid,DatabaseFixedValue::USER_STATUS_OPENED,'Admin mở lại tài khoản');
     }
 
 }

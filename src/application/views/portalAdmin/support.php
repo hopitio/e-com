@@ -77,7 +77,7 @@ defined('BASEPATH') or die('no direct script access allowed');
                     $support.on('chat-message', onChatMessage);
                     function onPresence(customerData) {
                         var customer = customerData;
-                        customer.messages = [];
+                        customer.messages = array();
                         customer.typing;
                         $scope.customers[customerData.from] = customer;
                         $support.emit('presence', {to: customerData.from, fullname: scriptData.userFullname});

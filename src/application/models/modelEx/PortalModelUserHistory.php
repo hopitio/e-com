@@ -17,11 +17,14 @@ class PortalModelUserHistory extends PortalModelBase
     var $description;
     var $action_name;
     var $session_id;
-    
+    var $action_date;
     /**
      * insert user history.
      */
     function insertNewHistory(){
+        if(!isset($this->action_date) || $this->action_date == null ){
+            $this->action_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        }
         return parent::insert();
     }
     
@@ -119,5 +122,51 @@ class PortalModelUserHistory extends PortalModelBase
             $this->autoMappingObj($result);
             return true;
         }
+    }
+    
+    function getUserHistory($userId,$startDate,$endDate,$limit,$offset = 0)
+    {
+
+        $sql = "SELECT * FROM t_user_history
+                WHERE 
+                    ( ? = '' OR t_user_history.action_date > ?) 
+                    AND 
+                    ( ? = '' OR t_user_history.action_date < ?) 
+                    AND 
+                    t_user_history.fk_user = ?
+                ORDER BY t_user_history.action_date DESC
+                LIMIT {$offset},{$limit}";
+        $param = array($startDate,$startDate,$endDate,$endDate,$userId);
+        $query = $this->_dbPortal->query($sql,$param);
+        $results = $query->result();
+        $histories = array();
+        foreach ($results as $result)
+        {
+            $history = new PortalModelUserHistory();
+            $history->autoMappingObj($result);
+            $histories[] = $history;
+        }
+        return $histories;
+    }
+    
+    function getUserHistoryCount($userId,$startDate,$endDate)
+    {
+    
+        $sql = "SELECT count(id) as id FROM t_user_history
+                WHERE 
+                    ( ? = '' OR t_user_history.action_date > ?) 
+                    AND 
+                    ( ? = '' OR t_user_history.action_date < ?) 
+                    AND 
+                    t_user_history.fk_user = ?";
+        $param = array($startDate,$startDate,$endDate,$endDate,$userId);
+        $query = $this->_dbPortal->query($sql,$param);
+        $results = $query->result();
+        $count = 0;
+        foreach ($results as $result)
+        {
+            $count = $result->id;
+        }
+        return $count;
     }
 }

@@ -8,7 +8,7 @@ class question extends BaseController
         '/style/myaccount.css'
     );
     protected $_js = array('/js/controller/ChangePasswordController.js');
-    protected $_data = [];
+    protected $_data = array();
     /**
      * show information page
      */

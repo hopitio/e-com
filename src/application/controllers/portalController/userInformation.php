@@ -14,7 +14,7 @@ class userInformation extends BaseController
     );
     protected $_js = array('/js/controller/PortalUserInformationController.js'
                             ,'/js/services/PortalUserInformationServiceClient.js');
-    protected $_data = [];
+    protected $_data = array();
     
     function showPage()
     {
