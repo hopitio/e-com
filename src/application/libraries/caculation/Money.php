@@ -97,9 +97,9 @@ class Money
     {
         switch ($this->_currency->getCode()) {
             case 'USD':
-                return '$' . $this->_amount;
+                return '$' . format_money($this->_amount);
             case 'VND':
-                return $this->_amount . 'VND';
+                return format_money($this->_amount) . 'VND';
         }
     }
 
@@ -115,6 +115,10 @@ function format_money($amount)
     if (ceil($amount) == $amount)
     {
         return number_format($amount);
+    }
+    elseif (number_format($amount, 1) == $amount)
+    {
+        return number_format($amount, 1);
     }
     return number_format($amount, 2);
 }

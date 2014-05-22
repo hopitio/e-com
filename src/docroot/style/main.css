@@ -324,13 +324,14 @@ body .lynx_cart span{
     margin-top:15px;
 }
 .lynx_detailContainer .lynx_name{
-    width: 160px;
+    width: 140px;
     float: left;
     font-size:14px;
     text-align:left;
     color:black;
     font-weight: bold;
 }
+.lynx_detailContainer .lynx_name a{color:black;}
 .lynx_detailContainer .lynx_price{
     color:#F0B21C;
     font-family: arial;

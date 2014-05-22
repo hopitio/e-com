@@ -61,7 +61,7 @@ if ($product->id)
                 <a href="/seller/show_products" class="btn"><i class="fa fa-arrow-left"></i> Back</a>
                 <a href="javascript:;" class="btn" data-type="reset"><i class="fa fa-refresh"></i> Reset</a>
                 <?php if ($product->id): ?>
-                    <a href="javascript:;" class="btn"><i class="fa fa-copy"></i> Duplicate</a>
+                    <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Duplicate</a>
                 <?php endif; ?>
                 <a href="javascript:;" id="btn-apply" class="btn" data-type="submit" data-action="/seller/update_product/apply"><i class="fa fa-check"></i> Apply</a>
                 <?php if ($product->id): ?>

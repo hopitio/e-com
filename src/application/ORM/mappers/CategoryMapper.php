@@ -14,9 +14,10 @@ class CategoryMapper extends MapperAbstract
                 ->orderBy('c.path');
 
         $map = array(
-            'fkParent'    => 'fk_parent',
-            'isContainer' => 'is_container',
-            'pathSort'    => 'path_sort'
+            'fkParent'     => 'fk_parent',
+            'isContainer'  => 'is_container',
+            'pathSort'     => 'path_sort',
+            'isShowInHome' => 'is_show_in_home'
         );
 
         parent::__construct($domain, $query, $map);
@@ -82,9 +83,10 @@ class CategoryMapper extends MapperAbstract
         return DB::update('t_category', $raw_data, 'id=?', array($id));
     }
 
-    public function delete()
+    function filterShowInHome()
     {
-        
+        $this->_query->where('c.is_show_in_home=1');
+        return $this;
     }
 
     function filterParent($parent_id)

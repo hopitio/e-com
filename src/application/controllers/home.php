@@ -86,18 +86,28 @@ class home extends BaseController
     function section_service()
     {
         header('Content-type: application/json');
-        $sections = SectionMapper::make()
-                ->setLanguage(User::getCurrentUser()->languageKey)
-                ->autoloadProducts()
-                ->findAll();
+        $user = User::getCurrentUser();
+        $categories = CategoryMapper::make()->setLanguage($user->languageKey)->filterShowInHome()->findAll();
 
         $json = array();
-        foreach ($sections as $section)
+        foreach ($categories as $section)
         {
             $section_array = get_object_vars($section);
-            $section_array['url'] = base_url("section/show/{$section->id}");
+            $section_array['url'] = base_url("category/show/{$section->id}");
             $section_array['products'] = array();
-            foreach ($section->getProducts() as $product)
+
+            $productMapper = ProductFixedMapper::make()->setLanguage($user->languageKey)
+                            ->filterStatus(1)->autoloadAttributes();
+            if ($section->isContainer)
+            {
+                $productMapper->filterContainerCategory($section->id);
+            }
+            else
+            {
+                $productMapper->filterCategory($section->id);
+            }
+
+            foreach ($productMapper->findAll() as $product)
             {
                 $images = $product->getImages('thumbnail');
                 $product_array = get_object_vars($product);

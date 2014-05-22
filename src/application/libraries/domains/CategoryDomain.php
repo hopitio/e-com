@@ -17,6 +17,7 @@ class CategoryDomain implements DomainInterface
     public $description;
     public $language;
     public $pathSort;
+    public $isShowInHome = 0;
 
     /** @var SimpleXMLElement */
     public $dom_side_images;

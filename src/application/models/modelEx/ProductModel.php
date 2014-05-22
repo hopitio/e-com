@@ -154,6 +154,32 @@ class ProductModel extends BaseModel
         ));
     }
 
+    function duplicateProduct($productID)
+    {
+        $db = DB::getInstance();
+        $product = ProductMapper::make()->filterID($productID)->find();
+        if (!$product->id)
+        {
+            throw new Lynx_RequestException('Product not exists');
+        }
+        $db->StartTrans();
+        //t_product
+        $db->Execute("INSERT INTO t_product(fk_category,fk_seller,fk_group,is_group,discount,date_created,count_pin,status)"
+                . " SELECT fk_category,fk_seller,fk_group,is_group,discount,date_created,count_pin,status FROM t_product WHERE id=?", array($productID));
+        $newProductID = $db->Insert_ID('t_product', 'id');
+        //t_product_attribute
+        $db->Execute("INSERT INTO t_product_attribute(fk_product, fk_attribute_type,value_number,value_enum,value_text,language,value_varchar)"
+                . " SELECT ?, fk_attribute_type,value_number,value_enum,value_text,language,value_varchar FROM t_product_attribute WHERE fk_product=?", array($newProductID, $productID));
+        //t_product_tax
+        $db->Execute("INSERT INTO t_product_tax(fk_product,fk_tax) SELECT ?, fk_tax FROM t_product_tax WHERE fk_product=?", array($newProductID, $productID));
+        $result = $db->CompleteTrans();
+        if (!$result)
+        {
+            throw new Lynx_BusinessLogicException("Duplicate xảy ra lỗi SQL");
+        }
+        return $newProductID;
+    }
+
     function updateAttribute($productID, $language, ProductAttributeTypeDomain $attrType, $value)
     {
         $valueFields = array(

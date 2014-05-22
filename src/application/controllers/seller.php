@@ -130,12 +130,19 @@ class seller extends BaseController
         }
         if ($redirect == 'apply')
         {
-            redirect('/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' .$this->input->post('hdnTab'));
+            redirect('/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' . $this->input->post('hdnTab'));
         }
         elseif ($redirect == 'save_n_quit')
         {
             redirect('/seller/show_products');
         }
+    }
+
+    function duplicate_product($productID)
+    {
+        $this->getProductModel();
+        $newProductID = $this->productModel->duplicateProduct($productID);
+        redirect('/seller/product_details/' . $newProductID);
     }
 
     function product_details($productID = 0)

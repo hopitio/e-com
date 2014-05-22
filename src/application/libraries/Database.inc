@@ -32,7 +32,6 @@ require_once APPPATH . "libraries" . DS . "domains" . DS . "UserAddressDomain.ph
 require_once APPPATH . "libraries" . DS . "domains" . DS . "PinDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "SellerCategoryDomain.php";
 require_once APPPATH . "libraries" . DS . "domains" . DS . "SellerDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "SectionDomain.php";
 
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListtypeMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListMapper.php";
@@ -56,7 +55,6 @@ require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "PinMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "SellerCategoryMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "SellerMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "SectionMapper.php";
 
 $portalConfig = new DBConfig;
 $portalConfig->type = 'mysqli';
