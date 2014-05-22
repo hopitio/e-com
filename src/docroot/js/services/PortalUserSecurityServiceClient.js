@@ -2,7 +2,7 @@ function PortalUserSecurityServiceClient($http){
     
     this.updatePassword = function(oldPass,newPass,comfirmPass,sucessCallback,errorCallback)
     {
-        $http.post('/portal/account/update_password',
+        $http.post('/portal/api/account/update_password',
                 $.param({
                         oldPassword:oldPass,
                         newPassword:newPass,
@@ -18,10 +18,10 @@ function PortalUserSecurityServiceClient($http){
                 errorCallback(xhr,status);
             }
         });
-    }
+    };
     
     this.updateAlertEmail = function(newEmail,sucessCallback,errorCallback){
-        $http.post('/portal/account/update_alert_email',
+        $http.post('/portal/api/account/update_alert_email',
                 $.param({email:newEmail}),
                 {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT",'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'}}
         ).success(function(data){
@@ -33,11 +33,11 @@ function PortalUserSecurityServiceClient($http){
                 errorCallback(xhr,status);
             }
         });
-    }
+    };
     
     this.getUserLoginHistory = function(count,sucessCallback,errorCallback)
     {
-        $http.get('/portal/account/last_login/'+count,
+        $http.get('/portal/api/account/last_login/'+count,
                   {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT"}}
         ).success(function(data){
             if(typeof sucessCallback === 'function'){
@@ -48,6 +48,6 @@ function PortalUserSecurityServiceClient($http){
                 errorCallback(xhr,status);
             }
         });
-    }
+    };
     
 }

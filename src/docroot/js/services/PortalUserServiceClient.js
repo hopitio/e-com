@@ -1,7 +1,7 @@
 function PortalUserServiceClient($http)
 {
     this.getUserHistory = function(startDate,endDate,limit,offset,sucessCallback,errorCallback){
-        $url = document.URL + '/history';
+        $url = '/portal/api/__admin/user/'+user.id+'/history';
         $http.post($url,
                 $.param(
                         {limit:limit,offset:offset,startDate:startDate,endDate:endDate}),
@@ -18,7 +18,7 @@ function PortalUserServiceClient($http)
     };
     
     this.getUserContact = function(sucessCallback,errorCallback){
-        $url = document.URL + '/contact';
+        $url = '/portal/api/__admin/user/'+user.id+'/contact';
         $http.get($url,
                 {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT"}}
           ).success(function(data){
@@ -33,7 +33,7 @@ function PortalUserServiceClient($http)
      };
      
      this.getUserSetting = function(sucessCallback,errorCallback){
-         $url = document.URL + '/setting';
+         $url = '/portal/api/__admin/user/'+user.id+'/setting';
          $http.get($url,
                  {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT"}}
            ).success(function(data){
@@ -48,7 +48,7 @@ function PortalUserServiceClient($http)
       };
       
       this.updateUserRejectLogin = function(userId, sucessCallback, errorCallback){
-          $url = document.URL + '/reject_login';
+          $url = '/portal/api/__admin/user/'+user.id+'/reject_login';
           $http.post($url,
                   $.param(
                           {userId:userId}),
@@ -65,7 +65,7 @@ function PortalUserServiceClient($http)
       };
       
       this.updateUserOpenLogin = function(userId, sucessCallback, errorCallback){
-          $url = document.URL + '/open_login';
+          $url = '/portal/api/__admin/user/'+user.id+'/open_login';
           $http.post($url,
                   $.param(
                           {userId:userId}),

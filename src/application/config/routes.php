@@ -60,11 +60,11 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account'] = 'portalController/userInformation/showPage';
         $route['portal/account/user_information'] = 'portalController/userInformation/showPage';
         $route['portal/account/security'] = "portalController/userSecurity/showPage";
-        $route['portal/account/last_login/(:num)'] = "portalController/userSecurity/getUserLastLoginTimeXhr/$1";
-        $route['portal/account/get_user_information'] = "portalController/userInformation/getUserInformationXhr";
-        $route['portal/account/get_user_contacts'] = "portalController/userInformation/getUserContactXhr";
+        $route['portal/api/account/last_login/(:num)'] = "portalController/userSecurity/getUserLastLoginTimeXhr/$1";
+        $route['portal/api/account/get_user_information'] = "portalController/userInformation/getUserInformationXhr";
+        $route['portal/api/account/get_user_contacts'] = "portalController/userInformation/getUserContactXhr";
         $route['portal/account/order_history'] = 'portalController/userOrderHistory/showPage';
-        $route['portal/account/order_history/(:any)'] = 'portalController/userOrderHistory/getOrderHistory/$1';
+        $route['portal/api/account/order_history/(:any)'] = 'portalController/userOrderHistory/getOrderHistory/$1';
         
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
@@ -75,8 +75,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
         $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
-        $route['portal/__admin/user/(:num)/contact'] = 'portalAdmin/userDetail/contact/$1';
-        $route['portal/__admin/user/(:num)/setting'] = 'portalAdmin/userDetail/setting/$1';
+        $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/userDetail/contact/$1';
+        $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/userDetail/setting/$1';
         
         $route['portal/__mock/ngan_luong_payment'] = 'mock/mockNganLuongPayment/mockPaymentNganLuong';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/showpage';
@@ -92,13 +92,13 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/help/send_email'] = 'portalController/help/send_email';
         $route['portal/help/start_chat'] = 'portalController/help/start_chat';
         $route['portal/order/submit'] = 'portalController/paymentChoice/submitOrder';
-        $route['portal/account/update_password'] = 'portalController/userSecurity/updatePasswordPostDataXhr';
-        $route['portal/account/update_alert_email'] = 'portalController/userSecurity/updateAlertEmailXhr';
-        $route['portal/account/update_user_information'] = 'portalController/userInformation/updateUserinformationXhr';
-        $route['portal/account/save_contact'] = 'portalController/userInformation/saveUserinformationXhr';
-        $route['portal/language/submit_change'] = 'portalController/userLanguage/submitChangeXhr';
-        $route['language/submit_change'] = 'userLanguage/submitChangeXhr';
-        $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
+        $route['portal/api/account/update_password'] = 'portalController/userSecurity/updatePasswordPostDataXhr';
+        $route['portal/api/account/update_alert_email'] = 'portalController/userSecurity/updateAlertEmailXhr';
+        $route['portal/api/account/update_user_information'] = 'portalController/userInformation/updateUserinformationXhr';
+        $route['portal/api/account/save_contact'] = 'portalController/userInformation/saveUserinformationXhr';
+        $route['portal/api/language/submit_change'] = 'portalController/userLanguage/submitChangeXhr';
+        $route['api/language/submit_change'] = 'userLanguage/submitChangeXhr';
+        $route['portal/api/account/lost_password'] = 'portalController/lostPassword/reset';
         
         
         $route['portal/order_place/portal_get_information'] = 'portalController/orderPlace/getInformation';
@@ -106,13 +106,13 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
         $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
         
-        $route['portal/__admin/user_find_post_xhr'] ="portalAdmin/userList/searchUserInformationXhr";
-        $route['portal/__admin/user/(:num)/history'] = 'portalAdmin/userDetail/history/$1';
-        $route['portal/__admin/user/(:num)/reject_login'] = 'portalAdmin/userDetail/rejectLoginAccount/$1';
-        $route['portal/__admin/user/(:num)/open_login'] = 'portalAdmin/userDetail/openLoginAccount/$1';
+        $route['portal/api/__admin/user_find_post_xhr'] ="portalAdmin/userList/searchUserInformationXhr";
+        $route['portal/api/__admin/user/(:num)/history'] = 'portalAdmin/userDetail/history/$1';
+        $route['portal/api/__admin/user/(:num)/reject_login'] = 'portalAdmin/userDetail/rejectLoginAccount/$1';
+        $route['portal/api/__admin/user/(:num)/open_login'] = 'portalAdmin/userDetail/openLoginAccount/$1';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';
         
-        $route['portal/__admin/order_find_post_xhr'] ="portalAdmin/orderList/findOrderXhr";
+        $route['portal/api/__admin/order_find_post_xhr'] ="portalAdmin/orderList/findOrderXhr";
     }
 }
 //

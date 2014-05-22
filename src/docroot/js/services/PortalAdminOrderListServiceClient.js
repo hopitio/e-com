@@ -2,7 +2,7 @@ function PortalAdminOrderListServiceClient($http)
 {
     this.findOrder = function(account,orderId,createdDate,limit,offset,sucessCallback,errorCallback)
     {
-        $http.post('/portal/__admin/order_find_post_xhr',
+        $http.post('/portal/api/__admin/order_find_post_xhr',
                 $.param({account:account,orderId:orderId,createdDate:createdDate,limit:limit,offset:offset}),
                 {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT",'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'}}
         ).success(function(data){
@@ -16,6 +16,4 @@ function PortalAdminOrderListServiceClient($http)
         });
     };
     
-    
-    /portal/account/order_history/
 }
