@@ -75,12 +75,21 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
         $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
-        $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/userDetail/contact/$1';
-        $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/userDetail/setting/$1';
-        
+        $route['portal/__admin/invoice/(:num)'] = 'portalAdmin/invoiceDetail/showPage/$1';
         $route['portal/__mock/ngan_luong_payment'] = 'mock/mockNganLuongPayment/mockPaymentNganLuong';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/showpage';
         $route['portal/__admin/order_find'] = 'portalAdmin/orderList/showpage';
+        
+        $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/apiUser/contact/$1';
+        $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/apiUser/setting/$1';
+        
+        $route['portal/api/__admin/order/(:num)'] = 'portalAdmin/apiOrder/getOrder/$1';
+        $route['portal/api/__admin/order/(:num)/invoices'] = 'portalAdmin/apiOrder/getInvoices/$1';
+        $route['portal/api/__admin/invoice/(:num)'] = 'portalAdmin/apiInvoice/getInvoice/$1';
+        $route['portal/api/__admin/invoice/(:num)/products'] = 'portalAdmin/apiInvoice/getInvoiceProducts/$1';
+        $route['portal/api/__admin/invoice/(:num)/other_costs'] = 'portalAdmin/apiInvoice/getInvoiceOtherCost/$1';
+        $route['portal/api/__admin/invoice/(:num)/shippings'] = 'portalAdmin/apiInvoice/getInvoiceShipping/$1';
+        $route['portal/api/__admin/contact/(:num)'] = 'portalAdmin/apiContact/getContact/$1';
         //$route['portal/__admin/order/(:num)/invoice'] = 'portalAdmin/orderList/getOrderDetailXhr';
     }
 
@@ -105,14 +114,13 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
         $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
         $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
-        
-        $route['portal/api/__admin/user_find_post_xhr'] ="portalAdmin/userList/searchUserInformationXhr";
-        $route['portal/api/__admin/user/(:num)/history'] = 'portalAdmin/userDetail/history/$1';
-        $route['portal/api/__admin/user/(:num)/reject_login'] = 'portalAdmin/userDetail/rejectLoginAccount/$1';
-        $route['portal/api/__admin/user/(:num)/open_login'] = 'portalAdmin/userDetail/openLoginAccount/$1';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';
         
-        $route['portal/api/__admin/order_find_post_xhr'] ="portalAdmin/orderList/findOrderXhr";
+        $route['portal/api/__admin/user_find_post_xhr'] ="portalAdmin/apiUser/searchUserInformationXhr";
+        $route['portal/api/__admin/user/(:num)/history'] = 'portalAdmin/apiUser/history/$1';
+        $route['portal/api/__admin/user/(:num)/reject_login'] = 'portalAdmin/apiUser/rejectLoginAccount/$1';
+        $route['portal/api/__admin/user/(:num)/open_login'] = 'portalAdmin/apiUser/openLoginAccount/$1';
+        $route['portal/api/__admin/order_find_post_xhr'] ="portalAdmin/apiOrder/findOrderXhr";
     }
 }
 //

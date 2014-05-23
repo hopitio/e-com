@@ -4,25 +4,8 @@
  */
 defined('BASEPATH') or die('no direct script access allowed');
 
-class orderList extends PortalAdminControllerAbstract
+class apiOrder extends PortalAdminControllerAbstract
 {
-    protected $js = array(
-        '/js/controller/PortalAdminOrderListController.js',
-        '/js/services/PortalAdminOrderListServiceClient.js'
-    );
-    
-    function __construct()
-    {
-        parent::__construct();
-    }
-
-    function showPage()
-    {
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ADMIN_ONE_COLUMN)
-        ->setData(array(),false)
-        ->setJavascript($this->js)
-        ->render('portalAdmin/orderList');
-    }
     
     function findOrderXhr(){
         

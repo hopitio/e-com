@@ -6,23 +6,36 @@ function PortalAdminOrderListController($scope,$http)
     $scope.createDate = "";
     $scope.alerts = [];
     $scope.orders = [];
+    $scope.invoices = [];
+    $scope.selectdOrder = [];
+    $scope.selectedInvoice = [];
+    
     $scope.totalServerItems = 0;
+    
     
     $scope.pagingOptions = {
         pageSizes: [10, 20, 30, 50, 100],
         pageSize: 10,
         currentPage: 1,
     };  
-    
+
     $scope.gridOptions = {
             data: 'orders',
             enablePaging: true,
             showFooter: true,
             totalServerItems: 'totalServerItems',
             pagingOptions: $scope.pagingOptions,
-            multiSelect: false
+            multiSelect: false,
+            selectedItems: $scope.selectdOrder
         };
-
+    
+    $scope.gridInvoicesOptions = {
+            data: 'invoices',
+            enablePaging: false,
+            showFooter: true,
+            multiSelect: false,
+            selectedItems: $scope.selectedInvoice
+    };
     
     $scope.setPagingData = function(data, total){  
         $scope.orders = data;
@@ -39,11 +52,16 @@ function PortalAdminOrderListController($scope,$http)
                         getOrderSucessCallback, getOrderErrorCallback);
     };
     
-    $scope.find = function(){
+    $scope.getInvoicesAsync = function(){
+        if($scope.selectdOrder.length == 0){
+            return;
+        }
         portalAdminOrderListServiceClient = new PortalAdminOrderListServiceClient($http);
-        portalAdminOrderListServiceClient.findOrder($scope.account,$scope.orderId,$scope.createdDate, 
-                        $scope.pagingOptions.pageSize, 0,
-                        getOrderSucessCallback, getOrderErrorCallback);
+        portalAdminOrderListServiceClient.getInvoices($scope.selectdOrder[0].id, getInvoiceSucessCallback, getInvoiceErrorCallback);
+    };
+    
+    $scope.find = function(){
+        $scope.getPagedDataAsync($scope.pagingOptions.pageSize, 1);
     };
     
     function getOrderSucessCallback(data){
@@ -52,7 +70,17 @@ function PortalAdminOrderListController($scope,$http)
         }
     }
     
+    function getInvoiceSucessCallback(data){
+        if(!data.isError){
+            $scope.invoices = data.data;
+        }
+    } 
+    
     function getOrderErrorCallback(xhr,status){
+        
+    }
+    
+    function getInvoiceErrorCallback(xhr,status){
         
     }
     
@@ -61,6 +89,20 @@ function PortalAdminOrderListController($scope,$http)
           $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
         }
     }, true);
+    
+    $scope.$watch('selectdOrder', function (newVal, oldVal) {
+        if (newVal !== oldVal) {
+            $scope.getInvoicesAsync();
+        }
+    }, true);
+    
+    $scope.$watch('selectedInvoice', function (newVal, oldVal) {
+        if (newVal !== oldVal && newVal != undefined) {
+            window.open($scope.selectedInvoice[0].detailUrl);
+            $scope.selectedInvoice[0] = undefined;
+        }
+    }, true);
+
     
 }
 PortalAdminOrderListController.$inject = ['$scope','$http'];

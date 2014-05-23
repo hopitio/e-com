@@ -21,8 +21,14 @@
         </div>
         
         <div class="lynx_row">
-            <div style="height:500px" class="gridStyle" ng-grid="gridOptions"></div>
+            <div style="height:250px" class="gridStyle" ng-grid="gridOptions"></div>
         </div>
+        
+        <h4>Hóa đơn của order</h4>
+        <div class="lynx_row">
+            <div style="height:250px" class="gridStyle" ng-grid="gridInvoicesOptions"></div>
+        </div>
+        
     </div>
 </div>
 <script type="text/ng-template" id="actionCell.html" >
