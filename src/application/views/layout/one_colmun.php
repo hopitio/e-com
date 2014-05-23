@@ -25,7 +25,7 @@
         <div class="lynx_container">
             <div class="lynx_head"  ng-controller="HeadCtrl" id="head-ctrl">
                 <div class="lynx_headWarp lynx_staticWidth">
-                    <div class="lynx_logo"></div>
+                    <a class="lynx_logo" href="/" title="SFriendly"></a>
                     <div class="lynx_headLeft">
                         <span class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></span>
                         <span class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></span>

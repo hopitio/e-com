@@ -8,7 +8,7 @@ class CategoryMapper extends MapperAbstract
     public function __construct($domain = 'CategoryDomain')
     {
         $query = Query::make()
-                ->select('c.*, cl.name, cl.description, cl.language, cl.name')
+                ->select('c.*, cl.name, cl.description, cl.language, cl.name, cl.product_section_image',true)
                 ->from('t_category c')
                 ->innerJoin('t_category_language cl', 'c.id=cl.fk_category')
                 ->orderBy('c.path');

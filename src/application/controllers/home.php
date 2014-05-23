@@ -87,17 +87,41 @@ class home extends BaseController
     {
         header('Content-type: application/json');
         $user = User::getCurrentUser();
-        $categories = CategoryMapper::make()->setLanguage($user->languageKey)->filterShowInHome()->findAll();
+        $categories = CategoryMapper::make()
+                ->setLanguage($user->languageKey)
+                ->filterShowInHome()
+                ->findAll(function($rawData, $instance)
+        {
+            $instance->dom_product_section_images = simplexml_load_string($rawData['product_section_image']);
+        });
 
         $json = array();
         foreach ($categories as $section)
         {
             $section_array = get_object_vars($section);
             $section_array['url'] = base_url("category/show/{$section->id}");
+            if ($section->dom_product_section_images &&
+                    isset($section->dom_product_section_images->img))
+            {
+                $attrs = $section->dom_product_section_images->img->attributes();
+                $section_array['displayImage'] = (string) $attrs->src;
+                $section_array['displayImageTitle'] = (string) $attrs->title;
+            }
             $section_array['products'] = array();
 
-            $productMapper = ProductFixedMapper::make()->setLanguage($user->languageKey)
-                            ->filterStatus(1)->autoloadAttributes();
+            $productMapper = ProductFixedMapper::make()
+                    ->select('p.*', true)
+                    ->setLanguage($user->languageKey)
+                    ->filterStatus(1)
+                    ->autoloadAttributes();
+            if (isset($section_array['displayImage']))
+            {
+                $productMapper->limit(6);
+            }
+            else
+            {
+                $productMapper->limit(8);
+            }
             if ($section->isContainer)
             {
                 $productMapper->filterContainerCategory($section->id);
@@ -106,8 +130,14 @@ class home extends BaseController
             {
                 $productMapper->filterCategory($section->id);
             }
-
-            foreach ($productMapper->findAll() as $product)
+            $productMapper->getQuery()
+                    ->select('seller.name AS seller_name')
+                    ->innerJoin('t_seller seller', 'seller.id = p.fk_seller');
+            $products = $productMapper->findAll(function($rawData, $instance)
+            {
+                $instance->seller_name = $rawData['seller_name'];
+            });
+            foreach ($products as $product)
             {
                 $images = $product->getImages('thumbnail');
                 $product_array = get_object_vars($product);
@@ -120,7 +150,6 @@ class home extends BaseController
             }
             $json[] = $section_array;
         }
-
         echo json_encode($json);
     }
 
