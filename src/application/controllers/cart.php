@@ -38,6 +38,7 @@ class cart extends BaseController
     {
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setJavascript(array('/js/controller/showCartCtrl.js'))
+                ->setCss(array('/style/customerList.css'))
                 ->render('cart/showCart');
     }
 

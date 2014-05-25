@@ -61,7 +61,7 @@ class seller extends BaseController
             $aaData[] = array(
                 $product->id,
                 $product->id,
-                $product->getName()->getTrueValue(),
+                (string)$product->getName(),
                 $storageCode,
                 format_money($product->getPriceMoney('VND')->getAmount()),
                 'url' => '/seller/product_details/' . $product->id

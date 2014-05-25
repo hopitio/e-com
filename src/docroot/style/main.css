@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-* {margin: 0px; padding: 0px;text-align: center;font-family: Georgia, Times, sans-serif;color:#939393; font-size: 14px;font-weight: normal;font-style: normal;text-decoration: none;}
+* {margin: 0px; padding: 0px;text-align: center;font-family: Georgia, Times, sans-serif;color:#333; font-size: 14px;font-weight: normal;font-style: normal;text-decoration: none;}
 body{background-color: white;}
 li{list-style: none;}
 .lynx_container{}
@@ -11,7 +11,8 @@ li{list-style: none;}
 .lynx_head .lynx_headWarp{
     display:inline-block;
 }
-
+u, u *{text-decoration: underline;}
+.green{color:#04b139}
 .lynx_head .lynx_logo{
     background: transparent url('../images/logo.png') no-repeat top left;
     float:left;
@@ -617,4 +618,8 @@ a *{color:#428bca;}
 a:hover{text-decoration: none;}
 tr.checked{background-color: #FFFFCC !important;}
 .table-actions{text-align: left;padding: 10px 0;}
+.btn{border-radius: 0;border:none;font-weight: bold;padding:3px 15px;}
 input,textarea,select{text-align: left;font-weight:normal;}
+.btn.btn-lg{padding:10px;font-size: 25px;line-height: 25px;height:45px;font-weight:bold;}
+.btn.btn-primary{background: none;background-color: #0090ff;color:white;}
+
