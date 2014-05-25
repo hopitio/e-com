@@ -71,6 +71,28 @@ class seller extends BaseController
         $dataTableHelper->response($count, $aaData);
     }
 
+    function delete_image()
+    {
+        $this->getFileModel();
+        $this->getProductModel();
+        $productID = (int) $this->input->get('product');
+        $fileID = (int) $this->input->get('file');
+        $language = $this->input->get('language');
+        if (!$productID || !$fileID)
+        {
+            throw new Lynx_RequestException('$_GET[product] && $_GET[file] cannot null');
+        }
+        if (!$language)
+        {
+            $language = 'EN-US';
+        }
+        DB::getInstance()->StartTrans();
+        $this->productModel->deleteImage($productID, $fileID);
+        $this->fileModel->delete($fileID);
+        DB::getInstance()->CompleteTrans();
+        redirect("/seller/product_details/{$productID}/?language={$language}#/tab_images");
+    }
+
     function show_orders()
     {
         
@@ -150,7 +172,7 @@ class seller extends BaseController
         $language = $this->input->get('language');
         if (!$language)
         {
-            $language = 'VN-VI';
+            $language = 'EN-US';
         }
         $product = ProductFixedMapper::make()
                 ->autoloadAttributes()

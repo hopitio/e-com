@@ -30,13 +30,34 @@ class FileModel extends BaseModel
         $insertResult = DB::insert('t_file', array(
                     'fk_user'       => User::getCurrentUser()->id,
                     'url'           => '/' . $path . $newName,
-                    'date_modified' => DB::getDate()
+                    'date_modified' => DB::getDate(),
+                    'internal_path' => $path . $newName
         ));
         if (!$insertResult)
         {
             throw new Lynx_BusinessLogicException("Insert file that bai");
         }
         return $insertResult;
+    }
+
+    function delete($id)
+    {
+        $instance = FileMapper::make()->filterID($id)->find();
+        /* @var $instance FileDomain */
+        if (!$instance->id)
+        {
+            throw new Lynx_BusinessLogicException('Could not find t_file record, cancel delete: ' . $id);
+        }
+        $filename = FCPATH . '/' . $instance->internalPath;
+        if (!file_exists($filename))
+        {
+            throw new Lynx_BusinessLogicException("File not exists for id $id, cancel delete: " . $filename);
+        }
+        DB::delete('t_file', 'id=?', array($id));
+        if (!unlink($filename))
+        {
+            throw new Lynx_BusinessLogicException("Could not delete file for id $id, cancel delete: $filename");
+        }
     }
 
 }

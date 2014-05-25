@@ -54,9 +54,10 @@ if ($product->id)
             }
             else
             {
-                echo $product->getName()->getTrueValue();
+                echo $product->getName();
             }
             ?>
+            &nbsp;
             <div class="actions">
                 <a href="/seller/show_products" class="btn"><i class="fa fa-arrow-left"></i> Back</a>
                 <a href="javascript:;" class="btn" data-type="reset"><i class="fa fa-refresh"></i> Reset</a>

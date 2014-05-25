@@ -250,4 +250,9 @@ class ProductModel extends BaseModel
         DB::delete('t_product_tax', 'fk_product=? AND fk_tax=?', array($productID, $taxID));
     }
 
+    function deleteImage($productID, $fileID)
+    {
+        DB::delete('t_product_image', 'fk_product=? AND fk_file=?', array($productID, $fileID));
+    }
+
 }

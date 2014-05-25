@@ -49,7 +49,7 @@
                     <input type="text" class="form-control" name="txtSort[<?php echo $img->fkFile ?>]" value="<?php echo (int) $img->sort ?>" >
                 </td>
                 <td>
-                    <a href="javascript:;" title="Delete">Delete</a>
+                    <a href="<?php echo "/seller/delete_image/?product={$product->id}&file={$img->fkFile}&language={$lang}" ?>" title="Delete">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
