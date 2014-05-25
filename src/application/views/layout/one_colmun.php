@@ -75,7 +75,7 @@
                                         <a href="<?php echo base_url('portal/account/user_information'); ?>"><?php echo$language['layout']->lblUserAccount->__toString(); ?></a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('portal/portal/account/order_history'); ?>"><?php echo$language['layout']->lblUserOrder->__toString(); ?></a>
+                                        <a href="<?php echo base_url('portal/account/order_history'); ?>"><?php echo$language['layout']->lblUserOrder->__toString(); ?></a>
                                     </li>
                                     <div class="divider"></div>
                                     <li>
