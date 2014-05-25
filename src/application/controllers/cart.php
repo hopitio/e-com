@@ -45,11 +45,14 @@ class cart extends BaseController
     function cartProductsService()
     {
         header('Content-Type: application/json');
-        $products = CartMapper::make()
+        $user = User::getCurrentUser();
+        $mapper = CartMapper::make()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes()
-                ->autoloadTaxes()
-                ->findAll();
+                ->autoloadTaxes();
+        $products = $mapper->findAll(function($rawData, $instance){
+            $instance->seller_name = $rawData['seller_name'];
+        });
         $json = array();
         foreach ($products as $product)
         {
@@ -57,10 +60,12 @@ class cart extends BaseController
             $images = $product->getImages('thumbnail');
             $obj = (array) $product;
             $obj['quantity'] = $product->quantity;
-            $obj['price'] = $product->getFinalPriceMoney('VND')->getAmount();
+            $obj['price'] = format_money($product->getFinalPriceMoney($user->getCurrency())->getAmount());
             $obj['name'] = (string) $product->getName()->getTrueValue();
-            $obj['taxes'] = $product->calculateTaxes('VND')->getAmount();
+            $obj['taxes'] = format_money($product->calculateTaxes($user->getCurrency())->getAmount());
             $obj['thumbnail'] = (string) $images[0]->url;
+            $obj['stock'] = (double) strval($product->getQuantity());
+            $obj['url'] = '/product/details/' . $product->id;
             $json[] = $obj;
         }
         echo json_encode($json);

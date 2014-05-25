@@ -13,6 +13,7 @@ li{list-style: none;}
 }
 u, u *{text-decoration: underline;}
 .green{color:#04b139}
+.red{color:#b12704;}
 .lynx_head .lynx_logo{
     background: transparent url('../images/logo.png') no-repeat top left;
     float:left;

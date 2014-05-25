@@ -32,7 +32,7 @@ foreach ($product->getImages('baseImage') as $attr)
         <form class="lynx_productChoicePannel lynx_productHead" method="post" id="frm-main">
             <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
             <div class="lynx_productName"> <?php echo $product->getName()->getTrueValue() ?> </div>
-            <div class="lynx_productPrice"> <?php echo $product->getPriceMoney('VND') ?> </div>
+            <div class="lynx_productPrice"> <?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?> </div>
             <div class="lynx_productShipping"> Ships Free ! </div>
     <!--        <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>

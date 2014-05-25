@@ -89,8 +89,9 @@ class Money
 
     function convert(Currency $currency)
     {
-        $rate = $currency->getTransferRate() / $this->getCurrency()->getTransferRate();
-        return $this->multiply($rate);
+        $rate = $this->getCurrency()->getTransferRate() / $currency->getTransferRate();
+
+        return new Money($this->_amount * $rate, clone $currency);
     }
 
     function __toString()
@@ -99,7 +100,9 @@ class Money
             case 'USD':
                 return '$' . format_money($this->_amount);
             case 'VND':
-                return format_money($this->_amount) . 'VND';
+                return format_money($this->_amount) . 'đ';
+            case 'KRW':
+                return 'W' . format_money($this->_amount);
         }
     }
 

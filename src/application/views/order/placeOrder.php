@@ -26,10 +26,10 @@ foreach ($cartContents as $cartInstance)
         'name'        => $cartInstance->getName()->getTrueValue(),
         'image'       => base_url($images[0]->url),
         'shortDesc'   => $cartInstance->getDescription()->getTrueValue(),
-        'price'       => $cartInstance->getPriceMoney('VND')->getAmount(),
+        'price'       => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount(),
         'quantity'    => $cartInstance->quantity,
-        'totalPrice'  => $cartInstance->getPriceMoney('VND')->getAmount() * $cartInstance->quantity,
-        'actualPrice' => $cartInstance->getPriceMoney('VND')->getAmount() * $cartInstance->quantity,
+        'totalPrice'  => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount() * $cartInstance->quantity,
+        'actualPrice' => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount() * $cartInstance->quantity,
         'taxes'       => array(),
         'sellerName'  => $cartInstance->sellerName,
         'sid'         => $cartInstance->sid

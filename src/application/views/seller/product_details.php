@@ -26,7 +26,7 @@ if ($product->id)
         $arr_language = array(
             'VN-VI' => 'Tiếng Việt',
             'EN-US' => 'English',
-            'KR-KR' => 'Korean'
+            'KO-KR' => 'Korean'
         );
         ?>
         <select style="width:100%" id="selLanguage">

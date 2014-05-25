@@ -72,7 +72,7 @@ class product extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
-            $obj['priceString'] = strval($product->getPriceMoney('VND'));
+            $obj['priceString'] = strval($product->getPriceMoney(User::getCurrentUser()->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $json[] = $obj;
         }

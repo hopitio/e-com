@@ -18,7 +18,8 @@
 }
 .cart-breadcrums li.bc-label, .cart-breadcrums li.bc-label *{color:#F3CA05;}
 .cart-breadcrums li.active, .cart-breadcrums li.active *{color:#65adff;}
-.cart-back{color:#a9a9a9;margin: 5px 0;display:block;}
+.cart-back{margin: 5px 0;display:block;}
+.cart-back, .cart-back *{color:#a9a9a9;}
 .notification{
     border: 1px solid #d6d6d6;
     background: #fbfbfb;

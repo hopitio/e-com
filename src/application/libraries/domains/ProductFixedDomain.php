@@ -65,10 +65,10 @@ class ProductFixedDomain extends ProductDomain
 
     /**
      * 
-     * @param string $currency [optional] default 'VND'
+     * @param string $currency [optional] default 'USD'
      * @return Money
      */
-    function getPriceMoney($currency = 'VND')
+    function getPriceMoney($currency = 'USD')
     {
         $attr = $this->_getAttributeByName('price');
         $price = $attr ? $attr->getTrueValue() : 0;
@@ -112,7 +112,7 @@ class ProductFixedDomain extends ProductDomain
      * @param string $currency [optional] default 'VND'
      * @return Money
      */
-    function getFinalPriceMoney($currency = 'VND')
+    function getFinalPriceMoney($currency = 'USD')
     {
         return $this->getPriceMoney($currency)->add($this->calculateTaxes($currency));
     }

@@ -27,6 +27,7 @@ class home extends BaseController
     function hot_service()
     {
         header('Content-type: application/json');
+        $user = User::getCurrentUser();
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
                 ->selectCountView()
@@ -51,7 +52,7 @@ class home extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images[0]->url;
-            $obj['priceString'] = strval($product->getPriceMoney('VND'));
+            $obj['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $json[] = $obj;
         }
@@ -60,6 +61,7 @@ class home extends BaseController
 
     function new_service()
     {
+        $user = User::getCurrentUser();
         $this->load->model('modelEx/ProductModel', 'product_model');
         $products = $this->product_model->getAllNewProduct();
         $json = array();
@@ -71,7 +73,7 @@ class home extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
-            $obj['priceString'] = strval($product->getPriceMoney('VND'));
+            $obj['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $json[] = $obj;
         }
@@ -143,7 +145,7 @@ class home extends BaseController
                 $product_array = get_object_vars($product);
                 $product_array['name'] = strval($product->getName());
                 $product_array['thumbnail'] = $images ? strval($images[0]->url) : '';
-                $product_array['priceString'] = strval($product->getPriceMoney('VND'));
+                $product_array['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
                 $product_array['url'] = base_url('product/details') . '/' . $product->id;
 
                 $section_array['products'][] = $product_array;

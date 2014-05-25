@@ -37,7 +37,7 @@ class pin extends BaseController
             $obj = get_object_vars($instance);
             $obj['name'] = $instance->getName()->getTrueValue();
             $obj['description'] = $instance->getDescription()->getTrueValue();
-            $obj['price'] = $instance->getPriceMoney('VND')->getAmount();
+            $obj['price'] = $instance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount();
             $obj['quantity'] = $instance->getQuantity()->getTrueValue();
             $json[] = $obj;
         }

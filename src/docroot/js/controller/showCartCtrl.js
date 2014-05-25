@@ -34,12 +34,16 @@ function txtQuantityDirective() {
 function showCartCtrl($scope, $http) {
     $scope.products = [];
     $scope.undo;
+    $scope.qtyRange = new Array(31);
 
-    $scope.getProducts = function() {
+    $scope.getProducts = function(successCallback) {
         $http.get(scriptData.serviceURL, {cache: false}).success(function(data) {
             $scope.products = data;
+            if (successCallback) {
+                successCallback(data);
+            }
         }).error(function() {
-
+//TODO
         });
     };
     $scope.getProducts();
@@ -53,6 +57,25 @@ function showCartCtrl($scope, $http) {
     };
     $scope.checkout = function() {
         window.location = scriptData.checkoutURL;
+    };
+
+    $scope.updateQty = function(product) {
+        var postData = {'products': {}};
+        postData.products[product.id] = product.quantity;
+        $.ajax({
+            type: 'post',
+            url: scriptData.updateQuantityService,
+            data: postData,
+            success: function() {
+                $scope.getProducts(function(){
+                    setTimeout(function(){
+                        $scope.$apply();
+                    });
+                });
+            }, error: function() {
+                //todo
+            }
+        });
     };
 
     $scope.removeFromCart = function(productID) {
