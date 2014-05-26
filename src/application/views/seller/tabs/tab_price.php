@@ -2,7 +2,7 @@
 /* @var $product ProductFixedDomain */
 
 //price
-$txtPrice = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtPrice', 'pattr[price]', $product->getPriceMoney()->getAmount()));
+$txtPrice = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtPrice', 'pattr[price]', $product->getPriceMoney('VND')->getAmount()));
 echo $txtPrice->decorate(new ControlGroupDecorator('Price:'));
 ?>
 
