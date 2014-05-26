@@ -18,6 +18,10 @@ require_once APPPATH.'models/biz/PortalBizUserHistory.php';
 require_once APPPATH.'models/biz/PortalBizPaymentHistory.php';
 require_once APPPATH.'models/biz/PortalBizContact.php';
 require_once APPPATH.'models/biz/PortalBizLanguage.php';
+require_once APPPATH.'models/biz/PortalBizInvoice.php';
+require_once APPPATH.'models/biz/PortalBizOrder.php';
+
+
 
 
 

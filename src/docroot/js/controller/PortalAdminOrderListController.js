@@ -17,6 +17,7 @@ function PortalAdminOrderListController($scope,$http)
         pageSizes: [10, 20, 30, 50, 100],
         pageSize: 10,
         currentPage: 1,
+        
     };  
 
     $scope.gridOptions = {
@@ -26,7 +27,16 @@ function PortalAdminOrderListController($scope,$http)
             totalServerItems: 'totalServerItems',
             pagingOptions: $scope.pagingOptions,
             multiSelect: false,
-            selectedItems: $scope.selectdOrder
+            selectedItems: $scope.selectdOrder,
+            columnDefs:[
+                        {field:'id',width:'50px', displayName:'Mã'},
+                        {field:'t_user_account', displayName:'Tài khoản'},
+                        {field:'created_date', displayName:'Ngày tạo'},
+                        {field:'shiped_date', displayName:'Ngày chuyển hàng'},
+                        {field:'completed_date', displayName:'Ngày hoàn thành'},
+                        {field:'canceled_date', displayName:'Ngày hủy'},
+                        {field:'detailUrl',width:'30px', displayName:'',cellTemplate:'actionCell.html'},
+                        ]
         };
     
     $scope.gridInvoicesOptions = {
@@ -34,7 +44,16 @@ function PortalAdminOrderListController($scope,$http)
             enablePaging: false,
             showFooter: true,
             multiSelect: false,
-            selectedItems: $scope.selectedInvoice
+            selectedItems: $scope.selectedInvoice,
+            columnDefs:[
+                        {field:'id',width:'50px', displayName:'Mã'},
+                        {field:'created_date', displayName:'Ngày tạo'},
+                        {field:'paid_date', displayName:'Ngày thanh toán'},
+                        {field:'cancelled_date', displayName:'Ngày K/H hủy'},
+                        {field:'rejected_date', displayName:'Ngày H/T hủy'},
+                        {field:'comment', displayName:'Ghi chú'},
+                        
+                        ]
     };
     
     $scope.setPagingData = function(data, total){  
@@ -98,7 +117,7 @@ function PortalAdminOrderListController($scope,$http)
     
     $scope.$watch('selectedInvoice', function (newVal, oldVal) {
         if (newVal !== oldVal && newVal != undefined) {
-            window.open($scope.selectedInvoice[0].detailUrl);
+            window.open($scope.selectedInvoice[0].detailUrl,"_blank");
             $scope.selectedInvoice[0] = undefined;
         }
     }, true);

@@ -17,7 +17,6 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['home'] = 'home/showHome';
         $route['logout'] = 'login/out';
         $route['sitemap'] = 'sitemap/showPage';
-        $route['__admin/login'] = 'admin/loginAdmin/showpage';
         $route['__admin/mainpage'] = 'admin/mainpage/showpage';
         $route['__admin/seller_find'] = 'admin/sellerFind/ShowPage';
         $route['__admin/seller_find/(:num)/(:num)'] = 'admin/sellerFind/getSellerListXhr/$1/$2';
@@ -79,13 +78,14 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__mock/ngan_luong_payment'] = 'mock/mockNganLuongPayment/mockPaymentNganLuong';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/showpage';
         $route['portal/__admin/order_find'] = 'portalAdmin/orderList/showpage';
+        $route['portal/__admin/order/(:num)'] = 'portalAdmin/orderDetail/showpage/$1';
         
         $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/apiUser/contact/$1';
         $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/apiUser/setting/$1';
         
         $route['portal/api/__admin/order/(:num)'] = 'portalAdmin/apiOrder/getOrder/$1';
         $route['portal/api/__admin/order/(:num)/invoices'] = 'portalAdmin/apiOrder/getInvoices/$1';
-        $route['portal/api/__admin/invoice/(:num)'] = 'portalAdmin/apiInvoice/getInvoice/$1';
+        $route['portal/api/__admin/invoice/(:num)'] = 'portalAdmin/apiInvoice/getInvoiceFullInformation/$1';
         $route['portal/api/__admin/invoice/(:num)/products'] = 'portalAdmin/apiInvoice/getInvoiceProducts/$1';
         $route['portal/api/__admin/invoice/(:num)/other_costs'] = 'portalAdmin/apiInvoice/getInvoiceOtherCost/$1';
         $route['portal/api/__admin/invoice/(:num)/shippings'] = 'portalAdmin/apiInvoice/getInvoiceShipping/$1';

@@ -6,6 +6,10 @@ defined('BASEPATH') or die('no direct script access allowed');
 
 class apiContact extends PortalAdminControllerAbstract
 {
+    function __construct()
+    {
+        parent::__construct();
+    }
     function getContact($contactId){
         $portalmodelContact = new PortalModelUserContact();
         $portalmodelContact->id = $contactId;

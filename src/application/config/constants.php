@@ -108,6 +108,9 @@ class DatabaseFixedValue{
     CONST PAYMENT_BY_NGANLUONG = "PAYMENT_BY_NGANLUONG";
     CONST PAYMENT_BY_VISA = "PAYMENT_BY_VISA";
     CONST PAYMENT_BY_ONEPAY = "PAYMENT_BY_ONEPAY";
+    
+    CONST USER_TYPE_ADMIN = "ADMIN";
+    CONST USER_TYPE_USER = "USER";
 }
 class TableName{
     CONST t_user = 't_user';
@@ -128,6 +131,7 @@ class T_user{
     CONST status_reason = 'status_reason';
     CONST last_active = 'last_active';
     CONST platform_key = 'platform_key';
+    CONST user_type = 'user_type';
 }
 class T_user_history{
     CONST tableName = 't_user_history';
@@ -222,6 +226,7 @@ class T_order{
     CONST shiped_date = "shiped_date" ;
     CONST canceled_date = "canceled_date" ;
     CONST completed_date = "completed_date" ;
+    
 }
 class T_payment_temp{
     CONST tableName = 't_payment_temp';

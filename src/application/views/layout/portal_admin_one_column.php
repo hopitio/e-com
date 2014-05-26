@@ -23,7 +23,6 @@
         <script type='text/javascript' src="/js/directives.js"></script>
         <script type='text/javascript' src="/js/ng-grid.min.js"></script>
         <script src="/js/main.js"></script>
-        <script src="/js/controller/PortalHeadController.js"></script>
         <script src="/js/services/PortalCommonServiceClient.js"></script>
         <?php
         //Thêm các js riêng biệt
@@ -48,21 +47,9 @@
     </head>
     <body>
     <div class="lynx_container">
-        <div class="lynx_head" ng-controller="PortalHeadController">
+        <div class="lynx_head">
             <div class="lynx_headWarp lynx_staticWidth">
                 <div class="lynx_logo"></div>
-                <div class="lynx_headLeft">
-                    <span class="lynx_sell"> <?php echo $language['layout']->lblHeadSell;?></span>
-                    <span class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat;?></span>
-                    <div class="lynx_language">
-                        <span class="lynx_label"><?php echo $language['layout']->lblLanguage;?> : 
-                            <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language='<?php echo User::getCurrentUser()->languageKey;?>'">
-                                <option value="EN-US"  >English</option>
-                                <option value="VN-VI"  >Tiếng Việt</option>
-                            </select>
-                        </span>
-                    </div>
-                </div>
             </div>
             <div class="lynx_headMenu">
                 <div class="lynx_menuWarp lynx_staticWidth">

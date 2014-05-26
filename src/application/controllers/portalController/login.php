@@ -91,19 +91,8 @@ class login extends BaseController
         $user = $portalAccountBiz->getLogin($us,$pw);
         if ($user)
         {
+            $this->obj_user =  $user;
             $this->obj_user->is_authorized = true;
-            $this->obj_user->id =  $user->id;
-            $this->obj_user->account = $user->account;
-            $this->obj_user->firstname = $user->firstname;
-            $this->obj_user->lastname = $user->lastname;
-            $this->obj_user->sex = $user->sex;
-            $this->obj_user->platform_key = $user->platform_key;
-            $this->obj_user->status = $user->status;
-            $this->obj_user->last_active = $user->last_active;
-            $this->obj_user->DOB = $user->DOB;
-            $this->obj_user->languageKey = $user->languageKey;
-            $this->obj_user->currencyKey = $user->currencyKey;
-            $this->obj_user->secretKey =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
             $this->set_obj_user_to_me($this->obj_user);
             $this->onLoginComplete($data);
         }
@@ -287,6 +276,7 @@ class login extends BaseController
         $this->onLoginCompleteRedirect($data);
         
         $user = clone $this->obj_user;
+        unset($user->user_type);
         unset($user->id);
         $dataResult = array();
         $dataResult['url'] = $data['endpoint'];

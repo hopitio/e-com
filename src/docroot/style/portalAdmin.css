@@ -39,7 +39,6 @@
 	
 }
 .lynx_row .lynx_fieldName {
-    width: 100px;
 	display:inline-block;
     margin-right:10px;
 	margin-bottom:10px;
@@ -49,4 +48,35 @@
     margin-right:30px;
 	margin-bottom:10px;
 	text-align: left;
+}
+table.lynx_table{
+    width:100%;
+}
+table.lynx_table td{
+    border: dashed 1px #eaeaea;
+}
+table.lynx_table th{
+    padding:5px;
+    border: dashed 1px #d4d4d4;
+}
+
+table.lynx_table thead{
+    line-height: 30px;
+    background: #eaeaea;
+}
+table.lynx_table tbody{
+    background: white;
+}
+table.lynx_table tbody tr td{
+    padding:5px;
+}
+.lynx_productDes{
+    text-align: left;
+}
+.lynx_productDes img{
+    float:left;
+    margin:0px 5px 5px 0px;
+}
+.lynx_productDes .lynx_productName{
+    color: #66A7D9;
 }

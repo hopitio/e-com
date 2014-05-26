@@ -10,12 +10,11 @@ if (!defined('BASEPATH'))
  * @author ANLT <lethanhan.bkaptech@gmail.com>
  * @copyright 2014
  */
-class User extends AbstractUser
+class User
 {
-
     public $is_authorized = false;
-    public $languageKey = 'EN-US';
-    public $currencyKey = 'USD';
+    public $languageKey = 'VN-VI';
+    public $currencyKey = 'VN';
     private $authenUrl = '/portal/login';
     private $callBack = '/__portal/authen';
     private $logout = "/logout";
@@ -35,6 +34,7 @@ class User extends AbstractUser
     public $status;
     public $last_active;
     public $platform_key;
+    public $user_type = DatabaseFixedValue::USER_TYPE_USER;
     public $secretKey;
 
     //END DATABASE
@@ -61,7 +61,6 @@ class User extends AbstractUser
      */
     function getLoginAuthenUrl()
     {
-
         $url = $this->authenUrl;
         $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
         $url = str_replace('{ep}', urlencode($this->callBack), $url);
@@ -87,6 +86,14 @@ class User extends AbstractUser
     function getCurrency()
     {
         return $this->currencyMap[$this->languageKey];
+    }
+    
+    static function getCurrentUser(){
+        $objUser = get_instance()->session->userdata(USER_SESSION);
+        if(!is_a($objUser, 'User')){
+            $objUser = new User();
+        }
+        return $objUser;
     }
 
 }

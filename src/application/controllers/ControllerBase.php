@@ -1,6 +1,7 @@
 <?php
 class BaseController extends MY_Controller{
-    protected  $is_admin_page = FALSE;
+    
+    protected $is_admin_page = false;
     /**
      * Lấy thông tin Query string.
      * @return array
@@ -8,6 +9,15 @@ class BaseController extends MY_Controller{
     protected function getQueryStringParams() {
         parse_str($_SERVER['QUERY_STRING'], $params);
         return $params;
+    }
+    
+    function __construct()
+    {
+        parent::__construct();
+    }   
+    
+    protected function init(){
+        parent::init();
     }
     
     /**

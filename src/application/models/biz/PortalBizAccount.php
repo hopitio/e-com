@@ -173,6 +173,7 @@ class PortalBizAccount extends PortalBizBase
         $user->platform_key = $userModel->platform_key;
         $user->sex = $userModel->sex;
         $user->status = $userModel->status;
+        $user->user_type = $userModel->user_type;
         return $user;
     }
     

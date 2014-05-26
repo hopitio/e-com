@@ -6,6 +6,10 @@ defined('BASEPATH') or die('no direct script access allowed');
 
 class apiUser extends PortalAdminControllerAbstract
 {
+    function __construct()
+    {
+        parent::__construct();
+    }
     
     function history($userId){
         $postData = $this->input->post();

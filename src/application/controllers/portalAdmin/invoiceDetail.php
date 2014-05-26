@@ -6,6 +6,12 @@ defined('BASEPATH') or die('no direct script access allowed');
 
 class invoiceDetail extends PortalAdminControllerAbstract
 {
+    
+    function __construct()
+    {
+        parent::__construct();
+    }
+    
     protected $js = array(
         '/js/controller/PortalAdminInvoiceController.js',
         '/js/services/PortalAdminInvoiceServiceClient.js'

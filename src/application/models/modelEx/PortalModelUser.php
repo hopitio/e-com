@@ -20,6 +20,7 @@ class PortalModelUser extends PortalModelBase
     public $status_reason;
     public $last_active;
     public $platform_key;
+    public $user_type = DatabaseFixedValue::USER_TYPE_USER;
     
     /**
      * insert thêm một user mới
@@ -57,6 +58,7 @@ class PortalModelUser extends PortalModelBase
             $this->status_reason = $row->status_reason;
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
+            $this->user_type = $row->user_type;
             break;
             
         }
@@ -79,7 +81,8 @@ class PortalModelUser extends PortalModelBase
             T_user::status_date=>$this->status_date,
             T_user::status_reason=>$this->status_reason,
             T_user::last_active=>$this->last_active,
-            T_user::platform_key=>$this->platform_key
+            T_user::platform_key=>$this->platform_key,
+            T_user::user_type => $this->user_type
         );
         $this->_dbPortal->where(T_user::id,$this->id);
         $this->_dbPortal->update(T_user::tableName,$data);
@@ -111,6 +114,7 @@ class PortalModelUser extends PortalModelBase
             $this->status_reason = $row->status_reason;
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
+            $this->user_type = $row->user_type;
             return $result;
         }
         
@@ -145,6 +149,7 @@ class PortalModelUser extends PortalModelBase
             $this->status_reason = $row->status_reason;
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
+            $this->user_type = $row->user_type;
             return true;
         }
     }
@@ -177,6 +182,7 @@ class PortalModelUser extends PortalModelBase
             $this->status_reason = $row->status_reason;
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
+            $this->user_type = $row->user_type;
             return true;
         }
     }

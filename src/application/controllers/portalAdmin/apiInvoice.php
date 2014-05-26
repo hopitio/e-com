@@ -6,7 +6,11 @@ defined('BASEPATH') or die('no direct script access allowed');
 
 class apiInvoice extends PortalAdminControllerAbstract
 {
-   
+    function __construct()
+    {
+        parent::__construct();
+    }
+    
     function getInvoice($invoiceId)
     {
         $portalModelInvoice = new PortalModelInvoice();
@@ -53,5 +57,18 @@ class apiInvoice extends PortalAdminControllerAbstract
         $async->data = $otherShipping;
         $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
     }
-
+    
+    function getInvoiceFullInformation($invoiceId){
+        $portalBizInvoice = new PortalBizInvoice();
+        $invoice = $portalBizInvoice->getFullInformationInvoice($invoiceId);
+        if($invoice == null){
+            throw  new Lynx_RequestException(__FILE__.' '.__LINE__.' '.'Không tìm thấy Invoice '.$_POST['HTTP_HOST']);
+        }
+        
+        $async = new AsyncResult();
+        $async->isError = false;
+        $async->errorMessage = null;
+        $async->data = $invoice;
+        $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
+    }
 }

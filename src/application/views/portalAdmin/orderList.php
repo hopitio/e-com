@@ -6,13 +6,15 @@
         </div>
         <h4>TÌM KIẾM GIAO DỊCH</h4>
         <div class="lynx_row">
-            <span class="lynx_fieldName">ID</span>
+            <span class="lynx_fieldName" style="width:100px"> ID</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="userId"/></span>
-            <span class="lynx_fieldName">Mã Hóa Đơn</span>
+            <span class="lynx_fieldName" style="width:100px">Mã Hóa Đơn</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="userId"/></span>
-            <span class="lynx_fieldName">ACCOUNT</span>
+        </div>
+        <div class="lynx_row">
+            <span class="lynx_fieldName" style="width:100px">ACCOUNT</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="account"/></span>
-            <span class="lynx_fieldName">NGÀY TẠO</span>
+            <span class="lynx_fieldName" style="width:100px">NGÀY TẠO</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="lastName"/></span>
         </div>
 
@@ -32,8 +34,6 @@
     </div>
 </div>
 <script type="text/ng-template" id="actionCell.html" >
-    <a href="{{row.getProperty('detailUrl')}}"><i title="Thông tin tài khoản người sử dụng" class="glyphicon glyphicon-user" style="cursor: pointer;font-size:15px; margin:5px;"></i></a>
-    <i ng-click="rejectLoginStatus(row.getProperty('id'))" title="Hủy quyền đăng nhập" class="glyphicon glyphicon-remove" style="cursor: pointer;font-size:15px; margin:5px;"></i>
-    <i ng-click="openLoginStatus(row.getProperty('id'))" title="Mở quyền đăng nhập" class="glyphicon glyphicon-flash" style="cursor: pointer;font-size:15px; margin:5px;"></i>
+    <a href="{{row.getProperty('detailUrl')}}" target="_blank"><i title="Chi tiết đơn đặt hàng" class="glyphicon glyphicon-file" style="cursor: pointer;font-size:15px; margin:5px;"></i></a>
 </script>
 
