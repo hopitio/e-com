@@ -17,7 +17,7 @@ class PortalModelOrder extends PortalModelBase
                 	(SELECT t_order_status.id
                 	 FROM t_order_status
                 	 WHERE t_order_status.fk_order = t_order.id
-                	 ORDER BY t_order_status.updated_date DESC 
+                	 ORDER BY t_order_status.id DESC
                 	 LIMIT 0, 1)
                 {$statusQuery}
                 ORDER BY t_order_status.updated_date DESC";
@@ -33,7 +33,7 @@ class PortalModelOrder extends PortalModelBase
             (SELECT t_order_status.id
             FROM t_order_status
             WHERE t_order_status.fk_order = t_order.id
-            ORDER BY t_order_status.updated_date DESC
+            ORDER BY t_order_status.id DESC
             LIMIT 0, 1)
         ORDER BY t_order_status.updated_date DESC";
         $query = $this->_dbPortal->query($sql);

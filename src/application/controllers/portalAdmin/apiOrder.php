@@ -6,10 +6,6 @@ defined('BASEPATH') or die('no direct script access allowed');
 
 class apiOrder extends PortalAdminControllerAbstract
 {
-//     function __construct()
-//     {
-//         parent::__construct();
-//     }
     
     function findOrderXhr(){
         
@@ -58,11 +54,31 @@ class apiOrder extends PortalAdminControllerAbstract
     function getOrder($orderId){
         $portalpaymentHistory = new PortalBizPaymentHistory();
         $order = $portalpaymentHistory->getOrderAllInformation($orderId);
+        foreach ($order->invoices as &$invoice){
+            $this->includeInvoiceDetailURL($invoice);
+        }
         $async = new AsyncResult();
         $async->isError = false;
         $async->errorMessage = null;
         $async->data = $order;
         $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
+    }
+    
+    function getOrderStatusHistory($orderId)
+    {
+        $portalModelHistory = new PortalModelOrderStatus();
+        $portalModelHistory->fk_order = $orderId;
+        $histories = $portalModelHistory->getMutilCondition(T_order_status::updated_date,'ASC');
+        $async = new AsyncResult();
+        $async->isError = false;
+        $async->errorMessage = null;
+        $async->data = $histories;
+        $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
+    }
+    
+    private function includeInvoiceDetailURL(&$invoice)
+    {
+        $invoice->detail_url = "/portal/__admin/invoice/{$invoice->id}";
     }
 
 }

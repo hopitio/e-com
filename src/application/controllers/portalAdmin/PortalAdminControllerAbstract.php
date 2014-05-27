@@ -14,7 +14,6 @@ abstract class PortalAdminControllerAbstract extends BaseController
         if($this->is_admin_page && $this->obj_user->user_type != DatabaseFixedValue::USER_TYPE_ADMIN){
             throw new Lynx_AuthenticationException(__FILE__.' '.__LINE__.' '.'KHÔNG CÓ QUYỀN TRUY CẬP ADMIN.');
         }
-        
     }
 
 

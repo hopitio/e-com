@@ -85,6 +85,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         
         $route['portal/api/__admin/order/(:num)'] = 'portalAdmin/apiOrder/getOrder/$1';
         $route['portal/api/__admin/order/(:num)/invoices'] = 'portalAdmin/apiOrder/getInvoices/$1';
+        $route['portal/api/__admin/order/(:num)/status_histories'] = 'portalAdmin/apiOrder/getOrderStatusHistory/$1';
+        
         $route['portal/api/__admin/invoice/(:num)'] = 'portalAdmin/apiInvoice/getInvoiceFullInformation/$1';
         $route['portal/api/__admin/invoice/(:num)/products'] = 'portalAdmin/apiInvoice/getInvoiceProducts/$1';
         $route['portal/api/__admin/invoice/(:num)/other_costs'] = 'portalAdmin/apiInvoice/getInvoiceOtherCost/$1';
@@ -121,6 +123,10 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/__admin/user/(:num)/reject_login'] = 'portalAdmin/apiUser/rejectLoginAccount/$1';
         $route['portal/api/__admin/user/(:num)/open_login'] = 'portalAdmin/apiUser/openLoginAccount/$1';
         $route['portal/api/__admin/order_find_post_xhr'] ="portalAdmin/apiOrder/findOrderXhr";
+        
+        $route['portal/api/__admin/order/(:num)/status_next'] ="portalAdmin/orderDetail/nextUpdateStatus/$1";
+        $route['portal/api/__admin/order/(:num)/status_back'] ="portalAdmin/orderDetail/backOrderStatus/$1";
+        $route['portal/api/__admin/order/(:num)/status_reject'] ="portalAdmin/orderDetail/rejectOrder/$1";
     }
 }
 //

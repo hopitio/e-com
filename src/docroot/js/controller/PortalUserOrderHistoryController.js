@@ -8,7 +8,7 @@ function PortalUserOrderHistoryController($scope,$modal,$http)
         userOrderHistoryServiceClient = new PortalUserOrderHistoryServiceClient($http);
         userOrderHistoryServiceClient.getAllOrderHistory('all', getAllOrderHistorySucessCallback, getAllOrderHistoryErrorCallback);
         $scope.onLoadOrder = true;
-    }
+    };
     function getAllOrderHistorySucessCallback(result){
         $scope.onLoadOrder = false;
         if(result.isError){
@@ -24,21 +24,21 @@ function PortalUserOrderHistoryController($scope,$modal,$http)
     }
     $scope.parseInt = function(val){
         return parseInt(val);
-    }
+    };
     $scope.preStatusOrder = function(val){
        return val.replace("_", " ");
-    }
+    };
     $scope.loadAllOrder();
     
     $scope.showOrderDetail = function(order)
     {
         $scope.template = "ModalOrderDetail.html";
         $scope.order = order;
-    }
+    };
     $scope.backToList = function (){
         $scope.template = "ModalOrderList.html";
         $scope.order = undefined;
-    }
+    };
 
 }
 

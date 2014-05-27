@@ -80,3 +80,25 @@ table.lynx_table tbody tr td{
 .lynx_productDes .lynx_productName{
     color: #66A7D9;
 }
+.lynx_admin_robin{
+    margin-top:-10px;
+    margin-right: -10px;
+    width:50%;
+    float:right;
+    background-color: white;
+    border-left: solid 1px #DDDDDD;
+    border-bottom: solid 1px #DDDDDD;
+    border-radius: 0px 0px 0px 20px;
+}
+
+.lynx_admin_robin li{
+    float:right;
+    color:#66A7D9;
+    padding:0px 10px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.lynx_admin_robin li:hover{
+    color:black;
+}
