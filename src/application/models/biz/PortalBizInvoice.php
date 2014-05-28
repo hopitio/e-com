@@ -54,7 +54,7 @@ class PortalBizInvoice extends PortalBizBase
    }
     
    function getProductsOfInvoices($invoicesId,$isGetTax = false){
-        $products = [];
+        $products = array();
         $portalProduct = new PortalModelProduct();
         $products = $portalProduct->getProductsOfInvoices($invoicesId);
         if($isGetTax){
