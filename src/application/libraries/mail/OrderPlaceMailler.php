@@ -4,13 +4,13 @@
  * @author ANLT
  * @since 20140330
  */
-class NewPasswordMailler extends AbstractStaff{
+class OrderPlaceMailler extends AbstractStaff{
     protected $config_key = 'NewPasswordMailler';
     
     
     /* (non-PHPdoc)
      * @see AbstractStaff::sendMail()
-     */
+    */
     protected function sendMail()
     {
         $fullName = $this->config[MAILLER_FULLNAME];
@@ -36,5 +36,5 @@ class NewPasswordMailler extends AbstractStaff{
         $mailContent = str_replace('{time}',$this->mailData['time'],$mailContent);
         $mailContent = str_replace('{password}',$this->mailData['password'],$mailContent);
         return $mailContent;
-    }
+    }    
 }

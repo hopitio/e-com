@@ -49,10 +49,10 @@ class PortalBizPassword extends PortalBizBase
     function isValidChangePassword($user,$oldPass){
         $portalUser = new PortalModelUser();
         $portalUser->id = $user->id;
-        $portalUser->getUserByUserId();
+        $portalUser->getOneById();
         if($portalUser->password != $oldPass)
         {
-            return false;        
+            return false;
         }
         return true;
     }

@@ -50,7 +50,6 @@ define('platform_login_url','platform_login_url');
 define('platform_login_callback','platform_login_callback');
 define('platform_logout','platform_logout');
 
-
 //Database defined
 class DatabaseFixedValue{
     CONST DEFAULT_FORMAT_DATE = 'Y-m-d h:m:s';
