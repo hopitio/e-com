@@ -21,6 +21,17 @@ class ProductFixedDomain extends ProductDomain
         return $this->_getAttributeByName('storage_code_type');
     }
 
+    function sum_taxes($currency)
+    {
+        $total = 0;
+        foreach ($this->_taxes as $tax)
+        {
+            $total+= $tax->costFixed + $tax->costPercent * $this->getPriceMoney('VND')->getAmount();
+        }
+        $money = new Money($total, new Currency('VND'));
+        return $money->convert(new Currency($currency))->getAmount();
+    }
+
     /** @return ProductAttributeDomain */
     function getDescription()
     {

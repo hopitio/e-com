@@ -10,11 +10,15 @@ class cart extends BaseController
     protected $_CI;
     public $cartModel;
 
+    /** @var WishlistModel */
+    public $wishlistModel;
+
     function __construct()
     {
         parent::__construct();
         $this->_CI = get_instance();
         $this->load->model('modelEx/CartModel', 'cartModel');
+        $this->load->model('modelEx/WishlistModel', 'wishlistModel');
     }
 
     protected $_cartMapper;
@@ -30,15 +34,17 @@ class cart extends BaseController
                 ->findAll();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data)
-                ->setJavascript(array('/js/angular.min.js'))
+                ->setCss(array('/style/customerList.css'))
                 ->render('cart/shipping');
     }
 
     function showCart()
     {
+        $data['wishlist'] = $this->wishlistModel->getOneWishlist();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setJavascript(array('/js/controller/showCartCtrl.js'))
                 ->setCss(array('/style/customerList.css'))
+                ->setData($data)
                 ->render('cart/showCart');
     }
 
@@ -50,7 +56,8 @@ class cart extends BaseController
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes()
                 ->autoloadTaxes();
-        $products = $mapper->findAll(function($rawData, $instance){
+        $products = $mapper->findAll(function($rawData, $instance)
+        {
             $instance->seller_name = $rawData['seller_name'];
         });
         $json = array();
@@ -97,7 +104,7 @@ class cart extends BaseController
             $qty = (int) $this->input->post('sel_qty');
             $productID = (int) $this->input->post('hdn_product');
         }
-        CartMapper::make()->addToCart($productID);
+        CartMapper::make()->addToCart($productID, $qty);
         redirect($this->_controller . '/showCart');
     }
 

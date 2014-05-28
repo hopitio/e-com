@@ -48,8 +48,8 @@ defined('BASEPATH') or die('No direct script access allowed');
                             <span class="red" ng-if="product.stock <= 0">Out of stock</span>
                         </td>
                         <td class="right">
-                            <span class="product-price">$60.00</span><br>
-                            <span class="product-original-price">($100)</span>
+                            <span class="product-price">{{fnMoneyToString(product.price + product.taxes)}}</span><br>
+                            <!--<span class="product-original-price">($100)</span>-->
                         </td>
                         <td class="center">
                             <select ng-model="product.quantity" ng-change="updateQty(product)">
@@ -57,7 +57,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                                         value="{{$index}}" ng-if="$index" ng-model="product.quantity">{{$index}}</option>
                             </select>
                             <br>
-                            <a href="javascript:;">
+                            <a href="javascript:;" ng-click="removeFromCart(product.id)">
                                 Remove from cart
                             </a><br>
                             <a href="javascript:;">
@@ -65,52 +65,25 @@ defined('BASEPATH') or die('No direct script access allowed');
                             </a>
                         </td>
                         <td class="center">
-                            <span class="product-price">$60.00</span>
-                        </td>
-                    </tr>
-                    <tr class="odd">
-                        <td class="center">
-                            <img class="product-thumbnail" src="http://localhost.com:8080/uploads/2014/05/22/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg">
-                        </td>
-                        <td>
-                            <a href="javascript:;" class="product-name">Product name</a><br>
-                            <span class="product-seller">By seller name</span><br>
-                            <span class="green">In stock</span>
-                        </td>
-                        <td class="right">
-                            <span class="product-price">$60.00</span><br>
-                            <span class="product-original-price">($100)</span>
-                        </td>
-                        <td class="center">
-                            <select>
-                                <option value="1">1</option>
-                            </select>
-                            <br>
-                            <a href="javascript:;">
-                                Remove from Cart
-                            </a><br>
-                            <a href="javascript:;">
-                                Add to Wishlist
-                            </a>
-                        </td>
-                        <td class="center">
-                            <span class="product-price">$60.00</span>
+                            <span class="product-price">{{fnMoneyToString((product.price + product.taxes) * product.quantity)}}</span>
                         </td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td colspan="2">
+                            <!--
                             <a href="javascript:;"><i class="fa fa-gift"></i> Enter Giftcode</a>
                             <?php echo str_repeat('&nbsp;', 16) ?>
-                            <a href="javascript:;"><i class="fa fa-play"></i> Continue shopping</a>
+                            -->
+                            <a href="/"><i class="fa fa-play"></i> Continue shopping</a>
                         </td>
                         <td class="right">
                             <span class="product-total-label">TOTAL:</span><br>
-                            <span class="product-save-label">You save:</span>
+                            <!--<span class="product-save-label">You save:</span>-->
                         </td>
-                        <td class="center ">
-                            <span class="product-total-price">$180.00</span><br>
-                            <span class="product-save-price">$40.00</span>
+                        <td class="center">
+                            <span class="product-total-price">{{fnMoneyToString(calPriceOnly() + calTaxes())}}</span><br>
+                            <!--<span class="product-save-price">$40.00</span>-->
                         </td>
                     </tr>
                 </tbody>
@@ -146,8 +119,8 @@ defined('BASEPATH') or die('No direct script access allowed');
             <div class="cart-right-content">
                 <h4 class="left">Cart summaries</h4>
                 <div class="summary-row">
-                    <div class="row-left">Products (3):</div>
-                    <div class="row-right">$180</div>
+                    <div class="row-left">Products ({{products.length}}):</div>
+                    <div class="row-right">{{fnMoneyToString(calPriceOnly())}}</div>
                 </div>
                 <div class="summary-row">
                     <div class="row-left">Shipping:</div>
@@ -156,49 +129,29 @@ defined('BASEPATH') or die('No direct script access allowed');
                 <hr>
                 <div class="summary-row">
                     <div class="row-left">Subtotal:</div>
-                    <div class="row-right">$180</div>
+                    <div class="row-right">{{fnMoneyToString(calPriceOnly())}}</div>
                 </div>
                 <div class="summary-row">
                     <div class="row-left">Taxes:</div>
-                    <div class="row-right">$0.00</div>
+                    <div class="row-right">{{fnMoneyToString(calTaxes())}}</div>
                 </div>
                 <hr>
                 <div class="summary-row total">
                     <div class="row-left">Total:</div>
-                    <div class="row-right">$180</div>
+                    <div class="row-right">{{fnMoneyToString(calPriceOnly() + calTaxes())}}</div>
                 </div>
+                <!--
                 <div class="summary-row saving">
                     <div class="row-left">You save:</div>
                     <div class="row-right">$40.00</div>
                 </div>
+                -->
             </div>
-            <input type="button" class="btn btn-lg btn-primary form-control" value="CHECKOUT">
+            <input type="button" class="btn btn-lg btn-primary form-control" value="CHECKOUT" ng-click="checkout()">
         </div><!--cart-right-->
     </div<!--row-wrapper-->
     <div class="clearfix"></div>
-    <div >
-        <div ng-show="undo">
-            Your item has been removed from Cart. <a href="javascript:;" ng-click="undoRemove()">Click here</a> to undo.
-        </div>
-        <div ng-repeat="product in products">
-            <div>Name: {{product.name}}</div>
-            <div>Price: {{product.price}}</div>
-            <div>Taxes: {{product.taxes}}</div>
-            <div>*: {{(product.price + product.taxes) * product.quantity}}</div>
-            <div>
-                <input 
-                    type="text" name="txtProductQuantity[{{product.id}}]" txtquantity product="product"
-                    id="product_{{product.id}}" value="{{product.quantity}}" ng-model="product.quantity"
-                    >
-                <a href="javascript:;" ng-click="removeFromCart(product.id)">Remove from Cart</a>
-            </div>
-        </div>
-        <div>
-            <div>subtotal({{products.length}} items): {{calTotal()}}</div>
-            <a href="javascript:;" ng-click="checkout()">Proceed to Checkout</a>
-        </div>
 
-    </div>
 </div><!--angular-->
 
 
@@ -209,4 +162,6 @@ defined('BASEPATH') or die('No direct script access allowed');
     scriptData.updateQuantityURL = '<?php echo base_url('cart/updateQuantityService') ?>';
     scriptData.removeFromCartURL = '<?php echo base_url('cart/removeFromCart') ?>/';
     scriptData.addToCartURL = '<?php echo base_url('cart/addToCart') ?>/';
+    scriptData.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+    scriptData.wishlistServiceURL = '/wishlist/wishlistDetailService/<?php echo $wishlist->id ?>';
 </script>

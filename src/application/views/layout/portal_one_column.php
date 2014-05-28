@@ -56,8 +56,8 @@
                     <div class="lynx_language">
                         <span class="lynx_label"><?php echo $language['layout']->lblLanguage;?> : 
                             <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language='<?php echo User::getCurrentUser()->languageKey;?>'">
-                                <option value="EN-US"  >English</option>
-                                <option value="VN-VI"  >Tiếng Việt</option>
+                                <option value="EN-US">English</option>
+                                <option value="VN-VI">Tiếng Việt</option>
                             </select>
                         </span>
                     </div>

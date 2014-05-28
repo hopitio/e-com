@@ -35,6 +35,8 @@ function showCartCtrl($scope, $http) {
     $scope.products = [];
     $scope.undo;
     $scope.qtyRange = new Array(31);
+    $scope.fnMoneyToString = scriptData.fnMoneyToString;
+    $scope.wishlist = [];
 
     $scope.getProducts = function(successCallback) {
         $http.get(scriptData.serviceURL, {cache: false}).success(function(data) {
@@ -47,14 +49,34 @@ function showCartCtrl($scope, $http) {
         });
     };
     $scope.getProducts();
-    $scope.calTotal = function() {
+    
+    $scope.getWishlist = function(){
+        $http.get(scriptData.wishlistServiceURL, {cache: false}).success(function(data){
+            $scope.wishlist = data;
+        }).error(function(){
+            //TODO
+        });
+    };
+    $scope.getWishlist();
+    
+    $scope.calPriceOnly = function() {
         var total = 0;
         for (var i in $scope.products) {
             var product = $scope.products[i];
-            total += (product.price + product.taxes) * product.quantity;
+            total += product.price * product.quantity;
         }
         return total;
     };
+
+    $scope.calTaxes = function() {
+        var total = 0;
+        for (var i in $scope.products) {
+            var product = $scope.products[i];
+            total += product.taxes * product.quantity;
+        }
+        return total;
+    };
+
     $scope.checkout = function() {
         window.location = scriptData.checkoutURL;
     };
@@ -64,14 +86,10 @@ function showCartCtrl($scope, $http) {
         postData.products[product.id] = product.quantity;
         $.ajax({
             type: 'post',
-            url: scriptData.updateQuantityService,
+            url: scriptData.updateQuantityURL,
             data: postData,
             success: function() {
-                $scope.getProducts(function(){
-                    setTimeout(function(){
-                        $scope.$apply();
-                    });
-                });
+
             }, error: function() {
                 //todo
             }

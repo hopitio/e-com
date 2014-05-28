@@ -57,13 +57,12 @@ class seller extends BaseController
         foreach ($products as $product)
         {
             $storageCode = (string) $product->getStorageCode();
-
             $aaData[] = array(
                 $product->id,
                 $product->id,
                 (string) $product->getName(),
                 $storageCode,
-                format_money($product->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount()),
+                (string) $product->getPriceMoney('VND'),
                 'url' => '/seller/product_details/' . $product->id
             );
         }

@@ -32,7 +32,7 @@
 .cart-right{width:300px;margin-left:10px;padding:10px;border: 1px solid #d6d6d6;float:left;background: #eceeef;}
 .summary-row .row-left{float:left;width:60%;text-align:left;line-height: 30px;}
 .summary-row .row-right{margin-left:40%;text-align: right;line-height: 30px;}
-.cart-right-content{padding:10px;border:1px solid #d6d6d6;background-color: white;}
+.cart-right-content{padding:10px;border:1px solid #d6d6d6;background-color: white;overflow: hidden;}
 .cart-right-content hr{margin: 2px 0;}
 .cart-right-content h4{color:#44aeff;margin:5px 0;font-weight: bold;}
 .cart-right .btn-lg{margin-top:10px;}

@@ -11,6 +11,8 @@ li{list-style: none;}
 .lynx_head .lynx_headWarp{
     display:inline-block;
 }
+.form-horizontal *{text-align: left;}
+table th{font-weight: bold;}
 u, u *{text-decoration: underline;}
 .green{color:#04b139}
 .red{color:#b12704;}

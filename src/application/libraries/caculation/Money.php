@@ -90,7 +90,6 @@ class Money
     function convert(Currency $currency)
     {
         $rate = $this->getCurrency()->getTransferRate() / $currency->getTransferRate();
-
         return new Money($this->_amount * $rate, clone $currency);
     }
 
@@ -115,13 +114,32 @@ class Money
  */
 function format_money($amount)
 {
-    if (ceil($amount) == $amount)
+    if (round($amount, 0) == $amount)
     {
-        return number_format($amount);
+        $precision = 0;
     }
-    elseif (number_format($amount, 1) == $amount)
+    elseif (round($amount, 1) == $amount)
     {
-        return number_format($amount, 1);
+        $precision = 1;
     }
-    return number_format($amount, 2);
+    else
+    {
+        $precision = 2;
+    }
+    return number_format((double) $amount, $precision);
+}
+
+/**
+ * Hàm javascript để hiển thị money từ double. vd: 10.00 => $10.00
+ */
+function getJavascriptMoneyFunction($currency)
+{
+    switch ($currency) {
+        case 'USD':
+            return "function(a){return '$' + a.formatMoney(2);}";
+        case 'KRW':
+            return "function(a){return 'w' + a.formatMoney(2);}";
+        case 'VND':
+            return "function(a){return a.formatMoney(2) + ' đ'}";
+    }
 }

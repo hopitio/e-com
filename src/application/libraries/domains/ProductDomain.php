@@ -101,6 +101,7 @@ class ProductDomain implements DomainInterface
         }
     }
 
+
     /**
      * @return ProductAttributeDomain
      */
