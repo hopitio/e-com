@@ -19,6 +19,11 @@
         </div>
         
         <h4>Thông tin thông tin hóa đơn</h4>
+        <div class="lynx_admin_robin" >
+            <ul>
+                <li><a href="{{invoice.order.detail_url}}">Chi tiết đơn hàng</a></li>
+            </ul>
+        </div>
         <div class="lynx_row">
             <span class="lynx_fieldValue">ID : {{invoice.id}}</span>
             <span class="lynx_fieldValue">Create by : {{invoice.created_user}}</span>

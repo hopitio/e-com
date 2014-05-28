@@ -1,0 +1,11 @@
+﻿Những việc cần làm trong tuần tới
+- TA: cần chốt pin wishlist cart order-sub. sau đó chuyển sang chat (Nếu còn thời gian)
+- A.Hoàng cần liệt kê là khi nào cần gửi mail thông báo cho người dùng , Ảnh quảng cáo. - ANLT gửi kích cỡ 
+- ANLT: tiếp tục cập nhật order.
+Những update sẽ thực hiện sau.
+- Invoice bị duplicate trên 3 hệ thống.
+- Tất cả status cần thông báo cho user trừ trường hợp sang verify 
+- Trong order status sang verifying cần chuyển sang cho 
+- Payment : cần gộp bước chọn phương thức thanh toán và review làm 1 
+- Thêm kích cỡ vào cho vào sản phẩm
+- Tất cả các trang đều cần hiển thị thông tin của giỏ hàng.

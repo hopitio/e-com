@@ -33,7 +33,7 @@ class orderDetail extends PortalAdminControllerAbstract
     function nextUpdateStatus($orderId){
         $dataPost = $this->input->post();
         $comment = null;
-        if(isset($dataPost)){
+        if(isset($dataPost['comment'])){
             $comment =  $dataPost['comment'];
         }
         $portalBizOrder = new PortalBizOrder();
@@ -55,7 +55,7 @@ class orderDetail extends PortalAdminControllerAbstract
     function backOrderStatus($orderId){
         $dataPost = $this->input->post();
         $comment = null;
-        if(isset($dataPost)){
+        if(isset($dataPost['comment'])){
             $comment =  $dataPost['comment'];
         }
         $portalBizOrder = new PortalBizOrder();
@@ -76,7 +76,7 @@ class orderDetail extends PortalAdminControllerAbstract
     function rejectOrder($orderId){
         $dataPost = $this->input->post();
         $comment = null;
-        if(isset($dataPost)){
+        if(isset($dataPost['comment'])){
             $comment =  $dataPost['comment'];
         }
         $portalBizOrder = new PortalBizOrder();

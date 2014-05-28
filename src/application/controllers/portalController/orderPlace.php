@@ -9,7 +9,7 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
 
 class orderPlace extends BaseController
 {
-    protected $authorization_required = FALSE;
+    protected $authorization_required = true;
     protected $css = array('/style/portalOrder.css');
     protected $js =  array();
     

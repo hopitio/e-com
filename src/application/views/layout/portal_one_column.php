@@ -49,15 +49,15 @@
     <div class="lynx_container">
         <div class="lynx_head" ng-controller="PortalHeadController">
             <div class="lynx_headWarp lynx_staticWidth">
-                <div class="lynx_logo"></div>
+                <a href="/"><div class="lynx_logo"></div></a>
                 <div class="lynx_headLeft">
                     <span class="lynx_sell"> <?php echo $language['layout']->lblHeadSell;?></span>
                     <span class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat;?></span>
                     <div class="lynx_language">
                         <span class="lynx_label"><?php echo $language['layout']->lblLanguage;?> : 
                             <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language='<?php echo User::getCurrentUser()->languageKey;?>'">
-                                <option value="EN-US">English</option>
-                                <option value="VN-VI">Tiếng Việt</option>
+                                <option value="EN-US"  >English</option>
+                                <option value="VN-VI"  >Tiếng Việt</option>
                             </select>
                         </span>
                     </div>
@@ -72,7 +72,7 @@
          <div class="lynx_footer">
             <div class="lynx_content">
                 <div class="lynx_col1">
-                    <img class="lynx_logo" src="/images/logo-footer.png"/>
+                    <a href="/"><img class="lynx_logo" src="/images/logo-footer.png"/></a>
                     <span class="lynx_contact">
                           Sfriendly.com /  Sfriendly.vn <br/>
                           Phone: 098 999 999 <br/>

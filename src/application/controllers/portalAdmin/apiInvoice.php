@@ -64,7 +64,7 @@ class apiInvoice extends PortalAdminControllerAbstract
         if($invoice == null){
             throw  new Lynx_RequestException(__FILE__.' '.__LINE__.' '.'Không tìm thấy Invoice '.$_POST['HTTP_HOST']);
         }
-        
+        $invoice->order->detail_url = "/portal/__admin/order/{$invoice->order->id}";
         $async = new AsyncResult();
         $async->isError = false;
         $async->errorMessage = null;

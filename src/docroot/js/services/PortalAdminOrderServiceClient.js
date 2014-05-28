@@ -30,11 +30,11 @@ function PortalAdminOrderServiceClient($http)
         });
     };
     
-    this.postNextOrderStatus = function(orderId,comment,sucessCallback,errorCallback){
+    this.postNextOrderStatus = function(orderId,commentContent,sucessCallback,errorCallback){
         $url = '/portal/api/__admin/order/'+orderId+'/status_next';
         $http.post($url,
                 $.param(
-                        {comment:comment}),
+                        {comment:commentContent}),
                         {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT",'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'}}
         ).success(function(data){
             if(typeof sucessCallback === 'function'){
@@ -47,11 +47,11 @@ function PortalAdminOrderServiceClient($http)
         });
     };
     
-    this.postBackOrderStatus = function(orderId,comment,sucessCallback,errorCallback){
+    this.postBackOrderStatus = function(orderId,commentContent,sucessCallback,errorCallback){
         $url = '/portal/api/__admin/order/'+orderId+'/status_back';
         $http.post($url,
                 $.param(
-                        {comment:comment}),
+                        {comment:commentContent}),
                         {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT",'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'}}
         ).success(function(data){
             if(typeof sucessCallback === 'function'){
@@ -64,11 +64,11 @@ function PortalAdminOrderServiceClient($http)
         });
     };
     
-    this.rejectOrderStatus = function(orderId,comment,sucessCallback,errorCallback){
+    this.rejectOrderStatus = function(orderId,commentContent,sucessCallback,errorCallback){
         $url = '/portal/api/__admin/order/'+orderId+'/status_reject';
         $http.post($url,
                 $.param(
-                        {comment:comment}),
+                        {comment:commentContent}),
                         {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT",'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'}}
         ).success(function(data){
             if(typeof sucessCallback === 'function'){

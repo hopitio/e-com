@@ -12,7 +12,7 @@
         <h4 ng-show="order.user != null">Thông tin tài khoản</h4>
         <div class="lynx_admin_robin" ng-show="order.user != null">
             <ul>
-                <li>Chi tiết tài khoản</li>
+                <li><a href="{{order.user.detail_url}}">Chi tiết tài khoản</a></li>
             </ul>
         </div>
         <div ng-show="order.user != null" class="lynx_row" >
@@ -138,9 +138,20 @@
                 <tfoot></tfoot>
              </table>
         </div>
-        
     </div>
 </div>
+<script type="text/ng-template" id="commentDialog.html">
+        <div class="modal-header">
+            <h3 class="modal-title">THÊM MÔ TẢ</h3>
+        </div>
+        <div class="modal-body">
+            <textarea rows="4" cols="50" ng-model="dialog.comment" type="text" style="width:100%;height:200px"/>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+</script>
 
 
 

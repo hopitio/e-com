@@ -49,7 +49,7 @@
     <div class="lynx_container">
         <div class="lynx_head">
             <div class="lynx_headWarp lynx_staticWidth">
-                <div class="lynx_logo"></div>
+                <a href="/"><div class="lynx_logo"></div></a>
             </div>
             <div class="lynx_headMenu">
                 <div class="lynx_menuWarp lynx_staticWidth">
@@ -60,7 +60,7 @@
          <div class="lynx_footer">
             <div class="lynx_content">
                 <div class="lynx_col1">
-                    <img class="lynx_logo" src="/images/logo-footer.png"/>
+                    <a href="/"><img class="lynx_logo" src="/images/logo-footer.png"/></a>
                     <span class="lynx_contact">
                           Sfriendly.com /  Sfriendly.vn <br/>
                           Phone: 098 999 999 <br/>

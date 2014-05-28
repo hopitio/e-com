@@ -30,7 +30,7 @@ class apiOrder extends PortalAdminControllerAbstract
         $async->errorMessage = null;
         $async->data = array(
             'result' =>$results,
-            'count' =>$count
+            'count' =>$count[0]->count
         );
         
         $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
@@ -54,9 +54,7 @@ class apiOrder extends PortalAdminControllerAbstract
     function getOrder($orderId){
         $portalpaymentHistory = new PortalBizPaymentHistory();
         $order = $portalpaymentHistory->getOrderAllInformation($orderId);
-        foreach ($order->invoices as &$invoice){
-            $this->includeInvoiceDetailURL($invoice);
-        }
+        $this->includeDetailURL($order);
         $async = new AsyncResult();
         $async->isError = false;
         $async->errorMessage = null;
@@ -76,9 +74,14 @@ class apiOrder extends PortalAdminControllerAbstract
         $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
     }
     
-    private function includeInvoiceDetailURL(&$invoice)
+    private function includeDetailURL(&$order)
     {
-        $invoice->detail_url = "/portal/__admin/invoice/{$invoice->id}";
+        foreach ($order->invoices as &$invoice){
+            $invoice->detail_url = "/portal/__admin/invoice/{$invoice->id}";
+        }
+        if($order->user != null && isset($order->user)){
+            $order->user->detail_url = "/portal/__admin/user/{$order->user->id}";
+        }
     }
 
 }

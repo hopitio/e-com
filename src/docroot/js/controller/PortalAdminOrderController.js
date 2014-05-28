@@ -1,10 +1,10 @@
-function PortalAdminOrderController($scope,$http)
+function PortalAdminOrderController($scope,$http, $modal)
 {
     $scope.order = {};
     $scope.order.id = document.URL.split("/")[document.URL.split("/").length - 1];
     $scope.orderHistories = [];
     $scope.comment = '';
-        
+    this.modalInstance = '';
     $scope.getOrder = function(){
         portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
         portalAdminOrderServiceClient.getorder($scope.order.id, getOrderSucessCallback, getErrorCallback);
@@ -28,19 +28,61 @@ function PortalAdminOrderController($scope,$http)
     
     function getErrorCallback(xhr,status){}
     
-    $scope.nextStatus = function(){
+    function dialogCallback (dialogResult) {
+        $scope.comment = dialogResult.comment;
+        var statusType = dialogResult.statusType;
         portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
-        portalAdminOrderServiceClient.postNextOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+        switch(statusType){
+            case 'nextStatus' :
+                portalAdminOrderServiceClient.postNextOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+                break;
+            case 'backStatus' :
+                portalAdminOrderServiceClient.postBackOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+                break;
+            case 'rejectStatus' :
+                portalAdminOrderServiceClient.rejectOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+                break;
+        }
+      }
+   
+    
+    $scope.nextStatus = function(){
+        this.modalInstance = $modal.open({
+            templateUrl: 'commentDialog.html',
+            controller: ModalInstanceCtrl,
+            resolve: {
+                statusType: function () {
+                  return 'nextStatus';
+                }
+              }
+        });
+        this.modalInstance.result.then(dialogCallback, function () {});
     };
     
     $scope.backStatus = function(){
-        portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
-        portalAdminOrderServiceClient.postBackOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+        this.modalInstance = $modal.open({
+            templateUrl: 'commentDialog.html',
+            controller: ModalInstanceCtrl,
+            resolve: {
+                statusType: function () {
+                  return 'backStatus';
+                }
+              }
+        });
+        this.modalInstance.result.then(dialogCallback, function () {});
     };
     
     $scope.rejectStatus = function(){
-        portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
-        portalAdminOrderServiceClient.rejectOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+        this.modalInstance = $modal.open({
+            templateUrl: 'commentDialog.html',
+            controller: ModalInstanceCtrl,
+            resolve: {
+                statusType: function () {
+                  return 'rejectStatus';
+                }
+              }
+        });
+        this.modalInstance.result.then(dialogCallback, function () {});
     };
     
     function changStatusSucessCallback(data){
@@ -59,4 +101,17 @@ function PortalAdminOrderController($scope,$http)
     $scope.getOrder();
     $scope.getHistories();
 }
-PortalAdminOrderController.$inject = ['$scope','$http'];
+
+function ModalInstanceCtrl($scope, $modalInstance, statusType) {
+    $scope.dialog = {};
+    $scope.dialog.comment = '';
+    $scope.dialog.statusType = statusType;
+    $scope.ok = function () {
+      $modalInstance.close($scope.dialog);
+    };
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+}
+  PortalAdminOrderController.$inject = ['$scope','$http','$modal'];
+  ModalInstanceCtrl.$inject = ['$scope','$modalInstance','statusType'];
