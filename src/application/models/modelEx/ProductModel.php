@@ -210,6 +210,10 @@ class ProductModel extends BaseModel
         {
             $rid = $pattr->id;
         }
+        if ($attrType->dataType == 'number')
+        {
+            $value = (double) $value;
+        }
         if ($rid && $attrType->isRepeatingGroup() == false)
         {
             $updateRule = 'fk_product=? AND fk_attribute_type=? ';

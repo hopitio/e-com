@@ -73,13 +73,13 @@ foreach ($product->getImages('baseImage') as $attr)
             </div>
         </form>
     </div>
-    <div class="lynx_listProducts">
+    <div class="lynx_listProducts tab">
         <ul class="lynx_head">
             <li class="active"><a href="#tab-description">DESCRIPTION</a></li>
             <li><a href="#tab-2">PRO DETAILS</a></li>
             <li><a href="#tab-3">WARRANTY & SUPPORT</a></li>
         </ul>
-        <div class="lynx_itemConatiner lynx_productDetailDescription">
+        <div id="tab-description" class="lynx_itemConatiner lynx_productDetailDescription">
             <?php echo $product->getDescription() ?>
         </div>
     </div>
@@ -99,13 +99,13 @@ foreach ($product->getImages('baseImage') as $attr)
             </div>
         </div>
     </div>
-    
+
     <div class="lynx_facebookReview">
-        <div class="fb-comments" data-width="1200" data-href="<?php echo Common::curPageURL();?>" data-numposts="10" data-colorscheme="light">
-        
+        <div class="fb-comments" data-width="1200" data-href="<?php echo Common::curPageURL(); ?>" data-numposts="10" data-colorscheme="light">
+
         </div>
     </div>
-    
+
 </div><!--ng-controller -->
 <script>
     var scriptData = {
@@ -113,4 +113,24 @@ foreach ($product->getImages('baseImage') as $attr)
         productID: <?php echo $product->id ?>,
         relatedURL: '<?php echo base_url('product/related_products_service') ?>/'
     };
+</script>
+<script>
+    function initTab(selector) {
+        
+        $(selector).each(function() {
+            var $container = $(this);
+            $('.lynx_head a', $container).click(function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                $this.parent().parent().find('li.active').removeClass('active'); //ul > li
+                $this.parent().addClass('active'); //li
+                $('.lynx_itemConatiner', $container).hide();
+                console.log($this.attr('href'));
+                $($this.attr('href')).show();
+            });
+            $('.lynx_head li.active', $container).find('a').trigger('click');
+        });
+
+    }
+    initTab('.tab');
 </script>

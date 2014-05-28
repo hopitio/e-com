@@ -33,6 +33,12 @@ class ProductFixedDomain extends ProductDomain
     }
 
     /** @return ProductAttributeDomain */
+    function getNote()
+    {
+        return $this->_getAttributeByName('note');
+    }
+
+    /** @return ProductAttributeDomain */
     function getDescription()
     {
         return $this->_getAttributeByName('description');
@@ -132,6 +138,12 @@ class ProductFixedDomain extends ProductDomain
     function getWeight()
     {
         return $this->_getAttributeByName('weight');
+    }
+
+    /** @return ProductAttributeDomain */
+    function getWeightUnit()
+    {
+        return $this->_getAttributeByName('weight_unit');
     }
 
     /** @return ProductAttributeDomain */
