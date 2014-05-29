@@ -6,10 +6,11 @@ $tabs = array('general' => 'General');
 if ($product->id)
 {
     $tabs += array(
-        'category' => 'Category',
-        'price'    => 'Price & Taxes',
-        'meta'     => 'Meta Infomation',
-        'images'   => 'Images'
+        'category'        => 'Category',
+        'price'           => 'Price & Taxes',
+        'return_warranty' => 'Return & Warranty',
+        'meta'            => 'Meta Infomation',
+        'images'          => 'Images'
     );
 }
 ?>
