@@ -8,6 +8,8 @@ class MailManager {
     CONST TYPE_RESG_COMFIRM = 'RESGTER_COMFRIM';
     CONST TYPE_RESETPASSWORD_COMFRIM = 'RESETPASSWORD_COMFRIM';
     CONST TYPE_NEWPASSWORD_NOFICATION = 'NEWPASSWORD_NOFICATION';
+    CONST BUYER_ORDER_PLACES = 'BUYER_ORDER_PLACES';
+    CONST SELLER_VERIFYING = 'SELLER_VERIFYING';
     
     /**
      * Người dùng request gửi mail.
@@ -27,6 +29,12 @@ class MailManager {
         	case self::TYPE_NEWPASSWORD_NOFICATION:
         	    $staff = new NewPasswordMailler();
         	    break;
+        	case self::ORDER_PLACES:
+        	    $staff = new OrderPlaceMailler();
+        	    break;
+    	    case self::SELLER_VERIFYING:
+    	        $staff = new OrderPlaceMailler();
+    	        break;
         	default:
         	    throw new Lynx_EmailException(__CLASS__.'::requestSendMail Không hỗ trợ định dạng mail này');
         	    break;

@@ -169,7 +169,7 @@ class T_product
     CONST actual_price = "actual_price";
     CONST seller_id = "seller_id";
     CONST seller_name = "seller_name";
-    
+    CONST seller_email = "seller_email";
 }
 
 class T_invoice{
@@ -284,6 +284,7 @@ class T_user_contact{
     CONST street_address = "street_address";
     CONST city_district = "city_district";
     CONST state_province = "state_province";
+    CONST email_contact = "email_contact";
 }
 class T_tax{
     const tableName = "t_tax";

@@ -10,6 +10,7 @@ class PortalModelUserContact extends PortalModelBase
     var $street_address;
     var $city_district;
     var $state_province;
+    var $email_contact;
     
     /**
      * 

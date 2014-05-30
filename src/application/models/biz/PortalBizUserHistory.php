@@ -34,7 +34,6 @@ class PortalBizUserHistory extends PortalBizBase
         $portalCommon = new PortalModelCommon();
         $listSubSystem = get_instance()->config->item('sub_system_name');
         $subSystemNname = $subSystemNname == null ? 'default' : $subSystemNname;
-        
         if (!isset($listSubSystem[$subSystemNname]))
         {
             throw new Lynx_RequestException(
@@ -46,7 +45,11 @@ class PortalBizUserHistory extends PortalBizBase
         $historyModel->action_name = $actionName == null? DatabaseFixedValue::USER_HISTORY_ACTION_NONE : $actionName;
         $historyModel->client_ip = $session['ip_address'];
         $historyModel->session_id = $session['session_id'];
-        $historyModel->user_agrent =  $session['user_agent'];
+        $userAgent = $session['user_agent'];
+        if (strlen($userAgent) > 250){
+            $str = substr($userAgent, 0, 250) . '...';
+        }
+        $historyModel->user_agrent = $userAgent;
         $historyModel->description = $description;
         $historyModel->fk_user = $user->id;
         $historyModel->last_activity = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);

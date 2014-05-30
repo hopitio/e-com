@@ -161,6 +161,7 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->shiped_date = '';
         $portalModel->updateById();
         //TODO: SEND MAIL.
+        
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
@@ -187,4 +188,72 @@ class PortalBizOrder extends PortalBizBase
         $orderStatus->id = $orderStatus->insert();
         return $orderStatus;
     }
+    
+    private function mailBuyer($orderId,$invoiceId = null,$mailType)
+    {
+        $portalPaymentHistory = new PortalBizPaymentHistory();
+        $order = $portalPaymentHistory->getOrderAllInformation($orderId);
+        $expectedInvoice = null;
+        if($invoiceId == null){
+            $expectedInvoice = $order->invoices[0];
+        }else{
+            foreach ($order->invoices as $invoice){
+                if($order->invoices>id == $invoiceId){
+                    $expectedInvoice = $invoice;
+                }
+            }
+            unset($order->invoices);
+        }
+        
+        if($expectedInvoice == null){
+            throw new Lynx_BusinessLogicException(
+                __LINE__ . ' ' . __FILE__ . ' ' .
+                     "Dữ liệu order và invoice không khớp {$orderId} - {$invoiceId}");
+        }
+        $order->invoice = $expectedInvoice;
+        $target = 'lethanhan.bkaptech@gmail.com'; //TODO: cần confirm địa chỉ.
+        $mailData = array();
+        $mailData['order'] = $order;
+        $mailData['userContact'] = $order; //TODO: cần confirm địa chỉ.
+        MailManager::initalAndSend($mailType, $target, $mailData);
+    }
+    
+    private function mailSeller($orderId,$invoiceId = null,$mailType){
+        $portalPaymentHistory = new PortalBizPaymentHistory();
+        $order = $portalPaymentHistory->getOrderAllInformation($orderId);
+        $expectedInvoice = null;
+        if($invoiceId == null){
+            $expectedInvoice = $order->invoices[0];
+        }else{
+            foreach ($order->invoices as $invoice){
+                if($order->invoices>id == $invoiceId){
+                    $expectedInvoice = $invoice;
+                }
+            }
+            unset($order->invoices);
+        }
+        
+        if($expectedInvoice == null){
+            throw new Lynx_BusinessLogicException(
+                __LINE__ . ' ' . __FILE__ . ' ' .
+                "Dữ liệu order và invoice không khớp {$orderId} - {$invoiceId}");
+        }
+        $order->invoice = $expectedInvoice;
+        $sellerMail = array();
+        foreach ($order->invocie->products as $product){
+            if(array_key_exists($product->seller_email,$sellerMail)){
+                $sellerMail[$product->seller_email] = array($product);
+                continue;
+            }
+            else{
+                array_push($sellerMail[$product->seller_email],$product);
+            }
+        }  
+        foreach (array_keys($sellerMail) as $key)
+        {
+            $mailData = $sellerMail[$key];
+            MailManager::initalAndSend(MailManager::SELLER_VERIFYING, $key, $mailData);
+        }
+    }
+    
 }
