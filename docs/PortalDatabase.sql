@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2014-05-30 19:01:19
+Date: 2014-05-31 21:49:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,7 +35,7 @@ CREATE TABLE `t_invoice` (
   PRIMARY KEY (`id`),
   KEY `fk_order` (`fk_order`),
   CONSTRAINT `t_invoice_ibfk_1` FOREIGN KEY (`fk_order`) REFERENCES `t_order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_invoice
@@ -232,6 +232,9 @@ INSERT INTO `t_invoice` VALUES ('189', '189', null, '2014-05-24 07:05:41', null,
 INSERT INTO `t_invoice` VALUES ('190', '190', null, '2014-05-25 08:05:56', null, null, null, null, null, null, null, 'input');
 INSERT INTO `t_invoice` VALUES ('191', '191', null, '2014-05-27 09:05:12', '2014-05-27 09:05:20', null, null, null, '4a7b8d0caa724ec1f6e12949b', 'PAYMENT_BY_NGANLUONG', null, 'input');
 INSERT INTO `t_invoice` VALUES ('192', '192', '50', '2014-05-27 10:05:43', '2014-05-27 10:05:58', null, null, null, '4a7b8d0caa724ec1f6e12949b', 'PAYMENT_BY_NGANLUONG', null, 'input');
+INSERT INTO `t_invoice` VALUES ('193', '193', null, '2014-05-31 01:05:27', null, null, null, null, null, null, null, 'input');
+INSERT INTO `t_invoice` VALUES ('194', '194', null, '2014-05-31 01:05:19', null, null, null, null, null, null, null, 'input');
+INSERT INTO `t_invoice` VALUES ('195', '195', '50', '2014-05-31 02:05:28', '2014-05-31 02:05:36', null, null, null, '4a7b8d0caa724ec1f6e12949b', 'PAYMENT_BY_NGANLUONG', null, 'input');
 
 -- ----------------------------
 -- Table structure for t_invoice_other_cost
@@ -245,7 +248,7 @@ CREATE TABLE `t_invoice_other_cost` (
   PRIMARY KEY (`id`),
   KEY `fk_invoice` (`fk_invoice`),
   CONSTRAINT `t_invoice_other_cost_ibfk_1` FOREIGN KEY (`fk_invoice`) REFERENCES `t_invoice` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_invoice_other_cost
@@ -303,6 +306,7 @@ INSERT INTO `t_invoice_other_cost` VALUES ('50', '187', '1.340095640625', 'PAYME
 INSERT INTO `t_invoice_other_cost` VALUES ('51', '188', '1.05', 'PAYMENT_BY_NGANLUONG');
 INSERT INTO `t_invoice_other_cost` VALUES ('52', '191', '3300.5', 'PAYMENT_BY_NGANLUONG');
 INSERT INTO `t_invoice_other_cost` VALUES ('53', '192', '6600.5', 'PAYMENT_BY_NGANLUONG');
+INSERT INTO `t_invoice_other_cost` VALUES ('54', '195', '27500.5', 'PAYMENT_BY_NGANLUONG');
 
 -- ----------------------------
 -- Table structure for t_invoice_product
@@ -317,7 +321,7 @@ CREATE TABLE `t_invoice_product` (
   KEY `fk_product` (`fk_product`),
   CONSTRAINT `t_invoice_product_ibfk_1` FOREIGN KEY (`fk_invoice`) REFERENCES `t_invoice` (`id`),
   CONSTRAINT `t_invoice_product_ibfk_2` FOREIGN KEY (`fk_product`) REFERENCES `t_product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=376 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=382 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_invoice_product
@@ -697,6 +701,12 @@ INSERT INTO `t_invoice_product` VALUES ('372', '189', '372');
 INSERT INTO `t_invoice_product` VALUES ('373', '190', '373');
 INSERT INTO `t_invoice_product` VALUES ('374', '191', '374');
 INSERT INTO `t_invoice_product` VALUES ('375', '192', '375');
+INSERT INTO `t_invoice_product` VALUES ('376', '193', '376');
+INSERT INTO `t_invoice_product` VALUES ('377', '193', '377');
+INSERT INTO `t_invoice_product` VALUES ('378', '194', '378');
+INSERT INTO `t_invoice_product` VALUES ('379', '194', '379');
+INSERT INTO `t_invoice_product` VALUES ('380', '195', '380');
+INSERT INTO `t_invoice_product` VALUES ('381', '195', '381');
 
 -- ----------------------------
 -- Table structure for t_invoice_shipping
@@ -720,7 +730,7 @@ CREATE TABLE `t_invoice_shipping` (
   KEY `fk_user_contact` (`fk_user_contact`),
   CONSTRAINT `t_invoice_shipping_ibfk_1` FOREIGN KEY (`fk_invoice`) REFERENCES `t_invoice` (`id`),
   CONSTRAINT `t_invoice_shipping_ibfk_2` FOREIGN KEY (`fk_user_contact`) REFERENCES `t_user_contact` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_invoice_shipping
@@ -917,6 +927,9 @@ INSERT INTO `t_invoice_shipping` VALUES ('189', '0', '189', '194', null, 'standa
 INSERT INTO `t_invoice_shipping` VALUES ('190', '0', '190', '195', null, 'standard', '10', 'ACTIVE', '2014-05-25 08:05:56', null, null, 'SHIP');
 INSERT INTO `t_invoice_shipping` VALUES ('191', '0', '191', '196', null, 'standard', '10', 'ACTIVE', '2014-05-27 09:05:12', null, null, 'SHIP');
 INSERT INTO `t_invoice_shipping` VALUES ('192', '0', '192', '197', '0000-00-00 00:00:00', 'standard', '10', 'ACTIVE', '2014-05-27 10:05:43', null, null, 'SHIP');
+INSERT INTO `t_invoice_shipping` VALUES ('193', '0', '193', '198', null, 'standard', '10', 'ACTIVE', '2014-05-31 01:05:27', null, null, 'SHIP');
+INSERT INTO `t_invoice_shipping` VALUES ('194', '0', '194', '199', null, 'standard', '10', 'ACTIVE', '2014-05-31 01:05:19', null, null, 'SHIP');
+INSERT INTO `t_invoice_shipping` VALUES ('195', '0', '195', '200', '0000-00-00 00:00:00', 'standard', '10', 'ACTIVE', '2014-05-31 02:05:28', null, null, 'SHIP');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -934,7 +947,7 @@ CREATE TABLE `t_order` (
   PRIMARY KEY (`id`),
   KEY `fk_user` (`fk_user`),
   CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `t_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_order
@@ -1131,6 +1144,9 @@ INSERT INTO `t_order` VALUES ('189', 'GIFT', null, null, '2014-05-24 07:05:41', 
 INSERT INTO `t_order` VALUES ('190', 'GIFT', null, null, '2014-05-25 08:05:56', null, null, null);
 INSERT INTO `t_order` VALUES ('191', 'GIFT', null, null, '2014-05-27 09:05:12', '2014-05-27 10:05:00', '0000-00-00 00:00:00', '2014-05-27 10:05:22');
 INSERT INTO `t_order` VALUES ('192', 'GIFT', '50', '50', '2014-05-27 10:05:43', '2014-05-30 06:05:30', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_order` VALUES ('193', 'GIFT', null, null, '2014-05-31 01:05:27', null, null, null);
+INSERT INTO `t_order` VALUES ('194', 'GIFT', null, null, '2014-05-31 01:05:19', null, null, null);
+INSERT INTO `t_order` VALUES ('195', 'GIFT', '50', '50', '2014-05-31 02:05:28', null, null, null);
 
 -- ----------------------------
 -- Table structure for t_order_status
@@ -1144,7 +1160,7 @@ CREATE TABLE `t_order_status` (
   `updated_date` datetime DEFAULT NULL,
   `comment` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=312 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=317 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_order_status
@@ -1460,6 +1476,11 @@ INSERT INTO `t_order_status` VALUES ('308', '192', 'VERIFYING', '50', '2014-05-2
 INSERT INTO `t_order_status` VALUES ('309', '192', 'REJECTED', '50', '2014-05-27 11:05:07', 'Không có sản phẩm hủy');
 INSERT INTO `t_order_status` VALUES ('310', '192', 'VERIFYING', '50', '2014-05-27 11:05:48', 'Commit');
 INSERT INTO `t_order_status` VALUES ('311', '192', 'SHIPPING', '50', '2014-05-30 06:05:30', 'MỊA THÊM MÔ TẢ VÀO ĐÂY');
+INSERT INTO `t_order_status` VALUES ('312', '193', 'ORDER_PLACED', null, '2014-05-31 01:05:27', null);
+INSERT INTO `t_order_status` VALUES ('313', '194', 'ORDER_PLACED', null, '2014-05-31 01:05:19', null);
+INSERT INTO `t_order_status` VALUES ('314', '195', 'ORDER_PLACED', '50', '2014-05-31 02:05:28', null);
+INSERT INTO `t_order_status` VALUES ('315', '195', 'VERIFYING', null, '2014-05-31 02:05:36', null);
+INSERT INTO `t_order_status` VALUES ('316', '195', 'VERIFYING', '50', '2014-05-31 02:05:36', null);
 
 -- ----------------------------
 -- Table structure for t_payment_temp
@@ -1476,7 +1497,7 @@ CREATE TABLE `t_payment_temp` (
   `processed_date` datetime DEFAULT NULL,
   `cancelled_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_payment_temp
@@ -1523,6 +1544,9 @@ INSERT INTO `t_payment_temp` VALUES ('39', null, '2014-05-24 07:05:41', '{\"secr
 INSERT INTO `t_payment_temp` VALUES ('40', null, '2014-05-25 08:05:55', '{\"secretKey\":null,\"orderkey\":\"6fb5ca8406aa27b67fca4529272a2464\",\"su\":\"GIFT\",\"user\":{\"is_authorized\":false,\"languageKey\":\"VN-VI\",\"currencyKey\":\"VND\",\"id\":null,\"firstname\":null,\"lastname\":null,\"account\":null,\"sex\":null,\"DOB\":null,\"date_joined\":null,\"status\":null,\"last_active\":null,\"platform_key\":null,\"secretKey\":null,\"fullname\":\" \"},\"products\":[{\"id\":\"20\",\"name\":\"Pha l\\u00ea d\\u00e2u\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/22\\/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg\",\"shortDesc\":\"<p>zxsadas<\\/p>\",\"price\":100000,\"quantity\":1,\"totalPrice\":100000,\"actualPrice\":100000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":10000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"}],\"shipping\":{\"shippingKey\":\"standard-projecte\",\"shippingDisplayName\":\"standard\",\"shippingPrice\":\"10\"},\"addresses\":{\"shipping\":{\"fullname\":null,\"telephone\":\"\\u00e1dasd\",\"streetAddress\":\"\\u00e1dasd\",\"cityDistrict\":[null,\"\\u00e1dasd\"],\"stateProvince\":[\"101\",\"hanoi\"]}}}', '8b703cbb30cfac1cbac73c64a399f793', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-25 08:05:57', null);
 INSERT INTO `t_payment_temp` VALUES ('41', null, '2014-05-27 09:05:12', '{\"secretKey\":null,\"orderkey\":\"ed09a78a34bcf487f6316c6e36d013a5\",\"su\":\"GIFT\",\"user\":{\"is_authorized\":false,\"languageKey\":\"VN-VI\",\"currencyKey\":\"VN\",\"id\":null,\"firstname\":null,\"lastname\":null,\"account\":null,\"sex\":null,\"DOB\":null,\"date_joined\":null,\"status\":null,\"last_active\":null,\"platform_key\":null,\"user_type\":\"USER\",\"secretKey\":null,\"fullname\":\" \"},\"products\":[{\"id\":\"15\",\"name\":\"def\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/20\\/ae8564fee192da10b00b78cefd09fe00.jpg\",\"shortDesc\":\"<p>sdasda<\\/p>\",\"price\":60000,\"quantity\":1,\"totalPrice\":60000,\"actualPrice\":60000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":6000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"}],\"shipping\":{\"shippingKey\":\"standard-projecte\",\"shippingDisplayName\":\"standard\",\"shippingPrice\":\"10\"},\"addresses\":{\"shipping\":{\"fullname\":null,\"telephone\":\"\\u00e1dasd\",\"streetAddress\":\"\\u00e1dasd\",\"cityDistrict\":[null,\"\\u00e1dasd\"],\"stateProvince\":[\"101\",\"hanoi\"]}}}', '4625a7bcecf4989e449f7e82a75cce78', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-27 09:05:12', null);
 INSERT INTO `t_payment_temp` VALUES ('42', '50', '2014-05-27 10:05:43', '{\"secretKey\":null,\"orderkey\":\"fbca897bac962195039c8dac853d4da7\",\"su\":\"GIFT\",\"user\":{\"is_authorized\":true,\"languageKey\":\"VN-VI\",\"currencyKey\":\"VND\",\"id\":\"50\",\"firstname\":\"L\\u00ca \",\"lastname\":\"AN \",\"account\":\"lethanhan.bkaptech@gmail.com\",\"sex\":\"F\",\"DOB\":\"1742-08-21 00:00:00\",\"date_joined\":\"2014-04-29 10:04:54\",\"status\":\"1\",\"last_active\":\"2014-04-29 10:04:54\",\"platform_key\":\"0\",\"user_type\":\"ADMIN\",\"secretKey\":null,\"fullname\":\"L\\u00ca  AN \"},\"products\":[{\"id\":\"15\",\"name\":\"def\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/20\\/ae8564fee192da10b00b78cefd09fe00.jpg\",\"shortDesc\":\"<p>sdasda<\\/p>\",\"price\":60000,\"quantity\":2,\"totalPrice\":120000,\"actualPrice\":120000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":12000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"}],\"shipping\":{\"shippingKey\":\"standard-projecte\",\"shippingDisplayName\":\"standard\",\"shippingPrice\":\"10\"},\"addresses\":{\"shipping\":{\"fullname\":null,\"telephone\":\"asdasdasdad\",\"streetAddress\":\"asdasdasdad\",\"cityDistrict\":[null,\"asdasdasdad\"],\"stateProvince\":[\"101\",\"hanoi\"]}}}', '079e78dcd3155168b5646c00284817b9', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-27 10:05:43', null);
+INSERT INTO `t_payment_temp` VALUES ('43', null, '2014-05-31 01:05:27', '{\"secretKey\":null,\"orderkey\":\"fe91785b776b1d2100564410ffc86d4a\",\"su\":\"GIFT\",\"user\":{\"is_authorized\":false,\"languageKey\":\"VN-VI\",\"currencyKey\":\"VN\",\"id\":null,\"firstname\":null,\"lastname\":null,\"account\":null,\"sex\":null,\"DOB\":null,\"date_joined\":null,\"status\":null,\"last_active\":null,\"platform_key\":null,\"user_type\":\"USER\",\"secretKey\":null,\"portal_id\":null,\"sub_id\":null,\"fullname\":\" \"},\"products\":[{\"id\":\"14\",\"name\":\"Pha l\\u00ea d\\u00e2u\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/20\\/4670b74b68432aebf551ad5112644f59.png\",\"shortDesc\":\"<p>zxsadas<\\/p>\",\"price\":100000,\"quantity\":3,\"totalPrice\":300000,\"actualPrice\":300000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":30000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"},{\"id\":\"20\",\"name\":\"Pha l\\u00ea d\\u00e2u\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/22\\/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg\",\"shortDesc\":\"<p>zxsadas<\\/p>\",\"price\":100000,\"quantity\":1,\"totalPrice\":100000,\"actualPrice\":100000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":10000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"}],\"shipping\":{\"shippingKey\":\"standard-projecte\",\"shippingDisplayName\":\"standard\",\"shippingPrice\":\"10\"},\"addresses\":{\"shipping\":{\"fullname\":null,\"telephone\":\"sdfasdhfaskdjh\",\"streetAddress\":\"sdfasdhfaskdjh\",\"cityDistrict\":[null,\"sdfasdhfaskdjh\"],\"stateProvince\":[\"101\",\"hanoi\"]}}}', '7d670d6f03f28f36a630b6cb3b332bc9', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-31 01:05:27', null);
+INSERT INTO `t_payment_temp` VALUES ('44', null, '2014-05-31 01:05:19', '{\"secretKey\":null,\"orderkey\":\"649e4ff0561cc8d511d2811696acc4f3\",\"su\":\"GIFT\",\"user\":{\"is_authorized\":false,\"languageKey\":\"VN-VI\",\"currencyKey\":\"VN\",\"id\":null,\"firstname\":null,\"lastname\":null,\"account\":null,\"sex\":null,\"DOB\":null,\"date_joined\":null,\"status\":null,\"last_active\":null,\"platform_key\":null,\"user_type\":\"USER\",\"secretKey\":null,\"portal_id\":null,\"sub_id\":null,\"fullname\":\" \"},\"products\":[{\"id\":\"14\",\"name\":\"Pha l\\u00ea d\\u00e2u\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/20\\/4670b74b68432aebf551ad5112644f59.png\",\"shortDesc\":\"<p>zxsadas<\\/p>\",\"price\":100000,\"quantity\":3,\"totalPrice\":300000,\"actualPrice\":300000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":30000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"},{\"id\":\"20\",\"name\":\"Pha l\\u00ea d\\u00e2u\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/22\\/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg\",\"shortDesc\":\"<p>zxsadas<\\/p>\",\"price\":100000,\"quantity\":1,\"totalPrice\":100000,\"actualPrice\":100000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":10000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"}],\"shipping\":{\"shippingKey\":\"standard-projecte\",\"shippingDisplayName\":\"standard\",\"shippingPrice\":\"10\"},\"addresses\":{\"shipping\":{\"fullname\":null,\"telephone\":\"ajshdkasjhdk\",\"streetAddress\":\"ajshdkasjhdk\",\"cityDistrict\":[null,\"ajshdkasjhdk\"],\"stateProvince\":[\"101\",\"hanoi\"]}}}', '7d670d6f03f28f36a630b6cb3b332bc9', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-31 01:05:19', null);
+INSERT INTO `t_payment_temp` VALUES ('45', '5', '2014-05-31 02:05:28', '{\"secretKey\":\"f3231dcfcfc3d225284e4a48499074f2\",\"orderkey\":\"c7764c162a0458326d30974b7d80cd65\",\"su\":\"GIFT\",\"user\":{\"is_authorized\":true,\"languageKey\":\"VN-VI\",\"currencyKey\":\"VN\",\"id\":\"5\",\"firstname\":\"L\\u00ca \",\"lastname\":\"AN \",\"account\":\"lethanhan.bkaptech@gmail.com\",\"sex\":\"F\",\"DOB\":\"1742-08-21 00:00:00\",\"date_joined\":\"2014-04-29 10:04:54\",\"status\":\"1\",\"last_active\":\"2014-04-29 10:04:54\",\"platform_key\":\"0\",\"user_type\":\"USER\",\"secretKey\":\"f3231dcfcfc3d225284e4a48499074f2\",\"portal_id\":\"50\",\"sub_id\":\"5\",\"fullname\":\"L\\u00ca  AN \"},\"products\":[{\"id\":\"14\",\"name\":\"Pha l\\u00ea d\\u00e2u\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/20\\/4670b74b68432aebf551ad5112644f59.png\",\"shortDesc\":\"<p>zxsadas<\\/p>\",\"price\":100000,\"quantity\":4,\"totalPrice\":400000,\"actualPrice\":400000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":40000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"},{\"id\":\"20\",\"name\":\"Pha l\\u00ea d\\u00e2u\",\"image\":\"http:\\/\\/localhost.com\\/uploads\\/2014\\/05\\/22\\/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg\",\"shortDesc\":\"<p>zxsadas<\\/p>\",\"price\":100000,\"quantity\":1,\"totalPrice\":100000,\"actualPrice\":100000,\"taxes\":[{\"name\":\"VAT\",\"totalTax\":10000}],\"sellerName\":\"Samsung\",\"sid\":\"samsung\"}],\"shipping\":{\"shippingKey\":\"standard-projecte\",\"shippingDisplayName\":\"standard\",\"shippingPrice\":\"10\"},\"addresses\":{\"shipping\":{\"fullname\":null,\"telephone\":\"asdasdasd\",\"streetAddress\":\"asdasdasd\",\"cityDistrict\":[null,\"asdasdasd\"],\"stateProvince\":[\"101\",\"hanoi\"]}}}', 'fae85b9026c3b22a6a3aee0ed36084ce', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-31 02:05:28', null);
 
 -- ----------------------------
 -- Table structure for t_product
@@ -1542,7 +1566,7 @@ CREATE TABLE `t_product` (
   `seller_name` text COLLATE utf8_unicode_ci NOT NULL,
   `seller_email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=376 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=382 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_product
@@ -1922,6 +1946,12 @@ INSERT INTO `t_product` VALUES ('372', '15', 'def', 'http://localhost.com/upload
 INSERT INTO `t_product` VALUES ('373', '20', 'Pha lê dâu', 'http://localhost.com/uploads/2014/05/22/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg', '<p>zxsadas</p>', '100000', '1', '100000', '100000', '0', 'Samsung', '');
 INSERT INTO `t_product` VALUES ('374', '15', 'def', 'http://localhost.com/uploads/2014/05/20/ae8564fee192da10b00b78cefd09fe00.jpg', '<p>sdasda</p>', '60000', '1', '60000', '60000', '0', 'Samsung', '');
 INSERT INTO `t_product` VALUES ('375', '15', 'def', 'http://localhost.com/uploads/2014/05/20/ae8564fee192da10b00b78cefd09fe00.jpg', '<p>sdasda</p>', '60000', '2', '120000', '120000', '0', 'Samsung', '');
+INSERT INTO `t_product` VALUES ('376', '14', 'Pha lê dâu', 'http://localhost.com/uploads/2014/05/20/4670b74b68432aebf551ad5112644f59.png', '<p>zxsadas</p>', '100000', '3', '300000', '300000', '0', 'Samsung', '');
+INSERT INTO `t_product` VALUES ('377', '20', 'Pha lê dâu', 'http://localhost.com/uploads/2014/05/22/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg', '<p>zxsadas</p>', '100000', '1', '100000', '100000', '0', 'Samsung', '');
+INSERT INTO `t_product` VALUES ('378', '14', 'Pha lê dâu', 'http://localhost.com/uploads/2014/05/20/4670b74b68432aebf551ad5112644f59.png', '<p>zxsadas</p>', '100000', '3', '300000', '300000', '0', 'Samsung', '');
+INSERT INTO `t_product` VALUES ('379', '20', 'Pha lê dâu', 'http://localhost.com/uploads/2014/05/22/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg', '<p>zxsadas</p>', '100000', '1', '100000', '100000', '0', 'Samsung', '');
+INSERT INTO `t_product` VALUES ('380', '14', 'Pha lê dâu', 'http://localhost.com/uploads/2014/05/20/4670b74b68432aebf551ad5112644f59.png', '<p>zxsadas</p>', '100000', '4', '400000', '400000', '0', 'Samsung', '');
+INSERT INTO `t_product` VALUES ('381', '20', 'Pha lê dâu', 'http://localhost.com/uploads/2014/05/22/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg', '<p>zxsadas</p>', '100000', '1', '100000', '100000', '0', 'Samsung', '');
 
 -- ----------------------------
 -- Table structure for t_tax
@@ -1936,7 +1966,7 @@ CREATE TABLE `t_tax` (
   PRIMARY KEY (`id`),
   KEY `fk_product` (`fk_product`),
   CONSTRAINT `t_tax_ibfk_1` FOREIGN KEY (`fk_product`) REFERENCES `t_product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=382 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=388 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_tax
@@ -2322,6 +2352,12 @@ INSERT INTO `t_tax` VALUES ('378', '372', null, 'VAT', '6000');
 INSERT INTO `t_tax` VALUES ('379', '373', null, 'VAT', '10000');
 INSERT INTO `t_tax` VALUES ('380', '374', null, 'VAT', '6000');
 INSERT INTO `t_tax` VALUES ('381', '375', null, 'VAT', '12000');
+INSERT INTO `t_tax` VALUES ('382', '376', null, 'VAT', '30000');
+INSERT INTO `t_tax` VALUES ('383', '377', null, 'VAT', '10000');
+INSERT INTO `t_tax` VALUES ('384', '378', null, 'VAT', '30000');
+INSERT INTO `t_tax` VALUES ('385', '379', null, 'VAT', '10000');
+INSERT INTO `t_tax` VALUES ('386', '380', null, 'VAT', '40000');
+INSERT INTO `t_tax` VALUES ('387', '381', null, 'VAT', '10000');
 
 -- ----------------------------
 -- Table structure for t_user
@@ -2370,7 +2406,7 @@ CREATE TABLE `t_user_contact` (
   PRIMARY KEY (`id`),
   KEY `fk_user` (`fk_user`),
   CONSTRAINT `t_user_contact_ibfk_2` FOREIGN KEY (`fk_user`) REFERENCES `t_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_user_contact
@@ -2572,6 +2608,9 @@ INSERT INTO `t_user_contact` VALUES ('194', null, '2014-05-24 07:05:41', null, '
 INSERT INTO `t_user_contact` VALUES ('195', null, '2014-05-25 08:05:56', null, 'ádasd', 'ádasd', ',ádasd', '101,hanoi', null);
 INSERT INTO `t_user_contact` VALUES ('196', null, '2014-05-27 09:05:12', null, 'ádasd', 'ádasd', ',ádasd', '101,hanoi', null);
 INSERT INTO `t_user_contact` VALUES ('197', null, '2014-05-27 10:05:43', null, 'asdasdasdad', 'asdasdasdad', ',asdasdasdad', '101,hanoi', null);
+INSERT INTO `t_user_contact` VALUES ('198', null, '2014-05-31 01:05:27', null, 'sdfasdhfaskdjh', 'sdfasdhfaskdjh', ',sdfasdhfaskdjh', '101,hanoi', null);
+INSERT INTO `t_user_contact` VALUES ('199', null, '2014-05-31 01:05:19', null, 'ajshdkasjhdk', 'ajshdkasjhdk', ',ajshdkasjhdk', '101,hanoi', null);
+INSERT INTO `t_user_contact` VALUES ('200', null, '2014-05-31 02:05:28', null, 'asdasdasd', 'asdasdasd', ',asdasdasd', '101,hanoi', null);
 
 -- ----------------------------
 -- Table structure for t_user_history
@@ -2611,6 +2650,8 @@ INSERT INTO `t_user_history` VALUES ('039f0163-dab9-11e3-b798-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('043443b7-dab8-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:43', 'GIFT', null, 'PAYMENT', '616e935f1591d06ccb39', null);
 INSERT INTO `t_user_history` VALUES ('0443c963-cfb8-11e3-b77d-d264c9e41a87', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-04-29 11:04:00', 'PORTAL', '2014-04-29 23:05:00', 'LOGIN', 'fcd6ed4d29ace35e3fd8', null);
 INSERT INTO `t_user_history` VALUES ('0477ff3a-dab3-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:56', 'GIFT', null, 'PAYMENT', '633081ef678f0bf6195d', null);
+INSERT INTO `t_user_history` VALUES ('04bdc205-e87d-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:39', 'PORTAL', 'USER LOGIN', 'LOGIN', '81d27b61e14a24481c95', '2014-05-31 11:05:39');
+INSERT INTO `t_user_history` VALUES ('04bedc5d-e87d-11e3-ac0e-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:39', 'PORTAL', '2014-05-31 11:35:39', 'LOGIN', '81d27b61e14a24481c95', '2014-05-31 11:05:39');
 INSERT INTO `t_user_history` VALUES ('06a115cc-dab8-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:47', 'GIFT', null, 'PAYMENT', '616e935f1591d06ccb39', null);
 INSERT INTO `t_user_history` VALUES ('06c1acbf-daaf-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:21', 'GIFT', null, 'PAYMENT', '258910b673ca78357a6e', null);
 INSERT INTO `t_user_history` VALUES ('089b2806-e68b-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-29 12:05:57', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '58790efd9496c37fa1a2', '2014-05-29 12:05:57');
@@ -2625,6 +2666,7 @@ INSERT INTO `t_user_history` VALUES ('0f5011b9-dab8-11e3-b798-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('102c57cd-dab9-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:12', 'GIFT', null, 'PAYMENT', '09da0422b752a97854c2', null);
 INSERT INTO `t_user_history` VALUES ('10433e0c-dac2-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-14 12:05:38', 'GIFT', null, 'PAYMENT', 'e80fda7ae909c4bee982', null);
 INSERT INTO `t_user_history` VALUES ('12ff73da-dab7-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:58', 'GIFT', null, 'PAYMENT', '5c3f34cc804f51c816ab', null);
+INSERT INTO `t_user_history` VALUES ('133fa5b4-e897-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 02:05:11', 'PORTAL', '2014-05-31 14:42:11', 'LOGIN', '6e23ce8ce883f809edad', '2014-05-31 02:05:11');
 INSERT INTO `t_user_history` VALUES ('136c5599-dab3-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:21', 'GIFT', null, 'PAYMENT', '633081ef678f0bf6195d', null);
 INSERT INTO `t_user_history` VALUES ('13a47667-dab6-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:49', 'GIFT', null, 'PAYMENT', '71461b70b382e2ef5b47', null);
 INSERT INTO `t_user_history` VALUES ('14fd2750-e4dc-11e3-af35-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 08:05:04', 'PORTAL', '2014-05-26 20:46:04', 'LOGIN', 'c2204dcbd947df5143c8', '2014-05-26 08:05:04');
@@ -2644,9 +2686,11 @@ INSERT INTO `t_user_history` VALUES ('1d53396b-e3b9-11e3-9ce0-a01d48a90f04', '51
 INSERT INTO `t_user_history` VALUES ('1e0a29be-d9e9-11e3-aaae-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 10:05:40', 'PORTAL', 'Reset mật khẩu', 'RESETPASS', 'dfb18b67b7a0fa9ad6c3', null);
 INSERT INTO `t_user_history` VALUES ('1e1cd6b1-e3b8-11e3-9ce0-a01d48a90f04', '51', 'f9d193e0fe9f2bb2d0aebca4fd0a5a8a', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-25 09:05:07', 'GIFT', '2014-05-25 09:56:06', 'LOGIN', 'fc9c8473ac23c83fed90', '2014-05-25 09:05:07');
 INSERT INTO `t_user_history` VALUES ('1e28c55b-daab-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:23', 'GIFT', null, 'PAYMENT', '280eb9c3d41c3e53b327', null);
+INSERT INTO `t_user_history` VALUES ('1f12d820-e8d2-11e3-85b6-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 09:05:51', 'GIFT', '2014-05-31 21:44:51', 'LOGIN', '177b86bf6db72b0780b8', '2014-05-31 09:05:51');
 INSERT INTO `t_user_history` VALUES ('20ad4bab-e431-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:20', 'PORTAL', '2014-05-26 00:22:20', 'LOGIN', 'f15703e8de2ea877a22e', '2014-05-26 12:05:20');
 INSERT INTO `t_user_history` VALUES ('20fa0334-e688-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:09', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'e3341ff6274f11679d98', '2014-05-28 11:05:09');
 INSERT INTO `t_user_history` VALUES ('21822a64-e431-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:21', 'PORTAL', '2014-05-26 00:22:21', 'LOGIN', 'f15703e8de2ea877a22e', '2014-05-26 12:05:21');
+INSERT INTO `t_user_history` VALUES ('23c7c790-e87d-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:32', 'PORTAL', '2014-05-31 11:36:32', 'LOGIN', '9dd970029b9bcf3f6731', '2014-05-31 11:05:32');
 INSERT INTO `t_user_history` VALUES ('24872dae-dab3-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:49', 'GIFT', null, 'PAYMENT', '633081ef678f0bf6195d', null);
 INSERT INTO `t_user_history` VALUES ('24bcf7ff-dab8-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:37', 'GIFT', null, 'PAYMENT', '616e935f1591d06ccb39', null);
 INSERT INTO `t_user_history` VALUES ('24c7fecb-d815-11e3-87fd-fc4dd45603ff', '50', 'a718a187088707054686316025faff10', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-10 02:05:47', 'GIFT', '2014-05-10 14:31:47', 'LOGIN', 'c2783a8b5350f3fd8550', null);
@@ -2674,6 +2718,7 @@ INSERT INTO `t_user_history` VALUES ('2e046326-dcef-11e3-a439-a01d48a90f04', '0'
 INSERT INTO `t_user_history` VALUES ('2edbf6a3-dc49-11e3-a49e-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-15 10:05:22', 'GIFT', null, 'PAYMENT', '68f18844408cc296f22b', null);
 INSERT INTO `t_user_history` VALUES ('2fef8892-d9d8-11e3-aaae-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 08:05:29', 'PORTAL', '2014-05-12 20:20:29', 'LOGIN', 'ca15ae3894e00fc23cf8', null);
 INSERT INTO `t_user_history` VALUES ('315aca18-dab3-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:11', 'GIFT', null, 'PAYMENT', 'a16e79d3cf0fcb468e59', null);
+INSERT INTO `t_user_history` VALUES ('31d840b7-e87b-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:36', 'PORTAL', '2014-05-31 11:22:36', 'LOGIN', '04c043d359dc03171a3b', '2014-05-31 11:05:36');
 INSERT INTO `t_user_history` VALUES ('324218f4-daac-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:06', 'GIFT', null, 'PAYMENT', '36a3a23419cd65938c39', null);
 INSERT INTO `t_user_history` VALUES ('32c633d9-daab-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:57', 'GIFT', null, 'PAYMENT', '280eb9c3d41c3e53b327', null);
 INSERT INTO `t_user_history` VALUES ('330f9476-dab7-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:52', 'GIFT', null, 'PAYMENT', '5c3f34cc804f51c816ab', null);
@@ -2684,12 +2729,14 @@ INSERT INTO `t_user_history` VALUES ('38258ee1-e5b9-11e3-9277-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('38aaaa44-d912-11e3-b45d-fc4dd45603ff', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-11 08:05:23', 'PORTAL', '2014-05-11 20:43:23', 'LOGIN', '2f7902067528250663c1', null);
 INSERT INTO `t_user_history` VALUES ('39fdc671-db73-11e3-8f87-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-14 09:05:49', 'GIFT', null, 'PAYMENT', '4c4c76dcea82155974ed', null);
 INSERT INTO `t_user_history` VALUES ('3b3f3bd4-d1f9-11e3-8220-fc4dd45603ff', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-02 07:05:52', 'PORTAL', '2014-05-02 19:56:52', 'LOGIN', '261651697a3e89d251a1', null);
+INSERT INTO `t_user_history` VALUES ('3bc46fb7-e875-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 10:05:56', 'GIFT', '2014-05-31 10:39:56', 'LOGIN', '546a9ecd1c1f88753e8f', '2014-05-31 10:05:56');
 INSERT INTO `t_user_history` VALUES ('3c07fbce-daa2-11e3-b3fd-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 08:05:47', 'PORTAL', '2014-05-13 20:26:47', 'LOGIN', '2ea47b187ddb83f71bc2', null);
 INSERT INTO `t_user_history` VALUES ('3d1a5ed2-dab9-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:28', 'GIFT', null, 'PAYMENT', 'b79179abf6471b8b1b07', null);
 INSERT INTO `t_user_history` VALUES ('3ef0438e-e103-11e3-8476-a01d48a90f04', '51', '74794799ce4cd7013836c8f5ce808d8e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-21 11:05:20', 'GIFT', '2014-05-21 23:16:20', 'LOGIN', 'abe9bccc34e07c08854d', '2014-05-21 11:05:20');
 INSERT INTO `t_user_history` VALUES ('3f12eb37-dab4-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:43', 'GIFT', null, 'PAYMENT', 'c3bfeebb333f518d8544', null);
 INSERT INTO `t_user_history` VALUES ('400d38c1-dab7-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:13', 'GIFT', null, 'PAYMENT', 'bd23595198ffbef998ad', null);
 INSERT INTO `t_user_history` VALUES ('403347dc-daa9-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:01', 'GIFT', null, 'PAYMENT', '8b8b1c35b0bf3c8c427c', null);
+INSERT INTO `t_user_history` VALUES ('40400d76-e881-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 12:05:57', 'GIFT', '2014-05-31 12:05:57', 'LOGIN', 'bfb5b24349dddb0192bc', '2014-05-31 12:05:57');
 INSERT INTO `t_user_history` VALUES ('41d669ff-daac-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:32', 'GIFT', null, 'PAYMENT', '36a3a23419cd65938c39', null);
 INSERT INTO `t_user_history` VALUES ('424f4a8e-e684-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:27', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'cd13db626f9cc41e1361', '2014-05-28 11:05:27');
 INSERT INTO `t_user_history` VALUES ('424fa2a6-daae-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:52', 'GIFT', null, 'PAYMENT', '98f2443eaf3c0839bc48', null);
@@ -2716,6 +2763,7 @@ INSERT INTO `t_user_history` VALUES ('4d27fb46-daab-11e3-b3fd-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('4d2c4966-dab4-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:07', 'GIFT', null, 'PAYMENT', 'c3bfeebb333f518d8544', null);
 INSERT INTO `t_user_history` VALUES ('4de10a3d-e688-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:24', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'e3e4460c195648c490e6', '2014-05-28 11:05:24');
 INSERT INTO `t_user_history` VALUES ('4df0f107-d9e8-11e3-aaae-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 10:05:51', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'ca634e166774dee1d077', null);
+INSERT INTO `t_user_history` VALUES ('4e08b020-e880-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:11', 'GIFT', '2014-05-31 11:59:11', 'LOGIN', '1b17c7b994d8b9bfbce4', '2014-05-31 11:05:11');
 INSERT INTO `t_user_history` VALUES ('4f06fe19-e685-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:58', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '8aed936a7e2b17e2d152', '2014-05-28 11:05:58');
 INSERT INTO `t_user_history` VALUES ('4f1dccb6-daae-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:13', 'GIFT', null, 'PAYMENT', 'f0914e5f7f195f24c064', null);
 INSERT INTO `t_user_history` VALUES ('4fe53c41-daa2-11e3-b3fd-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 08:05:21', 'PORTAL', '2014-05-13 20:27:21', 'LOGIN', '2ea47b187ddb83f71bc2', null);
@@ -2736,6 +2784,7 @@ INSERT INTO `t_user_history` VALUES ('545e170d-e7e6-11e3-a9e7-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('567f4030-e685-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:10', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '8aed936a7e2b17e2d152', '2014-05-28 11:05:10');
 INSERT INTO `t_user_history` VALUES ('5703a832-e5a8-11e3-9277-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-27 09:05:12', 'GIFT', null, 'PAYMENT', '4625a7bcecf4989e449f', '2014-05-27 09:05:12');
 INSERT INTO `t_user_history` VALUES ('578f0346-e3b7-11e3-9ce0-a01d48a90f04', '51', '23776925962471b1a8a1d3ad31abb549', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-25 09:05:33', 'GIFT', '2014-05-25 09:50:33', 'LOGIN', '0438a1db4e099826959b', '2014-05-25 09:05:33');
+INSERT INTO `t_user_history` VALUES ('5806839b-e87b-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:40', 'PORTAL', '2014-05-31 11:23:40', 'LOGIN', '4bb4d53d332e9df3e0a4', '2014-05-31 11:05:40');
 INSERT INTO `t_user_history` VALUES ('580cf385-e425-11e3-bd08-a01d48a90f04', '50', '6434f2e8a901ef9139bb04baa788e28a', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko', '2014-05-25 10:05:59', 'GIFT', '2014-05-25 22:57:59', 'LOGIN', '46505d14091b90f78def', '2014-05-25 10:05:59');
 INSERT INTO `t_user_history` VALUES ('5830752c-dab8-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:03', 'GIFT', null, 'PAYMENT', '827e30b01b828df5bb0a', null);
 INSERT INTO `t_user_history` VALUES ('58c59620-d389-11e3-9bb3-fc4dd45603ff', '51', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-04 07:05:00', 'PORTAL', 'REGISTER FROM PORTAL FORM', 'REGISTE', 'f097a741509b4a097a73', null);
@@ -2759,28 +2808,36 @@ INSERT INTO `t_user_history` VALUES ('60a25edd-daa9-11e3-b3fd-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('60b98ff2-daa2-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 08:05:49', 'GIFT', null, 'PAYMENT', '62e03f7b656a6ff11e20', null);
 INSERT INTO `t_user_history` VALUES ('60c86a68-d9e8-11e3-aaae-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 10:05:23', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'ca634e166774dee1d077', null);
 INSERT INTO `t_user_history` VALUES ('60f491aa-dab6-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:59', 'GIFT', null, 'PAYMENT', '64618db61b9983d2be54', null);
+INSERT INTO `t_user_history` VALUES ('610c26cb-e88b-11e3-ac0e-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 01:05:27', 'GIFT', null, 'PAYMENT', '7d670d6f03f28f36a630', '2014-05-31 01:05:27');
 INSERT INTO `t_user_history` VALUES ('610e6c81-db73-11e3-8f87-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-14 09:05:54', 'GIFT', null, 'PAYMENT', '8c8c1f75d4ad6dd99d13', null);
 INSERT INTO `t_user_history` VALUES ('61e5b964-dabd-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:07', 'GIFT', null, 'PAYMENT', '7f32e351d2422ece7542', null);
+INSERT INTO `t_user_history` VALUES ('62219613-e88b-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 01:05:29', 'PORTAL', '2014-05-31 13:18:29', 'LOGIN', '7d670d6f03f28f36a630', '2014-05-31 01:05:29');
 INSERT INTO `t_user_history` VALUES ('64b54934-daab-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:21', 'GIFT', null, 'PAYMENT', '3c06d64b1956ce565aac', null);
 INSERT INTO `t_user_history` VALUES ('664d1be3-dab5-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:59', 'GIFT', null, 'PAYMENT', '34d8de106b085626b7a7', null);
+INSERT INTO `t_user_history` VALUES ('66ce53fd-e87f-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:43', 'GIFT', '2014-05-31 11:52:43', 'LOGIN', '088c9addcb5437ad8191', '2014-05-31 11:05:43');
 INSERT INTO `t_user_history` VALUES ('676704e7-e33d-11e3-825b-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-24 07:05:41', 'GIFT', null, 'PAYMENT', '8f25c1cec03dbe549010', '2014-05-24 07:05:41');
 INSERT INTO `t_user_history` VALUES ('685d93e6-daaa-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:18', 'GIFT', null, 'PAYMENT', 'ee3ad62a7000cd5e6f8d', null);
 INSERT INTO `t_user_history` VALUES ('6885aea4-de6e-11e3-9674-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-18 04:05:53', 'GIFT', null, 'PAYMENT', '875d6e90a4677d3667fc', '2014-05-18 04:05:53');
 INSERT INTO `t_user_history` VALUES ('69106137-dab3-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:44', 'GIFT', null, 'PAYMENT', '4fe89cba70fb6a0cb541', null);
 INSERT INTO `t_user_history` VALUES ('6ac35337-daab-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:31', 'GIFT', null, 'PAYMENT', '3c06d64b1956ce565aac', null);
+INSERT INTO `t_user_history` VALUES ('71706618-e875-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 10:05:26', 'GIFT', '2014-05-31 10:41:26', 'LOGIN', 'be6d55b35bd7f3fb20df', '2014-05-31 10:05:26');
 INSERT INTO `t_user_history` VALUES ('71fa9526-dab1-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:40', 'GIFT', null, 'PAYMENT', '3a4f821b5d32e24f88c1', null);
 INSERT INTO `t_user_history` VALUES ('7475d0b1-e434-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:09', 'PORTAL', '2014-05-26 00:46:09', 'LOGIN', '9e9336880f0d2bb32ca4', '2014-05-26 12:05:09');
 INSERT INTO `t_user_history` VALUES ('7483f380-d9e7-11e3-aaae-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 10:05:46', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'b3aef9721938730f7edd', null);
 INSERT INTO `t_user_history` VALUES ('74c8d04b-e103-11e3-8476-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-21 11:05:51', 'PORTAL', '2014-05-21 23:17:51', 'LOGIN', '3e740acf2e663023d731', '2014-05-21 11:05:51');
 INSERT INTO `t_user_history` VALUES ('75a5625f-e685-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:03', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '31abced57208b6e3b6a6', '2014-05-28 11:05:03');
 INSERT INTO `t_user_history` VALUES ('75b42cee-e434-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:11', 'PORTAL', '2014-05-26 00:46:11', 'LOGIN', '9e9336880f0d2bb32ca4', '2014-05-26 12:05:11');
+INSERT INTO `t_user_history` VALUES ('779242b4-e875-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 10:05:36', 'GIFT', '2014-05-31 10:41:36', 'LOGIN', 'be6d55b35bd7f3fb20df', '2014-05-31 10:05:36');
 INSERT INTO `t_user_history` VALUES ('77e9d383-e684-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:57', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '43cfcd3268b4102e7687', '2014-05-28 11:05:57');
 INSERT INTO `t_user_history` VALUES ('78d12f9e-d9ed-11e3-aaae-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 10:05:50', 'PORTAL', 'Thay đổi thông tin cá nhân', 'CHANGEINFORMATION', 'c7c5d7514bb93e94617a', null);
 INSERT INTO `t_user_history` VALUES ('7a44aec0-dab6-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:42', 'GIFT', null, 'PAYMENT', '636a7e4cdf81e6e92761', null);
+INSERT INTO `t_user_history` VALUES ('7d27e832-e875-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 10:05:45', 'GIFT', '2014-05-31 10:41:45', 'LOGIN', 'be6d55b35bd7f3fb20df', '2014-05-31 10:05:45');
 INSERT INTO `t_user_history` VALUES ('7d812c80-dc48-11e3-a49e-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-15 10:05:25', 'GIFT', null, 'PAYMENT', '961416e1a2945c7fe634', null);
 INSERT INTO `t_user_history` VALUES ('7d85a0e6-dabd-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:54', 'GIFT', null, 'PAYMENT', '7f32e351d2422ece7542', null);
 INSERT INTO `t_user_history` VALUES ('7dfbb076-daba-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:26', 'GIFT', null, 'PAYMENT', '4299fb6febd0cdeb5551', null);
 INSERT INTO `t_user_history` VALUES ('7eecb58c-df6d-11e3-abd1-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-19 10:05:52', 'GIFT', null, 'PAYMENT', '8b5578af64eab3a2ab30', '2014-05-19 10:05:52');
+INSERT INTO `t_user_history` VALUES ('7ffa0b7a-e88b-11e3-ac0e-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 01:05:19', 'GIFT', null, 'PAYMENT', '7d670d6f03f28f36a630', '2014-05-31 01:05:19');
+INSERT INTO `t_user_history` VALUES ('80e7a8ca-e87e-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:17', 'GIFT', '2014-05-31 11:46:17', 'LOGIN', 'c460e800c98cc775d62e', '2014-05-31 11:05:17');
 INSERT INTO `t_user_history` VALUES ('81f8bdc2-d9ed-11e3-aaae-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 10:05:06', 'PORTAL', 'Thay đổi thông tin cá nhân', 'CHANGEINFORMATION', 'c7c5d7514bb93e94617a', null);
 INSERT INTO `t_user_history` VALUES ('822f0feb-daad-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:29', 'GIFT', null, 'PAYMENT', '1233e438e748f08f729c', null);
 INSERT INTO `t_user_history` VALUES ('83af9fb3-dab1-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:10', 'GIFT', null, 'PAYMENT', '36ab0289cb96cf6c8126', null);
@@ -2797,6 +2854,7 @@ INSERT INTO `t_user_history` VALUES ('8909bcf6-e7f0-11e3-a9e7-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('8d8122ba-d389-11e3-9bb3-fc4dd45603ff', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-04 07:05:28', 'PORTAL', '2014-05-04 19:42:28', 'LOGIN', '0888970ff3d777bc1818', null);
 INSERT INTO `t_user_history` VALUES ('8dc9c393-d386-11e3-9bb3-fc4dd45603ff', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-04 07:05:00', 'PORTAL', '2014-05-04 19:21:00', 'LOGIN', '0b937396100e5461922e', null);
 INSERT INTO `t_user_history` VALUES ('8df57f78-e42e-11e3-bd08-a01d48a90f04', '51', '9139148c5b1c8ff61784c051b06f8bf5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:55', 'GIFT', '2014-05-26 00:03:55', 'LOGIN', '38174769026679970b24', '2014-05-26 12:05:55');
+INSERT INTO `t_user_history` VALUES ('8faae96f-e87f-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:52', 'PORTAL', '2014-05-31 11:53:52', 'LOGIN', '84c00005be58f88550d3', '2014-05-31 11:05:52');
 INSERT INTO `t_user_history` VALUES ('90450d45-db76-11e3-8f87-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-14 09:05:42', 'GIFT', null, 'PAYMENT', '45099e988144900089a8', null);
 INSERT INTO `t_user_history` VALUES ('91a150c9-db76-11e3-8f87-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-14 09:05:44', 'PORTAL', '2014-05-14 21:46:44', 'LOGIN', '45099e988144900089a8', null);
 INSERT INTO `t_user_history` VALUES ('91d39238-cfb4-11e3-b77d-d264c9e41a87', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-04-29 10:04:19', 'PORTAL', 'Reset mật khẩu', 'RESETPASS', '8e489e8de1f8a10b0f6c', null);
@@ -2835,6 +2893,7 @@ INSERT INTO `t_user_history` VALUES ('ac30cbf1-e68b-11e3-ac44-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('ac7380bc-e3ba-11e3-9ce0-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-25 10:05:24', 'PORTAL', '2014-05-25 10:14:24', 'LOGIN', '1a292bc6072fd9939457', '2014-05-25 10:05:24');
 INSERT INTO `t_user_history` VALUES ('acbe568a-db76-11e3-8f87-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-14 09:05:30', 'GIFT', null, 'PAYMENT', '5a38e93b6fc8aa36261c', null);
 INSERT INTO `t_user_history` VALUES ('af028057-cfb4-11e3-b77d-d264c9e41a87', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-04-29 10:04:08', 'PORTAL', '2014-04-29 22:41:08', 'LOGIN', '29d974114d86877e0722', null);
+INSERT INTO `t_user_history` VALUES ('af0ae387-e875-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 10:05:09', 'GIFT', '2014-05-31 10:43:09', 'LOGIN', '271b73a75ec5a84b8e9e', '2014-05-31 10:05:09');
 INSERT INTO `t_user_history` VALUES ('b097849e-e430-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:12', 'PORTAL', '2014-05-26 00:19:12', 'LOGIN', '574361ee3072c4e9c3f7', '2014-05-26 12:05:12');
 INSERT INTO `t_user_history` VALUES ('b1cb9349-e68a-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-29 12:05:31', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '970f906cc4bbc9324668', '2014-05-29 12:05:31');
 INSERT INTO `t_user_history` VALUES ('b22109e1-e430-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:14', 'PORTAL', '2014-05-26 00:19:14', 'LOGIN', '574361ee3072c4e9c3f7', '2014-05-26 12:05:14');
@@ -2849,6 +2908,7 @@ INSERT INTO `t_user_history` VALUES ('b7c8e7f3-e4dc-11e3-af35-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('b8bc1804-db6e-11e3-8f87-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-14 08:05:34', 'PORTAL', '2014-05-14 20:50:34', 'LOGIN', '6abfe32e3aca5a886ee2', null);
 INSERT INTO `t_user_history` VALUES ('b98c60c3-dab3-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:59', 'GIFT', null, 'PAYMENT', '25c828ff0df491c634ef', null);
 INSERT INTO `t_user_history` VALUES ('b9ed07b4-daab-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:44', 'GIFT', null, 'PAYMENT', 'f114a8bf6659c9a2e3cc', null);
+INSERT INTO `t_user_history` VALUES ('ba6986b6-e87e-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:54', 'GIFT', '2014-05-31 11:47:54', 'LOGIN', '97fa669b04061c5a2e13', '2014-05-31 11:05:54');
 INSERT INTO `t_user_history` VALUES ('ba9230f5-daae-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:14', 'GIFT', null, 'PAYMENT', '9a40833d36a9703e33ce', null);
 INSERT INTO `t_user_history` VALUES ('ba9a333b-dab7-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:39', 'GIFT', null, 'PAYMENT', '6dc44aced3927100ad97', null);
 INSERT INTO `t_user_history` VALUES ('baad838e-dc35-11e3-a49e-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-15 08:05:07', 'GIFT', null, 'PAYMENT', 'e37811158e925522746e', null);
@@ -2870,11 +2930,15 @@ INSERT INTO `t_user_history` VALUES ('c15bcf9a-de92-11e3-9674-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('c39798ab-dab5-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:35', 'GIFT', null, 'PAYMENT', 'c12ac14c0fbcc6ab4934', null);
 INSERT INTO `t_user_history` VALUES ('c605c073-dab3-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:20', 'GIFT', null, 'PAYMENT', '403af990cdbcb0c4c078', null);
 INSERT INTO `t_user_history` VALUES ('c707e903-dab4-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:31', 'GIFT', null, 'PAYMENT', 'c176df73b2f7df8cedd6', null);
+INSERT INTO `t_user_history` VALUES ('c74c170d-e889-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 01:05:00', 'GIFT', '2014-05-31 13:07:00', 'LOGIN', '14908659dd12c0eab602', '2014-05-31 01:05:00');
 INSERT INTO `t_user_history` VALUES ('c7ae97a1-d76c-11e3-88cb-fc4dd45603ff', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-09 06:05:35', 'PORTAL', '2014-05-09 18:26:35', 'LOGIN', '0cd81b40e32c94772085', null);
 INSERT INTO `t_user_history` VALUES ('c7b8c5b6-daaa-11e3-b3fd-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:58', 'GIFT', null, 'PAYMENT', 'bb649b1d73dca73f7f54', null);
 INSERT INTO `t_user_history` VALUES ('c870c1d1-da9f-11e3-b3fd-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 08:05:14', 'PORTAL', '2014-05-13 20:09:14', 'LOGIN', 'c8753190192955504f91', null);
 INSERT INTO `t_user_history` VALUES ('c9890527-d9e7-11e3-aaae-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 10:05:09', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'a60778ffb588b97d5bb5', null);
 INSERT INTO `t_user_history` VALUES ('c9db2a42-e430-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:54', 'PORTAL', '2014-05-26 00:19:54', 'LOGIN', '7fcd206932798de61c0c', '2014-05-26 12:05:54');
+INSERT INTO `t_user_history` VALUES ('ca24f290-e875-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 10:05:55', 'GIFT', '2014-05-31 10:43:55', 'LOGIN', '271b73a75ec5a84b8e9e', '2014-05-31 10:05:55');
+INSERT INTO `t_user_history` VALUES ('cb2e59ee-e87e-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:22', 'GIFT', '2014-05-31 11:48:22', 'LOGIN', '97fa669b04061c5a2e13', '2014-05-31 11:05:22');
+INSERT INTO `t_user_history` VALUES ('cb86f0ef-e87f-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:32', 'GIFT', '2014-05-31 11:55:32', 'LOGIN', '1deef396b42b0e333a1f', '2014-05-31 11:05:32');
 INSERT INTO `t_user_history` VALUES ('cbb8d1de-e4db-11e3-af35-a01d48a90f04', '51', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 08:05:01', 'PORTAL', '2014-05-26 20:44:01', 'LOGIN', '645d042151cc1f24b571', '2014-05-26 08:05:01');
 INSERT INTO `t_user_history` VALUES ('cbfb557b-d814-11e3-87fd-fc4dd45603ff', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-10 02:05:18', 'PORTAL', '2014-05-10 14:29:18', 'LOGIN', '61fe2286dda6d84e86b1', null);
 INSERT INTO `t_user_history` VALUES ('ccfa5d58-e681-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:51', 'GIFT', '2014-05-28 23:04:51', 'LOGIN', 'fc59fd62e6e0533cfd64', '2014-05-28 11:05:51');
@@ -2896,13 +2960,17 @@ INSERT INTO `t_user_history` VALUES ('d37a7638-e432-11e3-bd08-a01d48a90f04', '51
 INSERT INTO `t_user_history` VALUES ('d3ac786f-db85-11e3-8f87-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko', '2014-05-14 11:05:57', 'GIFT', null, 'PAYMENT', 'b1ffb6e7d656929ecec4', null);
 INSERT INTO `t_user_history` VALUES ('d4a272c4-e4db-11e3-af35-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 08:05:16', 'PORTAL', '2014-05-26 20:44:16', 'LOGIN', '645d042151cc1f24b571', '2014-05-26 08:05:16');
 INSERT INTO `t_user_history` VALUES ('d4efd2a6-dcef-11e3-a439-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-16 06:05:17', 'GIFT', null, 'PAYMENT', 'ac39223d519ca0a9e93f', null);
+INSERT INTO `t_user_history` VALUES ('d5ce8786-e896-11e3-ac0e-a01d48a90f04', '50', 'f3231dcfcfc3d225284e4a48499074f2', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 02:05:28', 'GIFT', null, 'PAYMENT', 'fae85b9026c3b22a6a3a', '2014-05-31 02:05:28');
 INSERT INTO `t_user_history` VALUES ('d6ab87b5-e3b7-11e3-9ce0-a01d48a90f04', '51', '3f9be2bc4b60ae922b7e8137d876a777', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-25 09:05:07', 'GIFT', '2014-05-25 09:54:07', 'LOGIN', 'b794ee0397cb55fd00cd', '2014-05-25 09:05:07');
 INSERT INTO `t_user_history` VALUES ('d6b8483b-dab7-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:26', 'GIFT', null, 'PAYMENT', '6dc44aced3927100ad97', null);
 INSERT INTO `t_user_history` VALUES ('d73480ec-daae-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 09:05:02', 'GIFT', null, 'PAYMENT', '9a40833d36a9703e33ce', null);
+INSERT INTO `t_user_history` VALUES ('d737960b-e88c-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 01:05:55', 'GIFT', '2014-05-31 13:28:55', 'LOGIN', 'd89d4246c9737d3b4b11', '2014-05-31 01:05:55');
 INSERT INTO `t_user_history` VALUES ('d7695eca-d9eb-11e3-aaae-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-12 10:05:10', 'PORTAL', 'Reset mật khẩu', 'RESETPASS', '67016a90128774442bf2', null);
 INSERT INTO `t_user_history` VALUES ('d7750cc0-e689-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-29 12:05:25', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', 'fc26070c1d372a506d5a', '2014-05-29 12:05:25');
 INSERT INTO `t_user_history` VALUES ('d83de90f-dab1-11e3-b798-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:32', 'GIFT', null, 'PAYMENT', '96df74c3174f0b39f926', null);
 INSERT INTO `t_user_history` VALUES ('d95e1d90-e3b7-11e3-9ce0-a01d48a90f04', '51', '3f9be2bc4b60ae922b7e8137d876a777', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-25 09:05:11', 'GIFT', '2014-05-25 09:54:11', 'LOGIN', 'b794ee0397cb55fd00cd', '2014-05-25 09:05:11');
+INSERT INTO `t_user_history` VALUES ('dabbcdca-e87c-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:29', 'PORTAL', 'USER LOGIN', 'LOGIN', '5be00293f0fe3631b713', '2014-05-31 11:05:29');
+INSERT INTO `t_user_history` VALUES ('dabd07c7-e87c-11e3-ac0e-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:29', 'PORTAL', '2014-05-31 11:34:29', 'LOGIN', '5be00293f0fe3631b713', '2014-05-31 11:05:29');
 INSERT INTO `t_user_history` VALUES ('db065c06-de9b-11e3-9674-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-18 09:05:12', 'PORTAL', '2014-05-18 21:51:12', 'LOGIN', '64f2d3c56e922c64b15b', '2014-05-18 09:05:12');
 INSERT INTO `t_user_history` VALUES ('dcbff528-dcea-11e3-a439-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-16 06:05:43', 'GIFT', null, 'PAYMENT', 'd74175221e92cc315135', null);
 INSERT INTO `t_user_history` VALUES ('dd21104e-de3e-11e3-8693-a01d48a90f04', '0', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-18 10:05:33', 'GIFT', null, 'PAYMENT', 'ad014ef967b05ceca8b8', '2014-05-18 10:05:33');
@@ -2912,6 +2980,7 @@ INSERT INTO `t_user_history` VALUES ('df52167e-dab5-11e3-b798-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('dfec0a04-e431-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:41', 'PORTAL', '2014-05-26 00:27:41', 'LOGIN', '233cce860238aed2f530', '2014-05-26 12:05:41');
 INSERT INTO `t_user_history` VALUES ('e0052f57-dab2-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:54', 'GIFT', null, 'PAYMENT', '9a8e43146ebcdede1055', null);
 INSERT INTO `t_user_history` VALUES ('e0b1db0b-e3b7-11e3-9ce0-a01d48a90f04', '51', '3f9be2bc4b60ae922b7e8137d876a777', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-25 09:05:23', 'GIFT', '2014-05-25 09:54:23', 'LOGIN', 'b794ee0397cb55fd00cd', '2014-05-25 09:05:23');
+INSERT INTO `t_user_history` VALUES ('e1d079ac-e875-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 10:05:34', 'GIFT', '2014-05-31 10:44:34', 'LOGIN', '4f0c6cc03a925b9e011c', '2014-05-31 10:05:34');
 INSERT INTO `t_user_history` VALUES ('e2642c61-e431-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:45', 'PORTAL', '2014-05-26 00:27:45', 'LOGIN', '233cce860238aed2f530', '2014-05-26 12:05:45');
 INSERT INTO `t_user_history` VALUES ('e329e50a-e431-11e3-bd08-a01d48a90f04', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 12:05:46', 'PORTAL', '2014-05-26 00:27:46', 'LOGIN', '233cce860238aed2f530', '2014-05-26 12:05:46');
 INSERT INTO `t_user_history` VALUES ('e3af8a0b-cfb8-11e3-b77d-d264c9e41a87', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-04-29 11:04:15', 'PORTAL', '2014-04-29 23:11:15', 'LOGIN', 'bce4c06afb64f1889be7', null);
@@ -2930,6 +2999,7 @@ INSERT INTO `t_user_history` VALUES ('e77a5487-e3b7-11e3-9ce0-a01d48a90f04', '51
 INSERT INTO `t_user_history` VALUES ('e95ceed5-e4db-11e3-af35-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-26 08:05:51', 'PORTAL', '2014-05-26 20:44:51', 'LOGIN', '645d042151cc1f24b571', '2014-05-26 08:05:51');
 INSERT INTO `t_user_history` VALUES ('e9b60b92-dc4e-11e3-a49e-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-15 11:05:23', 'GIFT', null, 'PAYMENT', 'afcef5a0ab7c5eb5303e', null);
 INSERT INTO `t_user_history` VALUES ('ea56ab3a-dab6-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:50', 'GIFT', null, 'PAYMENT', 'b9944cb024fce7becfa1', null);
+INSERT INTO `t_user_history` VALUES ('eb1869c2-e87f-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 11:05:25', 'GIFT', '2014-05-31 11:56:25', 'LOGIN', '1deef396b42b0e333a1f', '2014-05-31 11:05:25');
 INSERT INTO `t_user_history` VALUES ('eb2ed17e-e687-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:39', 'PORTAL', '2014-05-28 23:48:39', 'LOGIN', 'f605cc0223b6ccd7b58b', '2014-05-28 11:05:39');
 INSERT INTO `t_user_history` VALUES ('eb9962ee-dab3-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 10:05:23', 'GIFT', null, 'PAYMENT', '7b588717a80efc43d13e', null);
 INSERT INTO `t_user_history` VALUES ('ec282c1b-dabd-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:59', 'GIFT', null, 'PAYMENT', '6f49182d00063edc57a7', null);
@@ -2952,6 +3022,7 @@ INSERT INTO `t_user_history` VALUES ('f5448e12-daab-11e3-b3fd-a01d48a90f04', '50
 INSERT INTO `t_user_history` VALUES ('f5bc11b2-d910-11e3-b45d-fc4dd45603ff', '51', '11544379ba2eda20ec5639a9d63fc455', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-11 08:05:21', 'PORTAL', '2014-05-11 20:34:21', 'LOGIN', 'dbf24058047c09fdd7d0', null);
 INSERT INTO `t_user_history` VALUES ('f6fb5864-e1b5-11e3-a95a-a01d48a90f04', '51', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-22 08:05:40', 'PORTAL', 'Thay đổi thông tin cá nhân', 'CHANGEINFORMATION', '5969ed268f2fee4a5378', '2014-05-22 08:05:40');
 INSERT INTO `t_user_history` VALUES ('f8458c18-dab7-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:23', 'GIFT', null, 'PAYMENT', '1588929e5dda3600b6f8', null);
+INSERT INTO `t_user_history` VALUES ('f875ff31-e88a-11e3-ac0e-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-31 01:05:32', 'PORTAL', '2014-05-31 13:15:32', 'LOGIN', '7c808fefb3212daac3a1', '2014-05-31 01:05:32');
 INSERT INTO `t_user_history` VALUES ('f8c0dc89-dab8-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:33', 'GIFT', null, 'PAYMENT', '09da0422b752a97854c2', null);
 INSERT INTO `t_user_history` VALUES ('f8f1efe6-e683-11e3-ac44-a01d48a90f04', '50', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '2014-05-28 11:05:24', 'PORTAL', 'Thay đổi mật khẩu', 'CHANGEPASS', '0fc392b9ff1fba77d81d', '2014-05-28 11:05:24');
 INSERT INTO `t_user_history` VALUES ('f92b01e1-dabe-11e3-b798-a01d48a90f04', '50', '520f59adc6ab088260d35bcf2ff22403', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/53', '2014-05-13 11:05:31', 'GIFT', null, 'PAYMENT', 'e31bb5c592046ee7af2a', null);
