@@ -20,7 +20,9 @@ class portalProcess extends BaseController
         $portalData = $data['user'];
         $redirectURL = $data['targetPage'];
         $dataDecode = json_decode($portalData);
+        
         $this->obj_user = new User();
+        $this->obj_user->id = $dataDecode->id;
         $this->obj_user->account = $dataDecode->account;
         $this->obj_user->date_joined = $dataDecode->date_joined;
         $this->obj_user->DOB = $dataDecode->DOB;
@@ -33,6 +35,7 @@ class portalProcess extends BaseController
         $this->obj_user->status = $dataDecode->status;
         $this->obj_user->secretKey = $dataDecode->secretKey;
         $this->obj_user->is_authorized = true;
+        
         $this->set_obj_user_to_me($this->obj_user);
         redirect($redirectURL);
     }

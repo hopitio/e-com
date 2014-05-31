@@ -373,7 +373,7 @@ $config['platform_login_url'] = 'http://localhost.com/portal/login?cp={cp}&ep={e
 $config['portal_login_url'] = 'http://localhost.com/portal/login?cp={cp}';
 $config['portal_admin_login_url'] = 'http://localhost.com/portal/__admin/login?cp={cp}';
 
-$config['platform_login_callback'] = 'http://localhost.com/__portal/callback';
+$config['platform_login_callback'] = 'http://localhost.com/__portal/login_callback';
 $config['platform_logout'] = '/logout';
 $config['subSystemName'] = 'GIFT';
 

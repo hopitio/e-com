@@ -33,7 +33,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $route['__portal/callback'] = 'portalCallbackController/portalProcess/portalAuthen';
+        $route['__portal/login_callback'] = 'portalCallbackController/portalProcess/portalAuthen';
         $route['portal/verifyToken'] = 'portalController/login/verifyToken';
         $route['__admin/login'] = 'admin/loginAdmin/login';
     }
