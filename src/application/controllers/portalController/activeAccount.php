@@ -1,6 +1,6 @@
 <?php
 if (! defined('BASEPATH')) exit('No direct script access allowed');
-class activeAccount extends BaseController
+class activeAccount extends BasePortalController
 {
 
     protected $authorization_required = FALSE;

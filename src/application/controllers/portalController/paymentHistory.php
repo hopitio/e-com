@@ -1,5 +1,5 @@
 <?php
-class paymentHistory extends BaseController{
+class paymentHistory extends BasePortalController{
     
     protected  $_css = array(
         '/style/myaccount.css',

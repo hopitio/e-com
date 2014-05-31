@@ -2,7 +2,7 @@
 if (! defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class staticPage extends BaseController
+class staticPage extends BasePortalController
 {
     protected $authorization_required = FALSE;
     protected  $_css = array(

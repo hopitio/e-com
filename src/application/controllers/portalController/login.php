@@ -2,7 +2,7 @@
 if (! defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class login extends BaseController
+class login extends BasePortalController
 {
 
     protected $authorization_required = FALSE;
@@ -93,6 +93,7 @@ class login extends BaseController
         {
             $this->obj_user =  $user;
             $this->obj_user->is_authorized = true;
+            $this->obj_user->portal_id = $user->id;
             $this->set_obj_user_to_me($this->obj_user);
             $this->onLoginComplete($data);
         }
@@ -276,6 +277,7 @@ class login extends BaseController
         $this->onLoginCompleteRedirect($data);
         
         $user = clone $this->obj_user;
+        $user->id = $this->obj_user->id;
         unset($user->user_type);
         $dataResult = array();
         $dataResult['url'] = $data['endpoint'];

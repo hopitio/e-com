@@ -5,7 +5,7 @@
  */
 defined('BASEPATH') or die('no direct script access allowed');
 
-class help extends BaseController
+class help extends BasePortalController
 {
 
     function contact_us()

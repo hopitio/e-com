@@ -36,7 +36,8 @@ class User
     public $platform_key;
     public $user_type = DatabaseFixedValue::USER_TYPE_USER;
     public $secretKey;
-
+    public $portal_id;
+    public $sub_id;
     //END DATABASE
     function __construct()
     {

@@ -6,7 +6,7 @@
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class userInformation extends BaseController
+class userInformation extends BasePortalController
 {
         protected $authorization_required = TRUE;
     protected  $_css = array(

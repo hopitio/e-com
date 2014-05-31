@@ -6,7 +6,7 @@
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class paymentChoice extends BaseController
+class paymentChoice extends BasePortalController
 {
     protected $authorization_required = false;
     protected $css = array('/style/portalOrder.css');

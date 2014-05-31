@@ -6,9 +6,8 @@
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class userSecurity extends BaseController
+class userSecurity extends BasePortalController
 {
-
     protected $authorization_required = TRUE;
     protected  $_css = array(
         '/style/myaccount.css'

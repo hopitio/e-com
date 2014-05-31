@@ -1,7 +1,7 @@
 <?php
 if (! defined('BASEPATH'))
     exit('No direct script access allowed');
-class syncNganLuong extends BaseController
+class syncNganLuong extends BasePortalController
 {
     protected $authorization_required = FALSE;
     function __construct(){

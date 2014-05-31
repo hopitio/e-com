@@ -1,6 +1,7 @@
 <?php
 class BaseController extends MY_Controller{
     
+    protected $is_portal_controller = false;
     protected $is_admin_page = false;
     /**
      * Lấy thông tin Query string.
@@ -18,6 +19,14 @@ class BaseController extends MY_Controller{
     
     protected function init(){
         parent::init();
+        if($this->is_portal_controller){
+            $this->obj_user->id = $this->obj_user->portal_id;
+            $this->set_obj_user_to_me($this->obj_user);
+        }else{
+            $this->obj_user->id = $this->obj_user->sub_id;
+            $this->set_obj_user_to_me($this->obj_user);
+        }
+        log_message('infor',"is portal : {$this->is_portal_controller} id :{$this->obj_user->id}");
     }
     
     /**

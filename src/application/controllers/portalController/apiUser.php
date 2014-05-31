@@ -2,7 +2,7 @@
 if (! defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class apiUser extends BaseController
+class apiUser extends BasePortalController
 {
     function getUserContacts($id){
         $portalBiz = new PortalBizContact();

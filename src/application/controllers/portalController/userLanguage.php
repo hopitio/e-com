@@ -6,7 +6,7 @@
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class userLanguage extends BaseController
+class userLanguage extends BasePortalController
 {
     protected $authorization_required = FALSE;
     protected  $_css = array(

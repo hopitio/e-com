@@ -7,7 +7,7 @@ require_once APPPATH.'controllers/portalController/orderPlace.php';
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class orderPlace extends BaseController
+class orderPlace extends BasePortalController
 {
     protected $authorization_required = FALSE;
     protected $css = array('/style/portalOrder.css');

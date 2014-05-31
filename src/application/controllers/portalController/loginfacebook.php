@@ -22,33 +22,31 @@ class loginfacebook extends login
     function loginFb(){
         $data = $this->input->post();
         $facebookMe = json_decode( $this->input->post('postValue'));
-        $logunBiz = new PortalBizLogin();
-        $user = $logunBiz->loginFacebook($facebookMe);
-
-        $this->obj_user->is_authorized = true;
-        $this->obj_user->id =  $user->id;
-        $this->obj_user->account = $user->account;
-        $this->obj_user->firstname = $user->firstname;
-        $this->obj_user->lastname = $user->lastname;
-        $this->obj_user->sex = $user->sex;
-        $this->obj_user->platform_key = $user->platform_key;
-        $this->obj_user->status = $user->status;
-        $this->obj_user->last_active = $user->last_active;
-        $this->obj_user->DOB = $user->DOB;
-        $this->obj_user->secretKey =  SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id, $data['session']);
-        $this->set_obj_user_to_me($this->obj_user);
-        
-        $history = new PortalBizUserHistory();
-        $subSystemSessionId = $this->input->post('se');
-        $toSubsys = $this->input->post('su');
-        $secrectKey = null;
-        if($toSubsys != null){
-            $secrectKey = SecurityManager::inital()->getEncrytion()->encrytSecretLogin($this->obj_user->id , $subSystemSessionId);
+        $loginBiz = new PortalBizAccount();
+        $user = $loginBiz->getLogin($facebookMe->email,null,DatabaseFixedValue::USER_PLATFORM_FACEBOOK);
+        if(!$user){
+            $this->insertFacebookAccountToProtal($facebookMe);
+            $user = $loginBiz->getLogin($facebookMe->email,null,DatabaseFixedValue::USER_PLATFORM_FACEBOOK);
         }
-        $history->createNewHistory($this->obj_user,DatabaseFixedValue::USER_HISTORY_ACTION_LOGIN,'USER LOGIN',$toSubsys,$secrectKey);
-        
+        $this->obj_user =  $user;
+        $this->obj_user->is_authorized = true;
+        $this->obj_user->portal_id = $user->id;
+        $this->set_obj_user_to_me($this->obj_user);
         $this->onLoginComplete();
-        //LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($dataResult,false)->render('LoginComplete');
+    }
+    
+    private function insertFacebookAccountToProtal($facebookAccount){
+        $accountBiz = new PortalBizAccount();
+        $firstname = $facebookAccount->first_name.' '.$facebookAccount->middle_name;
+        $lastname = $facebookAccount->last_name;
+        $account = $facebookAccount->email;
+        $password = null;
+        $genderFB =  $facebookAccount->gender;
+        $sex = $genderFB == 'male' ? 'M' : $genderFB == 'female' ? 'F' : 0;
+        $DOBFB = isset($facebookAccount->birthday) ? $facebookAccount->birthday : null;
+        $DOB = $this->convertFbDate($DOBFB);
+        $user = $accountBiz->insertNewUserFormPlatform($user,$firstname, $lastname, $account, $password, $sex, $DOB,DatabaseFixedValue::USER_PLATFORM_FACEBOOK);
+        return $user;
     }
 
 

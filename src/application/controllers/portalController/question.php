@@ -1,6 +1,6 @@
 <?php
 if (! defined('BASEPATH')) exit('No direct script access allowed');
-class question extends BaseController
+class question extends BasePortalController
 {
 
     protected $authorization_required = TRUE;

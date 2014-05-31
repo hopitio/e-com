@@ -2,7 +2,7 @@
 if (! defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class password extends BaseController
+class password extends BasePortalController
 {
     protected $authorization_required = TRUE;
     private $_data = array();

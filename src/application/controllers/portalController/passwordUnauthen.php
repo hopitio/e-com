@@ -7,7 +7,7 @@ require_once APPPATH.'controllers/portalController/password.php';
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class passwordUnauthen extends password
+class passwordUnauthen extends BasePortalController
 {
     protected $authorization_required = FALSE;
 

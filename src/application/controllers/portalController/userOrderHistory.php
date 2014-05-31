@@ -6,7 +6,7 @@
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class userOrderHistory extends BaseController
+class userOrderHistory extends BasePortalController
 {
     protected $authorization_required = TRUE;
     protected  $_css = array(

@@ -19,7 +19,8 @@ require_once APPPATH . 'libraries/thirdParty/nganluong/nganluong.inc';
 
 require_once APPPATH . 'libraries/User.php';
 
-require_once APPPATH . 'controllers/ControllerBase.php';
+require_once APPPATH . 'controllers/BaseController.php';
+require_once APPPATH . 'controllers/portalController/BasePortalController.php';
 require_once APPPATH . 'controllers/portalAdmin/PortalAdminControllerAbstract.php';
 require_once APPPATH . 'controllers/admin/AdminControllerAbstract.php';
 

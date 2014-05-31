@@ -1,6 +1,6 @@
 <?php
 if (! defined('BASEPATH')) exit('No direct script access allowed');
-class contact extends BaseController
+class contact extends BasePortalController
 {
 
     protected $authorization_required = TRUE;
