@@ -273,7 +273,7 @@ CREATE TABLE `t_user_history` (
   `sub_system_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `action_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `session_id` char(20) COLLATE utf8_unicode_ci NOT NULL,
+  `session_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `action_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
