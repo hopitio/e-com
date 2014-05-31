@@ -68,6 +68,41 @@ class ProductFixedDomain extends ProductDomain
         return $this->_getAttributeByName('gift_target');
     }
 
+    function getWarrantyPolicy()
+    {
+        return $this->_getAttributeByName('warranty_policy');
+    }
+
+    function getReturnPolicy()
+    {
+        return $this->_getAttributeByName('return_policy');
+    }
+
+    function getMadeIn()
+    {
+        return $this->_getAttributeByName('made_in');
+    }
+
+    function getImportFrom()
+    {
+        return $this->_getAttributeByName('import_from');
+    }
+
+    function getDimensionWidth()
+    {
+        return $this->_getAttributeByName('dimension_width');
+    }
+
+    function getDimensionHeight()
+    {
+        return $this->_getAttributeByName('dimension_height');
+    }
+
+    function getDimensionDepth()
+    {
+        return $this->_getAttributeByName('dimension_depth');
+    }
+
     /** @return ProductAttributeDomain */
     function getCategory()
     {

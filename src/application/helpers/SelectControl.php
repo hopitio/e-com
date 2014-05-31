@@ -41,4 +41,22 @@ class SelectControl extends ControlAbstract
         return $this;
     }
 
+    function getOptions()
+    {
+        return $this->_options;
+    }
+
+    function setOption($key, $value)
+    {
+        if (isset($this->_options[$key]))
+        {
+            $this->_options[$key] = $value;
+        }
+        else
+        {
+            $this->addOption($key, $value);
+        }
+        return $this;
+    }
+
 }
