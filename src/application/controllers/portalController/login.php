@@ -277,7 +277,6 @@ class login extends BaseController
         
         $user = clone $this->obj_user;
         unset($user->user_type);
-        unset($user->id);
         $dataResult = array();
         $dataResult['url'] = $data['endpoint'];
         $dataResult['redirect']  = $data['currentPage'];

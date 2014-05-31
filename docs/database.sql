@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2014-05-31 10:06:55
+Date: 2014-05-31 10:16:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -999,16 +999,14 @@ CREATE TABLE `t_user` (
   `portal_id` int(11) NOT NULL,
   `platform_key` tinyint(4) NOT NULL DEFAULT '0',
   `is_admin` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `created_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', '0', '0', 'USER');
-INSERT INTO `t_user` VALUES ('2', '0', '0', 'USER');
-INSERT INTO `t_user` VALUES ('3', '0', '0', 'USER');
-INSERT INTO `t_user` VALUES ('4', '0', '0', '');
+INSERT INTO `t_user` VALUES ('1', '0', '0', '', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for t_user_address
