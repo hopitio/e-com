@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2014-05-31 10:16:51
+Date: 2014-05-31 10:53:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -681,7 +681,7 @@ CREATE TABLE `t_product_view` (
   `fk_user` int(11) DEFAULT NULL,
   `count_view` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_product_view
@@ -696,6 +696,7 @@ INSERT INTO `t_product_view` VALUES ('7', '8', '0', '1');
 INSERT INTO `t_product_view` VALUES ('8', '1', '1', '1');
 INSERT INTO `t_product_view` VALUES ('9', '14', '1', '1');
 INSERT INTO `t_product_view` VALUES ('10', '15', '1', '2');
+INSERT INTO `t_product_view` VALUES ('11', '14', '5', '1');
 
 -- ----------------------------
 -- Table structure for t_rating
@@ -998,15 +999,15 @@ CREATE TABLE `t_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `portal_id` int(11) NOT NULL,
   `platform_key` tinyint(4) NOT NULL DEFAULT '0',
-  `is_admin` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `user_type` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `created_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', '0', '0', '', '0000-00-00 00:00:00');
+INSERT INTO `t_user` VALUES ('5', '50', '0', 'USER', '2014-05-31 10:05:36');
 
 -- ----------------------------
 -- Table structure for t_user_address
@@ -1068,7 +1069,7 @@ CREATE TABLE `t_wishlist` (
   `note` text COLLATE utf8_unicode_ci,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_wishlist
@@ -1084,6 +1085,7 @@ INSERT INTO `t_wishlist` VALUES ('17', null, 'main', null, null, '2014-05-03 17:
 INSERT INTO `t_wishlist` VALUES ('18', null, 'main', null, null, '2014-05-03 17:06:29');
 INSERT INTO `t_wishlist` VALUES ('19', null, 'main', null, null, '2014-05-16 23:40:18');
 INSERT INTO `t_wishlist` VALUES ('20', null, 'main', null, null, '2014-05-16 23:40:18');
+INSERT INTO `t_wishlist` VALUES ('21', '5', 'main', null, null, '2014-05-31 10:45:57');
 
 -- ----------------------------
 -- Table structure for t_wishlist_detail
