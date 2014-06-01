@@ -369,11 +369,11 @@ $config['proxy_ips'] = '';
  */
 
 
-$config['platform_login_url'] = 'http://localhost.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
-$config['portal_login_url'] = 'http://localhost.com/portal/login?cp={cp}';
-$config['portal_admin_login_url'] = 'http://localhost.com/portal/__admin/login?cp={cp}';
+$config['platform_login_url'] = 'http://localhost.com:8080/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
+$config['portal_login_url'] = 'http://localhost.com:8080/portal/login?cp={cp}';
+$config['portal_admin_login_url'] = 'http://localhost.com:8080/portal/__admin/login?cp={cp}';
 
-$config['platform_login_callback'] = 'http://localhost.com/__portal/login_callback';
+$config['platform_login_callback'] = 'http://localhost.com:8080/__portal/login_callback';
 $config['platform_logout'] = '/logout';
 $config['subSystemName'] = 'GIFT';
 

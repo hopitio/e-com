@@ -25,6 +25,7 @@ class portalProcess extends BaseController
         $this->obj_user = $bizUser->processLoginFromPortal($dataDecode);
         
         $this->set_obj_user_to_me($this->obj_user);
+        
         redirect($redirectURL);
     }
 }
