@@ -125,7 +125,7 @@ class ProductModel extends BaseModel
             'thumbnail'  => 'thumbnail',
             'baseImage'  => 'base_image',
             'smallImage' => 'small_image',
-            'mainImage'  => 'main_image'
+            'facebookImage'  => 'facebook_image'
         );
         foreach ($fileIDs as $fileID)
         {
