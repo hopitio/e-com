@@ -18,8 +18,8 @@ class BizUser extends BaseBiz{
         {
             $userID = DB::insert('t_user', array(
             'portal_id' => $dataDecode->id,
-            'platform_key'    => $dataDecode->platform_key,
-            'is_admin' => DatabaseFixedValue::USER_TYPE_USER,
+            'platform_key' => $dataDecode->platform_key,
+            'user_type' => DatabaseFixedValue::USER_TYPE_USER,
             'created_date' => date(DatabaseFixedValue::DEFAULT_FORMAT_DATE)
             ));
         }else{

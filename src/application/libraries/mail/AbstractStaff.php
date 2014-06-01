@@ -17,6 +17,9 @@ abstract class AbstractStaff
      * Hàm thực hiện việc gửi mail
      */
     protected abstract function sendMail();
+//     protected abstract function buildContent();
+//     protected abstract function buildTitle();
+    
     protected $to;
     protected $mailData;
     protected $languageKey;
@@ -54,7 +57,7 @@ abstract class AbstractStaff
         return $this;
     }
     
-	/**
+    /**
      * @param field_type $mailData
      * @return AbstractStaff
      */
@@ -68,6 +71,8 @@ abstract class AbstractStaff
      * Thực hiện việc gửi mail
      */
     function send(){
+        
+        
         $this->sendMail();
     }
     

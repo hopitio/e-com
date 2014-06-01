@@ -109,6 +109,7 @@
     <cart_shipping></cart_shipping>
     <mail>
         <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
+        <OrderShipping>Your Sfriendly.com order has shipped! (#{orderId})</OrderShipping>
     </mail>
     
     <portalaccount_resetPassword></portalaccount_resetPassword>

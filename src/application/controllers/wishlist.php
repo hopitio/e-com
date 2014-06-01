@@ -103,6 +103,7 @@ class wishlist extends BaseController
 
     function show($id = null)
     {
+        
         $data['wishlist'] = $this->wishlistModel->getOneWishlist();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data, true)

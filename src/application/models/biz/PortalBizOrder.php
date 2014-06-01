@@ -10,23 +10,21 @@ class PortalBizOrder extends PortalBizBase
         $portalmodelOrder = new PortalModelOrder();
         $portalmodelOrder->id = $orderId;
         $result = $portalmodelOrder->getOrderWithCurrentStatus();
-        
         if(count($result) == 0 ) {
             return null;
         }
         $result = $result[0];
-        $userUpdate = User::getCurrentUser();
-        log_message('error',var_export($userUpdate,true));
+        $user = User::getCurrentUser();
         switch ($result->status)
         {
             case DatabaseFixedValue::ORDER_STATUS_VERIFYING:
-               return $this->updateOrderToShipping($userUpdate, $orderId, $comment);
+               return $this->processShippingOrder($user, $orderId, $comment);
             break;
             case DatabaseFixedValue::ORDER_STATUS_SHIPPING:
-                return $this->updateOrderToDelivered($userUpdate, $orderId, $comment);
+               return $this->processDelivered($user, $orderId, $comment);
             break;
             case DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED:
-                return $this->updateOrderToVerify($userUpdate, $orderId, $comment, true);
+               return $this->processVerifyOrder($user, $orderId, $comment);
             break;
             default:
                 return null;
@@ -45,60 +43,67 @@ class PortalBizOrder extends PortalBizBase
         $userUpdate = User::getCurrentUser();
         switch ($result->status)
         {
-        	case DatabaseFixedValue::ORDER_STATUS_VERIFYING:
-        	    return $this->updateOrderToOrderPlace($userUpdate, $orderId, $comment);
-        	    break;
-        	case DatabaseFixedValue::ORDER_STATUS_SHIPPING:
-        	    return $this->updateOrderToVerify($userUpdate, $orderId, $comment, true);
-        	    break;
-        	case DatabaseFixedValue::ORDER_STATUS_DELIVERED:
-        	    return $this->updateOrderToShipping($userUpdate, $orderId, $comment);
-        	    break;
+            case DatabaseFixedValue::ORDER_STATUS_VERIFYING:
+                return $this->updateOrderToOrderPlace($userUpdate, $orderId, $comment);
+                break;
+            case DatabaseFixedValue::ORDER_STATUS_SHIPPING:
+                return $this->updateOrderToVerify($userUpdate, $orderId, $comment, true);
+                break;
+            case DatabaseFixedValue::ORDER_STATUS_DELIVERED:
+                return $this->updateOrderToShipping($userUpdate, $orderId, $comment);
+                break;
             case DatabaseFixedValue::ORDER_STATUS_ORDER_CANCELLED:
                 return $this->updateOrderToVerify($userUpdate, $orderId, $comment, true);
                 break;
             case DatabaseFixedValue::ORDER_STATUS_REJECTED:
                 return $this->updateOrderToVerify($userUpdate, $orderId, $comment, true);
                 break;
-        	default:
-        	    return null;
-        	    break;
+            default:
+                return null;
+                break;
         }
     }
+
     
-    function rejectOrder($orderId, $comment){
-        $portalmodelOrder = new PortalModelOrder();
-        $portalmodelOrder->id = $orderId;
-        $result = $portalmodelOrder->getOrderWithCurrentStatus();
-        if(count($result) == 0 ) {
-            return null;
-        }
-        $result = $result[0];
-        if($result->status  == DatabaseFixedValue::ORDER_STATUS_ORDER_CANCELLED || 
-           $result->status  == DatabaseFixedValue::ORDER_STATUS_DELIVERED){
-            return null;
-        }
-        $userUpdate = User::getCurrentUser();
-        return $this->updateOrderToRejected($userUpdate, $orderId, $comment);
+    function processPlaceOrder($user, $orderId, $comment, $invoice = null){
+        $status = $this->updateOrderToVerify($user, $orderId, $comment);
+        $this-> mailBuyer($orderId, MailManager::ORDER_PLACES);
+        return $status;
     }
     
-    function cancelOrder($orderId,$comment){
-        $portalmodelOrder = new PortalModelOrder();
-        $portalmodelOrder->id = $orderId;
-        $result = $portalmodelOrder->getOrderWithCurrentStatus();
-        if(count($result) == 0 ) {
-            return null;
-        }
-        $result = $result[0];
-        if($result->status  == DatabaseFixedValue::ORDER_STATUS_REJECTED ||
-            $result->status  == DatabaseFixedValue::ORDER_STATUS_DELIVERED){
-            return null;
-        }
-        $userUpdate = User::getCurrentUser();
-        return $this->updateOrderToCancelled($userUpdate, $orderId, $comment);
+    function processVerifyOrder($user, $orderId, $comment, $invoiceId = null){
+        $status = $this->updateOrderToVerify($user, $orderId, $comment);
+        $this->mailSeller($orderId, MailManager::SELLER_PAYMENT_VERIFIED);
+        return $status;
     }
     
-    private function updateOrderToVerify($userUpdate, $orderId, $comment, $isSendMail){
+    function processShippingOrder($user, $orderId, $comment , $invoiceId = null)
+    {
+        $status = $this->updateOrderToShipping($user, $orderId, $comment);
+        $this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_SHIPPING);
+        return $status;
+    }
+    
+    function processDelivered($user, $orderId, $comment, $invoiceId = null){
+        $status = $this->updateOrderToShipping($user, $orderId, $comment);
+        $this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_DELIVERED);
+        $this->mailSeller($orderId , $invoiceId, MailManager::ORDER_DELIVERED);
+        return $status;
+    }
+    
+    function processCanncel($user, $orderId, $comment, $invoiceId = null){
+        
+    }
+    
+    function processRejected($user, $orderId, $comment, $invoiceId = null){
+        
+    }
+    
+    function processRefunedSomeProducts($user, $orderId, $product){
+        
+    }
+    
+    private function updateOrderToVerify($userUpdate, $orderId, $comment){
         $status = DatabaseFixedValue::ORDER_STATUS_VERIFYING;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
@@ -107,7 +112,6 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->completed_date = '';
         $portalModel->shiped_date = '';
         $portalModel->updateById();
-        //TODO: SEND MAIL.
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
@@ -120,8 +124,6 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->completed_date = '';
         $portalModel->shiped_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $portalModel->updateById();
-
-        //TODO: SEND MAIL.
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
@@ -134,8 +136,6 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->completed_date = '';
         $portalModel->shiped_date = '';
         $portalModel->updateById();
-        
-        //TODO: SEND MAIL.
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
@@ -147,7 +147,6 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->canceled_date =  '';
         $portalModel->completed_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $portalModel->updateById();
-        //TODO: SEND MAIL.
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
@@ -160,8 +159,6 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->completed_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $portalModel->shiped_date = '';
         $portalModel->updateById();
-        //TODO: SEND MAIL.
-        
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
@@ -174,7 +171,6 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->completed_date = '';
         $portalModel->shiped_date = '';
         $portalModel->updateById();
-        //TODO: SEND MAIL.
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
@@ -194,6 +190,7 @@ class PortalBizOrder extends PortalBizBase
         $portalPaymentHistory = new PortalBizPaymentHistory();
         $order = $portalPaymentHistory->getOrderAllInformation($orderId);
         $expectedInvoice = null;
+        
         if($invoiceId == null){
             $expectedInvoice = $order->invoices[0];
         }else{
@@ -202,20 +199,29 @@ class PortalBizOrder extends PortalBizBase
                     $expectedInvoice = $invoice;
                 }
             }
-            unset($order->invoices);
         }
-        
+        unset($order->invoices);
         if($expectedInvoice == null){
             throw new Lynx_BusinessLogicException(
                 __LINE__ . ' ' . __FILE__ . ' ' .
                      "Dữ liệu order và invoice không khớp {$orderId} - {$invoiceId}");
         }
+        
         $order->invoice = $expectedInvoice;
-        $target = 'lethanhan.bkaptech@gmail.com'; //TODO: cần confirm địa chỉ.
-        $mailData = array();
-        $mailData['order'] = $order;
-        $mailData['userContact'] = $order; //TODO: cần confirm địa chỉ.
-        MailManager::initalAndSend($mailType, $target, $mailData);
+        foreach ($order->invoice->shippings as $shipping){
+            if($shipping->status != DatabaseFixedValue::SHIPPING_STATUS_ACTIVE && $shipping->shipping_type != 'SHIP')
+            {
+                continue;
+            }
+            if($shipping->contact->email_contact == null || !isset($shipping->contact->email_contact)){
+                $target = 'lethanhan.bkaptech@gmail.com';
+            }else{
+                $target = $shipping->contact->email_contact;
+            }
+            $mailData = array();
+            $mailData['order'] = $order;
+            MailManager::initalAndSend($mailType, $target, $mailData);
+        }
     }
     
     private function mailSeller($orderId,$invoiceId = null,$mailType){
@@ -230,8 +236,8 @@ class PortalBizOrder extends PortalBizBase
                     $expectedInvoice = $invoice;
                 }
             }
-            unset($order->invoices);
         }
+        unset($order->invoices);
         
         if($expectedInvoice == null){
             throw new Lynx_BusinessLogicException(
@@ -242,16 +248,15 @@ class PortalBizOrder extends PortalBizBase
         $sellerMail = array();
         foreach ($order->invocie->products as $product){
             if(array_key_exists($product->seller_email,$sellerMail)){
-                $sellerMail[$product->seller_email] = array($product);
+                $sellerMail[$product->seller_email] = $order;
                 continue;
             }
-            else{
-                array_push($sellerMail[$product->seller_email],$product);
-            }
-        }  
+        }
+        
+        $mailData = array();
         foreach (array_keys($sellerMail) as $key)
         {
-            $mailData = $sellerMail[$key];
+            $mailData['order'] = $sellerMail[$key];
             MailManager::initalAndSend(MailManager::SELLER_VERIFYING, $key, $mailData);
         }
     }

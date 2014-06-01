@@ -264,7 +264,14 @@ class MY_Controller extends CI_Controller
      */
     public function platform_login_url_with_params()
     {
+        $queryString = $this->input->get();
         $dst = uri_string();
+        if($queryString){
+            foreach (array_keys($queryString) as $key){
+                $dst .= '?';
+            }
+            $dst .= implode("&",$queryString);
+        }
         //HOTFIX for phase 1, portal vs sub in one application
         if(strpos($dst,'portal/') !== FALSE)
         {

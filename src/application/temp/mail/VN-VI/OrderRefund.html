@@ -1,9 +1,9 @@
 <div style="background: white; margin-top: 11.25pt;">
 	<p style="font-size:13.5pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#CC6600">
-	    Dear Spiderman,
+	    Dear {name},
 	</p>
 	<p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
-	    We're writing to let you know we processed your refund of $61.68 for your Order #12345678 from Samsung.
+	    We're writing to let you know we processed your refund of $61.68 for your Order #{order_number} from {seller}.
 	</p>
 	<p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
         This refund is for the following item(s):
@@ -11,16 +11,7 @@
     <p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
         <table style="border:none;">
 	       <tr style="border:none;">
-	           <td style="border:none;">
-                   <img style="width: 100px;height:100px" src="#">
-               </td>
-	           <td style="border:none;">
-	               <p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
-	                   Item: Iphone 4s <br/>
-	                   Quantity: 1 <br/>
-	                   Reason for refund: Customer return <br/>
-	               </p>
-	           </td>
+	           {products}
 	       <tr>
         </table>
     </p>
@@ -29,12 +20,12 @@
 	</p>
 	
 	<p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
-       Item Refund: $49.99<br/>
-       Shipping Refund: $11.69<br/>
+       Item Refund: {product_prices}<br/>
+       Shipping Refund: {shipping_prices}<br/>
     </p>
 	
     <p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
-       We've processed a refund for the above order in the amount of $61.68. The refund should appear on your account in 2-3 days if issued to a credit card.
+       We've processed a refund for the above order in the amount of {total}. The refund should appear on your account in 2-3 days if issued to a credit card.
        <br/>
        Refunds issued to a bank account typically take 7-10 days to reflect on the account balance.
     </p>

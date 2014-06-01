@@ -11,4 +11,9 @@ class Common {
         }
         return $pageURL;
     }
+    
+    static function getCurrentHost(){
+        $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
+        return $ns = $protocol.$_SERVER['HTTP_HOST'];
+    }
 }

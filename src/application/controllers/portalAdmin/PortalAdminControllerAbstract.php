@@ -16,6 +16,4 @@ abstract class PortalAdminControllerAbstract extends BaseController
         }
     }
 
-
-
 }
