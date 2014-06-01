@@ -9,25 +9,9 @@ class SellerDeliveredMailler extends AbstractStaff{
     
     
     /* (non-PHPdoc)
-     * @see AbstractStaff::sendMail()
-    */
-    protected function sendMail()
-    {
-        $fullName = $this->config[MAILLER_FULLNAME];
-        $email = $this->config[MAILLER_USER];
-        $this->CI->email->from($email, $fullName);
-        $this->CI->email->to($this->to);
-        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        $this->CI->email->subject($mailLanguage->newpasswordNofication);
-        $msg = $this->buildMailContent();
-        $this->CI->email->message($msg);
-        $this->CI->email->send();
-    }
-    
-    /**
-     * AUTO BUILD.
+     * @see AbstractStaff::buildContent()
      */
-    private function buildMailContent()
+    protected function buildContent()
     {
         $this->CI->load->helper('file');
         $temp = $this->CI->config->item('temp_mail_folder');
@@ -51,14 +35,19 @@ class SellerDeliveredMailler extends AbstractStaff{
         $mailContent = str_replace('{buyer_phone}',$buyer_phone,$mailContent);
 
         return $mailContent;
-    }  
+        
+    }
 
-    /**
-     * 
-     * @param unknown $order
-     * @param unknown $name
-     * @param unknown $order_number
+    /* (non-PHPdoc)
+     * @see AbstractStaff::buildTitle()
      */
+    protected function buildTitle()
+    {
+        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
+        $subject = $mailLanguage->SellerOrderDelivered;
+        return $subject;
+    }
+
     private function preOrderInformation($order,&$order_number,&$seller_name,&$buyer_name,&$buyer_contact,&$buyer_phone){
         foreach ($order->invoice->products as $product){
             if($product->seller_email == $this->to){

@@ -5,30 +5,12 @@
  * @since 20140330
  */
 class ResetPasswordRegisterMailler extends AbstractStaff{
-    
     protected $config_key  = "ResetPasswordMailler";
     
     /* (non-PHPdoc)
-     * @see AbstractStaff::sendMail()
+     * @see AbstractStaff::buildContent()
      */
-    protected function sendMail()
-    {
-        $fullName = $this->config[MAILLER_FULLNAME];
-        $email = $this->config[MAILLER_USER];
-        $this->CI->email->from($email, $fullName);
-        $this->CI->email->to($this->to);
-        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        $this->CI->email->subject($mailLanguage->registerconfirm);
-        $msg = $this->buildMailContent();
-        $this->CI->email->message($msg);
-        $this->CI->email->send();
-        //log_message('error' ,__CLASS__.' '.__METHOD__.$this->CI->email->print_debugger().' '.var_export($this->CI->email,true));
-    }
-    
-    /**
-     * AUTO BUILD.
-     */
-    private function buildMailContent()
+    protected function buildContent()
     {
         $this->CI->load->helper('file');
         $temp = $this->CI->config->item('temp_mail_folder');
@@ -37,5 +19,15 @@ class ResetPasswordRegisterMailler extends AbstractStaff{
         $mailContent = str_replace('{time}',$this->mailData['time'],$mailContent);
         $mailContent = str_replace('{link}',$this->mailData['link'],$mailContent);
         return $mailContent;
+        
+    }
+
+    /* (non-PHPdoc)
+     * @see AbstractStaff::buildTitle()
+     */
+    protected function buildTitle()
+    {
+        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
+        return $this->CI->email->subject($mailLanguage->registerconfirm);
     }
 }

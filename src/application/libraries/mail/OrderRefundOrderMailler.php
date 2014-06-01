@@ -20,25 +20,9 @@ class OrderRefundOrder extends AbstractStaff{
         ";
     
     /* (non-PHPdoc)
-     * @see AbstractStaff::sendMail()
-    */
-    protected function sendMail()
-    {
-        $fullName = $this->config[MAILLER_FULLNAME];
-        $email = $this->config[MAILLER_USER];
-        $this->CI->email->from($email, $fullName);
-        $this->CI->email->to($this->to);
-        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        $this->CI->email->subject($mailLanguage->newpasswordNofication);
-        $msg = $this->buildMailContent();
-        $this->CI->email->message($msg);
-        $this->CI->email->send();
-    }
-    
-    /**
-     * AUTO BUILD.
+     * @see AbstractStaff::buildContent()
      */
-    private function buildMailContent()
+    protected function buildContent()
     {
         $this->CI->load->helper('file');
         $temp = $this->CI->config->item('temp_mail_folder');
@@ -62,7 +46,17 @@ class OrderRefundOrder extends AbstractStaff{
         $mailContent = str_replace('{total_prices}',$total_prices,$mailContent);
 
         return $mailContent;
-    }  
+        
+    }
+
+	/* (non-PHPdoc)
+     * @see AbstractStaff::buildTitle()
+     */
+    protected function buildTitle()
+    {
+        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
+        return $this->CI->email->subject($mailLanguage->newpasswordNofication);
+    }
 
     private function preOrderInformation($order,&$name,&$order_number,&$produts,&$product_prices,&$shipping_prices,&$total_prices)
     {

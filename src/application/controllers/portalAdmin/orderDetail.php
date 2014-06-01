@@ -38,7 +38,6 @@ class orderDetail extends PortalAdminControllerAbstract
         }
         $portalBizOrder = new PortalBizOrder();
         $status = $portalBizOrder->nextUpdateStatus($orderId, $comment);
-        log_message('error', var_export($status->status,true).'-'.$status->id);
         $async = new AsyncResult();
         if($status == null){
             $async->isError = true;

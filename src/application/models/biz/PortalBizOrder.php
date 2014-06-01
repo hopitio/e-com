@@ -85,9 +85,10 @@ class PortalBizOrder extends PortalBizBase
     }
     
     function processDelivered($user, $orderId, $comment, $invoiceId = null){
-        $status = $this->updateOrderToShipping($user, $orderId, $comment);
+        $status = $this->updateOrderToDelivered($user, $orderId, $comment);
         $this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_DELIVERED);
-        $this->mailSeller($orderId , $invoiceId, MailManager::ORDER_DELIVERED);
+        $this->mailSeller($orderId , $invoiceId, MailManager::SELLER_DELIVERED);
+        $this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_ASK_REVIEW);
         return $status;
     }
     
@@ -246,18 +247,20 @@ class PortalBizOrder extends PortalBizBase
         }
         $order->invoice = $expectedInvoice;
         $sellerMail = array();
-        foreach ($order->invocie->products as $product){
-            if(array_key_exists($product->seller_email,$sellerMail)){
+        foreach ($order->invoice->products as $product){
+            if(!array_key_exists($product->seller_email,$sellerMail)){
+                if($product->seller_email == null || !isset($product->seller_email)){
+                    $product->seller_email = 'lethanhan.bkaptech@gmail.com';
+                }
                 $sellerMail[$product->seller_email] = $order;
                 continue;
             }
         }
-        
         $mailData = array();
         foreach (array_keys($sellerMail) as $key)
         {
             $mailData['order'] = $sellerMail[$key];
-            MailManager::initalAndSend(MailManager::SELLER_VERIFYING, $key, $mailData);
+            MailManager::initalAndSend($mailType, $key, $mailData);
         }
     }
     

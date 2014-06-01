@@ -33,9 +33,6 @@ class BaseController extends MY_Controller{
             $this->obj_user->id = $this->obj_user->sub_id;
             $this->set_obj_user_to_me($this->obj_user);
         }
-        log_message('error',"is portal : {$this->is_portal_controller} id :{$this->obj_user->id}");
-        //log_message('error',"is portal : {$this->is_portal_controller} id :{$this->obj_user->id}");
-//        log_message('error',"is portal : ".  var_export($this->obj_user));
     }
     
     /**

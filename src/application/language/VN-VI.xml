@@ -109,7 +109,12 @@
     <cart_shipping></cart_shipping>
     <mail>
         <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
-        <OrderShipping>Your Sfriendly.com order has shipped! (#{orderId})</OrderShipping>
+        <OrderShipping>Your Sfriendly.com order has shipped! (#{order_number})</OrderShipping>
+        <OrderDelivered>Your Sfriendly.com order has delivered (#{order_number})</OrderDelivered>
+        <SellerOrderDelivered>Your Sfriendly.com order has delivered</SellerOrderDelivered>
+        <OrderPlace>Your Sfriendly.com order has placed (#{order_number})</OrderPlace>
+        <OrderAskReview>Would you like to rate your transaction at Sfriendly.com?</OrderAskReview>
+        <SellerPaymentVerified>You sold an item from your customer – Ship now</SellerPaymentVerified>
     </mail>
     
     <portalaccount_resetPassword></portalaccount_resetPassword>

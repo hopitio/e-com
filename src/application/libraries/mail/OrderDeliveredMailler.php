@@ -7,51 +7,55 @@
 class OrderDeliveredMailler extends AbstractStaff{
     protected $config_key = 'OrderDelivered';
     
-    
     /* (non-PHPdoc)
-     * @see AbstractStaff::sendMail()
-    */
-    protected function sendMail()
-    {
-        $fullName = $this->config[MAILLER_FULLNAME];
-        $email = $this->config[MAILLER_USER];
-        $this->CI->email->from($email, $fullName);
-        $this->CI->email->to($this->to);
-        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        $this->CI->email->subject($mailLanguage->newpasswordNofication);
-        $msg = $this->buildMailContent();
-        $this->CI->email->message($msg);
-        $this->CI->email->send();
-    }
-
-    
-    /**
-     * AUTO BUILD.
+     * @see AbstractStaff::buildContent()
      */
-    private function buildMailContent()
+    protected function buildContent()
     {
         $this->CI->load->helper('file');
         $temp = $this->CI->config->item('temp_mail_folder');
         $temp .= $this->languageKey.'/'. $this->config[MAILLER_TEMP];
         $mailContent = read_file($temp);
-        
         $order = $this->mailData['order'];
         $name = '';
         $order_number = $order->id;
-        
-        $this->preOrderInformation($order, $name, $order_number);
+        $help_url = '';
+        $this->preOrderInformation($order, $name, $order_number,$help_url);
         $mailContent = str_replace('{name}',$name,$mailContent);
         $mailContent = str_replace('{order_number}',$order_number,$mailContent);
-
+        $mailContent = str_replace('{help_url}',$help_url,$mailContent);
         return $mailContent;
-    }  
+        
+    }
 
-    private function preOrderInformation($order,&$name,&$order_number){
-        foreach ($order->invoice->contacts as $contact){
-            if($this->to == $contact->email_contact){
+    /* (non-PHPdoc)
+     * @see AbstractStaff::buildTitle()
+     */
+    protected function buildTitle()
+    {
+        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
+        $order = $this->mailData['order'];
+        $subject = $mailLanguage->OrderDelivered;
+        $subject = str_replace('{order_number}',$order->id,$subject);
+        return $subject; 
+    }
+
+    private function preOrderInformation($order,&$name,&$order_number,&$help_url){
+
+        foreach ($order->invoice->shippings as $shipping){
+            $contact = $shipping->contact;
+            if($shipping->status != DatabaseFixedValue::SHIPPING_STATUS_ACTIVE){
+                continue;
+            }
+            //TODO: DEMO ĐỊA CHỈ MAIL ĐỂ TEST NÊN THỬ LẠI.
+            if($this->to == $contact->email_contact || 
+               $this->to == 'lethanhan.bkaptech@gmail.com')
+            {
                 $name = $contact->full_name;
                 break;
             }
         }
+        $help_url = '/portal/help';
+        $help_url = Common::getCurrentHost().$help_url;
     }
 }

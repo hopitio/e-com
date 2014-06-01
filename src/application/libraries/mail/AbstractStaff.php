@@ -13,12 +13,9 @@ abstract class AbstractStaff
     CONST MAIL_CONTENT_TYPE_TEXT = "";
     protected $config_key = NULL;
     protected $CI;
-    /**
-     * Hàm thực hiện việc gửi mail
-     */
-    protected abstract function sendMail();
-//     protected abstract function buildContent();
-//     protected abstract function buildTitle();
+    
+    protected abstract function buildTitle();
+    protected abstract function buildContent();
     
     protected $to;
     protected $mailData;
@@ -71,9 +68,15 @@ abstract class AbstractStaff
      * Thực hiện việc gửi mail
      */
     function send(){
-        
-        
-        $this->sendMail();
+        $fullName = $this->config[MAILLER_FULLNAME];
+        $email = $this->config[MAILLER_USER];
+        $this->CI->email->from($email, $fullName);
+        $this->CI->email->to($this->to);
+        $subject = $this->buildTitle();
+        $msg = $this->buildContent();
+        $this->CI->email->subject($subject);
+        $this->CI->email->message($msg);
+        $this->CI->email->send();
     }
     
     

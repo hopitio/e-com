@@ -8,23 +8,26 @@ class OrderShippingMailler extends AbstractStaff{
     protected $config_key = 'OrderShipping';
     
     /* (non-PHPdoc)
-     * @see AbstractStaff::sendMail()
+     * @see AbstractStaff::buildTitle()
     */
-    protected function sendMail()
+    protected function buildTitle()
     {
-
+        $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
+        $order = $this->mailData['order'];
+        $subject = $mailLanguage->OrderShipping;
+        $subject = str_replace('{order_number}',$order->id,$subject);
+        return $subject; 
     }
     
-    /**
-     * AUTO BUILD.
+    /* (non-PHPdoc)
+     * @see AbstractStaff::buildContent()
      */
-    private function buildMailContent()
+    protected function buildContent()
     {
         $this->CI->load->helper('file');
         $temp = $this->CI->config->item('temp_mail_folder');
         $temp .= $this->languageKey.'/'. $this->config[MAILLER_TEMP];
         $mailContent = read_file($temp);
-        
         $order = $this->mailData['order'];
         $name = '';
         $order_number = $order->id;
@@ -32,9 +35,7 @@ class OrderShippingMailler extends AbstractStaff{
         $phone = '';
         $estimated_time = '';
         $order_url = '';
-        
         $this->preOrderInformation($order, $name, $contact, $phone, $estimated_time, $order_url);
-        
         $mailContent = str_replace('{name}',$name,$mailContent);
         $mailContent = str_replace('{order_number}',$order_number,$mailContent);
         $mailContent = str_replace('{contact}',$contact,$mailContent);
@@ -42,8 +43,8 @@ class OrderShippingMailler extends AbstractStaff{
         $mailContent = str_replace('{estimated_time}',$estimated_time,$mailContent);
         $mailContent = str_replace('{order_url}',$order_url,$mailContent);
         return $mailContent;
-    }  
-
+    }
+    
     private function preOrderInformation($order,&$name,&$order_shipping_address,&$phone,&$estimated_time,&$order_url)
     {
         foreach ($order->invoice->shippings as $shipping){
@@ -65,6 +66,6 @@ class OrderShippingMailler extends AbstractStaff{
         }
         $order_url = '/portal/help';
         $order_url = Common::getCurrentHost().$order_url;
-        log_message('error',"{$name} , '{$order_shipping_address}',{$phone}");
     }
+    
 }
