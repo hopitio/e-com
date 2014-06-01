@@ -31,6 +31,7 @@ class home extends BaseController
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
                 ->selectCountView()
+                ->autoloadTaxes()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes();
         $mapper
@@ -52,7 +53,7 @@ class home extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images[0]->url;
-            $obj['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
+            $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $json[] = $obj;
         }
@@ -73,7 +74,7 @@ class home extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
-            $obj['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
+            $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $json[] = $obj;
         }
@@ -114,6 +115,7 @@ class home extends BaseController
             $productMapper = ProductFixedMapper::make()
                     ->select('p.*', true)
                     ->setLanguage($user->languageKey)
+                    ->autoloadTaxes()
                     ->filterStatus(1)
                     ->autoloadAttributes();
             if (isset($section_array['displayImage']))
@@ -145,7 +147,7 @@ class home extends BaseController
                 $product_array = get_object_vars($product);
                 $product_array['name'] = strval($product->getName());
                 $product_array['thumbnail'] = $images ? strval($images[0]->url) : '';
-                $product_array['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
+                $product_array['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
                 $product_array['url'] = base_url('product/details') . '/' . $product->id;
 
                 $section_array['products'][] = $product_array;

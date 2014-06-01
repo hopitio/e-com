@@ -13,12 +13,12 @@ class ProductImageMapper extends MapperAbstract
                 ->innerJoin('t_file f', 'pi.fk_file = f.id')
                 ->orderBy('pi.sort');
         $map = array(
-            'fkProduct'    => 'fk_product',
-            'fkFile'       => 'fk_file',
-            'baseImage'    => 'base_image',
-            'smallImage'   => 'small_image',
-            'mainImage'    => 'main_image',
-            'internalPath' => 'internal_path'
+            'fkProduct'     => 'fk_product',
+            'fkFile'        => 'fk_file',
+            'baseImage'     => 'base_image',
+            'smallImage'    => 'small_image',
+            'facebookImage' => 'facebook_image',
+            'internalPath'  => 'internal_path'
         );
         parent::__construct('ProductImageDomain', $query, $map);
     }

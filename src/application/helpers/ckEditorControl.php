@@ -1,5 +1,4 @@
 <?php
-
 defined('DS') or die('no direct access allowed');
 
 class ckEditorControl extends TextareaControl
@@ -8,7 +7,20 @@ class ckEditorControl extends TextareaControl
     function draw()
     {
         $id = $this->attributes('id');
-        return parent::draw() . "<script>$(function(){CKEDITOR.replace('$id');})</script>";
+        ob_start();
+        ?>
+        <script>
+            $(function() {
+                CKEDITOR.replace('<?php echo $id ?>', {
+                    filebrowserBrowseUrl: '/file/browse_file',
+                    filebrowserImageBrowseUrl: '/file/browse_file/image',
+                    filebrowserUploadUrl: '/uploader/upload.php',
+                    filebrowserImageUploadUrl: '/uploader/upload.php?type=Images'
+                });
+            });
+        </script>
+        <?php
+        return parent::draw() . ob_get_clean();
     }
 
 }

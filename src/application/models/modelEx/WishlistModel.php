@@ -31,7 +31,7 @@ class WishlistModel extends BaseModel
         }
         DB::insert('t_wishlist_detail', array(
             'fk_wishlist' => $wishlist->id,
-            'fk_product' => $productID
+            'fk_product'  => $productID
         ));
         if (DB::getInstance()->ErrorNo())
         {

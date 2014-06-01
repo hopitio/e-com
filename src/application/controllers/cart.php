@@ -67,9 +67,9 @@ class cart extends BaseController
             $images = $product->getImages('thumbnail');
             $obj = (array) $product;
             $obj['quantity'] = $product->quantity;
-            $obj['price'] = format_money($product->getFinalPriceMoney($user->getCurrency())->getAmount());
+            $obj['price'] = $product->getPriceMoney($user->getCurrency())->getAmount();
             $obj['name'] = (string) $product->getName()->getTrueValue();
-            $obj['taxes'] = format_money($product->calculateTaxes($user->getCurrency())->getAmount());
+            $obj['taxes'] = $product->calculateTaxes($user->getCurrency())->getAmount();
             $obj['thumbnail'] = (string) $images[0]->url;
             $obj['stock'] = (double) strval($product->getQuantity());
             $obj['url'] = '/product/details/' . $product->id;

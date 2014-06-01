@@ -24,21 +24,27 @@ class pin extends BaseController
 
     function showPage()
     {
-        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setJavascript(array('/js/angular.min.js'))->render('pin/showPage');
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                ->setCss(array('/style/customerList.css'))
+                ->render('pin/showPage');
     }
 
     function getAllPinService()
     {
         header('Content-type: application/json');
-        $pinList = $this->pinModel->getAllPin();
+        $limit = 10;
+        $offset = (int) $this->input->get('offset');
+        $pinList = $this->pinModel->getAllPin($limit, $offset);
         $json = array();
         foreach ($pinList as $instance)
         {
+            $images = $instance->getImages('thumbnail');
             $obj = get_object_vars($instance);
-            $obj['name'] = $instance->getName()->getTrueValue();
-            $obj['description'] = $instance->getDescription()->getTrueValue();
-            $obj['price'] = $instance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount();
-            $obj['quantity'] = $instance->getQuantity()->getTrueValue();
+            $obj['name'] = (string) $instance->getName();
+            $obj['description'] = (string) $instance->getDescription();
+            $obj['price'] = (string) $instance->getFinalPriceMoney(User::getCurrentUser()->getCurrency());
+            $obj['stock'] = (string) $instance->getQuantity();
+            $obj['thumbnail'] = $images[0]->url;
             $json[] = $obj;
         }
         echo json_encode($json);
@@ -46,7 +52,6 @@ class pin extends BaseController
 
     function pinProduct($productID)
     {
-        
         $this->pinModel->pin(User::getCurrentUser()->id, $productID);
     }
 

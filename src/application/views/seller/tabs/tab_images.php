@@ -12,17 +12,17 @@
             <th width="10%">#</th>
             <th width="15%">Image</th>
             <th width="10%">Thumbnail</th>
-            <th width="10%">Base Image</th>
+            <th width="15%">Base Image</th>
             <th width="15%">Small Image</th>
-            <th width="15%">Main Image</th>
-            <th width="15%">Sort</th>
+            <th width="15%">Facebook</th>
+            <th width="10%">Sort</th>
             <th width="10">Action</th>
         </tr>
     </thead>
     <tbody>
         <?php
         $i = 0;
-        $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'smallImage' => true, 'mainImage' => false); //true = array, false = single
+        $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'smallImage' => true, 'facebookImage' => false); //true = array, false = single
         ?>
         <?php foreach ($product->getImages() as $img): ?>
             <tr>

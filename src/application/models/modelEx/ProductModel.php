@@ -28,6 +28,7 @@ class ProductModel extends BaseModel
                 ->select('p.*', true)
                 ->selectCountView()
                 ->autoloadAttributes()
+                ->autoloadTaxes()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->filterDateRange($date, null);
         $mapper->getQuery()
@@ -119,12 +120,12 @@ class ProductModel extends BaseModel
     function updateProductImages($productID)
     {
         $fileIDs = isset($_POST['hdnImage']) ? $_POST['hdnImage'] : array();
-        $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'smallImage' => true, 'mainImage' => false); //true = array, false = single
+        $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'smallImage' => true, 'facebookImage' => false); //true = array, false = single
         $map = array(
             'thumbnail'  => 'thumbnail',
             'baseImage'  => 'base_image',
             'smallImage' => 'small_image',
-            'mainImage'  => 'main_image'
+            'facebookImage'  => 'facebook_image'
         );
         foreach ($fileIDs as $fileID)
         {
