@@ -120,7 +120,7 @@ class ProductModel extends BaseModel
     function updateProductImages($productID)
     {
         $fileIDs = isset($_POST['hdnImage']) ? $_POST['hdnImage'] : array();
-        $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'smallImage' => true, 'mainImage' => false); //true = array, false = single
+        $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'smallImage' => true, 'facebookImage' => false); //true = array, false = single
         $map = array(
             'thumbnail'  => 'thumbnail',
             'baseImage'  => 'base_image',
