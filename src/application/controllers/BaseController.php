@@ -18,15 +18,22 @@ class BaseController extends MY_Controller{
     }   
     
     protected function init(){
-        parent::init();
+        parent::init(); 
+        //TODO: Hardcode cho giai đoạn đầu cần remove khi thực sự có 2 hệ thống. 
+        // Lưu lý cần xóa cả cờ is_portal_controller
         if($this->is_portal_controller){
             $this->obj_user->id = $this->obj_user->portal_id;
             $this->set_obj_user_to_me($this->obj_user);
         }else{
+            if(($this->obj_user->sub_id == null || !isset($this->obj_user->sub_id)) &&
+                ($this->obj_user->portal_id != null || isset($this->obj_user->portal_id))){
+                $bizUser = new BizUser();
+                $this->obj_user = $bizUser->processLoginFromPortal($this->obj_user);
+            }
             $this->obj_user->id = $this->obj_user->sub_id;
             $this->set_obj_user_to_me($this->obj_user);
         }
-        log_message('infor',"is portal : {$this->is_portal_controller} id :{$this->obj_user->id}");
+        log_message('error',"is portal : {$this->is_portal_controller} id :{$this->obj_user->id}");
     }
     
     /**
