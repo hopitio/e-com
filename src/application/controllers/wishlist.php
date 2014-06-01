@@ -33,14 +33,36 @@ class wishlist extends BaseController
     function wishlistDetailService($wishlistID)
     {
         header('Content-type: application/json');
-        $details = $this->wishlistModel->getAllDetails($wishlistID);
-        $json = array();
-        foreach ($details as $instance)
+        $user = User::getCurrentUser();
+        $mapper = WishListDetailMapper::make()
+                ->select('p.*, wd.id AS wishlistDetailID',true)
+                ->filterWishlist($wishlistID)
+                ->filterStatus(1)
+                ->autoloadAttributes()
+                ->autoloadTaxes()
+                ->setLanguage($user->languageKey);
+        $mapper
+                ->getQuery()
+                ->select('seller.name AS seller_name')
+                ->innerJoin('t_seller seller', 'seller.id = p.fk_seller');
+        $details = $mapper->findAll(function($rawData, $instance)
         {
+            $instance->seller_name = $rawData['seller_name'];
+            $instance->wishlistDetailID = $rawData['wishlistDetailID'];
+        });
+        $json = array();
+        foreach ($details as $product)
+        {
+            $images = $product->getImages('thumbnail');
             /* @var $instance WishlistDetailDomain */
-            $obj = (array) $instance;
-            $obj['price'] = $instance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount();
-            $obj['name'] = (string) $instance->getName();
+            $obj = (array) $product;
+            $obj['price'] = $product->getFinalPriceMoney($user->getCurrency())->getAmount();
+            $obj['name'] = (string) $product->getName();
+            $obj['taxes'] = $product->calculateTaxes($user->getCurrency())->getAmount();
+            $obj['thumbnail'] = (string) $images[0]->url;
+            $obj['stock'] = (double) strval($product->getQuantity());
+            $obj['url'] = '/product/details/' . $product->id;
+
             $json[] = $obj;
         }
         echo json_encode($json);
@@ -84,7 +106,7 @@ class wishlist extends BaseController
         $data['wishlist'] = $this->wishlistModel->getOneWishlist();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data, true)
-                ->setJavascript(array('/js/angular.min.js'))
+                ->setCss(array('/style/customerList.css'))
                 ->render('wishlist/show');
     }
 

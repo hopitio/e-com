@@ -153,7 +153,7 @@ defined('BASEPATH') or die('No direct script access allowed');
     <div class="clearfix"></div>
 
 </div><!--angular-->
-
+<br>
 
 <script>
     var scriptData = {};

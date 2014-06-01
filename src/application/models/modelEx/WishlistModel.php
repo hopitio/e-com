@@ -58,22 +58,6 @@ class WishlistModel extends BaseModel
         return $wishlist;
     }
 
-    /**
-     * 
-     * @param type $wishlistID
-     * @return WishlistDetailDomain
-     */
-    function getAllDetails($wishlistID)
-    {
-        $user = User::getCurrentUser();
-        $details = WishListDetailMapper::make()
-                ->filterWishlist($wishlistID)
-                ->filterStatus(1)
-                ->autoloadAttributes()
-                ->setLanguage($user->languageKey)
-                ->findAll();
-        return $details;
-    }
 
     function updateDetailStatus($detailID, $status)
     {

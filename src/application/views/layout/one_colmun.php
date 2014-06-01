@@ -108,7 +108,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="<?php echo base_url('cart/show') ?>"><?php echo $language['layout']->lblViewCartWidthProductNumber->__toString(); ?> </a>
+                                    <a href="<?php echo base_url('cart/showcart') ?>"><?php echo $language['layout']->lblViewCartWidthProductNumber->__toString(); ?> </a>
                                 </li>
                             </ul>
                         </div>
