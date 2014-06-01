@@ -15,8 +15,7 @@ class ProductImageDomain implements DomainInterface
     public $baseImage;
     public $smallImage;
 
-    /** Ảnh hiển thị đầu tiên */
-    public $mainImage;
+    public $facebookImage;
 
     public $url;
     public $internalPath;

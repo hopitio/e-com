@@ -12,10 +12,18 @@ class product extends BaseController
     function details($productID)
     {
         //query product
-        $product = ProductFixedMapper::make()
-                        ->setLanguage(User::getCurrentUser()->languageKey)
-                        ->autoloadAttributes()
-                        ->filterID($productID)->find();
+        $mapper = ProductFixedMapper::make()
+                ->select('p.*',true)
+                ->selectCountPin()
+                ->setLanguage(User::getCurrentUser()->languageKey)
+                ->autoloadAttributes()
+                ->autoloadTaxes()
+                ->filterID($productID);
+        $mapper->getQuery()->select('seller.name as seller_name')->innerJoin('t_seller as seller', 'seller.id = p.fk_seller');
+        $product = $mapper->find(function($rawData, $instance)
+        {
+            $instance->seller_name = $rawData['seller_name'];
+        });
         $product->fkCategory = 4;
         $user = User::getCurrentUser();
         //query ancestor cates

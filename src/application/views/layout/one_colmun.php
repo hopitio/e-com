@@ -82,7 +82,7 @@
                                         <a href="<?php echo base_url('wishlist/show'); ?>"><?php echo$language['layout']->lblUserWishlist->__toString(); ?></a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('pin/show'); ?>"><?php echo$language['layout']->lblUserPinlist->__toString(); ?></a>
+                                        <a href="<?php echo base_url('pin/showPage'); ?>"><?php echo$language['layout']->lblUserPinlist->__toString(); ?></a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>

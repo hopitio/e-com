@@ -28,6 +28,7 @@ class ProductModel extends BaseModel
                 ->select('p.*', true)
                 ->selectCountView()
                 ->autoloadAttributes()
+                ->autoloadTaxes()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->filterDateRange($date, null);
         $mapper->getQuery()

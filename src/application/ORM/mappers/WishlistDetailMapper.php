@@ -41,12 +41,19 @@ class WishListDetailMapper extends ProductFixedMapper
      */
     function find($callback = null)
     {
-       return parent::find($callback);
+        return parent::find($callback);
     }
 
     function select($fields = 'wd.*, p.fk_category, p.fk_retailer, p.fk_group, p.is_group', $reset = false)
     {
         parent::select($fields, $reset);
+        return $this;
+    }
+
+    function filterWishlistDetailID($wishlistDetailID)
+    {
+        $this->_query->where('wd.id=?', __METHOD__);
+        $this->_queryParams[__METHOD__] = $wishlistDetailID;
         return $this;
     }
 

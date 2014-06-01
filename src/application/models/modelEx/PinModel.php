@@ -9,14 +9,22 @@ class PinModel extends BaseModel
      * 
      * @return PinDomain
      */
-    function getAllPin()
+    function getAllPin($limit, $offset)
     {
-        return PinMapper::make()
-                        ->autoloadAttributes()
-                        ->setLanguage(User::getCurrentUser()->languageKey)
-                        ->setUser(User::getCurrentUser()->id)
-                        ->select('p.*')
-                        ->findAll();
+        $mapper = PinMapper::make()
+                ->autoloadAttributes()
+                ->setLanguage(User::getCurrentUser()->languageKey)
+                ->autoloadTaxes()
+                ->setUser(User::getCurrentUser()->id)
+                ->select('p.*', true);
+        $mapper->getQuery()->select('seller.name AS seller_name')
+                ->innerJoin('t_seller seller', 'seller.id=p.fk_seller')
+                ->orderBy('pin.id DESC')
+                ->limit($limit, $offset);
+        return $mapper->findAll(function($rawData, $instance)
+                {
+                    $instance->seller_name = $rawData['seller_name'];
+                });
     }
 
     /**
@@ -29,23 +37,12 @@ class PinModel extends BaseModel
     {
         if (!$userID || !$productID)
         {
-            throw new Lynx_BusinessLogicException("");
+            throw new Lynx_RequestException("UserID & productID cant be null");
         }
         DB::insert('t_pin', array(
-            'fk_user' => $userID,
+            'fk_user'    => $userID,
             'fk_product' => $productID
         ));
-        if ($erroNo = DB::getInstance()->ErrorNo())
-        {
-            if ($erroNo == 1062) //duplicate unique key
-            {
-                throw new Lynx_BusinessLogicException("Sản phẩm này đã tồn tại!");
-            }
-            else
-            {
-                throw new Lynx_BusinessLogicException("Insert thất bại do lỗi khác");
-            }
-        }
     }
 
     function unpin($productID)

@@ -26,9 +26,23 @@ class ProductMapper extends MapperAbstract
         parent::__construct($domain, $query, $map);
     }
 
+    function filterID($id)
+    {
+        $this->_query->where('p.id=?', __METHOD__);
+        $this->_queryParams[__METHOD__] = $id;
+        return $this;
+    }
+
     function filterRelatedProduct($productID)
     {
         //TODO
+        return $this;
+    }
+
+    function selectCountPin()
+    {
+        $this->_query->select('t_count_pin.count_pin AS count_pin')
+                ->leftJoin('(SELECT fk_product, COUNT(*) AS count_pin FROM t_pin GROUP BY fk_product) AS t_count_pin', 'p.id=t_count_pin.fk_product');
         return $this;
     }
 

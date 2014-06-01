@@ -14,10 +14,8 @@ foreach ($product->getImages('baseImage') as $attr)
             <div class="lynx_productImageHead">
                 <div class="lynx_star" ><img src="/images/star.png"></div>
                 <div class="lynx_title" ><?php echo $product->getName() ?>  </div>
-                <div class="lynx_pin" >
-                    <?php if ($product->countPin): ?>
-                        <span> <?php echo $product->countPin ?> PIN</span>
-                    <?php endif; ?>
+                <div class="lynx_pin">
+                    <span class="lynx_pin_number"> <c><?php echo $product->countPin ?></c> Pins</span>
                     <span class="lynx_pinIcon"><img src="/images/pin.png" > </span>
                 </div>
             </div>
@@ -31,8 +29,8 @@ foreach ($product->getImages('baseImage') as $attr)
         </div>
         <form class="lynx_productChoicePannel lynx_productHead" method="post" id="frm-main">
             <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
-            <div class="lynx_productName"> <?php echo $product->getName()->getTrueValue() ?> </div>
-            <div class="lynx_productPrice"> <?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?> </div>
+            <div class="lynx_productName"> <?php echo $product->seller_name ?> </div>
+            <div class="lynx_productPrice"> <?php echo $product->getFinalPriceMoney(User::getCurrentUser()->getCurrency()) ?> </div>
             <div class="lynx_productShipping"> Ships Free ! </div>
     <!--        <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
@@ -114,9 +112,12 @@ foreach ($product->getImages('baseImage') as $attr)
         relatedURL: '<?php echo base_url('product/related_products_service') ?>/'
     };
 </script>
+<?php if ($product->countPin == 0): ?>
+    <script>$('#product-details-ctrl .lynx_pin .lynx_pin_number').hide();</script>
+<?php endif; ?>
 <script>
     function initTab(selector) {
-        
+
         $(selector).each(function() {
             var $container = $(this);
             $('.lynx_head a', $container).click(function(e) {
@@ -133,4 +134,15 @@ foreach ($product->getImages('baseImage') as $attr)
 
     }
     initTab('.tab');
+    $('.lynx_pinIcon').click(function() {
+        $('#product-details-ctrl .lynx_pin .lynx_pin_number').show();
+        var $countPinContainer = $('#product-details-ctrl .lynx_pin c');
+        var count = parseInt($countPinContainer.html() || 0);
+        $countPinContainer.html(count + 1);
+        $(this).unbind('click');
+        $.ajax({
+            cache: false,
+            url: '/pin/pinProduct/' + scriptData.productID
+        });
+    });
 </script>
