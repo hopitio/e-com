@@ -115,6 +115,8 @@
         <OrderPlace>Your Sfriendly.com order has placed (#{order_number})</OrderPlace>
         <OrderAskReview>Would you like to rate your transaction at Sfriendly.com?</OrderAskReview>
         <SellerPaymentVerified>You sold an item from your customer – Ship now</SellerPaymentVerified>
+        <OrderRejected>Fail to Attempt Your Sfriendly.com order (#{order_number})</OrderRejected>
+        <SellerOrderRejected>Your item failed to attempt your customer!</SellerOrderRejected>
     </mail>
     
     <portalaccount_resetPassword></portalaccount_resetPassword>

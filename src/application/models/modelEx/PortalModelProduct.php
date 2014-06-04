@@ -43,7 +43,7 @@ class PortalModelProduct extends PortalModelBase
                     t_product INNER JOIN t_invoice_product 
                     ON t_product.id = t_invoice_product.fk_product
                   WHERE 
-                    `t_invoice_product`.`fk_invoice` IN  ('{$invoiceIdCollection}')";
+                    `t_invoice_product`.`fk_invoice` IN  ({$invoiceIdCollection})";
         $query =  $this->_dbPortal->query($sql);
         $result = $query->result();
         return $result;

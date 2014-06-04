@@ -26,7 +26,7 @@
             <div style="height:250px" class="gridStyle" ng-grid="gridOptions"></div>
         </div>
         
-        <h4>Hóa đơn của order</h4>
+        <h4>Hóa đơn của order <a ng-show="selectdOrder[0].id != undefined" ng-href="/portal/__admin/order/{{selectdOrder[0].id}}/add_invoice" target="_blank"><i class="glyphicon glyphicon-plus-sign" style="cursor: pointer;"></i></a></h4>
         <div class="lynx_row">
             <div style="height:250px" class="gridStyle" ng-grid="gridInvoicesOptions"></div>
         </div>

@@ -92,19 +92,7 @@ class PortalBizOrder extends PortalBizBase
         return $status;
     }
     
-    function processCanncel($user, $orderId, $comment, $invoiceId = null){
-        
-    }
-    
-    function processRejected($user, $orderId, $comment, $invoiceId = null){
-        
-    }
-    
-    function processRefunedSomeProducts($user, $orderId, $product){
-        
-    }
-    
-    private function updateOrderToVerify($userUpdate, $orderId, $comment){
+    protected function updateOrderToVerify($userUpdate, $orderId, $comment){
         $status = DatabaseFixedValue::ORDER_STATUS_VERIFYING;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
@@ -116,7 +104,7 @@ class PortalBizOrder extends PortalBizBase
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
-    private function updateOrderToShipping($userUpdate, $orderId, $comment){
+    protected function updateOrderToShipping($userUpdate, $orderId, $comment){
         $status = DatabaseFixedValue::ORDER_STATUS_SHIPPING;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
@@ -128,7 +116,7 @@ class PortalBizOrder extends PortalBizBase
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
-    private function updateOrderToCancelled($userUpdate, $orderId, $comment){
+    protected function updateOrderToCancelled($userUpdate, $orderId, $comment){
         $status = DatabaseFixedValue::ORDER_STATUS_ORDER_CANCELLED;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
@@ -140,7 +128,7 @@ class PortalBizOrder extends PortalBizBase
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
-    private function updateOrderToDelivered($userUpdate, $orderId, $comment){
+    protected function updateOrderToDelivered($userUpdate, $orderId, $comment){
         $status = DatabaseFixedValue::ORDER_STATUS_DELIVERED;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
@@ -151,7 +139,7 @@ class PortalBizOrder extends PortalBizBase
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
-    private function updateOrderToOrderPlace($userUpdate, $orderId, $comment){
+    protected function updateOrderToOrderPlace($userUpdate, $orderId, $comment){
         $status = DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
@@ -163,7 +151,7 @@ class PortalBizOrder extends PortalBizBase
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
-    private function updateOrderToRejected($userUpdate, $orderId, $comment){
+    protected function updateOrderToRejected($userUpdate, $orderId, $comment){
         $status = DatabaseFixedValue::ORDER_STATUS_REJECTED;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
@@ -186,7 +174,7 @@ class PortalBizOrder extends PortalBizBase
         return $orderStatus;
     }
     
-    private function mailBuyer($orderId,$invoiceId = null,$mailType)
+    protected function mailBuyer($orderId,$invoiceId = null,$mailType)
     {
         $portalPaymentHistory = new PortalBizPaymentHistory();
         $order = $portalPaymentHistory->getOrderAllInformation($orderId);
@@ -196,7 +184,7 @@ class PortalBizOrder extends PortalBizBase
             $expectedInvoice = $order->invoices[0];
         }else{
             foreach ($order->invoices as $invoice){
-                if($order->invoices>id == $invoiceId){
+                if($invoice->id == $invoiceId){
                     $expectedInvoice = $invoice;
                 }
             }
@@ -209,6 +197,7 @@ class PortalBizOrder extends PortalBizBase
         }
         
         $order->invoice = $expectedInvoice;
+        $target = '';
         foreach ($order->invoice->shippings as $shipping){
             if($shipping->status != DatabaseFixedValue::SHIPPING_STATUS_ACTIVE && $shipping->shipping_type != 'SHIP')
             {
@@ -219,21 +208,21 @@ class PortalBizOrder extends PortalBizBase
             }else{
                 $target = $shipping->contact->email_contact;
             }
-            $mailData = array();
-            $mailData['order'] = $order;
-            MailManager::initalAndSend($mailType, $target, $mailData);
         }
+        $mailData = array();
+        $mailData['order'] = $order;
+        MailManager::initalAndSend($mailType, $target, $mailData);
     }
     
-    private function mailSeller($orderId,$invoiceId = null,$mailType){
+    protected function mailSeller($orderId,$invoiceId = null,$mailType){
         $portalPaymentHistory = new PortalBizPaymentHistory();
-        $order = $portalPaymentHistory->getOrderAllInformation($orderId);
+        $order = $portalPaymentHistory->getOrderAllInformation($orderId,true);
         $expectedInvoice = null;
         if($invoiceId == null){
             $expectedInvoice = $order->invoices[0];
         }else{
             foreach ($order->invoices as $invoice){
-                if($order->invoices>id == $invoiceId){
+                if($invoice->id == $invoiceId){
                     $expectedInvoice = $invoice;
                 }
             }
@@ -247,15 +236,15 @@ class PortalBizOrder extends PortalBizBase
         }
         $order->invoice = $expectedInvoice;
         $sellerMail = array();
-        foreach ($order->invoice->products as $product){
+        foreach ($order->invoice->products as &$product){
+            if($product->seller_email == null || !isset($product->seller_email)){
+                $product->seller_email = 'lethanhan.bkaptech@gmail.com';
+            }
             if(!array_key_exists($product->seller_email,$sellerMail)){
-                if($product->seller_email == null || !isset($product->seller_email)){
-                    $product->seller_email = 'lethanhan.bkaptech@gmail.com';
-                }
                 $sellerMail[$product->seller_email] = $order;
-                continue;
             }
         }
+        
         $mailData = array();
         foreach (array_keys($sellerMail) as $key)
         {

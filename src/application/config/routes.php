@@ -78,6 +78,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/showpage';
         $route['portal/__admin/order_find'] = 'portalAdmin/orderList/showpage';
         $route['portal/__admin/order/(:num)'] = 'portalAdmin/orderDetail/showpage/$1';
+        $route['portal/__admin/order/(:num)/add_invoice'] = 'portalAdmin/addInvoice/showPage/$1';
+        //$route['portal/__admin/order/(:num)/refuned'] = 'portalAdmin/addInvoice/showPage/$1';
         
         $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/apiUser/contact/$1';
         $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/apiUser/setting/$1';
@@ -92,6 +94,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/__admin/invoice/(:num)/shippings'] = 'portalAdmin/apiInvoice/getInvoiceShipping/$1';
         $route['portal/api/__admin/contact/(:num)'] = 'portalAdmin/apiContact/getContact/$1';
         //$route['portal/__admin/order/(:num)/invoice'] = 'portalAdmin/orderList/getOrderDetailXhr';
+        
+        
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')

@@ -42,7 +42,6 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
         $mailContent = str_replace('{seller_name}',$seller_name,$mailContent);
         $mailContent = str_replace('{order_number}',$order_number,$mailContent);
         $mailContent = str_replace('{products}',$products,$mailContent);
-        
         return $mailContent;
         
     }
@@ -53,7 +52,7 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
     protected function buildTitle()
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        return $this->CI->email->subject($mailLanguage->newpasswordNofication);
+        return $mailLanguage->SellerOrderRejected;;
     }
 
     private function preOrderInformation($order,&$order_number,&$seller_name,&$products){
@@ -75,6 +74,10 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
         
         foreach ($productCollection as $productItem)
         {
+            if(!file_exists($productItem->sub_image)){
+                $productItem->sub_image = Common::getCurrentHost().'/images/no-images.jpg';
+            }
+            
             $imageContent = file_get_contents($productItem->sub_image);
             $imageContent = base64_encode($imageContent);
             $imageExt = get_mime_by_extension($productItem->sub_image);

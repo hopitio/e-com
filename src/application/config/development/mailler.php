@@ -177,7 +177,7 @@ $config['SellerFailToDeliveredMailler']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/SellerFailToDeliveredMailler.html',
+    MAILLER_TEMP => '/SellerFailToDelivered.html',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );

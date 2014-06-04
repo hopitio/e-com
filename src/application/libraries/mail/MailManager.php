@@ -52,6 +52,9 @@ class MailManager {
             case self::ORDER_REFUND:
                 $staff = new OrderRefundOrder();
                 break;
+            case self::ORDER_FAIL_TO_DELIVERED:
+                $staff = new OrderFailToDeliveredMailler();
+                break;
             case self::ORDER_SHIPPING:
                 $staff = new OrderShippingMailler();
                 break;

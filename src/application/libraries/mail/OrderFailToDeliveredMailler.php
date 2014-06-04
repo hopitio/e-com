@@ -35,12 +35,15 @@ class OrderFailToDeliveredMailler extends AbstractStaff{
     protected function buildTitle()
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        return $this->CI->email->subject($mailLanguage->newpasswordNofication);
-        
+        $order = $this->mailData['order'];
+        $subject = $mailLanguage->OrderRejected;
+        $subject = str_replace('{order_number}',$order->id,$subject);
+        return $subject;
     }
 
     private function preOrderInformation($order,&$name,&$order_number){
-        foreach ($order->invoice->contacts as $contact){
+        foreach ($order->invoice->shippings as $shipping){
+            $contact = $shipping->contact;
             if($this->to == $contact->email_contact){
                 $name = $contact->full_name;
                 break;

@@ -78,8 +78,8 @@ class orderDetail extends PortalAdminControllerAbstract
         if(isset($dataPost['comment'])){
             $comment =  $dataPost['comment'];
         }
-        $portalBizOrder = new PortalBizOrder();
-        $status = $portalBizOrder->rejectOrder($orderId, $comment);
+        $portalOrderManage = new PortalOrderManager();
+        $status = $portalOrderManage->rejectedOrder($this->obj_user, $orderId, $comment);
         $async = new AsyncResult();
         if($status == null){
             $async->isError = true;

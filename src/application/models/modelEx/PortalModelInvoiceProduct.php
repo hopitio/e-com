@@ -5,4 +5,9 @@ class PortalModelInvoiceProduct extends PortalModelBase
     var $id;
     var $fk_invoice;
     var $fk_product;
+    
+    function inserts($collection)
+    {
+        return parent::bacthInsert($collection);
+    }
 }
