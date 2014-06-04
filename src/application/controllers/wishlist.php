@@ -74,6 +74,15 @@ class wishlist extends BaseController
         {
             $productID = (int) $this->input->post('hdn_product');
         }
+        $url = get_instance()->config->item(platform_login_url);
+        $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
+        $url = str_replace('{ep}', urlencode(Common::curPageURL()), $url);
+        $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
+        $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
+        if (User::getCurrentUser()->is_authorized == false)
+        {
+            redirect($url);
+        }
         $this->wishlistModel->addToWishlist($productID);
         if ($this->input->post())
         {
@@ -104,6 +113,7 @@ class wishlist extends BaseController
     function show($id = null)
     {
         $data['wishlist'] = $this->wishlistModel->getOneWishlist();
+        
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data, true)
                 ->setCss(array('/style/customerList.css'))

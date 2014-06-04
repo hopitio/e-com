@@ -28,7 +28,7 @@ defined('BASEPATH') or die;
 </div>
 <script>
     var scriptData = {};
-    scriptData.getSupportURL = 'http://localhost:9191/get_chat_support';
+    scriptData.getSupportURL = '<?php echo get_instance()->config->item('getSupportURL') ?>';
 </script>
 <script>
     (function(window, $, scriptData) {

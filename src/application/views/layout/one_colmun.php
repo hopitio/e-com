@@ -55,10 +55,10 @@
                             </ul>
                         </div>
 
-                        <div class="lynx_searchForm">
-                            <input type="text" />
-                            <span class="lynx_search"><?php echo$language['layout']->lblSearch->__toString(); ?></span>
-                        </div>
+                        <form id="frmSearch" class="lynx_searchForm" action="/search/showPage">
+                            <input type="text" name="s" value="<?php echo isset($_GET['s']) ? $_GET['s'] : '' ?>">
+                            <span class="lynx_search" onclick="frmSearch.submit();"><?php echo$language['layout']->lblSearch->__toString(); ?></span>
+                        </form>
                         <div class="lynx_loginLabel dropdown dropdown-hover">
                             <?php
                             $user = User::getCurrentUser();

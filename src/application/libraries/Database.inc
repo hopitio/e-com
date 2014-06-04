@@ -44,6 +44,7 @@ require_once APPPATH . "ORM" . DS . "mappers" . DS . "TaxMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductImageMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductFixedMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "SearchMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "FeatureProductMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "CategoryMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "FileMapper.php";
