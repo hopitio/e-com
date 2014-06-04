@@ -2,7 +2,7 @@
 if (! defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class mainpage extends BaseController
+class mainpage extends AdminControllerAbstract
 {
     protected $authorization_required = TRUE;
     protected $css = array(); 

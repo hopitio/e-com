@@ -17,6 +17,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['home'] = 'home/showHome';
         $route['logout'] = 'login/out';
         $route['sitemap'] = 'sitemap/showPage';
+        $route['__admin'] = 'admin/mainpage/showpage';
         $route['__admin/mainpage'] = 'admin/mainpage/showpage';
         $route['__admin/seller_find'] = 'admin/sellerFind/ShowPage';
         $route['__admin/seller_find/(:num)/(:num)'] = 'admin/sellerFind/getSellerListXhr/$1/$2';

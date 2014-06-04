@@ -216,7 +216,6 @@ class MY_Controller extends CI_Controller
      */
     protected function init()
     {
-
         //Khởi tạo trình quản lý ngôn ngữ.
         $resourcePath = APPPATH . $this->config->item('languagePath');
         $languageProviders = new DefaultLanguageProviders($resourcePath);
@@ -278,7 +277,7 @@ class MY_Controller extends CI_Controller
         {
             return str_replace('{cp}',urlencode(base_url($dst)),$this->config->item('portal_login_url'));
         }else{
-            return $this->obj_user->getLoginUrl();
+            return $this->obj_user->getLoginAuthenUrl();
         }
        
     }
