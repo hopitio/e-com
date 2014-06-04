@@ -5,7 +5,7 @@
  */
 defined('BASEPATH') or die('no direct script access allowed');
 
-class support extends BaseController
+class support extends PortalAdminControllerAbstract
 {
 
     function __construct()

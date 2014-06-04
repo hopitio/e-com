@@ -32,6 +32,7 @@ foreach ($cartContents as $cartInstance)
         'actualPrice' => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount() * $cartInstance->quantity,
         'taxes'       => array(),
         'sellerName'  => $cartInstance->sellerName,
+        'sellerEmail' => $cartInstance->sellerEmail,
         'sid'         => $cartInstance->sid
     );
     foreach ($cartInstance->taxes() as $tax)
