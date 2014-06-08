@@ -118,11 +118,11 @@ CREATE TABLE `t_file` (
   `internal_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_file` */
 
-insert  into `t_file`(`id`,`fk_user`,`fk_parent`,`url`,`is_dir`,`date_modified`,`internal_path`,`name`) values (1,1,NULL,'/uploads/2014/3/27/image4.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(2,1,NULL,'/uploads/2014/3/27/image.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(3,1,NULL,'/uploads/2014/3/27/image2.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(4,1,NULL,'/uploads/2014/3/27/image3.jpg',0,'2014-03-27 22:09:19',NULL,NULL),(5,1,NULL,'/uploads/2014/05/20/452e9971ae0fff703dc3279d605c3817.png',0,'2014-05-20 22:30:55',NULL,NULL),(6,1,NULL,'/uploads/2014/05/20/ddc50e1773620024c3e0158946a47435.png',0,'2014-05-20 22:31:33',NULL,NULL),(7,1,NULL,'/uploads/2014/05/20/4670b74b68432aebf551ad5112644f59.png',0,'2014-05-20 22:31:54',NULL,NULL),(8,1,NULL,'/uploads/2014/05/20/c07750dd9fae781cf55970cfdc4a7048.jpg',0,'2014-05-20 23:37:12',NULL,NULL),(9,1,NULL,'/uploads/2014/05/20/ae8564fee192da10b00b78cefd09fe00.jpg',0,'2014-05-20 23:58:15',NULL,NULL),(10,1,NULL,'/uploads/2014/05/22/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg',0,'2014-05-22 23:14:04',NULL,NULL);
+insert  into `t_file`(`id`,`fk_user`,`fk_parent`,`url`,`is_dir`,`date_modified`,`internal_path`,`name`) values (1,1,NULL,'/uploads/2014/3/27/image4.jpg',0,'2014-03-27 22:09:19','/uploads/2014/3/27/image4.jpg',NULL),(2,1,NULL,'/uploads/2014/3/27/image.jpg',0,'2014-03-27 22:09:19','/uploads/2014/3/27/image.jpg',NULL),(3,1,NULL,'/uploads/2014/3/27/image2.jpg',0,'2014-03-27 22:09:19','/uploads/2014/3/27/image2.jpg',NULL),(4,1,NULL,'/uploads/2014/3/27/image3.jpg',0,'2014-03-27 22:09:19','/uploads/2014/3/27/image3.jpg',NULL),(5,1,NULL,'/uploads/2014/05/20/452e9971ae0fff703dc3279d605c3817.png',0,'2014-05-20 22:30:55','/uploads/2014/05/20/452e9971ae0fff703dc3279d605c3817.png',NULL),(6,1,NULL,'/uploads/2014/05/20/ddc50e1773620024c3e0158946a47435.png',0,'2014-05-20 22:31:33','/uploads/2014/05/20/ddc50e1773620024c3e0158946a47435.png',NULL),(7,1,NULL,'/uploads/2014/05/20/4670b74b68432aebf551ad5112644f59.png',0,'2014-05-20 22:31:54','/uploads/2014/05/20/4670b74b68432aebf551ad5112644f59.png',NULL),(8,1,NULL,'/uploads/2014/05/20/c07750dd9fae781cf55970cfdc4a7048.jpg',0,'2014-05-20 23:37:12','/uploads/2014/05/20/c07750dd9fae781cf55970cfdc4a7048.jpg',NULL),(9,1,NULL,'/uploads/2014/05/20/ae8564fee192da10b00b78cefd09fe00.jpg',0,'2014-05-20 23:58:15','/uploads/2014/05/20/ae8564fee192da10b00b78cefd09fe00.jpg',NULL),(11,5,NULL,'/uploads/2014/06/08/71a09835536adb714fa57a856c6aea4a.jpg',0,'2014-06-08 11:43:10','uploads/2014/06/08/71a09835536adb714fa57a856c6aea4a.jpg',NULL);
 
 /*Table structure for table `t_hot` */
 
@@ -385,7 +385,7 @@ CREATE TABLE `t_product_attribute` (
 
 /*Data for the table `t_product_attribute` */
 
-insert  into `t_product_attribute`(`id`,`fk_product`,`fk_attribute_type`,`value_number`,`value_enum`,`value_text`,`language`,`value_varchar`) values (304,14,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(305,14,20,NULL,24,NULL,NULL,NULL),(306,14,18,NULL,NULL,NULL,NULL,'abc'),(307,14,2,NULL,NULL,'<p>zxsadas</p>','VN-VI',NULL),(308,14,11,100000,NULL,NULL,NULL,NULL),(309,14,21,NULL,NULL,NULL,NULL,'eng'),(310,14,22,NULL,NULL,'ddkffk',NULL,NULL),(311,14,23,NULL,NULL,'sdkdkkd',NULL,NULL),(312,15,1,NULL,NULL,NULL,'VN-VI','def'),(313,15,20,NULL,24,NULL,NULL,NULL),(314,15,18,NULL,NULL,NULL,NULL,'qwewqe'),(315,15,2,NULL,NULL,'<p>sdasda</p>','VN-VI',NULL),(316,15,11,60000,NULL,NULL,NULL,NULL),(317,15,21,NULL,NULL,NULL,NULL,'ssa'),(318,15,22,NULL,NULL,'das',NULL,NULL),(319,15,23,NULL,NULL,'dasd',NULL,NULL),(320,14,1,NULL,NULL,NULL,'EN-US','Strawberry'),(322,14,2,NULL,NULL,'<p>eng</p>','EN-US',NULL),(323,20,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(324,20,20,NULL,24,NULL,NULL,NULL),(325,20,18,NULL,NULL,NULL,NULL,'abc'),(326,20,2,NULL,NULL,'<p>zxsadas</p>','VN-VI',NULL),(327,20,11,100000,NULL,NULL,NULL,NULL),(328,20,21,NULL,NULL,NULL,NULL,'eng'),(329,20,22,NULL,NULL,'ddkffk',NULL,NULL),(330,20,23,NULL,NULL,'sdkdkkd',NULL,NULL),(331,20,1,NULL,NULL,NULL,'EN-US','Strawberry 2'),(332,20,2,NULL,NULL,'<p>eng</p>','EN-US',NULL),(337,20,13,11,NULL,NULL,NULL,NULL),(338,20,24,NULL,0,NULL,NULL,NULL),(339,20,14,0,NULL,NULL,NULL,NULL),(340,20,26,NULL,NULL,'',NULL,NULL),(341,20,27,0,NULL,NULL,NULL,NULL),(342,20,28,0,NULL,NULL,NULL,NULL),(343,20,29,NULL,0,NULL,NULL,NULL),(344,20,30,NULL,0,NULL,NULL,NULL),(345,20,31,0,NULL,NULL,NULL,NULL),(346,20,32,0,NULL,NULL,NULL,NULL),(347,20,33,0,NULL,NULL,NULL,NULL);
+insert  into `t_product_attribute`(`id`,`fk_product`,`fk_attribute_type`,`value_number`,`value_enum`,`value_text`,`language`,`value_varchar`) values (304,14,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(305,14,20,NULL,24,NULL,NULL,NULL),(306,14,18,NULL,NULL,NULL,NULL,'abc'),(307,14,2,NULL,NULL,'<p>zxsadas</p>','VN-VI',NULL),(308,14,11,100000,NULL,NULL,NULL,NULL),(309,14,21,NULL,NULL,NULL,NULL,'eng'),(310,14,22,NULL,NULL,'ddkffk',NULL,NULL),(311,14,23,NULL,NULL,'sdkdkkd',NULL,NULL),(312,15,1,NULL,NULL,NULL,'VN-VI','def'),(313,15,20,NULL,24,NULL,NULL,NULL),(314,15,18,NULL,NULL,NULL,NULL,'qwewqe'),(315,15,2,NULL,NULL,'<p>sdasda</p>','VN-VI',NULL),(316,15,11,60000,NULL,NULL,NULL,NULL),(317,15,21,NULL,NULL,NULL,NULL,'ssa'),(318,15,22,NULL,NULL,'das',NULL,NULL),(319,15,23,NULL,NULL,'dasd',NULL,NULL),(320,14,1,NULL,NULL,NULL,'EN-US','Strawberry'),(322,14,2,NULL,NULL,'<p>eng</p>','EN-US',NULL),(323,20,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(324,20,20,NULL,24,NULL,NULL,NULL),(325,20,18,NULL,NULL,NULL,NULL,'abc'),(326,20,2,NULL,NULL,'<p>zxsadas</p>','VN-VI',NULL),(327,20,11,100000,NULL,NULL,NULL,NULL),(328,20,21,NULL,NULL,NULL,NULL,'eng'),(329,20,22,NULL,NULL,'ddkffk',NULL,NULL),(330,20,23,NULL,NULL,'sdkdkkd',NULL,NULL),(331,20,1,NULL,NULL,NULL,'EN-US','Strawberry 2'),(332,20,2,NULL,NULL,'<p>eng</p>\r\n','EN-US',NULL),(337,20,13,11,NULL,NULL,NULL,NULL),(338,20,24,NULL,0,NULL,NULL,NULL),(339,20,14,0,NULL,NULL,NULL,NULL),(340,20,26,NULL,NULL,'',NULL,NULL),(341,20,27,0,NULL,NULL,NULL,NULL),(342,20,28,0,NULL,NULL,NULL,NULL),(343,20,29,NULL,0,NULL,NULL,NULL),(344,20,30,NULL,0,NULL,NULL,NULL),(345,20,31,0,NULL,NULL,NULL,NULL),(346,20,32,0,NULL,NULL,NULL,NULL),(347,20,33,0,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `t_product_attribute_type` */
 
@@ -440,7 +440,7 @@ CREATE TABLE `t_product_image` (
 
 /*Data for the table `t_product_image` */
 
-insert  into `t_product_image`(`fk_product`,`fk_file`,`sort`,`thumbnail`,`base_image`,`small_image`,`facebook_image`) values (1,1,NULL,1,1,0,1),(2,1,NULL,1,1,0,1),(3,1,NULL,1,1,0,1),(4,1,NULL,1,1,0,1),(5,1,NULL,1,1,0,1),(6,1,NULL,1,1,0,1),(7,1,NULL,1,1,0,1),(8,1,NULL,1,1,0,1),(9,1,NULL,1,1,0,1),(10,1,NULL,1,1,0,1),(11,1,NULL,1,1,0,1),(12,1,NULL,1,1,0,1),(14,7,2,1,1,1,1),(14,8,0,0,1,1,0),(15,9,0,1,1,1,0),(20,10,0,1,1,1,0);
+insert  into `t_product_image`(`fk_product`,`fk_file`,`sort`,`thumbnail`,`base_image`,`small_image`,`facebook_image`) values (1,1,NULL,1,1,0,1),(2,1,NULL,1,1,0,1),(3,1,NULL,1,1,0,1),(4,1,NULL,1,1,0,1),(5,1,NULL,1,1,0,1),(6,1,NULL,1,1,0,1),(7,1,NULL,1,1,0,1),(8,1,NULL,1,1,0,1),(9,1,NULL,1,1,0,1),(10,1,NULL,1,1,0,1),(11,1,NULL,1,1,0,1),(12,1,NULL,1,1,0,1),(14,7,2,1,1,1,1),(14,8,0,0,1,1,0),(15,9,0,1,1,1,0),(20,11,0,1,1,1,0);
 
 /*Table structure for table `t_product_tax` */
 
@@ -467,11 +467,11 @@ CREATE TABLE `t_product_view` (
   `fk_user` int(11) DEFAULT NULL,
   `count_view` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_product_view` */
 
-insert  into `t_product_view`(`id`,`fk_product`,`fk_user`,`count_view`) values (1,2,0,44),(2,1,0,13),(3,3,0,9),(4,4,0,5),(5,5,0,4),(6,10,0,1),(7,8,0,1),(8,1,1,1),(9,14,1,1),(10,15,1,2),(11,14,5,2),(12,20,5,1),(13,15,5,1);
+insert  into `t_product_view`(`id`,`fk_product`,`fk_user`,`count_view`) values (1,2,0,44),(2,1,0,13),(3,3,0,9),(4,4,0,5),(5,5,0,4),(6,10,0,1),(7,8,0,1),(8,1,1,1),(9,14,1,1),(10,15,1,2),(11,14,5,2),(12,20,5,2),(13,15,5,1),(14,20,0,6),(15,14,0,4),(16,15,0,2);
 
 /*Table structure for table `t_rating` */
 
@@ -618,7 +618,7 @@ CREATE TABLE `t_seller` (
 
 /*Data for the table `t_seller` */
 
-insert  into `t_seller`(`id`,`name`,`logo`,`phoneno`,`email`,`website`,`status`,`status_date`,`status_reason`,`fk_manager`,`sid`) values (1,'Samsung',NULL,NULL,NULL,NULL,1,NULL,NULL,1,'samsung');
+insert  into `t_seller`(`id`,`name`,`logo`,`phoneno`,`email`,`website`,`status`,`status_date`,`status_reason`,`fk_manager`,`sid`) values (1,'Samsung',NULL,NULL,'admin@samsung.com',NULL,1,NULL,NULL,1,'samsung');
 
 /*Table structure for table `t_seller_category` */
 
@@ -804,11 +804,11 @@ CREATE TABLE `t_wishlist` (
   `note` text COLLATE utf8_unicode_ci,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_wishlist` */
 
-insert  into `t_wishlist`(`id`,`fk_customer`,`name`,`remind_date`,`note`,`date_created`) values (22,5,'main',NULL,NULL,'2014-06-01 11:32:15');
+insert  into `t_wishlist`(`id`,`fk_customer`,`name`,`remind_date`,`note`,`date_created`) values (22,5,'main',NULL,NULL,'2014-06-01 11:32:15'),(23,NULL,'main',NULL,NULL,'2014-06-01 22:51:46'),(24,NULL,'main',NULL,NULL,'2014-06-01 23:01:26'),(25,NULL,'main',NULL,NULL,'2014-06-01 23:01:34'),(26,NULL,'main',NULL,NULL,'2014-06-08 17:21:21');
 
 /*Table structure for table `t_wishlist_detail` */
 
@@ -822,11 +822,11 @@ CREATE TABLE `t_wishlist_detail` (
   `fk_product` int(11) DEFAULT NULL,
   `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_wishlist_detail` */
 
-insert  into `t_wishlist_detail`(`id`,`fk_wishlist`,`type`,`note`,`fk_product`,`status`) values (17,22,NULL,NULL,20,1),(18,22,NULL,NULL,15,1);
+insert  into `t_wishlist_detail`(`id`,`fk_wishlist`,`type`,`note`,`fk_product`,`status`) values (17,22,NULL,NULL,20,0),(18,22,NULL,NULL,15,0),(19,22,NULL,NULL,0,1),(20,22,NULL,NULL,0,1),(21,22,NULL,NULL,0,1),(22,22,NULL,NULL,14,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

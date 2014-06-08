@@ -33,9 +33,9 @@ class help extends BasePortalController
     {
         LayoutFactory::getLayout(LayoutFactory::TEMP_CONTENT_ONLY)
                 ->setJavascript(array(
-                    '/js/angular.min.js',
-                    'http://localhost:9090/socket.io/socket.io.js'
+                    get_instance()->config->item('socket.ioURL')
                 ))
+                ->setCss(array('/style/chat.css'))
                 ->setData(array('formData' => $this->input->post()))
                 ->render('portalHelp/start_chat');
     }

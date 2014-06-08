@@ -12,6 +12,7 @@ if (!defined('BASEPATH'))
  */
 class User
 {
+
     public $is_authorized = false;
     public $languageKey = 'VN-VI';
     public $currencyKey = 'VN';
@@ -19,15 +20,15 @@ class User
     private $callBack = '/__portal/authen';
     private $logout = "/logout";
     private $currencyMap = array(
-        'VN-VI'  => 'VND',
-        'EN-US'  => 'USD',
+        'VN-VI' => 'VND',
+        'EN-US' => 'USD',
         'KO-KR' => 'KRW'
     );
     //Database mapping
     public $id;
-    public $firstname;
+    public $firstname = 'Anonymous';
     public $lastname;
-    public $account;
+    public $account = 'Anonymous';
     public $sex;
     public $DOB;
     public $date_joined;
@@ -38,6 +39,7 @@ class User
     public $secretKey;
     public $portal_id;
     public $sub_id;
+
     //END DATABASE
     function __construct()
     {
@@ -88,12 +90,15 @@ class User
     {
         return $this->currencyMap[$this->languageKey];
     }
-    
-    static function getCurrentUser(){
+
+    static function getCurrentUser()
+    {
         $objUser = get_instance()->session->userdata(USER_SESSION);
-        if(!is_a($objUser, 'User')){
+        if (!is_a($objUser, 'User'))
+        {
             $objUser = new User();
         }
+        $objUser->fullname = $objUser->getFullname();
         return $objUser;
     }
 

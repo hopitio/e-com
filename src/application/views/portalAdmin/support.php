@@ -1,122 +1,30 @@
 <?php
 defined('BASEPATH') or die('no direct script access allowed');
 ?>
-<div ng-app="supportModule" ng-controller="portalAdminSupportCtrl">
-    <div ng-repeat="customer in customers track by $index">
-        <div>{{customer.fullname}}</div>
-        <ul>
-            <li ng-repeat="message in customer.messages track by $index">{{message.userFullname}}: {{message.body}}</li>
+<h3 class="left">Chat supporter</h3>
+<div ng-app="lynx" ng-controller="portalAdminSupportCtrl" class="admin-support-ctrl">
+    <div ng-repeat="customer in customers track by $index" class="chat-box " id="chat-{{customer.from}}">
+        <h3 class="left" style="font-size: 12px;">
+            {{customer.user.account}}&nbsp;
+            <div style="float:right" ng-if="customer.status == 'unavailable'" ng-click="removeChat(customer.from)">
+                <a href="javascript:;">Close</a>
+            </div>
+        </h3>
+        <ul class="chat-message-container left">
+            <li>{{customer.other.formData['additional-information']}}</li>
+            <li ng-repeat="message in customer.messages track by $index">
+                <label ng-class="{'chat-message-other': message.userName, 'chat-message-me': !message.userName}">{{message.userName|| 'You'}}:</label> {{message.body}}
+            </li>
         </ul>
-        <div>
+        <div class="chat-control">
             <textarea ng-model="customer.typing"></textarea>
             <a href="javascript:;" ng-click="sendMessage(customer)">Send</a>
         </div>
     </div>
 </div>
+<div class="clearfix"></div>
 <script>
-    var scriptData = {};
-    scriptData.supportServiceURL = 'http://localhost:9090/support?token=123';
-    scriptData.userFullname = '<?php echo User::getCurrentUser()->getFullname(); ?>';
-</script>
-<script>
-    (function(window, $, angular, io, scriptData, undefined) {
-        angular.module('supportModule', []).factory('$support', supportFactory);
-        function supportFactory($rootScope) {
-            var exports = {
-                socket: null,
-                connect: null,
-                on: null,
-                emit: null
-            };
-            exports.on = function(event, handler) {
-                exports.socket.on(event, function() {
-                    var args = arguments;
-                    $rootScope.$apply(function() {
-                        handler.apply(exports.socket, args);
-                    });
-                });
-            }; //function
-
-            exports.connect = function(serviceURL, connectHandler) {
-                exports.socket = io.connect(serviceURL);
-                exports.on('connect', function() {
-                    connectHandler.apply(exports.socket, arguments);
-                });
-                return exports.socket;
-            }; //function
-
-            exports.emit = function(event, data, callback) {
-                exports.socket.emit(event, data, function() {
-                    var args = arguments;
-                    if (callback) {
-                        $rootScope.$apply(function() {
-                            callback.apply(exports.socket, args);
-                        });
-                    }
-                });
-            }; //function
-
-            exports.getSocketID = function(){
-                return exports.socket.socket.sessionid;
-            };
-            
-            return exports;
-        } //function
-    })(window, $, angular, io, scriptData);
-    (function(window, $, scriptData, undefined) {
-        window.portalAdminSupportCtrl = function($scope, $http, $support) {
-            $scope.customers = {};
-            //socketio
-            var onChatConnected = function() {
-                runOnce();
-                onChatConnected = runAlways;
-                function runOnce() {
-                    $support.on('disconnect', onDisconnect);
-                    $support.on('error', onError);
-                    $support.on('presence', onPresence);
-                    $support.on('chat-message', onChatMessage);
-                    function onPresence(customerData) {
-                        var customer = customerData;
-                        customer.messages = array();
-                        customer.typing;
-                        $scope.customers[customerData.from] = customer;
-                        $support.emit('presence', {to: customerData.from, fullname: scriptData.userFullname});
-                    } //function
-
-                    function onChatMessage(message) {
-                        var customerData = $scope.customers[message.from];
-                        if (customerData) {
-                            customerData.messages.push(message);
-                        }
-                    } //function
-
-                    function onDisconnect() {
-                        console.info('Disconnected from support');
-                    }
-
-                    function onError(data) {
-                        console.info('Error', data);
-                    }
-                }
-
-                function runAlways() {
-
-                }
-
-            }; //onChatConnected
-            $support.connect(scriptData.supportServiceURL, onChatConnected);
-            $scope.sendMessage = function(customer) {
-                var message = {
-                    body: customer.typing,
-                    to: customer.from,
-                    userFullname: scriptData.userFullname
-                };
-                customer.typing = null;
-                customer.messages.push(message);
-                $support.emit('chat-message', message);
-            };
-            
-        }; //controller
-
-    })(window, $, scriptData);
+            var scriptData = {};
+            scriptData.user = <?php echo json_encode(User::getCurrentUser()) ?>;
+            scriptData.supportServiceURL = '<?php echo get_instance()->config->item('supportAdminURL') ?>?' + $.param(scriptData.user);
 </script>

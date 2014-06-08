@@ -70,9 +70,9 @@ class wishlist extends BaseController
 
     function addToWishlist($productID = NULL)
     {
-        if ($this->input->post())
+        if ($this->input->get())
         {
-            $productID = (int) $this->input->post('hdn_product');
+            $productID = (int) $this->input->get('hdn_product');
         }
         $url = get_instance()->config->item(platform_login_url);
         $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);

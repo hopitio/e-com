@@ -27,7 +27,8 @@ function SearchCtrl($scope, $http) {
 
     function getProducts(page) {
         var params = {
-            p: page
+            p: page,
+            s: scriptData.keywords
         };
         $http.get(scriptData.serviceURL, {cache: false, params: params}).success(function(data) {
             $scope.products = data.products;

@@ -385,7 +385,7 @@ $config['calendar_month_diff_from'] = -6;
 $config['calendar_month_diff_to'] = +6;
 
 $config['languagePath'] = 'language/';
-$config['languages_supported'] = array('VN-VI','EN-US');
+$config['languages_supported'] = array('VN-VI', 'EN-US');
 
 $config['facebook_app_id'] = '1392515564358247';
 $config['facebook_authen_url'] = 'https://www.facebook.com/dialog/oauth?client_id=[YOUR_APP_ID]&redirect_uri=http://localhost/portal/login/facbook_callback';
@@ -403,6 +403,9 @@ $config['sub_system_name'] = array(
 
 $config['limit_hot'] = 4;
 
+$config['socket.ioURL'] = 'http://localhost:9090/socket.io/socket.io.js';
+$config['supportAdminURL'] = 'http://localhost:9090/support';
 $config['getSupportURL'] = 'http://localhost:9191/get_chat_support';
+$config['socketChatURL'] = 'http://localhost:9090/chat';
 /* End of file config.php */
 /* Location: ./application/config/config.php */

@@ -99,10 +99,10 @@ class cart extends BaseController
     function addToCart($productID = NULL)
     {
         $qty = 1;
-        if ($this->input->post())
+        if ($this->input->get())
         {
-            $qty = (int) $this->input->post('sel_qty');
-            $productID = (int) $this->input->post('hdn_product');
+            $qty = (int) $this->input->get('sel_qty');
+            $productID = (int) $this->input->get('hdn_product');
         }
         CartMapper::make()->addToCart($productID, $qty);
         redirect($this->_controller . '/showCart');

@@ -1,140 +1,105 @@
 <?php
 defined('BASEPATH') or die('no direct script access allowed');
 ?>
-<a href="javascript:;" onclick="window.close();">x</a>
-<div ng-app="helpModule" ng-controller="chatCtrl">
-    <div ng-if="error">
-        Your chat session has encountered some error. Please close this window and retry later!
-    </div>
-    <div ng-if="!error && supporter">
-        You'r chatting with {{supporter}}
-    </div>
-    <div>
-        <ul>
-            <li ng-repeat="message in messages track by $index">
-                {{message.userFullname}}: {{message.body}}
-            </li>
-        </ul>
-        <div>
-            <textarea ng-model="typing"></textarea>
-            <a href="javascript:;" ng-click="sendMessage()">Send</a>
-        </div>
+<style>
+    html{padding:20px 0 40px 0;position: relative;height: 100%;}
+    body{height:100%;}
+</style>
+<h3 class="right" style="position: absolute;right:10px;top: 0;margin:0">
+    <a href="javascript:;" onclick="window.close();" title="Close window">Close</a>
+</h3>
+<div ng-app="lynx" ng-controller="chatCtrl" class="left chatCtrl" style="height: 100%;">
+    <ul class="chat-message-container">
+        <li ng-if="error">
+            Your chat session has encountered some error. Please close this window and retry later!
+        </li>
+        <li ng-if="!error && supporter">
+            You are chatting with {{supporter}}
+        </li>
+        <li ng-repeat="message in messages track by $index">
+            <label ng-class="{'chat-message-you': !message.userName, 'chat-message-other': message.userName}">{{message.userName|| 'You'}}:</label> {{message.body}}
+        </li>
+    </ul>
+    <div class="chat-control">
+        <textarea ng-model="typing"></textarea>
+        <a href="javascript:;" ng-click="sendMessage()">Send</a>
     </div>
 </div>
 <script>
     var scriptData = {};
     scriptData.formData = <?php echo json_encode($formData) ?>;
-    scriptData.serviceURL = 'http://localhost:9090/chat?token=123';
+    scriptData.user = <?php echo json_encode(User::getCurrentUser()) ?>;
+    scriptData.serviceURL = '<?php echo get_instance()->config->item('socketChatURL') ?>?' + $.param(scriptData.user);
     scriptData.retryInterval = 10000;
-    scriptData.retryTime = 3;
-    scriptData.userFullname = '<?php echo User::getCurrentUser()->getFullname(); ?>';
-</script>
+    scriptData.retryTime = 3;</script>
 
 <script>
-    (function(window, $, angular, io, scriptData) {
-        angular.module('helpModule', [])
-        .factory('$chat', chatFactory);
-
-        function chatFactory($rootScope) {
-            var exports = {
-                socket: null,
-                connect: null,
-                on: null,
-                emit: null
-            };
-
-            exports.on = function(event, handler) {
-                exports.socket.on(event, function() {
-                    var args = arguments;
-                    $rootScope.$apply(function() {
-                        handler.apply(exports.socket, args);
-                    });
-                });
-            }; //function
-
-            exports.connect = function(serviceURL, connectHandler) {
-                exports.socket = io.connect(serviceURL);
-                exports.on('connect', function() {
-                    connectHandler.apply(exports.socket, arguments);
-                });
-                return exports.socket;
-            }; //function
-
-            exports.emit = function(event, data, callback) {
-                if (!callback) {
-                    exports.socket.emit(event, data);
-                } else {
-                    exports.socket.emit(event, data, function() {
-                        var args = arguments;
-                        $rootScope.$apply(function() {
-                            callback.apply(exports.socket, args);
-                        });
-                    });
-                }
-            }; //function
-            
-            exports.getSocketID = function(){
-                return exports.socket.socket.sessionid;
-            };
-
-            return exports;
-        }
-    })(window, $, angular, io, scriptData);
-
-    (function(window, $, Math, scriptData) {
-        window.chatCtrl = function($scope, $chat) {
-            $scope.typing;
-            $scope.messages = array();
-            $scope.error;
-            $scope.supporter;
-
-            var onConnect = function() {
-                runOnce();
-                onConnect = runAlways;
-
-                function runOnce() {
-                    $chat.on('auth-success', onAuthSuccess);
-                    $chat.on('presence', onPresence);
-                    $chat.on('chat-message', onChatMessage);
-                    $chat.on('error', onError);
-
-                    function onAuthSuccess() {
-                        var data = {
-                            other: {formData: scriptData.formData}
-                        };
-                        $chat.emit('presence', data);
-                    }
-
-                    function onPresence(data) {
-                        $scope.supporter = data.fullname;
-                    }
-
-                    function onChatMessage(message) {
-                        $scope.messages.push(message);
-                    }
-
-                    function onError(data) {
-                        console.error(data);
-                        $scope.error = true;
-                    }
+    function chatCtrl($scope, $socket, $timeout) {
+        $scope.typing;
+        $scope.messages = [];
+        $scope.error;
+        $scope.user = scriptData.user;
+        $scope.supporter;
+        var onConnect = function() {
+            runOnce();
+            onConnect = runAlways;
+            function runOnce() {
+                $socket.on('auth-success', onAuthSuccess);
+                $socket.on('presence', onPresence);
+                $socket.on('chat-message', onChatMessage);
+                $socket.on('error', onError);
+                function onAuthSuccess() {
+                    var data = {
+                        other: {formData: scriptData.formData}
+                    };
+                    $socket.emit('presence', data);
                 }
 
-                function runAlways() {
-
+                function onPresence(data) {
+                    $scope.supporter = data.fullname;
                 }
-            }; //onConnect
 
-            $chat.connect(scriptData.serviceURL, onConnect);
+                function onChatMessage(message) {
+                    $scope.messages.push(message);
+                    scrollBottom();
+                }
 
-            $scope.sendMessage = function() {
-                var message = {
-                    body: $scope.typing,
-                    userFullname: scriptData.userFullname
-                };
-                $scope.messages.push(message);
-                $scope.typing = null;
-                $chat.emit('chat-message', message);
+                function onError(data) {
+                    console.error(data);
+                    $scope.error = true;
+                }
+            }
+
+            function runAlways() {
+
+            }
+        }; //onConnect
+
+        $socket.connect(scriptData.serviceURL, onConnect);
+        $scope.sendMessage = function() {
+            if(!$scope.typing)
+                return;
+            var message = {
+                body: $scope.typing
             };
+            $scope.messages.push(message);
+            $scope.typing = null;
+            $socket.emit('chat-message', message);
+            scrollBottom();
         };
-    })(window, $, Math, scriptData);
+
+        function scrollBottom() {
+            $timeout(function() {
+                $('.chat-message-container').animate({"scrollTop": $('.chat-message-container')[0].scrollHeight});
+            });
+        }
+
+        $('textarea').keypress(function(e) {
+            if (e.keyCode == 13) {
+                $scope.sendMessage();
+                e.preventDefault();
+                return false;
+            }
+        });
+    }
 </script>

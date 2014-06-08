@@ -64,6 +64,7 @@ defined('BASEPATH') or die('no direct script access allowed');
 <br>
 <script>
     var scriptData = {
-        serviceURL: '/search/getProductService'
+        serviceURL: '/search/getProductService',
+        keywords: '<?php echo $keywords ?>'
     };
 </script>

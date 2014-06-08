@@ -19,9 +19,10 @@ How would you like to contact us?
     scriptData.chatURL = '<?php echo base_url('/portal/help/contact_by_chat') ?>';
 </script>
 <script>
+    
     (function(window, $, scriptData) {
         window.startChat = function(){
-            window.open(scriptData.chatURL, "", "width=400,height=400");
+            window.chatWindow = window.open(scriptData.chatURL, "", "width=400,height=400");
         };
     })(window, $, scriptData);
     

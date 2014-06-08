@@ -17,10 +17,11 @@ class support extends PortalAdminControllerAbstract
     {
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
                 ->setJavascript(array(
-                    '/js/angular.min.js',
-                    'http://localhost:9090/socket.io/socket.io.js'
+                    get_instance()->config->item('socket.ioURL'),
+                    '/js/controller/AdminSupportCtrl.js'
                 ))
+                ->setCss(array('/style/chat.css'))
                 ->render('portalAdmin/support');
     }
-    
+
 }

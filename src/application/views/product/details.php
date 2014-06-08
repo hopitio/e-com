@@ -8,6 +8,9 @@ foreach ($product->getImages('baseImage') as $attr)
     $images[] = (string) $attr->url;
 }
 ?>
+<script>
+    $.browser = {};
+</script>
 <div id="product-details-ctrl" ng-controller="productDetailsCtrl">
     <div class="lynx_productHeadContainer lynx_staticWidth">
         <div class="lynx_productImageContainer lynx_productHead">
@@ -20,14 +23,22 @@ foreach ($product->getImages('baseImage') as $attr)
                 </div>
             </div>
             <div class="lynx_imageList">
-                <img ng-repeat="imageURL in productImages" src="{{imageURL}}" alt="product thumbnail #{{$index}}" 
-                     ng-class="{lynx_selectedImage: isImageSelected($index)}" ng-click="selectImage($index)">
+                <?php $class = 'zoomThumbActive'; ?>
+                <?php foreach ($images as $img): ?>
+                    <a href="javascript:;" class="<?php echo $class ?>" 
+                       rel="{gallery: 'gal1', smallimage: '/thumbnail.php/<?php echo $img ?>/w=480', largeimage: '<?php echo $img ?>'}">
+                        <img  src="<?php echo '/thumbnail.php/' . $img . '/w=60' ?>">
+                    </a>
+                    <?php $class = null ?>
+                <?php endforeach; ?>
             </div>
-            <div class="lynx_image">
-                <img src="{{productImages[selectedImage]}}"/>
+            <div class="lynx_image clearfix" style="position:relative;">
+                <a href="<?php echo $images[0] ?>" class="jqzoom" rel='gal1' title="Zoom">
+                    <img src="/thumbnail.php/<?php echo $images[0] ?>/w=480"  title="thumbnail" style="width:480px;height:360px;">
+                </a>
             </div>
         </div>
-        <form class="lynx_productChoicePannel lynx_productHead" method="post" id="frm-main">
+        <form class="lynx_productChoicePannel lynx_productHead" method="get" id="frm-main">
             <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
             <div class="lynx_productName"> <?php echo $product->seller_name ?> </div>
             <div class="lynx_productPrice"> <?php echo $product->getFinalPriceMoney(User::getCurrentUser()->getCurrency()) ?> </div>
@@ -126,7 +137,6 @@ foreach ($product->getImages('baseImage') as $attr)
                 $this.parent().parent().find('li.active').removeClass('active'); //ul > li
                 $this.parent().addClass('active'); //li
                 $('.lynx_itemConatiner', $container).hide();
-                console.log($this.attr('href'));
                 $($this.attr('href')).show();
             });
             $('.lynx_head li.active', $container).find('a').trigger('click');
@@ -145,4 +155,14 @@ foreach ($product->getImages('baseImage') as $attr)
             url: '/pin/pinProduct/' + scriptData.productID
         });
     });
+    $('.lynx_imageList a').click(function() {
+        var $a = $(this);
+        $a.parent().find('img').removeClass('lynx_selectedImage');
+        $a.find('img').addClass('lynx_selectedImage');
+    });
+    $('.lynx_imageList a:eq(0)').click();
+    $(function() {
+        $('.jqzoom').jqzoom();
+    });
+
 </script>

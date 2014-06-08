@@ -13,6 +13,9 @@ class search extends BaseController
                 ))
                 ->setCss(array('/style/customerList.css'))
                 ->setJavascript(array('/js/controller/SearchCtrl.js'))
+                ->setData(array(
+                    'keywords' => $this->input->get('s')
+                ))
                 ->render('search/show_page');
     }
 
@@ -34,7 +37,7 @@ class search extends BaseController
                 ->autoloadTaxes()
                 ->filterSearchKeywords($keywords);
         $mapper->getQuery()
-                ->select('p.*, seller.name as seller_name')
+                ->select('p.*, seller.name as seller_name', true)
                 ->innerJoin('t_seller seller', 'p.fk_seller=seller.id')
                 ->limit($limit, $offset);
         $products = $mapper->findAll(function($rawData, $instance)

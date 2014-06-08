@@ -13,7 +13,7 @@ class product extends BaseController
     {
         //query product
         $mapper = ProductFixedMapper::make()
-                ->select('p.*',true)
+                ->select('p.*', true)
                 ->selectCountPin()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes()
@@ -46,8 +46,14 @@ class product extends BaseController
 
         $data = array('product' => $product);
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
-                ->setCss(array('/style/details.css'))
-                ->setJavascript(array('/js/controller/productDetailsCtrl.js'))
+                ->setCss(array(
+                    '/style/details.css',
+                    '/plugins/jqzoom_ev-2.3/css/jquery.jqzoom.css'
+                ))
+                ->setJavascript(array(
+                    '/js/controller/productDetailsCtrl.js',
+                    '/plugins/jqzoom_ev-2.3/js/jquery.jqzoom-core.js'
+                ))
                 ->setBreadcrums($breadcrums)
                 ->setData($data, true)
                 ->render('product/details');

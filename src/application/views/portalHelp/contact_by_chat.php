@@ -3,18 +3,22 @@ defined('BASEPATH') or die;
 ?>
 <style>
     .status{display: none;}
+    body{padding:10px;}
 </style>
-<a href='javascript:;' onclick='window.close();'>x</a>
-<div class='status' id="status-ready">
+<h3 class="right">
+    <a href='javascript:;' onclick='window.close();' title="Close window">Close</a>
+</h3>
+<div class='status left' id="status-ready">
     <form method='post' action='<?php echo base_url('portal/help/start_chat') ?>'>
         <input type='hidden' name='token' id='token'>
         <div>
             <label>What is your problem(s)</label>
             <div>
-                <textarea name='additional-information'></textarea>
+                <textarea style="width:100%" name='additional-information' rows="5"></textarea>
             </div>
         </div>
         <div>
+            <br>
             <input type='submit' value='Start chat'>
             <input type='button' value='Cancel' onclick='window.close();'>
         </div>

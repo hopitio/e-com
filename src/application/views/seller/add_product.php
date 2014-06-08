@@ -1,8 +1,12 @@
 <?php ?>
-<div ng-app ng-controller="addProductCtrl">
-    <div ng-repeat="categoryLevel in categoryTree">
+<style>
+    .category-level{width: 200px;float:left;border: 1px solid #ddd;padding:5px;}
+</style>
+<br>
+<div ng-app ng-controller="addProductCtrl" class="row-wrapper">
+    <div ng-repeat="categoryLevel in categoryTree" class="category-level left">
         <div data-assign="{{i = $index}}"></div>
-        <div ng-repeat="category in categoryLevel">
+        <div ng-repeat="category in categoryLevel" >
             <div data-assign="{{j = $index}}"></div>
             <label>
                 <input type="radio" name="category_level[{{i}}]" id="category.id" ng-click="selectCategory(i, j)">
@@ -15,6 +19,8 @@
         <input type="submit" value="Choose this category" ng-disabled="!selectedCategory">
     </form>
 </div>
+<div class="clearfix"></div>
+<br>
 <script>
     var Config = function() {
         this.categoryService = '<?php echo base_url('seller/category_service/') ?>';

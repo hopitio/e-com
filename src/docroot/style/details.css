@@ -175,7 +175,7 @@
     height:410px;
     margin-left: 20px;
 }
-.lynx_productImageContainer .lynx_image img{
+.lynx_productImageContainer .lynx_image .zoomPad > img{
     width:480px;
     height:360px;
 }

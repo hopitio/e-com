@@ -35,7 +35,7 @@ function onSupportConnect(socket) {
 
     function onChatMessage(message) {
         message.from = socket.id;
-        message.userFullname = $sm.get(socket, 'user').fullname;
+        message.userName = $sm.get(socket, 'user').fullname;
         var customer = findCustomerBySocketID(message.to);
         if (!customer) {
             socket.emit('presence', {
@@ -58,45 +58,22 @@ function findCustomerBySocketID(socketID) {
 
 function authenticate(role) {
     var socket = this;
-    var query = $url.parse(socket.handshake.url, true).query;
-    if (!query || !query.token) {
+    var userData = $url.parse(socket.handshake.url, true).query;
+    if (!userData) {
         unauthorized();
         return;
     }
-    //verify token
-    var xhr = new XMLHttpRequest;
-    var user;
-    var params = "token=" + query.token + '&role=' + role;
-    xhr.onreadystatechange = onReadyStateChange;
-    xhr.open("POST", $config.portalVerificationService, true);
-    xhr.send(params);
-
-    function onReadyStateChange() {
-        if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText)
-        {
-            try {
-                user = JSON.parse(xhr.responseText);
-                if (user && user.id) {
-                    if (role == 'supporter')
-                        supporters[socket.id] = socket;
-                    else if (role == 'customer')
-                        customers[socket.id] = socket;
-                    $sm.set(socket, 'user', user);
-                    $sm.set(socket, 'token', query.token);
-                    socket.emit('auth-success');
-                } else {
-                    unauthorized();
-                    return;
-                }
-            } catch (ex) {
-                if (ex) {
-                    unauthorized();
-                    return;
-                }
-            }
-        }
-
-    } //function
+	if(role == 'supporter' && !userData.is_authorized == 'true'){
+		unauthorized();
+        return;
+	}
+    
+    if (role == 'supporter')
+        supporters[socket.id] = socket;
+    else if (role == 'customer')
+        customers[socket.id] = socket;
+    $sm.set(socket, 'user', userData);
+    socket.emit('auth-success');
 
     function unauthorized() {
         socket.emit('error', {
@@ -109,6 +86,7 @@ function authenticate(role) {
 function onChatConnect(socket) {
     authenticate.apply(socket, ['customer']);
     socket.on('presence', onPresence);
+	socket.on('disconnect', onDisconnect);
     socket.on('chat-message', onChatMessage);
 
     function onPresence(data) {
@@ -132,11 +110,25 @@ function onChatConnect(socket) {
             return;
         }
     } //function
+	
+	function onDisconnect(){
+		var socket = this;
+		if(customers[socket.id]){
+			var customer = customers[socket.id];
+			var supporterID = $sm.get(customer, 'supporterSocketID');
+			var socketSupporter = findSupporterBySocketID(supporterID);
+			socketSupporter.emit('presence', {
+				from: customer.id,
+				to: supporterID,
+				status: 'unavailable'
+			});
+		}
+	}
 
     function onChatMessage(message) {
         message.from = socket.id;
         message.to = $sm.get(socket, 'supporterSocketID');
-        message.userFullname = $sm.get(socket, 'user').fullname;
+        message.userName = $sm.get(socket, 'user').fullname;
         var supporter = findSupporterBySocketID(message.to);
         if (!supporter) {
             socket.emit('error', {

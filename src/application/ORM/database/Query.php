@@ -175,4 +175,9 @@ class Query
         $this->_having = $condition;
     }
 
+    function getJoin()
+    {
+        return $this->_join;
+    }
+
 }
