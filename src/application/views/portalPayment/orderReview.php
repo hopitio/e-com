@@ -220,8 +220,6 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
-            $('#btnBack').click(function(){
-                    $('#frmBack').submit();
-                });
-        });
+                $('#frmsub').submit();
+    });
 </script>
