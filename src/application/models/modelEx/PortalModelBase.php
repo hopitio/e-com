@@ -9,6 +9,8 @@ class PortalModelBase extends CI_Model
     CONST PORTAL_DB_GROUP = 'portal';
     protected  $_dbPortal;
     protected  $_constIntanceName = null;
+    protected  $record_status = 'ACTIVE';
+    
     function __construct(){
         parent::__construct();
         $this->initalDatabasePortal();

@@ -1,5 +1,5 @@
 <form id="frmsub" action="/portal/order_place/submit_order_gateway" method="post">
-<div class="lynx_paymentComplete lynx_staticWidth" ng-controller="PortalOrderComplete">
+<div class="lynx_paymentComplete lynx_staticWidth" ng-controller="PortalOrderComplete" style="visibility: hidden;">
     <h3>Xác nhận đơn hàng</h3>
     <div class="lynx_orderInformation">
         <div class="lynx_orderInformationRow"><span class="lynx_fieldName">Mã đơn hàng  : </span><span class="lynx_fieldValue"><?php echo $order->id;?></span> <span class="lynx_fieldName">Mã hóa đơn  : </span><span class="lynx_fieldValue"><?php echo $order->invoice->id;?></span></div>

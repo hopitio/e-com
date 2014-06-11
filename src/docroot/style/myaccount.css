@@ -365,6 +365,10 @@ a.lynx_sort-menu {
     float:left;
     width:50%;
 }
+.lynx_InvoiceTable span{
+    word-break: break-all;
+}
+
 .modal-body .lynx_row{
 	text-align: left;
 }

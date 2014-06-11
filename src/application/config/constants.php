@@ -131,6 +131,7 @@ class T_user{
     CONST last_active = 'last_active';
     CONST platform_key = 'platform_key';
     CONST user_type = 'user_type';
+    CONST record_status = 'record_status';
 }
 class T_user_history{
     CONST tableName = 't_user_history';
@@ -145,6 +146,7 @@ class T_user_history{
     CONST action_name = "action_name";
     CONST session_id = 'session_id';
     CONST action_date = 'action_date';
+    CONST record_status = 'record_status';
 }
 
 class T_user_setting{
@@ -153,6 +155,7 @@ class T_user_setting{
     CONST setting_key = 'setting_key';
     CONST value = 'value';
     CONST fk_user = 'fk_user';
+    CONST record_status = 'record_status';
 }
 
 class T_product
@@ -170,6 +173,7 @@ class T_product
     CONST seller_id = "seller_id";
     CONST seller_name = "seller_name";
     CONST seller_email = "seller_email";
+    CONST record_status = 'record_status';
 }
 
 class T_invoice{
@@ -186,6 +190,7 @@ class T_invoice{
     CONST payment_method = "payment_method";
     CONST payment_currency = "payment_currency";
     CONST invoice_type = "invoice_type";
+    CONST record_status = 'record_status';
 }
 class T_invoice_other_cost{
     CONST tableName = "t_invoice_other_cost";
@@ -193,12 +198,14 @@ class T_invoice_other_cost{
     CONST fk_invoice = "fk_invoice";
     CONST value = "value";
     CONST comment = "comment";
+    CONST record_status = 'record_status';
 }
 class T_invoice_product{
     CONST tableName = "t_invoice_product";
     CONST id = "id";
     CONST fk_invoice = "fk_invoice";
     CONST fk_product = "fk_product";
+    CONST record_status = 'record_status';
 }
 class T_invoice_shipping{
     CONST tableName = "t_invoice_shipping";
@@ -214,6 +221,7 @@ class T_invoice_shipping{
     CONST ship_date = "ship_date";
     CONST complete_date = "complete_date";
     CONST shipping_type = "shipping_type";
+    CONST record_status = 'record_status';
 }
 class T_order{
     CONST tableName = "t_order";
@@ -225,7 +233,7 @@ class T_order{
     CONST shiped_date = "shiped_date" ;
     CONST canceled_date = "canceled_date" ;
     CONST completed_date = "completed_date" ;
-    
+    CONST record_status = 'record_status';
 }
 class T_payment_temp{
     CONST tableName = 't_payment_temp';
@@ -238,6 +246,7 @@ class T_payment_temp{
     CONST user_agrent = "user_agrent";
     CONST processed_date = "processed_date";
     CONST cancelled_date = "cancelled_date";
+    CONST record_status = 'record_status';
 }
 
 
@@ -254,6 +263,7 @@ class T_order_product{
     CONST quantity        = 'quantity';
     CONST total_price     = 'total_price';
     CONST actual_price = 'actual_price';
+    CONST record_status = 'record_status';
 }
 class T_order_status{
     CONST tableName = 't_order_status';
@@ -263,6 +273,7 @@ class T_order_status{
     CONST updated_user = "updated_user";
     CONST updated_date = "updated_date";
     CONST comment = "comment";
+    CONST record_status = 'record_status';
 }
 class T_order_status_history{
     const tableName = "t_order_status_history";
@@ -273,6 +284,7 @@ class T_order_status_history{
     CONST fk_creator = 'fk_creator';
     CONST date_created = 'date_created';
     CONST is_mail_sent = 'is_mail_sent';
+    CONST record_status = 'record_status';
 }
 class T_user_contact{
     const tableName = "t_user_contact";
@@ -285,6 +297,7 @@ class T_user_contact{
     CONST city_district = "city_district";
     CONST state_province = "state_province";
     CONST email_contact = "email_contact";
+    CONST record_status = 'record_status';
 }
 class T_tax{
     const tableName = "t_tax";
@@ -293,6 +306,7 @@ class T_tax{
     CONST sub_tax_id = "sub_tax_id";
     CONST sub_tax_name = "sub_tax_name";
     CONST sub_tax_value = "sub_tax_value";
+    CONST record_status = 'record_status';
 }
 
 

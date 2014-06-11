@@ -136,7 +136,7 @@
             <div class="lynx_orderInformationBlock">
                 <div class="lynx_orderInformationRow lynx_buttonRow">
                     <button id="btnComfirm" class="lynx_button btn btn-primary" type="submit">Tiếp theo</button>
-                    <button id="btnComfirm" class="btn btn-default btn-sm" type="submit">Quay trở lại Giỏ hàng</button>
+                    <button style="display:none" id="btnComfirm" class="btn btn-default btn-sm" type="submit">Quay trở lại Giỏ hàng</button>
                 </div>
             </div>
         </div>

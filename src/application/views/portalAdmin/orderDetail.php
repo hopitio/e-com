@@ -36,7 +36,6 @@
         <div class="lynx_admin_robin" >
             <ul>
                 <li ng-click="rejectStatus()" ng-show="order.status != 'DELIVERED' && order.status != 'REJECTED' && order.status != 'ORDER_CANCELLED'">Hủy đơn hàng</li>
-                <li ng-click="backStatus()" ng-show="order.status != 'ORDER_PLACED'">Trở về trạng thái trước</li>
                 <li ng-click="nextStatus()" ng-show="order.status == 'ORDER_PLACED'">Xác nhận đơn hàng</li>
                 <li ng-click="nextStatus()" ng-show="order.status == 'VERIFYING'">Đang vận chuyển</li>
                 <li ng-click="nextStatus()" ng-show="order.status == 'SHIPPING'">Hoàn thành</li>

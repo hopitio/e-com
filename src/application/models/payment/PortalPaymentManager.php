@@ -8,6 +8,8 @@ class PortalPaymentManager extends PortalBizPayment{
      * @return boolean
      */
     function createNewOrder($orderInformation,$subSystemKey = null,$secrectKey = null){
+        
+        
         $subSystemName =  $this->config->item('sub_system_name');
         $subSystemKey == null ? $subSystemName['default'] : $subSystemName[$subSystemKey];
         $portalOrderId = $this->insertOrder($orderInformation,$subSystemKey);
@@ -62,6 +64,7 @@ class PortalPaymentManager extends PortalBizPayment{
             $product->actual_price = $obj->actualPrice;
             $product->seller_id = $obj->sid;
             $product->seller_name = $obj->sellerName;
+            $product->seller_email = $obj->sellerEmail;
             array_push($objects, $product);
         }
         $returnValue = $productsModel->bacthInsert($objects);
@@ -118,7 +121,7 @@ class PortalPaymentManager extends PortalBizPayment{
      * @param string $orderId
      */
     function insertContact($contactInformation){
-        
+        $userId = User::getCurrentUser()->id;
         $userContact = array();
         if(isset($contactInformation->shipping)){
             $portalContactModel = new PortalModelUserContact();
@@ -128,6 +131,7 @@ class PortalPaymentManager extends PortalBizPayment{
             $portalContactModel->city_district = implode(',' ,  $contactInformation->shipping->cityDistrict);
             $portalContactModel->state_province = implode(',' ,   $contactInformation->shipping->stateProvince);
             $portalContactModel->date_created = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+            $portalContactModel->fk_user = $userId;
             $contactId = $portalContactModel->insert();
             $userContact['shipping'] = $contactId;
         }  
