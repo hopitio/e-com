@@ -28,7 +28,7 @@
                     <a class="lynx_logo" href="/" title="SFriendly"></a>
                     <div class="lynx_headLeft">
                         <a href="/seller/show_products" title="<?php echo $language['layout']->lblHeadSell; ?>" class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></a>
-                        <a href="javascript:;" onclick='window.chatWindow = window.open(scriptData.chatURL, "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
+                        <a href="javascript:;" onclick='window.chatWindow = window.open("portal/help/contact_by_chat", "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
                         <div class="lynx_language">
                             <span class="lynx_label"><?php echo $language['layout']->lblLanguage; ?> : 
                                 <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language = '<?php echo User::getCurrentUser()->languageKey; ?>'">
@@ -66,8 +66,15 @@
                             <?php if ($user->is_authorized): ?>
                                 <span class="dropdown-toggle" ng-click="loadCategories()"> 
                                     <a href="javascript:;">
-                                        <?php echo str_replace('{1}', $user->lastname, $language['layout']->lblUserStatus->__toString()); ?><span class="caret"></span>
-
+                                        <?php
+                                        $str = str_replace('{1}', $user->lastname, $language['layout']->lblUserStatus->__toString());
+                                        if (mb_strlen($str) > 25)
+                                        {
+                                            $str = mb_substr($str, 0, 25) . '...';
+                                        }
+                                        echo $str;
+                                        ?>
+                                        <span class="caret"></span>
                                     </a> 
                                 </span>
                                 <ul class="dropdown-menu left">
@@ -113,9 +120,11 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="lynx_cart" id="lynx_cart">
-                        <span><?php echo $language['layout']->lblCart; ?> {{cart.length}}</span>
-                    </div>
+                    <a href="/cart/showCart">
+                        <div class="lynx_cart" id="lynx_cart">
+                            <span><?php echo $language['layout']->lblCart; ?> {{cart.length}}</span>
+                        </div>
+                    </a>
                 </div><!--head ctrl-->
             </div>
             <div class="content">

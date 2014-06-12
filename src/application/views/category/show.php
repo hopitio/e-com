@@ -85,6 +85,7 @@ function makeURL($categoryID, $changeParams = array())
             </div>
         <?php endif; ?>
     </div>
+    <!--
     <div class="lynx_listFilter">
         <span class="lynx_head">Lọc sản phẩm</span>
         <div class="lynx_filterContent">
@@ -120,6 +121,7 @@ function makeURL($categoryID, $changeParams = array())
             </ul>
         </div>
     </div>
+    -->
     <div class="lynx_searchResult" ng-app="lynxApp" ng-controller="ListCtrl">
         <div style="overflow:hidden">
             <div class="lynx_sort">
@@ -170,9 +172,9 @@ function makeURL($categoryID, $changeParams = array())
         </div>
     </div>
     <div class="lynx_adveGroup">
-        <div class="lynx_adveItem "><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
-        <div class="lynx_adveItem"><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
-        <div class="lynx_adveItem "><a href="#"><img src="images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_adveItem "><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_adveItem"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
+        <div class="lynx_adveItem "><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
     </div>
 </div>
 <script>

@@ -79,8 +79,8 @@ defined('BASEPATH') or die('No direct script access allowed');
     function scriptData() {
         this.hotItemTabs = [
             ['<?php echo $language[$view->view]->lblHot; ?>', '<?php echo base_url('home/hot_service') ?>'],
-            ['<?php echo $language[$view->view]->lblNew; ?>', '<?php echo base_url('home/new_service') ?>'],
-            ['<?php echo $language[$view->view]->lblSale; ?>', '<?php echo base_url('home/sale_service') ?>']
+            ['<?php echo $language[$view->view]->lblNew; ?>', '<?php echo base_url('home/new_service') ?>']
+          //  ['<?php echo $language[$view->view]->lblSale; ?>', '<?php echo base_url('home/sale_service') ?>']
         ];
         this.sectionURL = '<?php echo base_url('home/section_service') ?>';
     }

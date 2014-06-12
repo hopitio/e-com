@@ -42,12 +42,6 @@ window.HeadCtrl = function($scope, $http) {
 HeadCtrl.$inject = ['$scope', '$http'];
 
 $(function() {
-    $('#lynx_cart').click(function() {
-        $("html, body").animate({scrollTop: 0}, "slow", function() {
-            //dropdown
-        });
-    });
-
     jQuery('.dropdown.dropdown-hover').hover(function() {
         jQuery(this).find('.dropdown-menu').stop(true, true).show();
         jQuery(this).addClass('open');

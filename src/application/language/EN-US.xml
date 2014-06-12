@@ -2,10 +2,10 @@
 <data>
     <home>
         <title>Sfriendly</title>
-        <lblViewAll>XEM TẤT CẢ >></lblViewAll>
-        <lblHot>Hot</lblHot>
-        <lblNew>Mới</lblNew>
-        <lblSale>Giảm giá</lblSale>
+        <lblViewAll>View All >></lblViewAll>
+        <lblHot>Hotest</lblHot>
+        <lblNew>Newest</lblNew>
+        <lblSale>Sale</lblSale>
     </home>
     <login>
         <title>PROJECT E Đăng nhập</title>

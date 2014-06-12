@@ -48,8 +48,7 @@
                 <div class="lynx_headWarp lynx_staticWidth">
                     <div class="lynx_logo"></div>
                     <div class="lynx_headLeft">
-                        <span class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></span>
-                        <span class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></span>
+                        <a href="javascript:;" onclick='window.chatWindow = window.open("portal/help/contact_by_chat", "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
                         <div class="lynx_language">
                         </div>
                     </div>
@@ -173,9 +172,9 @@
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-            }
+                                function Config() {
+                                    this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                                }
         </script>
         <?php
         //Thêm các js riêng biệt
