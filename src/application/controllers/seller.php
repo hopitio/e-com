@@ -2,7 +2,7 @@
 
 class seller extends BaseController
 {
-
+    protected $authorization_required = true;
     
     /** @var ProductModel */
     public $productModel;
@@ -16,29 +16,31 @@ class seller extends BaseController
     function __construct()
     {
         parent::__construct();
-        var_dump(User::getCurrentUser());
-        if ($user->is_authorized == false)
-        {
-            if ($this->input->is_ajax_request())
-            {
-                throw new Lynx_AuthenticationException("Bạn phải đăng nhập để thực hiện chức năng");
-            }
-            else
-            {
-                $url = get_instance()->config->item('platform_login_url');
-                $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
-                $url = str_replace('{ep}', urlencode(Common::curPageURL()), $url);
-                $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
-                $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
-                redirect($url);
-            }
-        }
-                var_dump($user->sub_id);
-        $this->sellerInstance = SellerMapper::make()->autoloadCategories()->setUser($user)->find();
-        if (!$this->sellerInstance->id)
-        {
-            throw new Lynx_AccessControlException('Bạn không có quyền truy cập chức năng này');
-        }
+        
+//         var_dump(User::getCurrentUser());
+//         if ($user->is_authorized == false)
+//         {
+//             if ($this->input->is_ajax_request())
+//             {
+//                 throw new Lynx_AuthenticationException("Bạn phải đăng nhập để thực hiện chức năng");
+//             }
+//             else
+//             {
+//                 $url = get_instance()->config->item('platform_login_url');
+//                 $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
+//                 $url = str_replace('{ep}', urlencode(Common::curPageURL()), $url);
+//                 $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
+//                 $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
+//                 redirect($url);
+//             }
+//         }
+//         var_dump($user->sub_id);
+        
+        //$this->sellerInstance = SellerMapper::make()->autoloadCategories()->setUser($this->obj_user)->find();
+//         if (!$this->sellerInstance->id)
+//         {
+//             throw new Lynx_AccessControlException('Bạn không có quyền truy cập chức năng này');
+//         }
     }
 
     function dashboard()
