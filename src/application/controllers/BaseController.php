@@ -15,6 +15,7 @@ class BaseController extends MY_Controller{
     function __construct()
     {
         parent::__construct();
+        
     }   
     
     protected function init(){
@@ -33,6 +34,7 @@ class BaseController extends MY_Controller{
             $this->obj_user->id = $this->obj_user->sub_id;
             $this->set_obj_user_to_me($this->obj_user);
         }
+        
     }
     
     /**

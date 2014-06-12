@@ -69,8 +69,8 @@
                                     
                                 </div>
                                 <div class="lynx_invoiceProduct lynx_incoiceProductButton" style="float:left; margin-top:10px">
-                                     <span class="lynx_spanButton lynx_inHightLine"><i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
-                                     <span class="lynx_spanButton lynx_inHightLine"><i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
+                                     <span class="lynx_inHightLine"><i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
+                                     <span class="lynx_inHightLine"><i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
                                 </div>
                             </span>
                             <span class="lynx_colTax">{{product.totalTax}}</span>
@@ -118,6 +118,9 @@
 
         <div class="lynx_row-right" ng-show="(orders.length > 0)" ng-repeat="order in orders">
             <div class="lynx_row-head">
+                <span ng-show="order.status == 'VERIFYING'" ng-click="canncelOrder(order)" class="lynx_spanButton" style="float:right"><i class=" glyphicon glyphicon-remove" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrderCanncel; ?></span>
+                <span ng-show="order.status == 'ORDER_PLACED'" class="lynx_spanButton" style="float:right"><i class=" glyphicon glyphicon-repeat" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrderPayment; ?></span>
+                <span class="lynx_spanButton" ng-click="showOrderDetail(order)" style="float:right;border-bottom-left-radius: 5px;"><i class="glyphicon  glyphicon-list-alt" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrdeDetail; ?></span>
             </div>
             <div class="lynx_row-content lynx_InvoiceList" >
                 <div class="lynx_invoiceList_left">
@@ -133,9 +136,6 @@
                         </div>
                         <div class="lynx_row ">
                            <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderTotalPrices; ?> : </span> <span class="hightLine">{{order.cost}}</span>
-                        </div>
-                        <div class="lynx_row ">
-                           <span class="lynx_spanButton lynx_inHightLine" ng-click="showOrderDetail(order)" ><i class="glyphicon glyphicon glyphicon-list-alt" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrdeDetail; ?> </span>
                         </div>
                     </div>
                 </div>
@@ -154,8 +154,8 @@
                                 <div class="lynx_productDetail">{{product.short_description}}</div>
                             </div>
                             <div class="lynx_productDetail lynx_incoiceProductButton">
-                                <span class="lynx_spanButton lynx_inHightLine"><i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
-                                <span class="lynx_spanButton lynx_inHightLine"><i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
+                                <span class="lynx_inHightLine"><i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductDetail; ?> </span>&nbsp;&nbsp;&nbsp;
+                                <span class="lynx_inHightLine"><i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
                                 </div>
                         </span>
                         <span class="lynx_colTax">{{product.totalTax}}</span>
@@ -163,6 +163,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+</script>
+<script type="text/ng-template" id="commentDialog.html">
+        <div class="modal-header">
+            <h3 class="modal-title">THÊM MÔ TẢ</h3>
+        </div>
+        <div class="modal-body">
+            <textarea rows="4" cols="50" ng-model="dialog.comment" type="text" style="width:100%;height:200px"/>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
 </script>
         

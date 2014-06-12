@@ -3,6 +3,7 @@
 class seller extends BaseController
 {
 
+    
     /** @var ProductModel */
     public $productModel;
 
@@ -15,7 +16,7 @@ class seller extends BaseController
     function __construct()
     {
         parent::__construct();
-        $user = User::getCurrentUser();
+        var_dump(User::getCurrentUser());
         $user->id = 1;
         $user->account = 'admin';
         $this->sellerInstance = SellerMapper::make()->autoloadCategories()->setUser($user)->find();

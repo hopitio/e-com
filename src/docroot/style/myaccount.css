@@ -291,9 +291,11 @@ a.lynx_sort-menu {
 }
 
 .lynx_contentWarp .lynx_row-fluid .lynx_span4 {
-	width: 315px;
-}
 
+}
+body  .lynx_row-head span.lynx_spanButton{
+    padding:8px 10px !important;
+}
 .lynx_contentWarp .lynx_row-fluid [class*="span"] {
 	margin-left: 0px;
 }

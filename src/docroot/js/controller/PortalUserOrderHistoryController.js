@@ -39,7 +39,37 @@ function PortalUserOrderHistoryController($scope,$modal,$http)
         $scope.template = "ModalOrderList.html";
         $scope.order = undefined;
     };
+    
+    $scope.cancelOrder = function(order){
+        this.modalInstance = $modal.open({
+            templateUrl: 'commentDialog.html',
+            controller: ModalInstanceCtrl,
+            resolve: {
+                statusType: function () {
+                  return 'rejectStatus';
+                }
+              }
+        });
+        this.modalInstance.result.then(dialogCallback, function () {});
+    };
+    
+    function dialogCallback (dialogResult) {
+        $scope.comment = dialogResult.comment;
+        
+    }
 
+}
+
+function ModalInstanceCtrl($scope, $modalInstance, order) {
+    $scope.dialog = {};
+    $scope.dialog.comment = '';
+    $scope.dialog.order = order;
+    $scope.ok = function () {
+      $modalInstance.close($scope.dialog);
+    };
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
 }
 
 PortalUserOrderHistoryController.$inject = ['$scope','$modal','$http'];

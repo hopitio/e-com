@@ -35,4 +35,17 @@ class userOrderHistory extends BasePortalController
         $async->data = $orders;
         $this->output->set_content_type('application/json')->set_output(json_encode($async, false));
     }
+    
+    function cancelOrder(){
+        
+        $input = $this->input->post();
+        $order = json_decode('order');
+        
+        $portalOrderStatusBiz = new PortalBizPaymentHistory();
+        
+        $async = new AsyncResult();
+        $async->isError = false;
+        $async->data = $orders;
+        $this->output->set_content_type('application/json')->set_output(json_encode($async, false));
+    }
 }

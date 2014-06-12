@@ -214,6 +214,9 @@
         <lblOrderCreatedDate>Ngày tạo</lblOrderCreatedDate>
         <lblOrderTotalPrices>Tổng giá trị</lblOrderTotalPrices>
         <btnOrdeDetail>Chi tiết đơn hàng</btnOrdeDetail>
+        <btnOrderCanncel>Hủy đơn hàng</btnOrderCanncel>
+        <btnOrderPayment>Tiếp  tục</btnOrderPayment>
+        
         <lblNameProduct>Tên</lblNameProduct>
         <lblQuanityProduct>Số lượng</lblQuanityProduct>
         <btnProductDetail>Chi tiết sản phẩm</btnProductDetail>
