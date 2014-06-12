@@ -62,10 +62,9 @@ u, u *{text-decoration: underline;}
     height:43px;
 }
 .lynx_headMenu .lynx_menuWarp .lynx_category{
-    width:145px;
-    padding-right:15px;
+    width:160px;
+    text-align:center;
     float:left;
-    text-align: right;
     color:white;
     line-height:44px;
     font-size:20px;
@@ -93,6 +92,7 @@ u, u *{text-decoration: underline;}
     width:560px;
     text-align: left;
     color: black;
+    border:none;
 }
 .lynx_searchForm span{
     margin-left:10px;
@@ -105,17 +105,16 @@ u, u *{text-decoration: underline;}
     border-right: 1px solid #fff;
 }
 .lynx_menuWarp .lynx_loginLabel a{
-    line-height:44px;
     font-size:12px;
     color:white;
-
 }
+.lynx_menuWarp .lynx_loginLabel ul a{color: #333;}
 .lynx_menuWarp .lynx_miniCart{
     line-height:44px;
     font-size:12px;
     color:white;
     float:right;
-    padding:0 10px 0 30px;
+    padding:0 20px 0 30px;
     background: transparent url('../images/cart-mini-icon.png') no-repeat center left;
     cursor: pointer;
     border-right: 1px solid #fff;

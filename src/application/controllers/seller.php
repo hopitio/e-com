@@ -17,8 +17,23 @@ class seller extends BaseController
     {
         parent::__construct();
         var_dump(User::getCurrentUser());
-        $user->id = 1;
-        $user->account = 'admin';
+        if ($user->is_authorized == false)
+        {
+            if ($this->input->is_ajax_request())
+            {
+                throw new Lynx_AuthenticationException("Bạn phải đăng nhập để thực hiện chức năng");
+            }
+            else
+            {
+                $url = get_instance()->config->item('platform_login_url');
+                $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
+                $url = str_replace('{ep}', urlencode(Common::curPageURL()), $url);
+                $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
+                $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
+                redirect($url);
+            }
+        }
+                var_dump($user->sub_id);
         $this->sellerInstance = SellerMapper::make()->autoloadCategories()->setUser($user)->find();
         if (!$this->sellerInstance->id)
         {
@@ -28,7 +43,7 @@ class seller extends BaseController
 
     function dashboard()
     {
-        
+        echo 'coming soon';
     }
 
     function show_products()

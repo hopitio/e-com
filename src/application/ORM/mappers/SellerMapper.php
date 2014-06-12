@@ -30,7 +30,7 @@ class SellerMapper extends MapperAbstract
         $this->user = $user;
 
         $this->_query->where('fk_manager=?', __FUNCTION__);
-        $this->_queryParams[__FUNCTION__] = $user->id;
+        $this->_queryParams[__FUNCTION__] = $user->sub_id;
         return $this;
     }
 

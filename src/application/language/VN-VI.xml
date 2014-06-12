@@ -3,8 +3,8 @@
     <home>
         <title>Sfriendly</title>
         <lblViewAll>XEM TẤT CẢ >></lblViewAll>
-        <lblHot>Hot</lblHot>
-        <lblNew>Mới</lblNew>
+        <lblHot>Hot nhất</lblHot>
+        <lblNew>Mới nhất</lblNew>
         <lblSale>Giảm giá</lblSale>
     </home>
     <login>
