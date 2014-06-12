@@ -62,8 +62,8 @@ u, u *{text-decoration: underline;}
     height:43px;
 }
 .lynx_headMenu .lynx_menuWarp .lynx_category{
-    width:145px;
-    padding-right:15px;
+    width:160px;
+    text-align:center;
     float:left;
     text-align: right;
     color:white;

@@ -28,7 +28,7 @@
                     <a class="lynx_logo" href="/" title="SFriendly"></a>
                     <div class="lynx_headLeft">
                         <a href="/seller/show_products" title="<?php echo $language['layout']->lblHeadSell; ?>" class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></a>
-                        <span class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></span>
+                        <a href="javascript:;" onclick='window.chatWindow = window.open(scriptData.chatURL, "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
                         <div class="lynx_language">
                             <span class="lynx_label"><?php echo $language['layout']->lblLanguage; ?> : 
                                 <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language = '<?php echo User::getCurrentUser()->languageKey; ?>'">
