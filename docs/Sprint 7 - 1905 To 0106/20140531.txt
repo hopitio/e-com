@@ -1,0 +1,15 @@
+﻿- TA: làm phần cart đến đâu ? commit trong CN hay không >
+- ANLT : commit src cho phần email. - Để lại sau.
+-------------------------------------------------------
+ - Cần hiển thị shipping
+ - Pin wishlist, Pin - Ưu tiên cao nhất
+ - Cần cho thêm ảnh vào sản phẩm. - ưu tiên.
+ - Chat - ưu tiền nhì 
+ - Admin Sub authen- ANLT support.
+ - Cần làm thêm đồng bộ giữa sub và portal về user.
+
+TODO: -----------------------------------------------
+- Update sản phẩm trong phase sau.?
+- Featrures. (Đa properties).?
+- ZOOM detail pages.
+- 

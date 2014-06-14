@@ -30,6 +30,9 @@ class userOrderHistory extends BasePortalController
     function getOrderHistory($filter){
         $portalOrderStatusBiz = new PortalBizPaymentHistory();
         $orders = $portalOrderStatusBiz->getUserOrderWithStatus(User::getCurrentUser(),$filter);
+        foreach ($orders as &$order){
+            $order->returnUrl = "/portal/order_place/verify?o={$order->id}&i={$order->invoices[0]->id}";
+        }
         $async = new AsyncResult();
         $async->isError = false;
         $async->data = $orders;
@@ -39,13 +42,16 @@ class userOrderHistory extends BasePortalController
     function cancelOrder(){
         
         $input = $this->input->post();
-        $order = json_decode('order');
-        
+        $order = json_decode($input['order']);
+        $comment = $input['comment'];
         $portalOrderStatusBiz = new PortalBizPaymentHistory();
+        $orderManager = new PortalOrderManager();
+        $order = $orderManager->cancelOrder($this->obj_user, $order->id, $comment);
         
         $async = new AsyncResult();
         $async->isError = false;
-        $async->data = $orders;
+        $async->data['order'] = $order;
+        $async->data['message'] = (string) MultilLanguageManager::getInstance()->getLangViaScreen('portalaccount/userOrderHistory', $this->obj_user->languageKey)->msgCancelOrderComplete;
         $this->output->set_content_type('application/json')->set_output(json_encode($async, false));
     }
 }

@@ -32,11 +32,12 @@ class OrderCancelMailler extends AbstractStaff{
     protected function buildTitle()
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        return $this->CI->email->subject($mailLanguage->newpasswordNofication);
+        return $mailLanguage->orderCancel;
     }
     
     private function preOrderInformation($order,&$name,&$order_number){
-        foreach ($order->invoice->contacts as $contact){
+        foreach ($order->invoice->shippings as $shipping){
+            $contact = $shipping->contact;
             if($this->to == $contact->email_contact){
                 $name = $contact->full_name;
                 break;

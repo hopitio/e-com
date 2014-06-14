@@ -46,7 +46,7 @@
         <div class="lynx_container">
             <div class="lynx_head">
                 <div class="lynx_headWarp lynx_staticWidth">
-                    <div class="lynx_logo"></div>
+                    <a class="lynx_logo" href="/" title="SFriendly"></a>
                     <div class="lynx_headLeft">
                         <a href="javascript:;" onclick='window.chatWindow = window.open("portal/help/contact_by_chat", "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
                         <div class="lynx_language">

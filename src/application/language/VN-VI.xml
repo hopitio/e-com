@@ -117,6 +117,7 @@
         <SellerPaymentVerified>You sold an item from your customer – Ship now</SellerPaymentVerified>
         <OrderRejected>Fail to Attempt Your Sfriendly.com order (#{order_number})</OrderRejected>
         <SellerOrderRejected>Your item failed to attempt your customer!</SellerOrderRejected>
+        <orderCancel>Your Sfriendly.com order has cancelled</orderCancel>
     </mail>
     
     <portalaccount_resetPassword></portalaccount_resetPassword>
@@ -239,6 +240,8 @@
         <lblDetail>Quốc gia</lblDetail>
         <lblCity>Thành phố</lblCity>
         <lblStatus>Tình trạng</lblStatus>
+        <lblTitleRootCause>Nguyên nhân hủy đơn hàng</lblTitleRootCause>
+        <msgCancelOrderComplete>Hủy đơn hàng thành công, vui lòng kiểm tra mail để xác nhận đơn hàng.</msgCancelOrderComplete>
     </portalaccount_userOrderHistory>
     <product_list></product_list>
     <admin_sellerFind></admin_sellerFind>
