@@ -2,8 +2,9 @@
 
 class seller extends BaseController
 {
+
     protected $authorization_required = true;
-    
+
     /** @var ProductModel */
     public $productModel;
 
@@ -16,31 +17,12 @@ class seller extends BaseController
     function __construct()
     {
         parent::__construct();
-        
-//         var_dump(User::getCurrentUser());
-//         if ($user->is_authorized == false)
-//         {
-//             if ($this->input->is_ajax_request())
-//             {
-//                 throw new Lynx_AuthenticationException("Bạn phải đăng nhập để thực hiện chức năng");
-//             }
-//             else
-//             {
-//                 $url = get_instance()->config->item('platform_login_url');
-//                 $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
-//                 $url = str_replace('{ep}', urlencode(Common::curPageURL()), $url);
-//                 $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
-//                 $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
-//                 redirect($url);
-//             }
-//         }
-//         var_dump($user->sub_id);
-        
-        //$this->sellerInstance = SellerMapper::make()->autoloadCategories()->setUser($this->obj_user)->find();
-//         if (!$this->sellerInstance->id)
-//         {
-//             throw new Lynx_AccessControlException('Bạn không có quyền truy cập chức năng này');
-//         }
+
+        $this->sellerInstance = SellerMapper::make()->autoloadCategories()->setUser(User::getCurrentUser())->find();
+        if (!$this->sellerInstance->id)
+        {
+            throw new Lynx_AccessControlException('Bạn không có quyền truy cập chức năng này');
+        }
     }
 
     function dashboard()
@@ -65,8 +47,8 @@ class seller extends BaseController
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes()
                 ->filterSeller($this->sellerInstance->id)
-                ->limit($dataTableHelper->iDisplayLength)
-                ->offset($dataTableHelper->iDisplayStart);
+                ->limit($dataTableHelper->length)
+                ->offset($dataTableHelper->start);
 
         $products = $mapper->findAll();
         $count = $mapper->count();
@@ -85,7 +67,7 @@ class seller extends BaseController
             );
         }
 
-        $dataTableHelper->response($count, $aaData);
+        echo $dataTableHelper->response($count, $aaData);
     }
 
     function delete_image()
@@ -137,6 +119,13 @@ class seller extends BaseController
         $this->load->model('modelEx/ProductModel', 'productModel');
     }
 
+    function delete_product()
+    {
+        $this->getProductModel();
+        $productIDs = $this->input->post('chk');
+        $this->productModel->deleteProduct($productIDs);
+    }
+
     protected function getFileModel()
     {
         $this->load->model('modelEx/FileModel', 'fileModel');
@@ -156,10 +145,15 @@ class seller extends BaseController
         );
         $data['categoryID'] = $data['id'] ? $this->input->post('radCate') : $this->input->post('hdnCategory');
         $data['storateCode'] = $data['storageCodeType'] ? $this->input->post('txtCode') : null;
-        $files = isset($_FILES) && !empty($_FILES) ? $_FILES : array();
+        $files = isset($_FILES['fileImage']) && !empty($_FILES['fileImage']) ? $_FILES['fileImage'] : array();
         $productID = $this->productModel->updateProduct($data);
-        foreach ($files as $fileInfo)
+        for ($i = 0; $i < count($files['name']); $i++)
         {
+            $fileInfo = array();
+            foreach ($files as $k => $fileData)
+            {
+                $fileInfo[$k] = $fileData[$i];
+            }
             if (!$fileInfo['name'] || !is_uploaded_file($fileInfo['tmp_name']) || !file_exists($fileInfo['tmp_name']))
             {
                 continue;

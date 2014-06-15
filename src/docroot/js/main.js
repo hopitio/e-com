@@ -171,6 +171,23 @@ function productSlider(selector) {
 
 } //product slider
 
-
+$(function() {
+    $('#modal-delete').on('show.bs.modal', function() {
+        var $modal = $(this);
+        var $form = $modal.parents('form:first');
+        var $modalBody = $('.modal-body', $modal);
+        if (!$('.chk:checked', $form).length) {
+            if (!$modal.data().originalHTML) {
+                $modal.data().originalHTML = $modalBody.html();
+                $modalBody.html('Bạn cần chọn ít nhất một đối tượng để xóa');
+                $('.btn-primary', $modal).hide();
+            }
+        } else if ($modal.data().originalHTML) {
+            $modalBody.html($modal.data().originalHTML);
+            $('.btn-primary', $modal).show();
+            $modal.data().originalHTML = null;
+        }
+    });
+});
 
 

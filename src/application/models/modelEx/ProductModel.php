@@ -74,6 +74,29 @@ class ProductModel extends BaseModel
         }
     }
 
+    function deleteProduct($productIDs)
+    {
+        if (!is_array($productIDs))
+        {
+            $productIDs = (int) $productIDs;
+        }
+        elseif (empty($productIDs))
+        {
+            throw new Lynx_BusinessLogicException('Phải có ít nhất một đối tượng để xóa');
+        }
+        else
+        {
+            $tempList = '';
+            foreach ($productIDs as $id)
+            {
+                $tempList .= $tempList ? ',' . intval($id) : $id;
+            }
+            $productIDs = $tempList;
+            unset($tempList);
+        }
+        DB::update('t_product', array('status' => 0), 'id IN(' . $productIDs . ')');
+    }
+
     function updateProduct($data)
     {
         DB::getInstance()->StartTrans();
@@ -122,10 +145,10 @@ class ProductModel extends BaseModel
         $fileIDs = isset($_POST['hdnImage']) ? $_POST['hdnImage'] : array();
         $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'smallImage' => true, 'facebookImage' => false); //true = array, false = single
         $map = array(
-            'thumbnail'  => 'thumbnail',
-            'baseImage'  => 'base_image',
-            'smallImage' => 'small_image',
-            'facebookImage'  => 'facebook_image'
+            'thumbnail'     => 'thumbnail',
+            'baseImage'     => 'base_image',
+            'smallImage'    => 'small_image',
+            'facebookImage' => 'facebook_image'
         );
         foreach ($fileIDs as $fileID)
         {

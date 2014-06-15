@@ -46,7 +46,7 @@
         <div class="lynx_container">
             <div class="lynx_head">
                 <div class="lynx_headWarp lynx_staticWidth">
-                    <div class="lynx_logo"></div>
+                    <a class="lynx_logo" href="/" title="SFriendly"></a>
                     <div class="lynx_headLeft">
                         <a href="javascript:;" onclick='window.chatWindow = window.open("portal/help/contact_by_chat", "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
                         <div class="lynx_language">
@@ -105,60 +105,60 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-                    <div class="lynx_footer">
-                        <div class="lynx_content">
-                            <div class="lynx_col1">
-                                <img class="lynx_logo" src="/images/logo-footer.png"/>
-                                <span class="lynx_contact">
-                                    Sfriendly.com /  Sfriendly.vn <br/>
-                                    Phone: 098 999 999 <br/>
-                                    Email: sale@sf
-                                </span>
-                                <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
-                                <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
-                                <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
-                                <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
+                </div>
+                <div class="lynx_footer">
+                    <div class="lynx_content">
+                        <div class="lynx_col1">
+                            <img class="lynx_logo" src="/images/logo-footer.png"/>
+                            <span class="lynx_contact">
+                                Sfriendly.com /  Sfriendly.vn <br/>
+                                Phone: 098 999 999 <br/>
+                                Email: sale@sf
+                            </span>
+                            <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
+                            <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
+                            <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
+                            <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
+                        </div>
+                        <div class="lynx_col2">
+                            <div class="lynx_cell">
+                                <ul>
+                                    <span><?php echo $language['layout']->lblMakeMoneyWithUs; ?></span>
+                                    <li> <?php echo $language['layout']->lblSell; ?> </li>
+                                    <li> <?php echo $language['layout']->lblAdve; ?> </li>
+                                </ul>
+                                <ul>
+                                    <span><?php echo $language['layout']->lblCustomerService; ?></span>
+                                    <li> <?php echo $language['layout']->lblFAQs; ?> </li>
+                                    <li> <?php echo $language['layout']->lblContact; ?> </li>
+                                    <li> <?php echo $language['layout']->lblShippingvsReturn; ?> </li>
+                                    <li> <?php echo $language['layout']->lblSafeShopping; ?>  </li>
+                                    <li> <?php echo $language['layout']->lblGuaranteeSecureShopping; ?>    </li>
+                                </ul>
                             </div>
-                            <div class="lynx_col2">
-                                <div class="lynx_cell">
-                                    <ul>
-                                        <span><?php echo $language['layout']->lblMakeMoneyWithUs; ?></span>
-                                        <li> <?php echo $language['layout']->lblSell; ?> </li>
-                                        <li> <?php echo $language['layout']->lblAdve; ?> </li>
-                                    </ul>
-                                    <ul>
-                                        <span><?php echo $language['layout']->lblCustomerService; ?></span>
-                                        <li> <?php echo $language['layout']->lblFAQs; ?> </li>
-                                        <li> <?php echo $language['layout']->lblContact; ?> </li>
-                                        <li> <?php echo $language['layout']->lblShippingvsReturn; ?> </li>
-                                        <li> <?php echo $language['layout']->lblSafeShopping; ?>  </li>
-                                        <li> <?php echo $language['layout']->lblGuaranteeSecureShopping; ?>    </li>
-                                    </ul>
-                                </div>
-                                <div class="lynx_cell">
-                                    <ul>
-                                        <span><?php echo $language['layout']->lblAboutSfriendly; ?></span>
-                                        <li><?php echo $language['layout']->lblAbout; ?></li>
-                                        <li><?php echo $language['layout']->lblJobs; ?></li>
-                                        <li><?php echo $language['layout']->lblCustomerTestimonials; ?></li>
-                                        <li><?php echo $language['layout']->lblAssociatesProgram; ?></li>
-                                        <li><?php echo $language['layout']->lblGlossaryofTerms; ?></li>
-                                        <li><?php echo $language['layout']->lblDailyShowDigest; ?></li>
-                                    </ul>
-                                    <ul>
-                                        <span><?php echo $language['layout']->lblFeedback; ?></span>
-                                        <li><?php echo $language['layout']->lblHowLikeOurWebsite; ?></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="lynx_col3">
-                                <img src="/images/Payment-follow.fw.png"/>
+                            <div class="lynx_cell">
+                                <ul>
+                                    <span><?php echo $language['layout']->lblAboutSfriendly; ?></span>
+                                    <li><?php echo $language['layout']->lblAbout; ?></li>
+                                    <li><?php echo $language['layout']->lblJobs; ?></li>
+                                    <li><?php echo $language['layout']->lblCustomerTestimonials; ?></li>
+                                    <li><?php echo $language['layout']->lblAssociatesProgram; ?></li>
+                                    <li><?php echo $language['layout']->lblGlossaryofTerms; ?></li>
+                                    <li><?php echo $language['layout']->lblDailyShowDigest; ?></li>
+                                </ul>
+                                <ul>
+                                    <span><?php echo $language['layout']->lblFeedback; ?></span>
+                                    <li><?php echo $language['layout']->lblHowLikeOurWebsite; ?></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="lynx_copyright">
-                            <div class="lynx_copycontent">
-                                Copyright © 2014 Sfriendly.com. All rights Reserved
-                            </div>
+                        <div class="lynx_col3">
+                            <img src="/images/Payment-follow.fw.png"/>
+                        </div>
+                    </div>
+                    <div class="lynx_copyright">
+                        <div class="lynx_copycontent">
+                            Copyright © 2014 Sfriendly.com. All rights Reserved
                         </div>
                     </div>
                 </div>

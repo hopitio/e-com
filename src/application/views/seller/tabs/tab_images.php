@@ -5,7 +5,7 @@
     *This page will not automatically saved. Please click Apply or Save when you finish editting.
 </div>
 <br>
-<input type="file" name="fileImage" multiple onchange="fileOnchange(this);" accept="image/*">
+<input type="file" name="fileImage[]" multiple onchange="fileOnchange(this);" accept="image/jpeg">
 <table class="table">
     <thead>
         <tr>

@@ -49,16 +49,39 @@ function showCartCtrl($scope, $http) {
         });
     };
     $scope.getProducts();
-    
-    $scope.getWishlist = function(){
-        $http.get(scriptData.wishlistServiceURL, {cache: false}).success(function(data){
-            $scope.wishlist = data;
-        }).error(function(){
-            //TODO
+
+    if (scriptData.wishlistServiceURL) {
+        $scope.getWishlist = function() {
+            $http.get(scriptData.wishlistServiceURL, {cache: false}).success(function(data) {
+                $scope.wishlist = data;
+            }).error(function() {
+                //TODO
+            });
+        };
+        $scope.getWishlist();
+    }
+
+    $scope.addToCart = function(wishlistDetailID) {
+        $.ajax({
+            cache: false,
+            url: scriptData.addToCartURL + wishlistDetailID,
+            success: function() {
+                $scope.getWishlist();
+                $scope.getProducts();
+            }
         });
     };
-    $scope.getWishlist();
-    
+
+    $scope.removeFromWishlist = function(wishlistDetailID) {
+        $.ajax({
+            cache: false,
+            url: scriptData.removeFromWishlistURL + wishlistDetailID,
+            success: function() {
+                $scope.getWishlist();
+            }
+        });
+    };
+
     $scope.calPriceOnly = function() {
         var total = 0;
         for (var i in $scope.products) {

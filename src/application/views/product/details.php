@@ -50,7 +50,7 @@ foreach ($product->getImages('baseImage') as $attr)
                 <span class="lynx_quantityLabel">Quantity</span>
                 <span class="lynx_productQuantityInput">
                     <select name="sel_qty" id="sel_qty"  class="lynx_productChocie lynx_cbxChoie">
-                        <?php foreach (range(1, 30) as $int): ?>
+                        <?php foreach (range(1, min(array(30, (string)$product->getQuantity()))) as $int): ?>
                             <option value="<?php echo $int ?>"><?php echo $int ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -104,7 +104,8 @@ foreach ($product->getImages('baseImage') as $attr)
             </div>
             <div class="lynx_listItem">
                 <div class="lynx_item" ng-repeat="product in relatedProducts" product="product" 
-                     ng-class="{lynx_slideFirst: !$index, lynx_slideLast: $index == relatedProducts.length - 1}"></div>
+                     ng-class="{
+                                 lynx_slideFirst: !$index, lynx_slideLast: $index == relatedProducts.length - 1}"></div>
             </div>
         </div>
     </div>

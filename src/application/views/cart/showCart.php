@@ -89,31 +89,35 @@ defined('BASEPATH') or die('No direct script access allowed');
                 </tbody>
             </table>
 
-            <h3 class="left">Wishlist</h3>
-            <table class="table-product">
-                <tbody>
-                    <tr>
-                        <td width="100" class="center">
-                            <img class="product-thumbnail" src="http://localhost.com:8080/uploads/2014/05/22/46c46554bfc2ffb6e8ce0f6dca210b9a.jpg">
-                        </td>
-                        <td width="400">
-                            <a href="javascript:;" class="product-name">Product name</a><br>
-                            <span class="product-seller">By seller name</span><br>
-                            <span class="green">In stock</span>
-                        </td>
-                        <td width="100">
-                            <span class="product-price">$60.00</span><br>
-                            <span class="product-original-price">($100)</span>
-                        </td>
-                        <td width="100">&nbsp;</td>
-                        <td width="190" class="center">
-                            <input type="button" class="btn btn-primary" value="Add to Cart"><br>
-                            <a href="javascript:;">Remove</a><br>
-                            <a href="javascript:;">Wishlist</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <?php if (User::getCurrentUser()->is_authorized): ?>
+                <h3 class="left">Wishlist</h3>
+                <table class="table-product">
+                    <tbody>
+                        <tr ng-repeat="product in wishlist" ng-class-even="'event'" ng-class-odd="'odd'">
+                            <td width="100" class="center">
+                                <img class="product-thumbnail" src="{{product.thumbnail}}">
+                            </td>
+                            <td width="400">
+                                <a href="javascript:;" class="product-name">{{product.name}}</a><br>
+                                <span class="product-seller">{{product.seller_name}}</span><br>
+                                <span class="green" ng-if="product.stock > 10">In stock</span>
+                                <span class="red" ng-if="product.stock <= 10 && product.stock > 0">Just {{product.stock}} left</span>
+                                <span class="red" ng-if="product.stock <= 0">Out of stock</span>
+                            </td>
+                            <td width="100">
+                                <span class="product-price">{{fnMoneyToString(product.price)}}</span><br>
+                                <!--<span class="product-original-price">($100)</span>-->
+                            </td>
+                            <td width="100">&nbsp;</td>
+                            <td width="190" class="center">
+                                <input type="button" class="btn btn-primary" ng-click='addToCart(product.wishlistDetailID)' value="Add to Cart"><br>
+                                <a href="javascript:;" ng-click='removeFromWishlist(product.wishlistDetailID)'>Remove</a><br>
+                                <a href="/wishlist/show" >Wishlist</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <?php endif; ?>
         </div><!--cart-left-->
         <div class="cart-right">
             <div class="cart-right-content">
@@ -161,7 +165,9 @@ defined('BASEPATH') or die('No direct script access allowed');
     scriptData.checkoutURL = '<?php echo base_url('cart/shipping') ?>';
     scriptData.updateQuantityURL = '<?php echo base_url('cart/updateQuantityService') ?>';
     scriptData.removeFromCartURL = '<?php echo base_url('cart/removeFromCart') ?>/';
-    scriptData.addToCartURL = '<?php echo base_url('cart/addToCart') ?>/';
+    scriptData.addToCartURL = '/wishlist/addToCart/';
+    scriptData.removeFromWishlistURL = '/wishlist/remove/';
     scriptData.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
-    scriptData.wishlistServiceURL = '/wishlist/wishlistDetailService/<?php echo $wishlist->id ?>';
 </script>
+<?php if (User::getCurrentUser()->is_authorized)  ?><script>scriptData.wishlistServiceURL = '/wishlist/wishlistDetailService/<?php echo $wishlist->id ?>';</script>
+

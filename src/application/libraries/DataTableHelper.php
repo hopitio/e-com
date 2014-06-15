@@ -3,13 +3,9 @@
 class DataTableHelper
 {
 
-    public $sEcho;
-    public $iColumns;
-    public $sColumns;
-    public $iDisplayStart;
-    public $iDisplayLength;
-    public $sSearch;
-    public $bRegex;
+    public $start;
+    public $length;
+    public $search;
 
     public function __construct()
     {
@@ -25,11 +21,10 @@ class DataTableHelper
     function response($totalRecord, $aaData)
     {
         header('Content-type: application/json');
-        echo json_encode(array(
-            'sEcho'                => $this->sEcho,
-            'iTotalRecords'        => $totalRecord,
-            'iTotalDisplayRecords' => $totalRecord,
-            'aaData'               => $aaData
+        return json_encode(array(
+            'recordsTotal'    => $totalRecord,
+            'recordsFiltered' => $totalRecord,
+            'data'            => $aaData
         ));
     }
 

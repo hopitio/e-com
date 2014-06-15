@@ -369,11 +369,11 @@ $config['proxy_ips'] = '';
  */
 
 
-$config['platform_login_url'] = 'http://localhost.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
-$config['portal_login_url'] = 'http://localhost.com/portal/login?cp={cp}';
-$config['portal_admin_login_url'] = 'http://localhost.com/portal/__admin/login?cp={cp}';
+$config['platform_login_url'] = 'http://localhost.com:8080/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
+$config['portal_login_url'] = 'http://localhost.com:8080/portal/login?cp={cp}';
+$config['portal_admin_login_url'] = 'http://localhost.com:8080/portal/__admin/login?cp={cp}';
 
-$config['platform_login_callback'] = 'http://localhost.com/__portal/login_callback';
+$config['platform_login_callback'] = 'http://localhost.com:8080/__portal/login_callback';
 $config['platform_logout'] = '/logout';
 $config['subSystemName'] = 'GIFT';
 
@@ -392,9 +392,9 @@ $config['facebook_authen_url'] = 'https://www.facebook.com/dialog/oauth?client_i
 
 
 $config['temp_mail_folder'] = APPPATH . 'temp/mail/';
-$config['path_to_active_account'] = 'http://localhost.com/portal/active?k={key}';
-$config['path_to_reset_password_reset'] = 'http://localhost.com/portal/reset_password?k={key}';
-$config['portal_payment_entry'] = "http://localhost.com/portal/order_place/portal_get_information";
+$config['path_to_active_account'] = 'http://localhost.com:8080/portal/active?k={key}';
+$config['path_to_reset_password_reset'] = 'http://localhost.com:8080/portal/reset_password?k={key}';
+$config['portal_payment_entry'] = "http://localhost.com:8080/portal/order_place/portal_get_information";
 
 $config['sub_system_name'] = array(
     'default' => 'PORTAL',
@@ -407,5 +407,7 @@ $config['socket.ioURL'] = 'http://localhost:9090/socket.io/socket.io.js';
 $config['supportAdminURL'] = 'http://localhost:9090/support';
 $config['getSupportURL'] = 'http://localhost:9191/get_chat_support';
 $config['socketChatURL'] = 'http://localhost:9090/chat';
+
+mb_internal_encoding('UTF-8');
 /* End of file config.php */
 /* Location: ./application/config/config.php */

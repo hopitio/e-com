@@ -8,6 +8,7 @@ class ProductFixedMapper extends ProductMapper
     function __construct($domain = 'ProductFixedDomain')
     {
         parent::__construct($domain);
+        $this->filterStatus(1);
     }
 
     function orderBySales($mode = 'DESC')

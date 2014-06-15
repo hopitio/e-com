@@ -625,3 +625,5 @@ input,textarea,select{text-align: left;font-weight:normal;}
 .btn.btn-lg{padding:10px;font-size: 25px;line-height: 25px;height:45px;font-weight:bold;}
 .btn.btn-primary{background: none;background-color: #0090ff;color:white;}
 .cke_dialog_page_contents a.cke_dialog_ui_button{margin-top:18px !important;}
+.modal-footer, .modal-body{padding:10px;}
+.modal-body{text-align:left;}

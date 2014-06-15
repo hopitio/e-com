@@ -33,10 +33,6 @@ class WishlistModel extends BaseModel
             'fk_wishlist' => $wishlist->id,
             'fk_product'  => $productID
         ));
-        if (DB::getInstance()->ErrorNo())
-        {
-            throw new Lynx_BusinessLogicException("error_occurs_during_insert");
-        }
     }
 
     /**
