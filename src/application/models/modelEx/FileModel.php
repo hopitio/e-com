@@ -51,13 +51,10 @@ class FileModel extends BaseModel
         $filename = FCPATH . '/' . $instance->internalPath;
         if (!file_exists($filename))
         {
-            throw new Lynx_BusinessLogicException("File not exists for id $id, cancel delete: " . $filename);
+            return;
         }
         DB::delete('t_file', 'id=?', array($id));
-        if (!unlink($filename))
-        {
-            throw new Lynx_BusinessLogicException("Could not delete file for id $id, cancel delete: $filename");
-        }
+        unlink($filename);
     }
 
 }
