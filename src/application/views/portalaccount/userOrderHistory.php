@@ -9,7 +9,7 @@
             <div class="lynx_row-head">
                 <span ng-click="backToList()">
                     <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
-                   <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
+                    <i class="glyphicon glyphicon-chevron-left" style="cursor: pointer;"></i>  
                     <?php echo $language[$view->view]->lblTitleNotify; ?>
                 </span>
             </div>
@@ -118,8 +118,8 @@
 
         <div class="lynx_row-right" ng-show="(orders.length > 0)" ng-repeat="order in orders">
             <div class="lynx_row-head">
-                <span ng-show="order.status == 'VERIFYING'" ng-click="canncelOrder(order)" class="lynx_spanButton" style="float:right"><i class=" glyphicon glyphicon-remove" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrderCanncel; ?></span>
-                <span ng-show="order.status == 'ORDER_PLACED'" class="lynx_spanButton" style="float:right"><i class=" glyphicon glyphicon-repeat" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrderPayment; ?></span>
+                <span ng-show="order.status == 'VERIFYING'" ng-click="cancelOrder(order)" class="lynx_spanButton" style="float:right"><i class=" glyphicon glyphicon-remove" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrderCanncel; ?></span>
+                <span ng-show="order.status == 'ORDER_PLACED'" ng-click="returnOrder(order)" class="lynx_spanButton" style="float:right"><i class=" glyphicon glyphicon-repeat" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrderPayment; ?></span>
                 <span class="lynx_spanButton" ng-click="showOrderDetail(order)" style="float:right;border-bottom-left-radius: 5px;"><i class="glyphicon  glyphicon-list-alt" style="cursor: pointer;"></i> <?php echo $language[$view->view]->btnOrdeDetail; ?></span>
             </div>
             <div class="lynx_row-content lynx_InvoiceList" >
@@ -167,7 +167,7 @@
 </script>
 <script type="text/ng-template" id="commentDialog.html">
         <div class="modal-header">
-            <h3 class="modal-title">THÊM MÔ TẢ</h3>
+            <h3 class="modal-title"><?php echo $language[$view->view]->lblTitleRootCause; ?></h3>
         </div>
         <div class="modal-body">
             <textarea rows="4" cols="50" ng-model="dialog.comment" type="text" style="width:100%;height:200px"/>

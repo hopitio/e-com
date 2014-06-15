@@ -49,19 +49,19 @@
     <div class="lynx_container">
         <div class="lynx_head" ng-controller="PortalHeadController">
             <div class="lynx_headWarp lynx_staticWidth">
-                <a href="/"><div class="lynx_logo"></div></a>
-                <div class="lynx_headLeft">
-                    <span class="lynx_sell"> <?php echo $language['layout']->lblHeadSell;?></span>
-                    <span class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat;?></span>
-                    <div class="lynx_language">
-                        <span class="lynx_label"><?php echo $language['layout']->lblLanguage;?> : 
-                            <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language='<?php echo User::getCurrentUser()->languageKey;?>'">
-                                <option value="EN-US"  >English</option>
-                                <option value="VN-VI"  >Tiếng Việt</option>
-                            </select>
-                        </span>
+                    <a class="lynx_logo" href="/" title="SFriendly"></a>
+                    <div class="lynx_headLeft">
+                        <a href="/seller/show_products" title="<?php echo $language['layout']->lblHeadSell; ?>" class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></a>
+                        <a href="javascript:;" onclick='window.chatWindow = window.open("portal/help/contact_by_chat", "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
+                        <div class="lynx_language">
+                            <span class="lynx_label"><?php echo $language['layout']->lblLanguage; ?> : 
+                                <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language = '<?php echo User::getCurrentUser()->languageKey; ?>'">
+                                    <option value="EN-US"  >English</option>
+                                    <option value="VN-VI"  >Tiếng Việt</option>
+                                </select>
+                            </span>
+                        </div>
                     </div>
-                </div>
             </div>
             <div class="lynx_headMenu">
                 <div class="lynx_menuWarp lynx_staticWidth">

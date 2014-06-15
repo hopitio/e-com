@@ -45,17 +45,29 @@ function PortalUserOrderHistoryController($scope,$modal,$http)
             templateUrl: 'commentDialog.html',
             controller: ModalInstanceCtrl,
             resolve: {
-                statusType: function () {
-                  return 'rejectStatus';
+                order: function () {
+                  return order;
                 }
               }
         });
         this.modalInstance.result.then(dialogCallback, function () {});
     };
+    $scope.returnOrder = function(order){
+        window.location = order.returnUrl;
+    };
     
     function dialogCallback (dialogResult) {
         $scope.comment = dialogResult.comment;
-        
+        AppCommon.onLoading();
+        userOrderHistoryServiceClient = new PortalUserOrderHistoryServiceClient($http);
+        userOrderHistoryServiceClient.cancelOrder(JSON.stringify(dialogResult.order), $scope.comment, onCancelOrderSucessCallback, getAllOrderHistoryErrorCallback);
+    }
+    function onCancelOrderSucessCallback(reuslt){
+        if(!reuslt.isError){
+            AppCommon.onLoaded();
+            alert(reuslt.data.message);
+            $scope.loadAllOrder();
+        }
     }
 
 }
@@ -73,3 +85,4 @@ function ModalInstanceCtrl($scope, $modalInstance, order) {
 }
 
 PortalUserOrderHistoryController.$inject = ['$scope','$modal','$http'];
+
