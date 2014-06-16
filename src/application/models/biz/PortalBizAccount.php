@@ -40,6 +40,7 @@ class PortalBizAccount extends PortalBizBase
         $linkActive = str_replace('{key}', $activeKey, $linkActive);
         $mailData = array(
              'link' => $linkActive,
+             'name' => $lastname
         );
         
         
@@ -174,6 +175,7 @@ class PortalBizAccount extends PortalBizBase
         $user->sex = $userModel->sex;
         $user->status = $userModel->status;
         $user->user_type = $userModel->user_type;
+        $user->portal_id = $userModel->id;
         return $user;
     }
     
@@ -184,17 +186,26 @@ class PortalBizAccount extends PortalBizBase
      * @param string $formPlatform
      * @return 
      */
-    function getLogin($username,$password,$formPlatform = null,$toSubsys = null,$subSystemSessionId = null){
+    function getLogin($username,$password, $formPlatform = null,$toSubsys = null,$subSystemSessionId = null){
         $userModel = new PortalModelUser();
         $userModel->account = $username;
         $userModel->password = $password;
-        $formPlatform = $formPlatform == null ? DatabaseFixedValue::USER_PLATFORM_DEFAULT : $formPlatform;
-        $result = $formPlatform == DatabaseFixedValue::USER_PLATFORM_DEFAULT ? $userModel->selectUserByUserNameAndPassoword() : $userModel->selectUserByUserName();
-        if($userModel->status != DatabaseFixedValue::USER_STATUS_OPENED)
+        $userModel->platform_key = $formPlatform == null ? DatabaseFixedValue::USER_PLATFORM_DEFAULT : $formPlatform;
+        $result = $userModel->getMutilCondition();
+        if(count($result) <= 0){
+            return false;
+        }
+        
+        if($formPlatform != null && $formPlatform != $result[0]->platform_key){
+            return false;
+        }
+        
+        if($result[0]->status != DatabaseFixedValue::USER_STATUS_OPENED)
         {
             return false;
         }
-        if ($result)
+        
+        else
         {
             $user = new User();
             $portalModelUserSetting = new PortalModelUserSetting();
@@ -209,12 +220,9 @@ class PortalBizAccount extends PortalBizBase
                     $user->languageKey = $setting->value;
                 }
             }
-            $user = $this->mappingModelWithUser($user,$userModel);
+            $user = $this->mappingModelWithUser($user,$result[0]);
             return $user;
-        }
-        else
-        {
-            return false;
+            
         }
     }
     
@@ -291,7 +299,7 @@ class PortalBizAccount extends PortalBizBase
         $userModel->getUserByUserId();
         
         $userModel->status = $status;
-        $userModel->status_date = date(DatabaseFixedValue::USER_STATUS_OPENED);
+        $userModel->status_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $userModel->status_reason = $reason;
         $userModel->updateUser();
         
@@ -408,5 +416,6 @@ class PortalBizAccount extends PortalBizBase
     function updateToOpenLoginStatus($userid){
         return $this->updateLoginStatus($userid,DatabaseFixedValue::USER_STATUS_OPENED,'Admin mở lại tài khoản');
     }
+    
 
 }

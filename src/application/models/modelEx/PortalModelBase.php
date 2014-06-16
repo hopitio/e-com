@@ -166,10 +166,11 @@ class PortalModelBase extends CI_Model
         $propertiesList = $refl->getConstants();
         $class = $this->_constIntanceName;
         foreach ($propertiesList as $property){
-            if($property == $class::tableName || !isset($this->$property) || $this->$property == null)
+            if($property == $class::tableName || !isset($this->$property) || $this->$property === null)
             {
                 continue;
             }
+            
             $condition[$property] = $this->$property;
         }
         if ($orderProperty != null)
@@ -183,6 +184,7 @@ class PortalModelBase extends CI_Model
                 $this->_dbPortal->limit($limit);
             }
         }
+
         $queryResult = $this->_dbPortal->get_where($class::tableName,$condition);
         $result = $queryResult->result();
         $objCollection = array();

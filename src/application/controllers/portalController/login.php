@@ -190,17 +190,27 @@ class login extends BasePortalController
         ){
             throw new Lynx_RequestException(__CLASS__.'::registerAccount:request login thiếu tham số');
         }
-        $error = $this-> validAccount();
-        if(count($error) > 0)
+        $errors = $this-> validAccount();
+        
+        
+        
+        if(count($errors) > 0)
         {
-            $erroData = array(
-                'errorRegister' => $error,
-            );
-            $css = array('');
-            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+            $erroData = array('errorRegister' => $errors);
+            $params  = $this->getQueryStringParams();
+            $subSysKey = isset($params['su']) ? $params['su'] : null;
+            $currentPage = isset($params['cp']) ? $params['cp'] : '/portal/account';
+            $sessionId = isset($params['se']) ? $params['se'] : null;
+            $endPoint = isset($params['ep']) ? $params['ep'] : null;
+            $erroData['su'] = $subSysKey;
+            $erroData['cp'] = $currentPage;
+            $erroData['se'] = $sessionId;
+            $erroData['ep'] = $endPoint;
+            
+            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL) 
             ->setData($erroData, true)
-            ->setJavascript($this->_js)
             ->setCss($this->_css)
+            ->setJavascript($this->_js)
             ->render('login');
             return;
         }
@@ -236,7 +246,15 @@ class login extends BasePortalController
         {
             array_push($woringData, $language->msgWoringEmail);
         }
-    
+        $portalModelUser = new PortalModelUser();
+        $portalModelUser->account = $email;
+        $portalModelUser->platform_key = DatabaseFixedValue::USER_PLATFORM_DEFAULT;
+        
+        $userList = $portalModelUser->getMutilCondition();
+        if(count($userList) > 0){
+            array_push($woringData, $language->msgExitEmail);
+        }
+        
         $case = preg_match('@[a-z0-9A-Z]@', $password);
         if(!$case || strlen($password) < 8 || strlen($password) > 50 || $password != $passwordRetry || strlen($password) <= 0) {
             array_push($woringData, $language->msgWoringPass);
@@ -270,6 +288,7 @@ class login extends BasePortalController
         ){
             throw new Lynx_RequestException(__CLASS__.'::onLoginComplete:request login thiếu tham số');
         }
+        
         $this->set_obj_user_to_me($this->obj_user);
         
         $this->onLoginCompleteSaveHistory($data);

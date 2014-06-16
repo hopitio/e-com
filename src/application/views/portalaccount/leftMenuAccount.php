@@ -4,5 +4,6 @@
 		<a href="/portal/account/security"><?php echo $language[$view->view]->menuItemSecurity;?> </a><br/> 
 		<a href="/portal/account/user_information"><?php echo $language[$view->view]->menuItemInformation;?> </a><br/> 
 		<a href="/portal/account/order_history"><?php echo $language[$view->view]->menuItemOrderHistory;?></a><br /> <br />
+		<a href="/logout"><?php echo $language[$view->view]->menuItemLogout;?></a><br /> <br />
 	</div>
 </div>

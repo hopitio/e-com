@@ -3,16 +3,15 @@
     <div class="lynx_leftContent lynx_box">
         <form id="resg" method="post">
             <h3> <?php echo $language[$view->view]->registeTitle;?></h3>
-            <?php
-                if(isset($errorRegister)){
-                    echo "<div class='row box'><ul>";
-                    foreach ($errorRegister as $e){
-                        echo '<li>'.$e.'</li>';
-                    }
-                    echo "</ul></div>";
-                } 
-            ?>
-
+                <?php
+                    if(isset($errorRegister)){
+                        echo "<div class='row box'><ul>";
+                        foreach ($errorRegister as $e){
+                            echo '<li>'.$e.'</li>';
+                        }
+                        echo "</ul></div>";
+                    } 
+                ?>
                 <input type="hidden" name='c' value='resg'/>
                 <div class="lynx_row"> <span><?php echo $language[$view->view]->lblEmail;?> </span> <input name='username' type="text" /> </div>
                 <div class="lynx_row"> <span><?php echo $language[$view->view]->lblPassword;?> </span> <input name='password' type="password" /> <span><?php echo $language[$view->view]->lblPasswordRetry;?> </span> <input name='passwordRetry' type="password" /> </div>

@@ -32,6 +32,7 @@ class loginfacebook extends login
         $this->obj_user->is_authorized = true;
         $this->obj_user->portal_id = $user->id;
         $this->set_obj_user_to_me($this->obj_user);
+        
         $this->onLoginComplete();
     }
     
@@ -45,8 +46,15 @@ class loginfacebook extends login
         $sex = $genderFB == 'male' ? 'M' : $genderFB == 'female' ? 'F' : 0;
         $DOBFB = isset($facebookAccount->birthday) ? $facebookAccount->birthday : null;
         $DOB = $this->convertFbDate($DOBFB);
-        $user = $accountBiz->insertNewUserFormPlatform($user,$firstname, $lastname, $account, $password, $sex, $DOB,DatabaseFixedValue::USER_PLATFORM_FACEBOOK);
+        $user = $accountBiz->insertNewUserFormPlatform(new User(),$firstname, $lastname, $account, $password, $sex, $DOB,DatabaseFixedValue::USER_PLATFORM_FACEBOOK);
         return $user;
+    }
+    
+    private function convertFbDate($DOBFB){
+        $date = new DateTime($DOBFB);
+        $date = $date->format(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        return $date;
+        
     }
 
 

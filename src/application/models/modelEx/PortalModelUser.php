@@ -20,7 +20,7 @@ class PortalModelUser extends PortalModelBase
     public $status_reason;
     public $last_active;
     public $platform_key;
-    public $user_type = DatabaseFixedValue::USER_TYPE_USER;
+    public $user_type;
     
     /**
      * insert thêm một user mới
