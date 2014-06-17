@@ -57,8 +57,10 @@ foreach ($product->getImages('baseImage') as $attr)
                 </span>
             </div>
             <div class="lynx_productButtonBuy"> 
-                <input type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
-                       data-action="<?php echo base_url('order/shipping') ?>">
+                <!-- <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
+                       data-action="<?php //echo base_url('order/shipping') ?>">
+                        -->
+                <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" ></input>
             </div>
             <div class="lynx_productButtonAddTo"> 
                 <span class="lynx_actionTitle">Add to : </span>
