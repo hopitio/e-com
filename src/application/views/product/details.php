@@ -7,6 +7,8 @@ foreach ($product->getImages('baseImage') as $attr)
 {
     $images[] = (string) $attr->url;
 }
+$facebookImages = $product->getImages('facebookImage');
+var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LINE__ . ', file ' . __FILE__);
 ?>
 <script>
     $.browser = {};
@@ -50,7 +52,7 @@ foreach ($product->getImages('baseImage') as $attr)
                 <span class="lynx_quantityLabel">Quantity</span>
                 <span class="lynx_productQuantityInput">
                     <select name="sel_qty" id="sel_qty"  class="lynx_productChocie lynx_cbxChoie">
-                        <?php foreach (range(1, min(array(30, (string)$product->getQuantity()))) as $int): ?>
+                        <?php foreach (range(1, min(array(30, (string) $product->getQuantity()))) as $int): ?>
                             <option value="<?php echo $int ?>"><?php echo $int ?></option>
                         <?php endforeach; ?>
                     </select>

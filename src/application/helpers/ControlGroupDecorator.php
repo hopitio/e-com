@@ -20,11 +20,23 @@ class ControlGroupDecorator extends HTMLDecoratorAbstract
         if ($input)
         {
             $inputID = $input->attributes('id');
+            if ($input->attributes('data-rule-required'))
+            {
+                $hasDot = strrpos($this->_labelFor, ':');
+                if ($hasDot !== false)
+                {
+                    $this->_labelFor = substr($this->_labelFor, 0, $hasDot) . "<span class='red'> *:</span>" . '';
+                }
+                else
+                {
+                    $this->_labelFor .= "<span class='red'> *</span>";
+                }
+            }
         }
         ?>
-        <div class="form-group">
+        <div class="form-group control-group">
             <label for="<?php echo $inputID ?>" class="col-sm-3 control-label"><?php echo $this->_labelFor ?></label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 controls">
                 <?php echo $this->_object ?>
             </div>
         </div>

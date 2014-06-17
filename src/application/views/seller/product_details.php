@@ -48,27 +48,26 @@ if ($product->id)
     <!-- Tab panes -->
     <div class="col-lg-9">
         <h1 id="community" class="page-header">
-            <?php
-            if (!$product->id)
-            {
-                echo 'New Product';
-            }
-            else
-            {
-                echo $product->getName();
-            }
-            ?>
+            <a href="/seller/show_products"><i class="fa fa-arrow-left"></i></a>
+            <strong>
+                <?php
+                if (!$product->id)
+                {
+                    echo 'New Product';
+                }
+                else
+                {
+                    echo $product->getName();
+                }
+                ?>
+            </strong>
             &nbsp;
             <div class="actions">
-                <a href="/seller/show_products" class="btn"><i class="fa fa-arrow-left"></i> Back</a>
-                <a href="javascript:;" class="btn" data-type="reset"><i class="fa fa-refresh"></i> Reset</a>
-                <?php if ($product->id): ?>
-                    <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Duplicate</a>
-                <?php endif; ?>
                 <a href="javascript:;" id="btn-apply" class="btn" data-type="submit" data-action="/seller/update_product/apply"><i class="fa fa-check"></i> Apply</a>
                 <?php if ($product->id): ?>
                     <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/save_n_quit"><i class="fa fa-save"></i> Save & Quit</a>
                     <a href="/product/details/<?php echo $product->id ?>" class="btn"><i class="fa fa-eye"></i> Preview</a>
+                    <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Duplicate</a>
                 <?php endif; ?>
             </div>
         </h1>
@@ -113,6 +112,30 @@ if ($product->id)
         $('#selLanguage').change(function() {
             var url = '/seller/product_details/<?php echo $product->id ?>?language=' + $(this).val() + window.location.hash;
             window.location.href = url;
+        });
+
+        function error_tab(tab) {
+            var $tab = $(tab);
+            var $a = $('.nav-tabs a[href="#' + $tab.attr('id') + '"]');
+            if ($a.find('.error').length) {
+                return;
+            }
+            $a.parent().addClass('error');
+            $a.append('<span class="error" style="float:right"><i class="fa fa-warning"></i></span>');
+        }
+
+        $('#frm-main').validate({
+            ignore: ".ignore",
+            invalidHandler: function(event, validator) {
+                var $ul = $('.nav-tabs');
+                $ul.find('span.error').remove();
+                $ul.find('li').removeClass('error');
+                for (var i in validator.errorList) {
+                    var elem = validator.errorList[i].element;
+                    var $tab = $(elem).parents('.tab-pane:first');
+                    error_tab($tab);
+                }
+            }
         });
     });
 

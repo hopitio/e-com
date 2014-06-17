@@ -41,6 +41,9 @@
         <script type='text/javascript' src="/js/app.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
+        <!-- Validation -->
+        <script src="/plugins/validation/jquery.validate.min.js"></script>
+        <script src="/plugins/validation/additional-methods.min.js"></script>
     </head>
     <body>
         <div class="lynx_container">

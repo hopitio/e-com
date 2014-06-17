@@ -78,7 +78,14 @@ class ProductMapper extends MapperAbstract
 
     function filterStatus($int)
     {
-        $this->_query->where('p.`status`=' . intval($int));
+        if ($int !== false && $int !== null)
+        {
+            $this->_query->where('p.`status`=' . intval($int), __FUNCTION__);
+        }
+        else
+        {
+            $this->_query->where(null, __FUNCTION__);
+        }
         return $this;
     }
 

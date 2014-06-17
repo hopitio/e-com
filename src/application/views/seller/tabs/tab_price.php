@@ -3,6 +3,8 @@
 
 //price
 $txtPrice = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtPrice', 'pattr[price]', $product->getPriceMoney('VND')->getAmount()));
+$txtPrice->get_a('TextboxInput')->setAttribute('data-rule-required', true)
+        ->setAttribute('data-rule-number', true);
 echo $txtPrice->decorate(new ControlGroupDecorator('Price:'));
 ?>
 
@@ -68,7 +70,7 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Price:'));
                 }
                 return false;
             };
-            
+
 
             function getTaxes(callback) {
                 $http.get(scriptData.taxURL).success(function(data) {

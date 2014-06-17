@@ -12,6 +12,7 @@ require_once __DIR__ . '/SelectControl.php';
 require_once __DIR__ . '/SelectEnumControl.php';
 require_once __DIR__ . '/TextareaControl.php';
 require_once __DIR__ . '/ckEditorControl.php';
+require_once __DIR__ . '/FileInput.php';
 
 require_once __DIR__ . '/LabelDecorator.php';
 require_once __DIR__ . '/ControlGroupDecorator.php';
