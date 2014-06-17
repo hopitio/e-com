@@ -108,11 +108,13 @@ class PortalBizPassword extends PortalBizBase
     {
         $portalModelUser = new PortalModelUser();
         $portalModelUser->account = $email;
-        
+        $portalModelUser->platform_key =  DatabaseFixedValue::USER_PLATFORM_DEFAULT;
         $portalModelUsers = $portalModelUser->getMutilCondition();
+        
         if(!isset($portalModelUsers[0])){
             return false;
         }
+        
         $portalModelUsers = $portalModelUsers[0];
         $newPass = SecurityManager::inital()->getEncrytion()->getNewpassWordforUser();
         $portalModelUsers->password = $newPass;

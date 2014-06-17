@@ -113,7 +113,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/account/save_contact'] = 'portalController/userInformation/saveUserinformationXhr';
         $route['portal/api/language/submit_change'] = 'portalController/userLanguage/submitChangeXhr';
         $route['api/language/submit_change'] = 'userLanguage/submitChangeXhr';
-        $route['portal/api/account/lost_password'] = 'portalController/lostPassword/reset';
+        $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
         $route['portal/api/account/order_history/cancel_order'] ="portalController/userOrderHistory/cancelOrder";
         
         $route['portal/order_place/portal_get_information'] = 'portalController/orderPlace/getInformation';

@@ -109,7 +109,7 @@
     <cart_showCart></cart_showCart>
     <cart_shipping></cart_shipping>
     <mail>
-        <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
+        <registerconfirm>Welcome to,Sfriendly website</registerconfirm>
         <OrderShipping>Your Sfriendly.com order has shipped! (#{order_number})</OrderShipping>
         <OrderDelivered>Your Sfriendly.com order has delivered (#{order_number})</OrderDelivered>
         <SellerOrderDelivered>Your Sfriendly.com order has delivered</SellerOrderDelivered>
@@ -119,6 +119,8 @@
         <OrderRejected>Fail to Attempt Your Sfriendly.com order (#{order_number})</OrderRejected>
         <SellerOrderRejected>Your item failed to attempt your customer!</SellerOrderRejected>
         <orderCancel>Your Sfriendly.com order has cancelled</orderCancel>
+        <newpasswordNofication>Reset password</newpasswordNofication>
+        <passwordNotify>Changed password</passwordNotify>
     </mail>
     
     <portalaccount_resetPassword></portalaccount_resetPassword>

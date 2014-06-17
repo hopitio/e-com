@@ -28,6 +28,6 @@ class ResetPasswordRegisterMailler extends AbstractStaff{
     protected function buildTitle()
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        return $this->CI->email->subject($mailLanguage->registerconfirm);
+        return $mailLanguage->passwordNotify;
     }
 }

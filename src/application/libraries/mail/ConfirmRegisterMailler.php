@@ -27,6 +27,6 @@ class ConfirmRegisterMailler extends AbstractStaff{
     protected function buildTitle()
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        return $mailLanguage->registerconfirm;
+        return $mailLanguage->passwordConfirm;
     }
 }

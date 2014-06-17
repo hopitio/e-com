@@ -1,4 +1,4 @@
-<div class="lynx_contentWarp lynx_staticWidth">
+<div class="contentWarp wStaticPx" style="min-height:500px;">
         <?php 
             if(isset($error)){
                 echo $error;

@@ -27,7 +27,7 @@ class NewPasswordMailler extends AbstractStaff{
     protected function buildTitle()
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-         return $this->CI->email->subject($mailLanguage->newpasswordNofication);
+         return $mailLanguage->newpasswordNofication;
     }
 
 }
