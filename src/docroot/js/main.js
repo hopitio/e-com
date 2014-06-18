@@ -171,13 +171,14 @@ function productSlider(selector) {
 
 } //product slider
 var AppCommon = {};
-AppCommon.onLoading = function (){
+AppCommon.onLoading = function() {
     $("body").append("<div id='pageMask'></div>");
-    $("#pageMask").css("display","block");
+    $("#pageMask").css("display", "block");
 };
-AppCommon.onLoaded = function (){
-    $("#pageMask").css("display","none");
+AppCommon.onLoaded = function() {
+    $("#pageMask").css("display", "none");
 };
+
 
 
 
@@ -197,6 +198,16 @@ $(function() {
             $('.btn-primary', $modal).show();
             $modal.data().originalHTML = null;
         }
+    });
+});
+
+$(function() {
+    if (!$.fn.validate)
+        return;
+
+    $('.form-validate').each(function() {
+        var $form = $(this);
+        $form.validate();
     });
 });
 

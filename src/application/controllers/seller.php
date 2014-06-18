@@ -147,19 +147,22 @@ class seller extends BaseController
         $data['storateCode'] = $data['storageCodeType'] ? $this->input->post('txtCode') : null;
         $files = isset($_FILES['fileImage']) && !empty($_FILES['fileImage']) ? $_FILES['fileImage'] : array();
         $productID = $this->productModel->updateProduct($data);
-        for ($i = 0; $i < count($files['name']); $i++)
+        if (isset($files['name']))
         {
-            $fileInfo = array();
-            foreach ($files as $k => $fileData)
+            for ($i = 0; $i < count($files['name']); $i++)
             {
-                $fileInfo[$k] = $fileData[$i];
+                $fileInfo = array();
+                foreach ($files as $k => $fileData)
+                {
+                    $fileInfo[$k] = $fileData[$i];
+                }
+                if (!$fileInfo['name'] || !is_uploaded_file($fileInfo['tmp_name']) || !file_exists($fileInfo['tmp_name']))
+                {
+                    continue;
+                }
+                $fileID = $this->fileModel->handleImageUpload($fileInfo);
+                $this->productModel->addProductImage($productID, $fileID);
             }
-            if (!$fileInfo['name'] || !is_uploaded_file($fileInfo['tmp_name']) || !file_exists($fileInfo['tmp_name']))
-            {
-                continue;
-            }
-            $fileID = $this->fileModel->handleImageUpload($fileInfo);
-            $this->productModel->addProductImage($productID, $fileID);
         }
         if ($redirect == 'apply')
         {
@@ -185,7 +188,9 @@ class seller extends BaseController
         {
             $language = 'EN-US';
         }
+
         $product = ProductFixedMapper::make()
+                ->filterStatus(null)
                 ->autoloadAttributes()
                 ->setLanguage($language)
                 ->filterID($productID)
