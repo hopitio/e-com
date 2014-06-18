@@ -74,6 +74,45 @@ class ProductModel extends BaseModel
         }
     }
 
+    function activate($productID)
+    {
+        if (!$productID)
+        {
+            throw new Lynx_BusinessLogicException("Sai mã sản phẩm");
+        }
+        $languages = array('VN-VI', 'EN-US', 'KO-KR');
+        //không multilanguage
+        //số trường required
+        $count_required_fields = DB::getInstance()->GetOne("SELECT COUNT(*) FROM t_product_attribute_type WHERE multi_language = 0 AND required = 1");
+        //số trường thực điền
+        $count_actual_fields = DB::getInstance()->GetOne("SELECT COUNT(DISTINCT fk_attribute_type) FROM t_product_attribute WHERE fk_attribute_type IN"
+                . "(SELECT id FROM t_product_attribute_type WHERE multi_language = 0 AND required = 1) AND fk_product = ?", array($productID));
+        if ($count_actual_fields < $count_required_fields)
+        {
+            throw new Lynx_BusinessLogicException("Bạn cần nhập đủ các trường bắt buộc có dấu (*)");
+        }
+        //multilanguage
+        //số trường require
+        $count_required_fields = DB::getInstance()->GetOne("SELECT COUNT(*) FROM t_product_attribute_type WHERE multi_language = 1 AND required = 1");
+        //số trường thực điền
+        $count_actual_fields = DB::getInstance()->GetOne("SELECT COUNT(DISTINCT fk_attribute_type, language) FROM t_product_attribute WHERE fk_attribute_type IN"
+                . "(SELECT id FROM t_product_attribute_type WHERE multi_language = 1 AND required = 1) AND fk_product = ?", array($productID));
+        if ($count_actual_fields < $count_required_fields * count($languages))
+        {
+            throw new Lynx_BusinessLogicException("Bạn cần nhập đủ các ngôn ngữ");
+        }
+        DB::update('t_product', array('status' => 1), 'id=?', array($productID));
+    }
+
+    function deactivate($productID)
+    {
+        if (!$productID)
+        {
+            throw new Lynx_BusinessLogicException("Sai mã sản phẩm");
+        }
+        DB::update('t_product', array('status' => 0), 'id=? AND status=1', array($productID));
+    }
+
     function deleteProduct($productIDs)
     {
         if (!is_array($productIDs))
@@ -94,12 +133,11 @@ class ProductModel extends BaseModel
             $productIDs = $tempList;
             unset($tempList);
         }
-        DB::update('t_product', array('status' => 0), 'id IN(' . $productIDs . ')');
+        DB::update('t_product', array('status' => -1), 'id IN(' . $productIDs . ')');
     }
 
     function updateProduct($data)
     {
-        DB::getInstance()->StartTrans();
         if ($data['id'])
         {
             DB::update('t_product', array(
@@ -136,7 +174,6 @@ class ProductModel extends BaseModel
             }
         endforeach;
         $this->updateProductImages($data['id']);
-        DB::getInstance()->CompleteTrans();
         return $data['id'];
     }
 

@@ -2,15 +2,15 @@
 defined('BASEPATH') or die;
 
 /* @var $product ProductFixedDomain */
-$tabs = array('general' => 'General');
+$tabs = array('general' => 'Thông tin cơ bản');
 if ($product->id)
 {
     $tabs += array(
-        'category'        => 'Category',
-        'price'           => 'Price & Taxes',
-        'return_warranty' => 'Return & Warranty',
-        'meta'            => 'Meta Infomation',
-        'images'          => 'Images'
+        'category'        => 'Chuyên mục',
+        'price'           => 'Giá & Thuế',
+        'return_warranty' => 'Điều khoản Trả hàng & Bảo hành',
+        'meta'            => 'Thông tin tìm kiếm',
+        'images'          => 'Ảnh'
     );
 }
 ?>
@@ -37,7 +37,20 @@ if ($product->id)
             <?php endforeach; ?>
         </select>
         <h4 class="left">
-            Product Information
+            Trạng thái:&nbsp;
+            <?php
+            switch ($product->status) {
+                case -1:
+                    echo '<span class="red">Đã xóa</span>';
+                    break;
+                case 0:
+                    echo '<span class="grey">Không hoạt động</span>';
+                    break;
+                case 1:
+                    echo '<span class="green">Hoạt động</span>';
+                    break;
+            }
+            ?>
         </h4>
         <ul class="nav nav-tabs">
             <?php foreach ($tabs as $tab => $tabName): ?>
@@ -63,11 +76,16 @@ if ($product->id)
             </strong>
             &nbsp;
             <div class="actions">
-                <a href="javascript:;" id="btn-apply" class="btn" data-type="submit" data-action="/seller/update_product/apply"><i class="fa fa-check"></i> Apply</a>
+                <a href="javascript:;" id="btn-apply" class="btn" data-type="submit" data-action="/seller/update_product/apply"><i class="fa fa-save"></i> Ghi lại</a>
                 <?php if ($product->id): ?>
-                    <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/save_n_quit"><i class="fa fa-save"></i> Save & Quit</a>
-                    <a href="/product/details/<?php echo $product->id ?>" class="btn"><i class="fa fa-eye"></i> Preview</a>
-                    <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Duplicate</a>
+                    <?php if ($product->status != 1): ?>
+                        <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/activate"><i class="fa fa-check"></i> Kích hoạt</a>
+                    <?php endif; ?>
+                    <?php if ($product->status == 1): ?>
+                        <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/deactivate"><i class="fa fa-check"></i> Ngừng kích hoạt</a>
+                    <?php endif; ?>
+                    <a href="/product/details/<?php echo $product->id ?>" class="btn"><i class="fa fa-eye"></i> Xem thử</a>
+                    <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Sao chép</a>
                 <?php endif; ?>
             </div>
         </h1>

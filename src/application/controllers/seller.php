@@ -131,13 +131,15 @@ class seller extends BaseController
         $this->load->model('modelEx/FileModel', 'fileModel');
     }
 
-    function update_product($redirect)
+    function update_product($sub_action)
     {
         $this->getProductModel();
         $this->getFileModel();
+        $productID = (int) $this->input->post('hdnProductID');
+
         $data = array(
             'seller'          => $this->sellerInstance->id,
-            'id'              => (int) $this->input->post('hdnProductID'),
+            'id'              => $productID,
             'language'        => $this->input->post('hdnLanguage'),
             'storageCodeType' => $this->input->post('selCodeType'),
             'status'          => $this->input->post('chkStatus'),
@@ -146,32 +148,45 @@ class seller extends BaseController
         $data['categoryID'] = $data['id'] ? $this->input->post('radCate') : $this->input->post('hdnCategory');
         $data['storateCode'] = $data['storageCodeType'] ? $this->input->post('txtCode') : null;
         $files = isset($_FILES['fileImage']) && !empty($_FILES['fileImage']) ? $_FILES['fileImage'] : array();
-        $productID = $this->productModel->updateProduct($data);
-        if (isset($files['name']))
+
+        try
         {
-            for ($i = 0; $i < count($files['name']); $i++)
+            DB::getInstance()->StartTrans();
+            $productID = $this->productModel->updateProduct($data);
+            $returnURL = '/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' . $this->input->post('hdnTab');
+            if (isset($files['name']))
             {
-                $fileInfo = array();
-                foreach ($files as $k => $fileData)
+                for ($i = 0; $i < count($files['name']); $i++)
                 {
-                    $fileInfo[$k] = $fileData[$i];
+                    $fileInfo = array();
+                    foreach ($files as $k => $fileData)
+                    {
+                        $fileInfo[$k] = $fileData[$i];
+                    }
+                    if (!$fileInfo['name'] || !is_uploaded_file($fileInfo['tmp_name']) || !file_exists($fileInfo['tmp_name']))
+                    {
+                        continue;
+                    }
+                    $fileID = $this->fileModel->handleImageUpload($fileInfo);
+                    $this->productModel->addProductImage($productID, $fileID);
                 }
-                if (!$fileInfo['name'] || !is_uploaded_file($fileInfo['tmp_name']) || !file_exists($fileInfo['tmp_name']))
-                {
-                    continue;
-                }
-                $fileID = $this->fileModel->handleImageUpload($fileInfo);
-                $this->productModel->addProductImage($productID, $fileID);
             }
+            if ($sub_action == 'activate')
+            {
+                $this->productModel->activate($data['id']);
+            }
+            elseif ($sub_action == 'deactivate')
+            {
+                $this->productModel->deactivate($data['id']);
+            }
+            DB::getInstance()->CompleteTrans();
+            Common::redirect_notify($returnURL);
         }
-        if ($redirect == 'apply')
+        catch (Exception $ex)
         {
-            redirect('/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' . $this->input->post('hdnTab'));
+            Common::redirect_back($returnURL, $ex->getMessage(), false);
         }
-        elseif ($redirect == 'save_n_quit')
-        {
-            redirect('/seller/show_products');
-        }
+        //redirect('/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' . $this->input->post('hdnTab'));
     }
 
     function duplicate_product($productID)
@@ -183,6 +198,7 @@ class seller extends BaseController
 
     function product_details($productID = 0)
     {
+        Common::nocache();
         $language = $this->input->get('language');
         if (!$language)
         {

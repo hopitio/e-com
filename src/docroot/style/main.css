@@ -16,6 +16,7 @@ table th{font-weight: bold;}
 u, u *{text-decoration: underline;}
 .green{color:#04b139}
 .red{color:#b12704;}
+.grey{color:grey;}
 .lynx_head .lynx_logo{
     background: transparent url('../images/logo.png') no-repeat top left;
     float:left;
@@ -30,6 +31,9 @@ u, u *{text-decoration: underline;}
     margin-top: 45px;
     cursor: pointer;
 }
+.gritter-title{color:white;text-align: left;}
+h4, .h4, h4 *{font-size:18px;}
+.gritter-item p{color:white;text-align: left;}
 .lynx_head .lynx_headLeft .lynx_sell,.lynx_liveChat,.lynx_language .lynx_label{
     font-size: 12px;
     line-height: 22px;
