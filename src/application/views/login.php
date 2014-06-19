@@ -58,7 +58,7 @@
             <a href="/portal/account/lost_password"><?php echo $language[$view->view]->lblForgetPassword;?></a>
             
             <a href="javascript:void(0)" id="likfacebooklogin" link="<?php echo UrlManager::getInstanse()->getLoginFacebookUrl();?>"><img src="/images/Social_signin_facebook.png" /></a>
-            <a href="#"><img src="/images/Social_signin_google.png" /></a>
+            <a href="#" style="display:none"><img src="/images/Social_signin_google.png" /></a>
             
             <input name='currentPage' type="hidden" value='<?php echo $cp;?>'>
             <input name='endpoint' type="hidden" value='<?php echo $ep;?>'>

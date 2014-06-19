@@ -254,10 +254,54 @@
     <category_show></category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
-    <portalPayment_paymentChoice></portalPayment_paymentChoice>
+    <portalPayment_paymentChoice>
+        <title>Lựa chọn phương thức thanh toán</title>
+        <paymentProcessCart>Giỏ hàng</paymentProcessCart>
+        <paymentProcessPlaceOrder>Quầy Thanh toán</paymentProcessPlaceOrder>
+        <paymentProcessShipping>Thông tin vận chuyển</paymentProcessShipping>
+        <paymentProcessPaymentInfor>Phương thức thanh toán</paymentProcessPaymentInfor>
+        <paymentProcessPayment>Thanh toán</paymentProcessPayment>
+        
+        <lblGoBack>Trở lại</lblGoBack>
+        
+        <lblShippingAddress>Địa chỉ nhận hàng</lblShippingAddress>
+        <lblShippingInvoiceAddress>Địa chỉ nhận hóa đơn</lblShippingInvoiceAddress>
+        <lblFullname>Họ và tên : </lblFullname>
+        <lblPhone>Số điện thoại : </lblPhone>
+        <lblAddress>Địa chỉ : </lblAddress>
+        
+        <lblProducts>Sản phẩm</lblProducts>
+        <colProduct>Sản phẩm</colProduct>
+        <colPrice>Giá</colPrice>
+        <colQty>Số lượng</colQty>
+        <colSubTotal>Tổng</colSubTotal>
+        
+        <lblPaymentType>Phương thức thanh toán</lblPaymentType>
+        <colPlaymentType>Loại thanh toán</colPlaymentType>
+        <colPlaymentFreeType>Cách tính phí</colPlaymentFreeType>
+        <colPlaymentFree>Chi phí (VND)</colPlaymentFree>
+        
+        <lblOrderSummaries>Tổng hợp đơn hàng</lblOrderSummaries>
+        <lblOrderId>Mã đơn hàng : </lblOrderId>
+        <lblInvoiceId>Mã hóa đơn : </lblInvoiceId>
+        <lblCreateDate>Ngày tạo : </lblCreateDate>
+        <lblOrderSummariesDetail>Đơn hàng gồm có</lblOrderSummariesDetail>
+        <lblProducts>Sản phẩm</lblProducts>
+        <lblOrderShipping>Thông tin vận chuyển : </lblOrderShipping>
+        <lblOrderSubtotal>Tổng hàng : </lblOrderSubtotal>
+        <lblOrderTax>Thuế : </lblOrderTax>
+        <lblOrderTotal>Tổng giá trị hóa đơn : </lblOrderTotal>
+        <btnNext>Tiếp theo</btnNext>
+        <btnBack>Trở lại giỏ hàng</btnBack>
+    </portalPayment_paymentChoice>
     <portalPayment_orderReview></portalPayment_orderReview>
     <seller_product_details></seller_product_details>
-    <portalPayment_paymentSuccess></portalPayment_paymentSuccess>
+    <portalPayment_paymentSuccess>
+        <title>Giao dịch thành công</title>
+        <lblNotify>Giao dịch thành công</lblNotify>
+        <lblSucessMsg>Bạn vừa thanh toán thành công vui lòng kiểm tra mail. {br} Nhân viên bán hàng sẽ liên hệ sớm nhất với bạn.</lblSucessMsg>
+        <lblFaileMsg>Thanh toán thất bại, vui lòng kiểm tra lại thông tin.</lblFaileMsg>
+    </portalPayment_paymentSuccess>
     <file_browse_file></file_browse_file>
     <search_show_page></search_show_page>
 </data>
