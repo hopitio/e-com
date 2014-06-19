@@ -19,10 +19,12 @@ class lostPassword extends BasePortalController
         $email = $this->input->post();
         $biz = new PortalBizPassword();
         $isComplete = $biz->verifyAndResetPasswordEmail($email['email']);
+        $language = MultilLanguageManager::getInstance()->getLangViaScreen('portalaccount/lostPassword', $this->obj_user->languageKey);
+        
         IF($isComplete){
-            $this->_data['msg'] = "<p>Reset Mật khẩu thành công, bạn hãy kiểm tra mail để biết thêm thông tin. </p>";
+            $this->_data['msg'] = "<p>{$language->lblMsgOk}</p>";
         }else{
-            $this->_data['msg'] = "<p style='color:red'>Email bạn vừa nhập chưa chính xác.</p>";
+            $this->_data['msg'] = "<p style='color:red'>{$language->lblMsgNotOk}</p>";
         }
         
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($this->_data)->setCss($this->_css)->render('portalaccount/lostPassword');

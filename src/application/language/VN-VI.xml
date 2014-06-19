@@ -136,7 +136,17 @@
     <portalOrder_orderCheckinComplete></portalOrder_orderCheckinComplete>
     <seller_show_products></seller_show_products>
     <seller_add_product></seller_add_product>
-    <portalaccount_lostPassword></portalaccount_lostPassword>
+    <portalaccount_lostPassword>
+        <title>Khôi phục mật khẩu</title>
+        <lblStepDes>Các Bước thực hiện reset mật khẩu bao gôm </lblStepDes>
+        <lblStep1>Bạn cần nhập địa chỉ mail của bạn</lblStep1>
+        <lblStep2>Bạn Kiểm tra mail và lấy thông tin mật khẩu của bạn</lblStep2>
+        <lblStep3>Đăng nhập với thông tin mật khẩu mới</lblStep3>
+        <lblMail>Địa chỉ mail</lblMail>
+        <btnMailler>Xác nhận</btnMailler>
+        <lblMsgOk>Reset Mật khẩu thành công, bạn hãy kiểm tra mail để biết thêm thông tin.</lblMsgOk>
+        <lblMsgNotOk>Email bạn vừa nhập chưa chính xác.</lblMsgNotOk>
+    </portalaccount_lostPassword>
     <portalHelp_policy></portalHelp_policy>
     
     <portalaccount_userSecurity>
