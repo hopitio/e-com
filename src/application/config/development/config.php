@@ -385,7 +385,7 @@ $config['calendar_month_diff_from'] = -6;
 $config['calendar_month_diff_to'] = +6;
 
 $config['languagePath'] = 'language/';
-$config['languages_supported'] = array('VN-VI', 'EN-US');
+$config['languages_supported'] = array('VN-VI', 'EN-US', 'KO-KR');
 
 $config['facebook_app_id'] = '1392515564358247';
 $config['facebook_authen_url'] = 'https://www.facebook.com/dialog/oauth?client_id=[YOUR_APP_ID]&redirect_uri=http://localhost/portal/login/facbook_callback';
