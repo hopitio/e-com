@@ -128,13 +128,13 @@ function makeURL($categoryID, $changeParams = array())
                 <ul>
                     <?php
                     $sorts = array(
-                        array('lynx_sorterNew', 'new', 'Mới nhất'),
-                        array('lynx_sorterSellOnline', 'bestseller', 'Bán chạy'),
-                        array('lynx_sorterPriceAsc', 'priceasc', 'Giá thấp nhất'),
-                        array('lynx_sorterPriceDesc', 'pricedesc', 'Giá cao nhất'),
-                        array('lynx_sorterSaleAsc', 'sale', 'Giảm giá'),
-                        array('lynx_sorterHot', 'hot', 'Hot'),
-                        array('lynx_sorterMostLiked', 'like', 'Yêu thích')
+                        array('lynx_sorterNew', 'new', $language[$view->view]->lblSortNew),
+                        array('lynx_sorterSellOnline', 'bestseller', $language[$view->view]->lblSortBestbuy),
+                        array('lynx_sorterPriceAsc', 'priceasc', $language[$view->view]->lblSortPriceDown),
+                        array('lynx_sorterPriceDesc', 'pricedesc', $language[$view->view]->lblSortPriceUp),
+                        array('lynx_sorterSaleAsc', 'sale', $language[$view->view]->lblSortSaleoff),
+                        array('lynx_sorterHot', 'hot', $language[$view->view]->lblSortHot),
+                        array('lynx_sorterMostLiked', 'like', $language[$view->view]->lblSortLike)
                     );
                     $sortBy = isset($_GET['sort']) ? $_GET['sort'] : 'new';
                     ?>
@@ -162,13 +162,13 @@ function makeURL($categoryID, $changeParams = array())
             <?php endif; ?>
             <div ng-if="getProductsRequest">
                 <center>
-                    <img src="/images/loading.gif"> Đang tải sản phẩm, vui lòng chờ...
+                    <img src="/images/loading.gif"> <?php echo $language[$view->view]->lblLoading;?>
                 </center>
             </div>
             <div class="lynx_item" ng-repeat="product in products" product="product"></div>
         </div>
         <div class="lynx_showMore" ng-click="nextPage()" ng-disabled="getProductsRequest" ng-show="showBtnNext">
-            SHOW MORE ...
+            <?php echo $language[$view->view]->lblShowMore;?>
         </div>
     </div>
     <div class="lynx_adveGroup">

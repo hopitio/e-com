@@ -45,7 +45,7 @@
         <msgWoringAns>Tên dài quá 50 ký tự</msgWoringAns>
     </login>
     <registercomplete>
-        <title>Register complete</title>
+        <title>Đăng ký thành công</title>
         <des>Bạn đã đăng ký thành công vui lòng kiểm tra mail để xác nhận đăng ký này.</des>
     </registercomplete>
     <Details>
@@ -108,7 +108,17 @@
         <lblWarranty>Bảo hành &amp; trả hàng</lblWarranty>
         <lblRelated>Sản phẩm liên quan</lblRelated>
     </product_details>
-    <wishlist_show></wishlist_show>
+    <wishlist_show>
+        <title>Sản phẩm mong muốn</title>
+        <colProduct>Sản phẩm</colProduct>
+        <colPrice>Giá</colPrice>
+        <colAction> </colAction>
+        <lblInstock>Còn hàng</lblInstock>
+        <lblInstockQty>Còn {{product.stock}} sản phẩm</lblInstockQty>
+        <lblOutOfstock>Hết hàng</lblOutOfstock>
+        <lblAddToCart>Thêm vào giỏ hàng</lblAddToCart>
+        <lblRemoveItem>Xóa khỏi dánh sach</lblRemoveItem>
+    </wishlist_show>
     <portalaccount_account>
         <title>Thông tin tài khoản cá nhân</title>
     </portalaccount_account>
@@ -146,7 +156,35 @@
         <lblTax>Thuế</lblTax>
         <btncheckout>Tiếp tục</btncheckout>
     </cart_showCart>
-    <cart_shipping></cart_shipping>
+    <cart_shipping>
+        <title>Thông tin vận chuyển</title>
+        <lblYourcart>Giỏ hàng</lblYourcart>
+        <lblPlaceOrder>Place order</lblPlaceOrder>
+        <lblShippingInfor>Thông tin vận chuyển</lblShippingInfor>
+        <lblPaymentInfor>Thông tin thanh toán</lblPaymentInfor>
+        <lblShippingAddress>Địa chỉ</lblShippingAddress>
+        <lblPhone>Số điện thoại</lblPhone>
+        <lblAddress>Địa chỉ</lblAddress>
+        <lblCity>Thành phố</lblCity>
+        <lblProvince>Tỉnh</lblProvince>
+        <lblShippingMethods>Phương thức vận chuyển</lblShippingMethods>
+        <lblName>Họ và tên</lblName>
+        <colName>Tên</colName>
+        <colTime>Thời gian vận chuyển</colTime>
+        <lblGift>Quà</lblGift>
+        <lblIsGift>Sản phẩm làm quà tặng</lblIsGift>
+        <lblGiftNoiceLine1>Sản phẩm làm quà tặng</lblGiftNoiceLine1>
+        <lblGiftNoice>(Miễn phí bọc quà)</lblGiftNoice>
+        <lblIsNotGift>Không phải là quà</lblIsNotGift>
+        <btnContinue>Tiếp tục</btnContinue>
+        <btnBacktoCart>Trở về giỏ hàng</btnBacktoCart>
+        <lblCartsum>Tóm tắt</lblCartsum>
+        <lblProduct>Sản phẩm </lblProduct>
+        <lblShipping>Vận chuyển</lblShipping>
+        <lblTax>Thuế</lblTax>
+        <lblSubtotal>Thành tiền</lblSubtotal>
+        <lblTotal>Tổng</lblTotal>
+    </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>
         <OrderShipping>Your Sfriendly.com order has shipped! (#{order_number})</OrderShipping>
@@ -164,7 +202,18 @@
     
     <portalaccount_resetPassword></portalaccount_resetPassword>
     <order_placeOrder></order_placeOrder>
-    <pin_showPage></pin_showPage>
+    <pin_showPage>
+        <title>Sản phẩm đánh dấu</title>
+        <colProduct>Sản phẩm</colProduct>
+        <colPrice>Giá</colPrice>
+        <colAction> </colAction>
+        <lblInstock>Còn hàng</lblInstock>
+        <lblInstockQty>Còn {{product.stock}} sản phẩm</lblInstockQty>
+        <lblOutOfstock>Hết hàng</lblOutOfstock>
+        <lblAddToCart>Chuyển sang giỏ hàng</lblAddToCart>
+        <lblMoveToWishlist>Chuyển sang wishlist </lblMoveToWishlist>
+        <lblRemoveItem>Hủy Đánh dấu</lblRemoveItem>
+    </pin_showPage>
     <admin_login></admin_login>
     <admin_mainpage></admin_mainpage>
     <portalAdmin_support></portalAdmin_support>
@@ -300,7 +349,18 @@
     </portalaccount_userOrderHistory>
     <product_list></product_list>
     <admin_sellerFind></admin_sellerFind>
-    <category_show></category_show>
+    <category_show>
+        <title>Danh mục sản phẩm</title>
+        <lblLoading>Đang tải sản phẩm, vui lòng chờ...</lblLoading>
+        <lblShowMore>Xem thêm</lblShowMore>
+        <lblSortNew>Mới nhất</lblSortNew>
+        <lblSortBestbuy>Bán chạy nhất</lblSortBestbuy>
+        <lblSortPriceDown>Giá thấp nhất</lblSortPriceDown>
+        <lblSortPriceUp>Giá cao nhất</lblSortPriceUp>
+        <lblSortSaleoff>Giảm giá mạnh</lblSortSaleoff>
+        <lblSortHot>Sản phẩm hot</lblSortHot>
+        <lblSortLike>Sản phẩm yêu thích</lblSortLike>
+    </category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
     <portalPayment_paymentChoice>

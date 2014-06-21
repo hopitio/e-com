@@ -8,44 +8,44 @@
         <lblSale>Sale off</lblSale>
     </home>
     <login>
-        <title>PROJECT E Đăng nhập</title>
-        <loginTitle>Đăng nhập</loginTitle>
-        <registeTitle>Đăng Ký</registeTitle>
-        <lblUs>Tên Đăng nhập : </lblUs>
-        <lblPs>Mật khẩu :</lblPs>
-        <btnLogin>Đăng nhập</btnLogin>
-        <lblForgetPassword>Bạn không thể đăng nhập tài khoản </lblForgetPassword>
-        <lblCreateNewAccount>Đăng ký tài khoản mới </lblCreateNewAccount>
-        <lblError>Tên đăng nhập hoặc mật khẩu không đúng.</lblError>
-        <lblCreateFristName>Họ và tên đệm </lblCreateFristName>
-        <lblCreateLastName> Tên </lblCreateLastName>
-        <lblDOB>Ngày sinh </lblDOB>
+        <title>PROJECT E Login</title>
+        <loginTitle>Login</loginTitle>
+        <registeTitle>Sign up</registeTitle>
+        <lblUs>Account / Email : </lblUs>
+        <lblPs>Password :</lblPs>
+        <btnLogin>Login</btnLogin>
+        <lblForgetPassword>You can not sign in to account </lblForgetPassword>
+        <lblCreateNewAccount>Register </lblCreateNewAccount>
+        <lblError>Account(email)/ password is not correct</lblError>
+        <lblCreateFristName>First name</lblCreateFristName>
+        <lblCreateLastName> Name </lblCreateLastName>
+        <lblDOB>Date of birth </lblDOB>
         <lblEmail>Email </lblEmail>
-        <lblPassword>Mật khẩu </lblPassword>
-        <lblPasswordRetry> Nhập lại mật khẩu </lblPasswordRetry>
-        <lblSex>Giới tính </lblSex>
-        <lblSexM>Nam</lblSexM>
-        <lblSexF>Nữ</lblSexF>
-        <lblSexO>Khác</lblSexO>
-        <lblQuestion>Câu hỏi bí mật</lblQuestion>
-        <lblQ0>Bạn thích chơi game nào nhất ?</lblQ0>
-        <lblQ1>Tên thuở nhỏ của bạn là gì ? </lblQ1>
-        <lblQ2>Trường cấp 3 của bạn là gì ?</lblQ2>
-        <lblQ3>Cuốn sách mà bạn thích nhất ?</lblQ3>
-        <lblQ4>Tên vật nuôi của bạn là gì ?</lblQ4>
-        <lblQ5>Bạn thích con vật nào nhất ?</lblQ5>
-        <lblanswer>Trả lời</lblanswer>
-        <btnResg>Đồng ý điều khoản sử dụng và Đăng ký </btnResg>
-        <lblLinkPolice>Chi tiết điều khoản sử dụng và điều lệ của website.</lblLinkPolice>
-        <msgWoringEmail>Email sai địng dạng hoặc dài quá 254 ký tự</msgWoringEmail>
-        <msgWoringPass>Mật khẩu không khớp và chỉ chứa ký tự từ 0-9, A-Z </msgWoringPass>
-        <msgWoringFristName>Họ và tên đệm dài quá 50 ký tự</msgWoringFristName>
-        <msgWoringLastName>Tên dài quá 50 ký tự</msgWoringLastName>
-        <msgWoringAns>Tên dài quá 50 ký tự</msgWoringAns>
+        <lblPassword>Password </lblPassword>
+        <lblPasswordRetry> Re-password </lblPasswordRetry>
+        <lblSex>Gender </lblSex>
+        <lblSexM>Male</lblSexM>
+        <lblSexF>Female</lblSexF>
+        <lblSexO>Other</lblSexO>
+        <lblQuestion>Questions</lblQuestion>
+        <lblQ0>Which game do you like most?</lblQ0>
+        <lblQ1>Name What is your childhood? </lblQ1>
+        <lblQ2>Your high school name is what?</lblQ2>
+        <lblQ3>Your favorite book?</lblQ3>
+        <lblQ4>Name What is your pet?</lblQ4>
+        <lblQ5>What animal do you like most?</lblQ5>
+        <lblanswer>Answer</lblanswer>
+        <btnResg>Agree to the terms of use and Registration </btnResg>
+        <lblLinkPolice>Details and terms of use of the website charter.</lblLinkPolice>
+        <msgWoringEmail>Email the wrong format or exceed 254 characters</msgWoringEmail>
+        <msgWoringPass>Passwords do not match and contain only characters from 0-9, AZ </msgWoringPass>
+        <msgWoringFristName>First Name longer than 50 characters</msgWoringFristName>
+        <msgWoringLastName>Last name longer than 50 characters</msgWoringLastName>
+        <msgWoringAns>Answers longer than 50 characters</msgWoringAns>
     </login>
     <registercomplete>
         <title>Register complete</title>
-        <des>Bạn đã đăng ký thành công vui lòng kiểm tra mail để xác nhận đăng ký này.</des>
+        <des>You have successfully registered mail please check to confirm this subscription.</des>
     </registercomplete>
     <Details>
         <label>abc{0}</label>
@@ -53,36 +53,36 @@
     <layout>
         <lblHeadSell>SELL</lblHeadSell>
         <lblLiveChat>LIVE CHAT</lblLiveChat>
-        <lblLanguage>LANGUGAE</lblLanguage>
+        <lblLanguage>LANGUAGE</lblLanguage>
         
-        <lblMakeMoneyWithUs>Hợp tác và phát triển</lblMakeMoneyWithUs>
-        <lblSell>Bán sản phẩm</lblSell>
-        <lblAdve>Liên hệ quảng cáo</lblAdve>
-        <lblCustomerService>Khách hàng</lblCustomerService>
+        <lblMakeMoneyWithUs>Co-operation and Development</lblMakeMoneyWithUs>
+        <lblSell>Sell</lblSell>
+        <lblAdve>Contact for advertising</lblAdve>
+        <lblCustomerService>Customers</lblCustomerService>
         <lblFAQs>FAQs</lblFAQs>
-        <lblContact>Liên hệ</lblContact>
-        <lblShippingvsReturn>Vận chuyển và trả hàng </lblShippingvsReturn>
-        <lblSafeShopping>Mua bán an toàn</lblSafeShopping>
-        <lblGuaranteeSecureShopping>Đảm bảo bán hàng</lblGuaranteeSecureShopping>
-        <lblAboutSfriendly>Về Sfriendly</lblAboutSfriendly>
-        <lblAbout>Về chúng tôi</lblAbout> 
-        <lblJobs>Công việc</lblJobs>
-        <lblCustomerTestimonials>Khách hàng thực</lblCustomerTestimonials>
-        <lblAssociatesProgram>Chương trình đối tác</lblAssociatesProgram>
-        <lblGlossaryofTerms>Thuật ngữ</lblGlossaryofTerms>
-        <lblDailyShowDigest>Gian hàng hằng ngày</lblDailyShowDigest>
+        <lblContact>Contact</lblContact>
+        <lblShippingvsReturn>Shipping and Returns </lblShippingvsReturn>
+        <lblSafeShopping>Buying and selling safety</lblSafeShopping>
+        <lblGuaranteeSecureShopping>Ensure sales</lblGuaranteeSecureShopping>
+        <lblAboutSfriendly>About Sfriendly</lblAboutSfriendly>
+        <lblAbout>About Us</lblAbout> 
+        <lblJobs>Jobs</lblJobs>
+        <lblCustomerTestimonials>Customer Testimonials</lblCustomerTestimonials>
+        <lblAssociatesProgram>Associates Program</lblAssociatesProgram>
+        <lblGlossaryofTerms>Glossary of terms</lblGlossaryofTerms>
+        <lblDailyShowDigest>Daily show digest</lblDailyShowDigest>
         <lblFeedback>Feedback</lblFeedback>
-        <lblHowLikeOurWebsite>Góp ý cho website</lblHowLikeOurWebsite>
+        <lblHowLikeOurWebsite>How like our website</lblHowLikeOurWebsite>
         <lblCart>Your Cart</lblCart>
         <lblViewCartWidthProductNumber>View Cart ({{cart.length}} items)</lblViewCartWidthProductNumber>
         <lblViewCart>{{cart.length}} items</lblViewCart>
         <lblCartAlert>Empty Cart</lblCartAlert>
         <lblCartQuantity>Số lượng</lblCartQuantity>
-        <lblUserStatus>Chào, {1} tài khoản của bạn</lblUserStatus>
+        <lblUserStatus>Hi, {1} Your account</lblUserStatus>
         <lblUserStatusNotSign>Hello, Sign in Here</lblUserStatusNotSign>
-        <lblUserLogout>Đăng xuất</lblUserLogout>
-        <lblUserAccount>Thông tin tài khoản</lblUserAccount>
-        <lblUserOrder>Thông tin order</lblUserOrder>
+        <lblUserLogout>Sign out</lblUserLogout>
+        <lblUserAccount>Account information</lblUserAccount>
+        <lblUserOrder>Order information</lblUserOrder>
         <lblUserWishlist>Wishlist</lblUserWishlist>
         <lblUserPinlist>Pinlist</lblUserPinlist>
         <lblSearch>Search</lblSearch>
@@ -107,9 +107,19 @@
         <lblRelated>Related product</lblRelated>
         
     </product_details>
-    <wishlist_show></wishlist_show>
+    <wishlist_show>
+        <title>Wishlist</title>
+        <colProduct>Products</colProduct>
+        <colPrice>Price</colPrice>
+        <colAction> </colAction>
+        <lblInstock>In stock</lblInstock>
+        <lblInstockQty>Just {{product.stock}} items</lblInstockQty>
+        <lblOutOfstock>Out of stock</lblOutOfstock>
+        <lblAddToCart>Add to cart</lblAddToCart>
+        <lblRemoveItem>Remove</lblRemoveItem>
+    </wishlist_show>
     <portalaccount_account>
-        <title>Thông tin tài khoản cá nhân</title>
+        <title>Account information</title>
     </portalaccount_account>
     <portalaccount_active>
         <title>Xác minh tài khoản</title>
@@ -145,14 +155,53 @@
         <lblTax>Taxes</lblTax>
         <btncheckout>Checkout</btncheckout>
     </cart_showCart>
-    <cart_shipping></cart_shipping>
+    <cart_shipping>
+        <title>Shipping information</title>
+        <lblYourcart>Your Cart</lblYourcart>
+        <lblPlaceOrder>Place order</lblPlaceOrder>
+        <lblShippingInfor>Shipping infor</lblShippingInfor>
+        <lblPaymentInfor>Playment infor</lblPaymentInfor>
+        <lblShippingAddress>Shipping address</lblShippingAddress>
+        <lblPhone>Phone number</lblPhone>
+        <lblAddress>Street address</lblAddress>
+        <lblCity>City/district</lblCity>
+        <lblProvince>Province</lblProvince>
+        <lblShippingMethods>Shipping methods</lblShippingMethods>
+        <lblName>Full name</lblName>
+        <colName>Name</colName>
+        <colTime>Transmit time</colTime>
+        <lblGift>Gift</lblGift>
+        <lblIsGift>Is gift</lblIsGift>
+        <lblGiftNoiceLine1>Is gift</lblGiftNoiceLine1>
+        <lblGiftNoice>(Free gift wrap)</lblGiftNoice>
+        <lblIsNotGift>Yes, it's a gift</lblIsNotGift>
+        <btnContinue>Continue</btnContinue>
+        <btnBacktoCart>Back to cart</btnBacktoCart>
+        <lblCartsum>Cart summary</lblCartsum>
+        <lblProduct>Products </lblProduct>
+        <lblShipping>Shipping</lblShipping>
+        <lblTax>Tax</lblTax>
+        <lblSubtotal>Subtotal</lblSubtotal>
+        <lblTotal>Total</lblTotal>
+    </cart_shipping>
     <mail>
         <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>
     </mail>
     
     <portalaccount_resetPassword></portalaccount_resetPassword>
     <order_placeOrder></order_placeOrder>
-    <pin_showPage></pin_showPage>
+    <pin_showPage>
+        <title>PIN</title>
+        <colProduct>Products</colProduct>
+        <colPrice>Price</colPrice>
+        <colAction> </colAction>
+        <lblInstock>In stock</lblInstock>
+        <lblInstockQty>Just {{product.stock}} Item</lblInstockQty>
+        <lblOutOfstock>Out of stoc;</lblOutOfstock>
+        <lblAddToCart>Add to cart</lblAddToCart>
+        <lblMoveToWishlist>Move to wishlist </lblMoveToWishlist>
+        <lblRemoveItem>Remove</lblRemoveItem>
+    </pin_showPage>
     <admin_login></admin_login>
     <admin_mainpage></admin_mainpage>
     <portalAdmin_support></portalAdmin_support>
@@ -270,7 +319,18 @@
     </portalaccount_userOrderHistory>
     <product_list></product_list>
     <admin_sellerFind></admin_sellerFind>
-    <category_show></category_show>
+    <category_show>
+        <title>Category</title>
+        <lblLoading>Loading, Please waiting...</lblLoading>
+        <lblShowMore>Show more</lblShowMore>
+        <lblSortNew>New</lblSortNew>
+        <lblSortBestbuy>Best Sellers</lblSortBestbuy>
+        <lblSortPriceDown>Lowest price</lblSortPriceDown>
+        <lblSortPriceUp>Highest Price</lblSortPriceUp>
+        <lblSortSaleoff>Discounts</lblSortSaleoff>
+        <lblSortHot>Hot</lblSortHot>
+        <lblSortLike>Like</lblSortLike>
+    </category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
     <portalPayment_paymentChoice></portalPayment_paymentChoice>

@@ -4,15 +4,15 @@ if (!defined('BASEPATH'))
 /* @var $wishlist WishlistDomain */
 ?>
 <div ng-app ng-controller="showWishlistController" class="row-wrapper">
-    <h3 class="left">Your Wishlist</h3>
+    <h3 class="left"><?php echo $language[$view->view]->title;?></h3>
     <div class="cart-left">
         <table class="table-product">
             <thead>
                 <tr>
                     <th width="100">&nbsp;</th>
-                    <th width="400">PRODUCT</th>
-                    <th width="180" class="right">PRICE</th>
-                    <th width="200" class="center">ACTIONS</th>
+                    <th width="400"><?php echo $language[$view->view]->colProduct;?></th>
+                    <th width="180" class="right"><?php echo $language[$view->view]->colPrice;?></th>
+                    <th width="200" class="center"><?php echo $language[$view->view]->colAction;?></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,16 +25,16 @@ if (!defined('BASEPATH'))
                     <td>
                         <a href="{{product.url}}" class="product-name">{{product.name}}</a><br>
                         <span class="product-seller">{{product.sellerName}}</span><br>
-                        <span class="green" ng-if="product.stock > 10">In stock</span>
-                        <span class="red" ng-if="product.stock <= 10 && product.stock > 0">Just {{product.stock}} left</span>
-                        <span class="red" ng-if="product.stock <= 0">Out of stock</span>
+                        <span class="green" ng-if="product.stock > 10"><?php echo $language[$view->view]->lblInstock;?></span>
+                        <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty;?></span>
+                        <span class="red" ng-if="product.stock <= 0"><?php echo $language[$view->view]->lblOutOfstock;?></span>
                     </td>
                     <td class="right">
                         <span class="product-price">{{fnMoneyToString(product.price + product.taxes)}}</span>
                     </td>
                     <td class="center">
-                        <a href="javascript:;" ng-click="addToCart(product.wishlistDetailID)">Add to Cart</a><br>
-                        <a href="javascript:;" ng-click="remove(product.wishlistDetailID)">Remove</a>
+                        <a href="javascript:;" ng-click="addToCart(product.wishlistDetailID)"><?php echo $language[$view->view]->lblAddToCart;?></a><br>
+                        <a href="javascript:;" ng-click="remove(product.wishlistDetailID)"><?php echo $language[$view->view]->lblRemoveItem;?></a>
                     </td>
                 </tr>
             </tbody>

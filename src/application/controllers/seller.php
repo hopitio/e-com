@@ -18,10 +18,15 @@ class seller extends BaseController
     {
         parent::__construct();
 
+        
+    }
+    
+    function init(){
+        parent::init();
         $this->sellerInstance = SellerMapper::make()->autoloadCategories()->setUser(User::getCurrentUser())->find();
         if (!$this->sellerInstance->id)
         {
-            throw new Lynx_AccessControlException('Bạn không có quyền truy cập chức năng này');
+            throw new Lynx_AuthenticationException('Bạn không có quyền truy cập chức năng này');
         }
     }
 

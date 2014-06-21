@@ -12,43 +12,43 @@ foreach ($cartContents as $product)
 ?>
 <h1></h1>
 <ul class="cart-breadcrums">
-    <li class="bc-label"><i class="fa fa-shopping-cart"></i> YOUR CART</li>
-    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;">PLACE ORDER</a></li>
-    <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;">SHIPPING INFO</a></li>
-    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;">PAYMENT INFO</a></li>
+     <li class="bc-label"><i class="fa fa-shopping-cart"></i> <?php echo $language[$view->view]->lblYourcart; ?> </li>
+    <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPlaceOrder; ?></a></li>
+    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblShippingInfor; ?></a></li>
+    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPaymentInfor; ?></a></li>
 </ul>
 <h1></h1>
 <div ng-app ng-controller="shippingCtrl" class="row-wrapper">
     <form method="post" class="form-horizontal cart-left" action="<?php echo base_url('order/placeOrder') ?>">
         <fieldset>
-            <legend>Shipping Address</legend>
+            <legend><?php echo $language[$view->view]->lblShippingAddress; ?></legend>
             <div style="width: 500px;">
                 <div class="form-group">
-                    <label for="txtFullname" class="col-sm-4 control-label">Fullname</label>
+                    <label for="txtFullname" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblName; ?></label>
                     <div class="col-sm-8">
                         <input type="text" name="txtFullname" id="txtFullname" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="txtPhoneNo" class="col-sm-4 control-label">Phone number</label>
+                    <label for="txtPhoneNo" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblPhone; ?></label>
                     <div class="col-sm-8">
                         <input type="text" name="txtPhoneNo" id="txtPhoneNo" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="txtStreetAddr" class="col-sm-4 control-label">Address</label>
+                    <label for="txtStreetAddr" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblAddress; ?></label>
                     <div class="col-sm-8">
                         <input type="text" name="txtStreetAddr" id="txtStreetAddr" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="txtCityDistrict" class="col-sm-4 control-label">City/District</label>
+                    <label for="txtCityDistrict" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblCity; ?></label>
                     <div class="col-sm-8">
                         <input type="text" name="txtCityDistrict" id="txtCityDistrict" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="selProvinceCity" class="col-sm-4 control-label">Province</label>
+                    <label for="selProvinceCity" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblProvince; ?></label>
                     <div class="col-sm-8">
                         <select name="selProvinceCity" class="form-control" id="selProvinceCity" ng-model="province">
                             <?php echo ViewHelpers::getInstance()->options($provinces) ?>
@@ -58,15 +58,15 @@ foreach ($cartContents as $product)
             </div><!--width-->
         </fieldset>
         <fieldset>
-            <legend>Shipping Method</legend>
+            <legend><?php echo $language[$view->view]->lblShippingMethods; ?></legend>
             <div style="width:500px">
                 <div class="form-group">
                     <div class="col-sm-8 col-sm-offset-4">
                         <table style="width:100%">
                             <thead>
                                 <tr>
-                                    <th width="40%">Name</th>
-                                    <th width="60%">Transmit Time</th>
+                                    <th width="40%"><?php echo $language[$view->view]->colName; ?></th>
+                                    <th width="60%"><?php echo $language[$view->view]->colTime; ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -104,23 +104,23 @@ foreach ($cartContents as $product)
             </div><!--width-->
         </fieldset>
         <fieldset>
-            <legend>Gift Option</legend>
+            <legend><?php echo $language[$view->view]->lblGift; ?></legend>
             <div style="width:500px;">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Is this a gift<br>(free gift wrap)</label>
+                    <label class="col-sm-4 control-label"><?php echo $language[$view->view]->lblGiftNoiceLine1; ?><br><?php echo $language[$view->view]->lblGiftNoice; ?></label>
                     <div class="col-sm-8">
                         <div>
-                            <label><input type='radio' name='radGift' value='1'>Yes, it is</label>
+                            <label><input type='radio' name='radGift' value='1'><?php echo $language[$view->view]->lblIsGift; ?></label>
                         </div>
                         <div>
-                            <label><input type='radio' name='radGift' value='0' checked>No, it isn't</label>
+                            <label><input type='radio' name='radGift' value='0' checked><?php echo $language[$view->view]->lblIsNotGift; ?></label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-8 col-sm-offset-4">
-                        <input type='submit' class="btn btn-primary" value='Continue'>
-                        <input type='button' class="btn" value='Back to Cart' onclick='backToCart()'>
+                        <input type='submit' class="btn btn-primary" value='<?php echo $language[$view->view]->btnContinue; ?>'>
+                        <input type='button' class="btn" value='<?php echo $language[$view->view]->btnBacktoCart; ?>' onclick='backToCart()'>
                     </div>
                 </div>
             </div><!--width-->
@@ -128,9 +128,9 @@ foreach ($cartContents as $product)
     </form>
     <div class="cart-right">
         <div class="cart-right-content">
-            <h4 class="left">Cart summaries</h4>
+            <h4 class="left"><?php echo $language[$view->view]->lblCartsum; ?></h4>
             <div class="summary-row">
-                <div class="row-left">Products (<?php echo count($cartContents) ?>):</div>
+                <div class="row-left"><?php echo $language[$view->view]->lblProduct; ?> (<?php echo count($cartContents) ?>):</div>
                 <div class="row-right">
                     <?php
                     $currency = new Currency(User::getCurrentUser()->getCurrency());
@@ -140,21 +140,21 @@ foreach ($cartContents as $product)
                 </div>
             </div>
             <div class="summary-row">
-                <div class="row-left">Shipping:</div>
+                <div class="row-left"><?php echo $language[$view->view]->lblShipping; ?> :</div>
                 <div class="row-right">{{fnMoneyToString(shippingPrice)}}</div>
             </div>
             <hr>
             <div class="summary-row">
-                <div class="row-left">Subtotal:</div>
+                <div class="row-left"><?php echo $language[$view->view]->lblSubtotal; ?> : </div>
                 <div class="row-right"><?php echo new Money($totalPrice, new Currency(User::getCurrentUser()->getCurrency())) ?></div>
             </div>
             <div class="summary-row">
-                <div class="row-left">Taxes:</div>
+                <div class="row-left"><?php echo $language[$view->view]->lblTax; ?> :</div>
                 <div class="row-right"><?php echo new Money($totalTaxes, new Currency(User::getCurrentUser()->getCurrency())) ?></div>
             </div>
             <hr>
             <div class="summary-row total">
-                <div class="row-left">Total:</div>
+                <div class="row-left"><?php echo $language[$view->view]->lblTotal; ?> :</div>
                 <div class="row-right">{{fnMoneyToString(calTotal())}}</div>
             </div>
             <!--
@@ -164,7 +164,7 @@ foreach ($cartContents as $product)
             </div>
             -->
         </div>
-        <input type="button" class="btn btn-lg btn-primary form-control" value="CONTINUE">
+        <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>">
     </div><!--cart-right-->
     <div class="clearfix"></div>
 </div><!--angularjs-->

@@ -2,15 +2,15 @@
 defined('BASEPATH') or die('no direct script allowed');
 ?>
 <div ng-app ng-controller="pinShowCtrl" class="row-wrapper">
-    <h3 class="left">Pinlist</h3>
+    <h3 class="left"><?php echo $language[$view->view]->title;?></h3>
     <div class="cart-left">
         <table class="table-product">
             <thead>
                 <tr>
                     <th width="100">&nbsp;</th>
-                    <th width="400">PRODUCT</th>
-                    <th width="180" class="right">PRICE</th>
-                    <th width="200" class="center">ACTIONS</th>
+                    <th width="400"><?php echo $language[$view->view]->colProduct;?></th>
+                    <th width="180" class="right"><?php echo $language[$view->view]->colPrice;?></th>
+                    <th width="200" class="center"><?php echo $language[$view->view]->colAction;?></th>
                 </tr>
             </thead>
             <tbody>
@@ -23,17 +23,17 @@ defined('BASEPATH') or die('no direct script allowed');
                     <td>
                         <a href="{{product.url}}" class="product-name">{{product.name}}</a><br>
                         <span class="product-seller">{{product.sellerName}}</span><br>
-                        <span class="green" ng-if="product.stock > 10">In stock</span>
-                        <span class="red" ng-if="product.stock <= 10 && product.stock > 0">Just {{product.stock}} left</span>
-                        <span class="red" ng-if="product.stock <= 0">Out of stock</span>
+                        <span class="green" ng-if="product.stock > 10"><?php echo $language[$view->view]->lblInstock;?></span>
+                        <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty;?></span>
+                        <span class="red" ng-if="product.stock <= 0"><?php echo $language[$view->view]->lblOutOfstock;?></span>
                     </td>
                     <td class="right">
                         <span class="product-price">{{product.price}}</span>
                     </td>
                     <td class="center">
-                        <a href="javascript:;" ng-click="addToCart(product.id)">Add to Cart</a><br>
-                        <a href="javascript:;" ng-click="moveToWishlist(product.id)">Move to Wishlist</a><br>
-                        <a href="javascript:;" ng-click="unpin(product.id);">Unpin</a>
+                        <a href="javascript:;" ng-click="addToCart(product.id)"><?php echo $language[$view->view]->lblAddToCart;?></a><br>
+                        <a href="javascript:;" ng-click="moveToWishlist(product.id)"><?php echo $language[$view->view]->lblMoveToWishlist;?></a><br>
+                        <a href="javascript:;" ng-click="unpin(product.id);"><?php echo $language[$view->view]->lblRemoveItem;?></a>
                     </td>
                 </tr>
                 <tr ng-show="loading">
