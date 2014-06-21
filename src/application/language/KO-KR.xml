@@ -352,5 +352,12 @@
         <lblFaileMsg>Thanh toán thất bại, vui lòng kiểm tra lại thông tin.</lblFaileMsg>
     </portalPayment_paymentSuccess>
     <file_browse_file></file_browse_file>
-    <search_show_page></search_show_page>
+    <search_show_page>
+        <title>Search</title>
+        <lblResult>Result</lblResult>
+        <lblResultCount>장바구니 {{total_record}}</lblResultCount>
+        <colProduct>상품</colProduct>
+        <colPrices>가격</colPrices>
+        <colAction></colAction>
+    </search_show_page>
 </data>

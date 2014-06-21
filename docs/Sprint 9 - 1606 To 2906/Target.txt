@@ -1,0 +1,4 @@
+﻿- Thực hiện việc test 
+	+ trong 1 tuần đầu tập chung fix các bug gây ra chết chương trình và các bug nhỏ khác liên quan giao diện 
+	+ trong tuần 2 thực hiện việc test song song với fix 
+- Cuối sprint thực hiện release

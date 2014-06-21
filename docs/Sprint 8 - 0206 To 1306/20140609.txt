@@ -1,0 +1,19 @@
+﻿- Thêm màu chữ cho phần description 
+- Hạn chế số lượng quantity trong phần detail sản phẩm 
+- Khi chỉnh sửa sản phẩm thì chỉ khi đã chỉnh sửa mới có thể ấn apply
+- Chưa xóa được sản phẩm 
+- Cần req 1 loại ngôn ngữ mặc định
+- Cần chọn được nhiều file
+- Out of stock không cho phép checkout  : và có thông báo 
+- fix chiều rộng của ảnh.
+
+
+
+
+
+----- HEIGHT-----
+- hiển thị các description deiail sản phẩm
+
+
+
+

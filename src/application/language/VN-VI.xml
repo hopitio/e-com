@@ -352,5 +352,12 @@
         <lblFaileMsg>Thanh toán thất bại, vui lòng kiểm tra lại thông tin.</lblFaileMsg>
     </portalPayment_paymentSuccess>
     <file_browse_file></file_browse_file>
-    <search_show_page></search_show_page>
+    <search_show_page>
+        <title>Tìm kiếm</title>
+        <lblResult>Kết quả tìm kiếm</lblResult>
+        <lblResultCount>{{total_record}} kết quả</lblResultCount>
+        <colProduct>Sản phẩm</colProduct>
+        <colPrices>Giá</colPrices>
+        <colAction> </colAction>
+    </search_show_page>
 </data>

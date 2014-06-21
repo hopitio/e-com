@@ -2,16 +2,16 @@
 defined('BASEPATH') or die('no direct script access allowed');
 ?>
 <div class="row-wrapper" ng-app ng-controller="SearchCtrl">
-    <h3 class="left">Result</h3>
-    <div class="left">{{total_record}} Results</div>
+    <h3 class="left"><?php echo $language[$view->view]->lblResult;?></h3>
+    <div class="left"><?php echo $language[$view->view]->lblResultCount;?></div>
     <div class="cart-left">
         <table class="table-product">
             <thead>
                 <tr>
                     <th width="100">&nbsp;</th>
-                    <th width="400">PRODUCT</th>
-                    <th width="180" class="right">PRICE</th>
-                    <th width="200" class="center">ACTIONS</th>
+                    <th width="400"><?php echo $language[$view->view]->colProduct;?></th>
+                    <th width="180" class="right"><?php echo $language[$view->view]->colPrices;?></th>
+                    <th width="200" class="center"><?php echo $language[$view->view]->colAction;?></th>
                 </tr>
             </thead>
             <tbody>
