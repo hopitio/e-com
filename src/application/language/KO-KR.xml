@@ -2,10 +2,10 @@
 <data>
     <home>
         <title>Sfriendly</title>
-        <lblViewAll>XEM TẤT CẢ >></lblViewAll>
-        <lblHot>Hot nhất</lblHot>
-        <lblNew>Mới nhất</lblNew>
-        <lblSale>Giảm giá</lblSale>
+        <lblViewAll>전제 보기 >></lblViewAll>
+        <lblHot>HOT 상품</lblHot>
+        <lblNew>NEW 상품</lblNew>
+        <lblSale>할인 상품</lblSale>
     </home>
     <login>
         <title>PROJECT E Đăng nhập</title>
@@ -74,27 +74,39 @@
         <lblDailyShowDigest>Gian hàng hằng ngày</lblDailyShowDigest>
         <lblFeedback>Feedback</lblFeedback>
         <lblHowLikeOurWebsite>Góp ý cho website</lblHowLikeOurWebsite>
-        <lblCart>Giỏ hàng</lblCart>
-        <lblViewCartWidthProductNumber>Xem giỏ hàng ({{cart.length}} sản phẩm)</lblViewCartWidthProductNumber>
-        <lblViewCart>{{cart.length}} sản phẩm</lblViewCart>
-        <lblCartAlert>Bạn chưa có sản phẩm nào trong giỏ hàng</lblCartAlert>
+        <lblCart>마이 카트 </lblCart>
+        <lblViewCartWidthProductNumber>장바구니 ({{cart.length}})</lblViewCartWidthProductNumber>
+        <lblViewCart>장바구니 {{cart.length}}</lblViewCart>
+        <lblCartAlert>장바구니 (0)</lblCartAlert>
         <lblCartQuantity>Số lượng</lblCartQuantity>
         <lblUserStatus>Chào, {1} tài khoản của bạn</lblUserStatus>
-        <lblUserStatusNotSign>Chào, bạn chưa đăng nhập</lblUserStatusNotSign>
+        <lblUserStatusNotSign>로그인</lblUserStatusNotSign>
         <lblUserLogout>Đăng xuất</lblUserLogout>
         <lblUserAccount>Thông tin tài khoản</lblUserAccount>
         <lblUserOrder>Thông tin order</lblUserOrder>
         <lblUserWishlist>Wishlist</lblUserWishlist>
         <lblUserPinlist>Pinlist</lblUserPinlist>
-        <lblSearch>Tìm kiếm</lblSearch>
-        <lblMenu>Danh mục</lblMenu>
+        <lblSearch>검색</lblSearch>
+        <lblMenu>카테고리/메뉴 (가기)</lblMenu>
     </layout>
     
     <sitemap>
         <title>Sitemap</title>
     </sitemap>
     <product_details>
-        <productInfomation>Thông tin sản phẩm</productInfomation>
+        <title>Product detail - Sfriendly</title>
+        <productInfomation>Product information</productInfomation>
+        <lblshpping>무료배송</lblshpping>
+        <lblQuantity>수량</lblQuantity>
+        <btnBuyNow>바로구매</btnBuyNow>
+        <lblAddTo>장바구니 </lblAddTo>
+        <btnCart>장바구니</btnCart>
+        <btnWishList>Wishlist/ 관심상품</btnWishList>
+        <lblShare>공유</lblShare>
+        <lblDes>상품 설명</lblDes>
+        <lblOther>기타 정보</lblOther>
+        <lblWarranty>보증  &amp; 반품</lblWarranty>
+        <lblRelated>Related product</lblRelated>
     </product_details>
     <wishlist_show></wishlist_show>
     <portalaccount_account>
@@ -106,7 +118,34 @@
         <linkComplete>Trở về trang chủ</linkComplete>
         <msgErrorActived>Tài khoản đã được active</msgErrorActived>
     </portalaccount_active>
-    <cart_showCart></cart_showCart>
+    <cart_showCart>
+        <title>Cart</title>
+        <lblYourcart>Your Cart</lblYourcart>
+        <lblPlaceOrder>Place order</lblPlaceOrder>
+        <lblShippingInfor>Shipping infor</lblShippingInfor>
+        <lblPaymentInfor>Playment infor</lblPaymentInfor>
+        <lblNotification>유의사항</lblNotification>
+        <lblGoBack>취소하기</lblGoBack>
+        <colProduct>상품</colProduct>
+        <colPrice>가격</colPrice>
+        <colQty>수량</colQty>
+        <colSubtotal>합계</colSubtotal>
+        <colTotal>합계금액</colTotal>
+        <lblInstock>In stock</lblInstock>
+        <lblInstockQty>Just {{product.stock}} product</lblInstockQty>
+        <lblOutOfstock>품절</lblOutOfstock>
+        <btnRemoveFormCart>삭제</btnRemoveFormCart>
+        <btnMoveToWishlist>Wishlist 보관</btnMoveToWishlist>
+        <lblContinueShopping>계속쇼핑</lblContinueShopping>
+        <lblWishlist>Wishlist</lblWishlist>
+        <lblRemoveWishlist>Remove</lblRemoveWishlist>
+        <lblViewWishlist>Show wishlist</lblViewWishlist>
+        <lblCartsum>Cart summary</lblCartsum>
+        <lblProductCount>상품 ({{products.length}})</lblProductCount>
+        <lblShipping>배송</lblShipping>
+        <lblTax>세금</lblTax>
+        <btncheckout>주문하기</btncheckout>
+    </cart_showCart>
     <cart_shipping></cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

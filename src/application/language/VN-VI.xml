@@ -52,7 +52,7 @@
         <label>abc{0}</label>
     </Details>
     <layout>
-        <lblHeadSell>NGƯỜI BÁN</lblHeadSell>
+        <lblHeadSell>BÁN</lblHeadSell>
         <lblLiveChat>LIVE CHAT</lblLiveChat>
         <lblLanguage>NGÔN NGỮ</lblLanguage>
         
@@ -74,7 +74,7 @@
         <lblDailyShowDigest>Gian hàng hằng ngày</lblDailyShowDigest>
         <lblFeedback>Feedback</lblFeedback>
         <lblHowLikeOurWebsite>Góp ý cho website</lblHowLikeOurWebsite>
-        <lblCart>Giỏ hàng</lblCart>
+        <lblCart>Xem giỏ hàng</lblCart>
         <lblViewCartWidthProductNumber>Xem giỏ hàng ({{cart.length}} sản phẩm)</lblViewCartWidthProductNumber>
         <lblViewCart>{{cart.length}} sản phẩm</lblViewCart>
         <lblCartAlert>Bạn chưa có sản phẩm nào trong giỏ hàng</lblCartAlert>
@@ -94,7 +94,19 @@
         <title>Sitemap</title>
     </sitemap>
     <product_details>
+        <title>Chi tiết sản phẩm - Sfriendly</title>
         <productInfomation>Thông tin sản phẩm</productInfomation>
+        <lblshpping>Miễn phí giao hàng</lblshpping>
+        <lblQuantity>Số lượng</lblQuantity>
+        <btnBuyNow>Mua Ngay</btnBuyNow>
+        <lblAddTo>Thêm vào</lblAddTo>
+        <btnCart>Giỏ hàng</btnCart>
+        <btnWishList>Mong Muốn</btnWishList>
+        <lblShare>Chia sẻ </lblShare>
+        <lblDes>Mô tả sản phẩm</lblDes>
+        <lblOther>Thông tin khác</lblOther>
+        <lblWarranty>Bảo hành &amp; trả hàng</lblWarranty>
+        <lblRelated>Sản phẩm liên quan</lblRelated>
     </product_details>
     <wishlist_show></wishlist_show>
     <portalaccount_account>
@@ -106,7 +118,34 @@
         <linkComplete>Trở về trang chủ</linkComplete>
         <msgErrorActived>Tài khoản đã được active</msgErrorActived>
     </portalaccount_active>
-    <cart_showCart></cart_showCart>
+    <cart_showCart>
+        <title>Giỏ hàng</title>
+        <lblYourcart>Giỏ hàng</lblYourcart>
+        <lblPlaceOrder>Place order</lblPlaceOrder>
+        <lblShippingInfor>Thông tin vận chuyển</lblShippingInfor>
+        <lblPaymentInfor>Thông tin thanh toán</lblPaymentInfor>
+        <lblNotification>Thông báo</lblNotification>
+        <lblGoBack>Trở về</lblGoBack>
+        <colProduct>Sản phẩm</colProduct>
+        <colPrice>Giá</colPrice>
+        <colQty>SL</colQty>
+        <colSubtotal>Thành tiền</colSubtotal>
+        <colTotal>Tổng tiền</colTotal>
+        <lblInstock>Còn hàng</lblInstock>
+        <lblInstockQty>Còn {{product.stock}} sản phẩm</lblInstockQty>
+        <lblOutOfstock>Hết hàng</lblOutOfstock>
+        <btnRemoveFormCart>Xóa khỏi giỏ hàng</btnRemoveFormCart>
+        <btnMoveToWishlist>Chuyển sang wishlist</btnMoveToWishlist>
+        <lblContinueShopping>Tiếp tục mua hàng</lblContinueShopping>
+        <lblWishlist>Sản phẩm mong muốn / Wishlist</lblWishlist>
+        <lblRemoveWishlist>Hủy</lblRemoveWishlist>
+        <lblViewWishlist>Hiển thị sản phẩm mong muốn</lblViewWishlist>
+        <lblCartsum>Tóm tắt</lblCartsum>
+        <lblProductCount>Sản phẩm ({{products.length}})</lblProductCount>
+        <lblShipping>Vận chuyển</lblShipping>
+        <lblTax>Thuế</lblTax>
+        <btncheckout>Tiếp tục</btncheckout>
+    </cart_showCart>
     <cart_shipping></cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

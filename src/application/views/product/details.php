@@ -44,12 +44,12 @@ var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LIN
             <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
             <div class="lynx_productName"> <?php echo $product->seller_name ?> </div>
             <div class="lynx_productPrice"> <?php echo $product->getFinalPriceMoney(User::getCurrentUser()->getCurrency()) ?> </div>
-            <div class="lynx_productShipping"> Ships Free ! </div>
+            <div class="lynx_productShipping"> <?php echo $language[$view->view]->lblshpping; ?> </div>
     <!--        <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>-->
             <div class="lynx_productQuantity">
-                <span class="lynx_quantityLabel">Quantity</span>
+                <span class="lynx_quantityLabel"><?php echo $language[$view->view]->lblQuantity; ?></span>
                 <span class="lynx_productQuantityInput">
                     <select name="sel_qty" id="sel_qty"  class="lynx_productChocie lynx_cbxChoie">
                         <?php foreach (range(1, min(array(30, (string) $product->getQuantity()))) as $int): ?>
@@ -62,23 +62,23 @@ var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LIN
                 <!-- <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
                        data-action="<?php //echo base_url('order/shipping') ?>">
                         -->
-                <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" ></input>
+                <input id = "buynow" type="button" name="buynow" value="<?php echo $language[$view->view]->btnBuyNow; ?>" class="lynx_blueButton form-control submit" ></input>
             </div>
             <div class="lynx_productButtonAddTo"> 
-                <span class="lynx_actionTitle">Add to : </span>
+                <span class="lynx_actionTitle"><?php echo $language[$view->view]->lblAddTo; ?> : </span>
                 <div class="row">
                     <div style="width:42%;float:left;margin-left: 15px;">
-                        <input type="button" name="addToCart" value="CART" class="lynx_blueButton form-control submit" 
+                        <input type="button" name="addToCart" value="<?php echo $language[$view->view]->btnCart; ?>" class="lynx_blueButton form-control submit" 
                                data-action="<?php echo base_url('cart/addToCart') ?>">
                     </div>
                     <div style="width:42%;float:left;margin-left:15px;">
-                        <input type="button" name="addToWishlist" value="WISHLIST" 
+                        <input type="button" name="addToWishlist" value="<?php echo $language[$view->view]->btnWishList; ?>" 
                                class="lynx_blueButton form-control submit" data-action="<?php echo base_url('wishlist/addToWishlist') ?>">
                     </div>
                 </div>
             </div>
             <div class="lynx_productShare"> 
-                <span class="lynx_share">Share: </span>
+                <span class="lynx_share"> <?php echo $language[$view->view]->lblShare; ?> : </span>
                 <span class="lynx_shareFace" ng-click="shareFacbook()">&nbsp;</span>
                 <span class="lynx_shareTiwster">&nbsp;</span>
                 <span class="lynx_sharePlumber">&nbsp;</span>
@@ -88,9 +88,9 @@ var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LIN
     </div>
     <div class="lynx_listProducts tab">
         <ul class="lynx_head">
-            <li class="active"><a href="#tab-description">DESCRIPTION</a></li>
-            <li><a href="#tab-2">PRO DETAILS</a></li>
-            <li><a href="#tab-3">WARRANTY & SUPPORT</a></li>
+            <li class="active"><a href="#tab-description"><?php echo $language[$view->view]->lblDes; ?></a></li>
+            <li><a href="#tab-2"><?php echo $language[$view->view]->lblOther; ?></a></li>
+            <li><a href="#tab-3"><?php echo $language[$view->view]->lblWarranty; ?></a></li>
         </ul>
         <div id="tab-description" class="lynx_itemConatiner lynx_productDetailDescription">
             <?php echo $product->getDescription() ?>
@@ -104,7 +104,7 @@ var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LIN
         </div>
         <div class="lynx_slideItemsContainer">
             <div class="lynx_head" >
-                <h3>Related Products</h3>
+                <h3><?php echo $language[$view->view]->lblRelated; ?></h3>
             </div>
             <div class="lynx_listItem">
                 <div class="lynx_item" ng-repeat="product in relatedProducts" product="product" 

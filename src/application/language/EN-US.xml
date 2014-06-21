@@ -3,9 +3,9 @@
     <home>
         <title>Sfriendly</title>
         <lblViewAll>View All >></lblViewAll>
-        <lblHot>Hotest</lblHot>
-        <lblNew>Newest</lblNew>
-        <lblSale>Sale</lblSale>
+        <lblHot>Hot</lblHot>
+        <lblNew>New </lblNew>
+        <lblSale>Sale off</lblSale>
     </home>
     <login>
         <title>PROJECT E Đăng nhập</title>
@@ -51,9 +51,9 @@
         <label>abc{0}</label>
     </Details>
     <layout>
-        <lblHeadSell>NGƯỜI BÁN</lblHeadSell>
+        <lblHeadSell>SELL</lblHeadSell>
         <lblLiveChat>LIVE CHAT</lblLiveChat>
-        <lblLanguage>NGÔN NGỮ</lblLanguage>
+        <lblLanguage>LANGUGAE</lblLanguage>
         
         <lblMakeMoneyWithUs>Hợp tác và phát triển</lblMakeMoneyWithUs>
         <lblSell>Bán sản phẩm</lblSell>
@@ -73,27 +73,39 @@
         <lblDailyShowDigest>Gian hàng hằng ngày</lblDailyShowDigest>
         <lblFeedback>Feedback</lblFeedback>
         <lblHowLikeOurWebsite>Góp ý cho website</lblHowLikeOurWebsite>
-        <lblCart>Giỏ hàng</lblCart>
-        <lblViewCartWidthProductNumber>Xem giỏ hàng ({{cart.length}} sản phẩm)</lblViewCartWidthProductNumber>
-        <lblViewCart>{{cart.length}} sản phẩm</lblViewCart>
-        <lblCartAlert>Bạn chưa có sản phẩm nào trong giỏ hàng</lblCartAlert>
+        <lblCart>Your Cart</lblCart>
+        <lblViewCartWidthProductNumber>View Cart ({{cart.length}} items)</lblViewCartWidthProductNumber>
+        <lblViewCart>{{cart.length}} items</lblViewCart>
+        <lblCartAlert>Empty Cart</lblCartAlert>
         <lblCartQuantity>Số lượng</lblCartQuantity>
         <lblUserStatus>Chào, {1} tài khoản của bạn</lblUserStatus>
-        <lblUserStatusNotSign>Chào, bạn chưa đăng nhập</lblUserStatusNotSign>
+        <lblUserStatusNotSign>Hello, Sign in Here</lblUserStatusNotSign>
         <lblUserLogout>Đăng xuất</lblUserLogout>
         <lblUserAccount>Thông tin tài khoản</lblUserAccount>
         <lblUserOrder>Thông tin order</lblUserOrder>
         <lblUserWishlist>Wishlist</lblUserWishlist>
         <lblUserPinlist>Pinlist</lblUserPinlist>
-        <lblSearch>Tìm kiếm</lblSearch>
-        <lblMenu>Danh mục</lblMenu>
+        <lblSearch>Search</lblSearch>
+        <lblMenu>Category/Menu</lblMenu>
     </layout>
     
     <sitemap>
         <title>Sitemap</title>
     </sitemap>
     <product_details>
-        <productInfomation>Thông tin sản phẩm</productInfomation>
+        <title>Product detail - Sfriendly</title>
+        <lblshpping>Free ship</lblshpping>
+        <lblQuantity>Quantity</lblQuantity>
+        <btnBuyNow>Buy now</btnBuyNow>
+        <lblAddTo>Add to</lblAddTo>
+        <btnCart>Cart</btnCart>
+        <btnWishList>Wishlist</btnWishList>
+        <lblShare>Share</lblShare>
+        <lblDes>Description</lblDes>
+        <lblOther>Pro Details</lblOther>
+        <lblWarranty>Warranty &amp; Return</lblWarranty>
+        <lblRelated>Related product</lblRelated>
+        
     </product_details>
     <wishlist_show></wishlist_show>
     <portalaccount_account>
@@ -105,7 +117,34 @@
         <linkComplete>Trở về trang chủ</linkComplete>
         <msgErrorActived>Tài khoản đã được active</msgErrorActived>
     </portalaccount_active>
-    <cart_showCart></cart_showCart>
+    <cart_showCart>
+        <title>Cart</title>
+        <lblYourcart>Your Cart</lblYourcart>
+        <lblPlaceOrder>Place order</lblPlaceOrder>
+        <lblShippingInfor>Shipping infor</lblShippingInfor>
+        <lblPaymentInfor>Playment infor</lblPaymentInfor>
+        <lblNotification>Notification</lblNotification>
+        <lblGoBack>Go back</lblGoBack>
+        <colProduct>Products</colProduct>
+        <colPrice>Prices</colPrice>
+        <colQty>QTY</colQty>
+        <colSubtotal>Subtotal</colSubtotal>
+        <colTotal>Total</colTotal>
+        <lblInstock>In stock</lblInstock>
+        <lblInstockQty>Just {{product.stock}} product</lblInstockQty>
+        <lblOutOfstock>Out of stock</lblOutOfstock>
+        <btnRemoveFormCart>Remove from Cart</btnRemoveFormCart>
+        <btnMoveToWishlist>Move to wishlist</btnMoveToWishlist>
+        <lblContinueShopping>Continue shopping</lblContinueShopping>
+        <lblWishlist>Wishlist</lblWishlist>
+        <lblRemoveWishlist>Remove</lblRemoveWishlist>
+        <lblViewWishlist>Show wishlist</lblViewWishlist>
+        <lblCartsum>Cart summary</lblCartsum>
+        <lblProductCount>Product ({{products.length}})</lblProductCount>
+        <lblShipping>Shipping</lblShipping>
+        <lblTax>Taxes</lblTax>
+        <btncheckout>Checkout</btncheckout>
+    </cart_showCart>
     <cart_shipping></cart_shipping>
     <mail>
         <registerconfirm>Xác thực đăng ký trên website.</registerconfirm>

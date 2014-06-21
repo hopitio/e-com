@@ -4,19 +4,19 @@ defined('BASEPATH') or die('No direct script access allowed');
 ?>
 <h1></h1>
 <ul class="cart-breadcrums">
-    <li class="bc-label"><i class="fa fa-shopping-cart"></i> YOUR CART</li>
-    <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;">PLACE ORDER</a></li>
-    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;">SHIPPING INFO</a></li>
-    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;">PAYMENT INFO</a></li>
+    <li class="bc-label"><i class="fa fa-shopping-cart"></i> <?php echo $language[$view->view]->lblYourcart; ?> </li>
+    <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPlaceOrder; ?></a></li>
+    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblShippingInfor; ?></a></li>
+    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPaymentInfor; ?></a></li>
 </ul>
 <div ng-app="showCartApp" ng-controller="showCartCtrl">
     <div class="row-wrapper left">
-        <a class="cart-back" href="javascript:;" title="Go Back"><i class="fa fa-arrow-left"></i> Go Back</a>
+        <a class="cart-back" href="javascript:;" title="Go Back"><i class="fa fa-arrow-left"></i> <?php echo $language[$view->view]->lblGoBack; ?></a>
     </div>
     <div class="row-wrapper">
         <div class="cart-left">
             <div class="notification">
-                <h4>Notification</h4>
+                <h4><?php echo $language[$view->view]->lblNotification; ?></h4>
                 <ul>
                     <li>- Bạn đang tiết kiệm được <b class="green">$40.00</b></li>
                     <li>- Chỉ cần mua thêm $20, bạn sẽ được <u>miễn phí vận chuyển cả đơn hàng</u>. Những món đồ <a href="javascript:;"><u>$20.00 ở đây</u></a></li>
@@ -27,10 +27,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                 <thead>
                     <tr>
                         <th width="100">&nbsp;</th>
-                        <th width="400">PRODUCT</th>
-                        <th width="100" class="right">PRICE</th>
-                        <th width="190" class="center">QTY</th>
-                        <th width="100" class="center">SUBTOTAL</th>
+                        <th width="400"><?php echo $language[$view->view]->colProduct; ?></th>
+                        <th width="100" class="right"><?php echo $language[$view->view]->colPrice; ?></th>
+                        <th width="190" class="center"><?php echo $language[$view->view]->colQty; ?></th>
+                        <th width="100" class="center"><?php echo $language[$view->view]->colSubtotal; ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,9 +43,9 @@ defined('BASEPATH') or die('No direct script access allowed');
                         <td>
                             <a href="{{product.url}}" class="product-name">{{product.name}}</a><br>
                             <span class="product-seller">{{product.sellerName}}</span><br>
-                            <span class="green" ng-if="product.stock > 10">In stock</span>
-                            <span class="red" ng-if="product.stock <= 10 && product.stock > 0">Just {{product.stock}} left</span>
-                            <span class="red" ng-if="product.stock <= 0">Out of stock</span>
+                            <span class="green" ng-if="product.stock > 10"><?php echo $language[$view->view]->lblInstock; ?></span>
+                            <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty; ?></span>
+                            <span class="red" ng-if="product.stock <= 0"><?php echo $language[$view->view]->lblOutOfstock; ?></span>
                         </td>
                         <td class="right">
                             <span class="product-price">{{fnMoneyToString(product.price + product.taxes)}}</span><br>
@@ -58,10 +58,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                             </select>
                             <br>
                             <a href="javascript:;" ng-click="removeFromCart(product.id)">
-                                Remove from cart
+                                <?php echo $language[$view->view]->btnRemoveFormCart; ?>
                             </a><br>
                             <a href="javascript:;">
-                                Move to Wishlist
+                               <?php echo $language[$view->view]->btnMoveToWishlist; ?>
                             </a>
                         </td>
                         <td class="center">
@@ -75,10 +75,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                             <a href="javascript:;"><i class="fa fa-gift"></i> Enter Giftcode</a>
                             <?php echo str_repeat('&nbsp;', 16) ?>
                             -->
-                            <a href="/"><i class="fa fa-play"></i> Continue shopping</a>
+                            <a href="/"><i class="fa fa-play"></i> <?php echo $language[$view->view]->lblContinueShopping; ?></a>
                         </td>
                         <td class="right">
-                            <span class="product-total-label">TOTAL:</span><br>
+                            <span class="product-total-label"><?php echo $language[$view->view]->lblTotal; ?> : </span><br>
                             <!--<span class="product-save-label">You save:</span>-->
                         </td>
                         <td class="center">
@@ -90,7 +90,7 @@ defined('BASEPATH') or die('No direct script access allowed');
             </table>
 
             <?php if (User::getCurrentUser()->is_authorized): ?>
-                <h3 class="left">Wishlist</h3>
+                <h3 class="left"><?php echo $language[$view->view]->lblWishlist; ?></h3>
                 <table class="table-product">
                     <tbody>
                         <tr ng-repeat="product in wishlist" ng-class-even="'event'" ng-class-odd="'odd'">
@@ -111,8 +111,8 @@ defined('BASEPATH') or die('No direct script access allowed');
                             <td width="100">&nbsp;</td>
                             <td width="190" class="center">
                                 <input type="button" class="btn btn-primary" ng-click='addToCart(product.wishlistDetailID)' value="Add to Cart"><br>
-                                <a href="javascript:;" ng-click='removeFromWishlist(product.wishlistDetailID)'>Remove</a><br>
-                                <a href="/wishlist/show" >Wishlist</a>
+                                <a href="javascript:;" ng-click='removeFromWishlist(product.wishlistDetailID)'><?php echo $language[$view->view]->lblRemoveWishlist; ?></a><br>
+                                <a href="/wishlist/show" ><?php echo $language[$view->view]->lblViewWishlist; ?></a>
                             </td>
                         </tr>
                     </tbody>
@@ -121,27 +121,27 @@ defined('BASEPATH') or die('No direct script access allowed');
         </div><!--cart-left-->
         <div class="cart-right">
             <div class="cart-right-content">
-                <h4 class="left">Cart summaries</h4>
+                <h4 class="left"><?php echo $language[$view->view]->lblCartsum; ?></h4>
                 <div class="summary-row">
-                    <div class="row-left">Products ({{products.length}}):</div>
+                    <div class="row-left"><?php echo $language[$view->view]->lblProductCount; ?> :</div>
                     <div class="row-right">{{fnMoneyToString(calPriceOnly())}}</div>
                 </div>
                 <div class="summary-row">
-                    <div class="row-left">Shipping:</div>
+                    <div class="row-left"><?php echo $language[$view->view]->lblShipping;?>:</div>
                     <div class="row-right">?-----</div>
                 </div>
                 <hr>
                 <div class="summary-row">
-                    <div class="row-left">Subtotal:</div>
+                    <div class="row-left"><?php echo $language[$view->view]->colSubtotal;?>:</div>
                     <div class="row-right">{{fnMoneyToString(calPriceOnly())}}</div>
                 </div>
                 <div class="summary-row">
-                    <div class="row-left">Taxes:</div>
+                    <div class="row-left"><?php echo $language[$view->view]->lblTax;?>:</div>
                     <div class="row-right">{{fnMoneyToString(calTaxes())}}</div>
                 </div>
                 <hr>
                 <div class="summary-row total">
-                    <div class="row-left">Total:</div>
+                    <div class="row-left"><?php echo $language[$view->view]->colTotal?>:</div>
                     <div class="row-right">{{fnMoneyToString(calPriceOnly() + calTaxes())}}</div>
                 </div>
                 <!--
@@ -151,9 +151,9 @@ defined('BASEPATH') or die('No direct script access allowed');
                 </div>
                 -->
             </div>
-            <input type="button" class="btn btn-lg btn-primary form-control" value="CHECKOUT" ng-click="checkout()">
+            <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btncheckout;?>" ng-click="checkout()">
         </div><!--cart-right-->
-    </div<!--row-wrapper-->
+    </div><!--row-wrapper-->
     <div class="clearfix"></div>
 
 </div><!--angular-->
