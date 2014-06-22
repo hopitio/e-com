@@ -354,7 +354,13 @@
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
     <portalPayment_paymentChoice></portalPayment_paymentChoice>
     <portalPayment_orderReview></portalPayment_orderReview>
-    <portalPayment_paymentSuccess></portalPayment_paymentSuccess>
+    <portalPayment_paymentSuccess>
+        <title>Successful transactions</title>
+        <lblNotify>Successful transactions</lblNotify>
+        <lblSucessMsg>You've successfully payment please mail check. {br} sales staff will contact you as soon as the.</lblSucessMsg>
+        <lblFaileMsg>Payment failure, please check the information.</lblFaileMsg>
+    </portalPayment_paymentSuccess>
+    
     <seller_product_details></seller_product_details>
     <file_browse_file></file_browse_file>
     <search_show_page>

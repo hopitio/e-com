@@ -30,7 +30,7 @@ function productDetailsCtrl($scope, $http, $timeout) {
                     caption: caption,
                     description: des,
                     link: document.URL,
-                    //picture: picturePro
+                    picture: $facebookImageUrl
                 },
                 function(response) {
                     var res = response;

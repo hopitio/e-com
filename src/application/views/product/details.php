@@ -11,6 +11,7 @@ $facebookImages = $product->getImages('facebookImage');
 ?>
 <script>
     $.browser = {};
+    var $facebookImageUrl = '<?php echo $facebookImages[0]->url ?>';
     console.log('<?php echo $facebookImages[0]->url ?>');
 </script>
 <div id="product-details-ctrl" ng-controller="productDetailsCtrl">
@@ -45,7 +46,7 @@ $facebookImages = $product->getImages('facebookImage');
             <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
             <div class="lynx_productName"> <?php echo $product->seller_name ?> </div>
             <div class="lynx_productPrice"> <?php echo $product->getFinalPriceMoney(User::getCurrentUser()->getCurrency()) ?> </div>
-            <!--<div class="lynx_productShipping"> <?php echo $language[$view->view]->lblshpping; ?> </div>-->
+            <div class="lynx_productShipping" style="visibility: hidden;"> <?php echo $language[$view->view]->lblshpping; ?> </div>
     <!--        <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>-->
