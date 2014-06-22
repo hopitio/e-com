@@ -8,44 +8,44 @@
         <lblSale>할인 상품</lblSale>
     </home>
     <login>
-        <title>PROJECT E Login</title>
-        <loginTitle>Login</loginTitle>
-        <registeTitle>Sign up</registeTitle>
-        <lblUs>Account / Email : </lblUs>
-        <lblPs>Password :</lblPs>
-        <btnLogin>Login</btnLogin>
-        <lblForgetPassword>You can not sign in to account </lblForgetPassword>
-        <lblCreateNewAccount>Register </lblCreateNewAccount>
-        <lblError>Account(email)/ password is not correct</lblError>
-        <lblCreateFristName>First name</lblCreateFristName>
-        <lblCreateLastName> Name </lblCreateLastName>
-        <lblDOB>Date of birth </lblDOB>
-        <lblEmail>Email </lblEmail>
-        <lblPassword>Password </lblPassword>
-        <lblPasswordRetry> Re-password </lblPasswordRetry>
-        <lblSex>Gender </lblSex>
-        <lblSexM>Male</lblSexM>
-        <lblSexF>Female</lblSexF>
-        <lblSexO>Other</lblSexO>
-        <lblQuestion>Questions</lblQuestion>
-        <lblQ0>Which game do you like most?</lblQ0>
-        <lblQ1>Name What is your childhood? </lblQ1>
-        <lblQ2>Your high school name is what?</lblQ2>
-        <lblQ3>Your favorite book?</lblQ3>
-        <lblQ4>Name What is your pet?</lblQ4>
-        <lblQ5>What animal do you like most?</lblQ5>
-        <lblanswer>Answer</lblanswer>
-        <btnResg>Agree to the terms of use and Registration </btnResg>
-        <lblLinkPolice>Details and terms of use of the website charter.</lblLinkPolice>
-        <msgWoringEmail>Email the wrong format or exceed 254 characters</msgWoringEmail>
-        <msgWoringPass>Passwords do not match and contain only characters from 0-9, AZ </msgWoringPass>
-        <msgWoringFristName>First Name longer than 50 characters</msgWoringFristName>
-        <msgWoringLastName>Last name longer than 50 characters</msgWoringLastName>
-        <msgWoringAns>Answers longer than 50 characters</msgWoringAns>
+        <title>PROJECT E 로그인</title>
+        <loginTitle>로그인</loginTitle>
+        <registeTitle>가입</registeTitle>
+        <lblUs>계정 / 이메일 : </lblUs>
+        <lblPs>암호 :</lblPs>
+        <btnLogin>로그인</btnLogin>
+        <lblForgetPassword>당신은 계정에 로그인 할 수 없습니다 </lblForgetPassword>
+        <lblCreateNewAccount>레지스터 </lblCreateNewAccount>
+        <lblError>계정 (이메일) / 비밀번호가 올바르지 않습니다</lblError>
+        <lblCreateFristName>이름</lblCreateFristName>
+        <lblCreateLastName> 이름 </lblCreateLastName>
+        <lblDOB>생년월일</lblDOB>
+        <lblEmail>이메일 </lblEmail>
+        <lblPassword>암호 </lblPassword>
+        <lblPasswordRetry> 암호를 입력 </lblPasswordRetry>
+        <lblSex>성 </lblSex>
+        <lblSexM>남성</lblSexM>
+        <lblSexF>여성</lblSexF>
+        <lblSexO>다른</lblSexO>
+        <lblQuestion>질문</lblQuestion>
+        <lblQ0>당신은 대부분 게임을 좋아합니까?</lblQ0>
+        <lblQ1>어린 시절은 무엇입니까 이름? </lblQ1>
+        <lblQ2>고등학교의 이름은 무엇입니까?</lblQ2>
+        <lblQ3>좋아하는 책?</lblQ3>
+        <lblQ4>당신의 애완 동물은 무엇입니까 이름?</lblQ4>
+        <lblQ5>당신은 어떤 동물 가장 좋아합니까?</lblQ5>
+        <lblanswer>답변</lblanswer>
+        <btnResg>사용 및 등록의 조건에 동의 </btnResg>
+        <lblLinkPolice>세부 사항 및 웹 사이트 헌장의 규정.</lblLinkPolice>
+        <msgWoringEmail>잘못된 형식으로 이메일을 보내거나 254 문자를 초과 할</msgWoringEmail>
+        <msgWoringPass>비밀번호가 일치 0-9, 애리조나에서만 문자를 포함하지 않는 </msgWoringPass>
+        <msgWoringFristName>50 자보다 긴 이름</msgWoringFristName>
+        <msgWoringLastName>마지막으로 이름을 50 자 이상</msgWoringLastName>
+        <msgWoringAns>50 자보다 긴 답변</msgWoringAns>
     </login>
     <registercomplete>
-        <title>Register complete</title>
-        <des>You have successfully registered mail please check to confirm this subscription.</des>
+        <title>전체 등록</title>
+        <des>당신은 성공적으로 메일을 등록이 구독을 확인하는 확인하시기 바랍니다.</des>
     </registercomplete>
     <Details>
         <label>abc{0}</label>
@@ -55,34 +55,34 @@
         <lblLiveChat>라이브 채팅</lblLiveChat>
         <lblLanguage>언어</lblLanguage>
         
-        <lblMakeMoneyWithUs>Co-operation and Development</lblMakeMoneyWithUs>
-        <lblSell>Sell</lblSell>
-        <lblAdve>Contact for advertising</lblAdve>
-        <lblCustomerService>Customers</lblCustomerService>
+        <lblMakeMoneyWithUs>개발 협력</lblMakeMoneyWithUs>
+        <lblSell>판매</lblSell>
+        <lblAdve>광고 문의</lblAdve>
+        <lblCustomerService>고객</lblCustomerService>
         <lblFAQs>FAQs</lblFAQs>
-        <lblContact>Contact</lblContact>
-        <lblShippingvsReturn>Shipping and Returns </lblShippingvsReturn>
-        <lblSafeShopping>Buying and selling safety</lblSafeShopping>
-        <lblGuaranteeSecureShopping>Ensure sales</lblGuaranteeSecureShopping>
-        <lblAboutSfriendly>About Sfriendly</lblAboutSfriendly>
-        <lblAbout>About Us</lblAbout> 
-        <lblJobs>Jobs</lblJobs>
-        <lblCustomerTestimonials>Customer Testimonials</lblCustomerTestimonials>
-        <lblAssociatesProgram>Associates Program</lblAssociatesProgram>
-        <lblGlossaryofTerms>Glossary of terms</lblGlossaryofTerms>
-        <lblDailyShowDigest>Daily show digest</lblDailyShowDigest>
+        <lblContact>접촉</lblContact>
+        <lblShippingvsReturn>배송 및 반품 </lblShippingvsReturn>
+        <lblSafeShopping>안전 구매 및 판매</lblSafeShopping>
+        <lblGuaranteeSecureShopping>판매를 확인</lblGuaranteeSecureShopping>
+        <lblAboutSfriendly>약 Sfriendly</lblAboutSfriendly>
+        <lblAbout>회사 소개</lblAbout> 
+        <lblJobs>채용</lblJobs>
+        <lblCustomerTestimonials>고객의 소리</lblCustomerTestimonials>
+        <lblAssociatesProgram>동료 프로그램</lblAssociatesProgram>
+        <lblGlossaryofTerms>용어 설명</lblGlossaryofTerms>
+        <lblDailyShowDigest>데일리 쇼 소화</lblDailyShowDigest>
         <lblFeedback>Feedback</lblFeedback>
-        <lblHowLikeOurWebsite>How like our website</lblHowLikeOurWebsite>
+        <lblHowLikeOurWebsite>어떻게 우리의 웹 사이트와</lblHowLikeOurWebsite>
         <lblCart>마이 카트 </lblCart>
         <lblViewCartWidthProductNumber>장바구니 ({{cart.length}})</lblViewCartWidthProductNumber>
         <lblViewCart>장바구니 {{cart.length}}</lblViewCart>
         <lblCartAlert>장바구니 (0)</lblCartAlert>
         <lblCartQuantity>Số lượng</lblCartQuantity>
-        <lblUserStatus>Hi, {1} Your's account</lblUserStatus>
+        <lblUserStatus>안녕하세요, {1} 귀하의 계정</lblUserStatus>
         <lblUserStatusNotSign>로그인</lblUserStatusNotSign>
-        <lblUserLogout>Sign out</lblUserLogout>
-        <lblUserAccount>Account information</lblUserAccount>
-        <lblUserOrder>Order information</lblUserOrder>
+        <lblUserLogout>로그 아웃</lblUserLogout>
+        <lblUserAccount>계정 정보</lblUserAccount>
+        <lblUserOrder>주문 정보</lblUserOrder>
         <lblUserWishlist>Wishlist</lblUserWishlist>
         <lblUserPinlist>Pinlist</lblUserPinlist>
         <lblSearch>검색</lblSearch>
@@ -93,14 +93,14 @@
         <title>Sitemap</title>
     </sitemap>
     <product_details>
-        <title>Product detail - Sfriendly</title>
-        <productInfomation>Product information</productInfomation>
+        <title>제품 세부 사항 - Sfriendly</title>
+        <productInfomation> 제품 정보</productInfomation>
         <lblshpping>무료배송</lblshpping>
         <lblQuantity>수량</lblQuantity>
         <btnBuyNow>바로구매</btnBuyNow>
         <lblAddTo>장바구니 </lblAddTo>
         <btnCart>장바구니</btnCart>
-        <btnWishList>Wishlist/ 관심상품</btnWishList>
+        <btnWishList>관심상품</btnWishList>
         <lblShare>공유</lblShare>
         <lblDes>상품 설명</lblDes>
         <lblOther>기타 정보</lblOther>
@@ -118,30 +118,30 @@
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>
-        <colProduct>Products</colProduct>
-        <colPrice>Price</colPrice>
+        <colProduct>제품</colProduct>
+        <colPrice>가격</colPrice>
         <colAction> </colAction>
-        <lblInstock>In stock</lblInstock>
-        <lblInstockQty>Just {{product.stock}} items</lblInstockQty>
-        <lblOutOfstock>Out of stock</lblOutOfstock>
-        <lblAddToCart>Add to cart</lblAddToCart>
-        <lblRemoveItem>Remove</lblRemoveItem>
+        <lblInstock>재고 있음</lblInstock>
+        <lblInstockQty>그냥 {{product.stock}} 항목</lblInstockQty>
+        <lblOutOfstock>품절</lblOutOfstock>
+        <lblAddToCart>장바구니에 담기</lblAddToCart>
+        <lblRemoveItem>제거</lblRemoveItem>
     </wishlist_show>
     <portalaccount_account>
-        <title>Account information</title>
+        <title>계정 정보</title>
     </portalaccount_account>
     <portalaccount_active>
-        <title>Xác minh tài khoản</title>
-        <msgComplete>Xác minh tài khoản thành công</msgComplete>
-        <linkComplete>Trở về trang chủ</linkComplete>
-        <msgErrorActived>Tài khoản đã được active</msgErrorActived>
+        <title> 계정 확인 </title>
+        <msgComplete>계정 인증 성공</msgComplete>
+        <linkComplete>홈페이지로 돌아 가기</linkComplete>
+        <msgErrorActived>계정이 활성화되었습니다</msgErrorActived>
     </portalaccount_active>
     <cart_showCart>
-        <title>Cart</title>
-        <lblYourcart>Your Cart</lblYourcart>
-        <lblPlaceOrder>Place order</lblPlaceOrder>
-        <lblShippingInfor>Shipping infor</lblShippingInfor>
-        <lblPaymentInfor>Playment infor</lblPaymentInfor>
+        <title>카트</title>
+        <lblYourcart>장바구니</lblYourcart>
+        <lblPlaceOrder>장소 순서</lblPlaceOrder>
+        <lblShippingInfor>선박 정보</lblShippingInfor>
+        <lblPaymentInfor>결제 정보</lblPaymentInfor>
         <lblNotification>유의사항</lblNotification>
         <lblGoBack>취소하기</lblGoBack>
         <colProduct>상품</colProduct>
@@ -149,49 +149,50 @@
         <colQty>수량</colQty>
         <colSubtotal>합계</colSubtotal>
         <colTotal>합계금액</colTotal>
-        <lblInstock>In stock</lblInstock>
-        <lblInstockQty>Just {{product.stock}} product</lblInstockQty>
+        <lblInstock>재고 있음</lblInstock>
+        <lblInstockQty>그냥  {{product.stock}} 제품</lblInstockQty>
         <lblOutOfstock>품절</lblOutOfstock>
         <btnRemoveFormCart>삭제</btnRemoveFormCart>
         <btnMoveToWishlist>Wishlist 보관</btnMoveToWishlist>
         <lblContinueShopping>계속쇼핑</lblContinueShopping>
         <lblWishlist>Wishlist</lblWishlist>
-        <lblRemoveWishlist>Remove</lblRemoveWishlist>
-        <lblViewWishlist>Show wishlist</lblViewWishlist>
-        <lblCartsum>Cart summary</lblCartsum>
+        <lblRemoveWishlist>제거</lblRemoveWishlist>
+        <lblViewWishlist>표시 wishlist</lblViewWishlist>
+        <lblCartsum>카트 요약</lblCartsum>
         <lblProductCount>상품 ({{products.length}})</lblProductCount>
         <lblShipping>배송</lblShipping>
+        <lblTotal>합계</lblTotal>
         <lblTax>세금</lblTax>
         <btncheckout>주문하기</btncheckout>
     </cart_showCart>
     <cart_shipping>
-        <title>Shipping information</title>
-        <lblYourcart>Your Cart</lblYourcart>
-        <lblPlaceOrder>Place order</lblPlaceOrder>
-        <lblShippingInfor>Shipping infor</lblShippingInfor>
-        <lblPaymentInfor>Playment infor</lblPaymentInfor>
-        <lblShippingAddress>Shipping address</lblShippingAddress>
-        <lblPhone>Phone number</lblPhone>
-        <lblAddress>Street address</lblAddress>
-        <lblCity>City/district</lblCity>
-        <lblProvince>Province</lblProvince>
-        <lblShippingMethods>Shipping methods</lblShippingMethods>
-        <lblName>Full name</lblName>
-        <colName>Name</colName>
-        <colTime>Transmit time</colTime>
-        <lblGift>Gift</lblGift>
-        <lblIsGift>Is gift</lblIsGift>
-        <lblGiftNoiceLine1>Is gift</lblGiftNoiceLine1>
-        <lblGiftNoice>(Free gift wrap)</lblGiftNoice>
-        <lblIsNotGift>Yes, it's a gift</lblIsNotGift>
-        <btnContinue>Continue</btnContinue>
-        <btnBacktoCart>Back to cart</btnBacktoCart>
-        <lblCartsum>Cart summary</lblCartsum>
-        <lblProduct>Products </lblProduct>
-        <lblShipping>Shipping</lblShipping>
-        <lblTax>Tax</lblTax>
-        <lblSubtotal>Subtotal</lblSubtotal>
-        <lblTotal>Total</lblTotal>
+        <title>선박 정보</title>
+        <lblYourcart>장바구니</lblYourcart>
+        <lblPlaceOrder>장소 순서</lblPlaceOrder>
+        <lblShippingInfor>선박 정보</lblShippingInfor>
+        <lblPaymentInfor>결제 정보</lblPaymentInfor>
+        <lblShippingAddress>발송 주소</lblShippingAddress>
+        <lblPhone>전화 번호</lblPhone>
+        <lblAddress>거리 주소</lblAddress>
+        <lblCity>도시 / 지역</lblCity>
+        <lblProvince>주</lblProvince>
+        <lblShippingMethods>배송 방법</lblShippingMethods>
+        <lblName>전체 이름</lblName>
+        <colName>이름</colName>
+        <colTime>시간을 전송</colTime>
+        <lblGift>선물</lblGift>
+        <lblIsGift>선물</lblIsGift>
+        <lblGiftNoiceLine1>선물</lblGiftNoiceLine1>
+        <lblGiftNoice>(무료 선물 포장)</lblGiftNoice>
+        <lblIsNotGift>네, 선물이야</lblIsNotGift>
+        <btnContinue>계속</btnContinue>
+        <btnBacktoCart>돌아 가기 쇼핑 카트에</btnBacktoCart>
+        <lblCartsum>카트 요약</lblCartsum>
+        <lblProduct>제품 </lblProduct>
+        <lblShipping>선박</lblShipping>
+        <lblTax>세</lblTax>
+        <lblSubtotal>소계</lblSubtotal>
+        <lblTotal>합계</lblTotal>
     </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>
@@ -212,15 +213,15 @@
     <order_placeOrder></order_placeOrder>
     <pin_showPage>
         <title>PIN</title>
-        <colProduct>Products</colProduct>
-        <colPrice>Price</colPrice>
+        <colProduct>제품</colProduct>
+        <colPrice>가격</colPrice>
         <colAction> </colAction>
-        <lblInstock>In stock</lblInstock>
-        <lblInstockQty>Just {{product.stock}} Item</lblInstockQty>
-        <lblOutOfstock>Out of stock</lblOutOfstock>
-        <lblAddToCart>Add to cart</lblAddToCart>
-        <lblMoveToWishlist>Move to wishlist </lblMoveToWishlist>
-        <lblRemoveItem>Remove</lblRemoveItem>
+        <lblInstock>재고 있음</lblInstock>
+        <lblInstockQty>그냥 {{product.stock}} 항목</lblInstockQty>
+        <lblOutOfstock>품절</lblOutOfstock>
+        <lblAddToCart>장바구니에 담기</lblAddToCart>
+        <lblMoveToWishlist>이동 wishlist </lblMoveToWishlist>
+        <lblRemoveItem>제거</lblRemoveItem>
     </pin_showPage>
     <admin_login></admin_login>
     <admin_mainpage></admin_mainpage>
@@ -233,196 +234,195 @@
     <seller_show_products></seller_show_products>
     <seller_add_product></seller_add_product>
     <portalaccount_lostPassword>
-        <title>Khôi phục mật khẩu</title>
-        <lblStepDes>Các Bước thực hiện reset mật khẩu bao gôm </lblStepDes>
-        <lblStep1>Bạn cần nhập địa chỉ mail của bạn</lblStep1>
-        <lblStep2>Bạn Kiểm tra mail và lấy thông tin mật khẩu của bạn</lblStep2>
-        <lblStep3>Đăng nhập với thông tin mật khẩu mới</lblStep3>
-        <lblMail>Địa chỉ mail</lblMail>
-        <btnMailler>Xác nhận</btnMailler>
-        <lblMsgOk>Reset Mật khẩu thành công, bạn hãy kiểm tra mail để biết thêm thông tin.</lblMsgOk>
-        <lblMsgNotOk>Email bạn vừa nhập chưa chính xác.</lblMsgNotOk>
+        <title>비밀 번호를 복구</title>
+        <lblStepDes>단계는 암호 재설정을 포함 </lblStepDes>
+        <lblStep1>당신은 당신의 이메일 주소를 입력해야</lblStep1>
+        <lblStep2>귀하의 이메일을 확인하고 암호 정보를 얻을</lblStep2>
+        <lblStep3>새 암호 정보로 로그인</lblStep3>
+        <lblMail>E-메일 주소</lblMail>
+        <btnMailler>확인</btnMailler>
+        <lblMsgOk>암호 재설정에 성공, 당신은 더 많은 정보를 귀하의 이메일을 확인.</lblMsgOk>
+        <lblMsgNotOk>입력하신 메일은 정확하지 않습니다.</lblMsgNotOk>
     </portalaccount_lostPassword>
     <portalHelp_policy></portalHelp_policy>
     
     <portalaccount_userSecurity>
-        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
-        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
-        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
-        <menuItemLogout>Đăng xuất</menuItemLogout>
-        <title>Bảo mật tài khoản - PROJECT E</title>
-        <errorMsgWorngOldPassword>Mật khẩu cũ không khớp</errorMsgWorngOldPassword>
-        <errorMsgWorngNewPassword>Mật khẩu mới không khớp</errorMsgWorngNewPassword>
-        <errorMsgWorngComparePassword>Mật khẩu mới không hợp lệ</errorMsgWorngComparePassword>
-        <msgUpdatePasswordComplete>Cập nhật mật khẩu thành công</msgUpdatePasswordComplete>
-        <passwordTitle>Thay đổi mật khẩu : </passwordTitle>
-        <passwordOld>Mật khẩu cũ: </passwordOld>
-        <passwordNew>Mật khẩu mới: </passwordNew>
-        <passwordRepeat>Nhập lại mật khẩu mới: </passwordRepeat>
-        <btnSavePassword>Cập nhật mật khẩu</btnSavePassword>
+        <menuItemSecurity>계정 보안</menuItemSecurity>
+        <menuItemInformation>계정 정보</menuItemInformation>
+        <menuItemOrderHistory>순서의 역사</menuItemOrderHistory>
+        <menuItemLogout>로그 아웃</menuItemLogout>
+        <title>계정 보안</title>
+        <errorMsgWorngOldPassword>이전 암호가 일치하지 않습니다</errorMsgWorngOldPassword>
+        <errorMsgWorngNewPassword>새 암호가 일치하지 않습니다</errorMsgWorngNewPassword>
+        <errorMsgWorngComparePassword>새 암호가 유효하지 않습니다</errorMsgWorngComparePassword>
+        <msgUpdatePasswordComplete>성공적으로 암호를 업데이트</msgUpdatePasswordComplete>
+        <passwordTitle>비밀번호 변경 : </passwordTitle>
+        <passwordOld>이전 암호 : </passwordOld>
+        <passwordNew>새 암호: </passwordNew>
+        <passwordRepeat>새 암호를 입력 : </passwordRepeat>
+        <btnSavePassword>암호를 업데이트</btnSavePassword>
         
-        <emailInvalidMsg>COMMING SOOM...</emailInvalidMsg>
-        <emailTitle>Thay đổi mail thông báo</emailTitle>
-        <lblEmail>Email</lblEmail>
-        <btnEmail>Cập nhật email</btnEmail>
+        <emailInvalidMsg>출시 예정...</emailInvalidMsg>
+        <emailTitle>알림 이메일</emailTitle>
+        <lblEmail>이메일</lblEmail>
+        <btnEmail>이메일 업데이트</btnEmail>
         
-        <loginHistoryTitle>10 lần đăng nhập gần đây nhất</loginHistoryTitle>
+        <loginHistoryTitle>최근 10 로그인</loginHistoryTitle>
         <historyIpColTitle>IP</historyIpColTitle>
-        <historyTimeColTitle>Thời gian</historyTimeColTitle>
+        <historyTimeColTitle>시간</historyTimeColTitle>
         <historyUserAgrentColTitle>User Agrent</historyUserAgrentColTitle>
-        <historySystemColTitle>Hệ thống</historySystemColTitle>
+        <historySystemColTitle>체계</historySystemColTitle>
         
     </portalaccount_userSecurity>
     <portalaccount_userInformation>
-        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
-        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
-        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
-        <menuItemLogout>Đăng xuất</menuItemLogout>
-        <title>Thông tin cá nhân - PROJECT E</title>
-        <sexM>Nam</sexM>
-        <sexF>Nữ</sexF>
-        <sexO>Khác</sexO>
-        <userInformationMsgFirstname>Họ và tên đệm không hợp lệ</userInformationMsgFirstname>
-        <userInformationMsgLastName>Tên không hợp lệ</userInformationMsgLastName>
-        <userInformationMsgDob>Ngày sinh không hợp lệ</userInformationMsgDob>
-        <userInformationMsgSex>Giới tính không hợp lệ</userInformationMsgSex>
-        <userInformationMsgSucess>Cập nhật thông tin thành công</userInformationMsgSucess>
+        <menuItemSecurity>계정 보안</menuItemSecurity>
+        <menuItemInformation>계정 정보</menuItemInformation>
+        <menuItemOrderHistory>순서의 역사</menuItemOrderHistory>
+        <menuItemLogout>로그 아웃</menuItemLogout>
+        <title>개인 정보</title>
+        <sexM>남성</sexM>
+        <sexF>여성</sexF>
+        <sexO>다른</sexO>
+        <userInformationMsgFirstname>이름이 잘못되었습니다</userInformationMsgFirstname>
+        <userInformationMsgLastName>이름이 잘못되었습니다</userInformationMsgLastName>
+        <userInformationMsgDob>출생의 날짜가 잘못되었습니다</userInformationMsgDob>
+        <userInformationMsgSex>성별은 유효하지 않습니다</userInformationMsgSex>
+        <userInformationMsgSucess>업데이트 성공</userInformationMsgSucess>
         
-        <lblInformationTitle>Thông tin cá nhân</lblInformationTitle>
-        <lblFristName>Họ và tên đệm</lblFristName>
-        <lblLastName>Tên</lblLastName>
-        <lblDob>Ngày sinh</lblDob>
-        <lblSex>Giới tính</lblSex>
-        <btnSaveInformation>Lưu thay đổi</btnSaveInformation>
+        <lblInformationTitle>개인 정보</lblInformationTitle>
+        <lblFristName>이름</lblFristName>
+        <lblLastName>이름</lblLastName>
+        <lblDob>생년월일</lblDob>
+        <lblSex>성</lblSex>
+        <btnSaveInformation>변경 사항을 저장</btnSaveInformation>
         
-        <lblContactsTitle>Danh sách địa chỉ</lblContactsTitle>
-        <lblContactsFullname>Họ tên đầy đủ</lblContactsFullname>
-        <lblContactsTelephone>Số điện thoại</lblContactsTelephone>
-        <lblContactsStateProvince>Tỉnh</lblContactsStateProvince>
-        <lblContactsCity>Thành phố</lblContactsCity>
-        <lblContactsAddress>Địa chỉ cụ thể</lblContactsAddress>
+        <lblContactsTitle>주소 목록</lblContactsTitle>
+        <lblContactsFullname>전체 이름</lblContactsFullname>
+        <lblContactsTelephone>전화 번호</lblContactsTelephone>
+        <lblContactsStateProvince>주</lblContactsStateProvince>
+        <lblContactsCity>도시</lblContactsCity>
+        <lblContactsAddress>특정 주소</lblContactsAddress>
         
-        <btnAddNewContact>Thêm mới địa chỉ</btnAddNewContact>
-        <btnUpdateContact>Chỉnh sửa địa chỉ</btnUpdateContact>
-        <msgUpdateContactError>Chỉnh sửa địa chỉ Không thành công</msgUpdateContactError>
-        <msgUpdateContactSucess>Cập nhật địa chỉ Thành công</msgUpdateContactSucess>
+        <btnAddNewContact>새 주소 추가</btnAddNewContact>
+        <btnUpdateContact>편집 주소</btnUpdateContact>
+        <msgUpdateContactError>실패한 주소를 편집</msgUpdateContactError>
+        <msgUpdateContactSucess>이 업데이트는 해결</msgUpdateContactSucess>
     </portalaccount_userInformation>
     <portalaccount_userOrderHistory>
-        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
-        <menuItemInformation>Thông tin tài khoản</menuItemInformation>
-        <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
-        <menuItemLogout>Đăng xuất</menuItemLogout>
-        <title>Lịch sử giao dịch - PROJECT E</title>
-        <orderStatusOrderPlace>Chưa xác thực</orderStatusOrderPlace>
-        <orderStatusVerifying>Đang chờ xác thực</orderStatusVerifying>
-        <orderStatusShipping>Đang chuyển hàng</orderStatusShipping>
-        <orderStatusDelivered>Đã hoàn thành</orderStatusDelivered>
-        <orderStatusRejected>Không được chấp nhận</orderStatusRejected>
-        <orderStatusOrderCancelled>Đã hủy do yêu cầu của khác hàng</orderStatusOrderCancelled>
+        <menuItemSecurity>계정 보안</menuItemSecurity>
+        <menuItemInformation>계정 정보</menuItemInformation>
+        <menuItemOrderHistory>순서의 역사</menuItemOrderHistory>
+        <menuItemLogout>로그 아웃</menuItemLogout>
+        <title>거래 내역</title>
+        <orderStatusOrderPlace>인증 없음</orderStatusOrderPlace>
+        <orderStatusVerifying>인증 대기 중</orderStatusVerifying>
+        <orderStatusShipping>상품 이동</orderStatusShipping>
+        <orderStatusDelivered>완료</orderStatusDelivered>
+        <orderStatusRejected>받아들이 기 어려운</orderStatusRejected>
+        <orderStatusOrderCancelled>고객의 요청에 의해 취소</orderStatusOrderCancelled>
         
-        <lblTitleNotify>Thông báo</lblTitleNotify>
-        <lblNotifyNoneOrder>Bạn chưa có order nào</lblNotifyNoneOrder>
-        <lblNotifyNoneInvoice>Bạn chưa có order nào</lblNotifyNoneInvoice>
-        <lblOrderId>Mã đơn hàng</lblOrderId>
-        <lblOrderCreatedDate>Ngày tạo</lblOrderCreatedDate>
-        <lblOrderTotalPrices>Tổng giá trị</lblOrderTotalPrices>
-        <btnOrdeDetail>Chi tiết đơn hàng</btnOrdeDetail>
-        <btnOrderCanncel>Hủy đơn hàng</btnOrderCanncel>
-        <btnOrderPayment>Tiếp  tục</btnOrderPayment>
+        <lblTitleNotify>발표</lblTitleNotify>
+        <lblNotifyNoneOrder>당신은 그것을 주문할 수 없습니다</lblNotifyNoneOrder>
+        <lblNotifyNoneInvoice>당신은 그것을 주문할 수 없습니다</lblNotifyNoneInvoice>
+        <lblOrderId>주문 코드</lblOrderId>
+        <lblOrderCreatedDate>만든 날짜</lblOrderCreatedDate>
+        <lblOrderTotalPrices>총 가치</lblOrderTotalPrices>
+        <btnOrdeDetail> 라인 항목</btnOrdeDetail>
+        <btnOrderCanncel>주문 취소</btnOrderCanncel>
+        <btnOrderPayment>계속</btnOrderPayment>
         
-        <lblNameProduct>Tên</lblNameProduct>
-        <lblQuanityProduct>Số lượng</lblQuanityProduct>
-        <btnProductDetail>Chi tiết sản phẩm</btnProductDetail>
-        <btnProductWriteReview>Viết review về sản phẩm</btnProductWriteReview>
-        <lblDesTitle>Mô tả</lblDesTitle>
-        <lblTaxTitle>Thuế</lblTaxTitle>
-        <lblPriceTitle>Giá</lblPriceTitle>
-        <lblInvoicePay>Hóa đơn thanh toán</lblInvoicePay>
-        <lblInvoiceReturn>Hóa đơn Trả hàng</lblInvoiceReturn>
-        <lblInvoiceTotal>Tổng giá trị hóa đơn</lblInvoiceTotal>
-        <lblInvoiceId>Mã Hóa đơn</lblInvoiceId>
-        <lblCreatedDate>Ngày tạo</lblCreatedDate>
-        <lblPaidDate>Ngày thanh toán</lblPaidDate>
-        <lblPaidType>Phương thức thanh toán</lblPaidType>
-        <lblShippingType>Hình thức vận chuyển</lblShippingType>
-        <lblPersonInCharge>Người nhận</lblPersonInCharge>
-        <lblPersonPhone>SĐT Người nhận</lblPersonPhone>
-        <lblPersonPhone>SĐT Người nhận</lblPersonPhone>
-        <lblState>Quốc gia</lblState>
-        <lblDetail>Quốc gia</lblDetail>
-        <lblCity>Thành phố</lblCity>
-        <lblStatus>Tình trạng</lblStatus>
-        <lblTitleRootCause>Nguyên nhân hủy đơn hàng</lblTitleRootCause>
-        <msgCancelOrderComplete>Hủy đơn hàng thành công, vui lòng kiểm tra mail để xác nhận đơn hàng.</msgCancelOrderComplete>
+        <lblNameProduct>이름</lblNameProduct>
+        <lblQuanityProduct>수</lblQuanityProduct>
+        <btnProductDetail>제품 상세 정보</btnProductDetail>
+        <btnProductWriteReview>상품 리뷰를 써</btnProductWriteReview>
+        <lblDesTitle>기술</lblDesTitle>
+        <lblTaxTitle>세금</lblTaxTitle>
+        <lblPriceTitle>가격</lblPriceTitle>
+        <lblInvoicePay>법안</lblInvoicePay>
+        <lblInvoiceReturn>송장 반환</lblInvoiceReturn>
+        <lblInvoiceTotal>지폐의 총 가치</lblInvoiceTotal>
+        <lblInvoiceId>빌 코드</lblInvoiceId>
+        <lblCreatedDate>만든 날짜</lblCreatedDate>
+        <lblPaidDate>지불 날짜</lblPaidDate>
+        <lblPaidType>지불 방법</lblPaidType>
+        <lblShippingType>수송의 형태</lblShippingType>
+        <lblPersonInCharge>받는 사람</lblPersonInCharge>
+        <lblPersonPhone>받는 사람 전화 번호</lblPersonPhone>
+        <lblState>상태</lblState>
+        <lblDetail>상세 주소</lblDetail>
+        <lblCity>도시</lblCity>
+        <lblStatus>지위</lblStatus>
+        <lblTitleRootCause>원인은 주문을 취소</lblTitleRootCause>
+        <msgCancelOrderComplete>성공적으로 주문 취소, 주문 확인 메일을 확인하시기 바랍니다.</msgCancelOrderComplete>
     </portalaccount_userOrderHistory>
     <product_list></product_list>
     <admin_sellerFind></admin_sellerFind>
     <category_show>
-        <title>Category</title>
-        <lblLoading>Loading, Please waiting...</lblLoading>
-        <lblShowMore>Show more</lblShowMore>
-        <lblSortNew>New</lblSortNew>
-        <lblSortBestbuy>Best Sellers</lblSortBestbuy>
-        <lblSortPriceDown>Lowest price</lblSortPriceDown>
-        <lblSortPriceUp>Highest Price</lblSortPriceUp>
-        <lblSortSaleoff>Discounts</lblSortSaleoff>
-        <lblSortHot>Hot</lblSortHot>
-        <lblSortLike>Like</lblSortLike>
+        <title>범주</title>
+        <lblLoading>로딩, 대기하십시오...</lblLoading>
+        <lblShowMore>더보기</lblShowMore>
+        <lblSortNew>새로운</lblSortNew>
+        <lblSortBestbuy>베스트셀러</lblSortBestbuy>
+        <lblSortPriceDown>최저 가격</lblSortPriceDown>
+        <lblSortPriceUp>최고 가격</lblSortPriceUp>
+        <lblSortSaleoff>할인</lblSortSaleoff>
+        <lblSortHot>뜨거운</lblSortHot>
+        <lblSortLike>같은</lblSortLike>
     </category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
     <portalPayment_paymentChoice>
-        <title>Lựa chọn phương thức thanh toán</title>
-        <paymentProcessCart>Giỏ hàng</paymentProcessCart>
-        <paymentProcessPlaceOrder>Quầy Thanh toán</paymentProcessPlaceOrder>
-        <paymentProcessShipping>Thông tin vận chuyển</paymentProcessShipping>
-        <paymentProcessPaymentInfor>Phương thức thanh toán</paymentProcessPaymentInfor>
-        <paymentProcessPayment>Thanh toán</paymentProcessPayment>
+        <title>지불 방법을 선택</title>
+        <paymentProcessCart>카트</paymentProcessCart>
+        <paymentProcessPlaceOrder>체크 아웃 카운터</paymentProcessPlaceOrder>
+        <paymentProcessShipping>배송 정보</paymentProcessShipping>
+        <paymentProcessPaymentInfor>지불 방법</paymentProcessPaymentInfor>
+        <paymentProcessPayment>지불</paymentProcessPayment>
         
-        <lblGoBack>Trở lại</lblGoBack>
+        <lblGoBack>백</lblGoBack>
         
-        <lblShippingAddress>Địa chỉ nhận hàng</lblShippingAddress>
-        <lblShippingInvoiceAddress>Địa chỉ nhận hóa đơn</lblShippingInvoiceAddress>
-        <lblFullname>Họ và tên : </lblFullname>
-        <lblPhone>Số điện thoại : </lblPhone>
-        <lblAddress>Địa chỉ : </lblAddress>
+        <lblShippingAddress>수취인 주소</lblShippingAddress>
+        <lblShippingInvoiceAddress>청구 지 주소</lblShippingInvoiceAddress>
+        <lblFullname>전체 이름 : </lblFullname>
+        <lblPhone>전화 번호 : </lblPhone>
+        <lblAddress>주소 : </lblAddress>
         
-        <lblProducts>Sản phẩm</lblProducts>
-        <colProduct>Sản phẩm</colProduct>
-        <colPrice>Giá</colPrice>
-        <colQty>Số lượng</colQty>
-        <colSubTotal>Tổng</colSubTotal>
+        <lblProducts> 제품 목록</lblProducts>
+        <colProduct>제품</colProduct>
+        <colPrice>가격</colPrice>
+        <colQty>수</colQty>
+        <colSubTotal>합계</colSubTotal>
         
-        <lblPaymentType>Phương thức thanh toán</lblPaymentType>
-        <colPlaymentType>Loại thanh toán</colPlaymentType>
-        <colPlaymentFreeType>Cách tính phí</colPlaymentFreeType>
-        <colPlaymentFree>Chi phí (VND)</colPlaymentFree>
+        <lblPaymentType>지불 방법</lblPaymentType>
+        <colPlaymentType>지불의 종류</colPlaymentType>
+        <colPlaymentFreeType>어떻게 충전하는</colPlaymentFreeType>
+        <colPlaymentFree>비용 (VND)</colPlaymentFree>
         
-        <lblOrderSummaries>Tổng hợp đơn hàng</lblOrderSummaries>
-        <lblOrderId>Mã đơn hàng : </lblOrderId>
-        <lblInvoiceId>Mã hóa đơn : </lblInvoiceId>
-        <lblCreateDate>Ngày tạo : </lblCreateDate>
-        <lblOrderSummariesDetail>Đơn hàng gồm có</lblOrderSummariesDetail>
-        <lblProducts>Sản phẩm</lblProducts>
-        <lblOrderShipping>Thông tin vận chuyển : </lblOrderShipping>
-        <lblOrderSubtotal>Tổng hàng : </lblOrderSubtotal>
-        <lblOrderTax>Thuế : </lblOrderTax>
-        <lblOrderTotal>Tổng giá trị hóa đơn : </lblOrderTotal>
-        <btnNext>Tiếp theo</btnNext>
-        <btnBack>Trở lại giỏ hàng</btnBack>
+        <lblOrderSummaries>합성 주문</lblOrderSummaries>
+        <lblOrderId>주문 코드 : </lblOrderId>
+        <lblInvoiceId>코드 법안 : </lblInvoiceId>
+        <lblCreateDate>만든 날짜 : </lblCreateDate>
+        <lblOrderSummariesDetail>순서는 다음과 같습니다</lblOrderSummariesDetail>
+        <lblProducts>제품</lblProducts>
+        <lblOrderShipping>배송 정보 : </lblOrderShipping>
+        <lblOrderSubtotal>총 상품 : </lblOrderSubtotal>
+        <lblOrderTax>세금 : </lblOrderTax>
+        <lblOrderTotal>지폐의 총 가치 : </lblOrderTotal>
+        <btnNext>다음</btnNext>
+        <btnBack>위로 카트</btnBack>
     </portalPayment_paymentChoice>
     <portalPayment_orderReview></portalPayment_orderReview>
     <seller_product_details></seller_product_details>
     <portalPayment_paymentSuccess>
-        <title>Giao dịch thành công</title>
-        <lblNotify>Giao dịch thành công</lblNotify>
-        <lblSucessMsg>Bạn vừa thanh toán thành công vui lòng kiểm tra mail. {br} Nhân viên bán hàng sẽ liên hệ sớm nhất với bạn.</lblSucessMsg>
-        <lblFaileMsg>Thanh toán thất bại, vui lòng kiểm tra lại thông tin.</lblFaileMsg>
+        <title>성공적인 거래</title>
+        <lblNotify>성공적인 거래</lblNotify>
+        <lblSucessMsg>성공적으로 결제 확인 메일을 주시기 바랍니다했습니다. {br} 영업 직원은 즉시 연락 드리겠습니다.</lblSucessMsg>
+        <lblFaileMsg>지불 실패, 정보를 확인하시기 바랍니다.</lblFaileMsg>
     </portalPayment_paymentSuccess>
     <file_browse_file></file_browse_file>
     <search_show_page>
-        <title>Search</title>
-        <lblResult>Result</lblResult>
+        <title>수색</title>
+        <lblResult>결과</lblResult>
         <lblResultCount>장바구니 {{total_record}}</lblResultCount>
         <colProduct>상품</colProduct>
         <colPrices>가격</colPrices>

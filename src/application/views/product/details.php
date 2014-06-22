@@ -23,6 +23,7 @@ $facebookImages = $product->getImages('facebookImage');
                     <span class="lynx_pin_number"> <c><?php echo $product->countPin ?></c> Pins</span>
                     <span class="lynx_pinIcon"><img src="/images/pin.png" > </span>
                 </div>
+                <div class="lynx_title" ><?php echo $product->getName() ?>  </div>
             </div>
             <div class="lynx_imageList">
                 <?php $class = 'zoomThumbActive'; ?>

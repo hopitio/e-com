@@ -164,6 +164,7 @@
         <lblProductCount>Sản phẩm ({{products.length}})</lblProductCount>
         <lblShipping>Vận chuyển</lblShipping>
         <lblTax>Thuế</lblTax>
+         <lblTotal>Tổng</lblTotal>
         <btncheckout>Tiếp tục</btncheckout>
     </cart_showCart>
     <cart_shipping>
