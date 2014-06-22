@@ -70,7 +70,14 @@ if ($product->id)
                 }
                 else
                 {
-                    echo $product->getName();
+                    if (mb_strlen(strval($product->getName()))  > 47)
+                    {
+                        echo mb_substr(strval($product->getName()), 0, 47) . '...';
+                    }
+                    else
+                    {
+                        echo $product->getName();
+                    }
                 }
                 ?>
             </strong>

@@ -106,6 +106,15 @@
         <lblOther>기타 정보</lblOther>
         <lblWarranty>보증  &amp; 반품</lblWarranty>
         <lblRelated>Related product</lblRelated>
+        <lblBrand>상표</lblBrand>
+        <lblMadeIn>제</lblMadeIn>
+        <lblImportFrom>에서 가져</lblImportFrom>
+        <lblReturnPolicy>{0} 일 (들) : 당신의 제품을 반환 할 수 있습니다.</lblReturnPolicy>
+        <lblNoReturnPolicy>이 제품은 반환 정책이 없습니다.</lblNoReturnPolicy>
+        <lblWarrantyPolicy>보장 정책 :</lblWarrantyPolicy>
+        <lblWarrantyValue>{0} day</lblWarrantyValue>
+        <lblWarrantyLifeTime>제품 수명.</lblWarrantyLifeTime>
+        <lblNoWarrantyPolicy>이 제품은 보증 정책이 없습니다.</lblNoWarrantyPolicy>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>

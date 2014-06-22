@@ -12,7 +12,7 @@ else
 {
     $selected = 0;
 }
-$selMadeIn = new ControlGroupDecorator('Made in:', new SelectEnumControl('selMadeIn', 'pattr[made_in]', 'country', $selected));
+$selMadeIn = new ControlGroupDecorator('Sản xuất tại:', new SelectEnumControl('selMadeIn', 'pattr[made_in]', 'country', $selected));
 $selMadeIn->get_a('SelectControl')->addClass('input-size-medium')->addOption('0', 'Null', true);
 echo $selMadeIn;
 //import from
@@ -25,13 +25,13 @@ else
 {
     $selected = 0;
 }
-$selImportFrom = new ControlGroupDecorator('Import from:', new SelectEnumControl('selImportFrom', 'pattr[import_from]', 'country', $selected));
+$selImportFrom = new ControlGroupDecorator('Nhập khẩu từ:', new SelectEnumControl('selImportFrom', 'pattr[import_from]', 'country', $selected));
 $selImportFrom->get_a('SelectControl')->addClass('input-size-medium')->addOption('0', 'Null', true);
 echo $selImportFrom;
 ?>
 <!--dimension-->
 <div class="form-group">
-    <label class="col-sm-3 control-label">Dimension:</label>
+    <label class="col-sm-3 control-label">Kích cỡ:</label>
     <div class="col-sm-9">
         <div class="col-xs-8 row">
             <div class="row">

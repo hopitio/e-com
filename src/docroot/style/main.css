@@ -670,3 +670,6 @@ label.error{color:brown;}
 input.error, textarea.error, select.error{color: brown;border-color: brown;}
 .error, .error i{color: brown;}
 .nav-tabs>li.error>a, .nav-tabs>li.error>a:hover, .nav-tabs>li.error>a:focus{color:brown;}
+input.lynx_blueButton:disabled, button.lynx_blueButton:disabled{background-color: #ddd;}
+.ul{padding-left:20px;}
+.ul li{list-style-type: disc;}

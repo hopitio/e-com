@@ -199,6 +199,11 @@ class ProductFixedDomain extends ProductDomain
         return $this->_getAttributeByName('quantity');
     }
 
+    function getBrand()
+    {
+        return $this->_getAttributeByName('brand');
+    }
+
     /** @return ProductAttributeDomain */
     function isAvailable()
     {

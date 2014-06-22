@@ -16,10 +16,10 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Price:'));
                 <thead>
                     <tr>
                         <th width="10%">#</th>
-                        <th width="20%">Tax</th>
-                        <th width="25%">Cost Percent</th>
-                        <th width="25%">Cost Fixed</th>
-                        <th width="20%">Action</th>
+                        <th width="20%">Thuế</th>
+                        <th width="25%">Tính theo phần trăm</th>
+                        <th width="25%">Tính theo số tiền</th>
+                        <th width="20%">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,7 +35,7 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Price:'));
                 </tbody>
             </table>
             <div style="text-align: right">
-                <input type="button" class="btn input-sm" value="Add Tax" ng-click="addTax()">
+                <input type="button" class="btn input-sm" value="Thêm thuế" ng-click="addTax()">
                 <select class="input-sm form-control input-size-medium" style="display: inline-block" ng-model="taxID">
                     <option></option>
                     <option ng-repeat="option in taxOptions" value="{{option.id}}" ng-if="!isTaxAdded(option.name)">{{option.name}}</option>

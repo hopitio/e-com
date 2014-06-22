@@ -119,7 +119,7 @@ foreach ($cartContents as $product)
                 </div>
                 <div class="form-group">
                     <div class="col-sm-8 col-sm-offset-4">
-                        <input type='submit' class="btn btn-primary" value='<?php echo $language[$view->view]->btnContinue; ?>'>
+                        <input type='submit' id="btn-continue" class="btn btn-primary" value='<?php echo $language[$view->view]->btnContinue; ?>'>
                         <input type='button' class="btn" value='<?php echo $language[$view->view]->btnBacktoCart; ?>' onclick='backToCart()'>
                     </div>
                 </div>
@@ -164,7 +164,7 @@ foreach ($cartContents as $product)
             </div>
             -->
         </div>
-        <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>">
+        <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>" onclick="$('btn-continue').click();">
     </div><!--cart-right-->
     <div class="clearfix"></div>
 </div><!--angularjs-->

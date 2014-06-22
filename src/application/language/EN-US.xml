@@ -105,7 +105,15 @@
         <lblOther>Pro Details</lblOther>
         <lblWarranty>Warranty &amp; Return</lblWarranty>
         <lblRelated>Related product</lblRelated>
-        
+        <lblBrand>Brand</lblBrand>
+        <lblMadeIn>Made in</lblMadeIn>
+        <lblImportFrom>Import from</lblImportFrom>
+        <lblReturnPolicy>You can return product in: {0} day(s).</lblReturnPolicy>
+        <lblNoReturnPolicy>This product has no return policy.</lblNoReturnPolicy>
+        <lblWarrantyPolicy>Warranty policy:</lblWarrantyPolicy>
+        <lblWarrantyValue>{0} day(s)</lblWarrantyValue>
+        <lblWarrantyLifeTime>product lifetime.</lblWarrantyLifeTime>
+        <lblNoWarrantyPolicy>This product has no warranty policy.</lblNoWarrantyPolicy>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>

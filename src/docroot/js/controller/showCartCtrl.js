@@ -37,12 +37,26 @@ function showCartCtrl($scope, $http) {
     $scope.qtyRange = new Array(31);
     $scope.fnMoneyToString = scriptData.fnMoneyToString;
     $scope.wishlist = [];
+    $scope.canCheckout = false;
+    $scope.notifications = [];
 
     $scope.getProducts = function(successCallback) {
         $http.get(scriptData.serviceURL, {cache: false}).success(function(data) {
-            $scope.products = data;
+            $scope.products = data.products;
+            $scope.notifications = data.notifications;
             if (successCallback) {
                 successCallback(data);
+            }
+            var countProductValid = 0;
+            $scope.canCheckout = false;
+            for (var i in $scope.products) {
+                var product = $scope.products[i];
+                if (product.quantity && product.stock >= product.quantity) {
+                    countProductValid++;
+                }
+            }
+            if (countProductValid == $scope.products.length && $scope.products.length) {
+                $scope.canCheckout = true;
             }
         }).error(function() {
 //TODO

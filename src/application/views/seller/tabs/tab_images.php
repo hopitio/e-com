@@ -1,10 +1,6 @@
 <?php
 /* @var $product ProductFixedDomain */
 ?>
-<div class="left">
-    *This page will not automatically saved. Please click Apply or Save when you finish editting.
-</div>
-<br>
 <div class="well">
     <input type="file" name="fileImage[]" multiple onchange="fileOnchange(this);" accept="image/jpeg">
 </div>
@@ -12,19 +8,18 @@
     <thead>
         <tr>
             <th width="10%">#</th>
-            <th width="15%">Image</th>
-            <th width="10%">Thumbnail</th>
-            <th width="15%">Base Image</th>
-            <th width="15%">Small Image</th>
-            <th width="15%">Facebook</th>
-            <th width="10%">Sort</th>
-            <th width="10">Action</th>
+            <th width="15%">Ảnh</th>
+            <th width="15%">Là ảnh đại diện</th>
+            <th width="15%">Là ảnh chính</th>
+            <th width="20%">Là ảnh Facebook</th>
+            <th width="10%">Số thứ tự</th>
+            <th width="15%">Hành động</th>
         </tr>
     </thead>
     <tbody>
         <?php
         $i = 0;
-        $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'smallImage' => true, 'facebookImage' => false); //true = array, false = single
+        $imgTypes = array('thumbnail' => false, 'baseImage' => true, 'facebookImage' => false); //true = array, false = single
         ?>
         <?php foreach ($product->getImages() as $img): ?>
             <tr>
@@ -51,7 +46,7 @@
                     <input type="text" class="form-control" name="txtSort[<?php echo $img->fkFile ?>]" value="<?php echo (int) $img->sort ?>" >
                 </td>
                 <td>
-                    <a href="<?php echo "/seller/delete_image/?product={$product->id}&file={$img->fkFile}&language={$lang}" ?>" title="Delete">Delete</a>
+                    <a href="<?php echo "/seller/delete_image/?product={$product->id}&file={$img->fkFile}&language={$lang}" ?>" title="Xóa">Xóa</a>
                 </td>
             </tr>
         <?php endforeach; ?>

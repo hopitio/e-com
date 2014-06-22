@@ -18,7 +18,7 @@ $facebookImages = $product->getImages('facebookImage');
         <div class="lynx_productImageContainer lynx_productHead">
             <div class="lynx_productImageHead">
                 <div class="lynx_star" ><img src="/images/star.png"></div>
-                <div class="lynx_title" ><?php echo $product->getName() ?>  </div>
+                <div class="lynx_title" ><?php echo $product->getName() ?></div>
                 <div class="lynx_pin">
                     <span class="lynx_pin_number"> <c><?php echo $product->countPin ?></c> Pins</span>
                     <span class="lynx_pinIcon"><img src="/images/pin.png" > </span>
@@ -36,7 +36,7 @@ $facebookImages = $product->getImages('facebookImage');
             </div>
             <div class="lynx_image clearfix" style="position:relative;">
                 <a href="<?php echo $images[0] ?>" class="jqzoom" rel='gal1' title="Zoom">
-                    <img src="/thumbnail.php/<?php echo $images[0] ?>/w=480"  title="thumbnail" style="width:480px;height:360px;">
+                    <img src="/thumbnail.php/<?php echo $images[0] ?>/w=480"  title="thumbnail" style="width:480px;">
                 </a>
             </div>
         </div>
@@ -44,7 +44,7 @@ $facebookImages = $product->getImages('facebookImage');
             <input type="hidden" name="hdn_product" id="hdn_product" value="<?php echo $product->id ?>">
             <div class="lynx_productName"> <?php echo $product->seller_name ?> </div>
             <div class="lynx_productPrice"> <?php echo $product->getFinalPriceMoney(User::getCurrentUser()->getCurrency()) ?> </div>
-            <div class="lynx_productShipping"> <?php echo $language[$view->view]->lblshpping; ?> </div>
+            <!--<div class="lynx_productShipping"> <?php echo $language[$view->view]->lblshpping; ?> </div>-->
     <!--        <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>
             <div class="lynx_productChocie lynx_cbxChoie"> <select class="form-control"><option>White</option></select> </div>-->
@@ -52,24 +52,27 @@ $facebookImages = $product->getImages('facebookImage');
                 <span class="lynx_quantityLabel"><?php echo $language[$view->view]->lblQuantity; ?></span>
                 <span class="lynx_productQuantityInput">
                     <select name="sel_qty" id="sel_qty"  class="lynx_productChocie lynx_cbxChoie">
-                        <?php foreach (range(1, min(array(30, (string) $product->getQuantity()))) as $int): ?>
-                            <option value="<?php echo $int ?>"><?php echo $int ?></option>
-                        <?php endforeach; ?>
+                        <?php if ((string) $product->getQuantity()): ?>
+                            <?php foreach (range(1, min(array(30, (string) $product->getQuantity()))) as $int): ?>
+                                <option value="<?php echo $int ?>"><?php echo $int ?></option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </select>
                 </span>
             </div>
             <div class="lynx_productButtonBuy"> 
                 <!-- <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
-                       data-action="<?php //echo base_url('order/shipping')    ?>">
+                       data-action="<?php //echo base_url('order/shipping')                                 ?>">
                 -->
-                <input id = "buynow" type="button" name="buynow" value="<?php echo $language[$view->view]->btnBuyNow; ?>" class="lynx_blueButton form-control submit" ></input>
+                <input id = "buynow" type="button" disabled name="buynow" value="<?php echo $language[$view->view]->btnBuyNow; ?>" class="lynx_blueButton form-control submit" ></input>
             </div>
             <div class="lynx_productButtonAddTo"> 
                 <span class="lynx_actionTitle"><?php echo $language[$view->view]->lblAddTo; ?> : </span>
                 <div class="row">
                     <div style="width:42%;float:left;margin-left: 15px;">
+                        <?php $disabled = (string) $product->getQuantity() ? '' : 'disabled' ?>
                         <input type="button" name="addToCart" value="<?php echo $language[$view->view]->btnCart; ?>" class="lynx_blueButton form-control submit" 
-                               data-action="<?php echo base_url('cart/addToCart') ?>">
+                               data-action="<?php echo base_url('cart/addToCart') ?>" <?php echo $disabled ?>>
                     </div>
                     <div style="width:42%;float:left;margin-left:15px;">
                         <input type="button" name="addToWishlist" value="<?php echo $language[$view->view]->btnWishList; ?>" 
@@ -89,11 +92,55 @@ $facebookImages = $product->getImages('facebookImage');
     <div class="lynx_listProducts tab">
         <ul class="lynx_head">
             <li class="active"><a href="#tab-description"><?php echo $language[$view->view]->lblDes; ?></a></li>
-            <li><a href="#tab-2"><?php echo $language[$view->view]->lblOther; ?></a></li>
-            <li><a href="#tab-3"><?php echo $language[$view->view]->lblWarranty; ?></a></li>
+            <li><a href="#tab-pro-details"><?php echo $language[$view->view]->lblOther; ?></a></li>
+            <li><a href="#tab-return-warranty"><?php echo $language[$view->view]->lblWarranty; ?></a></li>
         </ul>
         <div id="tab-description" class="lynx_itemConatiner lynx_productDetailDescription">
             <?php echo $product->getDescription() ?>
+        </div>
+        <div id="tab-pro-details" class="lynx_itemConatiner lynx_productDetailDescription">
+            <ul class="ul">
+                <?php if (strval($product->getBrand())): ?>
+                    <li><?php echo $language[$view->view]->lblBrand ?>: <?php echo $product->getBrand() ?></li>
+                <?php endif; ?>
+                <?php if (strval($product->getWeight()) && strval($product->getWeightUnit())): ?> 
+                    <li><?php echo $product->getWeight() . ' ' . $product->getWeightUnit() ?></li>
+                <?php endif; ?>
+                <?php if (strval($product->getImportFrom())): ?>
+                    <li><?php echo $language[$view->view]->lblImportFrom ?>: <?php echo $product->getImportFrom() ?></li>
+                <?php endif; ?>
+                <?php if (strval($product->getMadeIn())): ?>
+                    <li><?php echo $language[$view->view]->lblMadeIn ?>: <?php echo $product->getMadeIn() ?></li>
+                <?php endif; ?>    
+            </ul>
+        </div>
+        <div id="tab-return-warranty" class="lynx_itemConatiner lynx_productDetailDescription">
+            <?php
+            if (strval($product->getReturnPolicy()))
+            {
+                echo str_replace('{0}', $product->getReturnPolicy(), $language[$view->view]->lblReturnPolicy);
+            }
+            else
+            {
+                echo $language[$view->view]->lblNoReturnPolicy;
+            }
+            if (strval($product->getWarrantyPolicy()))
+            {
+                echo '<br>' . $language[$view->view]->lblWarrantyPolicy;
+                if (strval($product->getWarrantyPolicy()) == 9999)
+                {
+                    echo $language[$view->view]->lblWarrantyLifeTime;
+                }
+                else
+                {
+                    echo str_replace('{0}', $product->getWarrantyPolicy(), $language[$view->view]->lblWarrantyValue);
+                }
+            }
+            else
+            {
+                echo $language[$view->view]->lblNoWarrantyPolicy;
+            }
+            ?>
         </div>
     </div>
 

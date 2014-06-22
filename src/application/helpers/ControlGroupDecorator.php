@@ -22,15 +22,7 @@ class ControlGroupDecorator extends HTMLDecoratorAbstract
             $inputID = $input->attributes('id');
             if ($input->attributes('data-rule-required'))
             {
-                $hasDot = strrpos($this->_labelFor, ':');
-                if ($hasDot !== false)
-                {
-                    $this->_labelFor = substr($this->_labelFor, 0, $hasDot) . "<span class='red'> *:</span>" . '';
-                }
-                else
-                {
-                    $this->_labelFor .= "<span class='red'> *</span>";
-                }
+                    $this->_labelFor = "<span class='red' style='font-weight:bolder;'>* </span>" . $this->_labelFor;
             }
         }
         ?>

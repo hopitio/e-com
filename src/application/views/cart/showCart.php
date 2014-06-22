@@ -18,8 +18,7 @@ defined('BASEPATH') or die('No direct script access allowed');
             <div class="notification">
                 <h4><?php echo $language[$view->view]->lblNotification; ?></h4>
                 <ul>
-                    <li>- Bạn đang tiết kiệm được <b class="green">$40.00</b></li>
-                    <li>- Chỉ cần mua thêm $20, bạn sẽ được <u>miễn phí vận chuyển cả đơn hàng</u>. Những món đồ <a href="javascript:;"><u>$20.00 ở đây</u></a></li>
+                    <li ng-repeat="msg in notifications">- {{msg}}</li>
                 </ul>
             </div>
             <br>
@@ -90,7 +89,7 @@ defined('BASEPATH') or die('No direct script access allowed');
             </table>
 
             <?php if (User::getCurrentUser()->is_authorized): ?>
-                <h3 class="left"><?php echo $language[$view->view]->lblWishlist; ?></h3>
+                <h3 class="left" ng-if="wishlist && wishlist.length"><?php echo $language[$view->view]->lblWishlist; ?></h3>
                 <table class="table-product">
                     <tbody>
                         <tr ng-repeat="product in wishlist" ng-class-even="'event'" ng-class-odd="'odd'">
@@ -115,6 +114,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                                 <a href="/wishlist/show" ><?php echo $language[$view->view]->lblViewWishlist; ?></a>
                             </td>
                         </tr>
+
                     </tbody>
                 </table>
             <?php endif; ?>
@@ -151,7 +151,8 @@ defined('BASEPATH') or die('No direct script access allowed');
                 </div>
                 -->
             </div>
-            <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btncheckout;?>" ng-click="checkout()">
+            <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btncheckout;?>" 
+                   ng-click="checkout()" ng-disabled="!canCheckout">
         </div><!--cart-right-->
     </div><!--row-wrapper-->
     <div class="clearfix"></div>

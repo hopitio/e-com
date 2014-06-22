@@ -60,7 +60,10 @@ class cart extends BaseController
         {
             $instance->seller_name = $rawData['seller_name'];
         });
-        $json = array();
+        $json = array(
+            'notifications' => array(),
+            'products'     => array()
+        );
         foreach ($products as $product)
         {
             /* @var $product ProductFixedDomain */
@@ -73,7 +76,11 @@ class cart extends BaseController
             $obj['thumbnail'] = (string) $images[0]->url;
             $obj['stock'] = (double) strval($product->getQuantity());
             $obj['url'] = '/product/details/' . $product->id;
-            $json[] = $obj;
+            if (strval($product->getQuantity()) < $product->quantity)
+            {
+                $json['notifications'][] = 'Sản phẩm "' . $product->getName() . '" đã hết trong kho, bạn cần giảm số lượng mua hoặc loại bỏ khỏi giỏ hàng.';
+            }
+            $json['products'][] = $obj;
         }
         echo json_encode($json);
     }

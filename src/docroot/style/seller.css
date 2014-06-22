@@ -6,8 +6,10 @@
 .actions{float:right;padding-bottom: 10px;}
 .actions a{padding: 0 8px;}
 .form-group *{text-align: left;}
-.form-group .control-label{font-weight: normal;}
+.form-group .control-label{font-weight: bold;}
 .input-size-medium, .form-control.input-size-medium {width: 250px;}
 label{font-weight: normal}
 table.dataTable tbody th, table.dataTable tbody td{padding:5px !important;}
 table.dataTable thead th, table.dataTable thead td{padding:5px !important;}
+.help-block{color:gray;display: block;}
+.control-label .help-block{text-align: right;}

@@ -5,8 +5,8 @@ window.HeadCtrl = function($scope, $http) {
     $('#head-ctrl .preload').removeClass('preload');
 
     $scope.loadCart = function() {
-        $http.get(config.cartService, {cache: false}).success(function(products) {
-            $scope.cart = products;
+        $http.get(config.cartService, {cache: false}).success(function(data) {
+            $scope.cart = data.products;
         });
         $scope.loadCart = new Function;
     };
@@ -19,25 +19,25 @@ window.HeadCtrl = function($scope, $http) {
         });
         $scope.loadCategories = new Function;
     };
-    
-    $scope.changeLanguage = function(languageKey){
+
+    $scope.changeLanguage = function(languageKey) {
         commonServiceClient = new CommonServiceClient($http);
         commonServiceClient.updateLanguage(languageKey, updateLanguageSucessCallback, updateLanguageErrorCallback);
     }
-    
+
     function updateLanguageSucessCallback(result)
     {
-        if(result.isError){
-            
-        }else{
+        if (result.isError) {
+
+        } else {
             location.reload();
         }
     }
-    
-    function updateLanguageErrorCallback(xhr,status){
-        
+
+    function updateLanguageErrorCallback(xhr, status) {
+
     }
-    
+
 };
 HeadCtrl.$inject = ['$scope', '$http'];
 

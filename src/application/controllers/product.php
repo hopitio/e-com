@@ -42,7 +42,8 @@ class product extends BaseController
         }
 
         $breadcrums[$parentCategory->name] = $parentCategory->getURL();
-        $breadcrums[$product->getName()->getTrueValue()] = NULL;
+        $productName = strlen(strval($product->getName())) > 50 ? substr((string) $product->getName(), 0, 50) . '...' : (string) $product->getName();
+        $breadcrums[$productName] = NULL;
 
         $data = array('product' => $product);
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
