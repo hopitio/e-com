@@ -28,6 +28,7 @@ class seller extends BaseController
         {
             throw new Lynx_AuthenticationException('Bạn không có quyền truy cập chức năng này');
         }
+        Common::nocache();
     }
 
     function dashboard()
@@ -38,7 +39,7 @@ class seller extends BaseController
     function show_products()
     {
         LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER)
-                //->setData(array('categories' => $this->sellerInstance->getCategories()))
+//->setData(array('categories' => $this->sellerInstance->getCategories()))
                 ->render('seller/show_products');
     }
 
@@ -53,11 +54,17 @@ class seller extends BaseController
                 ->autoloadAttributes()
                 ->filterSeller($this->sellerInstance->id)
                 ->limit($dataTableHelper->length)
+                ->filterStatus(null)
                 ->offset($dataTableHelper->start);
+        $mapper->getQuery()->where('p.status > -1');
 
         $products = $mapper->findAll();
         $count = $mapper->count();
-
+        $statusText = array(
+            -1 => 'Đã xóa',
+            0  => 'Không hoạt động',
+            1  => 'Hoạt động'
+        );
 
         foreach ($products as $product)
         {
@@ -68,6 +75,7 @@ class seller extends BaseController
                 (string) $product->getName(),
                 $storageCode,
                 (string) $product->getPriceMoney('VND'),
+                $statusText[$product->status],
                 'url' => '/seller/product_details/' . $product->id
             );
         }
@@ -77,24 +85,32 @@ class seller extends BaseController
 
     function delete_image()
     {
-        $this->getFileModel();
-        $this->getProductModel();
-        $productID = (int) $this->input->get('product');
-        $fileID = (int) $this->input->get('file');
-        $language = $this->input->get('language');
-        if (!$productID || !$fileID)
+        try
         {
-            throw new Lynx_RequestException('$_GET[product] && $_GET[file] cannot null');
+            $this->getFileModel();
+            $this->getProductModel();
+            $productID = (int) $this->input->get('product');
+            $fileID = (int) $this->input->get('file');
+            $language = $this->input->get('language');
+
+            if (!$productID || !$fileID)
+            {
+                throw new Lynx_RequestException('$_GET[product] & $_GET[file] không được rỗng');
+            }
+            if (!$language)
+            {
+                $language = 'EN-US';
+            }
+            DB::getInstance()->StartTrans();
+            $this->productModel->deleteImage($productID, $fileID);
+            $this->fileModel->delete($fileID);
+            DB::getInstance()->CompleteTrans();
+            Common::redirect_notify('Xóa thành công');
         }
-        if (!$language)
+        catch (Exception $ex)
         {
-            $language = 'EN-US';
+            Common::redirect_back($ex->getMessage(), false);
         }
-        DB::getInstance()->StartTrans();
-        $this->productModel->deleteImage($productID, $fileID);
-        $this->fileModel->delete($fileID);
-        DB::getInstance()->CompleteTrans();
-        redirect("/seller/product_details/{$productID}/?language={$language}#/tab_images");
     }
 
     function show_orders()
@@ -189,9 +205,9 @@ class seller extends BaseController
         }
         catch (Exception $ex)
         {
-            Common::redirect_back($returnURL, $ex->getMessage(), false);
+            Common::redirect_back($ex->getMessage(), false);
         }
-        //redirect('/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' . $this->input->post('hdnTab'));
+//redirect('/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' . $this->input->post('hdnTab'));
     }
 
     function duplicate_product($productID)
@@ -203,11 +219,10 @@ class seller extends BaseController
 
     function product_details($productID = 0)
     {
-        Common::nocache();
         $language = $this->input->get('language');
         if (!$language)
         {
-            $language = 'EN-US';
+            $language = 'VN-VI';
         }
 
         $product = ProductFixedMapper::make()
@@ -218,7 +233,7 @@ class seller extends BaseController
                 ->find();
         if ($productID && !$product->id)
         {
-            throw new Lynx_RoutingException("Product not found");
+            throw new Lynx_RoutingException("Không có sản phẩm này");
         }
         $categories = CategoryMapper::make()->setLanguage($language)->findAll();
         $taxes = TaxMapper::make()
@@ -258,7 +273,7 @@ class seller extends BaseController
     function add_product()
     {
         LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER)
-                //->setData(array('categories' => $this->sellerInstance->getCategories()))
+//->setData(array('categories' => $this->sellerInstance->getCategories()))
                 ->render('seller/add_product');
     }
 

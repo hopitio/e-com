@@ -8,7 +8,11 @@ foreach ($product->getImages('baseImage') as $attr)
     $images[] = (string) $attr->url;
 }
 $facebookImages = $product->getImages('facebookImage');
-var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LINE__ . ', file ' . __FILE__);
+if ($facebookImages)
+{
+
+    var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LINE__ . ', file ' . __FILE__);
+}
 ?>
 <script>
     $.browser = {};
@@ -60,8 +64,8 @@ var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LIN
             </div>
             <div class="lynx_productButtonBuy"> 
                 <!-- <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
-                       data-action="<?php //echo base_url('order/shipping') ?>">
-                        -->
+                       data-action="<?php //echo base_url('order/shipping')    ?>">
+                -->
                 <input id = "buynow" type="button" name="buynow" value="<?php echo $language[$view->view]->btnBuyNow; ?>" class="lynx_blueButton form-control submit" ></input>
             </div>
             <div class="lynx_productButtonAddTo"> 

@@ -1,9 +1,9 @@
 <?php ?>
 
 <div class="table-actions">
-    <a href="/seller/add_product"><i class="fa fa-plus"></i> Add new product</a>
+    <a href="/seller/add_product"><i class="fa fa-plus"></i> Thêm mới</a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="javascript:;" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o" ></i> Delete</a>
+    <a href="javascript:;" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o" ></i> Xóa</a>
 </div>
 <form id="frm-main">
     <table id="main-table" class="display dataTable">
@@ -11,10 +11,11 @@
             <tr>
                 <th width="10%" class="center"><input type="checkbox" class="chk-all" data-target=".chk" data-container="main-table"></th>
                 <th width="10%">ID</th>
-                <th width="40%">Name</th>
+                <th width="30%">Tên sản phẩm</th>
                 <th width="15%">SKU|UPC</th>
-                <th width="10%">Price</th>
-                <th width="15%">Action</th>
+                <th width="10%">Giá</th>
+                <th width="10%">Trạng thái</th>
+                <th width="15%">Hành động</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -79,10 +80,11 @@
                     "mRender": function(data, type, row) {
                         return '<a href="' + row.url + '"><i class="fa fa-edit"></i> Edit</a>';
                     },
-                    "aTargets": [5]
+                    "aTargets": [6]
                 }
             ],
             aoColumns: [
+                null,
                 null,
                 null,
                 null,

@@ -81,6 +81,7 @@ class Common
     {
         header('Pragma: no-cache');
         header('Cache-Control: max-age=1; no-cache');
+        @session_start();
     }
 
 }

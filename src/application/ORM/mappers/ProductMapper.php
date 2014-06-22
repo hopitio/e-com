@@ -88,6 +88,7 @@ class ProductMapper extends MapperAbstract
         }
         return $this;
     }
+    
 
     /**
      * 

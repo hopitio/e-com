@@ -14,6 +14,7 @@
         <?php endif; ?>
         <label class="inline" for="<?php echo $inputID ?>"><?php echo $cate->isContainer ? '<b>' . $cate->name . '</b>' : $cate->name ?></label>
     </div>
-<?php endforeach; ?>
+<?php
+endforeach;
 
 

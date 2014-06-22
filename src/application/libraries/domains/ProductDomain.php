@@ -68,6 +68,10 @@ class ProductDomain implements DomainInterface
                 $ret[] = $img;
             }
         }
+        if ($type !== 'baseImage' && empty($ret))
+        {
+            return $this->getImages('baseImage');
+        }
         return $ret;
     }
 
@@ -100,7 +104,6 @@ class ProductDomain implements DomainInterface
             return $this->_taxes;
         }
     }
-
 
     /**
      * @return ProductAttributeDomain

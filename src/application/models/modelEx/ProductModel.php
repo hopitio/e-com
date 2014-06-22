@@ -11,6 +11,7 @@ class ProductModel extends BaseModel
         $limit = get_instance()->config->item('limit_hot');
         $query = Query::make()->select('date_created, COUNT(*)', true)
                 ->from('t_product')
+                ->where('status=1')
                 ->groupBy('date_created')
                 ->orderBy('date_created DESC')
                 ->limit(50);
@@ -317,6 +318,11 @@ class ProductModel extends BaseModel
 
     function deleteImage($productID, $fileID)
     {
+        $isLastImage = DB::getInstance()->GetOne('SELECT COUNT(*) FROM t_product_image WHERE fk_product=?', array($productID));
+        if ($isLastImage == 1)
+        {
+            throw new Exception('Bạn không thể xóa ảnh cuối cùng');
+        }
         DB::delete('t_product_image', 'fk_product=? AND fk_file=?', array($productID, $fileID));
     }
 

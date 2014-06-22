@@ -9,3 +9,5 @@
 .form-group .control-label{font-weight: normal;}
 .input-size-medium, .form-control.input-size-medium {width: 250px;}
 label{font-weight: normal}
+table.dataTable tbody th, table.dataTable tbody td{padding:5px !important;}
+table.dataTable thead th, table.dataTable thead td{padding:5px !important;}
