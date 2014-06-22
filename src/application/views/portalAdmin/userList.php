@@ -6,15 +6,16 @@
         </div>
         <h4>TÌM KIẾM TÀI KHOẢN</h4>
         <div class="lynx_row">
-            <span class="lynx_fieldName">ID</span>
+            <span class="lynx_fieldName" style="width:100px">ID</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="userId"/></span>
-            <span class="lynx_fieldName">Email</span>
+            <span class="lynx_fieldName" style="width:100px">Email</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="account"/></span>
-            <span class="lynx_fieldName">Họ và tên đệm</span>
+        </div>
+        <div class="lynx_row">
+            <span class="lynx_fieldName" style="width:100px">Họ và tên đệm</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="firstName"/></span>
-            <span class="lynx_fieldName">Tên</span>
+            <span class="lynx_fieldName" style="width:100px">Tên</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="lastName"/></span>
-             
         </div>
         <div class="lynx_row lynx_rowButton">
             <button id="btnComfirm" class="lynx_button btn btn-primary" type="submit" ng-click="find()">Tìm kiếm</button>

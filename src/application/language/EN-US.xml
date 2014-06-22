@@ -77,7 +77,7 @@
         <lblViewCartWidthProductNumber>View Cart ({{cart.length}} items)</lblViewCartWidthProductNumber>
         <lblViewCart>{{cart.length}} items</lblViewCart>
         <lblCartAlert>Empty Cart</lblCartAlert>
-        <lblCartQuantity>Số lượng</lblCartQuantity>
+        <lblCartQuantity>Quantity</lblCartQuantity>
         <lblUserStatus>Hi, {1} Your account</lblUserStatus>
         <lblUserStatusNotSign>Hello, Sign in Here</lblUserStatusNotSign>
         <lblUserLogout>Sign out</lblUserLogout>
@@ -153,6 +153,7 @@
         <lblProductCount>Product ({{products.length}})</lblProductCount>
         <lblShipping>Shipping</lblShipping>
         <lblTax>Taxes</lblTax>
+        <lblTotal>Total</lblTotal>
         <btncheckout>Checkout</btncheckout>
     </cart_showCart>
     <cart_shipping>
