@@ -141,11 +141,7 @@ class ProductModel extends BaseModel
     {
         if ($data['id'])
         {
-            DB::update('t_product', array(
-                'fk_category' => (int) $data['categoryID'],
-                'status'      => $data['status']
-                    ), 'id=' . intval($data['id'])
-            );
+            DB::update('t_product', array('fk_category' => (int) $data['categoryID']), 'id=' . intval($data['id']));
         }
         else
         {

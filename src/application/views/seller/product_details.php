@@ -44,10 +44,10 @@ if ($product->id)
                     echo '<span class="red">Đã xóa</span>';
                     break;
                 case 0:
-                    echo '<span class="grey">Không hoạt động</span>';
+                    echo '<span class="grey">Không bán</span>';
                     break;
                 case 1:
-                    echo '<span class="green">Hoạt động</span>';
+                    echo '<span class="green">Đang bán</span>';
                     break;
             }
             ?>
@@ -79,10 +79,10 @@ if ($product->id)
                 <a href="javascript:;" id="btn-apply" class="btn" data-type="submit" data-action="/seller/update_product/apply"><i class="fa fa-save"></i> Ghi lại</a>
                 <?php if ($product->id): ?>
                     <?php if ($product->status != 1): ?>
-                        <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/activate"><i class="fa fa-check"></i> Kích hoạt</a>
+                        <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/activate"><i class="fa fa-check"></i> Bắt đầu bán</a>
                     <?php endif; ?>
                     <?php if ($product->status == 1): ?>
-                        <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/deactivate"><i class="fa fa-check"></i> Ngừng kích hoạt</a>
+                        <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/deactivate"><i class="fa fa-check"></i> Ngừng bán</a>
                         <a href="/product/details/<?php echo $product->id ?>" class="btn" target="_blank"><i class="fa fa-eye"></i> Xem thử</a>
                     <?php endif; ?>
                     <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Sao chép</a>

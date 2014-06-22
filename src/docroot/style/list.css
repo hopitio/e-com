@@ -24,6 +24,8 @@
 .lynx_categoryList ul li a{
     text-transform: uppercase;
     text-decoration: none;
+    font-weight: bold;
+    color:#3D79A5;
 }
 .lynx_categoryList ul li.active{
     border-radius:2px;

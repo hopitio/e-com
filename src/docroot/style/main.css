@@ -377,6 +377,7 @@ body .lynx_cart span{
     font-size:12px;
     text-align:left;
     width:100%;
+    color: #b0b0b0;
 }
 .lynx_detailContainer .lynx_star{
     float:left;

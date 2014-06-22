@@ -62,8 +62,8 @@ class seller extends BaseController
         $count = $mapper->count();
         $statusText = array(
             -1 => 'Đã xóa',
-            0  => 'Không hoạt động',
-            1  => 'Hoạt động'
+            0  => 'Không bán',
+            1  => 'Đang bán'
         );
 
         foreach ($products as $product)
@@ -105,7 +105,7 @@ class seller extends BaseController
             $this->productModel->deleteImage($productID, $fileID);
             $this->fileModel->delete($fileID);
             DB::getInstance()->CompleteTrans();
-            Common::redirect_notify('Xóa thành công');
+            Common::redirect_back('Xóa thành công');
         }
         catch (Exception $ex)
         {
@@ -163,7 +163,6 @@ class seller extends BaseController
             'id'              => $productID,
             'language'        => $this->input->post('hdnLanguage'),
             'storageCodeType' => $this->input->post('selCodeType'),
-            'status'          => $this->input->post('chkStatus'),
             'attr'            => $this->input->post('pattr')
         );
         $data['categoryID'] = $data['id'] ? $this->input->post('radCate') : $this->input->post('hdnCategory');

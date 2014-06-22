@@ -8,14 +8,10 @@ foreach ($product->getImages('baseImage') as $attr)
     $images[] = (string) $attr->url;
 }
 $facebookImages = $product->getImages('facebookImage');
-if ($facebookImages)
-{
-
-    var_dump('/thumbnail.php/' . $facebookImages[0]->url . '/w=200 at line ' . __LINE__ . ', file ' . __FILE__);
-}
 ?>
 <script>
     $.browser = {};
+    console.log('<?php echo $facebookImages[0]->url ?>');
 </script>
 <div id="product-details-ctrl" ng-controller="productDetailsCtrl">
     <div class="lynx_productHeadContainer lynx_staticWidth">

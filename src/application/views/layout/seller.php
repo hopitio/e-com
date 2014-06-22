@@ -61,14 +61,14 @@
                 <div class="lynx_headMenu" >
                     <div class="lynx_menuWarp lynx_staticWidth">
                         <div class="lynx_category dropdown dropdown-hover">
-                            <span class="dropdown-toggle " ng-mouseover="loadCategories()"> 
+<!--                            <span class="dropdown-toggle " ng-mouseover="loadCategories()"> 
                                 <span>ABC<span class="caret"></span> </span> 
                             </span>
                             <ul class="dropdown-menu" class="preload">
                                 <li class="left">
                                     <a href="javascript:;" title="abc">abc</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
 
                     </div>
