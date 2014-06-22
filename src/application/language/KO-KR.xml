@@ -100,7 +100,7 @@
         <btnBuyNow>바로구매</btnBuyNow>
         <lblAddTo>장바구니 </lblAddTo>
         <btnCart>장바구니</btnCart>
-        <btnWishList>Wishlist/ 관심상품</btnWishList>
+        <btnWishList>관심상품</btnWishList>
         <lblShare>공유</lblShare>
         <lblDes>상품 설명</lblDes>
         <lblOther>기타 정보</lblOther>

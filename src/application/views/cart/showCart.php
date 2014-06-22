@@ -15,7 +15,7 @@ defined('BASEPATH') or die('No direct script access allowed');
     </div>
     <div class="row-wrapper">
         <div class="cart-left">
-            <div class="notification">
+            <div class="notification" style="display:none">
                 <h4><?php echo $language[$view->view]->lblNotification; ?></h4>
                 <ul>
                     <li>- Bạn đang tiết kiệm được <b class="green">$40.00</b></li>
@@ -101,7 +101,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                                 <a href="javascript:;" class="product-name">{{product.name}}</a><br>
                                 <span class="product-seller">{{product.seller_name}}</span><br>
                                 <span class="green" ng-if="product.stock > 10">In stock</span>
-                                <span class="red" ng-if="product.stock <= 10 && product.stock > 0">Just {{product.stock}} left</span>
+                                <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty; ?></span>
                                 <span class="red" ng-if="product.stock <= 0">Out of stock</span>
                             </td>
                             <td width="100">

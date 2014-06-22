@@ -13,13 +13,13 @@ foreach ($cartContents as $product)
 <h1></h1>
 <ul class="cart-breadcrums">
      <li class="bc-label"><i class="fa fa-shopping-cart"></i> <?php echo $language[$view->view]->lblYourcart; ?> </li>
-    <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPlaceOrder; ?></a></li>
-    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblShippingInfor; ?></a></li>
+    <li class="bc-label"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPlaceOrder; ?></a></li>
+    <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblShippingInfor; ?></a></li>
     <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPaymentInfor; ?></a></li>
 </ul>
 <h1></h1>
 <div ng-app ng-controller="shippingCtrl" class="row-wrapper">
-    <form method="post" class="form-horizontal cart-left" action="<?php echo base_url('order/placeOrder') ?>">
+    <form id="frmMain" method="post" class="form-horizontal cart-left" action="<?php echo base_url('order/placeOrder') ?>">
         <fieldset>
             <legend><?php echo $language[$view->view]->lblShippingAddress; ?></legend>
             <div style="width: 500px;">
@@ -164,7 +164,7 @@ foreach ($cartContents as $product)
             </div>
             -->
         </div>
-        <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>">
+        <input id="btnSubCheckout" type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>">
     </div><!--cart-right-->
     <div class="clearfix"></div>
 </div><!--angularjs-->
@@ -178,6 +178,13 @@ foreach ($cartContents as $product)
     scriptData.priceNTax = <?php echo $totalPrice + $totalTaxes ?>;
 </script>
 <script>
+
+    $(document).ready(function(){
+        $("#btnSubCheckout").click(function(){
+            $("#frmMain").submit();
+            });
+        
+        });
     (function(window, scriptData, $, undefined) {
         window.backToCart = function() {
             window.location = scriptData.cartURL;
