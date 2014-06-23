@@ -79,7 +79,7 @@
         <lblCartAlert>장바구니 (0)</lblCartAlert>
         <lblCartQuantity>Số lượng</lblCartQuantity>
         <lblUserStatus>안녕하세요, {1} 귀하의 계정</lblUserStatus>
-        <lblUserStatusNotSign>로그인</lblUserStatusNotSign>
+        <lblUserStatusNotSign>안녕하세요, 여기에 가입</lblUserStatusNotSign>
         <lblUserLogout>로그 아웃</lblUserLogout>
         <lblUserAccount>계정 정보</lblUserAccount>
         <lblUserOrder>주문 정보</lblUserOrder>
