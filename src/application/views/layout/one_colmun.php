@@ -69,9 +69,9 @@
                                     <a href="javascript:;">
                                         <?php
                                         $str = str_replace('{1}', $user->lastname, $language['layout']->lblUserStatus->__toString());
-                                        if (mb_strlen($str) > 25)
+                                        if (mb_strlen($str) > 20)
                                         {
-                                            $str = mb_substr($str, 0, 25) . '...';
+                                            $str = mb_substr($str, 0, 20) . '...';
                                         }
                                         echo $str;
                                         ?>
