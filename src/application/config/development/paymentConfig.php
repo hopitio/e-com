@@ -4,11 +4,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 $config['support_currency'] = array('USD' => 'USD','VND' => 'VND','KRW'=>'KRW');
 $config['rate_vietcombank_url'] = array('vietcommbank' => 'http://www.vietcombank.com.vn/ExchangeRates/ExrateXML.aspx');
 $config['payment_gateway_supported'] = array(
-    'visaAndMaster' => array(
-        'displayName' => 'CASH',
-        'isPercent' => '1',
-        'value' => '0'
-    ),
     'NganLuong' => array(
         'displayName' => 'Ngân Lượng',
         'isPercent' => '1',

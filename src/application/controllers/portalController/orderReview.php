@@ -53,6 +53,9 @@ class orderReview extends BasePortalController
         
         $modelOtherCost = new PortalModelInvoiceOtherCost();
         switch($paymentKey){
+            case 'CASH':
+                $modelOtherCost->comment = DatabaseFixedValue::PAYMENT_BY_CASH;
+                break;
         	case 'visaAndMaster':
         	    $modelOtherCost->comment = DatabaseFixedValue::PAYMENT_BY_VISA;
         	    break;
