@@ -135,7 +135,7 @@
                             <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderCreatedDate; ?> : </span>{{order.created_date}}
                         </div>
                         <div class="lynx_row ">
-                           <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderTotalPrices; ?> : </span> <span class="hightLine">{{order.cost}}</span>
+                           <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderTotalPrices; ?> : </span> <span class="hightLine">{{order.cost | number:0}} VND</span>
                         </div>
                     </div>
                 </div>
@@ -158,8 +158,8 @@
                                 <span class="lynx_inHightLine"><i class="glyphicon glyphicon-pencil" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductWriteReview; ?> </span>
                                 </div>
                         </span>
-                        <span class="lynx_colTax">{{product.totalTax}}</span>
-                        <span class="lynx_colPrice">{{parseInt(product.total_price) + product.totalTax}}</span>
+                        <span class="lynx_colTax">{{product.totalTax | number:0}}</span>
+                        <span class="lynx_colPrice">{{parseInt(product.total_price) + product.totalTax | number:0}}</span>
                     </div>
                 </div>
             </div>
