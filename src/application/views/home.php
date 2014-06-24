@@ -3,7 +3,9 @@ defined('BASEPATH') or die('No direct script access allowed');
 ?>
 <div id="home-ctrl" ng-controller="HomeCtrl" >
     <div class="lynx_banner">
+        <div style="height:20px;">&nbsp;</div>
         <div class="lynx_slide">
+            <a href="/product/details/6"><img src="/images/banner/Banner_cafeviet.jpg"/></a>
         </div>
         <!--        <div class="lynx_suggest">
                     <div class="lynx_suggetWarp lynx_staticWidth">

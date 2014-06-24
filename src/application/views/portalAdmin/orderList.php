@@ -9,7 +9,7 @@
             <span class="lynx_fieldName" style="width:100px"> ID</span>
             <span class="lynx_fieldValue"><input type="text" ng-model="userId"/></span>
             <span class="lynx_fieldName" style="width:100px">Mã Hóa Đơn</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="userId"/></span>
+            <span class="lynx_fieldValue"><input type="text" ng-model="invoiceId"/></span>
         </div>
         <div class="lynx_row">
             <span class="lynx_fieldName" style="width:100px">ACCOUNT</span>
