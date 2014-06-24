@@ -1,4 +1,4 @@
-<div class="lynx_contentWarp lynx_staticWidth">
+<div class="lynx_contentWarp lynx_staticWidth" style="min-height: 250px;margin: auto">
         <?php
         if($activeStatus == 'actived'){
             echo $language[$view->view]->msgComplete;

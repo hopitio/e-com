@@ -77,7 +77,7 @@
         <lblViewCartWidthProductNumber>장바구니 ({{cart.length}})</lblViewCartWidthProductNumber>
         <lblViewCart>장바구니 {{cart.length}}</lblViewCart>
         <lblCartAlert>장바구니 (0)</lblCartAlert>
-        <lblCartQuantity>Số lượng</lblCartQuantity>
+        <lblCartQuantity>수</lblCartQuantity>
         <lblUserStatus>안녕하세요, {1} 귀하의 계정</lblUserStatus>
         <lblUserStatusNotSign>안녕하세요, 여기에 가입</lblUserStatusNotSign>
         <lblUserLogout>로그 아웃</lblUserLogout>

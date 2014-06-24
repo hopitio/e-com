@@ -197,18 +197,18 @@ class PortalBizOrder extends PortalBizBase
         }
         
         $order->invoice = $expectedInvoice;
-        $target = '';
-        foreach ($order->invoice->shippings as $shipping){
-            if($shipping->status != DatabaseFixedValue::SHIPPING_STATUS_ACTIVE && $shipping->shipping_type != 'SHIP')
-            {
-                continue;
-            }
-            if($shipping->contact->email_contact == null || !isset($shipping->contact->email_contact)){
-                $target = 'lethanhan.bkaptech@gmail.com';
-            }else{
-                $target = $shipping->contact->email_contact;
-            }
-        }
+        $target = isset($order->user->account) ? $order->user->account : 'lethanhan.bkaptech@gmail.com';
+//         foreach ($order->invoice->shippings as $shipping){
+//             if($shipping->status != DatabaseFixedValue::SHIPPING_STATUS_ACTIVE && $shipping->shipping_type != 'SHIP')
+//             {
+//                 continue;
+//             }
+//             if($shipping->contact->email_contact == null || !isset($shipping->contact->email_contact)){
+//                 $target = 'lethanhan.bkaptech@gmail.com';
+//             }else{
+//                 $target = $shipping->contact->email_contact;
+//             }
+//         }
         $mailData = array();
         $mailData['order'] = $order;
         MailManager::initalAndSend($mailType, $target, $mailData);
