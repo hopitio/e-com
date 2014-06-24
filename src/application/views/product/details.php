@@ -24,7 +24,6 @@ $facebookImages = $product->getImages('facebookImage');
                     <span class="lynx_pin_number"> <c><?php echo $product->countPin ?></c> Pins</span>
                     <span class="lynx_pinIcon"><img src="/images/pin.png" > </span>
                 </div>
-                <div class="lynx_title" ><?php echo $product->getName() ?>  </div>
             </div>
             <div class="lynx_imageList">
                 <?php $class = 'zoomThumbActive'; ?>
@@ -64,7 +63,7 @@ $facebookImages = $product->getImages('facebookImage');
             </div>
             <div class="lynx_productButtonBuy"> 
                 <!-- <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
-                       data-action="<?php //echo base_url('order/shipping')                                 ?>">
+                       data-action="<?php //echo base_url('order/shipping')                                  ?>">
                 -->
                 <input id = "buynow" type="button" disabled name="buynow" value="<?php echo $language[$view->view]->btnBuyNow; ?>" class="lynx_blueButton form-control submit" ></input>
             </div>
@@ -126,9 +125,10 @@ $facebookImages = $product->getImages('facebookImage');
             {
                 echo $language[$view->view]->lblNoReturnPolicy;
             }
+            echo '<br>';
             if (strval($product->getWarrantyPolicy()))
             {
-                echo '<br>' . $language[$view->view]->lblWarrantyPolicy;
+                echo $language[$view->view]->lblWarrantyPolicy;
                 if (strval($product->getWarrantyPolicy()) == 9999)
                 {
                     echo $language[$view->view]->lblWarrantyLifeTime;

@@ -36,7 +36,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                     <tr ng-repeat="product in products" ng-class-even="'even'" ng-class-odd="'odd'">
                         <td class="center">
                             <a href="{{product.url}}" title="product thumbnail">
-                                <img class="product-thumbnail" src="{{product.thumbnail}}" alt="product thumbnail">
+                                <img class="product-thumbnail" src="/thumbnail.php/{{product.thumbnail}}/w=200" alt="product thumbnail">
                             </a>
                         </td>
                         <td>
@@ -59,9 +59,11 @@ defined('BASEPATH') or die('No direct script access allowed');
                             <a href="javascript:;" ng-click="removeFromCart(product.id)">
                                 <?php echo $language[$view->view]->btnRemoveFormCart; ?>
                             </a><br>
-                            <a href="javascript:;">
-                               <?php echo $language[$view->view]->btnMoveToWishlist; ?>
-                            </a>
+                            <?php if (User::getCurrentUser()->is_authorized): ?>
+                                <a href="javascript:;" ng-click="moveToWishlist(product.id)">
+                                    <?php echo $language[$view->view]->btnMoveToWishlist; ?>
+                                </a>
+                            <?php endif; ?>
                         </td>
                         <td class="center">
                             <span class="product-price">{{fnMoneyToString((product.price + product.taxes) * product.quantity)}}</span>
@@ -94,7 +96,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                     <tbody>
                         <tr ng-repeat="product in wishlist" ng-class-even="'event'" ng-class-odd="'odd'">
                             <td width="100" class="center">
-                                <img class="product-thumbnail" src="{{product.thumbnail}}">
+                                <img class="product-thumbnail" src="/thumbnail.php/{{product.thumbnail}}/w=200">
                             </td>
                             <td width="400">
                                 <a href="javascript:;" class="product-name">{{product.name}}</a><br>
@@ -127,21 +129,21 @@ defined('BASEPATH') or die('No direct script access allowed');
                     <div class="row-right">{{fnMoneyToString(calPriceOnly())}}</div>
                 </div>
                 <div class="summary-row">
-                    <div class="row-left"><?php echo $language[$view->view]->lblShipping;?>:</div>
+                    <div class="row-left"><?php echo $language[$view->view]->lblShipping; ?>:</div>
                     <div class="row-right">?-----</div>
                 </div>
                 <hr>
                 <div class="summary-row">
-                    <div class="row-left"><?php echo $language[$view->view]->colSubtotal;?>:</div>
+                    <div class="row-left"><?php echo $language[$view->view]->colSubtotal; ?>:</div>
                     <div class="row-right">{{fnMoneyToString(calPriceOnly())}}</div>
                 </div>
                 <div class="summary-row">
-                    <div class="row-left"><?php echo $language[$view->view]->lblTax;?>:</div>
+                    <div class="row-left"><?php echo $language[$view->view]->lblTax; ?>:</div>
                     <div class="row-right">{{fnMoneyToString(calTaxes())}}</div>
                 </div>
                 <hr>
                 <div class="summary-row total">
-                    <div class="row-left"><?php echo $language[$view->view]->colTotal?>:</div>
+                    <div class="row-left"><?php echo $language[$view->view]->colTotal ?>:</div>
                     <div class="row-right">{{fnMoneyToString(calPriceOnly() + calTaxes())}}</div>
                 </div>
                 <!--
@@ -151,7 +153,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                 </div>
                 -->
             </div>
-            <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btncheckout;?>" 
+            <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btncheckout; ?>" 
                    ng-click="checkout()" ng-disabled="!canCheckout">
         </div><!--cart-right-->
     </div><!--row-wrapper-->
@@ -166,6 +168,7 @@ defined('BASEPATH') or die('No direct script access allowed');
     scriptData.checkoutURL = '<?php echo base_url('cart/shipping') ?>';
     scriptData.updateQuantityURL = '<?php echo base_url('cart/updateQuantityService') ?>';
     scriptData.removeFromCartURL = '<?php echo base_url('cart/removeFromCart') ?>/';
+    scriptData.moveToWishlistURL = '/cart/moveToWishlist/';
     scriptData.addToCartURL = '/wishlist/addToCart/';
     scriptData.removeFromWishlistURL = '/wishlist/remove/';
     scriptData.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;

@@ -46,12 +46,12 @@ class SearchMapper extends ProductFixedMapper
     function count($fields = 'COUNT(*)')
     {
         $union_1 = clone $this->union_1;
-        $union_1->select($fields, true)->limit(0)->orderBy(NULL);
+        $union_1->select('p.id', true)->limit(0)->orderBy(NULL);
 
         $union_2 = clone $this->union_2;
-        $union_2->select($fields, true)->limit(0)->orderBy(NULL);
+        $union_2->select('p.id', true)->limit(0)->orderBy(NULL);
 
-        $sql = "SELECT ($union_1) + ($union_2)";
+        $sql = "SELECT $fields FROM ($union_1 UNION $union_2) temp";
         return DB::getInstance()->GetOne($sql, $this->_queryParams);
     }
 

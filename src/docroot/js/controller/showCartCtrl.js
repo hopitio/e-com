@@ -82,6 +82,19 @@ function showCartCtrl($scope, $http) {
             success: function() {
                 $scope.getWishlist();
                 $scope.getProducts();
+                refreshCart();
+            }
+        });
+    };
+
+    $scope.moveToWishlist = function(productID) {
+        $.ajax({
+            cache: false,
+            url: scriptData.moveToWishlistURL + productID,
+            success: function() {
+                $scope.getWishlist();
+                $scope.getProducts();
+                refreshCart();
             }
         });
     };
@@ -126,7 +139,7 @@ function showCartCtrl($scope, $http) {
             url: scriptData.updateQuantityURL,
             data: postData,
             success: function() {
-
+                refreshCart();
             }, error: function() {
                 //todo
             }
@@ -146,6 +159,7 @@ function showCartCtrl($scope, $http) {
                     break;
                 }
             }
+            refreshCart();
         }).error(function() {
             //TODO
         });

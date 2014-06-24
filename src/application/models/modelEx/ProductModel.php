@@ -149,7 +149,7 @@ class ProductModel extends BaseModel
                         'fk_seller'    => $data['seller'],
                         'fk_category'  => (int) $data['categoryID'],
                         'date_created' => DB::getDate(),
-                        'status'       => (int) $data['status']
+                        'status'       => 0
             ));
         }
         foreach ($data['attr'] as $attrType => $attrVal):

@@ -8,9 +8,8 @@ window.HeadCtrl = function($scope, $http) {
         $http.get(config.cartService, {cache: false}).success(function(data) {
             $scope.cart = data.products;
         });
-        $scope.loadCart = new Function;
     };
-
+    window.refreshCart = $scope.loadCart;
     $scope.loadCart();
 
     $scope.loadCategories = function() {
@@ -23,7 +22,7 @@ window.HeadCtrl = function($scope, $http) {
     $scope.changeLanguage = function(languageKey) {
         commonServiceClient = new CommonServiceClient($http);
         commonServiceClient.updateLanguage(languageKey, updateLanguageSucessCallback, updateLanguageErrorCallback);
-    }
+    };
 
     function updateLanguageSucessCallback(result)
     {

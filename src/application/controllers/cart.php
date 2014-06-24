@@ -62,7 +62,7 @@ class cart extends BaseController
         });
         $json = array(
             'notifications' => array(),
-            'products'     => array()
+            'products'      => array()
         );
         foreach ($products as $product)
         {
@@ -101,6 +101,12 @@ class cart extends BaseController
         {
             CartMapper::make()->updateQuantity($productID, $quantity);
         }
+    }
+
+    function moveToWishlist($productID)
+    {
+        CartMapper::make()->removeFromCart($productID);
+        $this->wishlistModel->addToWishlist($productID);
     }
 
     function addToCart($productID = NULL)

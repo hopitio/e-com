@@ -23,9 +23,9 @@ foreach ($cartContents as $cartInstance)
     $images = $cartInstance->getImages('thumbnail');
     $json_product = array(
         'id'          => $cartInstance->id,
-        'name'        => $cartInstance->getName()->getTrueValue(),
+        'name'        => (string)$cartInstance->getName(),
         'image'       => base_url($images[0]->url),
-        'shortDesc'   => $cartInstance->getDescription()->getTrueValue(),
+        'shortDesc'   => (string)$cartInstance->getDescription(),
         'price'       => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount(),
         'quantity'    => $cartInstance->quantity,
         'totalPrice'  => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount() * $cartInstance->quantity,

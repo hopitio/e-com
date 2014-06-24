@@ -244,6 +244,7 @@ body .lynx_cart{
     width:70px;
     height: 90px;
     background: transparent url('../images/cart.png') no-repeat top center;
+    z-index: 10;
 }
 body .lynx_cart span{
     width:100%;
@@ -362,6 +363,8 @@ body .lynx_cart span{
     text-align:left;
     color:black;
     font-weight: bold;
+    word-break:break-all;
+    word-wrap:break-word;
 }
 .lynx_detailContainer .lynx_name a{color:black;}
 .lynx_detailContainer .lynx_price{

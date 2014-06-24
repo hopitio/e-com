@@ -19,7 +19,7 @@ if (!defined('BASEPATH'))
                 <tr ng-repeat="product in products" ng-class-even="'even'" ng-class-odd="'odd'">
                     <td class="center">
                         <a href="{{product.url}}" title="product thumbnail">
-                            <img class="product-thumbnail" src="{{product.thumbnail}}" alt="product thumbnail">
+                            <img class="product-thumbnail" src="/thumbnail.php/{{product.thumbnail}}/w=200" alt="product thumbnail">
                         </a>
                     </td>
                     <td>
