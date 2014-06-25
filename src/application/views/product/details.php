@@ -19,11 +19,11 @@ $facebookImages = $product->getImages('facebookImage');
         <div class="lynx_productImageContainer lynx_productHead">
             <div class="lynx_productImageHead">
                 <div class="lynx_star" ><img src="/images/star.png"></div>
-                <div class="lynx_title" ><?php echo $product->getName() ?></div>
                 <div class="lynx_pin">
                     <span class="lynx_pin_number"> <c><?php echo $product->countPin ?></c> Pins</span>
                     <span class="lynx_pinIcon"><img src="/images/pin.png" > </span>
                 </div>
+                <div class="lynx_title" ><?php echo $product->getName() ?></div>
             </div>
             <div class="lynx_imageList">
                 <?php $class = 'zoomThumbActive'; ?>
