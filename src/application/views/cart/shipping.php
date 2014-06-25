@@ -164,7 +164,7 @@ foreach ($cartContents as $product)
             </div>
             -->
         </div>
-        <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>" onclick="$('btn-continue').click();">
+        <input id="btnSubCheckout" type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>" onclick="$('btn-continue').click();">
     </div><!--cart-right-->
     <div class="clearfix"></div>
 </div><!--angularjs-->
