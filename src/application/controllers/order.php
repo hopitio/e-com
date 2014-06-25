@@ -34,16 +34,16 @@ class order extends BaseController
                 ->autoloadAttributes()
                 ->findAll();
 
-        $shippingAddress                  = new stdClass();
-        $shippingAddress->fullname        = isset($_POST['txtFullame']) ? $_POST['txtFullname'] : null;
-        $shippingAddress->telephone       = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
-        $shippingAddress->streetAddress   = isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null;
-        $shippingAddress->cityDistrict    = array(null, isset($_POST['txtPhoneNo']) ? $_POST['txtPhoneNo'] : null);
-        $shippingAddress->stateProvince   = array(isset($_POST['selProvinceCity']) ? $_POST['selProvinceCity'] : null);
+        $shippingAddress = new stdClass();
+        $shippingAddress->fullname = $this->input->post('txtFullname');
+        $shippingAddress->telephone = $this->input->post('txtPhoneNo');
+        $shippingAddress->streetAddress = $this->input->post('txtStreetAddr');
+        $shippingAddress->cityDistrict = $this->input->post('txtCityDistrict');
+        $shippingAddress->stateProvince = array($this->input->post('selProvinceCity'));
         $shippingAddress->stateProvince[] = LocationMapper::make()->filterCode($shippingAddress->stateProvince[0])->find()->name;
-        $shippingMethod                   = isset($_POST['radShippingMethod']) ? $_POST['radShippingMethod'] : null;
-        $shippingPrice                    = $this->cartModel->calculateShippingPrice($shippingMethod, $shippingAddress->stateProvince[0]);
-        $orderEvidenceUID                 = $this->orderModel->generateEvidence($shippingAddress, $cartContents, $shippingMethod, $shippingPrice);
+        $shippingMethod = $this->input->post('radShippingMethod');
+        $shippingPrice = $this->cartModel->calculateShippingPrice($shippingMethod, $shippingAddress->stateProvince[0]);
+        $orderEvidenceUID = $this->orderModel->generateEvidence($shippingAddress, $cartContents, $shippingMethod, $shippingPrice);
 
         $data = array(
             'cartContents'     => $cartContents,
@@ -59,7 +59,7 @@ class order extends BaseController
     function verifyOrderEvidence()
     {
         $orderEvidenceKey = isset($_GET['evidencekey']) ? $_GET['evidencekey'] : null;
-        $checksum         = isset($_GET['checksum']) ? $_GET['checksum'] : null;
+        $checksum = isset($_GET['checksum']) ? $_GET['checksum'] : null;
         if (!$orderEvidenceKey || !$checksum)
         {
             throw new Lynx_RequestException('Bad request');

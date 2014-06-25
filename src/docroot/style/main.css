@@ -273,6 +273,7 @@ body .lynx_cart span{
     background-color: #3E79A6;
     color:white;
     margin-right:10px;
+    text-transform: uppercase;
 }
 .lynx_listProducts .lynx_head span.active{
     background:#B2CC4B;

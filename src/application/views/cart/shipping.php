@@ -12,7 +12,7 @@ foreach ($cartContents as $product)
 ?>
 <h1></h1>
 <ul class="cart-breadcrums">
-     <li class="bc-label"><i class="fa fa-shopping-cart"></i> <?php echo $language[$view->view]->lblYourcart; ?> </li>
+    <li class="bc-label"><i class="fa fa-shopping-cart"></i> <?php echo $language[$view->view]->lblYourcart; ?> </li>
     <li class="bc-label"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPlaceOrder; ?></a></li>
     <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblShippingInfor; ?></a></li>
     <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPaymentInfor; ?></a></li>
@@ -24,33 +24,34 @@ foreach ($cartContents as $product)
             <legend><?php echo $language[$view->view]->lblShippingAddress; ?></legend>
             <div style="width: 500px;">
                 <div class="form-group">
-                    <label for="txtFullname" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblName; ?></label>
-                    <div class="col-sm-8">
-                        <input type="text" name="txtFullname" id="txtFullname" class="form-control">
+                    <label for="txtFullname" class="col-sm-4 control-label"><span class="red">*</span> <?php echo $language[$view->view]->lblName; ?></label>
+                    <div class="col-sm-8 controls">
+                        <input type="text" name="txtFullname" id="txtFullname" class="form-control" data-rule-required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="txtPhoneNo" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblPhone; ?></label>
-                    <div class="col-sm-8">
-                        <input type="text" name="txtPhoneNo" id="txtPhoneNo" class="form-control">
+                    <label for="txtPhoneNo" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblPhone; ?></label>
+                    <div class="col-sm-8 controls">
+                        <input type="text" name="txtPhoneNo" id="txtPhoneNo" class="form-control" data-rule-required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="txtStreetAddr" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblAddress; ?></label>
-                    <div class="col-sm-8">
-                        <input type="text" name="txtStreetAddr" id="txtStreetAddr" class="form-control">
+                    <label for="txtStreetAddr" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblAddress; ?></label>
+                    <div class="col-sm-8 controls">
+                        <input type="text" name="txtStreetAddr" id="txtStreetAddr" class="form-control" data-rule-required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="txtCityDistrict" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblCity; ?></label>
-                    <div class="col-sm-8">
-                        <input type="text" name="txtCityDistrict" id="txtCityDistrict" class="form-control">
+                    <label for="txtCityDistrict" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblCity; ?></label>
+                    <div class="col-sm-8 controls">
+                        <input type="text" name="txtCityDistrict" id="txtCityDistrict" class="form-control" data-rule-required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="selProvinceCity" class="col-sm-4 control-label"><?php echo $language[$view->view]->lblProvince; ?></label>
-                    <div class="col-sm-8">
-                        <select name="selProvinceCity" class="form-control" id="selProvinceCity" ng-model="province">
+                    <label for="selProvinceCity" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblProvince; ?></label>
+                    <div class="col-sm-8 controls">
+                        <select name="selProvinceCity" class="form-control" id="selProvinceCity" ng-model="province" data-rule-required="true">
+                            <option></option>
                             <?php echo ViewHelpers::getInstance()->options($provinces) ?>
                         </select>
                     </div>
@@ -61,7 +62,7 @@ foreach ($cartContents as $product)
             <legend><?php echo $language[$view->view]->lblShippingMethods; ?></legend>
             <div style="width:500px">
                 <div class="form-group">
-                    <div class="col-sm-8 col-sm-offset-4">
+                    <div class="col-sm-8 controls col-sm-offset-4">
                         <table style="width:100%">
                             <thead>
                                 <tr>
@@ -108,7 +109,7 @@ foreach ($cartContents as $product)
             <div style="width:500px;">
                 <div class="form-group">
                     <label class="col-sm-4 control-label"><?php echo $language[$view->view]->lblGiftNoiceLine1; ?><br><?php echo $language[$view->view]->lblGiftNoice; ?></label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 controls">
                         <div>
                             <label><input type='radio' name='radGift' value='1'><?php echo $language[$view->view]->lblIsGift; ?></label>
                         </div>
@@ -118,7 +119,7 @@ foreach ($cartContents as $product)
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-8 col-sm-offset-4">
+                    <div class="col-sm-8 controls col-sm-offset-4">
                         <input type='submit' id="btn-continue" class="btn btn-primary" value='<?php echo $language[$view->view]->btnContinue; ?>'>
                         <input type='button' class="btn" value='<?php echo $language[$view->view]->btnBacktoCart; ?>' onclick='backToCart()'>
                     </div>
@@ -164,7 +165,7 @@ foreach ($cartContents as $product)
             </div>
             -->
         </div>
-        <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>" onclick="$('btn-continue').click();">
+        <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>" onclick="$('#btn-continue').click();">
     </div><!--cart-right-->
     <div class="clearfix"></div>
 </div><!--angularjs-->
@@ -179,12 +180,12 @@ foreach ($cartContents as $product)
 </script>
 <script>
 
-    $(document).ready(function(){
-        $("#btnSubCheckout").click(function(){
+    $(document).ready(function() {
+        $("#btnSubCheckout").click(function() {
             $("#frmMain").submit();
-            });
-        
         });
+        $('#frmMain').validate({});
+    });
     (function(window, scriptData, $, undefined) {
         window.backToCart = function() {
             window.location = scriptData.cartURL;

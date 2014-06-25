@@ -109,7 +109,7 @@
                                 </li>
                                 <li class="left cart-menu" ng-repeat="product in cart">
                                     <a href="{{product.url}}">
-                                        <img src="/thumbnaill.php/{{product.thumbnail}}/w=40" width="40" height="40">
+                                        <img src="/thumbnail.php/{{product.thumbnail}}/w=40" width="40" height="40">
                                         {{(product.name.length > 20) ? product.name.substring(0, 20) + '...' : product.name}}<br>
                                         <?php echo $language['layout']->lblCartQuantity->__toString(); ?> : {{product.quantity}}
                                     </a>

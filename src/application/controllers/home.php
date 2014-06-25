@@ -109,6 +109,8 @@ class home extends BaseController
                 $attrs = $section->dom_product_section_images->img->attributes();
                 $section_array['displayImage'] = (string) $attrs->src;
                 $section_array['displayImageTitle'] = (string) $attrs->title;
+                $section_array['displayImageHref'] = (string) $attrs->href;
+                
             }
             $section_array['products'] = array();
 

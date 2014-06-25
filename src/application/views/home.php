@@ -66,15 +66,13 @@ defined('BASEPATH') or die('No direct script access allowed');
             </div>
         </div>
          -->
-        
-        
     </div>
     
-    <div class="lynx_slideGroup">
+<!--    <div class="lynx_slideGroup">
         <div class="lynx_item lynx_first-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
         <div class="lynx_item"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
         <div class="lynx_item lynx_last-child"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
-    </div>
+    </div>-->
 </div><!--homeCtrl-->
 <script>
     function scriptData() {

@@ -171,11 +171,11 @@ function makeURL($categoryID, $changeParams = array())
             <?php echo $language[$view->view]->lblShowMore;?>
         </div>
     </div>
-    <div class="lynx_adveGroup">
+<!--    <div class="lynx_adveGroup">
         <div class="lynx_adveItem "><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
         <div class="lynx_adveItem"><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
         <div class="lynx_adveItem "><a href="#"><img src="/images/child-slide-item-demo.png" /></a></div>
-    </div>
+    </div>-->
 </div>
 <script>
     var scriptData = {

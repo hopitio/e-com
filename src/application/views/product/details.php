@@ -25,6 +25,7 @@ $facebookImages = $product->getImages('facebookImage');
                     <span class="lynx_pinIcon"><img src="/images/pin.png" > </span>
                 </div>
             </div>
+            <div class="clearfix"></div>
             <div class="lynx_imageList">
                 <?php $class = 'zoomThumbActive'; ?>
                 <?php foreach ($images as $img): ?>
