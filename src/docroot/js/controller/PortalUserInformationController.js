@@ -11,7 +11,7 @@ function PortalUserInformationController($scope,$modal,$http)
         portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
         portalUserInformationServiceClient.getUserInformation(getUserInformationSucessCallback,getUserInormationErrorCallback);
         $scope.onLoadUserInformation = true;
-    }
+    };
     
     function getUserInformationSucessCallback(result){
         $scope.onLoadUserInformation = false;
@@ -33,7 +33,7 @@ function PortalUserInformationController($scope,$modal,$http)
         }else{
             $scope.userInformationSucess = undefined;
         }
-    }
+    };
     Date.prototype.yyyymmdd = function() {
         var yyyy = this.getFullYear().toString();
         var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
@@ -48,7 +48,7 @@ function PortalUserInformationController($scope,$modal,$http)
         portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
         portalUserInformationServiceClient.updateUserInformation($scope.userInformation,updateUserInformationSucessCallback,updateUserInformationErrorCallback);
         $scope.onLoadUserInformation = true;
-    }
+    };
     
     function updateUserInformationSucessCallback(result){
         $scope.onLoadUserInformation = false;
@@ -67,7 +67,7 @@ function PortalUserInformationController($scope,$modal,$http)
         portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
         portalUserInformationServiceClient.getUserContacts(getUserContactSucessCallback,getUserContactErrorCallback);
         $scope.onLoadUserContact = true;
-    }
+    };
     
     function getUserContactSucessCallback(result){
         $scope.onLoadUserContact = false;
@@ -94,7 +94,7 @@ function PortalUserInformationController($scope,$modal,$http)
         modalInstance.result.then(function () {
             $scope.getUserContacts();
           }, function () {});
-    }
+    };
 
     $scope.getUserInformation();
     $scope.getUserContacts();

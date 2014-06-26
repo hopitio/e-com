@@ -38,7 +38,11 @@ class loginfacebook extends login
     
     private function insertFacebookAccountToProtal($facebookAccount){
         $accountBiz = new PortalBizAccount();
-        $firstname = $facebookAccount->first_name.' '.$facebookAccount->middle_name;
+        if(isset($facebookAccount->middle_name)){
+            $firstname = $facebookAccount->first_name.' '.$facebookAccount->middle_name;
+        }else{
+            $firstname = $facebookAccount->first_name;
+        }
         $lastname = $facebookAccount->last_name;
         $account = $facebookAccount->email;
         $password = null;
@@ -51,8 +55,8 @@ class loginfacebook extends login
     }
     
     private function convertFbDate($DOBFB){
-        $date = new DateTime($DOBFB);
-        $date = $date->format(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        list($mm, $dd, $yyyy) = explode("/", $DOBFB);
+        $date = "{$yyyy}-{$mm}-{$dd} 00:00:00";
         return $date;
         
     }
