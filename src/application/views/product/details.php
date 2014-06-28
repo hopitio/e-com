@@ -11,8 +11,6 @@ $facebookImages = $product->getImages('facebookImage');
 ?>
 <script>
     $.browser = {};
-    var $facebookImageUrl = '<?php echo $facebookImages[0]->url ?>';
-    console.log('<?php echo $facebookImages[0]->url ?>');
 </script>
 <div id="product-details-ctrl" ng-controller="productDetailsCtrl">
     <div class="lynx_productHeadContainer lynx_staticWidth">
@@ -64,7 +62,7 @@ $facebookImages = $product->getImages('facebookImage');
             </div>
             <div class="lynx_productButtonBuy"> 
                 <!-- <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
-                       data-action="<?php //echo base_url('order/shipping')                                  ?>">
+                       data-action="<?php //echo base_url('order/shipping')                                       ?>">
                 -->
                 <input id = "buynow" type="button" disabled name="buynow" value="<?php echo $language[$view->view]->btnBuyNow; ?>" class="lynx_blueButton form-control submit" ></input>
             </div>
@@ -175,7 +173,8 @@ $facebookImages = $product->getImages('facebookImage');
     var scriptData = {
         images: <?php echo json_encode($images) ?>,
         productID: <?php echo $product->id ?>,
-        relatedURL: '<?php echo base_url('product/related_products_service') ?>/'
+        relatedURL: '<?php echo base_url('product/related_products_service') ?>/',
+        facebookImage: 'http://<?php echo $_SERVER['HTTP_HOST'] ?>/thumbnail.php/<?php echo trim($facebookImages[0]->url, '/') ?>/w=200'
     };
 </script>
 <?php if ($product->countPin == 0): ?>
