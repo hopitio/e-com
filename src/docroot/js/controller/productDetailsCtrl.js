@@ -21,8 +21,8 @@ function productDetailsCtrl($scope, $http, $timeout) {
         var productName = $(".lynx_productImageHead .lynx_title").text();
         var caption = $(".lynx_productChoicePannel .lynx_productPrice").text();
         var des = $(".lynx_productDetailDescription").text();
-        var src = $(".lynx_productImageContainer .lynx_image img").attr('src').replace('..', '');
-        var picturePro = window.location.protocol + window.location.hostname + src;
+//        var src = $(".lynx_productImageContainer .lynx_image img").attr('src').replace('..', '');
+//        var picturePro = window.location.protocol + window.location.hostname + src;
         FB.ui(
                 {
                     method: 'feed',
@@ -30,7 +30,7 @@ function productDetailsCtrl($scope, $http, $timeout) {
                     caption: caption,
                     description: des,
                     link: document.URL,
-                    picture: $facebookImageUrl
+                    picture: scriptData.facebookImage
                 },
                 function(response) {
                     var res = response;

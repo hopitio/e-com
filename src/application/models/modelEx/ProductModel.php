@@ -31,7 +31,8 @@ class ProductModel extends BaseModel
                 ->autoloadAttributes()
                 ->autoloadTaxes()
                 ->setLanguage(User::getCurrentUser()->languageKey)
-                ->filterDateRange($date, null);
+                ->filterDateRange($date, null)
+                ->orderBy('p.date_created DESC');
         $mapper->getQuery()
                 ->select('seller.name AS seller_name')
                 ->innerJoin('t_seller seller', 'seller.id = p.fk_seller');

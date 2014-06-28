@@ -40,7 +40,7 @@ function not_found()
 $hostname = $_SERVER['SERVER_ADDR'];
 $port = $_SERVER['SERVER_PORT'];
 $uri = str_replace('/thumbnail.php/', '', $_SERVER['REQUEST_URI']);
-$uri_parts = explode('/w=',$uri);
+$uri_parts = explode('/w=', $uri);
 
 $orgil_img = isset($uri_parts[0]) ? $uri_parts[0] : '';
 $desired_width = isset($uri_parts[1]) ? (int) $uri_parts[1] : DEFAULT_THUMB_WIDTH;
@@ -49,7 +49,10 @@ if (!$orgil_img)
 {
     not_found();
 }
-
+if (strpos($orgil_img, '/') !== 0 && strpos($orgil_img, 'http') !== 0)
+{
+    $orgil_img = '/' . $orgil_img;
+}
 if (strpos($orgil_img, '/') === 0 && strpos($orgil_img, 'http') !== 0)
 {
     $orgil_img = 'http://' . $hostname . ':' . $port . $orgil_img;
