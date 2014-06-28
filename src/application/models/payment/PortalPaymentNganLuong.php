@@ -65,7 +65,7 @@ class PortalPaymentNganLuong{
             }
         }
         $fullContact = array($shippingContact->state_province,$shippingContact->city_district,$shippingContact->street_address);
-        $fullContact = implode(', ', $fullContact);
+        $fullContact = implode(' - ', $fullContact);
         $buyerInfo = "{$shippingContact->full_name}*|**|*{$shippingContact->telephone}*|*{$fullContact}";
         return $buyerInfo;
     }
@@ -121,7 +121,6 @@ class PortalPaymentNganLuong{
         }
         return $shippingPrice;
     }
-    
     private function getPrices($order){
         $all = 0;
         foreach ($order->invoice->products as $product){
