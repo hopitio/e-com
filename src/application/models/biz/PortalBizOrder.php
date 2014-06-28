@@ -67,13 +67,13 @@ class PortalBizOrder extends PortalBizBase
     
     function processPlaceOrder($user, $orderId, $comment, $invoice = null){
         $status = $this->updateOrderToVerify($user, $orderId, $comment);
-        $this-> mailBuyer($orderId, MailManager::ORDER_PLACES);
+        $this-> mailBuyer($orderId,null, MailManager::ORDER_PLACES);
         return $status;
     }
     
     function processVerifyOrder($user, $orderId, $comment, $invoiceId = null){
         $status = $this->updateOrderToVerify($user, $orderId, $comment);
-        $this->mailSeller($orderId, MailManager::SELLER_PAYMENT_VERIFIED);
+        $this->mailSeller($orderId,null ,MailManager::SELLER_PAYMENT_VERIFIED);
         return $status;
     }
     
