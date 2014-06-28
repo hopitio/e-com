@@ -128,7 +128,7 @@ class PortalPaymentManager extends PortalBizPayment{
             $portalContactModel->full_name = $contactInformation->shipping->fullname;
             $portalContactModel->telephone = $contactInformation->shipping->telephone;
             $portalContactModel->street_address = $contactInformation->shipping->streetAddress;
-            $portalContactModel->city_district = implode(',' ,  $contactInformation->shipping->cityDistrict);
+            $portalContactModel->city_district = $contactInformation->shipping->cityDistrict;
             $portalContactModel->state_province = implode(',' ,   $contactInformation->shipping->stateProvince);
             $portalContactModel->date_created = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
             $portalContactModel->fk_user = $userId;
