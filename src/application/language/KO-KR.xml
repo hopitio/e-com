@@ -126,6 +126,7 @@
         <lblOutOfstock>품절</lblOutOfstock>
         <lblAddToCart>장바구니에 담기</lblAddToCart>
         <lblRemoveItem>제거</lblRemoveItem>
+        <lblNoProduct>당신은 어떤 제품을 추가하지 않은</lblNoProduct>
     </wishlist_show>
     <portalaccount_account>
         <title>계정 정보</title>
@@ -164,6 +165,8 @@
         <lblTotal>합계</lblTotal>
         <lblTax>세금</lblTax>
         <btncheckout>주문하기</btncheckout>
+        <btnAddToCart>장바구니에 담기</btnAddToCart>
+        <lblNoProduct>장바구니에 제품이 없습니다</lblNoProduct>
     </cart_showCart>
     <cart_shipping>
         <title>선박 정보</title>
@@ -222,6 +225,7 @@
         <lblAddToCart>장바구니에 담기</lblAddToCart>
         <lblMoveToWishlist>이동 wishlist </lblMoveToWishlist>
         <lblRemoveItem>제거</lblRemoveItem>
+        <lblNoProduct>목록에 제품이 없습니다</lblNoProduct>
     </pin_showPage>
     <admin_login></admin_login>
     <admin_mainpage></admin_mainpage>

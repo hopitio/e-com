@@ -128,6 +128,7 @@
         <lblOutOfstock>Hết hàng</lblOutOfstock>
         <lblAddToCart>Thêm vào giỏ hàng</lblAddToCart>
         <lblRemoveItem>Xóa khỏi dánh sach</lblRemoveItem>
+        <lblNoProduct>Bạn chưa thêm sản phẩm nào</lblNoProduct>
     </wishlist_show>
     <portalaccount_account>
         <title>Thông tin tài khoản cá nhân</title>
@@ -166,6 +167,8 @@
         <lblTax>Thuế</lblTax>
          <lblTotal>Tổng</lblTotal>
         <btncheckout>Tiếp tục</btncheckout>
+        <btnAddToCart>Chuyển vào giỏ hàng</btnAddToCart>
+        <lblNoProduct>Không có sản phẩm nào trong giỏ</lblNoProduct>
     </cart_showCart>
     <cart_shipping>
         <title>Thông tin vận chuyển</title>
@@ -224,6 +227,7 @@
         <lblAddToCart>Chuyển sang giỏ hàng</lblAddToCart>
         <lblMoveToWishlist>Chuyển sang wishlist </lblMoveToWishlist>
         <lblRemoveItem>Hủy Đánh dấu</lblRemoveItem>
+        <lblNoProduct>Chưa có sản phẩm nào trong danh sách</lblNoProduct>
     </pin_showPage>
     <admin_login></admin_login>
     <admin_mainpage></admin_mainpage>

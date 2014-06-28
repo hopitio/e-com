@@ -19,7 +19,6 @@ class wishlist extends BaseController
 
     function remove($wishlistDetailID)
     {
-        DB::getInstance()->debug = 1;
         $detailInstance = WishListDetailMapper::make()->select('p.*,wd.*', true)->filterWishlistDetailID($wishlistDetailID)->find();
         if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
         {

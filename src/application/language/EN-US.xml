@@ -125,6 +125,7 @@
         <lblOutOfstock>Out of stock</lblOutOfstock>
         <lblAddToCart>Add to cart</lblAddToCart>
         <lblRemoveItem>Remove</lblRemoveItem>
+        <lblNoProduct>You haven't added any product</lblNoProduct>
     </wishlist_show>
     <portalaccount_account>
         <title>Account information</title>
@@ -163,6 +164,8 @@
         <lblTax>Taxes</lblTax>
         <lblTotal>Total</lblTotal>
         <btncheckout>Checkout</btncheckout>
+        <btnAddToCart>Add to Cart</btnAddToCart>
+        <lblNoProduct>There is no product in your Cart</lblNoProduct>
     </cart_showCart>
     <cart_shipping>
         <title>Shipping information</title>
@@ -221,6 +224,7 @@
         <lblAddToCart>Add to cart</lblAddToCart>
         <lblMoveToWishlist>Move to wishlist </lblMoveToWishlist>
         <lblRemoveItem>Remove</lblRemoveItem>
+        <lblNoProduct>There is no product in list</lblNoProduct>
     </pin_showPage>
     <admin_login></admin_login>
     <admin_mainpage></admin_mainpage>

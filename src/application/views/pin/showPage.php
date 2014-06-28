@@ -2,18 +2,21 @@
 defined('BASEPATH') or die('no direct script allowed');
 ?>
 <div ng-app ng-controller="pinShowCtrl" class="row-wrapper">
-    <h3 class="left"><?php echo $language[$view->view]->title;?></h3>
+    <h3 class="left"><?php echo $language[$view->view]->title; ?></h3>
     <div class="cart-left">
         <table class="table-product">
             <thead>
                 <tr>
                     <th width="100">&nbsp;</th>
-                    <th width="400"><?php echo $language[$view->view]->colProduct;?></th>
-                    <th width="180" class="right"><?php echo $language[$view->view]->colPrice;?></th>
-                    <th width="200" class="center"><?php echo $language[$view->view]->colAction;?></th>
+                    <th width="400"><?php echo $language[$view->view]->colProduct; ?></th>
+                    <th width="180" class="right"><?php echo $language[$view->view]->colPrice; ?></th>
+                    <th width="200" class="center"><?php echo $language[$view->view]->colAction; ?></th>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td colspan="4" ng-if="!pinList.length"><?php echo $language[$view->view]->lblNoProduct ?></td>
+                </tr>
                 <tr ng-repeat="product in pinList" ng-class-even="'even'" ng-class-odd="'odd'">
                     <td class="center">
                         <a href="{{product.url}}" title="product thumbnail">
@@ -23,17 +26,17 @@ defined('BASEPATH') or die('no direct script allowed');
                     <td>
                         <a href="{{product.url}}" class="product-name">{{product.name}}</a><br>
                         <span class="product-seller">{{product.sellerName}}</span><br>
-                        <span class="green" ng-if="product.stock > 10"><?php echo $language[$view->view]->lblInstock;?></span>
-                        <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty;?></span>
-                        <span class="red" ng-if="product.stock <= 0"><?php echo $language[$view->view]->lblOutOfstock;?></span>
+                        <span class="green" ng-if="product.stock > 10"><?php echo $language[$view->view]->lblInstock; ?></span>
+                        <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty; ?></span>
+                        <span class="red" ng-if="product.stock <= 0"><?php echo $language[$view->view]->lblOutOfstock; ?></span>
                     </td>
                     <td class="right">
                         <span class="product-price">{{product.price}}</span>
                     </td>
                     <td class="center">
-                        <a href="javascript:;" ng-click="addToCart(product.id)"><?php echo $language[$view->view]->lblAddToCart;?></a><br>
-                        <a href="javascript:;" ng-click="moveToWishlist(product.id)"><?php echo $language[$view->view]->lblMoveToWishlist;?></a><br>
-                        <a href="javascript:;" ng-click="unpin(product.id);"><?php echo $language[$view->view]->lblRemoveItem;?></a>
+                        <a href="javascript:;" ng-click="addToCart(product.id)"><?php echo $language[$view->view]->lblAddToCart; ?></a><br>
+                        <a href="javascript:;" ng-click="moveToWishlist(product.id)"><?php echo $language[$view->view]->lblMoveToWishlist; ?></a><br>
+                        <a href="javascript:;" ng-click="unpin(product.id);"><?php echo $language[$view->view]->lblRemoveItem; ?></a>
                     </td>
                 </tr>
                 <tr ng-show="loading">
@@ -89,15 +92,24 @@ defined('BASEPATH') or die('no direct script allowed');
 
             $scope.addToCart = function(productID) {
                 $http.get(scriptData.addToCart + productID, {cache: false}).success(function() {
-                    getList();
+                    $scope.removeProductFromView(productID);
+                    window.refreshCart();
                 }).error(function() {
                     //TODO
                 });
             };
 
+            $scope.removeProductFromView = function(productID) {
+                for (var i in $scope.pinList) {
+                    var product = $scope.pinList[i];
+                    if (product.id == productID)
+                        $scope.pinList.splice(i, 1);
+                }
+            };
+
             $scope.moveToWishlist = function(productID) {
                 $http.get(scriptData.moveToWishlist + productID, {cache: false}).success(function() {
-                    getList();
+                    $scope.removeProductFromView(productID);
                 }).error(function() {
                     //TODO
                 });
@@ -105,7 +117,7 @@ defined('BASEPATH') or die('no direct script allowed');
 
             $scope.unpin = function(productID) {
                 $http.get(scriptData.remove + productID, {cache: false}).success(function() {
-                    getList();
+                    $scope.removeProductFromView(productID);
                     $scope.undoRemoveID = productID;
                 }).error(function() {
                     //TODO

@@ -33,6 +33,9 @@ defined('BASEPATH') or die('No direct script access allowed');
                     </tr>
                 </thead>
                 <tbody>
+                    <tr ng-if="!products.length">
+                        <td colspan="5"><?php echo $language[$view->view]->lblNoProduct ?></td>
+                    </tr>
                     <tr ng-repeat="product in products" ng-class-even="'even'" ng-class-odd="'odd'">
                         <td class="center">
                             <a href="{{product.url}}" title="product thumbnail">
@@ -69,7 +72,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                             <span class="product-price">{{fnMoneyToString((product.price + product.taxes) * product.quantity)}}</span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="products.length">
                         <td>&nbsp;</td>
                         <td colspan="2">
                             <!--
@@ -111,7 +114,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                             </td>
                             <td width="100">&nbsp;</td>
                             <td width="190" class="center">
-                                <input type="button" class="btn btn-primary" ng-click='addToCart(product.wishlistDetailID)' value="Add to Cart"><br>
+                                <input type="button" class="btn btn-primary" ng-click='addToCart(product.wishlistDetailID)' value="<?php echo $language[$view->view]->btnAddToCart ?>"><br>
                                 <a href="javascript:;" ng-click='removeFromWishlist(product.wishlistDetailID)'><?php echo $language[$view->view]->lblRemoveWishlist; ?></a><br>
                                 <a href="/wishlist/show" ><?php echo $language[$view->view]->lblViewWishlist; ?></a>
                             </td>
