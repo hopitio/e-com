@@ -2,11 +2,6 @@
 defined('BASEPATH') or die('no direct script access allowed');
 
 /* @var $product ProductFixedDomain */
-$images = array();
-foreach ($product->getImages('baseImage') as $attr)
-{
-    $images[] = (string) $attr->url;
-}
 $facebookImages = $product->getImages('facebookImage');
 ?>
 <script>
@@ -26,17 +21,29 @@ $facebookImages = $product->getImages('facebookImage');
             <div class="clearfix"></div>
             <div class="lynx_imageList">
                 <?php $class = 'zoomThumbActive'; ?>
-                <?php foreach ($images as $img): ?>
-                    <a href="javascript:;" class="<?php echo $class ?>" 
-                       rel="{gallery: 'gal1', smallimage: '/thumbnail.php/<?php echo $img ?>/w=480', largeimage: '<?php echo $img ?>'}">
-                        <img  src="<?php echo '/thumbnail.php/' . $img . '/w=60' ?>">
+                <?php foreach ($product->getImages('baseImage') as $imgInstance): ?>
+                    <?php
+                    $smallImage = '/thumbnail.php/' . $imgInstance->url . '/w=60';
+                    $mediumImage = $imgInstance->width > 480 ? '/thumbnail.php/' . $imgInstance->url . '/w=480' : $imgInstance->url;
+                    $largeImage = $imgInstance->width > 800 ? $imgInstance->url : '/thumbnail.php/' . $imgInstance->url . '/w=800';
+                    if (!isset($firstMediumImage))
+                    {
+                        $firstMediumImage = $mediumImage;
+                    }
+                    if (!isset($firstLargeImage))
+                    {
+                        $firstLargeImage = $largeImage;
+                    }
+                    ?>
+                    <a href="javascript:;" class="<?php echo $class ?>" rel="{gallery: 'gal1', smallimage: '<?php echo $mediumImage ?>', largeimage: '<?php echo $largeImage ?>'}">
+                        <img  src="<?php echo $smallImage ?>">
                     </a>
                     <?php $class = null ?>
                 <?php endforeach; ?>
             </div>
             <div class="lynx_image clearfix" style="position:relative;">
-                <a href="<?php echo $images[0] ?>" class="jqzoom" rel='gal1' title="Zoom">
-                    <img src="/thumbnail.php/<?php echo $images[0] ?>/w=480"  title="thumbnail" style="width:480px;">
+                <a href="<?php echo $firstLargeImage ?>" class="jqzoom" rel='gal1' title="Zoom">
+                    <img src="<?php echo $firstMediumImage ?>"  title="thumbnail" style="width:480px;">
                 </a>
             </div>
         </div>
@@ -62,7 +69,7 @@ $facebookImages = $product->getImages('facebookImage');
             </div>
             <div class="lynx_productButtonBuy"> 
                 <!-- <input id = "buynow" type="button" name="buynow" value="BUY NOW" class="lynx_blueButton form-control submit" 
-                       data-action="<?php //echo base_url('order/shipping')                                       ?>">
+                       data-action="<?php //echo base_url('order/shipping')                                                     ?>">
                 -->
                 <input id = "buynow" type="button" disabled name="buynow" value="<?php echo $language[$view->view]->btnBuyNow; ?>" class="lynx_blueButton form-control submit" ></input>
             </div>
@@ -171,7 +178,6 @@ $facebookImages = $product->getImages('facebookImage');
 </div><!--ng-controller -->
 <script>
     var scriptData = {
-        images: <?php echo json_encode($images) ?>,
         productID: <?php echo $product->id ?>,
         relatedURL: '<?php echo base_url('product/related_products_service') ?>/',
         facebookImage: 'http://<?php echo $_SERVER['HTTP_HOST'] ?>/thumbnail.php/<?php echo trim($facebookImages[0]->url, '/') ?>/w=200'
@@ -216,7 +222,10 @@ $facebookImages = $product->getImages('facebookImage');
     });
     $('.lynx_imageList a:eq(0)').click();
     $(function() {
-        $('.jqzoom').jqzoom();
+        $('.jqzoom').jqzoom({
+            zoomWidth: 450,
+            zoomHeight: 300
+        });
     });
 
 </script>

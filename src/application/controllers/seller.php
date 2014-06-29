@@ -17,11 +17,10 @@ class seller extends BaseController
     function __construct()
     {
         parent::__construct();
-
-        
     }
-    
-    function init(){
+
+    function init()
+    {
         parent::init();
         $this->sellerInstance = SellerMapper::make()->autoloadCategories()->setUser(User::getCurrentUser())->find();
         if (!$this->sellerInstance->id)
@@ -187,8 +186,9 @@ class seller extends BaseController
                     {
                         continue;
                     }
+                    list($imgWidth, $imgHeight, $imgType, $imgAttr) = getimagesize($fileInfo['tmp_name']);
                     $fileID = $this->fileModel->handleImageUpload($fileInfo);
-                    $this->productModel->addProductImage($productID, $fileID);
+                    $this->productModel->addProductImage($productID, $fileID, $imgWidth);
                 }
             }
             if ($sub_action == 'activate')
@@ -204,9 +204,9 @@ class seller extends BaseController
         }
         catch (Exception $ex)
         {
+            echo $ex->getMessage();
             Common::redirect_back($ex->getMessage(), false);
         }
-//redirect('/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' . $this->input->post('hdnTab'));
     }
 
     function duplicate_product($productID)

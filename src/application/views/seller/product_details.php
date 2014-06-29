@@ -70,7 +70,7 @@ if ($product->id)
                 }
                 else
                 {
-                    if (mb_strlen(strval($product->getName()))  > 47)
+                    if (mb_strlen(strval($product->getName())) > 47)
                     {
                         echo mb_substr(strval($product->getName()), 0, 47) . '...';
                     }
@@ -116,6 +116,7 @@ if ($product->id)
         $('#hdnTab').val(tab || 'tab_general');
         $('a[data-toggle=tab]', $('.nav-tabs:first')).on('show.bs.tab', function() {
             $('#hdnTab').val($(this).attr('href').replace('#', ''));
+            window.location.hash = $(this).attr('href').replace('#', '#/');
         });
     });
     $(function() {

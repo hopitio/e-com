@@ -205,11 +205,12 @@ class ProductModel extends BaseModel
         }
     }
 
-    function addProductImage($productID, $fileID)
+    function addProductImage($productID, $fileID, $imgWidth)
     {
         return DB::insert('t_product_image', array(
                     'fk_product' => $productID,
-                    'fk_file'    => $fileID
+                    'fk_file'    => $fileID,
+                    'width'      => $imgWidth
         ));
     }
 
@@ -271,7 +272,7 @@ class ProductModel extends BaseModel
         }
         if ($attrType->dataType == 'number')
         {
-            $value = (double) $value;
+            $value = (double) str_replace(',','',$value);
         }
         if ($rid && $attrType->isRepeatingGroup() == false)
         {

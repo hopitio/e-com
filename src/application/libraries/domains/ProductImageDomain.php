@@ -19,5 +19,7 @@ class ProductImageDomain implements DomainInterface
 
     public $url;
     public $internalPath;
+    /** Width của ảnh gỗc */
+    public $width;
 
 }

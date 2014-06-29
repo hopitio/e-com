@@ -24,7 +24,6 @@ class product extends BaseController
         {
             $instance->seller_name = $rawData['seller_name'];
         });
-        $product->fkCategory = 4;
         $user = User::getCurrentUser();
         //query ancestor cates
         $parentCategory = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($product->fkCategory)->find();

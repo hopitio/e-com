@@ -52,7 +52,7 @@ class Common
         redirect($url);
     }
 
-    static function redirect_back($msg = null, $success = true)
+    static function redirect_back($msg = '', $success = true)
     {
         if ($msg)
         {

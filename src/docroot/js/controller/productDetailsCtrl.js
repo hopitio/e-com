@@ -3,10 +3,6 @@ function productDetailsCtrl($scope, $http, $timeout) {
     $scope.relatedService = scriptData.relatedURL;
     $scope.relatedProducts;
 
-    $scope.isImageSelected = function(index) {
-        return (index == $scope.selectedImage);
-    };
-
     $scope.getRelatedProducts = function() {
         $http.get($scope.relatedService + $scope.productID).success(function(products) {
             $scope.relatedProducts = products;
