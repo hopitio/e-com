@@ -66,7 +66,7 @@ class PortalPaymentNganLuong{
         }
         $fullContact = array($shippingContact->state_province,$shippingContact->city_district,$shippingContact->street_address);
         $fullContact = implode(' - ', $fullContact);
-        $buyerInfo = "{$shippingContact->full_name}*|**|*{$shippingContact->telephone}*|*{$fullContact}";
+        $buyerInfo = "{$shippingContact->full_name}*|**|*{$shippingContact->telephone}*|*";
         return $buyerInfo;
     }
     

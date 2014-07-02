@@ -56,4 +56,148 @@ $config['NewPasswordMailler']=  array(
     MAILLER_NEWLINE=> "\r\n"
 );
 
+$config['Buyer_order_places']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/OrderPlace.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['OrderAskReview']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/OrderAskReview.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['OrderCancel']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/OrderCancel.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['OrderDelivered']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/OrderDelivered.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['OrderFailToDelivered']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/OrderFailToDelivered.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['OrderRefundOrder']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/OrderRefundOrder.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['OrderShipping']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/OrderShipping.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['SellerDelivered']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/SellerDelivered.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['SellerFailToDeliveredMailler']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/SellerFailToDelivered.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+$config['SellerPaymentVerified']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'projecte2002@gmail.com',
+    MAILLER_PORT => '465',
+    MAILLER_PASS => '1234567$',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/SellerPaymentVerified.html',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n"
+);
+
+
+
+
+
 

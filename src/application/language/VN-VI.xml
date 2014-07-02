@@ -81,7 +81,7 @@
         <lblCartAlert>Bạn chưa có sản phẩm nào trong giỏ hàng</lblCartAlert>
         <lblCartQuantity>Số lượng</lblCartQuantity>
         <lblUserStatus>Chào, {1} tài khoản của bạn</lblUserStatus>
-        <lblUserStatusNotSign>Chào, bạn chưa đăng nhập</lblUserStatusNotSign>
+        <lblUserStatusNotSign>Chào bạn, xin mời đăng nhập</lblUserStatusNotSign>
         <lblUserLogout>Đăng xuất</lblUserLogout>
         <lblUserAccount>Thông tin tài khoản</lblUserAccount>
         <lblUserOrder>Thông tin order</lblUserOrder>
