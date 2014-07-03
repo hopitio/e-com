@@ -1,7 +1,4 @@
-1. Dau gia
-2. Black list word
-3. pin SP, co hien danh sach pin, hien thi ngay ngoai DS san pham
-4. Hiển thị DS sách phẩm có: pin, giá, ảnh, tên shop, desc 1 - 2 dòng
-5. Filter chạy theo màn hình cuộn, background tràn hết chiều ngang.
-6. Ngày lễ có trạng thái on off, có thứ tự hiện trên thanh banner và có thể kéo ngang 
-7. Checkout as guest
+- Dau gia
+- Black list word
+- Ngày lễ có trạng thái on off, có thứ tự hiện trên thanh banner và có thể kéo ngang 
+- bán hàng tươi sống

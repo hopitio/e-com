@@ -16,6 +16,7 @@
         $scope.addToCart = function(detailID) {
             $http.get(scriptData.addToCartURL + detailID, {cache: false}).success(function() {
                 getWishlistDetail();
+                window.refreshCart();
             }).error(function() {
                 //TODO
             });
