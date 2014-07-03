@@ -1,4 +1,0 @@
-- Dau gia
-- Black list word
-- Ngày lễ có trạng thái on off, có thứ tự hiện trên thanh banner và có thể kéo ngang 
-- bán hàng tươi sống
