@@ -109,10 +109,10 @@
         <lblBrand>상표</lblBrand>
         <lblMadeIn>제</lblMadeIn>
         <lblImportFrom>에서 가져</lblImportFrom>
-        <lblReturnPolicy>{0} 일 (들) : 당신의 제품을 반환 할 수 있습니다.</lblReturnPolicy>
+        <lblReturnPolicy>당신의 제품을 반환 할 수 있습니다:{0} 일.</lblReturnPolicy>
         <lblNoReturnPolicy>이 제품은 반환 정책이 없습니다.</lblNoReturnPolicy>
         <lblWarrantyPolicy>보장 정책 :</lblWarrantyPolicy>
-        <lblWarrantyValue>{0} day</lblWarrantyValue>
+        <lblWarrantyValue>{0} 일</lblWarrantyValue>
         <lblWarrantyLifeTime>제품 수명.</lblWarrantyLifeTime>
         <lblNoWarrantyPolicy>이 제품은 보증 정책이 없습니다.</lblNoWarrantyPolicy>
     </product_details>

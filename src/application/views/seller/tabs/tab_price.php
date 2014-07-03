@@ -55,6 +55,20 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Price:'));
     };
 </script>
 <script>
+    $(function() {
+        $('#txtPrice').keyup(function(evt) {
+            var val = $(this).val();
+            $(this).val(val.toString().replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        }).keypress(function(evt) {
+            var theEvent = evt || window.event;
+            var key = theEvent.keyCode || theEvent.which;
+            if ((key < 48 || key > 57) && !(key == 8 || key == 9 || key == 13 || key == 37 || key == 39)) {
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault)
+                    theEvent.preventDefault();
+            }
+        }).trigger('keyup');
+    });
     (function(window, $, scriptData) {
         window.taxCtrl = function($scope, $http) {
             $scope.productTaxes = [];
