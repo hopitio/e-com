@@ -196,6 +196,11 @@
         <lblTax>세</lblTax>
         <lblSubtotal>소계</lblSubtotal>
         <lblTotal>합계</lblTotal>
+        <lblAdvanceMode>사전 모드</lblAdvanceMode>
+        <lblSimpleMode>단순 모드</lblSimpleMode>
+        <lblProduct>생성물</lblProduct>
+        <lblQuantity>양</lblQuantity>
+        <lblShipTotal>선박 총</lblShipTotal>
     </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

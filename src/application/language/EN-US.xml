@@ -195,6 +195,11 @@
         <lblTax>Tax</lblTax>
         <lblSubtotal>Subtotal</lblSubtotal>
         <lblTotal>Total</lblTotal>
+        <lblAdvanceMode>Advance mode</lblAdvanceMode>
+        <lblSimpleMode>Simple mode</lblSimpleMode>
+        <lblProduct>Product</lblProduct>
+        <lblQuantity>Quantity</lblQuantity>
+        <lblShipTotal>Shipping Total</lblShipTotal>
     </cart_shipping>
     <mail>
          <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

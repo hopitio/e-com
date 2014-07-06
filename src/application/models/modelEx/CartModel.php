@@ -6,27 +6,21 @@ class cartModel extends BaseModel
 {
 
     /**
-     * Tính chi phí vận chuyển 
-     * @param type $shippingMethodCode
-     * @param type $locationCode
-     * @param string $toCurency Chuyển đổi tỉ giá
+     * 
+     * @param ShippingLocationDomain $location
+     * @param double $sumWeight
+     * @param Currency $toCurrency
      * @return double
-     * @throws Lynx_RequestException
      */
-    function calculateShippingPrice($shippingMethodCode, $locationCode, $toCurrency = 'VND')
+    function calculateShippingPrice(ShippingLocationDomain $location, $sumWeight, Currency $toCurrency)
     {
-        $query = Query::make()
-                ->select('sl.price, sl.price_currency')
-                ->from('t_shipping_location sl')
-                ->innerJoin('t_shipping_method sm', 'sl.fk_shipping_method = sm.id AND sm.codename=?')
-                ->innerJoin('t_location l', 'l.id=sl.fk_location AND l.codename=?');
-        $record = DB::getInstance()->getRow($query, array($shippingMethodCode, $locationCode));
-        if (!$record)
-        {
-            throw new Lynx_RequestException('Không tìm thấy giá cho shipping');
-        }
-        //TODO
-        return $record['price'];
+        $price = $location->basePrice;
+        $bulkyWeight = max(array(0, $sumWeight - $location->bulkyWeight));
+        $overWeight = max(array(0, $sumWeight - $location->baseWeight - $bulkyWeight));
+        $price += ceil($overWeight / $location->weightStep) * $location->weightStepPrice;
+        $price += ceil($bulkyWeight / $location->weightStep) * $location->bulkyStepPrice;
+        $price = new Money($price, new Currency('VND'));
+        return $price->convert($toCurrency)->getAmount();
     }
 
 }

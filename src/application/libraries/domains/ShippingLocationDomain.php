@@ -8,7 +8,12 @@ class ShippingLocationDomain implements DomainInterface
     public $id;
     public $fkShippingMethod;
     public $fkLocation;
-    public $price;
-    public $priceCurrency;
-
+    public $basePrice;
+    public $baseWeight;
+    public $weightStep;
+    public $weightStepPrice;
+    public $bulkyWeight;
+    public $bulkyStepPrice;
+    
+    
 }

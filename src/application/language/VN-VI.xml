@@ -165,7 +165,7 @@
         <lblProductCount>Sản phẩm ({{products.length}})</lblProductCount>
         <lblShipping>Vận chuyển</lblShipping>
         <lblTax>Thuế</lblTax>
-         <lblTotal>Tổng</lblTotal>
+        <lblTotal>Tổng</lblTotal>
         <btncheckout>Tiếp tục</btncheckout>
         <btnAddToCart>Chuyển vào giỏ hàng</btnAddToCart>
         <lblNoProduct>Không có sản phẩm nào trong giỏ</lblNoProduct>
@@ -198,6 +198,11 @@
         <lblTax>Thuế</lblTax>
         <lblSubtotal>Thành tiền</lblSubtotal>
         <lblTotal>Tổng</lblTotal>
+        <lblAdvanceMode>Lựa chọn nâng cao</lblAdvanceMode>
+        <lblSimpleMode>Lựa chọn đơn giản</lblSimpleMode>
+        <lblProduct>Sản phẩm</lblProduct>
+        <lblQuantity>Số lượng</lblQuantity>
+        <lblShipTotal>Thành tiền</lblShipTotal>
     </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

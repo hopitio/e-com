@@ -42,16 +42,9 @@ foreach ($cartContents as $product)
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="txtCityDistrict" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblCity; ?></label>
-                    <div class="col-sm-8 controls">
-                        <input type="text" name="txtCityDistrict" id="txtCityDistrict" class="form-control" data-rule-required="true">
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="selProvinceCity" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblProvince; ?></label>
                     <div class="col-sm-8 controls">
                         <select name="selProvinceCity" class="form-control" id="selProvinceCity" ng-model="province" data-rule-required="true">
-                            <option></option>
                             <?php echo ViewHelpers::getInstance()->options($provinces) ?>
                         </select>
                     </div>
@@ -59,50 +52,70 @@ foreach ($cartContents as $product)
             </div><!--width-->
         </fieldset>
         <fieldset>
-            <legend><?php echo $language[$view->view]->lblShippingMethods; ?></legend>
-            <div style="width:500px">
+            <legend>
+                <?php echo $language[$view->view]->lblShippingMethods; ?>
+                <a href="javascript:;" ng-click="setViewMode('advance')" ng-if="getViewMode() === 'simple'"><?php echo $language[$view->view]->lblAdvanceMode; ?></a>
+                <a href="javascript:;" ng-click="setViewMode('simple')" ng-if="getViewMode() === 'advance'"><?php echo $language[$view->view]->lblSimpleMode; ?></a>
+            </legend>
+            <div style="width:500px" ng-if="getViewMode() === 'simple'">
                 <div class="form-group">
-                    <div class="col-sm-8 controls col-sm-offset-4">
-                        <table style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th width="40%"><?php echo $language[$view->view]->colName; ?></th>
-                                    <th width="60%"><?php echo $language[$view->view]->colTime; ?></th>
-                                </tr>
-                            </thead>
+                    <div class="col-xs-8 col-xs-push-4">
+                        <table>
                             <tbody>
-                                <?php foreach ($shippingMethods as $method): ?>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type='radio' name='radShippingMethod' ng-model="shippingMethod"
-                                                       value='<?php echo $method->codename ?>'>
-                                                       <?php echo $method->codename ?>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            if ($method->minBDay == 0 && $method->maxBDay == 0)
-                                            {
-                                                echo 'In 4 hours';
-                                            }
-                                            elseif ($method->minBDay == 0 && $method->maxBDay != 0)
-                                            {
-                                                echo 'Lesser than ' . $method->maxBDay . ' day(s)';
-                                            }
-                                            else
-                                            {
-                                                echo "{$method->minBDay}-{$method->maxBDay} bussiness days";
-                                            }
-                                            ?>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                <tr ng-repeat="method in simpleShipData" ng-click="setShipPrice(method.price)">
+                                    <td width="50">
+                                        <input type="radio" id="method_{{$index}}" name="radShippingMethod"
+                                               value="{{method.code}}" ng-checked="$index == 0">
+                                    </td>
+                                    <td width="250"><label for="method_{{$index}}">{{method.label}}</label></td>
+                                    <td width="100"><label for="method_{{$index}}" style="font-weight: normal;">{{method.desc}}</label></td>
+                                    <td width="100"><label for="method_{{$index}}" style="font-weight: normal;">{{fnMoneyToString(method.price)}}</label></td>
+                                </tr>
                             </tbody>
-                        </table>
+                        </table><!--simple-->
                     </div>
-                </div><!--form group-->
+                </div>
             </div><!--width-->
+            <table class="table-product" style="width:100%;" ng-if="getViewMode() === 'advance'">
+                <thead>
+                    <tr>
+                        <th width="15%"></th>
+                        <th width="30%"><?php echo $language[$view->view]->lblProduct ?></th>
+                        <th width="20%" class="center"><?php echo $language[$view->view]->lblQuantity ?></th>
+                        <th width="35%">
+                            <?php echo $language[$view->view]->lblShippingMethods ?>
+                        </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in cartProducts">
+                        <td class="center">
+                            <a href="{{product.url}}" title="{{product.name}}"><img class="product-thumbnail" ng-src="{{product.thumbnail}}"></a>
+                        </td>
+                        <td>
+                            <a class="product-name" href="{{product.url}}" title="{{product.name}}">{{product.name}}</a>
+                        </td>
+                        <td class="center">{{product.quantity}}</td>
+                        <td class="right">
+                            <select class="form-control" name="method[{{product.id}}]" ng-model="product.shippingMethodIndex" ng-change="advanceGetCaculaltedShippingPrice()">
+                                <option ng-repeat="method in shippingMethods" value="{{$index}}">{{method.label}}</option>
+                            </select>
+                            <span class="help-block" >{{shippingMethods[product.shippingMethodIndex].description}}</span>
+                        </td>
+                    </tr>
+                    <tr ng-if="shippingMethodPrices">
+                        <td colspan="3" class="right"><?php echo $language[$view->view]->lblShipTotal; ?></td>
+                        <td  class="right">
+                            <div ng-repeat="(method, price) in shippingMethodPrices">
+                                {{method}}: {{fnMoneyToString(price)}}
+                            </div>
+                            <hr>
+                            = {{fnMoneyToString(shippingPrice)}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </fieldset>
         <fieldset>
             <legend><?php echo $language[$view->view]->lblGift; ?></legend>
@@ -173,56 +186,12 @@ foreach ($cartContents as $product)
 <script>
     var scriptData = {};
     scriptData.cartURL = '<?php echo base_url('cart/showCart') ?>';
-    scriptData.priceURL = '<?php echo base_url('cart/shippingPriceService') ?>';
+    scriptData.simpleShipURL = '/cart/simpleShippingPriceService/';
     scriptData.cartServiceURL = '/cart/cartProductsService';
     scriptData.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
     scriptData.priceNTax = <?php echo $totalPrice + $totalTaxes ?>;
+    scriptData.shippingMethods = <?php echo json_encode($shippingMethods) ?>;
+    scriptData.advanceCalculateShippingPriceService = '/cart/advanceShippingPriceService';
 </script>
-<script>
-
-    $(document).ready(function() {
-        $("#btnSubCheckout").click(function() {
-            $("#frmMain").submit();
-        });
-        $('#frmMain').validate({});
-    });
-    (function(window, scriptData, $, undefined) {
-        window.backToCart = function() {
-            window.location = scriptData.cartURL;
-        };
-
-    })(window, scriptData, $);
-
-    (function(window, scriptData, $, undefined) {
-        window.shippingCtrl = function($scope, $http) {
-            $scope.province;
-            $scope.shippingMethod = 'standard';
-            $scope.fnMoneyToString = scriptData.fnMoneyToString;
-            $scope.shippingPrice = 0;
-            $scope.orderSubtotal;
-
-            $scope.$watch('province + shippingMethod', function() {
-                if (!$scope.province || !$scope.shippingMethod) {
-                    return;
-                }
-                var url = scriptData.priceURL + '?shipping=' + $scope.shippingMethod + '&location=' + $scope.province;
-                $http.get(url, {cache: false}).success(function(price) {
-                    $scope.shippingPrice = parseFloat(price);
-                }).error(function() {
-                    //TODO
-                });
-            });
-
-            $scope.calTotal = function() {
-                return scriptData.priceNTax + $scope.shippingPrice;
-            };
-
-            $scope.getOrderTotal = function() {
-                return parseFloat($scope.orderSubtotal) + parseFloat($scope.shippingPrice);
-            };
-
-        };
-
-    })(window, scriptData, $);
-</script>
+<script src="/js/controller/cartShippingCtrl.js"></script>
 

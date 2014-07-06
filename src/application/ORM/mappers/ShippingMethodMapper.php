@@ -6,21 +6,23 @@ class ShippingMethodMapper extends MapperAbstract
 {
 
     protected $_autoloadShippingLocations = false;
+    protected $_language;
 
     function __construct($domain = 'ShippingMethodDomain')
     {
         $query = Query::make()
                 ->from('t_shipping_method')
-                ->orderBy('id');
+                ->orderBy('sort');
 
-        $map = array(
-            'fkCurrency' => 'fk_currency',
-            'minBDay' => 'min_bday',
-            'maxBDay' => 'max_bday',
-            'currencyName' => 'currency_name'
-        );
+        $map = array();
 
         parent::__construct($domain, $query, $map);
+    }
+
+    function setLanguage($languageCode)
+    {
+        $this->_language = $languageCode;
+        return $this;
     }
 
     /**
@@ -59,6 +61,18 @@ class ShippingMethodMapper extends MapperAbstract
                     $domain->addShippingLocation($shippingLocationInstance);
                 }
             }
+        }
+        foreach ($domains as $domain)
+        {
+            if (!$domain->localization)
+            {
+                continue;
+            }
+            $dom_localization = simplexml_load_string($domain->localization);
+            $language = strtolower(str_replace('-', '_', $this->_language));
+            $dom_language = $dom_localization->{$language};
+            $domain->label = (string) $dom_language->label;
+            $domain->description = (string) $dom_language->description;
         }
         return $domains;
     }

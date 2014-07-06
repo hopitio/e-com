@@ -51,6 +51,7 @@ require_once APPPATH . "ORM" . DS . "mappers" . DS . "FileMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "CartMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "LocationMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "ShippingMethodMapper.php";
+require_once APPPATH . "ORM" . DS . "mappers" . DS . "ShippingLocationMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistDetailMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistMapper.php";
 require_once APPPATH . "ORM" . DS . "mappers" . DS . "PinMapper.php";

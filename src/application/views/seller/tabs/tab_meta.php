@@ -29,25 +29,7 @@ $selImportFrom = new ControlGroupDecorator('Nhập khẩu từ:', new SelectEnum
 $selImportFrom->get_a('SelectControl')->addClass('input-size-medium')->addOption('0', 'Null', true);
 echo $selImportFrom;
 ?>
-<!--dimension-->
-<div class="form-group">
-    <label class="col-sm-3 control-label">Kích cỡ:</label>
-    <div class="col-sm-9">
-        <div class="col-xs-8 row">
-            <div class="row">
-                <div class="col-sm-4">
-                    <input type="text" class="form-control input-sm" name="pattr[dimension_width]" id="txtDimensionWidth" placeholder="width" value="<?php echo $product->getDimensionWidth() ?>">
-                </div>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control input-sm" name="pattr[dimension_height]" id="txtDimensionHeight" placeholder="height" value="<?php echo $product->getDimensionHeight() ?>">
-                </div>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control input-sm" name="pattr[dimension_depth]" id="txtDimensionDepth" placeholder="depth" value="<?php echo $product->getDimensionDepth() ?>">
-                </div>
-            </div>
-        </div>            
-    </div>
-</div>
+
 <?php
 //meta title
 $txtMetaTitle = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtMetaTitle', 'pattr[meta_title]', (string) $product->getMetaTitle()));

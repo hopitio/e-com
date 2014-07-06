@@ -27,8 +27,8 @@ class ControlGroupDecorator extends HTMLDecoratorAbstract
         }
         ?>
         <div class="form-group control-group">
-            <label for="<?php echo $inputID ?>" class="col-sm-3 control-label"><?php echo $this->_labelFor ?></label>
-            <div class="col-sm-9 controls">
+            <label for="<?php echo $inputID ?>" class="col-xs-2 control-label"><?php echo $this->_labelFor ?></label>
+            <div class="col-xs-10 controls">
                 <?php echo $this->_object ?>
             </div>
         </div>

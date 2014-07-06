@@ -43,13 +43,14 @@ class ViewHelpers
      * @param array $addtionalParams
      * @return html
      */
-    function options($assoc, $labelCallback = false, $addtionalParams = array())
+    function options($assoc,  $selectedValue = null, $labelCallback = false, $addtionalParams = array())
     {
         ob_start();
         foreach ($assoc as $k => $v)
         {
+            $selected = $selectedValue == $k ? 'selected' : '';
             ?>
-            <option value="<?php echo $k ?>">
+            <option value="<?php echo $k ?>" <?php echo $selected ?>>
                 <?php echo is_callable($labelCallback) ? call_user_func_array($labelCallback, array_merge(array($v), $addtionalParams)) : $v ?>
             </option>
             <?php

@@ -8,6 +8,8 @@ class cart extends BaseController
 {
 
     protected $_CI;
+
+    /** @var cartModel */
     public $cartModel;
 
     /** @var WishlistModel */
@@ -26,7 +28,7 @@ class cart extends BaseController
     function shipping()
     {
         $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name', true)->findAssoc();
-        $data['shippingMethods'] = ShippingMethodMapper::make()->findAll();
+        $data['shippingMethods'] = ShippingMethodMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->findAll();
         $data['cartContents'] = CartMapper::make()
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadAttributes()
@@ -88,13 +90,97 @@ class cart extends BaseController
         echo json_encode($json);
     }
 
-    function shippingPriceService()
+    function simpleShippingPriceService($locationCode)
     {
-        header('Content-type: application/json');
-        $locationID = isset($_GET['location']) ? $_GET['location'] : null;
-        $shippingMethodCode = isset($_GET['shipping']) ? $_GET['shipping'] : null;
-        $price = $this->cartModel->calculateShippingPrice($shippingMethodCode, $locationID, 'USD');
-        echo json_encode((double) $price);
+        $user = User::getCurrentUser();
+        $products = CartMapper::make()
+                ->setLanguage($user->languageKey)
+                ->autoloadAttributes()
+                ->autoloadTaxes()
+                ->findAll();
+        $shippingMethods = ShippingMethodMapper::make()->setLanguage($user->languageKey)->findAll();
+        $shippingLocations = ShippingLocationMapper::make()->filterLocation(null, $locationCode)->findAll();
+        $sumWeight = 0;
+        /* @var $products CartDomain */
+        foreach ($products as $product)
+        {
+            $sumWeight += $product->getConvertedWeight() * (double) $product->quantity;
+        }
+        $json = array();
+        foreach ($shippingMethods as $method)
+        {
+            foreach ($shippingLocations as $location)
+            {
+                if ($location->fkShippingMethod != $method->id)
+                {
+                    continue;
+                }
+
+                $json[] = array(
+                    'code'  => $method->codename,
+                    'desc'  => $method->description,
+                    'label' => $method->label,
+                    'price' => $this->cartModel->calculateShippingPrice($location, $sumWeight, new Currency($user->getCurrency()))
+                );
+            }
+        }
+        echo json_encode($json);
+    }
+
+    function advanceShippingPriceService()
+    {
+        $user = User::getCurrentUser();
+        $productMethods = $this->input->post('methods');
+        $locationCode = $this->input->post('location');
+        $shippingMethods = ShippingMethodMapper::make()->setLanguage($user->languageKey)->findAll();
+        $shippingLocations = ShippingLocationMapper::make()->filterLocation(null, $locationCode)->findAll();
+
+        $products = CartMapper::make()
+                ->setLanguage($user->languageKey)
+                ->autoloadAttributes()
+                ->autoloadTaxes()
+                ->findAll();
+
+        $json = array();
+        foreach ($shippingMethods as $method)
+        {
+            if (!isset($productMethods[$method->codename]))
+            {
+                continue;
+            }
+            $sumWeight = 0;
+            $productInMethod = $productMethods[$method->codename];
+            foreach ($shippingLocations as $location)
+            {
+                if ($location->fkShippingMethod == $method->id)
+                {
+                    break;
+                }
+                else
+                {
+                    $location = null;
+                }
+            }
+            if (!$location)
+            {
+                continue;
+            }
+            foreach ($productInMethod as $productID)
+            {
+                foreach ($products as $product)
+                {
+                    if ($productID !== $product->id)
+                    {
+                        continue;
+                    }
+                    $sumWeight+= $product->getConvertedWeight() * $product->quantity;
+                }
+                /* @var $product CartDomain */
+                $json[$method->label] = $this->cartModel->calculateShippingPrice($location, $sumWeight, new Currency($user->getCurrency()));
+            }
+        }
+        header('Content-type:application/json');
+        echo json_encode($json);
     }
 
     function updateQuantityService()

@@ -6,12 +6,11 @@ class ShippingMethodDomain implements DomainInterface
 {
 
     public $id;
-    public $fee;
     public $codename;
-    public $fkCurrency;
-    public $minBDay;
-    public $maxBDay;
-    public $currencyName;
+    public $language;
+    public $label;
+    public $description;
+    public $localization;
     protected $_shippingLocations = array();
 
     /**

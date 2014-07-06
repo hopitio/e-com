@@ -51,7 +51,7 @@ defined('BASEPATH') or die('No direct script access allowed');
         </div>
         <div class="lynx_listItem">
             <div class="lynx_item lynx_itemAdve" ng-if="section.displayImage">
-                    <a href="{{section.displayImageHref}}" title="{{section.displayImageTitle}}"><img src="{{section.displayImage}}"/></a>
+                    <a href="{{section.displayImageHref}}" title="{{section.displayImageTitle}}"><img ng-src="{{section.displayImage}}"/></a>
             </div>
             <div class="lynx_item" ng-repeat="product in section.products" product="product">
 
@@ -60,7 +60,7 @@ defined('BASEPATH') or die('No direct script access allowed');
         <!--   
         <div class="lynx_itemConatiner">
             <div class="lynx_item lynx_towCol" ng-if="section.displayImage">
-                <a href="{{section.displayImageHref}}" title="{{section.displayImageTitle}}"><img src="{{section.displayImage}}"/></a>
+                <a href="{{section.displayImageHref}}" title="{{section.displayImageTitle}}"><img ng-src="{{section.displayImage}}"/></a>
             </div>
             <div class="lynx_item lynx_oneCol" ng-repeat="product in section.products" product="product">
             </div>

@@ -110,7 +110,6 @@ class home extends BaseController
                 $section_array['displayImage'] = (string) $attrs->src;
                 $section_array['displayImageTitle'] = (string) $attrs->title;
                 $section_array['displayImageHref'] = (string) $attrs->href;
-                
             }
             $section_array['products'] = array();
 

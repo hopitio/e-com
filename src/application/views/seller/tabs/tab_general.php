@@ -1,70 +1,87 @@
 <?php
 defined('BASEPATH') or die('no direct access alowed');
 /* @var $product ProductFixedDomain */
-
-//name
-$txtName = new ControlGroupDecorator('Tên sản phẩm<span class="help-block">Tối đa 250 kí tự.</span>', new TextboxInput('txtName', 'pattr[name]', strval($product->getName())));
-$txtName->get_a('TextboxInput')
-        ->setAttribute('data-rule-required', true)
-        ->setAttribute('data-rule-maxlength', 250);
-echo $txtName;
-//stock
-$txtStockQty = new ControlGroupDecorator('Số lượng bán:', new TextboxInput('txtStockQty', 'pattr[quantity]', (string) $product->getQuantity()));
-$txtStockQty->get_a('TextboxInput')->setAttribute('data-rule-required', true)->setAttribute('data-rule-number', true);
-$txtStockQty->get_a('TextboxInput')->addClass('input-size-medium');
-echo $txtStockQty;
-//brand
-$txtBrand = new ControlGroupDecorator('Nhãn hiệu', new TextboxInput('txtBrand', 'pattr[brand]', strval($product->getBrand())));
-$txtBrand->get_a('TextboxInput')->addClass('input-size-medium');
-echo $txtBrand;
-//storage code type
-$selected = false;
-if (is_object($product->getStorageCodeType()))
-{
-    $selected = $product->getStorageCodeType()->getTrueValue()->id;
-}
-
-$selCodeType = new ControlGroupDecorator('Loại mã kho:', new SelectEnumControl('selCodeType', 'pattr[storage_code_type]', 'storage_code_type', $selected));
-$selCodeType->get_a('SelectControl')->addOption('0', 'None', true)->addClass('input-size-medium');
-echo $selCodeType;
-//code
-$txtCode = new ControlGroupDecorator('Mã kho:', new TextboxInput('txtCode', 'pattr[storage_code]', (string) $product->getStorageCode()));
-$txtCode->get_a('TextboxInput')->addClass('input-size-medium');
-echo $txtCode;
-
-//weight
-$selected = false;
-if (is_object($product->getWeightUnit()))
-{
-    $selected = $product->getWeightUnit()->getTrueValue()->id;
-}
-if ($product->id)
-{
-    $selWeightUnit = new ControlGroupDecorator('Đơn vị đo:', new SelectEnumControl('selWeightUnit', 'pattr[weight_unit]', 'weight_unit', $selected));
-    $selWeightUnit->get_a('SelectControl')->addOption('0', 'None', true)->addClass('input-size-medium');
-    echo $selWeightUnit;
-
-    $txtWeight = new ControlGroupDecorator('Nặng:', new TextboxInput('txtWeight', 'pattr[weight]', (string) $product->getWeight()));
-    $txtWeight->get_a('TextboxInput')->addClass('input-size-medium');
-    echo $txtWeight;
-}
-
+?>
+<div class="form-group">
+    <label class="control-label col-xs-2" for="txt_name"><span class="red">* </span>Tên sản phẩm:<span class="help-block">Tối đa 250 kí tự.</span></label>
+    <div class="controls col-xs-10">
+        <input type="text" name="pattr[name]" id="txt_name" class="form-control" data-rule-required="true" value="<?php echo $product->getName() ?>">
+    </div>
+</div><!--control-group-->
+<div class="form-group">
+    <label class="control-label col-xs-2" for="txt_storage_code">Mã kho:</label>
+    <div class="controls col-xs-4">
+        <input type="text" name="pattr[storage_code]" id="txt_storage_code" class="form-control" value="<?php echo $product->getStorageCode() ?>">
+    </div>
+</div><!--control-group-->
+<div class="form-group">
+    <label class="control-label col-xs-2" for="txt_quantity"><span class="red">* </span>Số lượng bán:</label>
+    <div class="controls col-xs-4">
+        <input type="text" name="pattr[quantity]" id="txt_quantity" class="form-control" data-rule-required="true" value="<?php echo $product->getQuantity() ?>">
+    </div>
+    <label class="control-label col-xs-2" for="txt_brand">Nhãn hiệu:</label>
+    <div class="controls col-xs-4">
+        <input type="text" name="pattr[brand]" id="txt_brand" class="form-control" value="<?php echo $product->getBrand() ?>">
+    </div>
+</div><!--control-group-->
+<div class="form-group">
+    <label class="control-label col-xs-2" for="txt_weight"><span class="red">* </span>Khối lượng/Thể tích:</label>
+    <div class="controls col-xs-4">
+        <input type="text" name="pattr[weight]" id="txt_weight" class="form-control" data-rule-required="true" value="<?php echo $product->getWeight() ?>">
+    </div>
+    <label class="control-label col-xs-2" for="selWeightUnit"><span class="red">* </span>Đơn vị đo:</label>
+    <div class="controls col-xs-4">
+        <?php
+        $selected = false;
+        if (is_object($product->getWeightUnit()))
+        {
+            $selected = $product->getWeightUnit()->getTrueValue()->id;
+        }
+        $selWeightUnit = new SelectEnumControl('selWeightUnit', 'pattr[weight_unit]', 'weight_unit', $selected);
+        $selWeightUnit
+                ->get_a('SelectControl')
+                ->addOption('0', 'None', true)
+                ->setAttribute('data-rule-required', '');
+        echo $selWeightUnit;
+        ?>
+    </div>
+</div><!--control-group-->
+<!--dimension-->
+<div class="form-group">
+    <label class="col-xs-2 control-label"><span class="red">* </span>Kích cỡ(cm):</label>
+    <div class="col-xs-10">
+        <div class="row">
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="pattr[dimension_width]" id="txtDimensionWidth" 
+                       placeholder="chiều rộng" value="<?php echo $product->getDimensionWidth() ?>" data-rule-required="true">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="pattr[dimension_height]" id="txtDimensionHeight" placeholder="chiều cao" 
+                       value="<?php echo $product->getDimensionHeight() ?>" data-rule-required="true">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="pattr[dimension_depth]" id="txtDimensionDepth" placeholder="chiều sâu"
+                       value="<?php echo $product->getDimensionDepth() ?>" data-rule-required="true">
+            </div>
+        </div>            
+    </div>
+</div>
+<?php
 if ($product->id == 0)
 {
     $file = new ControlGroupDecorator('Ảnh sản phẩm:', new FileInput('fileImage', 'fileImage[]', 'image/jpeg', true));
     $file->get_a('FileInput')->setAttribute('data-rule-required', true);
     echo $file;
 }
-
 if ($product->id)
 {
-//description
+    //description
     $txtDesc = new ControlGroupDecorator('Mô tả:', new ckEditorControl('txtDesc', 'pattr[description]', $product->getDescription()));
-    $txtDesc->get_a('ckEditorControl')->setAttribute('rows', 10);
+    $txtDesc->get_a('ckEditorControl')->setAttribute('rows', 5);
     echo $txtDesc;
-//note
-    $txtNote = new ControlGroupDecorator('Ghi chú:', new ckEditorControl('txtNote', 'pattr[note]', $product->getNote()));
-    $txtNote->get_a('ckEditorControl')->setAttribute('rows', 10);
+    //note
+    $txtNote = new ControlGroupDecorator('Ghi chú:', new TextareaControl('txtNote', 'pattr[note]', $product->getNote()));
+    $txtNote->get_a('TextareaControl')->setAttribute('rows', 5);
     echo $txtNote;
 }
 ?>

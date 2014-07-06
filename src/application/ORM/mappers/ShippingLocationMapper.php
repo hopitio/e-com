@@ -5,14 +5,19 @@ defined('BASEPATH') or die('No direct script access allowed');
 class ShippingLocationMapper extends MapperAbstract
 {
 
-    function __construct($domain = 'ShippingLocationMapper')
+    function __construct($domain = 'ShippingLocationDomain')
     {
         $query = Query::make()->from('t_shipping_location');
 
         $map = array(
-            'fkShippingLocation' => 'fk_shipping_location',
-            'fkLocation' => 'fk_location',
-            'priceCurrency' => 'price_currency'
+            'fkShippingMethod' => 'fk_shipping_method',
+            'fkLocation'       => 'fk_location',
+            'basePrice'        => 'base_price',
+            'baseWeight'       => 'base_weight',
+            'weightStep'       => 'weight_step',
+            'weightStepPrice'  => 'weight_step_price',
+            'bulkyWeight'      => 'bulky_weight',
+            'bulkyStepPrice'   => 'bulky_step_price',
         );
 
         parent::__construct($domain, $query, $map);
@@ -43,8 +48,12 @@ class ShippingLocationMapper extends MapperAbstract
         return $this;
     }
 
-    function filterLocation($locationID)
+    function filterLocation($locationID = null, $locationCode = null)
     {
+        if (!$locationID && $locationCode)
+        {
+            $locationID = DB::getInstance()->GetOne('SELECT id FROM t_location WHERE codename=?', array($locationCode));
+        }
         $this->_query->where('fk_location=?', __FUNCTION__);
         $this->_queryParams[__FUNCTION__] = $locationID;
         return $this;

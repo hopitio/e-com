@@ -144,7 +144,7 @@
 </div>
 <script type="text/ng-template" id="productsDesTemplate.html" >
     <div class="lynx_row" >
-	   <img width="50px" height="" src="{{product.sub_image}}"/>
+	   <img width="50px" height="" ng-src="{{product.sub_image}}"/>
     </div>
 </script>
 
