@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/style/mainAdminGift.css" media="all">
         <?php 
         //Thêm các js riêng biệt
             foreach ($view->css as $item)
@@ -39,7 +40,24 @@
                     </div>
                 </div>
                 <div class="lynx_headMenu" >
-                    
+                        <div class="lynx_menuWarp lynx_staticWidth">
+                        <div class="lynx_category dropdown dropdown-hover">
+                            <span class="dropdown-toggle " style="color: white"><a style="color: white" href="#">Sản phẩm</a></span>
+                            <ul class="dropdown-menu" class="preload">
+                                <li class="left">
+                                    <a>Tìm kiếm sản phẩm</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lynx_category dropdown dropdown-hover">
+                            <span class="dropdown-toggle "  style="color: white" >Người bán</span>
+                            <ul class="dropdown-menu" class="preload">
+                                <li class="left">
+                                    <a href="/__admin/seller_find">Tìm kiếm người bán</a>
+                                    <a href="/__admin/seller/add">Thêm người bán</a>
+                                </li>
+                            </ul>
+                        </div>
                 </div><!--head ctrl-->
             </div>
             <div class="content">
@@ -139,6 +157,7 @@
         
         <script type='text/javascript' src="/js/controller/HeadCtrl.js"></script>
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
+        <script type='text/javascript' src="/js/common.js"></script>
         
         <script type="text/javascript">
            function Config(){

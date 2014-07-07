@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+
 .lynx_dashboard{
     display: inline-block;
     min-height:  500px;
@@ -20,15 +21,13 @@
     margin: 0px;
 	padding-top:10px;
 }
-.lynx_rightContent{
+.lynx_giftAdminContent{
     display:inline-block;
 	min-height: 500px;
-	width:999px;
-    background: #FBFBFB;
-	border-right: 1px solid #DDDDDD;
-	border-left: 1px solid #DDDDDD;
+	width:1199px;
 }
-.lynx_rightContent h3{
+.lynx_giftAdminContent *{text-align: inherit;}
+.lynx_giftAdminContent h3{
 	font-size: 18px;
 	padding-left:10px;
 	line-height: 20px;
@@ -39,5 +38,35 @@
 	padding-bottom: 10px;
 }
 .lynx_pageContent{
+    width:1199px;
+    height:500px;
+}
+
+.lynx_fromSearch{
+    display: inline-block;
+    width: 100%;
+    float: left;
+    padding-left:10px;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.lynx_fromSearch span{
+    margin-right: 10px;
+}
+.lynx_fromSearch input{
+    margin-right: 30px;
+}
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 1199px;
+    height: 500px;
+    float: left;
+    margin: 0px 10px;
     
+}
+.lynx_actionSellerButton{
+   font-size: 20px;
+   margin: 5px;
+   cursor: pointer;
 }

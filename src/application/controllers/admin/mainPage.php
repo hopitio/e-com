@@ -9,7 +9,7 @@ class mainpage extends AdminControllerAbstract
     protected $js = array();
     function showpage()
     {
-        $this->css[] = '/style/adminMainPage.css';
+        
         $this->js[] = '/js/controller/AdminMainPageController.js';
         $this->js[] = '/js/services/AdminMainPageServiceClient.js';
         

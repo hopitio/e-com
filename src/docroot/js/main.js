@@ -170,14 +170,8 @@ function productSlider(selector) {
     }
 
 } //product slider
-var AppCommon = {};
-AppCommon.onLoading = function() {
-    $("body").append("<div id='pageMask'></div>");
-    $("#pageMask").css("display", "block");
-};
-AppCommon.onLoaded = function() {
-    $("#pageMask").css("display", "none");
-};
+
+
 
 
 

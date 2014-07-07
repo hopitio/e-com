@@ -9,8 +9,6 @@ class sellerFind extends AdminControllerAbstract
     protected $js = array();
     function showPage()
     {
-        $this->css[] = '/style/adminMainPage.css';
-        $this->css[] = '/style/adminFind.css';
         $this->js[] = '/js/controller/SellerFindController.js';
         $this->js[] = '/js/services/SellerFindServiceClient.js';
         LayoutFactory::getLayout(LayoutFactory::TEMP_ADMIN)

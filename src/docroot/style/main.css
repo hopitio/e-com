@@ -664,11 +664,13 @@ input,textarea,select{text-align: left;font-weight:normal;}
 #pageMask{
     position: fixed;
     height:100%;
+    width:100%;
     background: black url('../images/ajax_loader_blue_32.gif') no-repeat center center;
     opacity: 0.4;
     filter: alpha(opacity=40); /* For IE8 and earlier */
     left: 0px;
     top: 0px;
+    z-index:9999;
 }
 label.error{color:brown;}
 input.error, textarea.error, select.error{color: brown;border-color: brown;}

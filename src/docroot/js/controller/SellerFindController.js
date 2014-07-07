@@ -1,19 +1,24 @@
 function SellerFindController($scope,$http)
 {
-    $scope.userId = '';
-    $scope.sellerName = '';
+    var $common = new Common();
+    $scope.userId = $common.getParameterByName("user_id");
+    $scope.sellerName = $common.getParameterByName("seller_name");
+    
     $scope.filterOptions = {
             filterText: "",
             useExternalFilter: true
     }; 
+    
+    
     $scope.totalServerItems = 0;
     $scope.pagingOptions = {
         pageSizes: [10, 20, 30, 50, 100],
-        pageSize: 10,
-        currentPage: 1,
+        pageSize: $common.getParameterByName("page_size") == "" ? 10 : $common.getParameterByName("page_size"),
+        currentPage: $common.getParameterByName("page_number") == "" ? 1 : $common.getParameterByName("page_number"),
     };  
     $scope.gridOptions = {
             data: 'sellerData',
+            rowHeight: 50,
             enablePaging: true,
             showFooter: true,
             totalServerItems: 'totalServerItems',
@@ -21,11 +26,11 @@ function SellerFindController($scope,$http)
             filterOptions: $scope.filterOptions,
             multiSelect: false,
             columnDefs: [
+                         {field: 'fk_manager',displayName: 'User Id',width:'50px'},
+                         {field: 'logo',displayName: 'Logo',width:'50px', cellTemplate: 'cellImageTemplate.html'},
                          {field: 'name',displayName: 'Tên'},
-                         {field: 'logo',displayName: 'Logo', cellTemplate: 'cellImageTemplate.html'},
                          {field: 'email',displayName: 'Email'},
                          {field: 'phoneno',displayName: 'Phoneno'},
-                         {field: 'fk_manager',displayName: 'User Id'},
                          {field: 'id',displayName: '',cellTemplate: 'cellIdTemplate.html'},
                          ]
         };
@@ -45,33 +50,36 @@ function SellerFindController($scope,$http)
                 getSellerSucessCallback,getSellerErrorCallback);
     };
     
-    $scope.find = function(){
-        sellerFindServiceClient = new SellerFindServiceClient($http);
-        sellerFindServiceClient.getSeller($scope.userId,$scope.sellerName,pageSize,0,
-                getSellerSucessCallback,getSellerErrorCallback);
-    }
-    
     function getSellerSucessCallback(data){
         if(!data.isError){
             $scope.setPagingData(data.data['SELLER'], data.data['COUNT']);
         }
+        
+        $common.onLoaded();
     }
     
-    function getSellerErrorCallback(xhr,status){
-        
-    }
+    function getSellerErrorCallback(xhr,status){}
     
     $scope.$watch('pagingOptions', function (newVal, oldVal) {
         if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
           $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
         }
     }, true);
+    
     $scope.$watch('filterOptions', function (newVal, oldVal) {
         if (newVal !== oldVal) {
           $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
         }
     }, true);
     
+    $scope.startup = function (){
+        if($scope.userId == "" && $scope.sellerName == ""){
+            return;
+        }
+        $scope.getPagedDataAsync($scope.pagingOptions.pageSize,$scope.pagingOptions.currentPage);
+        $common.onLoading();
+    };
     
+    $scope.startup();
 }
 SellerFindController.$inject = ['$scope','$http'];
