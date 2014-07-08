@@ -1,0 +1,33 @@
+Đặc tả phương thức chọn đơn hàng cho đến cách hệ thống quản lý thông tin thanh toán
+
+1. Customer chọn sản phẩm đưa vào cart
+
+2. Customer từ cart chuyển sang bước chọn shipping method. Có 3 method 
+cho phép chọn là:
+- Standard: 3-5 ngày từ lúc xác nhận thanh toán
+- Express: 1-3 ngày từ lúc xác nhận thanh toán
+- Premium: trong ngày xác nhận thanh toán, chỉ áp dụng nội thành hà nội
+
+Customer có thể chọn nhiều shipping method cho đơn hàng. Tùy vào số method
+mà customer chọn hệ thống sẽ tự động tách thành nhiều lần ship.
+VD: đơn hàng có 4 sản phẩm có id khác nhau là A,B,C,D. A và B chọn Express
+, C và D chọn Standard nên hệ thống chia thành 2 lần ship tương đương Express
+& Standard.
+
+Chi phí cho mỗi lần ship được tính bởi 3 tham số:
+- Thời hạn
+- Tổng khối lượng quy đổi
+- Quãng đường
+
+[Khôi lượng quy đổi mỗi SP] = MAX([khối lượng thực], [rộng] x [cao] x [sâu] / 6000)
+Trong đó 3 chiều của sp tính bằng cm.
+
+3. Với tình huống mua hàng ABCD nêu trên, hệ thống tạo ra 1 invoice với 6 bản ghi:
+- 4 bản ghi cho sản phẩm
+- 2 bản ghi cho mỗi shipping method 
+- Có thêm bản ghi nếu phát sinh phụ phí/giảm giá
+Trường hợp order bị thay đổi về giá trị, admin phải hủy invoice cũ và tạo invoice mới.
+
+
+
+
