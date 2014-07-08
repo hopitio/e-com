@@ -1,4 +1,4 @@
-function SellerFindController($scope,$http)
+function SellerController($scope,$http)
 {
     var $common = new Common();
     $scope.userId = $common.getParameterByName("user_id");
@@ -45,7 +45,7 @@ function SellerFindController($scope,$http)
     };
     
     $scope.getPagedDataAsync = function (pageSize, page) {
-        sellerFindServiceClient = new SellerFindServiceClient($http);
+        sellerFindServiceClient = new SellerServiceClient($http);
         sellerFindServiceClient.getSeller($scope.userId,$scope.sellerName,pageSize,page-1,
                 getSellerSucessCallback,getSellerErrorCallback);
     };
@@ -82,4 +82,4 @@ function SellerFindController($scope,$http)
     
     $scope.startup();
 }
-SellerFindController.$inject = ['$scope','$http'];
+SellerController.$inject = ['$scope','$http'];

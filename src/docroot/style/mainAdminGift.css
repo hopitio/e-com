@@ -36,15 +36,15 @@
 	font-weight: bold;
 	border-bottom: solid 1px #DDDDDD;
 	padding-bottom: 10px;
+    display: inline-block;
+    width: 100%;
 }
 .lynx_pageContent{
-    width:1199px;
     height:500px;
 }
 
 .lynx_fromSearch{
     display: inline-block;
-    width: 100%;
     float: left;
     padding-left:10px;
     display: inline-block;
@@ -69,4 +69,12 @@
    font-size: 20px;
    margin: 5px;
    cursor: pointer;
+}
+.form-group{
+    display:inline-block;
+    width:100%;
+    text-align: left;
+}
+.lynx_giftAdminContent h3 .actions{
+    float:right;
 }

@@ -216,14 +216,14 @@ class PortalModelUser extends PortalModelBase
     function findUsersCount($id, $account, $firstname, $lastname)
     {
         $sql = "SELECT COUNT(id) as id FROM t_user
-        WHERE
-        (t_user.id = ? OR t_user.id LIKE CONCAT('%',?,'%'))
-        AND
-        (t_user.firstname = ? OR t_user.firstname LIKE CONCAT('%',?,'%'))
-        AND
-        (t_user.lastname = ? OR t_user.lastname LIKE CONCAT('%',?,'%'))
-        AND
-        (t_user.account = ? OR t_user.account LIKE CONCAT('%',?,'%'))";
+                WHERE
+                (t_user.id = ? OR t_user.id LIKE CONCAT('%',?,'%'))
+                AND
+                (t_user.firstname = ? OR t_user.firstname LIKE CONCAT('%',?,'%'))
+                AND
+                (t_user.lastname = ? OR t_user.lastname LIKE CONCAT('%',?,'%'))
+                AND
+                (t_user.account = ? OR t_user.account LIKE CONCAT('%',?,'%'))";
         $param = array(
             $id,
             $id,

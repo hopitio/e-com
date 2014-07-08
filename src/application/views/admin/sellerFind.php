@@ -3,22 +3,24 @@
 function submitFrom(){
     $("#search_from").submit();
 }
-
 </script>
-<div class="lynx_giftAdminContent" ng-controller="SellerFindController">
-    <h3>Tìm kiếm người bán</h3>
-    <div class="lynx_pageContent">
-        <div class="lynx_fromSearch">
-            <form id="search_from" method="get">
-                <span>Mã nhà quản trị</span> <input name="user_id" type="text" ng-model="userId" />
-                <span>Tên Gian hàng</span> <input name="seller_name" type="text" ng-model="sellerName" />
-                <input name="page_number" value="{{pagingOptions.currentPage}}" type="hidden"/>
-                <input name="page_size" value="{{pagingOptions.pageSize}}" type="hidden"/>
-                <input type="submit" value="Tìm kiếm" onclick="submitFrom()" />
-            </form>
-        </div>
-        <div class="gridStyle" ng-grid="gridOptions"></div>
-    </div>
+<div class="lynx_giftAdminContent" style="float: left; width: 700px">
+    <form id="search_from" method="get">
+        <h3>Tìm kiếm người bán
+            <div class="actions">
+                <a href="javascript:submitFrom();" id="btn-apply" class="btn" data-type="submit" ><i class="fa fa-save"></i> Tìm kiếm</a>
+            </div>
+        </h3>
+        <div class="lynx_pageContent">
+            <div class="lynx_fromSearch">
+                    <span>Mã nhà quản trị</span> <input name="user_id" type="text" ng-model="userId" />
+                    <span>Tên Gian hàng</span> <input name="seller_name" type="text" ng-model="sellerName" />
+                    <input name="page_number" value="{{pagingOptions.currentPage}}" type="hidden"/>
+                    <input name="page_size" value="{{pagingOptions.pageSize}}" type="hidden"/>
+            </div>
+            <div class="gridStyle" style="width:700px;" ng-grid="gridOptions"></div>
+         </div>
+     </form>
 </div>
 
 <script type="text/ng-template" id="cellIdTemplate.html" >

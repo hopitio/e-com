@@ -53,11 +53,21 @@
                             <span class="dropdown-toggle "  style="color: white" >Người bán</span>
                             <ul class="dropdown-menu" class="preload">
                                 <li class="left">
-                                    <a href="/__admin/seller_find">Tìm kiếm người bán</a>
-                                    <a href="/__admin/seller/add">Thêm người bán</a>
+                                    <a href="/__admin/seller">Người bán</a>
                                 </li>
                             </ul>
                         </div>
+                        
+                        <div class="lynx_category dropdown dropdown-hover">
+                            <span class="dropdown-toggle "  style="color: white" >Quảng cáo</span>
+                            <ul class="dropdown-menu" class="preload">
+                                <li class="left">
+                                    <a href="/__admin/seller_find">Danh mục</a>
+                                    <a href="/__admin/seller/add">Quảng cáo tĩnh</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
                 </div><!--head ctrl-->
             </div>
             <div class="content">

@@ -1,8 +1,8 @@
-function SellerFindServiceClient($http){
+function SellerServiceClient($http){
     
     this.getSeller = function(userid,shopName,pageSize,pageNumber,sucessCallback,errorCallback)
     {
-        $http.get('/__admin/product_find/'+pageSize+'/'+pageNumber+'?UID='+userid+'&NAME='+shopName,
+        $http.get('/__admin/seller_find/'+pageSize+'/'+pageNumber+'?UID='+userid+'&NAME='+shopName,
                   {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT"}}
         ).success(function(data){
             if(typeof sucessCallback === 'function'){
@@ -13,6 +13,6 @@ function SellerFindServiceClient($http){
                 errorCallback(xhr,status);
             }
         });
-    }
+    };
     
 }
