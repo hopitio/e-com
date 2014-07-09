@@ -1,14 +1,9 @@
 
-<script type="text/javascript">
-function submitFrom(){
-    $("#search_from").submit();
-}
-</script>
 <div class="lynx_giftAdminContent" style="float: left; width: 700px">
     <form id="search_from" method="get">
-        <h3>Tìm kiếm người bán
+        <h3>Tìm kiếm gian hàng
             <div class="actions">
-                <a href="javascript:submitFrom();" id="btn-apply" class="btn" data-type="submit" ><i class="fa fa-save"></i> Tìm kiếm</a>
+                <a href="javascript:void();" id="btn-apply" novalidate="novalidate" class="btn" data-type="submit" ><i class="fa fa-save"></i> Tìm kiếm</a>
             </div>
         </h3>
         <div class="lynx_pageContent">

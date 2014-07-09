@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/mainAdminGift.css" media="all">
+        <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
         <?php 
         //Thêm các js riêng biệt
             foreach ($view->css as $item)
@@ -19,6 +20,7 @@
                 echo '<link rel="stylesheet" type="text/css" href="'.$item.'" media="all">';
             }
         ?>
+        
 
     </head>
     <body>
@@ -153,7 +155,7 @@
         </script>
         
         
-        <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
+        
         <script type='text/javascript' src="/js/angular.min.js"></script>
         <script type='text/javascript' src="/js/angular-route.min.js"></script>
         <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
