@@ -99,7 +99,7 @@ class Money
             case 'USD':
                 return '$' . format_money($this->_amount);
             case 'VND':
-                return format_money($this->_amount) . 'đ';
+                return format_money($this->_amount, 0) . 'đ';
             case 'KRW':
                 return 'W' . format_money($this->_amount);
         }
@@ -112,20 +112,8 @@ class Money
  * @param double $amount
  * @return string
  */
-function format_money($amount)
+function format_money($amount, $precision = 2)
 {
-    if (round($amount, 0) == $amount)
-    {
-        $precision = 0;
-    }
-    elseif (round($amount, 1) == $amount)
-    {
-        $precision = 1;
-    }
-    else
-    {
-        $precision = 2;
-    }
     return number_format((double) $amount, $precision);
 }
 
@@ -136,10 +124,10 @@ function getJavascriptMoneyFunction($currency)
 {
     switch ($currency) {
         case 'USD':
-            return "function(a){return '$' + a.formatMoney(2);}";
+            return "function(a){var b=a.formatMoney(0);var c=a.formatMoney(1);var d=a.formatMoney(2);return '$'+(a==b?b:a==c?c:d); }";
         case 'KRW':
-            return "function(a){return 'w' + a.formatMoney(2);}";
+            return "function(a){var b=a.formatMoney(0);var c=a.formatMoney(1);var d=a.formatMoney(2);return 'w'+(a==b?b:a==c?c:d); }";
         case 'VND':
-            return "function(a){return a.formatMoney(2) + ' đ'}";
+            return "function(a){return a.formatMoney(0)+'đ';}";
     }
 }

@@ -87,6 +87,9 @@ $(document).ready(function() {
             if ($scope.getViewMode() === 'simple') {
                 $http.get(scriptData.simpleShipURL + $scope.province).success(function(resp) {
                     $scope.simpleShipData = resp;
+                    if($scope.simpleShipData[0]){
+                        $scope.setShipPrice($scope.simpleShipData[0].price);
+                    }
                     setTimeout(function() {
                         $scope.$apply();
                     });

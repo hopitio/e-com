@@ -5,7 +5,6 @@ defined('BASEPATH') or die('No direct script access allowed');
 <h1></h1>
 <ul class="cart-breadcrums">
     <li class="bc-label"><i class="fa fa-shopping-cart"></i> <?php echo $language[$view->view]->lblYourcart; ?> </li>
-    <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPlaceOrder; ?></a></li>
     <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblShippingInfor; ?></a></li>
     <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPaymentInfor; ?></a></li>
 </ul>
