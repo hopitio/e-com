@@ -1,32 +1,61 @@
 
-<div class="lynx_giftAdminContent" style="float: left; width: 700px">
+<div class="col-md-7" >
+    <div class="box">
     <form id="search_from" method="get">
-        <h3>Tìm kiếm gian hàng
-            <div class="actions">
-                <a href="javascript:void();" id="btn-apply" novalidate="novalidate" class="btn" data-type="submit" ><i class="fa fa-save"></i> Tìm kiếm</a>
+        <div class="box-header">
+            <h3 class="box-title">Tìm kiếm gian hàng</h3>
+           <div class="box-tools text-right">
+                <div class="text-right">
+                    <a href="javascript:void(0);" id="btn-apply" novalidate="novalidate" class="btn" data-type="submit"><i class="fa fa-save"></i> Tìm kiếm</a>
+                </div>
             </div>
-        </h3>
-        <div class="lynx_pageContent">
-            <div class="lynx_fromSearch">
-                    <span>Mã nhà quản trị</span> <input name="user_id" type="text" ng-model="userId" />
-                    <span>Tên Gian hàng</span> <input name="seller_name" type="text" ng-model="sellerName" />
-                    <input name="page_number" value="{{pagingOptions.currentPage}}" type="hidden"/>
-                    <input name="page_size" value="{{pagingOptions.pageSize}}" type="hidden"/>
+        </div>
+        <div class="box-body" >
+            <div class="input-group col-xs-12">
+                <span class="input-group-addon">Tên</span>
+                <input type="text" name="seller_name" class="form-control" ng-model="sellerName"  placeholder="Tên gian hàng">
+                <span class="input-group-addon"><span ng-show="!loadingSearchAccount">Tài khoản</span> <i ng-show="loadingSearchAccount" class="fa fa-exchange"></i></span>
+                <input  type="text" typeahead="account as account.account for account in searchAccountAsyncCall($viewValue)" typeahead-loading="loadingSearchAccount" class="form-control" ng-model="selectedSearchAccount" placeholder="Tài khoản">
+                <input type="hidden" value="{{selectedSearchAccount.id}}" name="user_id"/>
             </div>
-            <div class="gridStyle" style="width:700px;" ng-grid="gridOptions"></div>
-         </div>
+        </div>
+        <div class="box-body table-responsive no-padding" style="min-height:367px;" >
+                <table class="table table-hover">
+                 <tbody>
+                    <tr>
+                        <th>Logo </th>
+                        <th>Tên gian hàng</th>
+                        <th>Trạng thái / Email</th>
+                        <th></th>
+                    </tr>
+                    <tr class="cursor-pointer" ng-repeat="seller in sellers">
+                        <th><img width="40px" height="40px" ng-src="{{seller.name}}"/></th>
+                        <th>
+                            {{seller.name}}
+                        </th>
+                        <th>
+                            <small ng-show="seller.status == 1" class="label label-success"><i class="fa fa-unlock"></i>  Đang hoạt động</small>
+                            <small ng-show="seller.status == 0" class="label label-danger"><i class="fa fa-lock"></i>  Ngưng hoạt động</small>
+                            {{seller.email}}
+                            </th>
+                        <th>
+                            
+                        </th>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        
+        <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="javascript:void(0)">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="javascript:void(0)">»</a></li>
+            </ul>
+        </div>
      </form>
+    </div>
 </div>
-
-<script type="text/ng-template" id="cellIdTemplate.html" >
-    <i ng-click="" title="Thông tin tài khoản người sử dụng" class="glyphicon glyphicon-user" style="cursor: pointer;font-size:15px; margin:5px;opacity: 0.25;"></i>
-    <i ng-click="" title="Chỉnh sửa thông tin gian hàng" class="glyphicon glyphicon-cog" style="cursor: pointer;font-size15px; margin:5px;" ></i>
-    <i ng-click="" title="Hủy quyền Đăng sản phẩm" class="glyphicon glyphicon-remove" style="cursor: pointer;font-size:15px; margin:5px;"></i>
-    <i ng-click="" title="Phục hồi quyền đăng sản phẩm" class="glyphicon glyphicon-flash" style="cursor: pointer;font-size:15px; margin:5px;"></i>
-</script>
-<script type="text/ng-template" id="cellImageTemplate.html" >
-    <img src="{{row.getProperty('logo')}}" style="min-width:40px;min-height:40px;margin:5px"/>
-</script>
 
 
 

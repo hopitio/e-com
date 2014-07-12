@@ -16,5 +16,12 @@ class account extends BasePortalController
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setCss($this->_css)->render('portalaccount/account');
     }
     
-    
+    function showDialog(){
+        $css = array();
+        $js = array('/js/controller/DialogFindUserController.js','/js/services/DialogFindUserServiceClient.js');
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_DIALOG)
+        ->setCss($css)
+        ->setJavascript($js)
+        ->render('dialog/findUser');
+    }
 }

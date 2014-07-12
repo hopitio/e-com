@@ -380,4 +380,7 @@
         <colPrices>Prices</colPrices>
         <colAction></colAction>
     </search_show_page>
+    <dialog_findUser>
+        <title>Tìm kiếm user</title>
+    </dialog_findUser>
 </data>

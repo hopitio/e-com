@@ -17,4 +17,8 @@ class seller extends AdminControllerAbstract
         ->setJavascript($this->js)
         ->render('admin/seller');
     }
+    
+    function save(){
+        
+    }
 }
