@@ -63,8 +63,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/__admin/invoice/(:num)/other_costs'] = 'portalAdmin/apiInvoice/getInvoiceOtherCost/$1';
         $route['portal/api/__admin/invoice/(:num)/shippings'] = 'portalAdmin/apiInvoice/getInvoiceShipping/$1';
         $route['portal/api/__admin/contact/(:num)'] = 'portalAdmin/apiContact/getContact/$1';
-        //$route['portal/__admin/order/(:num)/invoice'] = 'portalAdmin/orderList/getOrderDetailXhr';
         
+        $route['portal/api/user/find'] = "portalController/apiUser/findUser";
+        $route['portal/dialog/user/find'] = "portalController/account/showDialog";
         
     }
 

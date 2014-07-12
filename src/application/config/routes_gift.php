@@ -40,6 +40,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['__portal/login_callback'] = 'portalCallbackController/portalProcess/portalAuthen';
         $route['portal/verifyToken'] = 'portalController/login/verifyToken';
         $route['__admin/login'] = 'admin/loginAdmin/login';
+        $route['__admin/seller'] = 'admin/seller/save';
     }
 }
 //
