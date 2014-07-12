@@ -81,21 +81,37 @@ $(document).ready(function() {
             return parseFloat($scope.orderSubtotal) + parseFloat($scope.shippingPrice);
         };
 
+        $scope.getSimpleShipData = function() {
+            $scope.shippingPrice = 0;
+            $http.get(scriptData.simpleShipURL + $scope.province).success(function(resp) {
+                $scope.simpleShipData = resp;
+                if ($scope.simpleShipData[0]) {
+                    $scope.setShipPrice($scope.simpleShipData[0].price);
+                }
+                setTimeout(function() {
+                    $scope.$apply();
+                });
+            });
+        };
+
+        $scope.selProvinceOnchange = function() {
+            if ($scope.getViewMode() === 'simple') {
+                $scope.getSimpleShipData();
+            } else if ($scope.getViewMode() === 'advance') {
+                for (var i in $scope.cartProducts) {
+                    var product = $scope.cartProducts[i];
+                    product.shippingMethodIndex = 0;
+                }
+            }
+        };
+
         var watched = false;
         $scope.hashChange = function() {
-            $scope.shippingPrice = 0;
             if ($scope.getViewMode() === 'simple') {
-                $http.get(scriptData.simpleShipURL + $scope.province).success(function(resp) {
-                    $scope.simpleShipData = resp;
-                    if($scope.simpleShipData[0]){
-                        $scope.setShipPrice($scope.simpleShipData[0].price);
-                    }
-                    setTimeout(function() {
-                        $scope.$apply();
-                    });
-                });
+                $scope.getSimpleShipData();
             }//simple
             if ($scope.getViewMode() === 'advance') {
+                $scope.shippingPrice = 0;
                 $http.get(scriptData.cartServiceURL).success(function(resp) {
                     if (!resp.products) {
                         return;
