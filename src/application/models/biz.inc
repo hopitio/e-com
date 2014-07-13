@@ -6,6 +6,8 @@ require_once $system_path.'core/Model.php';
 require_once APPPATH.'models/biz/BaseBiz.php';
 require_once APPPATH.'models/biz/AdminAccountBiz.php';
 require_once APPPATH.'models/biz/BizUser.php';
+require_once APPPATH.'models/biz/BizSeller.php';
+
 
 //portal
 

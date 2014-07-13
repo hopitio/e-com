@@ -5,6 +5,8 @@ require_once $system_path.'core/Model.php';
 require_once APPPATH.'models/modelEx/BaseModel.php';
 require_once APPPATH.'models/modelEx/AdminAccountModel.php';
 require_once APPPATH.'models/modelEx/SellerModel.php';
+require_once APPPATH.'models/modelEx/UserModel.php';
+require_once APPPATH.'models/modelEx/FileModel.php';
 
 //portal
 require_once APPPATH.'models/modelEx/PortalModelBase.php';
@@ -23,6 +25,7 @@ require_once APPPATH.'models/modelEx/PortalModelUserContact.php';
 require_once APPPATH.'models/modelEx/PortalModelUserHistory.php';
 require_once APPPATH.'models/modelEx/PortalModelUserSetting.php';
 require_once APPPATH.'models/modelEx/PortalModelOrderStatus.php';
+
 
 
 //payment portal

@@ -18,7 +18,11 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['__admin/mainpage'] = 'admin/mainpage/showpage';
         
         $route['__admin/seller'] = 'admin/seller/ShowPage';
-        $route['__admin/seller_find/(:num)/(:num)'] = 'sellerAPI/searchSeller/$1/$2';
+        $route['api/__admin/seller/find'] = 'admin/sellerAPI/searchSeller';
+        $route['api/__admin/seller/upload_image'] = 'admin/sellerAPI/uploadSellerImage/$1';
+        $route['api/__admin/seller/change_status/(:num)'] = 'admin/sellerAPI/changeStatus/$1';
+        $route['api/__admin/user/(:num)'] = 'admin/userAPI/getGiftUserId/$1';
+        
         
         $route['__admin/user_find'] = 'admin/sellerFind/ShowPage';
         $route['__admin/user_find/(:num)/(:num)'] = 'admin/sellerFind/getSellerListXhr/$1/$2';
@@ -37,10 +41,12 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
+        $route['api/__admin/seller/upload_image'] = 'admin/sellerAPI/uploadSellerImage/$1';
         $route['__portal/login_callback'] = 'portalCallbackController/portalProcess/portalAuthen';
         $route['portal/verifyToken'] = 'portalController/login/verifyToken';
         $route['__admin/login'] = 'admin/loginAdmin/login';
-        $route['__admin/seller'] = 'admin/seller/save';
+        $route['__admin/seller/add'] = 'admin/seller/add';
+        $route['__admin/seller/edit/(:num)'] = 'admin/seller/edit/$1';
     }
 }
 //
