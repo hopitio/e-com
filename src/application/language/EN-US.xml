@@ -241,6 +241,8 @@
     <portalOrder_orderCheckinComplete></portalOrder_orderCheckinComplete>
     <seller_show_products></seller_show_products>
     <seller_add_product></seller_add_product>
+    <seller_dashboard></seller_dashboard>
+    <seller_product></seller_product>
     <portalaccount_lostPassword></portalaccount_lostPassword>
     <portalHelp_policy></portalHelp_policy>
     

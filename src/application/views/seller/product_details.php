@@ -14,97 +14,102 @@ if ($product->id)
     );
 }
 ?>
+<style>
+    .page-header{line-height: 10px;}
+</style>
 <br>
-<form method="post" id="frm-main" class="row form-horizontal" enctype="multipart/form-data">
-    <input type="hidden" name="hdnProductID" value="<?php echo $product->id ?>">
-    <input type="hidden" name="hdnCategory" value="<?php echo isset($_GET['category']) ? (int) $_GET['category'] : '' ?>">
-    <input type="hidden" name="hdnLanguage" value="<?php echo $lang ?>">
-    <input type="hidden" name="hdnTab" id="hdnTab" value="">
-    <!-- Nav tabs -->
-    <div class="col-lg-3">
-        <?php
-        $selectedLanguage = isset($_GET['language']) ? $_GET['language'] : '';
-        $arr_language = array(
-            'VN-VI' => 'Tiếng Việt',
-            'EN-US' => 'English',
-            'KO-KR' => 'Korean'
-        );
-        ?>
-        <select style="width:100%" id="selLanguage">
-            <?php foreach ($arr_language as $k => $v): ?>
-                <?php $selected = $selectedLanguage == $k ? 'selected' : '' ?>
-                <option value="<?php echo $k ?>" <?php echo $selected ?>><?php echo $v ?></option>
-            <?php endforeach; ?>
-        </select>
-        <h4 class="left">
-            Trạng thái:&nbsp;
+<form method="post" id="frm-main" class="form-horizontal" enctype="multipart/form-data">
+    <div class="row">
+        <input type="hidden" name="hdnProductID" value="<?php echo $product->id ?>">
+        <input type="hidden" name="hdnCategory" value="<?php echo isset($_GET['category']) ? (int) $_GET['category'] : '' ?>">
+        <input type="hidden" name="hdnLanguage" value="<?php echo $lang ?>">
+        <input type="hidden" name="hdnTab" id="hdnTab" value="">
+        <!-- Nav tabs -->
+        <div class="col-lg-3">
             <?php
-            switch ($product->status) {
-                case -1:
-                    echo '<span class="red">Đã xóa</span>';
-                    break;
-                case 0:
-                    echo '<span class="grey">Không bán</span>';
-                    break;
-                case 1:
-                    echo '<span class="green">Đang bán</span>';
-                    break;
-            }
+            $selectedLanguage = isset($_GET['language']) ? $_GET['language'] : '';
+            $arr_language = array(
+                'VN-VI' => 'Tiếng Việt',
+                'EN-US' => 'English',
+                'KO-KR' => 'Korean'
+            );
             ?>
-        </h4>
-        <ul class="nav nav-tabs">
-            <?php foreach ($tabs as $tab => $tabName): ?>
-                <li><a href="#<?php echo "tab_$tab" ?>" data-toggle="tab"><?php echo $tabName ?></a></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-    <!-- Tab panes -->
-    <div class="col-lg-9">
-        <h1 id="community" class="page-header">
-            <a href="/seller/show_products"><i class="fa fa-arrow-left"></i></a>
-            <strong>
+            <select style="width:100%" id="selLanguage">
+                <?php foreach ($arr_language as $k => $v): ?>
+                    <?php $selected = $selectedLanguage == $k ? 'selected' : '' ?>
+                    <option value="<?php echo $k ?>" <?php echo $selected ?>><?php echo $v ?></option>
+                <?php endforeach; ?>
+            </select>
+            <h4 class="left">
+                Trạng thái:&nbsp;
                 <?php
-                if (!$product->id)
-                {
-                    echo 'New Product';
+                switch ($product->status) {
+                    case -1:
+                        echo '<span class="red">Đã xóa</span>';
+                        break;
+                    case 0:
+                        echo '<span class="grey">Không bán</span>';
+                        break;
+                    case 1:
+                        echo '<span class="green">Đang bán</span>';
+                        break;
                 }
-                else
-                {
-                    if (mb_strlen(strval($product->getName())) > 47)
+                ?>
+            </h4>
+            <ul class="nav nav-tabs">
+                <?php foreach ($tabs as $tab => $tabName): ?>
+                    <li><a href="#<?php echo "tab_$tab" ?>" data-toggle="tab"><?php echo $tabName ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <!-- Tab panes -->
+        <div class="col-lg-9">
+            <h1 id="community" class="page-header">
+                <a href="/seller/product"><i class="fa fa-arrow-left"></i></a>
+                <strong>
+                    <?php
+                    if (!$product->id)
                     {
-                        echo mb_substr(strval($product->getName()), 0, 47) . '...';
+                        echo 'Sản phẩm mới';
                     }
                     else
                     {
-                        echo $product->getName();
+                        if (mb_strlen(strval($product->getName())) > 47)
+                        {
+                            echo mb_substr(strval($product->getName()), 0, 47) . '...';
+                        }
+                        else
+                        {
+                            echo $product->getName();
+                        }
                     }
+                    ?>
+                </strong>
+                &nbsp;
+                <div class="actions">
+                    <a href="javascript:;" id="btn-apply" class="btn" data-type="submit" data-action="/seller/update_product/apply"><i class="fa fa-save"></i> Ghi lại</a>
+                    <?php if ($product->id): ?>
+                        <?php if ($product->status != 1): ?>
+                            <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/activate"><i class="fa fa-check"></i> Bắt đầu bán</a>
+                        <?php endif; ?>
+                        <?php if ($product->status == 1): ?>
+                            <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/deactivate"><i class="fa fa-check"></i> Ngừng bán</a>
+                            <a href="/product/details/<?php echo $product->id ?>" class="btn" target="_blank"><i class="fa fa-eye"></i> Xem thử</a>
+                        <?php endif; ?>
+                        <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Sao chép</a>
+                    <?php endif; ?>
+                </div>
+            </h1>
+            <div class="tab-content">
+                <?php
+                foreach (array_keys($tabs) as $tab)
+                {
+                    echo "<div class=\"tab-pane\" id=\"tab_$tab\">";
+                    require __DIR__ . '/tabs/tab_' . $tab . '.php';
+                    echo "</div>";
                 }
                 ?>
-            </strong>
-            &nbsp;
-            <div class="actions">
-                <a href="javascript:;" id="btn-apply" class="btn" data-type="submit" data-action="/seller/update_product/apply"><i class="fa fa-save"></i> Ghi lại</a>
-                <?php if ($product->id): ?>
-                    <?php if ($product->status != 1): ?>
-                        <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/activate"><i class="fa fa-check"></i> Bắt đầu bán</a>
-                    <?php endif; ?>
-                    <?php if ($product->status == 1): ?>
-                        <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/deactivate"><i class="fa fa-check"></i> Ngừng bán</a>
-                        <a href="/product/details/<?php echo $product->id ?>" class="btn" target="_blank"><i class="fa fa-eye"></i> Xem thử</a>
-                    <?php endif; ?>
-                    <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Sao chép</a>
-                <?php endif; ?>
             </div>
-        </h1>
-        <div class="tab-content">
-            <?php
-            foreach (array_keys($tabs) as $tab)
-            {
-                echo "<div class=\"tab-pane\" id=\"tab_$tab\">";
-                require __DIR__ . '/tabs/tab_' . $tab . '.php';
-                echo "</div>";
-            }
-            ?>
         </div>
     </div>
 </form>

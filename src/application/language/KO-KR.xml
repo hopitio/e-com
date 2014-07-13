@@ -242,6 +242,8 @@
     <portalOrder_orderCheckinComplete></portalOrder_orderCheckinComplete>
     <seller_show_products></seller_show_products>
     <seller_add_product></seller_add_product>
+    <seller_dashboard></seller_dashboard>
+    <seller_product></seller_product>
     <portalaccount_lostPassword>
         <title>비밀 번호를 복구</title>
         <lblStepDes>단계는 암호 재설정을 포함 </lblStepDes>

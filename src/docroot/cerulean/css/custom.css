@@ -1,0 +1,88 @@
+body{padding-top: 40px;margin-left:210px;margin-right:20px;padding-right:0px !important;}
+body.no-sidebar{margin-left:20px;}
+*{font-size: 12px;}
+legend{font-size: 12px;font-weight:bold;text-transform:uppercase;}
+
+.nav > li > a, .navbar-brand{padding: 10px 20px;}
+.navbar{min-height: 41px;position: fixed;}
+.navbar-header{width: 129px;}
+.container{width: 100%;padding:0;}
+.navbar .container{padding: 0px 20px;height: auto;}
+#left{width: 200px;position: fixed;background: #f5f5f5;left:0;padding-top:10px;border-right:1px solid #ddd;padding:0;}
+#content #left{margin-top: -10px;margin-left: 10px;width:190px;}
+#content{padding: 0 10px;padding-top: 10px;}
+.navbar-nav.navbar-right:last-child{margin-right: 0px;}
+.navbar-fixed-top{z-index: 1;}
+.page-header{margin-top:0;margin-bottom: 10px;}
+h3,h3 i{font-size: 20px;}
+.center{text-align: center;}
+.panel-actions{float:right;}
+.panel-heading,.panel-footer{padding:5px;}
+.panel-footer{overflow: hidden;vertical-align: middle;}
+.panel-footer .pagination{margin:0;}
+.panel-footer .dataTables_paginate {height: 30px;}
+.panel-footer .dataTables_info{height: 30px;line-height: 30px;}
+.btn.btn-default, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{background-color: #f8f8f8;border:1px solid #888888;color:#333}
+.btn.btn-default:hover{border-color: #333;color: black;}
+.btn-primary.btn-sm{border:1px solid #007fff;}
+.btn{border: 1px solid;}
+.panel{position: relative;}
+.tooltip{border:none;background: none;}
+.btn-divider{width: 15px;display: inline-block;}
+input,select,textarea, .form-control{border: 1px solid #888888;padding:5px;line-height: 18px;height: auto;}
+.form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline{padding-top: 5px;}
+.form-horizontal table  .form-group{margin:0;}
+.table-condensed > thead > tr.table-filter > th, .table-condensed > tbody > tr.table-filter > th, .table-condensed > tfoot > tr.table-filter > th, .table-condensed > thead > tr.table-filter > td, .table-condensed > tbody > tr.table-filter > td, .table-condensed > tfoot > tr.table-filter > td{vertical-align:top;}
+.dataTables_length, .dataTables_info{float:left;}
+.dataTables_filter, .dataTables_paginate {float:right;}
+.dataTables_wrapper .table{margin:0;}
+table .btn i{font-size: 15px;}
+table .btn.btn-default{border:none;}
+table .btn.btn-default:hover{background: #ddd;}
+.modal-header, .modal-footer{padding: 10px;}
+.btn.check-all{width:34px;}
+tr.checked > td{background: #ffc !important}
+.dataTable tr{cursor: pointer;}
+.modal{position: absolute !important;overflow-y:auto;overflow-x: auto;}
+.modal-backdrop{position: fixed !important;overflow-y:auto;overflow-x: auto;}
+.required{color:red;}
+label:hover{cursor: pointer;}
+legend i{font-size: 20.5px;}
+.form-group .error{color: #b94a48}
+.form-group.warning > label, .form-group.warning .help-block, .form-group.warning .help-inline{color: #c09853;}
+.form-group.warning input, .form-group.warning select, .form-group.warning textarea{border-color: #c09853;}
+.form-group.error > label, .form-group.error .help-block, .form-group.error .help-inline{color: #b94a48;}
+.form-group.error input, .form-group.error select, .form-group.error textarea{border-color: #b94a48}
+.alert a {text-decoration: underline;color: #fff;font-weight: bold;}
+.table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td{vertical-align: middle;text-align:left;}
+th input[type="text"], th select, th textarea{font-weight:normal;color:#333;width:100%;display:block;} 
+.form-horizontal table tr.table-filter th .control-label{padding:0 !important;text-align:left;}
+th .controls{padding:0 !important;}
+ul.side-nav{padding:0;list-style-type:none;margin-top:10px;}
+ul.side-nav a,ul.side-nav a:visited{display:block;padding:3px 5px;text-decoration:none;padding:5px 10px;margin-right:-1px;font-weight:bold;}
+ul.side-nav a:hover{background-color:#2fa4e7;color:white;}
+ul.side-nav a:hover .badge{background-color:white;color:#2fa4e7;}
+.page-header i{font-size:100%;}
+.dropdown-menu>li>a{width:200px;padding:8px 20px;}
+table.dataTable thead th, table.dataTable thead td{padding: 8px 10px;}
+.nav-tabs>li{width:100%;}
+.nav-tabs>li>a{text-align: left;border:none;border-radius: 0;border-top: 1px dotted;border-right: 1px solid #ddd;
+               border-bottom: 1px dotted;color:#333;padding:4px 6px;background: #E8F0F5;}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{border-left: none;border-right: none;}
+.actions{float:right;padding-bottom: 10px;}
+.actions a{padding: 0 8px;}
+.form-group *{text-align: left;}
+.form-group .control-label{font-weight: bold;}
+.input-size-medium, .form-control.input-size-medium {width: 250px;}
+label{font-weight: normal}
+table.dataTable tbody th, table.dataTable tbody td{padding:5px !important;}
+table.dataTable thead th, table.dataTable thead td{padding:5px !important;}
+.help-block{color:gray;display: block;}
+.control-label .help-block{text-align: right;}
+.row input[type="text"], .row select, .row textarea{display:block;width:100%;}
+form .col-xs-1, form .col-sm-1, form .col-md-1, form .col-lg-1, form .col-xs-2, form .col-sm-2, form .col-md-2, form .col-lg-2, form .col-xs-3, form .col-sm-3, form .col-md-3, form .col-lg-3, form .col-xs-4, form .col-sm-4, form .col-md-4, form .col-lg-4, form .col-xs-5, form .col-sm-5, form .col-md-5, form .col-lg-5, form .col-xs-6, form .col-sm-6, form .col-md-6, form .col-lg-6, form .col-xs-7, form .col-sm-7, form .col-md-7, form .col-lg-7, form .col-xs-8, form .col-sm-8, form .col-md-8, form .col-lg-8, form .col-xs-9, form .col-sm-9, form .col-md-9, form .col-lg-9, form .col-xs-10, form .col-sm-10, form .col-md-10, form .col-lg-10, form .col-xs-11, form .col-sm-11, form .col-md-11, form .col-lg-11, form .col-xs-12, form .col-sm-12, form .col-md-12, form .col-lg-12{padding-left:5px;padding-right:5px;}
+form .row{margin-left:-5px;margin-right: -5px;}
+.form-horizontal .form-group{margin-bottom:10px;margin-left:-5px;margin-right:-5px;}
+.red{color:red;}
+.error{color:#b94a48;}
+.dataTables_scrollBody thead{visibility: hidden;}

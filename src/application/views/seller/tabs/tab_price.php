@@ -5,12 +5,12 @@
 $txtPrice = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtPrice', 'pattr[price]', $product->getPriceMoney('VND')->getAmount()));
 $txtPrice->get_a('TextboxInput')->setAttribute('data-rule-required', true)
         ->setAttribute('data-rule-number', true);
-echo $txtPrice->decorate(new ControlGroupDecorator('Price:'));
+echo $txtPrice->decorate(new ControlGroupDecorator('Giá chưa thuế:'));
 ?>
 
-<div class="form-group" ng-app="lynx" ng-controller="taxCtrl" id="taxCtrl">
-    <label class="col-sm-3 control-label">Taxes</label>
-    <div class="col-sm-9">
+<div class="form-group" ng-app ng-controller="taxCtrl" id="taxCtrl">
+    <label class="col-xs-2 control-label">Taxes</label>
+    <div class="col-xs-9">
         <div class="col-xs-8 row">
             <table class="table">
                 <thead>
@@ -34,12 +34,16 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Price:'));
                     </tr>
                 </tbody>
             </table>
-            <div style="text-align: right">
-                <input type="button" class="btn input-sm" value="Thêm thuế" ng-click="addTax()">
-                <select class="input-sm form-control input-size-medium" style="display: inline-block" ng-model="taxID">
-                    <option></option>
-                    <option ng-repeat="option in taxOptions" value="{{option.id}}" ng-if="!isTaxAdded(option.name)">{{option.name}}</option>
-                </select>
+            <div class="row">
+                <div class="col-xs-8">
+                    <select style="display: inline-block" ng-model="taxID">
+                        <option></option>
+                        <option ng-repeat="option in taxOptions" value="{{option.id}}" ng-if="!isTaxAdded(option.name)">{{option.name}}</option>
+                    </select>
+                </div>
+                <div class="col-xs-4">
+                    <input type="button" class="btn btn-sm btn-default" value="Thêm thuế" ng-click="addTax()">
+                </div>
             </div>
         </div>
     </div>

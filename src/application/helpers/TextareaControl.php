@@ -12,7 +12,6 @@ class TextareaControl extends ControlAbstract
         $this->setAttribute('id', $id);
         $this->setAttribute('name', $name);
         $this->_value = $value;
-        $this->addClass('form-control input-sm');
     }
 
     function draw()

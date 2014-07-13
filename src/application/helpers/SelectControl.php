@@ -13,7 +13,6 @@ class SelectControl extends ControlAbstract
         $this->setAttribute('name', $name);
         $this->_options = $options;
         $this->_value = $value;
-        $this->addClass('input-sm form-control');
 
         if (!is_array($options))
         {

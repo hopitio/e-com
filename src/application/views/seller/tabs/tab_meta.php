@@ -1,4 +1,5 @@
 <?php
+
 defined('DS') or die('no direct script access allowed');
 
 /* @var $product ProductFixedDomain */
@@ -12,7 +13,8 @@ else
 {
     $selected = 0;
 }
-$selMadeIn = new ControlGroupDecorator('Sản xuất tại:', new SelectEnumControl('selMadeIn', 'pattr[made_in]', 'country', $selected));
+$selMadeIn = new WrapDecorator('div', 'col-xs-8 row', new SelectEnumControl('selMadeIn', 'pattr[made_in]', 'country', $selected));
+$selMadeIn = new ControlGroupDecorator('Sản xuất tại: ', $selMadeIn);
 $selMadeIn->get_a('SelectControl')->addClass('input-size-medium')->addOption('0', 'Null', true);
 echo $selMadeIn;
 //import from
@@ -25,12 +27,14 @@ else
 {
     $selected = 0;
 }
-$selImportFrom = new ControlGroupDecorator('Nhập khẩu từ:', new SelectEnumControl('selImportFrom', 'pattr[import_from]', 'country', $selected));
+$selImportFrom = new WrapDecorator('div', 'col-xs-8 row', new SelectEnumControl('selImportFrom', 'pattr[import_from]', 'country', $selected));
+$selImportFrom = new ControlGroupDecorator('Nhập khẩu từ:', $selImportFrom);
 $selImportFrom->get_a('SelectControl')->addClass('input-size-medium')->addOption('0', 'Null', true);
 echo $selImportFrom;
 ?>
 
 <?php
+
 //meta title
 $txtMetaTitle = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtMetaTitle', 'pattr[meta_title]', (string) $product->getMetaTitle()));
 echo $txtMetaTitle->decorate(new ControlGroupDecorator('Meta Title:'));

@@ -13,9 +13,9 @@ else
 {
     $selected = 0;
 }
-$selReturnPolicy = new ControlGroupDecorator('Số ngày có thể hoàn trả/đổi hàng:', new SelectControl('selReturnPolicy', 'pattr[return_policy]', array(), $selected));
+$selReturnPolicy = new WrapDecorator('div', 'col-xs-4 row', new SelectControl('selReturnPolicy', 'pattr[return_policy]', array(), $selected));
+$selReturnPolicy = new ControlGroupDecorator('Số ngày có thể hoàn trả/đổi hàng:', $selReturnPolicy);
 $selReturnPolicy->get_a('SelectControl')
-        ->addClass('input-size-medium')
         ->addOption('0', 'Không có điều khoản hoàn trả', true)
         ->addOption('3', '3')
         ->addOption('7', '7')
@@ -32,9 +32,9 @@ else
 {
     $selected = 0;
 }
-$selWarrantyPolicy = new ControlGroupDecorator('Số ngày bảo hành:', new SelectControl('selWarrantyPolicy', 'pattr[warranty_policy]', array(), $selected));
+$selWarrantyPolicy = new WrapDecorator('div', 'col-xs-4 row', new SelectControl('selWarrantyPolicy', 'pattr[warranty_policy]', array(), $selected));
+$selWarrantyPolicy = new ControlGroupDecorator('Số ngày bảo hành:', $selWarrantyPolicy);
 $selWarrantyPolicy->get_a('SelectControl')
-        ->addClass('input-size-medium')
         ->addOption('0', 'Không bảo hành', true)
         ->addOption('7', '7')
         ->addOption('15', '15')
