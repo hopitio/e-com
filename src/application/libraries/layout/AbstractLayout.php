@@ -75,7 +75,7 @@ abstract class AbstractLayout
      */
     public function setCss($css = array())
     {
-        $this->_css += $css;
+        $this->_css = array_merge($this->_css, $css);
         return $this;
     }
 
@@ -85,7 +85,7 @@ abstract class AbstractLayout
      */
     public function setJavascript($js = array())
     {
-        $this->_javascript += $js;
+        $this->_javascript = array_merge($this->_javascript, $js);
         return $this;
     }
 

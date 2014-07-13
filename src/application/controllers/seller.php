@@ -8,6 +8,9 @@ class seller extends BaseController
     /** @var ProductModel */
     public $productModel;
 
+    /** @var SellerLayout */
+    protected $_layout;
+
     /** @var FileModel */
     public $fileModel;
 
@@ -17,6 +20,14 @@ class seller extends BaseController
     function __construct()
     {
         parent::__construct();
+        $this->_layout = LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER);
+        $this->_layout->addMainNav(new Nav_Item('dashboard', '<i class="fa fa-dashboard"></i> Trang chủ', '/seller/dashboard'))
+                ->addMainNav(new Nav_Item('sales', '<i class="fa fa-dollar"></i> Bán hàng', 'javascript:;', true, array(
+                    new Nav_Item('order', 'Đơn hàng', '/seller/order'),
+                    new Nav_Item('invoice', 'Hóa đơn', '/seller/invoice'),
+                    new Nav_Item('shipment', 'Vận chuyển', '/seller/shipment')
+                )))
+                ->addMainNav(new Nav_Item('product', '<i class="fa fa-cubes"></i> Sản phẩm', '/seller/product'));
     }
 
     function init()
@@ -32,7 +43,19 @@ class seller extends BaseController
 
     function dashboard()
     {
-        echo 'coming soon';
+        $this->_layout
+                ->setHeading('<i class="fa fa-dashboard"></i> Trang chủ')
+                ->setSidebar('dashboard_sidebar')
+                ->setSelectedNav('dashboard')
+                ->render('seller/dashboard');
+    }
+
+    function product()
+    {
+        $this->_layout
+                ->setHeading('<i class="fa fa-cubes"></i> Sản phẩm')
+                ->setSelectedNav('product')
+                ->render('seller/product');
     }
 
     function show_products()
@@ -67,13 +90,15 @@ class seller extends BaseController
 
         foreach ($products as $product)
         {
-            $storageCode = (string) $product->getStorageCode();
             $aaData[] = array(
                 $product->id,
                 $product->id,
                 (string) $product->getName(),
-                $storageCode,
+                'loai',
+                'chuyen muc',
+                (string) $product->getStorageCode(),
                 (string) $product->getPriceMoney('VND'),
+                'so luong',
                 $statusText[$product->status],
                 'url' => '/seller/product_details/' . $product->id
             );
@@ -240,7 +265,8 @@ class seller extends BaseController
                 ->setLanguage($language)
                 ->select('tax.*, tl.language, tl.name', true)
                 ->findAll();
-        LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER)
+        $this->_layout
+                ->setJavascript(array('/cerulean/plugins/ckeditor/ckeditor.js'))
                 ->setData(array(
                     'product'     => $product,
                     'lang'        => $language,
@@ -265,14 +291,14 @@ class seller extends BaseController
     function category_service($parentCategory = NULL)
     {
         header('Content-type: application/json');
-        $categories = CategoryMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->filterParent($parentCategory)->findAll();
+        $categories = CategoryMapper::make()->setLanguage('VN-VI')->filterParent($parentCategory)->findAll();
         echo json_encode($categories);
     }
 
     function add_product()
     {
-        LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER)
-//->setData(array('categories' => $this->sellerInstance->getCategories()))
+        $this->_layout
+                ->setHeading('<i class="fa fa-folder"></i> Chọn chuyên mục cho sản phẩm')
                 ->render('seller/add_product');
     }
 

@@ -43,7 +43,7 @@ foreach ($cartContents as $product)
                 <div class="form-group">
                     <label for="selProvinceCity" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblProvince; ?></label>
                     <div class="col-sm-8 controls">
-                        <select name="selProvinceCity" class="form-control" id="selProvinceCity" ng-model="province" data-rule-required="true">
+                        <select name="selProvinceCity" class="form-control" id="selProvinceCity" ng-model="province" data-rule-required="true" ng-change="selProvinceOnchange()">
                             <?php echo ViewHelpers::getInstance()->options($provinces) ?>
                         </select>
                     </div>
@@ -98,7 +98,7 @@ foreach ($cartContents as $product)
                         <td class="center">{{product.quantity}}</td>
                         <td class="right">
                             <select class="form-control" name="method[{{product.id}}]" ng-model="product.shippingMethodIndex" ng-change="advanceGetCaculaltedShippingPrice()">
-                                <option ng-repeat="method in shippingMethods" value="{{$index}}">{{method.label}}</option>
+                                <option ng-repeat="method in shippingMethods" value="{{$index}}" ng-if="province == 101 || method.codename != 'premium'">{{method.label}}</option>
                             </select>
                             <span class="help-block" >{{shippingMethods[product.shippingMethodIndex].description}}</span>
                         </td>

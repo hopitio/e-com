@@ -5,29 +5,29 @@ defined('BASEPATH') or die('no direct access alowed');
 <div class="form-group">
     <label class="control-label col-xs-2" for="txt_name"><span class="red">* </span>Tên sản phẩm:<span class="help-block">Tối đa 250 kí tự.</span></label>
     <div class="controls col-xs-10">
-        <input type="text" name="pattr[name]" id="txt_name" class="form-control" data-rule-required="true" value="<?php echo $product->getName() ?>">
+        <input type="text" name="pattr[name]" id="txt_name" class="" data-rule-required="true" value="<?php echo $product->getName() ?>">
     </div>
 </div><!--control-group-->
 <div class="form-group">
     <label class="control-label col-xs-2" for="txt_storage_code">Mã kho:</label>
     <div class="controls col-xs-4">
-        <input type="text" name="pattr[storage_code]" id="txt_storage_code" class="form-control" value="<?php echo $product->getStorageCode() ?>">
+        <input type="text" name="pattr[storage_code]" id="txt_storage_code" class="" value="<?php echo $product->getStorageCode() ?>">
     </div>
 </div><!--control-group-->
 <div class="form-group">
     <label class="control-label col-xs-2" for="txt_quantity"><span class="red">* </span>Số lượng bán:</label>
     <div class="controls col-xs-4">
-        <input type="text" name="pattr[quantity]" id="txt_quantity" class="form-control" data-rule-required="true" value="<?php echo $product->getQuantity() ?>">
+        <input type="text" name="pattr[quantity]" id="txt_quantity" class="" data-rule-required="true" value="<?php echo $product->getQuantity() ?>">
     </div>
     <label class="control-label col-xs-2" for="txt_brand">Nhãn hiệu:</label>
     <div class="controls col-xs-4">
-        <input type="text" name="pattr[brand]" id="txt_brand" class="form-control" value="<?php echo $product->getBrand() ?>">
+        <input type="text" name="pattr[brand]" id="txt_brand" class="" value="<?php echo $product->getBrand() ?>">
     </div>
 </div><!--control-group-->
 <div class="form-group">
     <label class="control-label col-xs-2" for="txt_weight"><span class="red">* </span>Khối lượng/Thể tích:</label>
     <div class="controls col-xs-4">
-        <input type="text" name="pattr[weight]" id="txt_weight" class="form-control" data-rule-required="true" value="<?php echo $product->getWeight() ?>">
+        <input type="text" name="pattr[weight]" id="txt_weight" class="" data-rule-required="true" value="<?php echo $product->getWeight() ?>">
     </div>
     <label class="control-label col-xs-2" for="selWeightUnit"><span class="red">* </span>Đơn vị đo:</label>
     <div class="controls col-xs-4">
@@ -52,15 +52,15 @@ defined('BASEPATH') or die('no direct access alowed');
     <div class="col-xs-10">
         <div class="row">
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="pattr[dimension_width]" id="txtDimensionWidth" 
+                <input type="text" class="" name="pattr[dimension_width]" id="txtDimensionWidth" 
                        placeholder="chiều rộng" value="<?php echo $product->getDimensionWidth() ?>" data-rule-required="true">
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="pattr[dimension_height]" id="txtDimensionHeight" placeholder="chiều cao" 
+                <input type="text" class="" name="pattr[dimension_height]" id="txtDimensionHeight" placeholder="chiều cao" 
                        value="<?php echo $product->getDimensionHeight() ?>" data-rule-required="true">
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="pattr[dimension_depth]" id="txtDimensionDepth" placeholder="chiều sâu"
+                <input type="text" class="" name="pattr[dimension_depth]" id="txtDimensionDepth" placeholder="chiều sâu"
                        value="<?php echo $product->getDimensionDepth() ?>" data-rule-required="true">
             </div>
         </div>            

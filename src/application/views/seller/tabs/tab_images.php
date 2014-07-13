@@ -43,7 +43,7 @@
                     </td>
                 <?php endforeach; ?>
                 <td>
-                    <input type="text" class="form-control" name="txtSort[<?php echo $img->fkFile ?>]" value="<?php echo (int) $img->sort ?>" >
+                    <input type="text" name="txtSort[<?php echo $img->fkFile ?>]" value="<?php echo (int) $img->sort ?>" >
                 </td>
                 <td>
                     <a href="<?php echo "/seller/delete_image/?product={$product->id}&file={$img->fkFile}&language={$lang}" ?>" title="Xóa">Xóa</a>
