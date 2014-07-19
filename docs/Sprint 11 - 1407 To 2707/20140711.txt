@@ -1,0 +1,7 @@
+﻿- Target phát triển :
+ + Start thay đổi giao diện seller - Văn 
+ + Cập nhật giao diện admin : sub, portal
+ + Seller hoàn thành tính năng seller 
+ + Hoàn thành tính năng admin - product 
+ + Start thay đổi giao diện chung
+ 

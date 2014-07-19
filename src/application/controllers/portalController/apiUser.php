@@ -16,7 +16,7 @@ class apiUser extends BasePortalController
     
     function findUser(){
         $queryStrings = $this->getQueryStringParams();
-        $account = $queryStrings['account'];
+        $account = isset($queryStrings['account']) ? $queryStrings['account'] : '';
         $id = isset($queryStrings['id']) ? $queryStrings['id'] : '';
         $lastname =  isset($queryStrings['lastname']) ? $queryStrings['lastname'] : '';
         $fristname = isset($queryStrings['fristname']) ? $queryStrings['fristname'] : '';
