@@ -3,7 +3,7 @@
     <head >
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1' name='viewport'>
+        <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1,user-scalable=no' name='viewport'>
 
         <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title : ''; ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
@@ -22,7 +22,6 @@
 
     </head>
     <body>
-<<<<<<< HEAD
         <div class="head-tool-box text-center">
             <div class="conatiner width-960 text-right">
                 <a href="#">Seller  Office</a>|
@@ -132,23 +131,6 @@
                         <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
                         <div class="carousel-caption">
                             Third Slide
-=======
-        <div class="lynx_container">
-            <div class="lynx_head"  ng-controller="HeadCtrl" id="head-ctrl">
-                <div class="lynx_headWarp lynx_staticWidth">
-                    <a class="lynx_logo" href="/" title="SFriendly"></a>
-                    <div class="lynx_headLeft"> 
-                        <a href="/seller/product" title="<?php echo $language['layout']->lblHeadSell; ?>" class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></a>
-                        <a href="javascript:;" onclick='window.chatWindow = window.open("portal/help/contact_by_chat", "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
-                        <div class="lynx_language">
-                            <span class="lynx_label"><?php echo $language['layout']->lblLanguage; ?> : 
-                                <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language = '<?php echo User::getCurrentUser()->languageKey; ?>'">
-                                    <option value="EN-US"  >English</option>
-                                    <option value="VN-VI"  >Tiếng Việt</option>
-                                    <option value="KO-KR"  >한국의</option>
-                                </select>
-                            </span>
->>>>>>> branch 'develop' of https://github.com/hopitio/e-com.git
                         </div>
                     </div>
                 </div>
