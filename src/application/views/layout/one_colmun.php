@@ -3,7 +3,7 @@
     <head >
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1' name='viewport'>
 
         <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title : ''; ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
@@ -22,148 +22,363 @@
 
     </head>
     <body>
-        <div class="lynx_container">
-            <div class="lynx_head"  ng-controller="HeadCtrl" id="head-ctrl">
-                <div class="lynx_headWarp lynx_staticWidth">
-                    <a class="lynx_logo" href="/" title="SFriendly"></a>
-                    <div class="lynx_headLeft"> 
-                        <a href="/seller/show_products" title="<?php echo $language['layout']->lblHeadSell; ?>" class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></a>
-                        <a href="javascript:;" onclick='window.chatWindow = window.open("portal/help/contact_by_chat", "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
-                        <div class="lynx_language">
-                            <span class="lynx_label"><?php echo $language['layout']->lblLanguage; ?> : 
-                                <select id="sel-language" ng-model="language" ng-change="changeLanguage(language)" ng-init="language = '<?php echo User::getCurrentUser()->languageKey; ?>'">
-                                    <option value="EN-US"  >English</option>
-                                    <option value="VN-VI"  >Tiếng Việt</option>
-                                    <option value="KO-KR"  >한국의</option>
-                                </select>
-                            </span>
+        <div class="head-tool-box text-center">
+            <div class="conatiner width-960 text-right">
+                <a href="#">Seller  Office</a>|
+                <a href="#">Kiểm tra đơn hàng</a>|
+                <a href="#">Đăng nhập</a>|
+                <a href="#" class="last">Đăng ký</a>
+            </div>
+        </div>
+        <div class="head-box width-960">
+            <a class="logo" href="#"><img src="/images/Logo-head.fw.png"/></a>
+            <div class="search-container">
+                <div class="search text-left">
+                    <input type="text" placeholder="Ex. Gift..."/>
+                    <div class="search-btn cursor-pointer color-white">SEARCH</div>
+                </div>
+                <div class="tag text-left">
+                    <a href="#">Sản phẩm mới</a>
+                    <a href="#">Hàng việt nam</a>
+                    <a href="#">Quà tặng </a>
+                    <a href="#">Sản phẩm mới</a>
+                </div>
+            </div>
+            <div class="user-pannel text-left">
+                <img class="cursor-pointer" src="/images/Live-chat-icon.fw.png"/>
+                <ul class="flag cursor-pointer">
+                    <li class="us"></li>
+                    <li class="kr"></li>
+                    <li class="vn"></li>
+                </ul>
+                <div class="cart cursor-pointer">
+                    <span class="cart-num text-center">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="head-menu width-960 cursor-pointer">
+            <ul>
+                <li class="active"><span><img src="/images/mn-gia-dinh.fw.png" /> GIA ĐÌNH</span></li>
+                <li>
+                    
+                    <div class="child text-left">
+                        <ul>
+                            <li>
+                              <table>
+                                <tr>
+                                    <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                                    <td class="lable"><span>Đồ sơ sinh</span></td>
+                                </tr>
+                               </table>
+                            </li>
+                            <li>
+                                <table>
+                                    <tr>
+                                        <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                                        <td class="lable"><span>Đồ sơ sinh</span></td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>
+                                <table>
+                                    <tr>
+                                        <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                                        <td class="lable"><span>Đồ sơ sinh</span></td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>
+                                <table>
+                                    <tr>
+                                        <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                                        <td class="lable"><span>Đồ sơ sinh</span></td>
+                                    </tr>
+                                </table>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="menu-deco"></div>
+                    <span><img src="/images/mn-me-vs-be.fw.png" /> MẸ VÀ BÉ</span>
+                </li>
+                <li><span><img src="/images/nm-thuc-pham.fw.png" /> THỰC PHẨM</span></li>
+                <li><span><img src="/images/mn-qua-tang.fw.png" /> QUÀ TẶNG</span></li>
+                <li ><span><img src="/images/mn-made-in-viet-name.fw.png" /> MADE IN VIET NAME</span></li>
+                <li class="last"><span><img src="/images/mn-hot.fw.png" /> HOT</span></li>
+            </ul>
+        </div>
+        <div class="banner-box width-960">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="http://placehold.it/900x500/39CCCC/ffffff&amp;text=I+Love+Bootstrap" alt="First slide">
+                        <div class="carousel-caption">
+                            First Slide
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="http://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
+                        <div class="carousel-caption">
+                            Second Slide
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
+                        <div class="carousel-caption">
+                            Third Slide
                         </div>
                     </div>
                 </div>
-                <div class="lynx_headMenu" >
-                    <div class="lynx_menuWarp lynx_staticWidth">
-                        <div class="lynx_category dropdown dropdown-hover">
-                            <span class="dropdown-toggle " ng-mouseover="loadCategories()"> 
-                                <span><?php echo$language['layout']->lblMenu->__toString(); ?><span class="caret"></span> </span> 
-                            </span>
-                            <ul class="dropdown-menu" class="preload">
-                                <li ng-if="!categories.length" class="center">
-                                    <img src="/images/loading.gif" alt="Loading..." class="loading">
-                                </li>
-                                <li ng-repeat="category in categories" class="left">
-                                    <a href="{{category.url}}" title="{{category.name}}">{{category.name}}</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <form id="frmSearch" class="lynx_searchForm" action="/search/showPage">
-                            <input type="text" name="s" value="<?php echo isset($_GET['s']) ? $_GET['s'] : '' ?>">
-                            <span class="lynx_search" onclick="frmSearch.submit();"><?php echo$language['layout']->lblSearch->__toString(); ?></span>
-                        </form>
-                        <div class="lynx_loginLabel dropdown dropdown-hover">
-                            <?php
-                            $user = User::getCurrentUser();
-                            ?>
-                            <?php if ($user->is_authorized): ?>
-                                <span class="dropdown-toggle" ng-click="loadCategories()"> 
-                                    <a href="javascript:;">
-                                        <?php
-                                        $str = str_replace('{1}', $user->lastname, $language['layout']->lblUserStatus->__toString());
-                                        if (mb_strlen($str) > 20)
-                                        {
-                                            $str = mb_substr($str, 0, 20) . '...';
-                                        }
-                                        echo $str;
-                                        ?>
-                                        <span class="caret"></span>
-                                    </a> 
-                                </span>
-                                <ul class="dropdown-menu left">
-                                    <li>
-                                        <a href="<?php echo base_url('portal/account/user_information'); ?>"><?php echo$language['layout']->lblUserAccount->__toString(); ?></a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('portal/account/order_history'); ?>"><?php echo$language['layout']->lblUserOrder->__toString(); ?></a>
-                                    </li>
-                                    <div class="divider"></div>
-                                    <li>
-                                        <a href="<?php echo base_url('wishlist/show'); ?>"><?php echo$language['layout']->lblUserWishlist->__toString(); ?></a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('pin/showPage'); ?>"><?php echo$language['layout']->lblUserPinlist->__toString(); ?></a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="<?php echo $user->getLogout(); ?>"><?php echo$language['layout']->lblUserLogout->__toString(); ?></a>
-                                    </li>
-                                </ul>
-                            <?php else: ?>
-                                <a href="<?php echo $user->getLoginAuthenUrl(); ?>"><?php echo $language['layout']->lblUserStatusNotSign->__toString(); ?></a>
-                            <?php endif; ?>
-                        </div>
-                        <div class="lynx_miniCart dropdown dropdown-hover">
-                            <span class="dropdown-toggle" id='cart-dropdown'><?php echo $language['layout']->lblViewCart->__toString(); ?><span class='caret'></span></span>
-                            <ul class="dropdown-menu">
-                                <li ng-if="!cart.length" style='line-height: 20px'>
-                                    <?php echo $language['layout']->lblCartAlert->__toString(); ?>
-                                </li>
-                                <li class="left cart-menu" ng-repeat="product in cart">
-                                    <a href="{{product.url}}">
-                                        <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=40" width="40" height="40">
-                                        {{(product.name.length > 20) ? product.name.substring(0, 20) + '...' : product.name}}<br>
-                                        <?php echo $language['layout']->lblCartQuantity->__toString(); ?> : {{product.quantity}}
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="<?php echo base_url('cart/showcart') ?>"><?php echo $language['layout']->lblViewCartWidthProductNumber->__toString(); ?> </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="/cart/showCart">
-                        <div class="lynx_cart" id="lynx_cart">
-                            <span><?php echo $language['layout']->lblCart; ?> {{cart.length}}</span>
-                        </div>
-                    </a>
-                </div><!--head ctrl-->
+                <a class="left carousel-control cursor-pointer" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control cursor-pointer" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
-            <div class="content">
-                <?php if ($view->breadcrums): ?>
-                    <div class="lynx_navigationBar lynx_staticWidth">
-                        <?php foreach ($view->breadcrums as $label => $url): ?>
-                            <?php
-                            $i = isset($i) ? $i + 1 : 0;
-                            ?>
-                            <span class="lynx_navigationItem">
-                                <?php if ($url != NULL): ?>
-                                    <a href="<?php echo $url ?>" title="<?php echo $label ?>"><?php echo $label ?></a>
-                                <?php else: ?>
-                                    <?php echo $label ?>
-                                <?php endif; ?>
-                                <?php if ($i < count($view->breadcrums) - 1): ?>
-                                    <?php echo htmlentities('>>') ?>
-                                <?php endif; ?>
-                            </span>
-                        <?php endforeach; ?>
+        </div>
+        <div class="tab tab-orange width-960 text-left">
+            <div class="head have-line width-960">
+                <ul>
+                    <li>SẢN PHẨM BÁN CHẠY</li>
+                </ul>
+            </div>
+            <div class="tab-content width-960">
+                <div id="carousel-hot-product" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-hot-product" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-hot-product" data-slide-to="1" class=""></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="lynx-row width-960">
+                                <div class="lynx-box lynx-box-small cursor-pointer">
+                                    <a class="opacity" href="#"></a>
+                                    <img src="/images/demo-product.fw.png"/>
+                                    <div class="name">Lorem ipsum dolor 109090 </div>
+                                    <div class="seller-name">Name Bank </div>
+                                    <div class="dis-price">1.500.000 vnđ </div>
+                                    <div class="price">1.000.000 vnd </div>
+                                    <div class="like">(980)</div>
+                                </div>
+                                <div class="lynx-box lynx-box-small">
+                                    <a class="opacity" href="#"></a>
+                                    <img src="/images/demo-product.fw.png"/>
+                                    <div class="name">Lorem ipsum dolor 109090 </div>
+                                    <div class="seller-name">Name Bank </div>
+                                    <div class="dis-price">1.500.000 vnđ </div>
+                                    <div class="price">1.000.000 vnd </div>
+                                    <div class="like">(980)</div>
+                                </div>
+                                <div class="lynx-box lynx-box-small">
+                                    <a class="opacity" href="#"></a>
+                                    <img src="/images/demo-product.fw.png"/>
+                                    <div class="name">Lorem ipsum dolor 109090 </div>
+                                    <div class="seller-name">Name Bank </div>
+                                    <div class="dis-price">1.500.000 vnđ </div>
+                                    <div class="price">1.000.000 vnd </div>
+                                    <div class="like">(980)</div>
+                                </div>
+                                <div class="lynx-box lynx-box-small">
+                                    <a class="opacity" href="#"></a>
+                                    <img src="/images/demo-product.fw.png"/>
+                                    <div class="name">Lorem ipsum dolor 109090 </div>
+                                    <div class="seller-name">Name Bank </div>
+                                    <div class="dis-price">1.500.000 vnđ </div>
+                                    <div class="price">1.000.000 vnd </div>
+                                    <div class="like">(980)</div>
+                                </div>
+                                <div class="lynx-box lynx-box-small">
+                                    <a class="opacity" href="#"></a>
+                                    <img src="/images/demo-product.fw.png"/>
+                                    <div class="name">Lorem ipsum dolor 109090 </div>
+                                    <div class="seller-name">Name Bank </div>
+                                    <div class="dis-price">1.500.000 vnđ </div>
+                                    <div class="price">1.000.000 vnd </div>
+                                    <div class="like">(980)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="item">
+                            <div class="lynx-row width-960">
+                                <div class="lynx-box lynx-box-small">
+                                    
+                                </div>
+                                <div class="lynx-box lynx-box-small">
+                                    
+                                </div>
+                                <div class="lynx-box lynx-box-small">
+                                    
+                                </div>
+                                <div class="lynx-box lynx-box-small">
+                                    
+                                </div>
+                                <div class="lynx-box lynx-box-small">
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                <?php endif; ?><!--breadcrums-->
-                <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
-                <div id="modal_general" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"></h4>
-                            </div>
-                            <div class="modal-body">
-                                <center><img class="loading" src="/images/loading.gif"></center>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-                <div class="lynx_footer">
-                    <div class="lynx_content">
+                    <a class="left carousel-control cursor-pointer" href="#carousel-hot-product" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control cursor-pointer" href="#carousel-hot-product" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="clear-fix"></div>
+        <div class="lynx-box width-960 lynx-adv-box text-left lynx-adv-home cursor-pointer">
+            <div class="head">
+                <div class="title">SẢN PHẨM NỔI BẬT</div>
+                <div class="choice">
+                    <a href="#">Gia đình</a>
+                    <a href="#">Mẹ và bé</a>
+                    <a href="#">Thực phẩm</a>
+                    <a href="#">Qùa tặng</a>
+                    <a href="#">Made in Viet nam</a>
+                </div>
+            </div>
+            
+            <div class="lynx-row">
+                <img class="adv-img-box" src="" />
+                <img class="adv-img-box" src="" />
+            </div>
+            <div class="lynx-row">
+                <div class="lynx-box lynx-box-large">
+                    <a class="opacity" href="#"></a>
+                    <img src="/images/demo-product.fw.png"/>
+                    <div class="name">Lorem ipsum dolor 109090 </div>
+                    <div class="seller-name">Name Bank </div>
+                    <div class="dis-price">1.500.000 vnđ </div>
+                    <div class="price">1.000.000 vnd </div>
+                    <div class="like">(980)</div>
+                </div>
+                
+                <div class="lynx-box lynx-box-large">
+                    <a class="opacity" href="#"></a>
+                    <img src="/images/demo-product.fw.png"/>
+                    <div class="name">Lorem ipsum dolor 109090 </div>
+                    <div class="seller-name">Name Bank </div>
+                    <div class="dis-price">1.500.000 vnđ </div>
+                    <div class="price">1.000.000 vnd </div>
+                    <div class="like">(980)</div>
+                </div>
+                
+                <div class="lynx-box lynx-box-large">
+                    <a class="opacity" href="#"></a>
+                    <img src="/images/demo-product.fw.png"/>
+                    <div class="name">Lorem ipsum dolor 109090 </div>
+                    <div class="seller-name">Name Bank </div>
+                    <div class="dis-price">1.500.000 vnđ </div>
+                    <div class="price">1.000.000 vnd </div>
+                    <div class="like">(980)</div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="tab tab-blue width-960 text-left">
+            <div class="head width-960">
+                <ul>
+                    <li>SẢN PHẨM MỚI</li>
+                </ul>
+            </div>
+            <div class="tab-content list-product width-960">
+                <div class="lynx-row width-960">
+                    <div class="lynx-box lynx-box-medium">
+                        <a class="opacity" href="#"></a>
+                        <img src="/images/demo-product.fw.png"/>
+                        <div class="name">Lorem ipsum dolor 109090 </div>
+                        <div class="seller-name">Name Bank </div>
+                        <div class="dis-price">1.500.000 vnđ </div>
+                        <div class="price">1.000.000 vnd </div>
+                        <div class="like">(980)</div>
+                    </div>
+                    <div class="lynx-box lynx-box-medium">
+                        <a class="opacity" href="#"></a>
+                        <img src="/images/demo-product.fw.png"/>
+                        <div class="name">Lorem ipsum dolor 109090 </div>
+                        <div class="seller-name">Name Bank </div>
+                        <div class="dis-price">1.500.000 vnđ </div>
+                        <div class="price">1.000.000 vnd </div>
+                        <div class="like">(980)</div>
+                    </div>
+                    <div class="lynx-box lynx-box-medium">
+                        <a class="opacity" href="#"></a>
+                        <img src="/images/demo-product.fw.png"/>
+                        <div class="name">Lorem ipsum dolor 109090 </div>
+                        <div class="seller-name">Name Bank </div>
+                        <div class="dis-price">1.500.000 vnđ </div>
+                        <div class="price">1.000.000 vnd </div>
+                        <div class="like">(980)</div>
+                    </div>
+                    <div class="lynx-box lynx-box-medium">
+                        <a class="opacity" href="#"></a>
+                        <img src="/images/demo-product.fw.png"/>
+                        <div class="name">Lorem ipsum dolor 109090 </div>
+                        <div class="seller-name">Name Bank </div>
+                        <div class="dis-price">1.500.000 vnđ </div>
+                        <div class="price">1.000.000 vnd </div>
+                        <div class="like">(980)</div>
+                    </div>
+                </div>
+                <div class="lynx-row width-960">
+                    <div class="lynx-box lynx-box-medium">
+                        <a class="opacity" href="#"></a>
+                        <img src="/images/demo-product.fw.png"/>
+                        <div class="name">Lorem ipsum dolor 109090 </div>
+                        <div class="seller-name">Name Bank </div>
+                        <div class="dis-price">1.500.000 vnđ </div>
+                        <div class="price">1.000.000 vnd </div>
+                        <div class="like">(980)</div>
+                    </div>
+                     <div class="lynx-box lynx-box-medium">
+                        <a class="opacity" href="#"></a>
+                        <img src="/images/demo-product.fw.png"/>
+                        <div class="name">Lorem ipsum dolor 109090 </div>
+                        <div class="seller-name">Name Bank </div>
+                        <div class="dis-price">1.500.000 vnđ </div>
+                        <div class="price">1.000.000 vnd </div>
+                        <div class="like">(980)</div>
+                    </div>
+                     <div class="lynx-box lynx-box-medium">
+                        <a class="opacity" href="#"></a>
+                        <img src="/images/demo-product.fw.png"/>
+                        <div class="name">Lorem ipsum dolor 109090 </div>
+                        <div class="seller-name">Name Bank </div>
+                        <div class="dis-price">1.500.000 vnđ </div>
+                        <div class="price">1.000.000 vnd </div>
+                        <div class="like">(980)</div>
+                    </div>
+                     <div class="lynx-box lynx-box-medium">
+                        <a class="opacity" href="#"></a>
+                        <img src="/images/demo-product.fw.png"/>
+                        <div class="name">Lorem ipsum dolor 109090 </div>
+                        <div class="seller-name">Name Bank </div>
+                        <div class="dis-price">1.500.000 vnđ </div>
+                        <div class="price">1.000.000 vnd </div>
+                        <div class="like">(980)</div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="extend width-960 text-center">
+                <div class="btn-extend"></div>
+            </div>
+        </div>
+        <div class="lynx-adv width-960">
+        
+        </div>
+        <div class="lynx_footer ">
+                    <div class="lynx_content width-960">
                         <div class="lynx_col1">
                             <img class="lynx_logo" src="/images/logo-footer.png"/>
                             <span class="lynx_contact">
@@ -218,9 +433,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
+        
         <script type="text/javascript">
             function Config() {
                 this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';

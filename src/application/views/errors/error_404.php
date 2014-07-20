@@ -55,7 +55,7 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1>ĐANG NÂNG CẤP WEBSITE</h1>
+		<h1>PAGE NOT FOUND</h1>
 		
 	</div>
 </body>

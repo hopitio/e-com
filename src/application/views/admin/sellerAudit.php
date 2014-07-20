@@ -1,5 +1,5 @@
 
-<div class="col-md-12" >
+<div class="col-md-5" >
     <div class="box">
     <form id="search_from" method="get">
         <div class="box-header">

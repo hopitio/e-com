@@ -26,7 +26,7 @@
         <p class="orange">
             <?php echo $e->getMessage(); ?><br />
             <br />
-            <a href="#" onClick="window.close(); return false;">この画面を閉じる</a>
+            <a href="#" onClick="window.close(); return false;"></a>
         </p>
     </div>
     <div class="mi_copy">

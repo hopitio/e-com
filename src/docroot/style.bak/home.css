@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+.lynx_container .lynx_banner{
+    display:inline-block;
+    width:100%;
+}
+.lynx_banner .lynx_slide
+{
+    width:100%;
+    display:inline-block;
+    height:450px;
+}
+.lynx_banner .lynx_suggest{
+    width:100%;
+    background: white;
+    display:inline-block;
+    height:45px;
+    background: transparent url('../images/suggest-bg.png') repeat-x top left;
+}
+.lynx_suggest .lynx_suggetWarp{
+    display:inline-block;
+}
+.lynx_suggest .lynx_suggestItem{
+    width:33%;
+    display:inline-block;
+    height:60px;
+    margin-top:-20px;
+}
+.lynx_suggest .lynx_step1{
+    background: transparent url('../images/suggest-setp1-bg.png') no-repeat center top;
+}
+.lynx_suggest .lynx_step2{
+    background: transparent url('../images/suggest-setp2-bg.png') no-repeat center top;
+}
+.lynx_suggest .lynx_step3{
+    background: transparent url('../images/suggest-setp3-bg.png') no-repeat center top;
+}
+.banner-box{
+    margin:auto;
+}
+
+
