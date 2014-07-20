@@ -1,6 +1,8 @@
-<?php ?>
+<?php
+/* @var $categories CategoryDomain */
+?>
 <form method="get" class="form-horizontal" id="frm-main" novalidate autocomplete="off">
-    <div class="panel panel-default" style="margin-bottom: 0;">
+    <div class="panel panel-default" id="panel-table" style="margin-bottom: 0;">
         <div class="panel-heading">
             <div class="btn-group">
                 <a href="javascript:;" class="btn btn-default btn-sm check-all" rel="tooltip" title="Chọn tất cả">
@@ -50,25 +52,51 @@
                 <thead>
                     <tr class="table-filter">
                         <th></th>
-                        <th><input type="text"></th>
-                        <th><input type="text"></th>
-                        <th><select></select></th>
-                        <th><select></select></th>
-                        <th><input type="text"></th>
+                        <th><input type="text" id="txt_id"></th>
+                        <th><input type="text" id="txt_name"></th>
+                        <th><select id="sel_type"></select></th>
+                        <th>
+                            <select id="sel_category">
+                                <option value="0">< Tất cả ></option>
+                                <?php
+                                $prevGroup = '';
+                                foreach ($categories as $category)
+                                {
+                                    if ($category->getLevel() == 1)
+                                    {
+                                        continue;
+                                    }
+                                    if ($prevGroup != $category->parent_name)
+                                    {
+                                        echo $prevGroup == '' ? '' : '</optgroup>';
+                                        echo "<optgroup label=\"{$category->parent_name}\">";
+                                        $prevGroup = $category->parent_name;
+                                    }
+                                    echo "<option value=\"{$category->id}\">{$category->name}</option>";
+                                }
+                                ?>
+                            </select>
+                        </th>
+                        <th><input type="text" id="sel_code"></th>
                         <th>
                 <div class="row form-group">
-                    <input type="text" placeholder="Từ">
-                    <input type="text" placeholder="Đến">
+                    <input type="text" placeholder="Từ" id="txt_price_from">
+                    <input type="text" placeholder="Đến" id="txt_price_to">
                 </div>
                 </th>
                 <th>
                 <div class="row form-group">
-                    <input type="text" placeholder="Từ">
-                    <input type="text" placeholder="Đến">
+                    <input type="text" placeholder="Từ" id="txt_qty_from">
+                    <input type="text" placeholder="Đến" id="txt_qty_to">
                 </div>
                 </th>
                 <th>
-                    <select></select>
+                    <select id="sel_status">
+                        <option value="all">< Tất cả ></option>
+                        <option value="1">Đang bán</option>
+                        <option value="0">Không bán</option>
+                        <option value="-1">Đã xóa</option>
+                    </select>
                 </th>
                 <th></th>
                 </tr>
@@ -113,7 +141,22 @@
     });
     $(function() {
         var tableHeight = $(window).height() - $('#main-table tbody').offset().top - 115;
-        window.table = dataTableInit('#main-table', scriptData.service, tableHeight, {
+        var ajax = {
+            url: scriptData.service,
+            data: function(d) {
+                d.id = $('#txt_id').val();
+                d.name = $('#txt_name').val();
+                d.type = $('#sel_type').val();
+                d.category = $('#sel_category').val();
+                d.code = $('#txt_code').val();
+                d.price_from = $('#txt_price_from').val();
+                d.price_to = $('#txt_price_to').val();
+                d.qty_from = $('#txt_qty_from').val();
+                d.qty_to = $('#txt_qty_to').val();
+                d.status = $('#sel_status').val();
+            }
+        };
+        window.table = dataTableInit('#main-table', ajax, tableHeight, {
             "searching": false,
             "order": [1, 'desc'],
             "columnDefs": [
@@ -139,13 +182,6 @@
                 return;
             }
             window.location.href = $(this).data().url;
-        }).on('click', 'tr', function(e) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'A')
-            {
-                return;
-            }
-            var $check = $('input[type=checkbox]:first', this);
-            $check.prop('checked', !$check.prop('checked')).trigger('change');
         });
 
         $('#frm-main').submit(function(e) {
@@ -160,5 +196,21 @@
             });
             $('#delete-products').html(names);
         });
+    });
+    $(function() {
+        var timeout;
+        $('#panel-table select').change(function() {
+            reload();
+        });
+        $('#panel-table input[type=text]').keyup(function() {
+            reload();
+        });
+        function reload() {
+            if (timeout)
+                clearTimeout(timeout);
+            setTimeout(function() {
+                window.table.ajax.reload();
+            }, 500);
+        }
     });
 </script>

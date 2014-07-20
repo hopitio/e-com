@@ -29,7 +29,7 @@ h3,h3 i{font-size: 20px;}
 .panel{position: relative;}
 .tooltip{border:none;background: none;}
 .btn-divider{width: 15px;display: inline-block;}
-input,select,textarea, .form-control{border: 1px solid #888888;padding:5px;line-height: 18px;height: auto;}
+input[type="text"],select,textarea, .form-control{border: 1px solid #ccc;padding:5px;line-height: 18px;height: auto;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
 .form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline{padding-top: 5px;}
 .form-horizontal table  .form-group{margin:0;}
 .table-condensed > thead > tr.table-filter > th, .table-condensed > tbody > tr.table-filter > th, .table-condensed > tfoot > tr.table-filter > th, .table-condensed > thead > tr.table-filter > td, .table-condensed > tbody > tr.table-filter > td, .table-condensed > tfoot > tr.table-filter > td{vertical-align:top;}

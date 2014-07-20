@@ -15,6 +15,9 @@ class SellerDomain implements DomainInterface
     public $statusDate;
     public $statusReason;
     public $fkManager;
+    public $levelCode;
+    public $levelName;
+    public $commission;
     protected $categories = array();
 
     function isActive()

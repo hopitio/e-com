@@ -13,15 +13,12 @@ class home extends BaseController
 
     public function showHome()
     {
-        //$this->load->model('Category');
-        //$cate = $this->Category->loadCategory();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setJavascript(array(
                     '/js/controller/HomeCtrl.js'
                 ))
                 ->setCss(array('/style/home.css'))
                 ->render('home');
-        //LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setCss(array("/style/homePage.css"))->setData()->render('home');
     }
 
     function hot_service()

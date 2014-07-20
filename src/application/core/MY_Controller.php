@@ -10,6 +10,8 @@ require_once APPPATH . 'libraries/url/url.inc';
 require_once APPPATH . 'libraries/mail/mail.inc';
 require_once APPPATH . 'libraries/security/security.inc';
 require_once APPPATH . 'libraries/Database.inc';
+require_once APPPATH . 'libraries/Setting.php';
+require_once APPPATH . 'libraries/MY_Input.php';
 require_once APPPATH . 'helpers/ViewHelpers.php';
 require_once APPPATH . 'libraries/AsyncResult.php';
 require_once APPPATH . 'models/biz.inc';
@@ -25,9 +27,6 @@ require_once APPPATH . 'controllers/portalController/BasePortalController.php';
 require_once APPPATH . 'controllers/portalAdmin/PortalAdminControllerAbstract.php';
 require_once APPPATH . 'controllers/admin/AdminControllerAbstract.php';
 
-
-
-
 /**
  * MY_Controller
  * Base Controller
@@ -37,11 +36,10 @@ class MY_Controller extends CI_Controller
 {
 
     static $not_authorized_error = array(
-        'error' => true,
-        'status_code' => 'not_authorized',
+        'error'          => true,
+        'status_code'    => 'not_authorized',
         'status_message' => 'LỖI XÁC MINH',
     );
-    
     protected $_languageResource;
     protected $obj_user;
     protected $obj_setting;
@@ -56,7 +54,7 @@ class MY_Controller extends CI_Controller
     public $lynx_tomorrow_dow;
     protected $authorization_required = false;
     protected $is_admin_page = false;
-    
+
     /** Ten controller hien tai */
     protected $_controller;
 
@@ -69,6 +67,7 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         $this->_controller = get_class($this);
+        $this->input = new MY_Input;
     }
 
     /**
@@ -239,7 +238,6 @@ class MY_Controller extends CI_Controller
                 throw new Lynx_AuthenticationException('Không có quyền truy cập');
             }
         }
-
     }
 
     /**
@@ -266,20 +264,23 @@ class MY_Controller extends CI_Controller
     {
         $queryString = $this->input->get();
         $dst = uri_string();
-        if($queryString){
-            foreach (array_keys($queryString) as $key){
+        if ($queryString)
+        {
+            foreach (array_keys($queryString) as $key)
+            {
                 $dst .= '?';
             }
-            $dst .= implode("&",$queryString);
+            $dst .= implode("&", $queryString);
         }
         //HOTFIX for phase 1, portal vs sub in one application
-        if(strpos($dst,'portal/') !== FALSE)
+        if (strpos($dst, 'portal/') !== FALSE)
         {
-            return str_replace('{cp}',urlencode(base_url($dst)),$this->config->item('portal_login_url'));
-        }else{
+            return str_replace('{cp}', urlencode(base_url($dst)), $this->config->item('portal_login_url'));
+        }
+        else
+        {
             return $this->obj_user->getLoginAuthenUrl();
         }
-       
     }
 
     /**
