@@ -84,21 +84,37 @@ CREATE TABLE `t_credit_memo` (
 
 /*Data for the table `t_credit_memo` */
 
+/*Table structure for table `t_feature_group` */
+
+DROP TABLE IF EXISTS `t_feature_group`;
+
+CREATE TABLE `t_feature_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codename` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` text COLLATE utf8_unicode_ci,
+  `xml_language` text COLLATE utf8_unicode_ci,
+  `sort` tinyint(4) DEFAULT NULL,
+  `xml_image` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_feature_group` */
+
+insert  into `t_feature_group`(`id`,`codename`,`url`,`xml_language`,`sort`,`xml_image`) values (1,'family','#','<root><language id=\"VN-VI\"><name>Gia đình</name></language><language id=\"EN-US\"><name>Family</name></language><language id=\"KO-KR\"><name>가족</name></language></root>',NULL,'<root>\r\n	<language id=\"EN-US\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n	<language id=\"VN-VI\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n	<language id=\"KO-KR\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n</root>'),(2,'kid','#','<root><language id=\"VN-VI\"><name>Mẹ và bé</name></language><language id=\"EN-US\"><name>Kid</name></language><language id=\"KO-KR\"><name>아이</name></language></root>',NULL,'<root>\r\n	<language id=\"EN-US\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n	<language id=\"VN-VI\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n	<language id=\"KO-KR\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n</root>'),(3,'food','#','<root><language id=\"VN-VI\"><name>Thực phẩm</name></language><language id=\"EN-US\"><name>Food</name></language><language id=\"KO-KR\"><name>음식</name></language></root>',NULL,'<root>\r\n	<language id=\"EN-US\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n	<language id=\"VN-VI\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n	<language id=\"KO-KR\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n</root>'),(4,'gift','#','<root><language id=\"VN-VI\"><name>Quà tặng</name></language><language id=\"EN-US\"><name>Gift</name></language><language id=\"KO-KR\"><name>선물</name></language></root>',NULL,'<root>\r\n	<language id=\"EN-US\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n	<language id=\"VN-VI\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n	<language id=\"KO-KR\">\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n		<img src=\"/images/feature/banner01.jpg\" title=\"a\" href=\"#\"/>\r\n	</language>\r\n</root>');
+
 /*Table structure for table `t_feature_product` */
 
 DROP TABLE IF EXISTS `t_feature_product`;
 
 CREATE TABLE `t_feature_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_product` int(11) DEFAULT NULL,
-  `is_on_homepage` tinyint(4) DEFAULT '0',
+  `fk_product` int(11) NOT NULL,
+  `fk_group` int(11) NOT NULL,
   `sort` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_feature_product` */
-
-insert  into `t_feature_product`(`id`,`fk_product`,`is_on_homepage`,`sort`) values (1,1,1,1),(2,2,1,2);
 
 /*Table structure for table `t_file` */
 
@@ -469,7 +485,7 @@ CREATE TABLE `t_product_view` (
 
 /*Data for the table `t_product_view` */
 
-insert  into `t_product_view`(`id`,`fk_product`,`fk_user`,`count_view`) values (1,2,0,50),(2,1,0,26),(3,3,0,9),(4,4,0,13),(5,5,0,9),(6,10,0,1),(7,8,0,5),(8,1,1,1),(9,14,1,1),(10,15,1,2),(11,14,5,4),(12,20,5,9),(13,15,5,3),(14,20,0,12),(15,14,0,11),(16,15,0,10),(17,26,5,1),(18,27,0,3),(19,27,5,1),(20,33,0,6),(21,26,0,2),(22,31,0,1),(23,38,0,6),(24,40,0,1),(25,42,0,1),(26,21,5,2),(27,21,0,3),(28,38,5,1),(29,1,5,9),(30,2,5,6),(31,7,5,4),(32,4,5,5),(33,6,5,4),(34,5,5,3),(35,6,0,9),(36,8,8,1),(37,9,9,4),(38,1,9,3),(39,2,9,2),(40,4,9,1),(41,6,9,2),(42,4,7,1),(43,9,0,2),(44,5,12,1),(45,5,7,1),(46,7,0,5),(47,5,9,2),(48,11,9,1),(49,11,5,1),(50,7,12,1),(51,1,12,2),(52,12,9,1),(53,12,5,1),(54,13,9,1),(55,13,5,4),(56,12,0,4),(57,13,12,1),(58,15,9,2),(59,16,9,1),(60,11,0,2),(61,13,0,2),(62,17,9,1),(63,18,12,1),(64,19,9,1),(65,20,12,1),(66,21,9,2),(67,17,0,2),(68,19,0,2),(69,18,0,1);
+insert  into `t_product_view`(`id`,`fk_product`,`fk_user`,`count_view`) values (1,2,0,50),(2,1,0,26),(3,3,0,9),(4,4,0,13),(5,5,0,9),(6,10,0,1),(7,8,0,5),(8,1,1,1),(9,14,1,1),(10,15,1,2),(11,14,5,4),(12,20,5,9),(13,15,5,3),(14,20,0,12),(15,14,0,11),(16,15,0,10),(17,26,5,1),(18,27,0,3),(19,27,5,1),(20,33,0,6),(21,26,0,2),(22,31,0,1),(23,38,0,6),(24,40,0,1),(25,42,0,1),(26,21,5,2),(27,21,0,3),(28,38,5,1),(29,1,5,9),(30,2,5,6),(31,7,5,4),(32,4,5,5),(33,6,5,4),(34,5,5,3),(35,6,0,9),(36,8,8,1),(37,9,9,4),(38,1,9,3),(39,2,9,2),(40,4,9,1),(41,6,9,2),(42,4,7,1),(43,9,0,2),(44,5,12,1),(45,5,7,1),(46,7,0,5),(47,5,9,2),(48,11,9,1),(49,11,5,1),(50,7,12,1),(51,1,12,2),(52,12,9,1),(53,12,5,1),(54,13,9,1),(55,13,5,4),(56,12,0,5),(57,13,12,1),(58,15,9,2),(59,16,9,1),(60,11,0,2),(61,13,0,2),(62,17,9,1),(63,18,12,1),(64,19,9,1),(65,20,12,1),(66,21,9,2),(67,17,0,2),(68,19,0,2),(69,18,0,1);
 
 /*Table structure for table `t_rating` */
 
@@ -659,9 +675,11 @@ CREATE TABLE `t_setting` (
   `autoload` tinyint(4) DEFAULT '0',
   `class` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_setting` */
+
+insert  into `t_setting`(`id`,`key`,`value`,`autoload`,`class`) values (1,'home_banner',NULL,0,NULL);
 
 /*Table structure for table `t_shipment` */
 

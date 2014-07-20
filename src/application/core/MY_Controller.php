@@ -11,6 +11,7 @@ require_once APPPATH . 'libraries/mail/mail.inc';
 require_once APPPATH . 'libraries/security/security.inc';
 require_once APPPATH . 'libraries/Database.inc';
 require_once APPPATH . 'libraries/Setting.php';
+require_once APPPATH . 'libraries/MY_Input.php';
 require_once APPPATH . 'helpers/ViewHelpers.php';
 require_once APPPATH . 'libraries/AsyncResult.php';
 require_once APPPATH . 'models/biz.inc';
@@ -66,6 +67,7 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         $this->_controller = get_class($this);
+        $this->input = new MY_Input;
     }
 
     /**

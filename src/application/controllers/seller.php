@@ -52,35 +52,50 @@ class seller extends BaseController
 
     function product()
     {
+        $data['categories'] = $this->sellerInstance->getCategories();
         $this->_layout
                 ->setHeading('<i class="fa fa-cubes"></i> Sản phẩm')
                 ->setSelectedNav('product')
+                ->setData($data)
                 ->render('seller/product');
-    }
-
-    function show_products()
-    {
-        LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER)
-//->setData(array('categories' => $this->sellerInstance->getCategories()))
-                ->render('seller/show_products');
     }
 
     function show_products_service()
     {
         $dataTableHelper = new DataTableHelper;
         $aaData = array();
-
+        $input = $this->input;
         /* @var $products ProductFixedDomain */
         $mapper = ProductFixedMapper::make()
                 ->setLanguage('VN-VI')
                 ->autoloadAttributes()
                 ->filterSeller($this->sellerInstance->id)
-                ->limit($dataTableHelper->length)
-                ->filterStatus(null)
-                ->offset($dataTableHelper->start);
-        $mapper->getQuery()->where('p.status > -1');
+                ->filterStatus(null);
+        if ($input->get('id'))
+            $mapper->filterID($input->get('id'));
+        if ($input->get('name'))
+            $mapper->filterName('VN-VI', $input->get('name'));
+        if ($input->get('category'))
+            $mapper->filterCategory($input->get('category'));
+        if ($input->get('code'))
+            $mapper->filterStorageCode($input->get('code'));
+        $mapper->filterPriceRange($input->get('price_from') !== '' ? $input->get('price_from') : null, $input->get('price_to') !== '' ? $input->get('price_to') : null, 'VND');
+        $mapper->filterStockQty($input->get('qty_from') !== '' ? $input->get('qty_from') : null, $input->get('qty_from') !== '' ? $input->get('qty_to') : null);
+        if ($input->get('status') !== 'all')
+            $mapper->filterStatus($input->get('status'));
 
-        $products = $mapper->findAll();
+        $mapper->getQuery()
+                ->select('cl.name AS category_name')
+                ->innerJoin('t_category c', 'c.id=p.fk_category')
+                ->innerJoin('t_category_language cl', "cl.fk_category=c.id AND cl.language='VN-VI'")
+                ->where('p.status > -1')
+                ->limit($dataTableHelper->length)
+                ->offset($dataTableHelper->start);
+
+        $products = $mapper->findAll(function($record, $instance)
+        {
+            $instance->category_name = $record['category_name'];
+        });
         $count = $mapper->count();
         $statusText = array(
             -1 => 'Đã xóa',
@@ -95,10 +110,10 @@ class seller extends BaseController
                 $product->id,
                 (string) $product->getName(),
                 'loai',
-                'chuyen muc',
+                $product->category_name,
                 (string) $product->getStorageCode(),
                 (string) $product->getPriceMoney('VND'),
-                'so luong',
+                (string) $product->getQuantity(),
                 $statusText[$product->status],
                 'url' => '/seller/product_details/' . $product->id
             );

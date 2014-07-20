@@ -54,10 +54,18 @@ class SellerMapper extends MapperAbstract
         parent::makeDomainCallback($domainInstance);
         if ($domainInstance->id && $this->autoloadCategories)
         {
-            $categories = SellerCategoryMapper::make()
+            $mapper = SellerCategoryMapper::make()
                     ->filterSeller($domainInstance->id)
-                    ->setLanguage($this->user->languageKey)
-                    ->findAll();
+                    ->setLanguage('VN-VI');
+            $mapper->getQuery()->select('plang.name AS parent_name')
+                    ->innerJoin('t_category parent', 'parent.id = c.fk_parent')
+                    ->innerJoin('t_category_language plang', "plang.fk_category=parent.id AND plang.language='{$this->user->languageKey}'");
+
+            $categories = $mapper->findAll(function($record, $instance)
+            {
+                $instance->parent_name = $record['parent_name'];
+            });
+
             $domainInstance->setCategories($categories);
         }
     }
