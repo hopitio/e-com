@@ -107,6 +107,10 @@ class DB
     {
         $db = static::getInstance();
         $fields = array_keys($data);
+        array_walk($fields, function(&$item)
+        {
+            $item = '`' . trim($item, '`') . '`';
+        });
         $values = array_values($data);
 
         $sql = "INSERT INTO {$table}(" . implode(',', $fields) . ')';
@@ -127,6 +131,10 @@ class DB
         $data = array_values($data);
         $db = static::getInstance();
         $fields = array_keys($data[0]);
+        array_walk($fields, function(&$item)
+        {
+            $item = '`' . trim($item, '`') . '`';
+        });
         $sql = "INSERT INTO $table(" . implode(',', $fields) . ") VALUES\n(?" . str_repeat(',?', count($fields) - 1) . ")";
         $params = array_values($data[0]);
         for ($i = 1; $i < count($data); $i++)

@@ -31,7 +31,7 @@ CREATE TABLE `t_category` (
 
 /*Data for the table `t_category` */
 
-insert  into `t_category`(`id`,`codename`,`fk_parent`,`sort`,`path`,`image`,`status`,`is_container`,`path_sort`,`is_show_in_home`) values (1,'family',NULL,1,'1/',NULL,1,1,'1/',1),(2,'kid',NULL,2,'2/',NULL,1,1,'2/',1),(3,'food',NULL,3,'3/',NULL,1,1,'3/',1),(4,'gift',NULL,4,'4/',NULL,1,1,'4/',1),(5,'kitchen',1,1,'1/5/',NULL,1,0,'1/1/',0),(6,'scarf_fabric',1,2,'1/6/',NULL,1,0,'1/2/',0),(7,'necessities',1,3,'1/7/',NULL,1,0,'1/3/',0),(8,'family_other',1,4,'1/8/',NULL,1,0,'1/4/',0),(9,'smart_toy',2,1,'2/9/',NULL,1,0,'2/1/',0),(10,'diaper',2,2,'2/10/',NULL,1,0,'2/2/',0),(11,'kid_accessories',2,3,'2/11/',NULL,1,0,'2/3/',0),(12,'fast_food',3,1,'3/12/',NULL,1,0,'3/1/',0),(13,'dried_food',3,2,'3/13/',NULL,1,0,'3/2/',0),(14,'canned_food',3,3,'3/14/',NULL,1,0,'3/3/',0),(15,'drink',3,4,'3/15/',NULL,1,0,'3/4/',0),(16,'food_other',3,5,'3/16/',NULL,1,0,'3/5/',0),(17,'gift_traditional',4,1,'4/17/',NULL,1,0,'4/1/',0),(18,'handmade',4,2,'4/18/',NULL,1,0,'4/2/',0);
+insert  into `t_category`(`id`,`codename`,`fk_parent`,`sort`,`path`,`image`,`status`,`is_container`,`path_sort`,`is_show_in_home`) values (1,'family',0,1,'1/',NULL,1,1,'1/',1),(2,'kid',0,2,'2/',NULL,1,1,'2/',1),(3,'food',0,3,'3/',NULL,1,1,'3/',1),(4,'gift',0,4,'4/',NULL,1,1,'4/',1),(5,'kitchen',1,1,'1/5/',NULL,1,0,'1/1/',0),(6,'scarf_fabric',1,2,'1/6/',NULL,1,0,'1/2/',0),(7,'necessities',1,3,'1/7/',NULL,1,0,'1/3/',0),(8,'family_other',1,4,'1/8/',NULL,1,0,'1/4/',0),(9,'smart_toy',2,1,'2/9/',NULL,1,0,'2/1/',0),(10,'diaper',2,2,'2/10/',NULL,1,0,'2/2/',0),(11,'kid_accessories',2,3,'2/11/',NULL,1,0,'2/3/',0),(12,'fast_food',3,1,'3/12/',NULL,1,0,'3/1/',0),(13,'dried_food',3,2,'3/13/',NULL,1,0,'3/2/',0),(14,'canned_food',3,3,'3/14/',NULL,1,0,'3/3/',0),(15,'drink',3,4,'3/15/',NULL,1,0,'3/4/',0),(16,'food_other',3,5,'3/16/',NULL,1,0,'3/5/',0),(17,'gift_traditional',4,1,'4/17/',NULL,1,0,'4/1/',0),(18,'handmade',4,2,'4/18/',NULL,1,0,'4/2/',0);
 
 /*Table structure for table `t_category_attribute` */
 
@@ -83,22 +83,6 @@ CREATE TABLE `t_credit_memo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_credit_memo` */
-
-/*Table structure for table `t_feature_product` */
-
-DROP TABLE IF EXISTS `t_feature_product`;
-
-CREATE TABLE `t_feature_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_product` int(11) DEFAULT NULL,
-  `is_on_homepage` tinyint(4) DEFAULT '0',
-  `sort` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `t_feature_product` */
-
-insert  into `t_feature_product`(`id`,`fk_product`,`is_on_homepage`,`sort`) values (1,1,1,1),(2,2,1,2);
 
 /*Table structure for table `t_file` */
 
@@ -211,11 +195,11 @@ CREATE TABLE `t_location` (
   `fk_parent` int(11) DEFAULT NULL,
   `codename` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_location` */
 
-insert  into `t_location`(`id`,`name`,`level`,`fk_parent`,`codename`) values (1,'hanoi','province',NULL,'101');
+insert  into `t_location`(`id`,`name`,`level`,`fk_parent`,`codename`) values (1,'Hanoi','province',NULL,'101'),(2,'Hai Duong','province',NULL,'102');
 
 /*Table structure for table `t_order` */
 
@@ -375,11 +359,11 @@ CREATE TABLE `t_product_attribute` (
   `language` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `value_varchar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=765 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=758 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_product_attribute` */
 
-insert  into `t_product_attribute`(`id`,`fk_product`,`fk_attribute_type`,`value_number`,`value_enum`,`value_text`,`language`,`value_varchar`) values (304,14,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(305,14,20,NULL,24,NULL,NULL,NULL),(306,14,18,NULL,NULL,NULL,NULL,'abc'),(307,14,2,NULL,NULL,'<p>zxsadas</p>','VN-VI',NULL),(308,14,11,100000,NULL,NULL,NULL,NULL),(309,14,21,NULL,NULL,NULL,NULL,'eng'),(310,14,22,NULL,NULL,'ddkffk',NULL,NULL),(311,14,23,NULL,NULL,'sdkdkkd',NULL,NULL),(312,15,1,NULL,NULL,NULL,'VN-VI','def'),(313,15,20,NULL,24,NULL,NULL,NULL),(314,15,18,NULL,NULL,NULL,NULL,'qwewqe'),(315,15,2,NULL,NULL,'<p>sdasda</p>','VN-VI',NULL),(316,15,11,60000,NULL,NULL,NULL,NULL),(317,15,21,NULL,NULL,NULL,NULL,'ssa'),(318,15,22,NULL,NULL,'das',NULL,NULL),(319,15,23,NULL,NULL,'dasd',NULL,NULL),(320,14,1,NULL,NULL,NULL,'EN-US','Strawberry'),(322,14,2,NULL,NULL,'<p>eng</p>','EN-US',NULL),(323,20,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(324,20,20,NULL,24,NULL,NULL,NULL),(325,20,18,NULL,NULL,NULL,NULL,'abc'),(326,20,2,NULL,NULL,'<p>zxsadas</p>','VN-VI',NULL),(327,20,11,0,NULL,NULL,NULL,NULL),(328,20,21,NULL,NULL,NULL,NULL,'eng'),(329,20,22,NULL,NULL,'ddkffk',NULL,NULL),(330,20,23,NULL,NULL,'sdkdkkd',NULL,NULL),(331,20,1,NULL,NULL,NULL,'EN-US','ssas'),(332,20,2,NULL,NULL,'','EN-US',NULL),(337,20,13,11,NULL,NULL,NULL,NULL),(338,20,24,NULL,0,NULL,NULL,NULL),(339,20,14,0,NULL,NULL,NULL,NULL),(340,20,26,NULL,NULL,'',NULL,NULL),(341,20,27,0,NULL,NULL,NULL,NULL),(342,20,28,0,NULL,NULL,NULL,NULL),(343,20,29,NULL,0,NULL,NULL,NULL),(344,20,30,NULL,0,NULL,NULL,NULL),(345,20,31,0,NULL,NULL,NULL,NULL),(346,20,32,0,NULL,NULL,NULL,NULL),(347,20,33,0,NULL,NULL,NULL,NULL),(348,21,1,NULL,NULL,NULL,'EN-US','gef'),(349,21,20,NULL,0,NULL,NULL,NULL),(350,21,18,NULL,NULL,NULL,NULL,''),(351,21,13,1212,NULL,NULL,NULL,NULL),(352,21,24,NULL,0,NULL,NULL,NULL),(353,21,14,0,NULL,NULL,NULL,NULL),(354,21,2,NULL,NULL,'','EN-US',NULL),(355,21,26,NULL,NULL,'',NULL,NULL),(356,22,1,NULL,NULL,NULL,'EN-US','sadsda'),(357,22,20,NULL,0,NULL,NULL,NULL),(358,22,18,NULL,NULL,NULL,NULL,''),(359,22,13,1212,NULL,NULL,NULL,NULL),(360,22,24,NULL,0,NULL,NULL,NULL),(361,22,14,0,NULL,NULL,NULL,NULL),(362,22,2,NULL,NULL,'','EN-US',NULL),(363,22,26,NULL,NULL,'',NULL,NULL),(364,23,1,NULL,NULL,NULL,'EN-US','sadsda'),(365,23,20,NULL,0,NULL,NULL,NULL),(366,23,18,NULL,NULL,NULL,NULL,''),(367,23,13,1212,NULL,NULL,NULL,NULL),(368,23,24,NULL,0,NULL,NULL,NULL),(369,23,14,0,NULL,NULL,NULL,NULL),(370,23,2,NULL,NULL,'','EN-US',NULL),(371,23,26,NULL,NULL,'',NULL,NULL),(372,23,11,0,NULL,NULL,NULL,NULL),(373,23,27,0,NULL,NULL,NULL,NULL),(374,23,28,0,NULL,NULL,NULL,NULL),(375,23,29,NULL,0,NULL,NULL,NULL),(376,23,30,NULL,0,NULL,NULL,NULL),(377,23,31,0,NULL,NULL,NULL,NULL),(378,23,32,0,NULL,NULL,NULL,NULL),(379,23,33,0,NULL,NULL,NULL,NULL),(380,23,21,NULL,NULL,NULL,NULL,''),(381,23,22,NULL,NULL,'',NULL,NULL),(382,23,23,NULL,NULL,'',NULL,NULL),(383,24,1,NULL,NULL,NULL,'EN-US','11'),(384,24,20,NULL,0,NULL,NULL,NULL),(385,24,18,NULL,NULL,NULL,NULL,''),(386,24,13,111,NULL,NULL,NULL,NULL),(387,24,24,NULL,0,NULL,NULL,NULL),(388,24,14,0,NULL,NULL,NULL,NULL),(389,24,2,NULL,NULL,'','EN-US',NULL),(390,24,26,NULL,NULL,'',NULL,NULL),(391,25,1,NULL,NULL,NULL,'EN-US','Sda'),(392,25,20,NULL,0,NULL,NULL,NULL),(393,25,18,NULL,NULL,NULL,NULL,''),(394,25,13,11,NULL,NULL,NULL,NULL),(395,25,24,NULL,0,NULL,NULL,NULL),(396,25,14,0,NULL,NULL,NULL,NULL),(397,25,2,NULL,NULL,'','EN-US',NULL),(398,25,26,NULL,NULL,'',NULL,NULL),(399,25,11,0,NULL,NULL,NULL,NULL),(400,25,27,0,NULL,NULL,NULL,NULL),(401,25,28,0,NULL,NULL,NULL,NULL),(402,25,29,NULL,0,NULL,NULL,NULL),(403,25,30,NULL,0,NULL,NULL,NULL),(404,25,31,0,NULL,NULL,NULL,NULL),(405,25,32,0,NULL,NULL,NULL,NULL),(406,25,33,0,NULL,NULL,NULL,NULL),(407,25,21,NULL,NULL,NULL,NULL,''),(408,25,22,NULL,NULL,'',NULL,NULL),(409,25,23,NULL,NULL,'',NULL,NULL),(410,21,11,0,NULL,NULL,NULL,NULL),(411,21,27,0,NULL,NULL,NULL,NULL),(412,21,28,0,NULL,NULL,NULL,NULL),(413,21,29,NULL,0,NULL,NULL,NULL),(414,21,30,NULL,0,NULL,NULL,NULL),(415,21,31,0,NULL,NULL,NULL,NULL),(416,21,32,0,NULL,NULL,NULL,NULL),(417,21,33,0,NULL,NULL,NULL,NULL),(418,21,21,NULL,NULL,NULL,NULL,''),(419,21,22,NULL,NULL,'',NULL,NULL),(420,21,23,NULL,NULL,'',NULL,NULL),(421,21,1,NULL,NULL,NULL,'VN-VI','ss'),(422,21,2,NULL,NULL,'','VN-VI',NULL),(423,21,1,NULL,NULL,NULL,'KO-KR','sss'),(424,21,2,NULL,NULL,'','KO-KR',NULL),(425,26,1,NULL,NULL,NULL,'EN-US','shit'),(426,26,20,NULL,0,NULL,NULL,NULL),(427,26,18,NULL,NULL,NULL,NULL,'asdkslas'),(428,26,13,10,NULL,NULL,NULL,NULL),(714,26,1,NULL,NULL,NULL,'VN-VI','Thịt thăn xông khói, nấm tươi & pho mát mozzarella ( prosciuitto e funghi ) Thịt thăn xông khói, nấm tươi & pho mát mozzarella ( prosciuitto e funghi ) Thịt thăn xông khói, nấm tươi & pho mát mozzarella ( prosciuitto e funghi )'),(715,26,24,NULL,26,NULL,NULL,NULL),(716,26,14,1,NULL,NULL,NULL,NULL),(717,26,2,NULL,NULL,'','VN-VI',NULL),(718,26,26,NULL,NULL,'',NULL,NULL),(719,26,11,100097898,NULL,NULL,NULL,NULL),(720,26,27,3,NULL,NULL,NULL,NULL),(721,26,28,15,NULL,NULL,NULL,NULL),(722,26,29,NULL,29,NULL,NULL,NULL),(723,26,30,NULL,29,NULL,NULL,NULL),(724,26,31,10,NULL,NULL,NULL,NULL),(725,26,32,10,NULL,NULL,NULL,NULL),(726,26,33,330,NULL,NULL,NULL,NULL),(727,26,21,NULL,NULL,NULL,NULL,''),(728,26,22,NULL,NULL,'',NULL,NULL),(729,26,23,NULL,NULL,'',NULL,NULL),(730,26,2,NULL,NULL,'','EN-US',NULL),(731,26,1,NULL,NULL,NULL,'KO-KR','ssa'),(732,26,2,NULL,NULL,'','KO-KR',NULL),(733,26,34,NULL,NULL,NULL,NULL,'sffs'),(734,27,1,NULL,NULL,NULL,'EN-US','shit'),(735,27,20,NULL,0,NULL,NULL,NULL),(736,27,18,NULL,NULL,NULL,NULL,'asdkslas'),(737,27,13,10,NULL,NULL,NULL,NULL),(738,27,1,NULL,NULL,NULL,'VN-VI','shit'),(739,27,24,NULL,26,NULL,NULL,NULL),(740,27,14,1,NULL,NULL,NULL,NULL),(741,27,2,NULL,NULL,'','VN-VI',NULL),(742,27,26,NULL,NULL,'',NULL,NULL),(743,27,11,100097898,NULL,NULL,NULL,NULL),(744,27,27,3,NULL,NULL,NULL,NULL),(745,27,28,15,NULL,NULL,NULL,NULL),(746,27,29,NULL,29,NULL,NULL,NULL),(747,27,30,NULL,29,NULL,NULL,NULL),(748,27,31,10,NULL,NULL,NULL,NULL),(749,27,32,10,NULL,NULL,NULL,NULL),(750,27,33,330,NULL,NULL,NULL,NULL),(751,27,21,NULL,NULL,NULL,NULL,''),(752,27,22,NULL,NULL,'',NULL,NULL),(753,27,23,NULL,NULL,'',NULL,NULL),(754,27,2,NULL,NULL,'','EN-US',NULL),(755,27,1,NULL,NULL,NULL,'KO-KR','ssa'),(756,27,2,NULL,NULL,'','KO-KR',NULL),(757,27,34,NULL,NULL,NULL,NULL,'sffs');
+insert  into `t_product_attribute`(`id`,`fk_product`,`fk_attribute_type`,`value_number`,`value_enum`,`value_text`,`language`,`value_varchar`) values (304,14,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(305,14,20,NULL,24,NULL,NULL,NULL),(306,14,18,NULL,NULL,NULL,NULL,'abc'),(307,14,2,NULL,NULL,'<p>zxsadas</p>','VN-VI',NULL),(308,14,11,100000,NULL,NULL,NULL,NULL),(309,14,21,NULL,NULL,NULL,NULL,'eng'),(310,14,22,NULL,NULL,'ddkffk',NULL,NULL),(311,14,23,NULL,NULL,'sdkdkkd',NULL,NULL),(312,15,1,NULL,NULL,NULL,'VN-VI','def'),(313,15,20,NULL,24,NULL,NULL,NULL),(314,15,18,NULL,NULL,NULL,NULL,'qwewqe'),(315,15,2,NULL,NULL,'<p>sdasda</p>','VN-VI',NULL),(316,15,11,60000,NULL,NULL,NULL,NULL),(317,15,21,NULL,NULL,NULL,NULL,'ssa'),(318,15,22,NULL,NULL,'das',NULL,NULL),(319,15,23,NULL,NULL,'dasd',NULL,NULL),(320,14,1,NULL,NULL,NULL,'EN-US','Strawberry'),(322,14,2,NULL,NULL,'<p>eng</p>','EN-US',NULL),(323,20,1,NULL,NULL,NULL,'VN-VI','Pha lê dâu'),(324,20,20,NULL,24,NULL,NULL,NULL),(325,20,18,NULL,NULL,NULL,NULL,'abc'),(326,20,2,NULL,NULL,'<p>zxsadas</p>','VN-VI',NULL),(327,20,11,0,NULL,NULL,NULL,NULL),(328,20,21,NULL,NULL,NULL,NULL,'eng'),(329,20,22,NULL,NULL,'ddkffk',NULL,NULL),(330,20,23,NULL,NULL,'sdkdkkd',NULL,NULL),(331,20,1,NULL,NULL,NULL,'EN-US','ssas'),(332,20,2,NULL,NULL,'','EN-US',NULL),(337,20,13,11,NULL,NULL,NULL,NULL),(338,20,24,NULL,0,NULL,NULL,NULL),(339,20,14,0,NULL,NULL,NULL,NULL),(340,20,26,NULL,NULL,'',NULL,NULL),(341,20,27,0,NULL,NULL,NULL,NULL),(342,20,28,0,NULL,NULL,NULL,NULL),(343,20,29,NULL,0,NULL,NULL,NULL),(344,20,30,NULL,0,NULL,NULL,NULL),(345,20,31,0,NULL,NULL,NULL,NULL),(346,20,32,0,NULL,NULL,NULL,NULL),(347,20,33,0,NULL,NULL,NULL,NULL),(348,21,1,NULL,NULL,NULL,'EN-US','gef'),(349,21,20,NULL,0,NULL,NULL,NULL),(350,21,18,NULL,NULL,NULL,NULL,''),(351,21,13,1212,NULL,NULL,NULL,NULL),(352,21,24,NULL,0,NULL,NULL,NULL),(353,21,14,0,NULL,NULL,NULL,NULL),(354,21,2,NULL,NULL,'','EN-US',NULL),(355,21,26,NULL,NULL,'',NULL,NULL),(356,22,1,NULL,NULL,NULL,'EN-US','sadsda'),(357,22,20,NULL,0,NULL,NULL,NULL),(358,22,18,NULL,NULL,NULL,NULL,''),(359,22,13,1212,NULL,NULL,NULL,NULL),(360,22,24,NULL,0,NULL,NULL,NULL),(361,22,14,0,NULL,NULL,NULL,NULL),(362,22,2,NULL,NULL,'','EN-US',NULL),(363,22,26,NULL,NULL,'',NULL,NULL),(364,23,1,NULL,NULL,NULL,'EN-US','sadsda'),(365,23,20,NULL,0,NULL,NULL,NULL),(366,23,18,NULL,NULL,NULL,NULL,''),(367,23,13,1212,NULL,NULL,NULL,NULL),(368,23,24,NULL,0,NULL,NULL,NULL),(369,23,14,0,NULL,NULL,NULL,NULL),(370,23,2,NULL,NULL,'','EN-US',NULL),(371,23,26,NULL,NULL,'',NULL,NULL),(372,23,11,0,NULL,NULL,NULL,NULL),(373,23,27,0,NULL,NULL,NULL,NULL),(374,23,28,0,NULL,NULL,NULL,NULL),(375,23,29,NULL,0,NULL,NULL,NULL),(376,23,30,NULL,0,NULL,NULL,NULL),(377,23,31,0,NULL,NULL,NULL,NULL),(378,23,32,0,NULL,NULL,NULL,NULL),(379,23,33,0,NULL,NULL,NULL,NULL),(380,23,21,NULL,NULL,NULL,NULL,''),(381,23,22,NULL,NULL,'',NULL,NULL),(382,23,23,NULL,NULL,'',NULL,NULL),(383,24,1,NULL,NULL,NULL,'EN-US','11'),(384,24,20,NULL,0,NULL,NULL,NULL),(385,24,18,NULL,NULL,NULL,NULL,''),(386,24,13,111,NULL,NULL,NULL,NULL),(387,24,24,NULL,0,NULL,NULL,NULL),(388,24,14,0,NULL,NULL,NULL,NULL),(389,24,2,NULL,NULL,'','EN-US',NULL),(390,24,26,NULL,NULL,'',NULL,NULL),(391,25,1,NULL,NULL,NULL,'EN-US','Sda'),(392,25,20,NULL,0,NULL,NULL,NULL),(393,25,18,NULL,NULL,NULL,NULL,''),(394,25,13,11,NULL,NULL,NULL,NULL),(395,25,24,NULL,0,NULL,NULL,NULL),(396,25,14,0,NULL,NULL,NULL,NULL),(397,25,2,NULL,NULL,'','EN-US',NULL),(398,25,26,NULL,NULL,'',NULL,NULL),(399,25,11,0,NULL,NULL,NULL,NULL),(400,25,27,0,NULL,NULL,NULL,NULL),(401,25,28,0,NULL,NULL,NULL,NULL),(402,25,29,NULL,0,NULL,NULL,NULL),(403,25,30,NULL,0,NULL,NULL,NULL),(404,25,31,0,NULL,NULL,NULL,NULL),(405,25,32,0,NULL,NULL,NULL,NULL),(406,25,33,0,NULL,NULL,NULL,NULL),(407,25,21,NULL,NULL,NULL,NULL,''),(408,25,22,NULL,NULL,'',NULL,NULL),(409,25,23,NULL,NULL,'',NULL,NULL),(410,21,11,0,NULL,NULL,NULL,NULL),(411,21,27,0,NULL,NULL,NULL,NULL),(412,21,28,0,NULL,NULL,NULL,NULL),(413,21,29,NULL,0,NULL,NULL,NULL),(414,21,30,NULL,0,NULL,NULL,NULL),(415,21,31,0,NULL,NULL,NULL,NULL),(416,21,32,0,NULL,NULL,NULL,NULL),(417,21,33,0,NULL,NULL,NULL,NULL),(418,21,21,NULL,NULL,NULL,NULL,''),(419,21,22,NULL,NULL,'',NULL,NULL),(420,21,23,NULL,NULL,'',NULL,NULL),(421,21,1,NULL,NULL,NULL,'VN-VI','ss'),(422,21,2,NULL,NULL,'','VN-VI',NULL),(423,21,1,NULL,NULL,NULL,'KO-KR','sss'),(424,21,2,NULL,NULL,'','KO-KR',NULL),(425,26,1,NULL,NULL,NULL,'EN-US','shit'),(426,26,20,NULL,0,NULL,NULL,NULL),(427,26,18,NULL,NULL,NULL,NULL,'abc'),(428,26,13,10,NULL,NULL,NULL,NULL),(714,26,1,NULL,NULL,NULL,'VN-VI','Thịt thăn xông khói, nấm tươi & pho mát mozzarella ( prosciuitto e funghi ) Thịt thăn xông khói, nấm tươi & pho mát mozzarella ( prosciuitto e funghi ) Thịt thăn xông khói, nấm tươi & pho mát mozzarella ( prosciuitto e funghi )'),(715,26,24,NULL,26,NULL,NULL,NULL),(716,26,14,1,NULL,NULL,NULL,NULL),(717,26,2,NULL,NULL,'','VN-VI',NULL),(718,26,26,NULL,NULL,'',NULL,NULL),(719,26,11,678987,NULL,NULL,NULL,NULL),(720,26,27,3,NULL,NULL,NULL,NULL),(721,26,28,15,NULL,NULL,NULL,NULL),(722,26,29,NULL,29,NULL,NULL,NULL),(723,26,30,NULL,29,NULL,NULL,NULL),(724,26,31,10,NULL,NULL,NULL,NULL),(725,26,32,10,NULL,NULL,NULL,NULL),(726,26,33,330,NULL,NULL,NULL,NULL),(727,26,21,NULL,NULL,NULL,NULL,''),(728,26,22,NULL,NULL,'',NULL,NULL),(729,26,23,NULL,NULL,'',NULL,NULL),(730,26,2,NULL,NULL,'','EN-US',NULL),(731,26,1,NULL,NULL,NULL,'KO-KR','ssa'),(732,26,2,NULL,NULL,'','KO-KR',NULL),(733,26,34,NULL,NULL,NULL,NULL,'sffs'),(734,27,1,NULL,NULL,NULL,'EN-US','shit'),(735,27,20,NULL,0,NULL,NULL,NULL),(736,27,18,NULL,NULL,NULL,NULL,'asdkslas'),(737,27,13,10,NULL,NULL,NULL,NULL),(738,27,1,NULL,NULL,NULL,'VN-VI','shit'),(739,27,24,NULL,26,NULL,NULL,NULL),(740,27,14,1,NULL,NULL,NULL,NULL),(741,27,2,NULL,NULL,'','VN-VI',NULL),(742,27,26,NULL,NULL,'',NULL,NULL),(743,27,11,10000,NULL,NULL,NULL,NULL),(744,27,27,3,NULL,NULL,NULL,NULL),(745,27,28,15,NULL,NULL,NULL,NULL),(746,27,29,NULL,29,NULL,NULL,NULL),(747,27,30,NULL,29,NULL,NULL,NULL),(748,27,31,10,NULL,NULL,NULL,NULL),(749,27,32,10,NULL,NULL,NULL,NULL),(750,27,33,330,NULL,NULL,NULL,NULL),(751,27,21,NULL,NULL,NULL,NULL,''),(752,27,22,NULL,NULL,'',NULL,NULL),(753,27,23,NULL,NULL,'',NULL,NULL),(754,27,2,NULL,NULL,'','EN-US',NULL),(755,27,1,NULL,NULL,NULL,'KO-KR','ssa'),(756,27,2,NULL,NULL,'','KO-KR',NULL),(757,27,34,NULL,NULL,NULL,NULL,'sffs');
 
 /*Table structure for table `t_product_attribute_type` */
 
@@ -400,7 +384,7 @@ CREATE TABLE `t_product_attribute_type` (
 
 /*Data for the table `t_product_attribute_type` */
 
-insert  into `t_product_attribute_type`(`id`,`codename`,`datatype`,`fk_enum_ref`,`multi_language`,`repeating_group`,`weight`,`default`,`required`) values (1,'name','varchar',NULL,1,0,0,NULL,1),(2,'description','text',NULL,1,0,0,NULL,0),(3,'tag','varchar',NULL,1,1,0,NULL,0),(7,'material','enum',1,0,1,0,NULL,0),(8,'gift_target','enum',2,0,1,0,NULL,0),(9,'category','number',NULL,0,0,0,NULL,0),(10,'occasion','enum',3,0,1,0,NULL,0),(11,'price','number',NULL,0,0,0,NULL,1),(13,'quantity','number',NULL,0,0,0,NULL,1),(14,'weight','number',NULL,0,0,0,NULL,0),(15,'source','enum',NULL,0,0,0,NULL,0),(16,'shipping_method','enum',6,0,1,0,NULL,0),(17,'payment_method','enum',7,0,1,0,NULL,0),(18,'storage_code','varchar',NULL,0,0,0,NULL,0),(19,'sales','number',NULL,0,0,0,NULL,0),(20,'storage_code_type','enum',8,0,0,0,NULL,0),(21,'meta_title','varchar',NULL,0,0,0,NULL,0),(22,'meta_keywords','text',NULL,0,0,0,NULL,0),(23,'meta_description','text',NULL,0,0,0,NULL,0),(24,'weight_unit','enum',9,0,0,0,NULL,0),(25,'weight','number',0,0,0,0,NULL,0),(26,'note','text',NULL,0,0,0,NULL,0),(27,'return_policy','number',NULL,0,0,0,'0',0),(28,'warranty_policy','number',NULL,0,0,0,'0',0),(29,'made_in','enum',12,0,0,0,NULL,0),(30,'import_from','enum',12,0,0,0,NULL,0),(31,'dimension_width','number',NULL,0,0,0,'-1',0),(32,'dimension_height','number',NULL,0,0,0,'-1',0),(33,'dimension_depth','number',NULL,0,0,0,'-1',0),(34,'brand','varchar',NULL,0,0,0,NULL,0);
+insert  into `t_product_attribute_type`(`id`,`codename`,`datatype`,`fk_enum_ref`,`multi_language`,`repeating_group`,`weight`,`default`,`required`) values (1,'name','varchar',NULL,1,0,0,NULL,1),(2,'description','text',NULL,1,0,0,NULL,0),(3,'tag','varchar',NULL,1,1,0,NULL,0),(7,'material','enum',1,0,1,0,NULL,0),(8,'gift_target','enum',2,0,1,0,NULL,0),(9,'category','number',NULL,0,0,0,NULL,0),(10,'occasion','enum',3,0,1,0,NULL,0),(11,'price','number',NULL,0,0,0,NULL,1),(13,'quantity','number',NULL,0,0,0,NULL,1),(14,'weight','number',NULL,0,0,0,NULL,1),(15,'source','enum',NULL,0,0,0,NULL,0),(16,'shipping_method','enum',6,0,1,0,NULL,0),(17,'payment_method','enum',7,0,1,0,NULL,0),(18,'storage_code','varchar',NULL,0,0,0,NULL,0),(19,'sales','number',NULL,0,0,0,NULL,0),(20,'storage_code_type','enum',8,0,0,0,NULL,0),(21,'meta_title','varchar',NULL,0,0,0,NULL,0),(22,'meta_keywords','text',NULL,0,0,0,NULL,0),(23,'meta_description','text',NULL,0,0,0,NULL,0),(24,'weight_unit','enum',9,0,0,0,NULL,1),(25,'weight','number',0,0,0,0,NULL,1),(26,'note','text',NULL,0,0,0,NULL,0),(27,'return_policy','number',NULL,0,0,0,'0',0),(28,'warranty_policy','number',NULL,0,0,0,'0',0),(29,'made_in','enum',12,0,0,0,NULL,0),(30,'import_from','enum',12,0,0,0,NULL,0),(31,'dimension_width','number',NULL,0,0,0,'-1',1),(32,'dimension_height','number',NULL,0,0,0,'-1',1),(33,'dimension_depth','number',NULL,0,0,0,'-1',1),(34,'brand','varchar',NULL,0,0,0,NULL,0);
 
 /*Table structure for table `t_product_comment` */
 
@@ -436,7 +420,7 @@ CREATE TABLE `t_product_image` (
 
 /*Data for the table `t_product_image` */
 
-insert  into `t_product_image`(`fk_product`,`fk_file`,`sort`,`thumbnail`,`base_image`,`small_image`,`facebook_image`,`width`) values (1,1,NULL,1,1,0,1,1000),(2,1,NULL,1,1,0,1,1000),(3,1,NULL,1,1,0,1,1000),(4,1,NULL,1,1,0,1,1000),(5,1,NULL,1,1,0,1,1000),(6,1,NULL,1,1,0,1,1000),(7,1,NULL,1,1,0,1,1000),(8,1,NULL,1,1,0,1,1000),(9,1,NULL,1,1,0,1,1000),(10,1,NULL,1,1,0,1,1000),(11,1,NULL,1,1,0,1,1000),(12,1,NULL,1,1,0,1,1000),(14,7,2,1,1,1,1,1000),(14,8,0,0,1,1,0,1000),(15,9,0,1,1,1,0,1000),(20,11,0,1,1,1,1,1000),(20,13,0,0,1,1,0,1000),(20,14,0,0,1,1,0,1000),(20,15,0,0,1,1,0,1000),(24,16,NULL,0,1,0,0,1000),(24,17,NULL,0,1,0,0,1000),(25,18,0,1,1,1,1,1000),(26,22,1,0,1,1,0,1000),(26,23,0,0,1,1,0,100),(26,31,0,0,1,1,0,150),(27,32,NULL,0,1,0,0,600);
+insert  into `t_product_image`(`fk_product`,`fk_file`,`sort`,`thumbnail`,`base_image`,`small_image`,`facebook_image`,`width`) values (1,1,NULL,1,1,0,1,1000),(2,1,NULL,1,1,0,1,1000),(3,1,NULL,1,1,0,1,1000),(4,1,NULL,1,1,0,1,1000),(5,1,NULL,1,1,0,1,1000),(6,1,NULL,1,1,0,1,1000),(7,1,NULL,1,1,0,1,1000),(8,1,NULL,1,1,0,1,1000),(9,1,NULL,1,1,0,1,1000),(10,1,NULL,1,1,0,1,1000),(11,1,NULL,1,1,0,1,1000),(12,1,NULL,1,1,0,1,1000),(14,7,2,1,1,1,1,1000),(14,8,0,0,1,1,0,1000),(15,9,0,1,1,1,0,1000),(20,11,0,1,1,1,1,1000),(20,13,0,0,1,1,0,1000),(20,14,0,0,1,1,0,1000),(20,15,0,0,1,1,0,1000),(24,16,NULL,0,1,0,0,1000),(24,17,NULL,0,1,0,0,1000),(25,18,0,1,1,1,1,1000),(26,22,1,0,1,1,0,1000),(26,23,0,0,1,1,0,100),(26,31,0,0,1,1,0,150),(27,32,0,0,1,1,0,600);
 
 /*Table structure for table `t_product_tax` */
 
@@ -463,11 +447,11 @@ CREATE TABLE `t_product_view` (
   `fk_user` int(11) DEFAULT NULL,
   `count_view` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_product_view` */
 
-insert  into `t_product_view`(`id`,`fk_product`,`fk_user`,`count_view`) values (1,2,0,44),(2,1,0,13),(3,3,0,9),(4,4,0,5),(5,5,0,4),(6,10,0,1),(7,8,0,1),(8,1,1,1),(9,14,1,1),(10,15,1,2),(11,14,5,2),(12,20,5,6),(13,15,5,1),(14,20,0,7),(15,14,0,4),(16,15,0,2),(17,25,5,1),(18,26,5,14),(19,26,0,6),(20,27,5,1);
+insert  into `t_product_view`(`id`,`fk_product`,`fk_user`,`count_view`) values (1,2,0,44),(2,1,0,13),(3,3,0,9),(4,4,0,5),(5,5,0,4),(6,10,0,1),(7,8,0,1),(8,1,1,1),(9,14,1,1),(10,15,1,2),(11,14,5,2),(12,20,5,6),(13,15,5,1),(14,20,0,7),(15,14,0,4),(16,15,0,2),(17,25,5,1),(18,26,5,17),(19,26,0,7),(20,27,5,1),(21,27,0,1);
 
 /*Table structure for table `t_rating` */
 
@@ -609,12 +593,13 @@ CREATE TABLE `t_seller` (
   `status_reason` text COLLATE utf8_unicode_ci,
   `fk_manager` int(11) DEFAULT NULL,
   `sid` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fk_level` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_seller` */
 
-insert  into `t_seller`(`id`,`name`,`logo`,`phoneno`,`email`,`website`,`status`,`status_date`,`status_reason`,`fk_manager`,`sid`) values (1,'Samsung',NULL,NULL,'admin@samsung.com',NULL,1,NULL,NULL,5,'samsung');
+insert  into `t_seller`(`id`,`name`,`logo`,`phoneno`,`email`,`website`,`status`,`status_date`,`status_reason`,`fk_manager`,`sid`,`fk_level`) values (1,'Samsung',NULL,NULL,'admin@samsung.com',NULL,1,NULL,NULL,5,'samsung',1);
 
 /*Table structure for table `t_seller_category` */
 
@@ -628,6 +613,37 @@ CREATE TABLE `t_seller_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_seller_category` */
+
+/*Table structure for table `t_seller_level` */
+
+DROP TABLE IF EXISTS `t_seller_level`;
+
+CREATE TABLE `t_seller_level` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codename` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `commission` tinyint(4) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_seller_level` */
+
+insert  into `t_seller_level`(`id`,`codename`,`commission`,`name`) values (1,'standard',5,'Standard seller'),(2,'good',4,'Good seller'),(3,'great',3,'Great seller'),(4,'best',2,'Best seller');
+
+/*Table structure for table `t_setting` */
+
+DROP TABLE IF EXISTS `t_setting`;
+
+CREATE TABLE `t_setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value` text COLLATE utf8_unicode_ci,
+  `autoload` tinyint(4) DEFAULT '0',
+  `class` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `t_setting` */
 
 /*Table structure for table `t_shipment` */
 
@@ -675,11 +691,11 @@ CREATE TABLE `t_shipping_location` (
   `bulky_weight` double DEFAULT NULL,
   `bulky_step_price` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_shipping_location` */
 
-insert  into `t_shipping_location`(`id`,`fk_shipping_method`,`fk_location`,`base_price`,`base_weight`,`weight_step`,`weight_step_price`,`bulky_weight`,`bulky_step_price`) values (1,1,1,10000,1,1,3000,20,5000),(2,2,1,20000,0.5,0.5,6000,20,10000),(3,3,1,15000,0.5,0.5,4000,20,7000);
+insert  into `t_shipping_location`(`id`,`fk_shipping_method`,`fk_location`,`base_price`,`base_weight`,`weight_step`,`weight_step_price`,`bulky_weight`,`bulky_step_price`) values (1,1,1,10000,1,1,3000,20,5000),(2,3,1,20000,0.5,0.5,6000,20,10000),(4,1,2,5000,0.5,0.5,2000,20,1000),(5,2,2,5000,0.5,0.5,2000,20,1000),(6,3,2,6000,0.5,0.5,2000,20,1000);
 
 /*Table structure for table `t_shipping_method` */
 
@@ -741,11 +757,11 @@ CREATE TABLE `t_user` (
   `user_type` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `created_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_user` */
 
-insert  into `t_user`(`id`,`portal_id`,`platform_key`,`user_type`,`created_date`) values (5,50,0,'USER','2014-05-31 10:05:36');
+insert  into `t_user`(`id`,`portal_id`,`platform_key`,`user_type`,`created_date`) values (5,50,0,'ADMIN','2014-05-31 10:05:36'),(6,51,0,'ADMIN','2014-07-19 10:07:04');
 
 /*Table structure for table `t_user_address` */
 
@@ -803,11 +819,11 @@ CREATE TABLE `t_wishlist` (
   `note` text COLLATE utf8_unicode_ci,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_wishlist` */
 
-insert  into `t_wishlist`(`id`,`fk_customer`,`name`,`remind_date`,`note`,`date_created`) values (22,5,'main',NULL,NULL,'2014-06-01 11:32:15'),(23,NULL,'main',NULL,NULL,'2014-06-01 22:51:46'),(24,NULL,'main',NULL,NULL,'2014-06-01 23:01:26'),(25,NULL,'main',NULL,NULL,'2014-06-01 23:01:34'),(26,NULL,'main',NULL,NULL,'2014-06-08 17:21:21'),(27,NULL,'main',NULL,NULL,'2014-06-13 19:12:38'),(28,NULL,'main',NULL,NULL,'2014-06-13 19:19:10'),(29,NULL,'main',NULL,NULL,'2014-06-25 22:07:54'),(30,NULL,'main',NULL,NULL,'2014-06-30 19:58:49'),(31,NULL,'main',NULL,NULL,'2014-06-30 20:13:16'),(32,NULL,'main',NULL,NULL,'2014-07-05 17:52:49'),(33,NULL,'main',NULL,NULL,'2014-07-06 07:33:38'),(34,NULL,'main',NULL,NULL,'2014-07-06 07:41:15'),(35,NULL,'main',NULL,NULL,'2014-07-06 07:47:40'),(36,NULL,'main',NULL,NULL,'2014-07-06 08:53:49'),(37,NULL,'main',NULL,NULL,'2014-07-06 09:18:58'),(38,NULL,'main',NULL,NULL,'2014-07-06 10:04:21'),(39,NULL,'main',NULL,NULL,'2014-07-06 13:07:41'),(40,NULL,'main',NULL,NULL,'2014-07-06 13:40:33'),(41,NULL,'main',NULL,NULL,'2014-07-06 13:43:31');
+insert  into `t_wishlist`(`id`,`fk_customer`,`name`,`remind_date`,`note`,`date_created`) values (22,5,'main',NULL,NULL,'2014-06-01 11:32:15'),(23,NULL,'main',NULL,NULL,'2014-06-01 22:51:46'),(24,NULL,'main',NULL,NULL,'2014-06-01 23:01:26'),(25,NULL,'main',NULL,NULL,'2014-06-01 23:01:34'),(26,NULL,'main',NULL,NULL,'2014-06-08 17:21:21'),(27,NULL,'main',NULL,NULL,'2014-06-13 19:12:38'),(28,NULL,'main',NULL,NULL,'2014-06-13 19:19:10'),(29,NULL,'main',NULL,NULL,'2014-06-25 22:07:54'),(30,NULL,'main',NULL,NULL,'2014-06-30 19:58:49'),(31,NULL,'main',NULL,NULL,'2014-06-30 20:13:16'),(32,NULL,'main',NULL,NULL,'2014-07-05 17:52:49'),(33,NULL,'main',NULL,NULL,'2014-07-06 07:33:38'),(34,NULL,'main',NULL,NULL,'2014-07-06 07:41:15'),(35,NULL,'main',NULL,NULL,'2014-07-06 07:47:40'),(36,NULL,'main',NULL,NULL,'2014-07-06 08:53:49'),(37,NULL,'main',NULL,NULL,'2014-07-06 09:18:58'),(38,NULL,'main',NULL,NULL,'2014-07-06 10:04:21'),(39,NULL,'main',NULL,NULL,'2014-07-06 13:07:41'),(40,NULL,'main',NULL,NULL,'2014-07-06 13:40:33'),(41,NULL,'main',NULL,NULL,'2014-07-06 13:43:31'),(42,NULL,'main',NULL,NULL,'2014-07-09 21:31:33'),(43,NULL,'main',NULL,NULL,'2014-07-09 21:42:36'),(44,NULL,'main',NULL,NULL,'2014-07-09 21:59:57'),(45,NULL,'main',NULL,NULL,'2014-07-16 18:56:14');
 
 /*Table structure for table `t_wishlist_detail` */
 

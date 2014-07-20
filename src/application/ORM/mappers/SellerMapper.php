@@ -8,12 +8,17 @@ class SellerMapper extends MapperAbstract
 
     function __construct($domain = 'SellerDomain')
     {
-        $query = Query::make()->from('t_seller');
+        $query = Query::make()
+                ->select('s.*, sl.codename AS seller_code, sl.name AS seller_name, sl.commission', true)
+                ->from('t_seller s')
+                ->innerJoin('t_seller_level sl', 'sl.id = s.fk_level');
 
         $map = array(
             'statusDate'   => 'status_date',
             'statusReason' => 'status_reason',
-            'fkManager'    => 'fk_manager'
+            'fkManager'    => 'fk_manager',
+            'sellerCode'   => 'seller_code',
+            'sellerName'   => 'seller_name'
         );
 
         parent::__construct($domain, $query, $map);
@@ -29,7 +34,7 @@ class SellerMapper extends MapperAbstract
     {
         $this->user = $user;
 
-        $this->_query->where('fk_manager=?', __FUNCTION__);
+        $this->_query->where('s.fk_manager=?', __FUNCTION__);
         $this->_queryParams[__FUNCTION__] = $user->id;
         return $this;
     }

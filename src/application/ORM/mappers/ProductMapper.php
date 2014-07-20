@@ -11,7 +11,7 @@ class ProductMapper extends MapperAbstract
 
     function __construct($domain = 'ProductDomain')
     {
-        $query = Query::make()->from('t_product p');
+        $query = Query::make()->select('p.*', true)->from('t_product p');
 
         $map = array(
             'fkCategory'  => 'fk_category',

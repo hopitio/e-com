@@ -36,4 +36,9 @@ class CategoryDomain implements DomainInterface
         return '/category/show/' . $this->id;
     }
 
+    function getLevel()
+    {
+        return substr_count($this->path, '/');
+    }
+
 }

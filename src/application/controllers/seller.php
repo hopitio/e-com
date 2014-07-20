@@ -72,7 +72,7 @@ class seller extends BaseController
 
         /* @var $products ProductFixedDomain */
         $mapper = ProductFixedMapper::make()
-                ->setLanguage(User::getCurrentUser()->languageKey)
+                ->setLanguage('VN-VI')
                 ->autoloadAttributes()
                 ->filterSeller($this->sellerInstance->id)
                 ->limit($dataTableHelper->length)

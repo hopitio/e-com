@@ -27,7 +27,7 @@
                 <div class="lynx_headWarp lynx_staticWidth">
                     <a class="lynx_logo" href="/" title="SFriendly"></a>
                     <div class="lynx_headLeft"> 
-                        <a href="/seller/show_products" title="<?php echo $language['layout']->lblHeadSell; ?>" class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></a>
+                        <a href="/seller/product" title="<?php echo $language['layout']->lblHeadSell; ?>" class="lynx_sell"> <?php echo $language['layout']->lblHeadSell; ?></a>
                         <a href="javascript:;" onclick='window.chatWindow = window.open("portal/help/contact_by_chat", "", "width=400,height=400");' class="lynx_liveChat"> <?php echo $language['layout']->lblLiveChat; ?></a>
                         <div class="lynx_language">
                             <span class="lynx_label"><?php echo $language['layout']->lblLanguage; ?> : 
