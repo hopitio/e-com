@@ -3,7 +3,7 @@
     <head >
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1,user-scalable=no' name='viewport'>
+        <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1,user-scalabel=no' name='viewport'>
 
         <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title : ''; ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/style/headMenu.css" media="all">
         <?php
         //Thêm các js riêng biệt
         foreach ($view->css as $item)
@@ -58,53 +59,108 @@
         </div>
         <div class="head-menu width-960 cursor-pointer">
             <ul>
-                <li class="active"><span><img src="/images/mn-gia-dinh.fw.png" /> GIA ĐÌNH</span></li>
-                <li>
-                    
-                    <div class="child text-left">
-                        <ul>
-                            <li>
-                              <table>
-                                <tr>
-                                    <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
-                                    <td class="lable"><span>Đồ sơ sinh</span></td>
-                                </tr>
-                               </table>
-                            </li>
-                            <li>
-                                <table>
-                                    <tr>
-                                        <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
-                                        <td class="lable"><span>Đồ sơ sinh</span></td>
-                                    </tr>
-                                </table>
-                            </li>
-                            <li>
-                                <table>
-                                    <tr>
-                                        <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
-                                        <td class="lable"><span>Đồ sơ sinh</span></td>
-                                    </tr>
-                                </table>
-                            </li>
-                            <li>
-                                <table>
-                                    <tr>
-                                        <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
-                                        <td class="lable"><span>Đồ sơ sinh</span></td>
-                                    </tr>
-                                </table>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                    <div class="menu-deco"></div>
-                    <span><img src="/images/mn-me-vs-be.fw.png" /> MẸ VÀ BÉ</span>
-                </li>
-                <li><span><img src="/images/nm-thuc-pham.fw.png" /> THỰC PHẨM</span></li>
-                <li><span><img src="/images/mn-qua-tang.fw.png" /> QUÀ TẶNG</span></li>
-                <li ><span><img src="/images/mn-made-in-viet-name.fw.png" /> MADE IN VIET NAME</span></li>
-                <li class="last"><span><img src="/images/mn-hot.fw.png" /> HOT</span></li>
+                <?php
+                $categogies = CategoryMapper::make()
+                        ->filterParent(0)
+                        ->setLanguage(User::getCurrentUser()->languageKey)
+                        ->setAutoloadChildren()
+                        ->findAll();
+                /* @var $categories CategoryDomain */
+                ?>
+                <?php foreach ($categogies as $parentCate): ?>
+                    <li>
+                        <?php if (count($parentCate->children)): ?>
+                            <div class="menu-deco"></div>
+                            <div class="child text-left">
+                                <ul>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                                                <td class="label"><span>Đồ sơ sinh</span></td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                                                <td class="label"><span>Đồ sơ sinh</span></td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                                                <td class="label"><span>Đồ sơ sinh</span></td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                                                <td class="label"><span>Đồ sơ sinh</span></td>
+                                            </tr>
+                                        </table>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                        <a href="/category/show/<?php echo $parentCate->id ?>" id="menu-<?php echo $parentCate->codename ?>"><?php echo $parentCate->name ?></a>
+                    </li>
+
+                <?php endforeach; ?>
+                <li class="last"><a href="#" id="menu-hot">HOT</a></li>
+
+<!--                <li class="active"><span><img src="/images/mn-gia-dinh.fw.png" /> GIA ĐÌNH</span></li>
+<li>
+ <div class="child text-left">
+     <ul>
+         <li>
+             <table>
+                 <tr>
+                     <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                     <td class="label"><span>Đồ sơ sinh</span></td>
+                 </tr>
+             </table>
+         </li>
+         <li>
+             <table>
+                 <tr>
+                     <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                     <td class="label"><span>Đồ sơ sinh</span></td>
+                 </tr>
+             </table>
+         </li>
+         <li>
+             <table>
+                 <tr>
+                     <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                     <td class="label"><span>Đồ sơ sinh</span></td>
+                 </tr>
+             </table>
+         </li>
+         <li>
+             <table>
+                 <tr>
+                     <td><img height="32px" width="32px" src="/images/mn-bg-do-so-sinh.fw.png"/>
+                     <td class="label"><span>Đồ sơ sinh</span></td>
+                 </tr>
+             </table>
+         </li>
+
+     </ul>
+ </div>
+ <div class="menu-deco"></div>
+ <span><img src="/images/mn-me-vs-be.fw.png" /> MẸ VÀ BÉ</span>
+</li>
+<li><span><img src="/images/nm-thuc-pham.fw.png" /> THỰC PHẨM</span></li>
+<li><span><img src="/images/mn-qua-tang.fw.png" /> QUÀ TẶNG</span></li>
+<li ><span><img src="/images/mn-made-in-viet-name.fw.png" /> MADE IN VIET NAME</span></li>
+<li class="last"><span><img src="/images/mn-hot.fw.png" /> HOT</span></li>-->
             </ul>
         </div>
         <div class="banner-box width-960">
@@ -204,23 +260,23 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="item">
                             <div class="lynx-row width-960">
                                 <div class="lynx-box lynx-box-small">
-                                    
+
                                 </div>
                                 <div class="lynx-box lynx-box-small">
-                                    
+
                                 </div>
                                 <div class="lynx-box lynx-box-small">
-                                    
+
                                 </div>
                                 <div class="lynx-box lynx-box-small">
-                                    
+
                                 </div>
                                 <div class="lynx-box lynx-box-small">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -246,7 +302,7 @@
                     <a href="#">Made in Viet nam</a>
                 </div>
             </div>
-            
+
             <div class="lynx-row">
                 <img class="adv-img-box" src="" />
                 <img class="adv-img-box" src="" />
@@ -261,7 +317,7 @@
                     <div class="price">1.000.000 vnd </div>
                     <div class="like">(980)</div>
                 </div>
-                
+
                 <div class="lynx-box lynx-box-large">
                     <a class="opacity" href="#"></a>
                     <img src="/images/demo-product.fw.png"/>
@@ -271,7 +327,7 @@
                     <div class="price">1.000.000 vnd </div>
                     <div class="like">(980)</div>
                 </div>
-                
+
                 <div class="lynx-box lynx-box-large">
                     <a class="opacity" href="#"></a>
                     <img src="/images/demo-product.fw.png"/>
@@ -283,8 +339,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
         <div class="tab tab-blue width-960 text-left">
             <div class="head width-960">
                 <ul>
@@ -340,7 +396,7 @@
                         <div class="price">1.000.000 vnd </div>
                         <div class="like">(980)</div>
                     </div>
-                     <div class="lynx-box lynx-box-medium">
+                    <div class="lynx-box lynx-box-medium">
                         <a class="opacity" href="#"></a>
                         <img src="/images/demo-product.fw.png"/>
                         <div class="name">Lorem ipsum dolor 109090 </div>
@@ -349,7 +405,7 @@
                         <div class="price">1.000.000 vnd </div>
                         <div class="like">(980)</div>
                     </div>
-                     <div class="lynx-box lynx-box-medium">
+                    <div class="lynx-box lynx-box-medium">
                         <a class="opacity" href="#"></a>
                         <img src="/images/demo-product.fw.png"/>
                         <div class="name">Lorem ipsum dolor 109090 </div>
@@ -358,7 +414,7 @@
                         <div class="price">1.000.000 vnd </div>
                         <div class="like">(980)</div>
                     </div>
-                     <div class="lynx-box lynx-box-medium">
+                    <div class="lynx-box lynx-box-medium">
                         <a class="opacity" href="#"></a>
                         <img src="/images/demo-product.fw.png"/>
                         <div class="name">Lorem ipsum dolor 109090 </div>
@@ -367,7 +423,7 @@
                         <div class="price">1.000.000 vnd </div>
                         <div class="like">(980)</div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="extend width-960 text-center">
@@ -375,65 +431,65 @@
             </div>
         </div>
         <div class="lynx-adv width-960">
-        
+
         </div>
         <div class="lynx_footer ">
-                    <div class="lynx_content width-960">
-                        <div class="lynx_col1">
-                            <img class="lynx_logo" src="/images/logo-footer.png"/>
-                            <span class="lynx_contact">
-                                Sfriendly.com /  Sfriendly.vn <br/>
-                                Phone: 098 999 999 <br/>
-                                Email: sale@sf
-                            </span>
-                            <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
-                            <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
-                            <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
-                            <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
-                        </div>
-                        <div class="lynx_col2">
-                            <div class="lynx_cell">
-                                <ul>
-                                    <span><?php echo $language['layout']->lblMakeMoneyWithUs; ?></span>
-                                    <li> <?php echo $language['layout']->lblSell; ?> </li>
-                                    <li> <?php echo $language['layout']->lblAdve; ?> </li>
-                                </ul>
-                                <ul>
-                                    <span><?php echo $language['layout']->lblCustomerService; ?></span>
-                                    <li> <?php echo $language['layout']->lblFAQs; ?> </li>
-                                    <li> <?php echo $language['layout']->lblContact; ?> </li>
-                                    <li> <?php echo $language['layout']->lblShippingvsReturn; ?> </li>
-                                    <li> <?php echo $language['layout']->lblSafeShopping; ?>  </li>
-                                    <li> <?php echo $language['layout']->lblGuaranteeSecureShopping; ?>    </li>
-                                </ul>
-                            </div>
-                            <div class="lynx_cell">
-                                <ul>
-                                    <span><?php echo $language['layout']->lblAboutSfriendly; ?></span>
-                                    <li><a href="/portal/page/about_us"><?php echo $language['layout']->lblAbout; ?></a></li>
-                                    <li><?php echo $language['layout']->lblJobs; ?></li>
-                                    <li><?php echo $language['layout']->lblCustomerTestimonials; ?></li>
-                                    <li><?php echo $language['layout']->lblAssociatesProgram; ?></li>
-                                    <li><?php echo $language['layout']->lblGlossaryofTerms; ?></li>
-                                    <li><?php echo $language['layout']->lblDailyShowDigest; ?></li>
-                                </ul>
-                                <ul>
-                                    <span><?php echo $language['layout']->lblFeedback; ?></span>
-                                    <li><?php echo $language['layout']->lblHowLikeOurWebsite; ?></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lynx_col3">
-                            <img src="/images/Payment-follow.fw.png"/>
-                        </div>
+            <div class="lynx_content width-960">
+                <div class="lynx_col1">
+                    <img class="lynx_logo" src="/images/logo-footer.png"/>
+                    <span class="lynx_contact">
+                        Sfriendly.com /  Sfriendly.vn <br/>
+                        Phone: 098 999 999 <br/>
+                        Email: sale@sf
+                    </span>
+                    <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
+                    <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
+                    <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
+                    <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
+                </div>
+                <div class="lynx_col2">
+                    <div class="lynx_cell">
+                        <ul>
+                            <span><?php echo $language['layout']->lblMakeMoneyWithUs; ?></span>
+                            <li> <?php echo $language['layout']->lblSell; ?> </li>
+                            <li> <?php echo $language['layout']->lblAdve; ?> </li>
+                        </ul>
+                        <ul>
+                            <span><?php echo $language['layout']->lblCustomerService; ?></span>
+                            <li> <?php echo $language['layout']->lblFAQs; ?> </li>
+                            <li> <?php echo $language['layout']->lblContact; ?> </li>
+                            <li> <?php echo $language['layout']->lblShippingvsReturn; ?> </li>
+                            <li> <?php echo $language['layout']->lblSafeShopping; ?>  </li>
+                            <li> <?php echo $language['layout']->lblGuaranteeSecureShopping; ?>    </li>
+                        </ul>
                     </div>
-                    <div class="lynx_copyright">
-                        <div class="lynx_copycontent">
-                            Copyright © 2014 Sfriendly.com. All rights Reserved
-                        </div>
+                    <div class="lynx_cell">
+                        <ul>
+                            <span><?php echo $language['layout']->lblAboutSfriendly; ?></span>
+                            <li><a href="/portal/page/about_us"><?php echo $language['layout']->lblAbout; ?></a></li>
+                            <li><?php echo $language['layout']->lblJobs; ?></li>
+                            <li><?php echo $language['layout']->lblCustomerTestimonials; ?></li>
+                            <li><?php echo $language['layout']->lblAssociatesProgram; ?></li>
+                            <li><?php echo $language['layout']->lblGlossaryofTerms; ?></li>
+                            <li><?php echo $language['layout']->lblDailyShowDigest; ?></li>
+                        </ul>
+                        <ul>
+                            <span><?php echo $language['layout']->lblFeedback; ?></span>
+                            <li><?php echo $language['layout']->lblHowLikeOurWebsite; ?></li>
+                        </ul>
                     </div>
                 </div>
-        
+                <div class="lynx_col3">
+                    <img src="/images/Payment-follow.fw.png"/>
+                </div>
+            </div>
+            <div class="lynx_copyright">
+                <div class="lynx_copycontent">
+                    Copyright © 2014 Sfriendly.com. All rights Reserved
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript">
             function Config() {
                 this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';

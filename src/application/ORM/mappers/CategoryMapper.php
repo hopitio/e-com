@@ -5,6 +5,8 @@ defined('BASEPATH') or die('No direct script access allowed');
 class CategoryMapper extends MapperAbstract
 {
 
+    protected $_autoload_children = false;
+
     public function __construct($domain = 'CategoryDomain')
     {
         $query = Query::make()
@@ -37,6 +39,23 @@ class CategoryMapper extends MapperAbstract
                 {
                     $instance->parent_name = $record['parent_name'];
                 });
+    }
+
+    function setAutoloadChildren($bool = true)
+    {
+        $this->_autoload_children = $bool;
+        return $this;
+    }
+
+    function makeDomainCallback(&$domainInstance)
+    {
+        if ($this->_autoload_children)
+        {
+            $domainInstance->children = static::make()
+                    ->filterParent($domainInstance->id)
+                    ->setLanguage($domainInstance->language)
+                    ->findAll();
+        }
     }
 
     /**

@@ -13,11 +13,14 @@ class home extends BaseController
 
     public function showHome()
     {
+        $data = array();
+       
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setJavascript(array(
                     '/js/controller/HomeCtrl.js'
                 ))
                 ->setCss(array('/style/home.css'))
+                ->setData($data)
                 ->render('home');
     }
 
