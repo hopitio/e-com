@@ -129,6 +129,15 @@ class ProductFixedDomain extends ProductDomain
         return $money->convert(new Currency($currency));
     }
 
+    function getOriginPrice($currency = 'USD')
+    {
+        $attr = $this->_getAttributeByName('origin_price');
+        $price = $attr ? $attr->getTrueValue() : 0;
+        $money = new Money($price, new Currency('VND'));
+
+        return $money->convert(new Currency($currency));
+    }
+
     function getMetaTitle()
     {
         return $this->_getAttributeByName('meta_title');

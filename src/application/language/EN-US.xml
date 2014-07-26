@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <home>
-        <title>Sfriendly</title>
-        <lblViewAll>View All >></lblViewAll>
-        <lblHot>Hot</lblHot>
-        <lblNew>New </lblNew>
-        <lblSale>Sale off</lblSale>
+        <lblBestSeller>BEST SELLERS</lblBestSeller>      
+        <lblNewProduct>NEW PRODUCT</lblNewProduct>  
     </home>
     <login>
         <title>PROJECT E Login</title>
@@ -51,10 +48,15 @@
         <label>abc{0}</label>
     </Details>
     <layout>
+        <lblSellerOffice>Seller Office</lblSellerOffice>
+        <lblMyOrder>My Order</lblMyOrder>
+        <lblRegister>Register</lblRegister>
+        <lblMadeinVietnam>Made in Vietnam</lblMadeinVietnam>
+        <lblHot>Hot</lblHot>
+        
         <lblHeadSell>SELL</lblHeadSell>
         <lblLiveChat>LIVE CHAT</lblLiveChat>
         <lblLanguage>LANGUAGE</lblLanguage>
-        
         <lblMakeMoneyWithUs>Co-operation and Development</lblMakeMoneyWithUs>
         <lblSell>Sell</lblSell>
         <lblAdve>Contact for advertising</lblAdve>
@@ -79,7 +81,7 @@
         <lblCartAlert>Empty Cart</lblCartAlert>
         <lblCartQuantity>Quantity</lblCartQuantity>
         <lblUserStatus>Hi, {1} Your account</lblUserStatus>
-        <lblUserStatusNotSign>Hello, Sign in Here</lblUserStatusNotSign>
+        <lblUserStatusNotSign>Sign in</lblUserStatusNotSign>
         <lblUserLogout>Sign out</lblUserLogout>
         <lblUserAccount>Account information</lblUserAccount>
         <lblUserOrder>Order information</lblUserOrder>

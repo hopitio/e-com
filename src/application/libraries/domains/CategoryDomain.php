@@ -19,7 +19,7 @@ class CategoryDomain implements DomainInterface
     public $pathSort;
     public $isShowInHome = 0;
 
-    /** @var static */
+    /** @var CategoryDomain */
     public $children = array();
 
     /** @var SimpleXMLElement */

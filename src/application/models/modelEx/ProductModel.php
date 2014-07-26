@@ -6,7 +6,7 @@ class ProductModel extends BaseModel
 {
 
     /** @return ProductFixedMapper */
-    function getAllNewProduct($pageSize, $pageNo)
+    function getAllNewProduct($limit, $offset)
     {
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
@@ -14,7 +14,7 @@ class ProductModel extends BaseModel
                 ->autoloadAttributes()
                 ->autoloadTaxes()
                 ->setLanguage(User::getCurrentUser()->languageKey)
-                ->limit($pageSize, ($pageNo - 1) * $pageSize);
+                ->limit($limit, $offset);
 
         $mapper->getQuery()
                 ->select('seller.name AS seller_name')

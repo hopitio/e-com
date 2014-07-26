@@ -48,13 +48,21 @@ class FeatureGroupMapper extends MapperAbstract
                     ->setLanguage($this->_language)
                     ->autoloadAttributes();
             $mapper->getQuery()
-                    ->select('seller.name AS seller_name')
+                    ->select('seller.name AS seller_name', false)
                     ->innerJoin('t_seller seller', 'seller.id = p.fk_seller')
                     ->innerJoin('t_feature_product fp', 'fp.fk_product=p.id AND fp.fk_group=' . intval($domainInstance->id))
                     ->orderBy('fp.sort');
-            $products = $mapper->findAll();
+            $products = $mapper->findAll(function($record, $entity){
+                $entity->seller_name = $record['seller_name'];
+            });
             $domainInstance->setProducts($products);
         }
+    }
+
+    /** @return FeatureGroupDomain */
+    function findAll($callback = null)
+    {
+        return parent::findAll($callback);
     }
 
 }

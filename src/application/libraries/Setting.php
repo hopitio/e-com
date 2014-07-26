@@ -14,7 +14,7 @@ class Setting
     function __construct()
     {
         $this->_db = DB::getInstance();
-        $this->_data = $this->_db->GetAssoc("SELECT `key`, `value`, autoload, class FROM t_setting WHERE autoload=1");
+        $this->_data = $this->_db->GetAssoc("SELECT `key`, `value`, `autoload`, `class` FROM t_setting WHERE autoload=1");
         register_shutdown_function(array($this, 'save'));
     }
 
@@ -37,7 +37,7 @@ class Setting
     {
         if (!isset($this->_data[$key]))
         {
-            $this->_data[$key] = $this->_db->GetRow("SELECT `value`, autoload, class FROM t_setting WHERE key=?", array($key));
+            $this->_data[$key] = $this->_db->GetRow("SELECT `value`, autoload, class FROM t_setting WHERE `key`=?", array($key));
         }
         return $this->_data[$key]['value'];
     }
