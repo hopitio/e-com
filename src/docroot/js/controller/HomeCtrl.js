@@ -58,3 +58,12 @@ angular.module('lynx').controller('homeCtrl', ['$scope', '$http', '$timeout', fu
             $scope.featureGroups = resp;
         });
     }]);
+
+$(document).ready(function() {
+    $(".carousel ").swiperight(function() {
+        $(this).carousel('prev');
+    });
+    $(".carousel ").swipeleft(function() {
+        $(this).carousel('next');
+    });
+});  

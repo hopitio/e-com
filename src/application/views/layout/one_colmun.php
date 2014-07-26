@@ -20,7 +20,7 @@
         }
         ?>
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
-
+        <script type='text/javascript' src="/js/jquery-mobile-lite.js"></script>	
     </head>
     <body>
         <div class="head-tool-box text-center">
