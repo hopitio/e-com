@@ -8,6 +8,9 @@ lynxApp.directive('ngThumbnail', function() {
         img.onload = function() {
             if (img.width > img.height) {
                 img.style.width = '100%';
+                var ratio = $(elem).width() / img.width;
+                img.style['margin-top'] = ($(elem).height() - img.height * ratio) / 2 + 'px';
+                console.log(ratio, $(elem).height(), img.width * ratio);
             } else {
                 img.style.height = '100%';
             }
