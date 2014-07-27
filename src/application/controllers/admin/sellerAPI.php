@@ -75,7 +75,6 @@ class sellerAPI extends AdminControllerAbstract{
         
         $data['status'] = $status;
         $data['status_date'] = DB::getDate();
-        $data['status_reason'] = 'ADMIN INACTIVE';
         $result = DB::update('t_seller', $data , 't_seller.id = '.$sellerId);
         
         $this->setResult($result, null);

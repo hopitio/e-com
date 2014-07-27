@@ -1,0 +1,22 @@
+.head-menu > ul > li.EN-US > a{width: 140px;}
+.head-menu > ul > li.VN-VI > a{min-width: 140px;}
+.head-menu > ul > li.KO-KR > a{min-width: 140px;}
+#menu-family > a{
+    background-image: url(/images/mn-gia-dinh.fw.png);
+}
+#menu-kid > a{
+    background-image: url(/images/mn-me-vs-be.fw.png);
+}
+#menu-food > a{
+    background-image: url(/images/nm-thuc-pham.fw.png);
+}
+#menu-gift > a{
+    background-image: url(/images/mn-qua-tang.fw.png);
+}
+#menu-hot > a{
+    background-image: url(/images/mn-hot.fw.png);
+}
+#menu-vietnam > a{
+    background-image: url(/images/mn-made-in-viet-name.fw.png);
+    width: 200px;
+}

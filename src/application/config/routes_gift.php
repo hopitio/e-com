@@ -13,29 +13,31 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['home'] = 'home/showHome';
         $route['logout'] = 'login/out';
         $route['sitemap'] = 'sitemap/showPage';
-        
+
         $route['__admin'] = 'admin/mainpage/showpage';
         $route['__admin/mainpage'] = 'admin/mainpage/showpage';
-        
+
         $route['__admin/seller'] = 'admin/seller/ShowPage';
         $route['api/__admin/seller/find'] = 'admin/sellerAPI/searchSeller';
         $route['api/__admin/seller/upload_image'] = 'admin/sellerAPI/uploadSellerImage/$1';
         $route['api/__admin/seller/change_status/(:num)'] = 'admin/sellerAPI/changeStatus/$1';
         $route['api/__admin/user/(:num)'] = 'admin/userAPI/getGiftUserId/$1';
-        
-        
+
+        $route['__admin/product'] = 'admin/product/main';
+        $route['__admin/product/svc_all_products'] = 'admin/product/svc_all_products';
+
         $route['__admin/user_find'] = 'admin/sellerFind/ShowPage';
         $route['__admin/user_find/(:num)/(:num)'] = 'admin/sellerFind/getSellerListXhr/$1/$2';
-        
+
         $route['__admin/product_find'] = 'admin/sellerFind/ShowPage';
         $route['__admin/product_find/(:num)/(:num)'] = 'admin/sellerFind/getSellerListXhr/$1/$2';
-        
+
         $route['admin/product'] = 'admin/product/show_list';
         $route['admin/product/show_list'] = 'admin/product/show_list';
-        
+
         $route['order/place_order'] = 'devPlaceOrder/showPage';
         $route['__mockup/list'] = 'testingController/getMockupScreenList';
-        
+
         $route['logout'] = "logout/out";
     }
 

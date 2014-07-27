@@ -13,15 +13,15 @@ class home extends BaseController
 
     public function showHome()
     {
-        //$this->load->model('Category');
-        //$cate = $this->Category->loadCategory();
+        $data = array();
+        $data['banners'] = Setting::getInstance()->get('home_banner');
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setJavascript(array(
                     '/js/controller/HomeCtrl.js'
                 ))
                 ->setCss(array('/style/home.css'))
+                ->setData($data)
                 ->render('home');
-        //LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setCss(array("/style/homePage.css"))->setData()->render('home');
     }
 
     function hot_service()
@@ -47,6 +47,7 @@ class home extends BaseController
         $json = array();
 
         /* @var $products ProductFixedDomain */
+        $i = 0;
         foreach ($products as $product)
         {
             $images = $product->getImages('thumbnail');
@@ -55,18 +56,44 @@ class home extends BaseController
             $obj['thumbnail'] = $images[0]->url;
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
+            $obj['originPrice'] = $product->getOriginPrice()->getAmount() ? (string) $product->getOriginPrice($user->getCurrency()) : '';
+            $obj['best'] = $i++ < 2 ? $i : false;
             $json[] = $obj;
         }
         echo json_encode($json);
     }
 
-    function new_service()
+    function feature_group_service()
     {
         $user = User::getCurrentUser();
-        $this->load->model('modelEx/ProductModel', 'product_model');
-        $products = $this->product_model->getAllNewProduct();
-        $json = array();
+        $groups = FeatureGroupMapper::make()
+                ->setLanguage($user->languageKey)
+                ->setAutoloadProducts()
+                ->findAll();
+        foreach ($groups as $group)
+        {
+            foreach ($group->getProducts() as $product)
+            {
+                $images = $product->getImages('thumbnail');
+                $product->name = strval($product->getName());
+                $product->thumbnail = $images[0]->url;
+                $product->priceString = strval($product->getFinalPriceMoney($user->getCurrency()));
+                $product->url = base_url('product/details') . '/' . $product->id;
+                $product->originPrice = $product->getOriginPrice()->getAmount() ? (string) $product->getOriginPrice($user->getCurrency()) : '';
+            }
+            $group->images = $group->getImages();
+            $group->products = $group->getProducts();
+        }
+        echo json_encode($groups);
+    }
 
+    function new_service($offset)
+    {
+        header('content-type:application/json');
+        $user = User::getCurrentUser();
+        $this->load->model('modelEx/ProductModel', 'product_model');
+        $products = $this->product_model->getAllNewProduct(8, (int) $offset);
+        $json = array();
         /* @var $products ProductFixedDomain */
         foreach ($products as $product)
         {
@@ -76,84 +103,8 @@ class home extends BaseController
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
+            $obj['originPrice'] = $product->getOriginPrice()->getAmount() ? (string) $product->getOriginPrice() : '';
             $json[] = $obj;
-        }
-        echo json_encode($json);
-    }
-
-    function sale_service()
-    {
-        
-    }
-
-    function section_service()
-    {
-        header('Content-type: application/json');
-        $user = User::getCurrentUser();
-        $categories = CategoryMapper::make()
-                ->setLanguage($user->languageKey)
-                ->filterShowInHome()
-                ->findAll(function($rawData, $instance)
-        {
-            $instance->dom_product_section_images = simplexml_load_string($rawData['product_section_image']);
-        });
-
-        $json = array();
-        foreach ($categories as $section)
-        {
-            $section_array = get_object_vars($section);
-            $section_array['url'] = base_url("category/show/{$section->id}");
-            if ($section->dom_product_section_images &&
-                    isset($section->dom_product_section_images->img))
-            {
-                $attrs = $section->dom_product_section_images->img->attributes();
-                $section_array['displayImage'] = (string) $attrs->src;
-                $section_array['displayImageTitle'] = (string) $attrs->title;
-                $section_array['displayImageHref'] = (string) $attrs->href;
-            }
-            $section_array['products'] = array();
-
-            $productMapper = ProductFixedMapper::make()
-                    ->select('p.*', true)
-                    ->setLanguage($user->languageKey)
-                    ->autoloadTaxes()
-                    ->filterStatus(1)
-                    ->autoloadAttributes();
-            if (isset($section_array['displayImage']))
-            {
-                $productMapper->limit(6);
-            }
-            else
-            {
-                $productMapper->limit(8);
-            }
-            if ($section->isContainer)
-            {
-                $productMapper->filterContainerCategory($section->id);
-            }
-            else
-            {
-                $productMapper->filterCategory($section->id);
-            }
-            $productMapper->getQuery()
-                    ->select('seller.name AS seller_name')
-                    ->innerJoin('t_seller seller', 'seller.id = p.fk_seller');
-            $products = $productMapper->findAll(function($rawData, $instance)
-            {
-                $instance->seller_name = $rawData['seller_name'];
-            });
-            foreach ($products as $product)
-            {
-                $images = $product->getImages('thumbnail');
-                $product_array = get_object_vars($product);
-                $product_array['name'] = strval($product->getName());
-                $product_array['thumbnail'] = $images ? strval($images[0]->url) : '';
-                $product_array['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
-                $product_array['url'] = base_url('product/details') . '/' . $product->id;
-
-                $section_array['products'][] = $product_array;
-            }
-            $json[] = $section_array;
         }
         echo json_encode($json);
     }

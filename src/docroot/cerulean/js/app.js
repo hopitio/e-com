@@ -125,12 +125,12 @@ $.extend($.fn.dataTableExt.oPagination, {
     }
 });
 
-function dataTableInit(elm, url, height, customOPT) {
+function dataTableInit(elm, ajax, height, customOPT) {
     customOPT = customOPT || {};
     var opts = {
         "processing": true,
         "serverSide": true,
-        "ajax": url,
+        "ajax": ajax,
         stateSave: true,
         "scrollY": height ? height + 'px' : '300px',
         pagingType: 'bootstrap',
@@ -181,12 +181,22 @@ function dataTableInit(elm, url, height, customOPT) {
         $table.parent().parent().next('.dataTables_info').appendTo($footer);
         $table.parent().parent().next('.dataTables_paginate').appendTo($footer);
 
+        $table.on('click', 'tr', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'A')
+            {
+                return;
+            }
+            var $check = $('input[type=checkbox]:first', this);
+            $check.prop('checked', !$check.prop('checked')).trigger('change');
+        });
+
         $('.fa-refresh', $panel).parent().click(function() {
             $dataTable.ajax.reload();
         });
 
         $('.fa-times', $panel).parent().click(function() {
             $(elm).parents('form:first')[0].reset();
+            $dataTable.ajax.reload();
         });
 
         $('.check-all', $panel).on('check', function() {

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <home>
-        <title>Sfriendly</title>
-        <lblViewAll>XEM TẤT CẢ >></lblViewAll>
-        <lblHot>Hot nhất</lblHot>
-        <lblNew>Mới nhất</lblNew>
-        <lblSale>Giảm giá</lblSale>
+        <lblBestSeller>SẢN PHẨM BÁN CHẠY</lblBestSeller>
+        <lblNewProduct>NEW PRODUCT</lblNewProduct>
     </home>
     <login>
         <title>PROJECT E Đăng nhập</title>
@@ -53,10 +50,15 @@
         
     </Details>
     <layout>
+        <lblSellerOffice>Bán hàng</lblSellerOffice>
+        <lblMyOrder>Kiểm tra đơn hàng</lblMyOrder>
+        <lblRegister>Đăng kí</lblRegister>
+        <lblMadeinVietnam>Hàng Việt Nam</lblMadeinVietnam>
+        <lblHot>Hot</lblHot>
+        
         <lblHeadSell>BÁN</lblHeadSell>
         <lblLiveChat>LIVE CHAT</lblLiveChat>
         <lblLanguage>NGÔN NGỮ</lblLanguage>
-        
         <lblMakeMoneyWithUs>Hợp tác và phát triển</lblMakeMoneyWithUs>
         <lblSell>Bán sản phẩm</lblSell>
         <lblAdve>Liên hệ quảng cáo</lblAdve>
@@ -81,7 +83,7 @@
         <lblCartAlert>Bạn chưa có sản phẩm nào trong giỏ hàng</lblCartAlert>
         <lblCartQuantity>Số lượng</lblCartQuantity>
         <lblUserStatus>Chào, {1} tài khoản của bạn</lblUserStatus>
-        <lblUserStatusNotSign>Chào bạn, xin mời đăng nhập</lblUserStatusNotSign>
+        <lblUserStatusNotSign>Đăng nhập</lblUserStatusNotSign>
         <lblUserLogout>Đăng xuất</lblUserLogout>
         <lblUserAccount>Thông tin tài khoản</lblUserAccount>
         <lblUserOrder>Thông tin order</lblUserOrder>
@@ -445,4 +447,7 @@
     <dialog_findUser>
         <title>Tìm kiếm user</title>
     </dialog_findUser>
+    <admin_product>
+        
+    </admin_product>
 </data>

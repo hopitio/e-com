@@ -11,52 +11,17 @@ require_once __DIR__ . DS . "MapperAbstract.php";
 
 require_once APPPATH . "libraries" . DS . "DataTableHelper.php";
 
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ListtypeDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ListDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductAttributeTypeDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductAttributeDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "TaxDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductImageDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ProductFixedDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "FeatureProductDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "CategoryDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "FileDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "CartDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "LocationDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ShippingLocationDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "ShippingMethodDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "WishlistDetailDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "WishlistDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "UserAddressDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "PinDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "SellerCategoryDomain.php";
-require_once APPPATH . "libraries" . DS . "domains" . DS . "SellerDomain.php";
-
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListtypeMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListFixedMapperAbstract.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListFixedMapperAbstract.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ListMaterialMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductAttributeTypeMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductAttributeMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "TaxMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductImageMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ProductFixedMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "SearchMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "FeatureProductMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "CategoryMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "FileMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "CartMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "LocationMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ShippingMethodMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "ShippingLocationMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistDetailMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "WishlistMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "PinMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "SellerCategoryMapper.php";
-require_once APPPATH . "ORM" . DS . "mappers" . DS . "SellerMapper.php";
+spl_autoload_register(function($class)
+{
+    if (strpos($class, 'Domain') !== false)
+    {
+        include_once APPPATH . "libraries" . DS . "domains" . DS . "$class.php";
+    }
+    else if (strpos($class, 'Mapper') !== false)
+    {
+        include_once APPPATH . "ORM" . DS . "mappers" . DS . "$class.php";
+    }
+});
 
 $portalConfig = new DBConfig;
 $portalConfig->type = 'mysqli';

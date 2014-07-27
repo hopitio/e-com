@@ -1,38 +1,59 @@
 @CHARSET "UTF-8";
-.lynx_container .lynx_banner{
-    display:inline-block;
-    width:100%;
+.banner-box{
+    margin:auto;
+    background-color: white;
+    padding-top: 10px;
 }
-.lynx_banner .lynx_slide
-{
-    width:100%;
-    display:inline-block;
-    height:450px;
+.carousel-inner>.item>img, .carousel-inner>.item>a>img{
+    height:360px;
 }
-.lynx_banner .lynx_suggest{
-    width:100%;
-    background: white;
-    display:inline-block;
-    height:45px;
-    background: transparent url('../images/suggest-bg.png') repeat-x top left;
+.carousel-control{
+    width:7%;
 }
-.lynx_suggest .lynx_suggetWarp{
-    display:inline-block;
+.banner-box .carousel-control.left,.banner-box .carousel-control.right,
+.tab-content .carousel-control.right,.tab-content .carousel-control.left{
+    background: none;
+    
 }
-.lynx_suggest .lynx_suggestItem{
-    width:33%;
-    display:inline-block;
-    height:60px;
-    margin-top:-20px;
+.banner-box .carousel-control.right:hover{
+    background-image: -webkit-linear-gradient(left,color-stop(rgba(0,0,0,.0001) 0),color-stop(rgba(0,0,0,.3) 100%));
+    background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.2) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
 }
-.lynx_suggest .lynx_step1{
-    background: transparent url('../images/suggest-setp1-bg.png') no-repeat center top;
+.banner-box .carousel-control.left:hover{
+    background-image: -webkit-linear-gradient(left,color-stop(rgba(0,0,0,.3) 0),color-stop(rgba(0,0,0,.0001) 100%));
+    background-image: linear-gradient(to right,rgba(0,0,0,.3) 0,rgba(0,0,0,.0001) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
-.lynx_suggest .lynx_step2{
-    background: transparent url('../images/suggest-setp2-bg.png') no-repeat center top;
+
+.tab-content .carousel-control.right:hover{
+    background-image: -webkit-linear-gradient(left,color-stop(rgba(0,0,0,.0001) 0),color-stop(rgba(0,0,0,.3) 100%));
+    background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.2) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
 }
-.lynx_suggest .lynx_step3{
-    background: transparent url('../images/suggest-setp3-bg.png') no-repeat center top;
+.tab-content .carousel-control.left:hover{
+    background-image: -webkit-linear-gradient(left,color-stop(rgba(0,0,0,.3) 0),color-stop(rgba(0,0,0,.0001) 100%));
+    background-image: linear-gradient(to right,rgba(0,0,0,.3) 0,rgba(0,0,0,.0001) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
+.tab-content .carousel-indicators{
+    bottom:-40px;
+}
+.tab-content .carousel-indicators li{
+    background-color: white;
+    border-color:#BEC5C6;
+}
+.tab-content .carousel-indicators .active{
+    background-color: #BEC5C6;
+}
+.lynx-adv-home{
+    margin-top:40px;
+}
+
+
 
 

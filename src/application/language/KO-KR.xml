@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <home>
-        <title>Sfriendly</title>
-        <lblViewAll>전제 보기 >></lblViewAll>
-        <lblHot>HOT 상품</lblHot>
-        <lblNew>NEW 상품</lblNew>
-        <lblSale>할인 상품</lblSale>
+        <lblBestSeller>베스트 셀러</lblBestSeller>
+        <lblNewProduct>새로운 제품</lblNewProduct>
     </home>
     <login>
         <title>PROJECT E 로그인</title>
@@ -51,10 +48,15 @@
         <label>abc{0}</label>
     </Details>
     <layout>
+        <lblSellerOffice>판매자 사무실</lblSellerOffice>
+        <lblMyOrder>내 순서</lblMyOrder>
+        <lblRegister>레지스터</lblRegister>
+        <lblMadeinVietnam>베트남 제</lblMadeinVietnam>
+        <lblHot>뜨거운</lblHot>
+        
         <lblHeadSell>판매</lblHeadSell>
         <lblLiveChat>라이브 채팅</lblLiveChat>
         <lblLanguage>언어</lblLanguage>
-        
         <lblMakeMoneyWithUs>개발 협력</lblMakeMoneyWithUs>
         <lblSell>판매</lblSell>
         <lblAdve>광고 문의</lblAdve>
@@ -79,7 +81,7 @@
         <lblCartAlert>장바구니 (0)</lblCartAlert>
         <lblCartQuantity>수</lblCartQuantity>
         <lblUserStatus>안녕하세요, {1} 귀하의 계정</lblUserStatus>
-        <lblUserStatusNotSign>안녕하세요, 여기에 가입</lblUserStatusNotSign>
+        <lblUserStatusNotSign>로그인</lblUserStatusNotSign>
         <lblUserLogout>로그 아웃</lblUserLogout>
         <lblUserAccount>계정 정보</lblUserAccount>
         <lblUserOrder>주문 정보</lblUserOrder>
@@ -439,7 +441,10 @@
         <colPrices>가격</colPrices>
         <colAction></colAction>
     </search_show_page>
-        <dialog_findUser>
+    <dialog_findUser>
         <title>Tìm kiếm user</title>
     </dialog_findUser>
+    <admin_product>
+        
+    </admin_product>
 </data>

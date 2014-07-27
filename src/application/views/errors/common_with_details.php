@@ -1,37 +1,68 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Lỗi hệ thống</title>
-    <style>
-        a{color:#ff881e;font-style:normal;text-decoration:underline;}
-        a:link {color:#ff881e;font-style:normal;text-decoration:underline;}
-        a:visited {color:#ff881e;text-decoration:underline;}
-        a:hover {color:#888888;font-style:normal;text-decoration:underline;}
-        a:active {text-decoration:none;}
-    </style>
+<title>404 Page Not Found</title>
+<style type="text/css">
+
+::selection{ background-color: #E13300; color: white; }
+::moz-selection{ background-color: #E13300; color: white; }
+::webkit-selection{ background-color: #E13300; color: white; }
+
+body {
+	background-color: #fff;
+	margin: 40px;
+	font: 13px/20px normal Helvetica, Arial, sans-serif;
+	color: #4F5155;
+}
+
+a {
+	color: #003399;
+	background-color: transparent;
+	font-weight: normal;
+}
+
+h1 {
+	color: #444;
+	background-color: transparent;
+	border-bottom: 1px solid #D0D0D0;
+	font-size: 19px;
+	font-weight: normal;
+	margin: 0 0 14px 0;
+	padding: 14px 15px 10px 15px;
+}
+
+code {
+	font-family: Consolas, Monaco, Courier New, Courier, monospace;
+	font-size: 12px;
+	background-color: #f9f9f9;
+	border: 1px solid #D0D0D0;
+	color: #002166;
+	display: block;
+	margin: 14px 0 14px 0;
+	padding: 12px 10px 12px 10px;
+}
+
+#container {
+	margin: 10px;
+	border: 1px solid #D0D0D0;
+	-webkit-box-shadow: 0 0 8px #D0D0D0;
+}
+
+p {
+	margin: 12px 15px 12px 15px;
+}
+</style>
 </head>
 <body>
-<div class="wrap_gray">
-    <div class="logo">
-        <img src="/images/logo_exception.png" />
-    </div>
-    <div class="mi_title">
-        <p>Lỗi</p>
-    </div>
-    <div class="mi_notice">
-        <p class="maintain">
-            <?php echo $e->title; ?>
-        </p>
-        <p class="orange">
-            <?php echo $e->getMessage(); ?>
-        </p>
-    </div>
-    <div class="mi_copy">
-        <p>Copyright © LYNX TEAM : lethanhan.bkaptech@gmail.com</p>
-    </div>
-    <pre style="visibility: hidden;"><?php var_dump($e);?></pre>
-</div>
-<?php echo $this->layout->get_extra_footer(); ?>
+	<div id="container">
+		<h1>SYSTEM ERROR</h1>
+		Sảy ra lỗi hệ thống : <?php var_dump($e);?><br/>
+		Thông tin Liên hệ : LeThanhAn.bkaptech@gmail.com
+	</div>
 </body>
-</html>
+
+
+
+
+
+

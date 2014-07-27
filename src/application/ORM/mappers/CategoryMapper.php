@@ -5,13 +5,15 @@ defined('BASEPATH') or die('No direct script access allowed');
 class CategoryMapper extends MapperAbstract
 {
 
+    protected $_autoload_children = false;
+
     public function __construct($domain = 'CategoryDomain')
     {
         $query = Query::make()
-                ->select('c.*, cl.name, cl.description, cl.language, cl.name, cl.product_section_image',true)
+                ->select('c.*, cl.name, cl.description, cl.language, cl.name, cl.product_section_image', true)
                 ->from('t_category c')
                 ->innerJoin('t_category_language cl', 'c.id=cl.fk_category')
-                ->orderBy('c.path');
+                ->orderBy('c.path_sort');
 
         $map = array(
             'fkParent'     => 'fk_parent',
@@ -21,6 +23,39 @@ class CategoryMapper extends MapperAbstract
         );
 
         parent::__construct($domain, $query, $map);
+    }
+
+    /** @return CategoryDomain */
+    static function qry_all_child_categories()
+    {
+        $mapper = static::make()
+                ->setLanguage('VN-VI')
+                ->filterNotRoot();
+        $mapper->getQuery()
+                ->select('plang.name as parent_name')
+                ->innerJoin('t_category parent', 'c.fk_parent=parent.id')
+                ->innerJoin('t_category_language plang', 'cl.language=plang.language AND parent.id=plang.fk_category');
+        return $mapper->findAll(function($record, $instance)
+                {
+                    $instance->parent_name = $record['parent_name'];
+                });
+    }
+
+    function setAutoloadChildren($bool = true)
+    {
+        $this->_autoload_children = $bool;
+        return $this;
+    }
+
+    function makeDomainCallback(&$domainInstance)
+    {
+        if ($this->_autoload_children)
+        {
+            $domainInstance->children = static::make()
+                    ->filterParent($domainInstance->id)
+                    ->setLanguage($domainInstance->language)
+                    ->findAll();
+        }
     }
 
     /**
@@ -46,6 +81,12 @@ class CategoryMapper extends MapperAbstract
     {
         is_numeric($idOrCode) ? $this->_query->where('c.id=?', __FUNCTION__) : $this->_query->where('c.code=?', __FUNCTION__);
         $this->_queryParams[__FUNCTION__] = $idOrCode;
+        return $this;
+    }
+
+    function filterNotRoot()
+    {
+        $this->_query->where('c.fk_parent<>0', __FUNCTION__);
         return $this;
     }
 
@@ -91,19 +132,8 @@ class CategoryMapper extends MapperAbstract
 
     function filterParent($parent_id)
     {
-        if ($parent_id === NULL)
-        {
-            $this->_query->where('c.fk_parent IS NULL', 'child_of');
-            if (isset($this->_queryParams['child_of']))
-            {
-                unset($this->_queryParams['child_of']);
-            }
-        }
-        else
-        {
-            $this->_query->where('c.fk_parent = ?', 'child_of');
-            $this->_queryParams['child_of'] = $parent_id;
-        }
+        $this->_query->where('c.fk_parent = ?', 'child_of');
+        $this->_queryParams['child_of'] = (int) $parent_id;
         return $this;
     }
 

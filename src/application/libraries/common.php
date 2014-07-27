@@ -84,4 +84,9 @@ class Common
         @session_start();
     }
 
+    static function fetch_array($arr, $key, $default = null)
+    {
+        return (isset($arr[$key]) ? $arr[$key] : $default);
+    }
+
 }

@@ -13,8 +13,8 @@
     <div  ng-controller="SellerController">
         <?php
         include_once APPPATH.'views/admin/sellerFind.php';
-        include_once APPPATH.'views/admin/sellerDetail.php';
         include_once APPPATH.'views/admin/sellerAudit.php';
+        include_once APPPATH.'views/admin/sellerDetail.php';
         ?>
     </div>
 </section><!-- /.content -->
@@ -44,5 +44,5 @@
                     }
                 });
             });
-        </script>
+</script>
 

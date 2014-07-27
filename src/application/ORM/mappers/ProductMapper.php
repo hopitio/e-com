@@ -11,7 +11,7 @@ class ProductMapper extends MapperAbstract
 
     function __construct($domain = 'ProductDomain')
     {
-        $query = Query::make()->from('t_product p');
+        $query = Query::make()->select('p.*', true)->from('t_product p');
 
         $map = array(
             'fkCategory'  => 'fk_category',
@@ -30,6 +30,64 @@ class ProductMapper extends MapperAbstract
     {
         $this->_query->where('p.id=?', __METHOD__);
         $this->_queryParams[__METHOD__] = $id;
+        return $this;
+    }
+
+    function filterName($language, $string)
+    {
+        if ($string)
+        {
+            $subQuery = "SELECT id FROM t_product_attribute_type WHERE codename='name'";
+            $this->_query->innerJoin('t_product_attribute attr_name', "attr_name.fk_product = p.id AND attr_name.fk_attribute_type=($subQuery) AND attr_name.value_varchar LIKE '%$string%'AND attr_name.language='$language'");
+        }
+        return $this;
+    }
+
+    function filterStorageCode($code)
+    {
+        $subQuery = "SELECT id FROM t_product_attribute_type WHERE codename='storage_code'";
+        $this->_query->innerJoin('t_product_attribute attr_storage_code', "attr_storage_code.fk_product = p.id AND attr_storage_code.fk_attribute_type=($subQuery) AND attr_storage_code.value_varchar LIKE '%$code%'");
+        
+        return $this;
+    }
+
+    /**
+     * 
+     * @param double $from null để không lọc
+     * @param double $to null để không lọc
+     * @param string $inCurrency tiền tệ của from & to
+     */
+    function filterPriceRange($from, $to, $inCurrency)
+    {
+        $subQuery = "SELECT id FROM t_product_attribute_type WHERE codename='price'";
+        $cond = "attr_price.fk_product = p.id AND attr_price.fk_attribute_type=($subQuery)";
+        if ($from !== null)
+        {
+            $from = new Money($from, new Currency($inCurrency));
+            $cond .= " AND attr_price.value_number >= " . $from->convert(new Currency('VND'))->getAmount();
+        }
+        if ($to !== null)
+        {
+            $to = new Money($to, new Currency($inCurrency));
+            $cond.= " AND attr_price.value_number <= " . $to->convert(new Currency('VND'))->getAmount();
+        }
+        $this->_query->innerJoin('t_product_attribute attr_price', $cond);
+        return $this;
+    }
+
+    function filterStockQty($from, $to)
+    {
+        $subQuery = "SELECT id FROM t_product_attribute_type WHERE codename='quantity'";
+        $cond = "attr_qty.fk_product = p.id AND attr_qty.fk_attribute_type=($subQuery)";
+        if ($from !== null)
+        {
+            $cond .= " AND attr_qty.value_number >= " . doubleval($from);
+        }
+        if ($to !== null)
+        {
+            $cond .= " AND attr_qty.value_number <= " . doubleval($to);
+        }
+        $this->_query->innerJoin('t_product_attribute attr_qty', $cond);
         return $this;
     }
 
@@ -76,6 +134,10 @@ class ProductMapper extends MapperAbstract
         return $this;
     }
 
+    /**
+     * 
+     * @param type $int 1=đang bán, 0=không bán, -1=đã xóa
+     */
     function filterStatus($int)
     {
         if ($int !== false && $int !== null)
@@ -88,7 +150,6 @@ class ProductMapper extends MapperAbstract
         }
         return $this;
     }
-    
 
     /**
      * 

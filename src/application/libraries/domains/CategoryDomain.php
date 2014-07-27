@@ -19,6 +19,9 @@ class CategoryDomain implements DomainInterface
     public $pathSort;
     public $isShowInHome = 0;
 
+    /** @var CategoryDomain */
+    public $children = array();
+
     /** @var SimpleXMLElement */
     public $dom_side_images;
 
@@ -34,6 +37,11 @@ class CategoryDomain implements DomainInterface
     function getURL()
     {
         return '/category/show/' . $this->id;
+    }
+
+    function getLevel()
+    {
+        return substr_count($this->path, '/');
     }
 
 }

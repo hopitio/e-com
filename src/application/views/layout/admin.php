@@ -117,7 +117,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/__admin/product">
                                 <i class="fa fa-th"></i> <span>Sản phẩm</span>
                             </a>
                         </li>
