@@ -3,10 +3,10 @@
 require_once $system_path.'core/Model.php';
 //SUB SYSTEM
 require_once APPPATH.'models/Repository/BaseModel.php';
-require_once APPPATH.'models/Repository/AdminAccountModel.php';
-require_once APPPATH.'models/Repository/SellerModel.php';
-require_once APPPATH.'models/Repository/UserModel.php';
-require_once APPPATH.'models/Repository/FileModel.php';
+// require_once APPPATH.'models/Repository/AdminAccountModel.php';
+// require_once APPPATH.'models/Repository/SellerModel.php';
+// require_once APPPATH.'models/Repository/UserModel.php';
+// require_once APPPATH.'models/Repository/FileModel.php';
 
 //portal
 require_once APPPATH.'models/Repository/PortalModelBase.php';

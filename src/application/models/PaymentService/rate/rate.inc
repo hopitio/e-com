@@ -1,4 +1,4 @@
 <?php
-require_once APPPATH.'models/payment/rate/AbstractRateReaderProvides.php';
-require_once APPPATH.'models/payment/rate/Rate.php';
-require_once APPPATH.'models/payment/rate/VietcombankRate.php';
+require_once APPPATH.'models/PaymentService/rate/AbstractRateReaderProvides.php';
+require_once APPPATH.'models/PaymentService/rate/Rate.php';
+require_once APPPATH.'models/PaymentService/rate/VietcombankRate.php';
