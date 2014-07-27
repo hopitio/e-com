@@ -1,4 +1,4 @@
-<div class="lynx_contentWarp lynx_staticWidth">
+<div class="lynx_contentWarp lynx_staticWidth width-960">
     <div class="lynx_lostPasswordContainer ">
         <h3><?php echo $language[$view->view]->title;?></h3>
         <div class="lynx_lostPasswordDescription">

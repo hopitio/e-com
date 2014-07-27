@@ -3,6 +3,7 @@ span input{text-align: left;}
 .lynx_contentWarp{
     display:inline-block;
 	min-height: 205px;
+    background: white;  
 }
 .lynx_box {
 	background: #FBFBFB;
@@ -13,7 +14,7 @@ span input{text-align: left;}
 }
 
 .lynx_contentWarp .lynx_leftContent {
-	
+    
 }
 
 .lynx_contentWarp .lynx_rightContent {
@@ -70,7 +71,7 @@ form input[type='text'],input[type='password'] {
 }
 
 .lynx_leftContent {
-	width: 900px;
+	width: 660px;
 	float: left;
 	min-height: 500px;
 }
