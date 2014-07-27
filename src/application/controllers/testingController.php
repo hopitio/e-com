@@ -12,4 +12,8 @@ class testingController extends BaseController{
         )
         ->render('product/list');
     }
+    
+    function getMockupOrderRequest (){
+        
+    }
 }

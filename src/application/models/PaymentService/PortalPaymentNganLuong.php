@@ -121,6 +121,7 @@ class PortalPaymentNganLuong{
         }
         return $shippingPrice;
     }
+    
     private function getPrices($order){
         $all = 0;
         foreach ($order->invoice->products as $product){

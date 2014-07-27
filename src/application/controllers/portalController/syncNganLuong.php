@@ -60,7 +60,6 @@ class syncNganLuong extends BasePortalController
                 $order_code = str_replace(' ','',$order_code);
                 list($orderId,$invoiceId) = explode('-',$order_code);
                 $portalBizPayment = new PortalBizPayment();
-                $portalBizPayment = new PortalBizPayment();
                 $portalBizPayment->updateOrderToVerify(false, $orderId, $invoiceId);
                 $portalBizPayment->updatePaymentMethod($invoiceId, $payment_id, DatabaseFixedValue::PAYMENT_BY_NGANLUONG);
                 return 1;

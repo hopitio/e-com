@@ -67,6 +67,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/user/find'] = "portalController/apiUser/findUser";
         $route['portal/dialog/user/find'] = "portalController/account/showDialog";
         
+        $route['portal/__test/order_request'] = 'testingController/getMockupOrderRequest';
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
