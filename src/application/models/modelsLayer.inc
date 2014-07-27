@@ -28,10 +28,6 @@ require_once APPPATH.'models/Repository/PortalModelOrderStatus.php';
 
 
 
-//payment portal
-require_once APPPATH.'models/payment/payment.inc';
-
-
 
 
 
