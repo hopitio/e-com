@@ -271,8 +271,6 @@ li{list-style: none;}
     float: left;
     line-height: 33px;
     padding: 0px 20px;
-    border-top: solid 1px rgba(0,0,0,.2);
-    border-left: solid 1px rgba(0,0,0,.2);
 }
 
 .tab-orange > .have-line{
@@ -551,7 +549,7 @@ li{list-style: none;}
     color:white;
 }
 .tab-blue .head li{
-    background-color: #6B97A2;
+    background-color: #66929D;
     color:white;
 }
 .extend{
@@ -610,15 +608,31 @@ li{list-style: none;}
     background: #F3CA05;
     color: #333;
 }
+#widget-right .product-group > a > .pull-right{
+    color: #333;
+    font-weight: bold;
+    font-size: 10px;
+    text-align:right;
+}
+#widget-right .product-group > a > i{
+    font-weight: normal;
+    font-size: 10px;
+}
 #widget-right .btn-scroll{
-    background: #18748B;
+    background: #57B8D3;
     color: white;
 }
+#widget-right .btn-scroll .pull-right i{
+    line-height: 28px;
+    height: 28px;
+    color: white;
+}
+
 #scroll-to-top{
     margin-top: -3px;
 }
 #widget-right .btn-scroll:hover{
-    background: #57B8D3;
+    background: #18748B;
 }
 #widget-right .product-group > ul{
     display: block;
@@ -693,18 +707,35 @@ li{list-style: none;}
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
 }
-#widget-right .btn-prev-page,#widget-right .btn-next-page{
-    width: 10px;
-    height: 10px;
+#widget-right .btn-page{
+    padding:1px 5px;
+    display:inline-block;
+    background: #57B8D3;
+}
+#widget-right .btn-page i{
+    color: white;
+}
+#widget-right .btn-page:hover{
+    background: #18748B;
+}
+#widget-right .product-group li .remove{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #57B8D3;
+    color: white;
+    padding: 1px 2px;
+    z-index:1;
+    font-size: 9px;
+    line-height: 1;
+    text-decoration:none;
+    display:none;
+}
+#widget-right .product-group li:hover .remove{
     display: inline-block;
-    float:right;
-    margin-left: 2px;
 }
-#widget-right .btn-prev-page{
-    background: url(/images/widget-left.png)
-}
-#widget-right .btn-next-page{
-    background: url(/images/widget-right.png)
+#widget-right .product-group li .remove:hover{
+    background: #18748B;
 }
 .lynx_footer{
     height:330px;
@@ -795,5 +826,15 @@ li{list-style: none;}
     width:1200px;
     color:white;
 }
-
+.tab .head ul{
+    display:block;
+    overflow: hidden;
+}
+.tab .head ul li.line{
+    display: block;
+    height: 3px;
+    width:100%;
+    float:none;
+    margin-top: 30px;
+}
 
