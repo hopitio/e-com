@@ -32,9 +32,10 @@ defined('BASEPATH') or die('No direct script access allowed');
         </div>
     </div>
     <div class="tab tab-orange width-960 text-left">
-        <div class="head have-line width-960">
+        <div class="head width-960">
             <ul>
                 <li><?php echo $language[$view->view]->lblBestSeller ?></li>
+                <li class="line"></li>
             </ul>
         </div>
         <div class="tab-content width-960">
@@ -84,6 +85,7 @@ defined('BASEPATH') or die('No direct script access allowed');
         <div class="head width-960">
             <ul>
                 <li><?php echo $language[$view->view]->lblNewProduct ?></li>
+                <li class="line"></li>
             </ul>
         </div>
         <div class="tab-content list-product width-960">

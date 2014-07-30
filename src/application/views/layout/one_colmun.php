@@ -111,12 +111,13 @@
         </div>
         <div id="widget-right" ng-cloak>
             <div class="product-group">
-                <a href="javascript:;" title="View">Cart</a>
+                <a href="javascript:;" title="View">Cart <i class="fa fa-caret-down"></i><div class="pull-right">0</div></a>
             </div>
             <div class="product-group">
-                <a href="javascript:;" title="View">View</a>
+                <a href="javascript:;" title="View">View<div class="pull-right">12</div></a>
                 <ul>
                     <li>
+                        <a class="remove" href="javascript:;" title="Remove">x</a>
                         <a href="#" title="">
                             <div class="info">
                                 <span class="name">product name</span>
@@ -149,15 +150,17 @@
                             </div>
                         </a>
                     </li>
-                    <div>
-                        <a href="javascript:;" title="" class="btn-next-page"></a>
-                        <a href="javascript:;" title="" class="btn-prev-page"></a>
-
+                    <div class="page">
+                        <small>
+                            <a href="javascript:;" title="Left" class="btn-page"><i class="fa fa-angle-left"></i></a>
+                            <strong>1/5</strong>
+                            <a href="javascript:;" title="Right" class="btn-page"><i class="fa fa-angle-right"></i></a>
+                        </small>
                     </div>
                 </ul>
             </div>
-            <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top">TOP</a>
-            <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom">BOTTOM</a>
+            <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top">TOP<div class="pull-right"><i class="fa fa-caret-up"></i></div></a>
+            <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom">BOTTOM<div class="pull-right"><i class="fa fa-caret-down"></i></div></a>
         </div>
         <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
         <div class="lynx_footer ">
