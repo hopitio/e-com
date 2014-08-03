@@ -8,12 +8,9 @@ lynxApp.directive('ngThumbnail', function() {
         img.onload = function() {
             if (img.width > img.height) {
                 img.style.width = '100%';
-                var ratio = $(elem).width() / img.width;
-                img.style['margin-top'] = ($(elem).height() - img.height * ratio) / 2 + 'px';
             } else {
                 img.style.height = '100%';
             }
-            img.style.display = 'inline-block';
         };
         elem.append(img);
     }
