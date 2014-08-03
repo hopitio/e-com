@@ -76,7 +76,11 @@
                 /* @var $categories CategoryDomain */
                 ?>
                 <?php foreach ($categogies as $parentCate): ?>
-                    <li id="menu-<?php echo $parentCate->codename ?>" class="<?php echo User::getCurrentUser()->languageKey ?>">
+                    <?php
+                    $class = User::getCurrentUser()->languageKey;
+                    $class .= isset($view->activeCates[0]) && $view->activeCates[0] == $parentCate->id ? ' active' : '';
+                    ?>
+                    <li id="menu-<?php echo $parentCate->codename ?>" class="<?php echo $class ?>">
                         <?php if (count($parentCate->children)): ?>
                             <div class="menu-deco"></div>
                             <div class="child text-left">

@@ -18,6 +18,7 @@ li{list-style: none;}
 }
 .width-960{
     width:960px;
+    margin: 0 auto;
 }
 .bg-white{
     background: white;
@@ -43,7 +44,6 @@ li{list-style: none;}
     padding-right:0px;
 }
 .head-box{
-    background: white;
     margin: auto;
     margin-top:-3px;
     padding-top:10px;
@@ -53,6 +53,9 @@ li{list-style: none;}
 }
 .head-box > a.logo{
     float:left;
+    width: 218px;
+    height: 75px;
+    display: inline-block;
 }
 .head-box > .search-container{
     float: left;
@@ -159,7 +162,8 @@ li{list-style: none;}
 .head-menu{
     margin:auto;
     height:51px;
-    background:white url(/images/mn-bg.fw.png) no-repeat center;
+    background:url(/images/mn-bg.fw.png) no-repeat center;
+    margin-bottom: 3px;
 }
 .head-menu > ul, .head-box ul{
     margin-bottom: 0px;
@@ -298,6 +302,7 @@ li{list-style: none;}
     float: left;
     background-color: white;
     position:relative;
+    margin-bottom: 20px;
 }
 .lynx-box:hover  > .opacity{
     display: inline-block;
@@ -460,8 +465,8 @@ li{list-style: none;}
 .lynx-box-medium .opacity{
     width:232px;
     height:335px;
-    margin-left:-8px;
-    margin-top:-8px;
+    left: 0;
+    top:0;
 }
 .lynx-box-medium .image{
     width:216px;
@@ -469,9 +474,11 @@ li{list-style: none;}
 }
 .lynx-box-medium .name,.lynx-box-medium .price {
     font-size: 14px;
+    text-align:left;
 }
 .lynx-box-medium .seller-name,.lynx-box-medium .dis-price,.lynx-box-medium .like {
     font-size: 12px;
+    text-align:left;
 }
 .lynx-box-medium .name{
     margin-top:5px;
@@ -837,4 +844,29 @@ li{list-style: none;}
     float:none;
     margin-top: 30px;
 }
-
+ul.lynx_product_pagnation{
+    display:block;
+    text-align:right;
+    list-style-type:none;
+    padding: 0 5px;
+}
+ul.lynx_product_pagnation > li {
+    display:inline-block;
+}
+ul.lynx_product_pagnation > li > a{
+    display:block;
+    height: 30px;
+    width:30px;
+    line-height: 30px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    font-weight: bold;
+    color: black;
+    text-decoration:none;
+    text-align:center;
+}
+ul.lynx_product_pagnation > li:hover > a, ul.lynx_product_pagnation > li.active > a{
+    background: black;
+    color: white;
+}

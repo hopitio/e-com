@@ -28,60 +28,32 @@ class category extends BaseController
     {
         $this->load->model('modelEx/CategoryModel', 'categoryModel');
         $user = User::getCurrentUser();
-        $top_categories = $this->categoryModel->getAllTopLevelCategories($user->languageKey);
-        $category = CategoryMapper::make()->select()->filterID($id)->setLanguage($user->languageKey)->find(function($rawData, $instance)
+        $thisCate = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($id)->find();
+        /* @var $thisCate CategoryDomain */
+        $parentIDs = explode('/', trim($thisCate->path, '/'));
+        $activeCates = array();
+        foreach ($parentIDs as $parentID)
         {
-            /* @var $instance CategoryDomain */
-            $instance->dom_side_images = simplexml_load_string($rawData['side_images']);
-            $instance->dom_slide_image = simplexml_load_string($rawData['slide_images']);
-            $instance->dom_product_section_images = simplexml_load_string($rawData['product_section_image']);
-        });
-        $ancestors = explode('/', trim($category->path, '/'));
-        $breadcrums = array('Home' => '/');
-        $top_level_active = NULL;
-        $sub_level_active = NULL;
-
-        if ($category->isContainer)
-        {
-            $top_level_active = $category->id;
+            $activeCates[] = $parentID;
         }
-        else
-        {
-            $top_level_active = $category->fkParent;
-            $sub_level_active = $category->id;
-        }
-        $sub_menu = CategoryMapper::make()->filterParent($top_level_active)
-                ->select()
-                ->setLanguage($user->languageKey)
-                ->findAll();
+        $data['thisCate'] = $thisCate;
+        $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($activeCates[0])->findAll();
 
-        foreach ($ancestors as $cateID)
-        {
-            if ($cateID == $category->id)
-            {
-                continue;
-            }
-            $ancestor = CategoryMapper::make()->select()->setLanguage($user->languageKey)->filterID($cateID)->find();
-            $breadcrums[$ancestor->name] = $ancestor->getURL();
-        }
-
-        $breadcrums[$category->name] = $category->getURL();
-        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
-                ->setData(array(
-                    'category'         => $category,
-                    'top_categories'   => $top_categories,
-                    'breadcrums'       => $breadcrums,
-                    'top_level_active' => $top_level_active,
-                    'sub_level_active' => $sub_level_active,
-                    'sub_menu'         => $sub_menu
-                ))
-                ->setJavascript(array('/js/controller/ListCtrl.js'))
-                ->setCss(array('/style/list.css'))
+        $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
+        call_user_func_array(array($view, 'setActiveCates'), $activeCates);
+        $view->setData($data)
+                ->setJavascript(array('/js/controller/CategoryListCtrl.js'))
+                ->setCss(array('/style/category.css'))
                 ->render('category/show');
     }
 
     function productService($cateID)
     {
+        $pageNo = (int) $this->input->get('page');
+        if (!$pageNo)
+        {
+            $pageNo = 1;
+        }
         header('Content-type: application/json');
         $user = User::getCurrentUser();
         $category = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($cateID)->find();
@@ -103,8 +75,8 @@ class category extends BaseController
         $mapper->getQuery()
                 ->select('seller.name AS seller_name')
                 ->innerJoin('t_seller seller', 'p.fk_seller = seller.id')
-                ->limit($this->input->get('limit'))
-                ->offset($this->input->get('offset'));
+                ->limit(20)
+                ->offset(($pageNo - 1) * 20);
 
         switch (strval($this->input->get('sort'))) {
             case '':
@@ -137,7 +109,7 @@ class category extends BaseController
             $obj['url'] = '/product/details/' . $product->id;
             $json[] = $obj;
         }
-        echo json_encode(array('products' => $json, 'totalRecord' => $count));
+        echo json_encode(array('products' => $json, 'totalPage' => ceil($count / 20)));
     }
 
 }

@@ -2,7 +2,6 @@
 .banner-box{
     margin:auto;
     background-color: white;
-    padding-top: 10px;
 }
 .carousel-inner>.item>img, .carousel-inner>.item>a>img{
     height:360px;

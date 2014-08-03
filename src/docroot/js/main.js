@@ -205,4 +205,29 @@ $(function() {
     });
 });
 
+(function($) {
+    $.unparam = function(string) {
+        var obj = {};
+        var params = string.split('&');
+        for (var i in params) {
+            var param_parts = params[i].split('=');
+            if (!param_parts[0] && param_parts[0] !== 0)
+                continue;
+            obj[param_parts[0]] = param_parts[1];
+        }
+        return obj;
+    };
+})(jQuery);
 
+(function($, undefined) {
+    $.hashParam = function(param_name, param_val) {
+        var params = $.unparam(window.location.hash.replace('#/', '').replace('#', ''));
+        if (param_val === undefined) {
+            return (param_name === undefined ? params : params[param_name]);
+        } else {
+            params[param_name] = param_val;
+            window.location.hash = $.param(params);
+            return this;
+        }
+    };
+})(jQuery);
