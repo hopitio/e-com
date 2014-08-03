@@ -20,7 +20,7 @@ class ProductMapper extends MapperAbstract
             'isGroup'     => 'is_group',
             'dateCreated' => 'date_created',
             'countPin'    => 'count_pin',
-            'countView'   => 'count_view'
+            'priceOrigin' => 'price_origin'
         );
 
         parent::__construct($domain, $query, $map);
@@ -47,7 +47,7 @@ class ProductMapper extends MapperAbstract
     {
         $subQuery = "SELECT id FROM t_product_attribute_type WHERE codename='storage_code'";
         $this->_query->innerJoin('t_product_attribute attr_storage_code', "attr_storage_code.fk_product = p.id AND attr_storage_code.fk_attribute_type=($subQuery) AND attr_storage_code.value_varchar LIKE '%$code%'");
-        
+
         return $this;
     }
 
@@ -59,19 +59,16 @@ class ProductMapper extends MapperAbstract
      */
     function filterPriceRange($from, $to, $inCurrency)
     {
-        $subQuery = "SELECT id FROM t_product_attribute_type WHERE codename='price'";
-        $cond = "attr_price.fk_product = p.id AND attr_price.fk_attribute_type=($subQuery)";
         if ($from !== null)
         {
             $from = new Money($from, new Currency($inCurrency));
-            $cond .= " AND attr_price.value_number >= " . $from->convert(new Currency('VND'))->getAmount();
+            $cond .= " AND p.price >= " . $from->convert(new Currency('VND'))->getAmount();
         }
         if ($to !== null)
         {
             $to = new Money($to, new Currency($inCurrency));
-            $cond.= " AND attr_price.value_number <= " . $to->convert(new Currency('VND'))->getAmount();
+            $cond.= " AND p.price <= " . $to->convert(new Currency('VND'))->getAmount();
         }
-        $this->_query->innerJoin('t_product_attribute attr_price', $cond);
         return $this;
     }
 
@@ -170,9 +167,7 @@ class ProductMapper extends MapperAbstract
 
     function orderByPrice($desc = false)
     {
-        $priceAttrID = DB::getInstance()->GetOne("SELECT id FROM t_product_attribute_type WHERE codename=?", array('price'));
-        $this->_query->innerJoin('t_product_attribute pattr', 'p.id = pattr.fk_product AND fk_attribute_type=' . intval($priceAttrID))
-                ->orderBy('pattr.value_number ' . ($desc ? 'DESC' : ''));
+        $this->_query->orderBy('p.price ' . ($desc ? 'DESC' : ''));
         return $this;
     }
 

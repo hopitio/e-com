@@ -1,28 +1,16 @@
 <?php
 /* @var $secondLvlCates CategoryDomain */
-
-function makeURL($categoryID, $changeParams = array())
-{
-    $url = '/category/show/' . $categoryID;
-    $params = isset($_GET) && !empty($_GET) ? $_GET : array();
-    foreach ($changeParams as $k => $v)
-    {
-        $params[$k] = $v;
-    }
-
-    foreach ($params as $k => $v)
-    {
-        $url .= (strpos($url, "?") !== false ? '&' : '?') . "$k=$v";
-    }
-    return $url;
-}
 ?>
 <div ng-controller="CategoryListCtrl">
-    <div class="lynx-cate-lvl2-container width-960">
-        <ul class="lynx-cate-lvl-2">
-            <li class='<?php echo User::getCurrentUser()->languageKey ?>'>
-                <a href='javascript:;'>
-                    <span class="cate-icon"></span><span class="cate-name">All</span>
+    <div class="lynx-menu-lvl2-container width-960">
+        <ul class="lynx-menu-lvl-2">
+            <?php
+            $class = User::getCurrentUser()->languageKey;
+            $class .= isset($view->activeCates[1]) ? '' : ' active';
+            ?>
+            <li class='<?php echo $class ?>' id="menu-best">
+                <a href='/category/show/<?php echo $view->activeCates[0] ?>'>
+                    <span class="menu-icon"></span><span class="menu-name">Best</span>
                 </a>
             </li>
             <?php foreach ($secondLvlCates as $secondLvlCate): ?>
@@ -30,8 +18,8 @@ function makeURL($categoryID, $changeParams = array())
                 $class = User::getCurrentUser()->languageKey;
                 $class .= isset($view->activeCates[1]) && $view->activeCates[1] == $secondLvlCate->id ? ' active' : '';
                 ?>
-                <li id="cate-<?php echo $secondLvlCate->codename ?>" class="<?php echo $class ?>">
-                    <a href="<?php echo $secondLvlCate->getURL() ?>"><span class="cate-icon"></span><span class="cate-name"><?php echo $secondLvlCate->name ?></span></a>
+                <li id="menu-<?php echo $secondLvlCate->codename ?>" class="<?php echo $class ?>">
+                    <a href="<?php echo $secondLvlCate->getURL() ?>"><span class="menu-icon"></span><span class="menu-name"><?php echo $secondLvlCate->name ?></span></a>
                 </li>
             <?php endforeach; ?>
         </ul>
@@ -40,44 +28,36 @@ function makeURL($categoryID, $changeParams = array())
         <div style="overflow:hidden">
             <div class="lynx_sort pull-right">
                 <ul>
-                    <?php
-                    $sorts = array(
-                        array('lynx_sorterNew', 'new', $language[$view->view]->lblSortNew),
-                        array('lynx_sorterSellOnline', 'bestseller', $language[$view->view]->lblSortBestbuy),
-                        array('lynx_sorterPriceAsc', 'priceasc', $language[$view->view]->lblSortPriceDown),
-                        array('lynx_sorterPriceDesc', 'pricedesc', $language[$view->view]->lblSortPriceUp),
-                        array('lynx_sorterSaleAsc', 'sale', $language[$view->view]->lblSortSaleoff),
-                        array('lynx_sorterHot', 'hot', $language[$view->view]->lblSortHot),
-                        array('lynx_sorterMostLiked', 'like', $language[$view->view]->lblSortLike)
-                    );
-                    $sortBy = isset($_GET['sort']) ? $_GET['sort'] : 'new';
-                    ?>
-
-                    <?php foreach ($sorts as $sort): ?>
-                        <?php $active = $sortBy == $sort[1] ? 'lynx_sortActive' : '' ?>
-                        <li class="<?php echo $active ?>">
-                            <a class="<?php echo $sort[0] ?>" title="<?php echo $sort[2] ?>" 
-                               data-value="<?php echo $sort[1] ?>" href="<?php echo makeURL($thisCate->id, array('sort' => $sort[1])) ?>">
-                                   <?php echo $sort[2] ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
+                    <li ng-repeat="option in sortOptions" ng-class="{lynx_sortActive: hashParams.sort === option[1]}">
+                        <a class="{{option[0]}}" title="{{option[2]}}" href="javascript:;" ng-click="sortBy(option[1])">
+                            {{option[2]}}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="clearfix"></div>
-    <div ng-repeat="products in productRows" class="lynx-row width-960">
-        <div class="lynx-box lynx-box-medium" ng-repeat="product in products" ng-product-medium="product"></div>
+    <div style="min-height: 355px;">
+        <div ng-repeat="products in productRows" class="lynx-row width-960">
+            <div class="lynx-box lynx-box-medium" ng-repeat="product in products" ng-product-medium="product"></div>
+        </div>
     </div>
-    <ul class="lynx_product_pagnation width-960">
-        <li ng-repeat="page in pageNavs" class="page_no" ng-class="{active: page === hashParams.p}">
-            <a href="javascript:;" ng-click="changePage(page)">{{page}}</a> 
-        </li>
-    </ul>
 </div>
+<?php
+$sortOptions = array(
+    array('lynx_sorterNew', 'new', (string) $language[$view->view]->lblSortNew),
+    array('lynx_sorterSellOnline', 'bestseller', (string) $language[$view->view]->lblSortBestbuy),
+    array('lynx_sorterPriceAsc', 'priceasc', (string) $language[$view->view]->lblSortPriceDown),
+    array('lynx_sorterPriceDesc', 'pricedesc', (string) $language[$view->view]->lblSortPriceUp),
+    array('lynx_sorterSaleAsc', 'sale', (string) $language[$view->view]->lblSortSaleoff),
+    array('lynx_sorterHot', 'hot', (string) $language[$view->view]->lblSortHot),
+    array('lynx_sorterMostLiked', 'like', (string) $language[$view->view]->lblSortLike)
+        )
+?>
 <script>
     var scriptData = {
-        categoryId: <?php echo (int) $thisCate->id ?>
+        categoryId: <?php echo (int) $thisCate->id ?>,
+        sortOptions: <?php echo json_encode($sortOptions) ?>
     };
 </script>

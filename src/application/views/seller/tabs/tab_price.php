@@ -1,12 +1,11 @@
 <?php
 /* @var $product ProductFixedDomain */
-
-$origin = $product->getOriginPrice('VND')->getAmount() ? $product->getOriginPrice('VND')->getAmount() : '';
-$txtOrigin = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtOriginPrice', 'pattr[origin_price]', $origin));
+$origin = $product->priceOrigin ? $product->getPriceOrigin('VND')->getAmount() : '';
+$txtOrigin = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtOriginPrice', 'txtOriginPrice', $origin));
 $txtOrigin->get_a('TextboxInput')->setAttribute('data-rule-number', true);
 echo $txtOrigin->decorate(new ControlGroupDecorator('Giá bán gốc:'));
 //price
-$txtPrice = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtPrice', 'pattr[price]', $product->getPriceMoney('VND')->getAmount()));
+$txtPrice = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtPrice', 'txtPrice', $product->getPriceMoney('VND')->getAmount()));
 $txtPrice->get_a('TextboxInput')->setAttribute('data-rule-required', true)
         ->setAttribute('data-rule-number', true);
 echo $txtPrice->decorate(new ControlGroupDecorator('Giá chưa thuế:'));

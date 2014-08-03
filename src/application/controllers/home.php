@@ -56,7 +56,7 @@ class home extends BaseController
             $obj['thumbnail'] = $images[0]->url;
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
-            $obj['originPrice'] = $product->getOriginPrice()->getAmount() ? (string) $product->getOriginPrice($user->getCurrency()) : '';
+            $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
             $obj['best'] = $i++ < 2 ? $i : false;
             $json[] = $obj;
         }
@@ -79,7 +79,7 @@ class home extends BaseController
                 $product->thumbnail = $images[0]->url;
                 $product->priceString = strval($product->getFinalPriceMoney($user->getCurrency()));
                 $product->url = base_url('product/details') . '/' . $product->id;
-                $product->originPrice = $product->getOriginPrice()->getAmount() ? (string) $product->getOriginPrice($user->getCurrency()) : '';
+                $product->priceOrigin = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
             }
             $group->images = $group->getImages();
             $group->products = $group->getProducts();
@@ -103,7 +103,7 @@ class home extends BaseController
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
-            $obj['originPrice'] = $product->getOriginPrice()->getAmount() ? (string) $product->getOriginPrice() : '';
+            $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
             $json[] = $obj;
         }
         echo json_encode($json);

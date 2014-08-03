@@ -176,6 +176,7 @@ li{list-style: none;}
     float:left;
     border:solid 1px transparent;
     background: transparent url(/images/mn-spe-bg.fw.png) no-repeat top right;
+    position: relative;
 }
 .head-menu > ul > li > a{
     display:inline-block;
@@ -236,10 +237,12 @@ li{list-style: none;}
     display: none;
     width: 63px;
     height: 16px;
-    background: transparent url(/images/mn-deco-bg.fw.png) repeat top left;
-    margin-top: 43px;
-    margin-left: 45px;
+    background: transparent url(/images/mn-deco-bg.fw.png) no-repeat top left;
+    top: 43px;
+    left: 0;
+    width: 100%;
     z-index: 11;
+    background-position-x: 50%;
 }
 .head-menu .child ul > li{
     float:left;
@@ -380,31 +383,34 @@ li{list-style: none;}
     display:inline-block;
 }
 .lynx-box-small .opacity{
-    width:182px;
-    height:263px;
+    width:100%;
+    height:100%;
     margin-top:-5px;
     margin-left:-5px;
 }
-
+.lynx-box-small, .lynx-box-medium, .lynx-box-large{
+    box-sizing: border-box;
+}
 .lynx-box-small{
-    width:182px;
+    width:19%;
     height:263px;
-    margin-right: 12px;
+    margin-right: 1.25%;
 }
 .lynx-adv-home .lynx-adv-img{
-    width:460px;
+    width:49%;
     height:290px;
     box-sizing:content-box;
     border: solid 1px rgba(0,0,0,.2);
     float:left;
     margin-bottom: 15px;
+    box-sizing:border-box;
 }
 .lynx-box-large .image{
-    width: 276px;
+    width: 100%;
     height: 276px;
 }
 .lynx-adv-home .lynx-adv-img:first-child{
-    margin-right:12px;
+    margin-right:2%;
 }
 .lynx-adv-home .lynx-adv-img img{
     width:100%;border:none;
@@ -419,7 +425,7 @@ li{list-style: none;}
     position: relative;
 }
 .lynx-box-small .image{
-    width: 170px;
+    width: 100%;
     height:170px;
 }
 .lynx-box-small .dis-price{
@@ -427,14 +433,14 @@ li{list-style: none;}
 }
 [ng-thumbnail] img{display:none;}
 .lynx-box-large{
-    width:298px;
+    width:32%;
     height:431px;
-    margin-right: 21px;
+    margin-right: 1.9%;
     padding:10px;
 }
 .lynx-box-large .opacity{
-    width:298px;
-    height:431px;
+    width:100%;
+    height:100%;
     margin-top:-10px;
     margin-left:-10px;
 }
@@ -457,19 +463,19 @@ li{list-style: none;}
     font-size: 14px;
 }
 .lynx-box-medium{
-    width:232px;
+    width:24%;
     height:335px;
-    margin-right:10px;
+    margin-right:1.33%;
     padding:8px;
 }
 .lynx-box-medium .opacity{
-    width:232px;
-    height:335px;
+    width:100%;
+    height:100%;
     left: 0;
     top:0;
 }
 .lynx-box-medium .image{
-    width:216px;
+    width:100%;
     height:216px;
 }
 .lynx-box-medium .name,.lynx-box-medium .price {
@@ -843,30 +849,4 @@ li{list-style: none;}
     width:100%;
     float:none;
     margin-top: 30px;
-}
-ul.lynx_product_pagnation{
-    display:block;
-    text-align:right;
-    list-style-type:none;
-    padding: 0 5px;
-}
-ul.lynx_product_pagnation > li {
-    display:inline-block;
-}
-ul.lynx_product_pagnation > li > a{
-    display:block;
-    height: 30px;
-    width:30px;
-    line-height: 30px;
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    font-weight: bold;
-    color: black;
-    text-decoration:none;
-    text-align:center;
-}
-ul.lynx_product_pagnation > li:hover > a, ul.lynx_product_pagnation > li.active > a{
-    background: black;
-    color: white;
 }

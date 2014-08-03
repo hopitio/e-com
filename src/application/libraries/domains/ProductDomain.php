@@ -15,6 +15,8 @@ class ProductDomain implements DomainInterface
     public $countPin;
     public $countView;
     public $status;
+    public $price;
+    public $priceOrigin;
     protected $_attributes = array();
 
     /** @var ProductImage */

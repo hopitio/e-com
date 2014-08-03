@@ -37,7 +37,7 @@ lynxApp.directive('ngThumbnail', function() {
     };
 }).directive('ngProductLarge', function() {
     function link(scope, elem, attr) {
-        scope.product.name = scope.product.name.length < 20 ? scope.product.name : scope.product.name.substr(0, 20) + '...';
+        scope.product.name = scope.product.name.length < 35 ? scope.product.name : scope.product.name.substr(0, 35) + '...';
         scope.product.thumbnail = '/thumbnail.php/' + scope.product.thumbnail + '/w=280';
     }
     return {
@@ -49,7 +49,7 @@ lynxApp.directive('ngThumbnail', function() {
     };
 }).directive('ngProductMedium', function() {
     function link(scope, elem, attr) {
-        scope.product.name = scope.product.name.length < 20 ? scope.product.name : scope.product.name.substr(0, 20) + '...';
+        scope.product.name = scope.product.name.length < 25 ? scope.product.name : scope.product.name.substr(0, 25) + '...';
         scope.product.thumbnail = '/thumbnail.php/' + scope.product.thumbnail + '/w=200';
     }
     return {

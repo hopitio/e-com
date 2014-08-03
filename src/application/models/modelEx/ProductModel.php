@@ -122,32 +122,31 @@ class ProductModel extends BaseModel
         DB::update('t_product', array('status' => -1), 'id IN(' . $productIDs . ')');
     }
 
-    function updateProduct($data)
+    function updateProduct($productID, $language, $productFields, $attributes = false)
     {
-        if ($data['id'])
+        if ($productID)
         {
-            DB::update('t_product', array('fk_category' => (int) $data['categoryID']), 'id=' . intval($data['id']));
+            DB::update('t_product', array(
+                'fk_category'  => (int) $productFields['fk_category'],
+                'price'        => (double) str_replace(',', '', $productFields['price']),
+                'price_origin' => (double) str_replace(',', '',$productFields['price_origin'])
+                    ), 'id=' . intval($productID));
         }
         else
         {
-            $data['id'] = DB::insert('t_product', array(
-                        'fk_seller'    => $data['seller'],
-                        'fk_category'  => (int) $data['categoryID'],
-                        'date_created' => DB::getDate(),
-                        'status'       => 0
-            ));
+            $productID = DB::insert('t_product', $productFields);
         }
-        foreach ($data['attr'] as $attrType => $attrVal):
+        foreach ($attributes as $attrType => $attrVal):
             $attrType = ProductAttributeTypeMapper::make()->filterCode($attrType)->find();
             if (!is_array($attrVal) && !$attrType->isRepeatingGroup())
             {
-                $this->updateAttribute($data['id'], $data['language'], $attrType, $attrVal);
+                $this->updateAttribute($productID, $language, $attrType, $attrVal);
             }
             elseif (is_array($attrVal) && $attrType->isRepeatingGroup())
             {
                 foreach ($attrVal as $attrValRepeating)
                 {
-                    $this->updateAttribute($data['id'], $data['language'], $attrType, $attrVal);
+                    $this->updateAttribute($productID, $language, $attrType, $attrVal);
                 }
             }
             else
@@ -155,8 +154,8 @@ class ProductModel extends BaseModel
                 throw new Lynx_BusinessLogicException("attr_type là {$attrType->codename} trong khi attrVal là " . gettype($attrVal));
             }
         endforeach;
-        $this->updateProductImages($data['id']);
-        return $data['id'];
+        $this->updateProductImages($productID);
+        return $productID;
     }
 
     function updateProductImages($productID)

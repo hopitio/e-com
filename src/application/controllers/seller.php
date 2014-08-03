@@ -196,23 +196,20 @@ class seller extends BaseController
         $this->getProductModel();
         $this->getFileModel();
         $productID = (int) $this->input->post('hdnProductID');
-
-        $data = array(
-            'seller'          => $this->sellerInstance->id,
-            'id'              => $productID,
-            'language'        => $this->input->post('hdnLanguage'),
-            'storageCodeType' => $this->input->post('selCodeType'),
-            'attr'            => $this->input->post('pattr')
+        $language = $this->input->post('hdnLanguage');
+        $productFields = array(
+            'fk_seller'    => $this->sellerInstance->id,
+            'fk_category'  => $productID ? $this->input->post('radCate') : $this->input->post('hdnCategory'),
+            'price'        => $this->input->post('txtPrice'),
+            'price_origin' => $this->input->post('txtOriginPrice')
         );
-        $data['categoryID'] = $data['id'] ? $this->input->post('radCate') : $this->input->post('hdnCategory');
-        $data['storateCode'] = $data['storageCodeType'] ? $this->input->post('txtCode') : null;
         $files = isset($_FILES['fileImage']) && !empty($_FILES['fileImage']) ? $_FILES['fileImage'] : array();
 
         try
         {
             DB::getInstance()->StartTrans();
-            $productID = $this->productModel->updateProduct($data);
-            $returnURL = '/seller/product_details/' . $productID . '?language=' . $data['language'] . '#/' . $this->input->post('hdnTab');
+            $productID = $this->productModel->updateProduct($productID, $language, $productFields, $this->input->post('pattr'));
+            $returnURL = '/seller/product_details/' . $productID . '?language=' . $language . '#/' . $this->input->post('hdnTab');
             if (isset($files['name']))
             {
                 for ($i = 0; $i < count($files['name']); $i++)
@@ -233,11 +230,11 @@ class seller extends BaseController
             }
             if ($sub_action == 'activate')
             {
-                $this->productModel->activate($data['id']);
+                $this->productModel->activate($productID);
             }
             elseif ($sub_action == 'deactivate')
             {
-                $this->productModel->deactivate($data['id']);
+                $this->productModel->deactivate($productID);
             }
             DB::getInstance()->CompleteTrans();
             Common::redirect_notify($returnURL);

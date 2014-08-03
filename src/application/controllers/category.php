@@ -8,6 +8,12 @@ class category extends BaseController
     /** @var CategoryModel */
     public $categoryModel;
 
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('modelEx/CategoryModel', 'categoryModel');
+    }
+
     function categories_service($parent = NULL)
     {
         $categories = CategoryMapper::make()
@@ -26,7 +32,6 @@ class category extends BaseController
 
     function show($id)
     {
-        $this->load->model('modelEx/CategoryModel', 'categoryModel');
         $user = User::getCurrentUser();
         $thisCate = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($id)->find();
         /* @var $thisCate CategoryDomain */
@@ -49,55 +54,20 @@ class category extends BaseController
 
     function productService($cateID)
     {
-        $pageNo = (int) $this->input->get('page');
-        if (!$pageNo)
-        {
-            $pageNo = 1;
-        }
         header('Content-type: application/json');
+        $offset = (int) $this->input->get('offset');
+        $sort = $this->input->get('sort');
         $user = User::getCurrentUser();
         $category = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($cateID)->find();
-        $mapper = ProductFixedMapper::make()
-                ->select('p.*', true)
-                ->selectCountView()
-                ->autoloadAttributes()
-                ->setLanguage($user->languageKey);
 
-        if ($category->isContainer)
+        if ($category->getLevel() == 1)
         {
-            $mapper->filterContainerCategory($category->id);
+            $products = $this->categoryModel->getBestProduct($category, $offset);
         }
         else
         {
-            $mapper->filterCategory($category->id);
+            $products = $this->categoryModel->getProductByCategory($category, $offset, $sort);
         }
-
-        $mapper->getQuery()
-                ->select('seller.name AS seller_name')
-                ->innerJoin('t_seller seller', 'p.fk_seller = seller.id')
-                ->limit(20)
-                ->offset(($pageNo - 1) * 20);
-
-        switch (strval($this->input->get('sort'))) {
-            case '':
-            case 'new':
-                $mapper->getQuery()->orderBy('p.date_created DESC');
-                break;
-            case 'priceasc':
-                $mapper->orderByPrice();
-                break;
-            case 'pricedesc':
-                $mapper->orderByPrice(true);
-                break;
-        }
-
-        $count = $mapper->count();
-        $products = $mapper->findAll(function($record, ProductFixedDomain $instance)
-        {
-            $instance->seller_name = $record['seller_name'];
-        });
-
-
         $json = array();
         foreach ($products as $product)
         {
@@ -106,10 +76,11 @@ class category extends BaseController
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
+            $obj['priceOrigin'] = $product->priceOrigin ? (string)$product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
             $obj['url'] = '/product/details/' . $product->id;
             $json[] = $obj;
         }
-        echo json_encode(array('products' => $json, 'totalPage' => ceil($count / 20)));
+        echo json_encode($json);
     }
 
 }

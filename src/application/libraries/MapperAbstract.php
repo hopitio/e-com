@@ -48,6 +48,11 @@ abstract class MapperAbstract
         $this->_map = $map;
     }
 
+    function getParams()
+    {
+        return $this->_queryParams;
+    }
+
     /**
      * 
      * @param \Domain $instance
@@ -187,6 +192,18 @@ abstract class MapperAbstract
     function getQuery()
     {
         return $this->_query;
+    }
+
+    function setQuery($query)
+    {
+        $this->_query = $query;
+        return $this;
+    }
+
+    function orderBy($field)
+    {
+        $this->_query->orderBy($field);
+        return $this;
     }
 
 }

@@ -1,57 +1,53 @@
 angular.module('lynx').controller('CategoryListCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
         $scope.productRows = [[]];
+        $scope.sortOptions = scriptData.sortOptions;
         $scope.hashParams = {
-            p: parseInt($.hashParam('p')) || 1
+            sort: $.hashParam('sort') || 'new'
         };
-        $scope.pageNavs = [];
+        $scope.offset = 0;
 
-        $scope.changePage = function(a) {
-            $scope.hashParams.p = a;
+        $scope.sortBy = function(mode) {
+            $scope.hashParams.sort = mode;
         };
 
         $scope.$watchCollection('hashParams', function(newValue, oldValue) {
             if (newValue === oldValue)
                 return;
             window.location.hash = $.param($scope.hashParams);
+            $scope.offset = 0;
+            $scope.productRows = [[]];
             getProducts();
         });
 
         var getParams;
         function getProducts() {
             newParams = {
-                page: $scope.hashParams.p || 1
+                offset: $scope.offset,
+                sort: $scope.hashParams.sort
             };
-            if (newParams === getParams)
+            if (JSON.stringify(newParams) == JSON.stringify(getParams))
                 return;
             getParams = newParams;
-            $http.get('/category/productService/' + scriptData.categoryId, {params: getParams}).success(function(resp) {
-                $scope.productRows = [[]];
-                var currentRow = 0;
-                $scope.hashParams.p = Math.min(resp.totalPage, $scope.hashParams.p);
+            $http.get('/category/productService/' + scriptData.categoryId, {params: getParams}).success(function(products) {
+                var currentRow = Math.max($scope.productRows.length - 1, 0);
+                $scope.offset += products.length;
                 //productRow
-                for (var i in resp.products) {
-                    var product = resp.products[i];
+                for (var i in products) {
+                    var product = products[i];
                     if (!$scope.productRows[currentRow] || $scope.productRows[currentRow].length === 4) {
                         $scope.productRows.push([]);
                         currentRow++;
                     }
                     $scope.productRows[currentRow].push(product);
                 }
-                //pageNav
-                $scope.pageNavs = [];
-                var minNav = Math.max(1, $scope.hashParams.p - 2);
-                var maxNav = Math.min(resp.totalPage, $scope.hashParams.p + 2);
-                if (maxNav - minNav < 4 && minNav === 1)
-                    maxNav = Math.min(resp.totalPage, minNav + 4);
-                else if ((maxNav - minNav < 4 && maxNav === resp.totalPage))
-                    minNav = Math.max(0, maxNav - 4);
-                for (var i = minNav; i > 0 && i <= maxNav; i++)
-                    $scope.pageNavs.push(i);
-                $timeout(function(){
-                    $("html, body").animate({ scrollTop: 0 }, "slow");
-                });
             });
         }
         getProducts();
+        $(window).scroll(function() { //detect page scroll
+            if ($(window).scrollTop() + $(window).height() === $(document).height())  //user scrolled to bottom of the page?
+            {
+                getProducts();
+            }
+        });
 
     }]);

@@ -24,10 +24,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                 <?php endforeach; ?>
             </div>
             <a class="left carousel-control cursor-pointer" href="#carousel-home-banner" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="fa fa-angle-left fa-5x"></span>
             </a>
             <a class="right carousel-control cursor-pointer" href="#carousel-home-banner" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="fa fa-angle-right fa-5x"></span>
             </a>
         </div>
     </div>
@@ -51,10 +51,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                     </div>
                 </div>
                 <a class="left carousel-control cursor-pointer" href="#carousel-hot-product" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="fa fa-angle-left fa-2x"></span>
                 </a>
                 <a class="right carousel-control cursor-pointer" href="#carousel-hot-product" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="fa fa-angle-right fa-2x"></span>
                 </a>
             </div>
         </div>
@@ -69,12 +69,12 @@ defined('BASEPATH') or die('No direct script access allowed');
             </div>
         </div>
         <div ng-cloak ng-repeat="group in featureGroups" ng-show="selectedGroupIndex == $index">
-            <div class="lynx-row">
+            <div class="lynx-row" style="display:block;">
                 <a ng-repeat="image in group.images" href="{{image.href}}" title="{{image.title}}" class="lynx-adv-img">
                     <img class="adv-img-box" ng-src="{{image.src}}" alt="{{image.title}}"/>
                 </a>
             </div>
-            <div class="lynx-row">
+            <div class="lynx-row" style="display:block;">
                 <div ng-repeat="product in group.products" class="lynx-box lynx-box-large" ng-product-large="product"></div>
             </div>
         </div>
