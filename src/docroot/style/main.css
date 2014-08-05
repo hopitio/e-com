@@ -2,7 +2,7 @@
 * {margin: 0px; padding: 0px; font-family: Helvetica ,sans-serif;color:#333; font-size: 13px;font-weight: normal;font-style: normal;text-decoration: none;}
 input {text-align: left;}
 /*html,body{background: transparent url(/images/body-ng.png) repeat top left;font-size: 13px;}*/
-html,body{background: transparent url(/images/body-ng.png) repeat top left;font-size: 13px;text-align: center;}
+html,body{background: transparent url(/images/body-ng.png) repeat top left;font-size: 13px;text-align: center;overflow-x: hidden;}
 li{list-style: none;}
 .clear-fix{
     float:left;
@@ -601,11 +601,16 @@ li{list-style: none;}
 
 #widget-right{
     position: fixed;
-    top: 100px;
-    right: 20px;
+    top: 130px;
+    left: 50%;
+    margin-left: 500px;
     width: 80px;
     box-sizing: border-box;
-    display:none
+    display:none;
+    z-index:50;
+}
+#widget-right.fixed-top{
+    top: 10px;
 }
 @media(min-width:1180px){
     #widget-right{
