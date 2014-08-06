@@ -189,6 +189,7 @@ li{list-style: none;}
     text-decoration:none;
     background-position: 23px 3px;
     background-repeat: no-repeat;
+    background-size: auto 80%;
 }
 .head-menu > ul > li.last{
     background: none;
@@ -874,4 +875,65 @@ li{list-style: none;}
 .carousel-inner > .item {
     -webkit-transition: .3s ease-in-out left;
     transition: .2s ease-in-out left;
+}
+.left{
+    text-align:left;
+}
+.center{
+    text-align: center;
+}
+.right{
+    text-align:right;
+}
+.lynx-menu-lvl2-container{
+    position: relative;
+    height: 90px;
+}
+ul.lynx-menu-lvl-2{
+    display:block;
+    list-style-type: none;
+    padding:5px;
+    background: white;
+    border: 1px solid #cacaca;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    text-align: left;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: -4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+ul.lynx-menu-lvl-2 > li{
+    display: inline-block;
+    padding-right: 7px;
+    background: url(/images/menu-lvl-2-border.png) no-repeat;
+    background-position: 100% 10px;
+}
+ul.lynx-menu-lvl-2 > li.last{background: none;}
+ul.lynx-menu-lvl-2 > li > a{
+    height:68px;
+    min-width: 75px;
+    display:block;
+    text-decoration: none;
+    border: 1px solid transparent;
+    text-align: center;
+}
+ul.lynx-menu-lvl-2 > li:hover > a, ul.lynx-menu-lvl-2 > li.active > a{
+    background: #F2F2F2;
+    border-color: #84C7D8;
+}
+ul.lynx-menu-lvl-2 > li > a > span.menu-icon{
+    height: 46px;
+    display:block;
+}
+ul.lynx-menu-lvl-2 > li > a > span.menu-name{
+    margin: 0;
+    height: 22px;
+    line-height: 22px;
+    font-weight: normal;
+    color: #8D8D8D;
+    font-size: 11px;
 }
