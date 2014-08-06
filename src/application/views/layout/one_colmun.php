@@ -229,6 +229,7 @@
                         this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
                         this.categoryService = '<?php echo base_url('category/categories_service') ?>';
                         this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
                     }
         </script>
 

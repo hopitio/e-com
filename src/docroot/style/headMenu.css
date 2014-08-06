@@ -1,26 +1,48 @@
-.head-menu > ul > li.EN-US > a{width: 140px;}
-.head-menu > ul > li.VN-VI > a{min-width: 140px;}
-.head-menu > ul > li.KO-KR > a{min-width: 140px;}
-#menu-family > a{
-    background-image: url(/images/mn-gia-dinh.fw.png);
+li#menu-family > a{
+    background-image: url(/images/categories/Icon-gia-dinh.png);
 }
-#menu-kid > a{
-    background-image: url(/images/mn-me-vs-be.fw.png);
+li#menu-family.active > a{
+    background-image: url(/images/categories/Icon-gia-dinh-active.png)
 }
-#menu-food > a{
-    background-image: url(/images/nm-thuc-pham.fw.png);
+li#menu-kid > a{
+    background-image: url(/images/categories/Icon-me-va-be.png);
 }
-#menu-gift > a{
-    background-image: url(/images/mn-qua-tang.fw.png);
+li#menu-kid.active > a{
+    background-image: url(/images/categories/Icon-me-va-be-active.png);
 }
-#menu-hot > a{
+li#menu-food > a{
+    background-image: url(/images/categories/Icon-thuc-pham.png);
+}
+li#menu-food.active > a{
+    background-image: url(/images/categories/Icon-thuc-pham-active.png);
+}
+li#menu-gift > a{
+    background-image: url(/images/categories/icon-qua.png);
+}
+li#menu-gift.active > a{
+    background-image: url(/images/categories/icon-qua-active.png);
+}
+li#menu-hot > a{
     background-image: url(/images/mn-hot.fw.png);
 }
-#menu-vietnam > a{
+li#menu-vietnam > a{
     background-image: url(/images/mn-made-in-viet-name.fw.png);
     width: 200px;
 }
 ul.lynx-menu-lvl-2 li#menu-best > a > span.menu-icon{
     background: url(/images/categories/best.png) no-repeat;
     background-position: 50% 0;
+}
+
+.head-menu > ul > li.EN-US > a{width: 149px;}
+.head-menu > ul > li.VN-VI > a{min-width: 140px;}
+.head-menu > ul > li.KO-KR > a{min-width: 148px;}
+li#menu-family.VN-VI > a{
+    width: 162px;
+}
+li#menu-family.EN-US > a{
+    width: 151px;
+}
+li#menu-family.KO-KR > a{
+    width: 155px;
 }

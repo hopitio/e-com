@@ -24,10 +24,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                 <?php endforeach; ?>
             </div>
             <a class="left carousel-control cursor-pointer" href="#carousel-home-banner" data-slide="prev">
-                <span class="fa fa-angle-left fa-5x"></span>
+                <span class=""></span>
             </a>
             <a class="right carousel-control cursor-pointer" href="#carousel-home-banner" data-slide="next">
-                <span class="fa fa-angle-right fa-5x"></span>
+                <span class=""></span>
             </a>
         </div>
     </div>

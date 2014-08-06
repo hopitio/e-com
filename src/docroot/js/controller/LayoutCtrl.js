@@ -27,4 +27,17 @@ $(function() {
     $('#scroll-to-bottom').click(function() {
         $('body').animate({'scrollTop': $('body').height()});
     });
+    var widgetRight = $('#widget-right');
+    var cls = false;
+    $(document).scroll(function() {
+        if ($(this).scrollTop() > 0) {
+            if (!cls)
+                widgetRight.addClass('fixed-top');
+            cls = true;
+        } else {
+            if (cls)
+                widgetRight.removeClass('fixed-top');
+            cls = false;
+        }
+    });
 });
