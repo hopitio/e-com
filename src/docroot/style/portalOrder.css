@@ -1,11 +1,15 @@
-
+.row-wrapper{
+    width:960px;
+    display: inline-block;
+    text-align: left;
+}
 .cart-breadcrums{
     display: block;
     overflow: hidden;
     list-style-type: none;
     text-align: left;
     margin: 0 auto;
-    width:1200px;
+    width:960px;
     padding: 3px 25px;
     border:1px solid #d6d6d6;
 }
@@ -14,7 +18,7 @@
 .cart-breadcrums li, .cart-breadcrums li a, .cart-breadcrums li i{
     font-weight: bold;
     color: #a9a9a9;
-    font-size: 20px;
+    font-size: 15px;
 }
 .cart-breadcrums li.bc-label, .cart-breadcrums li.bc-label *{color:#F3CA05;}
 .cart-breadcrums li.active, .cart-breadcrums li.active *{color:#65adff;}
@@ -27,9 +31,9 @@
 }
 .notification *{text-align: left;}
 .notification ul{padding-left:8px;}
-.cart-left{width:890px;float:left;}
+.cart-left{width:690px;float:left;}
 .summary-row{display: block;}
-.cart-right{width:300px;margin-left:10px;padding:10px;border: 1px solid #d6d6d6;float:left;background: #eceeef;}
+.cart-right{width:255px;margin-left:10px;padding:10px;border: 1px solid #d6d6d6;float:right;background: #eceeef;}
 .summary-row .row-left{float:left;text-align:left;line-height: 30px;}
 .summary-row .row-right{margin-left:40%;text-align: right;line-height: 30px;}
 .cart-right-content{padding:10px;border:1px solid #d6d6d6;background-color: white;overflow: hidden;}
@@ -77,8 +81,10 @@
     background: #FBFBFB;
     border-right: 1px solid #DDDDDD;
     border-left: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
     color: #3A3A3A;
-	padding:0px 10px 70px 10px;
+    padding:0px 10px 70px 10px;
+    width:960px;
 }
 .lynx_paymentComplete h3{
     color:black;

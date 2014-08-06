@@ -13,4 +13,5 @@ class BaseBiz extends CI_Model
         parent::__construct();
         $this->_CI =& get_instance(); 
     }
+    
 }

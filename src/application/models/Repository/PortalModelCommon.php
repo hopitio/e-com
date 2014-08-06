@@ -6,15 +6,5 @@
  */
 class PortalModelCommon extends PortalModelBase
 {
-    /**
-     * Lấy key không trùng lặp
-     */
-    function getUUID(){
-        $sql = "SELECT UUID() as ID";
-        $query = $this->_dbPortal->query($sql);
-        foreach($query->result() as $row)
-        {
-            return $row->ID;
-        }
-    }
+
 }

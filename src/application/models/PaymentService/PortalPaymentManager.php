@@ -22,11 +22,12 @@ class PortalPaymentManager extends PortalBizPayment{
         $portalContactIds = $this->insertContact($contactInformation);
         
         $invoiceId = $this->insertInvoice($portalOrderId);
-        $invoiceProduct = $this->insertInvoiceProducts($invoiceId, $portalProducts);
+        $invoiceProduct = $this->insertInvoiceProducts($invoiceId, $portalProducts ,$products);
         
         $contactInformationPostData = $orderInformation->addresses;
-        $shippingPostData = $orderInformation->shipping;
-        $invoiceShipping = $this->insertInvoiceShipping($invoiceId, $portalContactIds, $contactInformationPostData,$shippingPostData);
+        $shippingPostData = $orderInformation->shipping[0];
+        $invoiceShipping = $this->insertInvoiceShipping($invoiceId, $portalContactIds, $contactInformationPostData, $shippingPostData);
+        
         
         $otherCostData = null;
         $invoiceOtherCost = $this->insertOtherCosts($invoiceId,$otherCostData);
@@ -56,12 +57,10 @@ class PortalPaymentManager extends PortalBizPayment{
             $product = new PortalModelProduct();
             $product->name = $obj->name;
             $product->price = $obj->price;
-            $product->quantity = $obj->quantity;
             $product->short_description = $obj->shortDesc;
             $product->sub_id = $obj->id;
             $product->sub_image = $obj->image;
-            $product->total_price = $obj->totalPrice;
-            $product->actual_price = $obj->actualPrice;
+            $product->sell_price = $obj->price;
             $product->seller_id = $obj->sid;
             $product->seller_name = $obj->sellerName;
             $product->seller_email = $obj->sellerEmail;
@@ -128,9 +127,8 @@ class PortalPaymentManager extends PortalBizPayment{
             $portalContactModel->full_name = $contactInformation->shipping->fullname;
             $portalContactModel->telephone = $contactInformation->shipping->telephone;
             $portalContactModel->street_address = $contactInformation->shipping->streetAddress;
-            $portalContactModel->city_district = $contactInformation->shipping->cityDistrict;
             $portalContactModel->state_province = implode(',' ,   $contactInformation->shipping->stateProvince);
-            $portalContactModel->date_created = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+            $portalContactModel->date_created = $portalContactModel->getDate();
             $portalContactModel->fk_user = $userId;
             $contactId = $portalContactModel->insert();
             $userContact['shipping'] = $contactId;
@@ -142,15 +140,23 @@ class PortalPaymentManager extends PortalBizPayment{
      * @param string $invoiceId
      * @param array $products
      */
-    private function insertInvoiceProducts($invoiceId,$products)
+    private function insertInvoiceProducts($invoiceId,$products,$requestProducts)
     {
         $invoiceProduct = new PortalModelInvoiceProduct();
         $invoiceProductsInsert = array();
         foreach ($products as $product)
         {
             $invoiceProductNew = new PortalModelInvoiceProduct();
+            foreach ($requestProducts as $requestProduct)
+            {
+                if($requestProduct->id == $product->sub_id){
+                    $invoiceProductNew->product_price = $requestProduct->actualPrice;
+                    $invoiceProductNew->product_quantity = $requestProduct->quantity;
+                }
+            }
             $invoiceProductNew->fk_product = $product->id;
             $invoiceProductNew->fk_invoice = $invoiceId;
+            
             array_push($invoiceProductsInsert, $invoiceProductNew);
         }
         return $invoiceProduct->bacthInsert($invoiceProductsInsert);
@@ -260,7 +266,7 @@ class PortalPaymentManager extends PortalBizPayment{
      */
     public function updatePaymentTempToProcessed($paymentTempModel)
     {
-        $paymentTempModel->processed_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $paymentTempModel->processed_date = $paymentTempModel->getDate();
         return $paymentTempModel->updateById();
         
     }

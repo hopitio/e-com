@@ -11,6 +11,35 @@ class PortalModelBase extends CI_Model
     protected  $_constIntanceName = null;
     protected  $record_status = 'ACTIVE';
     
+    
+    static protected $_date;
+    /**
+     *
+     * @param bool $forceQuery Lấy lại date từ DB, false lấy có sẵn
+     * @return string
+     */
+    static function getDate($forceQuery = false)
+    {
+        if ($forceQuery || !static::$_date)
+        {
+            $CI = get_instance();
+            $CI->load->database();
+            $query = $CI->db->query("SELECT NOW() as 'now' ");
+            $result = $query->result();
+            static::$_date = $result[0]->now;
+        }
+        return static::$_date;
+    }
+    
+    static function getUUID()
+    {
+        $CI = get_instance();
+        $CI->load->database();
+        $query = $CI->db->query("SELECT UUID() as 'UUID' ");
+        $result = $query->result();
+        return $result[0]->UUID;
+    }
+    
     function __construct(){
         parent::__construct();
         $this->initalDatabasePortal();
@@ -55,6 +84,8 @@ class PortalModelBase extends CI_Model
         $refl = new ReflectionClass($this->_constIntanceName);
         $propertiesList = $refl->getConstants();
         $class = $this->_constIntanceName;
+        $this->created_at = self::getDate();
+        $this->record_status = isset($this->record_status) ? $this->record_status : 'ACTIVE';
         
         $data = array();
         foreach ($propertiesList as $property){
@@ -116,6 +147,8 @@ class PortalModelBase extends CI_Model
             }
             $oneRow = array();
             foreach ($propertiesList as $property){
+                $obj->created_at = self::getDate();
+                $obj->record_status = isset($obj->record_status) ? $obj->record_status : 'ACTIVE';
                 if($property == $class::tableName || !isset($obj->$property) || $obj->$property == null)
                 {
                     continue;

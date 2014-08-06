@@ -268,11 +268,16 @@ class MY_Controller extends CI_Controller
         $dst = uri_string();
         if ($queryString)
         {
+            $index = 0;
             foreach (array_keys($queryString) as $key)
             {
-                $dst .= '?';
+                if($index == 0){
+                    $dst .= '?';
+                }
+                $dst .= "&{$key}={$queryString[$key]}";
+                $index++;
             }
-            $dst .= implode("&", $queryString);
+            
         }
         //HOTFIX for phase 1, portal vs sub in one application
         if (strpos($dst, 'portal/') !== FALSE)

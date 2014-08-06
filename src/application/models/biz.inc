@@ -10,7 +10,7 @@ require_once APPPATH.'models/BizService/BizSeller.php';
 
 
 //portal
-
+require_once APPPATH.'models/BizService/SerivceFactory.php';
 require_once APPPATH.'models/BizService/PortalBizBase.php';
 require_once APPPATH.'models/BizService/PortalBizAccount.php';
 require_once APPPATH.'models/BizService/PortalBizPassword.php';

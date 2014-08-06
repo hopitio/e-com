@@ -20,6 +20,7 @@ class paymentChoice extends BasePortalController
         if($orderInformation == null){
             throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__.' Không tìm thấy order với key = '.$orderId);
         }
+        
         $this->calutionForviewView($orderInformation,$invoiceId);
         
         $dataView = array();

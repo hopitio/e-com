@@ -5,6 +5,8 @@ class PortalModelInvoiceProduct extends PortalModelBase
     var $id;
     var $fk_invoice;
     var $fk_product;
+    var $product_price;
+    var $product_quantity;
     
     function inserts($collection)
     {

@@ -9,6 +9,7 @@ require_once APPPATH.'models/Repository/BaseModel.php';
 // require_once APPPATH.'models/Repository/FileModel.php';
 
 //portal
+require_once APPPATH.'models/Repository/_RepositoryConst.php';
 require_once APPPATH.'models/Repository/PortalModelBase.php';
 require_once APPPATH.'models/Repository/PortalModelCommon.php';
 require_once APPPATH.'models/Repository/PortalModelInvoice.php';

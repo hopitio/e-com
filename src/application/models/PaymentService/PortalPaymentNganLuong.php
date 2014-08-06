@@ -45,7 +45,7 @@ class PortalPaymentNganLuong{
             $tax = 1;
             $fee_shipping = 1;
         }
-        log_message('ERROR',"NGANLUONG :order_ code({$order_code}) price({$price}) transaction_info({$transaction_info}) 
+        log_message('INFO',"NGANLUONG :order_ code({$order_code}) price({$price}) transaction_info({$transaction_info}) 
                             quantity({$quantity}) currency({$currency}) tax({$tax}) 
                             discount({$discount}) fee_cal({$fee_cal}) fee_shipping({$fee_shipping}) 
                             order_description({$order_description}) buyer_info({$buyer_info}) ");
@@ -74,7 +74,7 @@ class PortalPaymentNganLuong{
         $nameArray = array();
         foreach ($order->invoice->products as $product)
         {
-           $nameArray[] = $product->name."({$product->quantity})";
+           $nameArray[] = $product->name."({$product->product_quantity})";
         }
         
         return implode('; ', $nameArray);
@@ -86,7 +86,7 @@ class PortalPaymentNganLuong{
         $quantity = 0;
         foreach ($order->invoice->products as $product)
         {
-            $quantity += $product->quantity;
+            $quantity += $product->product_quantity;
         }
         return $quantity;
     }
@@ -125,7 +125,7 @@ class PortalPaymentNganLuong{
     private function getPrices($order){
         $all = 0;
         foreach ($order->invoice->products as $product){
-            $all += $product->price;
+            $all += $product->product_price;
         }
         $all += $this->getOtherCost($order);
         $all += $this->getTax($order);

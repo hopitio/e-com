@@ -394,7 +394,7 @@ $config['facebook_authen_url'] = 'https://www.facebook.com/dialog/oauth?client_i
 $config['temp_mail_folder'] = APPPATH . 'temp/mail/';
 $config['path_to_active_account'] = 'http://localhost.com/portal/active?k={key}';
 $config['path_to_reset_password_reset'] = 'http://localhost.com/portal/reset_password?k={key}';
-$config['portal_payment_entry'] = "http://localhost.com/portal/order_place/portal_get_information";
+$config['portal_payment_entry'] = "http://localhost.com/portal/order_verifing/portal_get_information";
 
 $config['sub_system_name'] = array(
     'default' => 'PORTAL',

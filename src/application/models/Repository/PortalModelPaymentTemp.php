@@ -11,4 +11,5 @@ class PortalModelPaymentTemp extends PortalModelBase
     var $user_agrent;
     var $processed_date;
     var $cancelled_date;
+    var $order_id;
 }

@@ -68,13 +68,13 @@
                             <span class="product-seller">seller : <?php echo $product->seller_name;?></span><br>
                         </td>
                         <td class="right">
-                            <span class="product-price"><?php echo number_format($product->price);?> đ</span><br>
+                            <span class="product-price"><?php echo number_format($product->sell_price);?> đ</span><br>
                         </td>
                         <td class="center">
-                            <?php echo $product->quantity;?>
+                            <?php echo $product->product_quantity;?>
                         </td>
                         <td class="center">
-                            <span class="product-price"><?php echo number_format($product->total_price);?> đ</span>
+                            <span class="product-price"><?php echo number_format($product->product_price);?> đ</span>
                         </td>
                     </tr>
                     <?php
@@ -85,7 +85,7 @@
                     $taxPrices = 0;
                     foreach ($order->invoice->products as $product)
                     {
-                        $productPrices += $product->price;
+                        $productPrices += $product->product_price;
                         foreach ($product->taxs as $tax){
                             $taxPrices += $tax->sub_tax_value;
                         }
@@ -142,8 +142,6 @@
         </div>
         </fieldset>
 
-            
-        </div><!--cart-left-->
         <div class="cart-right">
             <div class="cart-right-content">
                 <h4 class="left"><?php echo $language[$view->view]->lblOrderSummaries;?></h4>

@@ -71,7 +71,7 @@
                         <?php
                         $totalPricesAll = 0;
                         foreach ($order->invoice->products as $product){
-                            $allPrices = $product->total_price;
+                            $allPrices = $product->product_price;
                             $totalTax = 0;
                             foreach ($product->taxs as $tax){
                                 $totalTax += $tax->sub_tax_value;
@@ -86,12 +86,12 @@
                 			     <?php echo $product->short_description; ?><br/>
                 			     Bên bán : <?php echo $product->seller_name; ?>
                 			</td>
-                			<td><?php echo $product->quantity; ?></td>
+                			<td><?php echo $product->product_quantity; ?></td>
                 			<td><?php echo $order->sub_key; ?></td>
-                			<td><?php echo number_format($product->price); ?></td>
-                			<td><?php echo number_format($product->actual_price); ?></td>
+                			<td><?php echo number_format($product->sell_price); ?></td>
+                			<td><?php echo number_format($product->product_price); ?></td>
                 			<td>
-                			     <?php echo number_format($product->total_price); ?>
+                			     <?php echo number_format($product->product_price); ?>
                 			     <?php 
                 			        foreach ($product->taxs as $tax){
                                         echo '+'.number_format($tax->sub_tax_value)."({$tax->sub_tax_name})";

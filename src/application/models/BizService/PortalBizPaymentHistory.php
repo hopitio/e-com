@@ -124,6 +124,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
             $order->invoices = $this->getOrderInforamtion($order->id);
         }
         unset($order);
+        
         foreach ($orders as &$order){
             $this->preGetUserOrderWithStatusResult($orders);
         }
@@ -241,6 +242,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
             }
             $order->cost = $cost;
         }
+        
         foreach ($orders as &$order)
         {
             $order->uniqueProducts = array();
@@ -272,7 +274,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
             {
                 $product->totalTax += $tax->sub_tax_value;
             }
-            $invoice->totalCost += ($product->totalTax + $product->total_price);
+            $invoice->totalCost += ($product->totalTax + $product->product_price);
         }
         
         foreach ($invoice->otherCosts as $otherCost)
