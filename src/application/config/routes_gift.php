@@ -50,6 +50,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/verifyToken'] = 'portalController/login/verifyToken';
         $route['__admin/login'] = 'admin/loginAdmin/login';
         $route['__admin/seller/add'] = 'admin/seller/add';
+        $route['__admin/advertisement/upload'] = 'admin/advertisement/upload';
         $route['__admin/seller/edit/(:num)'] = 'admin/seller/edit/$1';
     }
 }
