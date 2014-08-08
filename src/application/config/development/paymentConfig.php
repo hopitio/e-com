@@ -9,6 +9,11 @@ $config['payment_gateway_supported'] = array(
         'isPercent' => '1',
         'value' => 0
     ),
+    'CASH' => array(
+        'displayName' => 'Tiền mặt/Cash/현금',
+        'isPercent' => '1',
+        'value' => 0
+    ),
 );
 $config['ngan_luong'] = array(
     'NGANLUONG_URL' => 'http://localhost.com/portal/__mock/ngan_luong_payment',

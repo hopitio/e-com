@@ -93,6 +93,9 @@ class orderReview extends BasePortalController
         	case 'NganLuong':
         	    $this->procInformationNganLuong($orderId, $invoiceId);
         	    break;
+        	case 'CASH' :
+        	    $this->procInformationCash($orderId, $invoiceId);
+        	    break;
         }
     }
     
@@ -101,6 +104,10 @@ class orderReview extends BasePortalController
         $url = $portalPaymentNganLuong->getCheckOutUrl($invoiceId, $orderId);
         redirect($url);
         exit;
+    }
+    
+    private function procInformationCash($orderId,$invoiceId){
+        
     }
 
 }
