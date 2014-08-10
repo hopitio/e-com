@@ -39,7 +39,7 @@ defined('BASEPATH') or die('No direct script access allowed');
             </ul>
         </div>
         <div class="tab-content width-960">
-            <div id="carousel-hot-product" class="carousel slide"  data-ride="carousel">
+            <div id="carousel-hot-product" class="carousel slide carousel-mini-product"  data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-hot-product" data-slide-to="{{$index}}" ng-class="{active: $index == activeHot}" ng-repeat="products in hotProducts"></li>
                 </ol>

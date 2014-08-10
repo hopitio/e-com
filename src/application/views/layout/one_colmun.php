@@ -112,61 +112,45 @@
                 <li class=" <?php echo User::getCurrentUser()->languageKey ?>" id="menu-vietnam"><a href="#"><?php echo $language['layout']->lblMadeinVietnam ?></a></li>
                 <li class="last <?php echo User::getCurrentUser()->languageKey ?>" id="menu-hot"><a href="#"><?php echo $language['layout']->lblHot ?></a></li>
             </ul>
-        </div>
-        <div id="widget-right" ng-cloak>
-            <div class="product-group">
-                <a href="javascript:;" title="View">Cart <i class="fa fa-caret-down"></i><div class="pull-right">0</div></a>
-            </div>
-            <div class="product-group">
-                <a href="javascript:;" title="View">View<div class="pull-right">12</div></a>
-                <ul>
-                    <li>
-                        <a class="remove" href="javascript:;" title="Remove">x</a>
-                        <a href="#" title="">
-                            <div class="info">
-                                <span class="name">product name</span>
-                                <span class="price">$123</span>
-                            </div>
-                            <div class="image">
-                                <img src="/thumbnail.php//uploads/2014/07/26/2ac73dcd2861aed13372f036c9c558fd.jpg/w=170" alt=""/>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" title="">
-                            <div class="info">
-                                <span class="name">product name</span>
-                                <span class="price">$123</span>
-                            </div>
-                            <div class="image">
-                                <img src="/thumbnail.php//uploads/2014/07/26/2ac73dcd2861aed13372f036c9c558fd.jpg/w=170" alt=""/>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" title="">
-                            <div class="info">
-                                <span class="name">product name</span>
-                                <span class="price">$123</span>
-                            </div>
-                            <div class="image">
-                                <img src="/thumbnail.php//uploads/2014/07/26/2ac73dcd2861aed13372f036c9c558fd.jpg/w=170" alt=""/>
-                            </div>
-                        </a>
-                    </li>
-                    <div class="page">
-                        <small>
-                            <a href="javascript:;" title="Left" class="btn-page"><i class="fa fa-angle-left"></i></a>
-                            <strong>1/5</strong>
-                            <a href="javascript:;" title="Right" class="btn-page"><i class="fa fa-angle-right"></i></a>
-                        </small>
+            <div>
+                <div id="widget-right" ng-cloak>
+                    <div class="product-group">
+                        <a href="javascript:;" title="View" ng-click="setWidgetRightActive('cart')">Cart <i class="fa fa-caret-down" ng-if="widgetRightActive == 'cart'"></i><div class="pull-right">0</div></a>
+                        <ul ng-if="widgetRightActive === 'cart'">
+
+                        </ul>
                     </div>
-                </ul>
+                    <div class="product-group">
+                        <a href="javascript:;" title="View" ng-click="setWidgetRightActive('viewed')">View <i class="fa fa-caret-down" ng-if="widgetRightActive == 'viewed'"></i><div class="pull-right">12</div></a>
+                        <ul ng-if="widgetRightActive === 'viewed'">
+                            <li ng-repeat="product in getCurrentProducts()">
+                                <!--<a class="remove" href="javascript:;" title="Remove">x</a>-->
+                                <a href="{{product.url}}" title="{{product.name}}">
+                                    <div class="info">
+                                        <span class="name">{{product.name}}</span>
+                                        <span class="price">{{product.priceString}}</span>
+                                    </div>
+                                    <div class="image">
+                                        <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=170" alt="{{product.name}}"/>
+                                    </div>
+                                </a>
+                            </li>
+                            <div class="page">
+                                <small>
+                                    <a href="javascript:;" title="Left" class="btn-page"><i class="fa fa-angle-left"></i></a>
+                                    <strong>1/5</strong>
+                                    <a href="javascript:;" title="Right" class="btn-page"><i class="fa fa-angle-right"></i></a>
+                                </small>
+                            </div>
+                        </ul>
+                    </div>
+                    <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top">TOP<div class="pull-right"><i class="fa fa-caret-up"></i></div></a>
+                    <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom">BOTTOM<div class="pull-right"><i class="fa fa-caret-down"></i></div></a>
+                </div><!--wiggget-->
             </div>
-            <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top">TOP<div class="pull-right"><i class="fa fa-caret-up"></i></div></a>
-            <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom">BOTTOM<div class="pull-right"><i class="fa fa-caret-down"></i></div></a>
         </div>
         <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
+        <div class="clearfix"></div>
         <div class="lynx_footer ">
             <div class="lynx_content width-960">
                 <div class="lynx_col1">
@@ -252,6 +236,8 @@
                     function Config() {
                         this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
                     }
+                    $.browser = {};
+                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt

@@ -1,44 +1,88 @@
-function productDetailsCtrl($scope, $http, $timeout) {
-    $scope.productID = scriptData.productID;
-    $scope.relatedService = scriptData.relatedURL;
-    $scope.relatedProducts;
+angular.module('lynx').controller('productDetailsCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+        $scope.productID = scriptData.productID;
+        $scope.relatedProducts = [[]];
+        $scope.activeSlide = 0;
 
-    $scope.getRelatedProducts = function() {
-        $http.get($scope.relatedService + $scope.productID).success(function(products) {
-            $scope.relatedProducts = products;
-            $timeout(function() {
-                productSlider('.lynx_hotProducts');
-            });
-        });
-    };
-    $scope.getRelatedProducts();
+        for (var i in scriptData.relatedProducts) {
+            var currentRow = $scope.relatedProducts.length - 1;
+            var product = scriptData.relatedProducts[i];
+            if ($scope.relatedProducts[currentRow].length === 5) {
+                $scope.relatedProducts.push([]);
+                currentRow++;
+            }
+            $scope.relatedProducts[currentRow].push(product);
+        }
 
-    $scope.shareFacbook = function() {
-        var productName = $(".lynx_productImageHead .lynx_title").text();
-        var caption = $(".lynx_productChoicePannel .lynx_productPrice").text();
-        var des = $(".lynx_productDetailDescription").text();
+        $scope.shareFacbook = function() {
+            var productName = $(".lynx_productImageHead .lynx_title").text();
+            var caption = $(".lynx_productChoicePannel .lynx_productPrice").text();
+            var des = $(".lynx_productDetailDescription").text();
 //        var src = $(".lynx_productImageContainer .lynx_image img").attr('src').replace('..', '');
 //        var picturePro = window.location.protocol + window.location.hostname + src;
-        FB.ui(
-                {
-                    method: 'feed',
-                    name: productName,
-                    caption: caption,
-                    description: des,
-                    link: document.URL,
-                    picture: scriptData.facebookImage
-                },
-                function(response) {
-                    var res = response;
-                }
-        );
-    }
-}
+            FB.ui(
+                    {
+                        method: 'feed',
+                        name: productName,
+                        caption: caption,
+                        description: des,
+                        link: document.URL,
+                        picture: scriptData.facebookImage
+                    },
+            function(response) {
+                var res = response;
+            }
+            );
+        };
+    }]);
+
 
 
 $(document).ready(function() {
     loadComment(document, 'script', 'facebook-jssdk');
+    $('.detail-main-left li a').click(function() {
+        $('.zoomThumbActive').removeClass('zoomThumbActive');
+        $(this).parent().addClass('zoomThumbActive');
+    });
 });
+$(function() {
+    var container = $('.lynx-tabs');
+    $('.lynx-tabs > ul > li > a').each(function() {
+        var $a = $(this);
+        $a.click(function(e) {
+            e.preventDefault();
+            $('li.active', container).removeClass('active');
+            $a.parent().addClass('active');
+            $('.lynx-pane.active', container).removeClass('active');
+            $($a.attr('href')).addClass('active');
+        });
+    });
+});
+$(function() {
+    $('.jqzoom').jqzoom({
+        zoomWidth: 400,
+        zoomHeight: 300,
+        zoomType: 'innerzoom'
+    });
+});
+
+//$(function() {
+//    var divSummaries = $('.detail-summaries:first');
+//    var top = divSummaries.offset().top;
+//    var cls;
+//    $(document).scroll(function() {
+//        if ($(this).scrollTop() >= top - 10) {
+//            if (!cls) {
+//                divSummaries.addClass('fixed-top')
+//                cls = true;
+//            }
+//        } else {
+//            if (cls) {
+//                divSummaries.removeClass('fixed-top');
+//                cls = false;
+//            }
+//        }
+//    });
+//});
 
 function loadComment(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];

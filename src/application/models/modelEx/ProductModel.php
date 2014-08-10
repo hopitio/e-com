@@ -5,6 +5,8 @@ defined('BASEPATH') or die('no direct script access allowed');
 class ProductModel extends BaseModel
 {
 
+    const SESS_VIEW = 'view_list';
+
     /** @return ProductFixedMapper */
     function getAllNewProduct($limit, $offset)
     {
@@ -129,7 +131,7 @@ class ProductModel extends BaseModel
             DB::update('t_product', array(
                 'fk_category'  => (int) $productFields['fk_category'],
                 'price'        => (double) str_replace(',', '', $productFields['price']),
-                'price_origin' => (double) str_replace(',', '',$productFields['price_origin'])
+                'price_origin' => (double) str_replace(',', '', $productFields['price_origin'])
                     ), 'id=' . intval($productID));
         }
         else
@@ -305,6 +307,55 @@ class ProductModel extends BaseModel
             throw new Exception('Bạn không thể xóa ảnh cuối cùng');
         }
         DB::delete('t_product_image', 'fk_product=? AND fk_file=?', array($productID, $fileID));
+    }
+
+    function addtoViewList($productID)
+    {
+        $CI = get_instance();
+        $products = $CI->session->userdata(static::SESS_VIEW);
+        $products[$productID] = $productID;
+        $CI->session->set_userdata(array(static::SESS_VIEW => $products));
+        return $this;
+    }
+
+    function getViewedProducts()
+    {
+        $productIDs = get_instance()->session->userdata(static::SESS_VIEW);
+        if (empty($productIDs))
+        {
+            return array();
+        }
+        $mapper = ProductFixedMapper::make()
+                ->select('p.*', true)
+                ->selectCountView()
+                ->autoloadTaxes()
+                ->setLanguage(User::getCurrentUser()->languageKey)
+                ->autoloadAttributes();
+        $orderField = "CASE p.id WHEN 0 THEN 0";
+        $i = 1;
+        foreach ($productIDs as $productID)
+        {
+            $orderField .= " WHEN $productID THEN " . $i++;
+        }
+        $orderField .= ' END';
+        $mapper->getQuery()
+                ->select('seller.name AS seller_name,' . $orderField . ' AS sort_view', false)
+                ->innerJoin('t_seller seller', 'seller.id = p.fk_seller')
+                ->where('p.id IN(' . implode(',', $productIDs) . ')')
+                ->orderBy('sort_view DESC');
+        $products = $mapper->findAll(function($record, ProductFixedDomain $domain)
+        {
+            $domain->seller_name = $record['seller_name'];
+        });
+        if (empty($products))
+        {
+            return array();
+        }
+        else
+        {
+
+            return $products;
+        }
     }
 
 }

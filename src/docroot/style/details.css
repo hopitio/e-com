@@ -15,31 +15,66 @@ ul.lynx-product-breadcrums li a{
 ul.lynx-product-breadcrums li a:hover{
     text-decoration: underline;
 }
+
 .detail-main{
     width: 675px;
     margin-right: 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    float:left;
+}
+.detail-main .detail-images{
     box-sizing: border-box;
     min-height: 450px;
     border: 1px solid #ccc;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     background: white;
-    margin-bottom: 20px;
-    float:left;
     padding: 30px 20px;
+    display: inline-block;
 }
-.detail-main .detail-main-left{
+.detail-main .detail-images .detail-main-left{
     float:left;
-    width: 100px;
+    width: 70px;
+    list-style-type: none;
 }
-.detail-main .detail-main-right{
+.detail-main .detail-images .detail-main-right{
     float: left;
-    width: 533px;
+    width: 560px;
+    text-align:center;
 }
 .detail-main .detail-main-right h4.product-name{
     margin-top:0;
+    text-align: left;
+    padding-left: 5px;
+}
+.detail-main .detail-main-right .jqzoom{
+    width: 100%;
 }
 .detail-main .product-image{
+    width: 100%;
+}
+.detail-main .detail-main-left li{
+    border: 3px solid transparent;
+    border-radius: 2px;
+    display:block;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.detail-main .detail-main-left li.zoomThumbActive{
+    border-color: #1c6173;
+}
+.detail-main .detail-main-left li a{
+    display: block;
+    border: 1px solid #ccc;
+    padding: 1px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+}
+.detail-main .detail-main-left li.zoomThumbActive a{
+    border-color: transparent;
+}
+.detail-main .detail-main-left li a img{
     width: 100%;
 }
 .detail-summaries{
@@ -51,12 +86,23 @@ ul.lynx-product-breadcrums li a:hover{
     background: #f0efee;
     overflow:hidden;
     padding: 0 28px;
+    float:left;
+}
+.detail-summaries.fixed-top{
+    position: fixed;
+    left: 50%;
+    top: 10px;
+    margin-left: 210px;
 }
 .detail-summaries .detail-seller-logo{
     height:55px;
     background: white;
     border-bottom: 2px solid #ccc;
     margin: 0 -28px;
+}
+.detail-summaries .detail-seller-logo img{
+    height: 53px;
+    max-width: 100%;
 }
 .detail-summaries .detail-seller-name{
     text-transform: uppercase;
@@ -67,8 +113,9 @@ ul.lynx-product-breadcrums li a:hover{
 }
 .detail-summaries .detail-sale{
     float:left;
-    width: 56px;
-    height: 56px;
+    width: 70px;
+    height: 70px;
+    background-size: 100%;
     background: url(/images/sale-arrow.png) no-repeat;
     background-position: 0 0;
     display:inline-block;
@@ -79,20 +126,22 @@ ul.lynx-product-breadcrums li a:hover{
     color: white;
 }
 .detail-summaries .detail-origin-price{
-    margin-left: 60px;
-    padding-top: 6px;
-    height: 50px;
-    line-height: 56px;
+    margin-left: 70px;
+    padding-top: 10px;
+    height: 30px;
     font-size:130%;
     color: #b3b2b2;
     text-decoration: line-through;
     overflow: hidden;
 }
 .detail-summaries .detail-price{
-    text-align: center;
-    font-size: 200%;
+    text-align: left;
+    font-size: 24px;
+    height: 24px;
+    margin-top: 5px;
     color: #ff6800;
     font-weight: bold;
+    margin-left: 70px;
 }
 .detail-summaries .detail-free-shipping{
     text-align: right;
@@ -176,5 +225,105 @@ ul.lynx-product-breadcrums li a:hover{
 .detail-share a.share.share-email{
     background-position-x: -75px;
 }
-
-
+.detail-main ul.detail-social{
+    display: block;
+    background: #f0efee;
+    list-style-type: none;
+    border: 1px solid #e3e3e3;
+    box-sizing: border-box;
+    padding: 5px;
+    overflow: hidden;
+}
+.detail-main ul.detail-social li{
+    display: block;
+    float:left;
+}
+.detail-main ul.detail-social li a{
+    display: block;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    height: 26px;
+    line-height:26px;
+    border-right: 1px solid #dbdbd9;
+}
+.detail-main ul.detail-social li a:hover span{
+    text-decoration: underline;
+}
+.detail-main ul.detail-social li.last a{
+    border:none;
+}
+.detail-main ul.detail-social li a span.icon{
+    display:inline-block;
+    height: 26px;
+    padding-left: 35px;
+    background-repeat: no-repeat;
+}
+.detail-main ul.detail-social li.detail-social-cart{
+    width: 30%;
+}
+.detail-main ul.detail-social li.detail-social-cart a span{
+    background-image : url(/images/detail-cart.png);
+}
+.detail-main ul.detail-social li.detail-social-rate{
+    width: 40%;
+}
+.detail-main ul.detail-social li.detail-social-rate a span{
+    background-image: url(/images/detail-like.png);
+}
+.detail-main ul.detail-social li.detail-social-comment{
+    width: 30%;
+}
+.detail-main ul.detail-social li.detail-social-comment a span{
+    background-image: url(/images/detail-comment.png);
+}
+.lynx-tabs{
+    text-align:left;
+}
+.lynx-tabs > ul{
+    display:inline-block;
+    overflow:hidden;
+    list-style-type: none;
+    padding-left:27px;
+    margin:0;
+}
+.lynx-tabs > ul > li{
+    display:block;
+    float:right;
+    width:184px;
+    margin-left: -27px;
+    z-index: 0;
+}
+.lynx-tabs > ul > li > a{
+    height: 34px;
+    line-height: 34px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display:block;    
+    font-size: 11px;
+    color: #666666;
+    text-align: left;
+    padding-left: 27px;
+    background: url(/images/tab-normal.png);
+}
+.lynx-tabs > ul > li.active{
+    background: none;
+}
+.lynx-tabs > ul > li.active > a{
+    position: relative;
+    z-index: 10;
+    background: url(/images/tab-active.png);
+    color: white;
+}
+.lynx-tabs .lynx-panes{
+    display: block;
+    border: 1px solid #ccc;
+}
+.lynx-tabs .lynx-panes .lynx-pane{
+    padding: 20px;
+    background: white;
+    display:none;
+}
+.lynx-tabs .lynx-panes .lynx-pane.active{
+    display:block;
+}

@@ -27,7 +27,6 @@
     margin-top: 130px;
 }
 
-
 .tab-content .carousel-control.right:hover{
     background-image: -webkit-linear-gradient(left,color-stop(rgba(0,0,0,.0001) 0),color-stop(rgba(0,0,0,.3) 100%));
     background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.2) 100%);
@@ -53,37 +52,7 @@
 .lynx-adv-home{
     margin-top:40px;
 }
-#carousel-hot-product a.carousel-control{
-    height: 77px;
-    width: 30px;
-    margin-top: 93px;
-    background: #ccc;
-    opacity: 0.6;
-    z-index: 22;
-}
-#carousel-hot-product a.left.carousel-control{
-    -webkit-border-top-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-#carousel-hot-product a.right.carousel-control{
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-#carousel-hot-product a.carousel-control:hover{
-    opacity: 0.9;
-}
-#carousel-hot-product a.carousel-control span.fa{
-    color: white;
-    margin-top: 18.5px;
-}
+
 #carousel-home-banner .carousel-control span{
     background: url(/images/banner-nav.png) no-repeat;
     width: 54px;

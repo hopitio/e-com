@@ -11,6 +11,12 @@ class home extends BaseController
     /** @var ProductModel */
     public $product_model;
 
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('modelEx/ProductModel', 'product_model');
+    }
+
     public function showHome()
     {
         $data = array();
@@ -91,10 +97,29 @@ class home extends BaseController
     {
         header('content-type:application/json');
         $user = User::getCurrentUser();
-        $this->load->model('modelEx/ProductModel', 'product_model');
         $products = $this->product_model->getAllNewProduct(8, (int) $offset);
         $json = array();
         /* @var $products ProductFixedDomain */
+        foreach ($products as $product)
+        {
+            $images = $product->getImages('thumbnail');
+            $obj = get_object_vars($product);
+            $obj['name'] = strval($product->getName());
+            $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
+            $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
+            $obj['url'] = base_url('product/details') . '/' . $product->id;
+            $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
+            $json[] = $obj;
+        }
+        echo json_encode($json);
+    }
+
+    function viewed_service()
+    {
+        header('content-type: application/json');
+        $user = User::getCurrentUser();
+        $products = $this->product_model->getViewedProducts();
+        $json = array();
         foreach ($products as $product)
         {
             $images = $product->getImages('thumbnail');

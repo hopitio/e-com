@@ -272,7 +272,7 @@ li{list-style: none;}
 .tab>.head {
     margin: 10px 0px 10px 0px;
     font-size: 15px;
-    display:inline-block;
+    display:block;
 }
 
 .tab>.head li {
@@ -603,17 +603,19 @@ li{list-style: none;}
 }
 
 #widget-right{
-    position: fixed;
-    top: 130px;
-    left: 50%;
-    margin-left: 500px;
     width: 102px;
     box-sizing: border-box;
     display:none;
-    z-index:50;
+    float:right;
+    margin-right: -122px;
+    margin-top: -5px;
+    z-index: 99;
 }
 #widget-right.fixed-top{
-    top: 10px;
+    top: 15px;
+    position: fixed;
+    margin-left: 500px;
+    left: 50%;
 }
 @media(min-width:1180px){
     #widget-right{
@@ -667,13 +669,23 @@ li{list-style: none;}
     background: #18748B;
 }
 #widget-right .product-group > ul{
-    display: block;
+    display: inline-block;
     padding: 10px;
+    padding-bottom: 30px;
     border: 1px solid #d2d2d2;
     background: white;
     margin-top:2px;
-    min-height: 200px;
+    min-height: 231px;
     margin-bottom: 0;
+    position:relative;
+    width: 100%;
+}
+#widget-right .product-group > ul > .page{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 100%;
+    margin-left: -50px;
 }
 #widget-right .product-group > a:hover, #widget-right .product-group > a.active{
     background: #F38B05;
@@ -683,7 +695,10 @@ li{list-style: none;}
     background: white;
     display:block;
     height: 53px;
+    width: 80px;
     margin-bottom:10px;
+    border: 2px solid transparent;
+    border-radius: 3px;
 }
 #widget-right .product-group li:last-child{
     margin-bottom: 0;
@@ -698,14 +713,14 @@ li{list-style: none;}
 }
 #widget-right .product-group li:hover{
     margin-left: -140px;
-    border: 1px solid #d2d2d2;
+    border: 2px solid #949494;
     background: white;
-    margin-top:-1px;
-    margin-bottom: 11px;
     margin-right: -1px;
     -webkit-box-shadow: 0px 1px 11px 0px rgba(50, 50, 50, 0.3);
     -moz-box-shadow:    0px 1px 11px 0px rgba(50, 50, 50, 0.3);
     box-shadow:         0px 1px 11px 0px rgba(50, 50, 50, 0.3);
+    width: 220px;
+    z-index:99;
 }
 #widget-right .product-group li:hover .info{
     display:block;
@@ -720,11 +735,12 @@ li{list-style: none;}
 #widget-right .product-group li:hover .info .price{
     color:#F3B41A;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 13px;
+    line-height: 25px;
 }
 #widget-right .product-group li .image{
     width: 80px;
-    height:53px;
+    height:51px;
     border: 1px solid #d2d2d2;
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -734,6 +750,10 @@ li{list-style: none;}
     position: absolute;
     right:0px;
     top:0;
+}
+#widget-right .product-group li:hover .image{
+    border-top-color: transparent;
+    border-bottom-color: transparent;
 }
 #widget-right .product-group li .image img{
     width: 100%;
@@ -757,14 +777,17 @@ li{list-style: none;}
     position: absolute;
     right: 0;
     top: 0;
-    background: #57B8D3;
+    background: #343c53;
     color: white;
-    padding: 1px 2px;
     z-index:1;
     font-size: 9px;
     line-height: 1;
     text-decoration:none;
     display:none;
+    height: 13px;
+    width: 13px;
+    line-height: 13px;
+    text-align:center;
 }
 #widget-right .product-group li:hover .remove{
     display: inline-block;
@@ -936,4 +959,39 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
     font-weight: normal;
     color: #8D8D8D;
     font-size: 11px;
+}
+.carousel-mini-product a.carousel-control{
+    height: 77px;
+    width: 30px;
+    margin-top: 93px;
+    background: #ccc;
+    opacity: 0.6;
+    z-index: 22;
+    text-align:center;
+}
+.carousel-mini-product a.left.carousel-control{
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.carousel-mini-product a.right.carousel-control{
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.carousel-mini-product a.carousel-control:hover{
+    opacity: 0.9;
+}
+.carousel-mini-product a.carousel-control span.fa{
+    color: white;
+    margin-top: 18.5px;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
 }
