@@ -4,11 +4,14 @@ defined('BASEPATH') or die('No direct script access allowed');
 
 class AdvertisementModel extends BaseModel
 {
+
+    protected $banner_location = "images/banner/";
+
     function loadBanner()
     {
         $query = Query::make()
-                ->select('`key`,`value`',1)
-        ->from('t_setting');
+                ->select('`key`,`value`', 1)
+                ->from('t_setting');
         $result = DB::getInstance()->GetAssoc($query);
         $banner = array();
         foreach ($result as $key => $value)
@@ -18,115 +21,82 @@ class AdvertisementModel extends BaseModel
             $img = $xml->xpath('img');
             for ($i = 0; $i < count($img); $i++)
             {
-                $img_arr = (array)($img[$i]);
+                $img_arr = (array) ($img[$i]);
                 $banner[$key][$i] = $img_arr["@attributes"];
             }
         }
         return $banner;
     }
-    
-    /**
-     * 
-     * @param unknown $userId
-     * @param unknown $shopName
-     * @return Ambigous <multitype:, boolean>
-     */
-    function findSellerCount($userId,$shopName){
-        $query = Query::make()
-        ->select('count(t_seller.id) as total')
-        ->from('t_seller')
-        ->innerJoin('t_user', 't_seller.fk_manager = t_user.id')
-        ->where("( CONCAT('', ? ,'') = '' OR t_user.portal_id = ? ) 
-                    AND
-                   ( ? = '' OR t_seller.name LIKE CONCAT('%', ? ,'%') )
-                ");
-        $queryInclude = array(
-            $userId,
-            $userId,
-            $shopName,
-            $shopName
-        );
-        $record = DB::getInstance()->getRow($query, $queryInclude);
-        return $record;
-    }
-    
-    
-    function save($sellerId = null, $portalAccount, $name, $phone, $email, $website,
-        $sellerLever, $files)
+
+    function update()
     {
-        $id = null;
-        $userId = $this->updateUser($portalAccount);
-        $logo = '';
-        $updateData = array();
-        if(gettype($files) == 'array' && $files['size'] > 0){
-            $logo = $this->saveLogo($files);
-            $updateData['logo'] = $logo;
-        }
-        
-        $updateData['name'] = $name;
-        $updateData['phoneno'] = $phone;
-        $updateData['email'] = $email;
-        $updateData['website'] = $website;
-        $updateData['status_date'] = DB::getDate();
-        $updateData['status_reason'] = 'CREATED';
-        $updateData['fk_manager'] = $userId;
-        $updateData['sid'] = '';
-        
-        if($sellerId == null){
-            $id = DB::insert('t_seller', $updateData);
-        }else{
-            $updateData['status_reason'] = 'UPDATED';
-            $id = DB::update('t_seller', $updateData,  "t_seller.id = {$sellerId}" );
-        }
-        return $id;
-    }
-    
-    function updateUser($portalAccount){
-        
-        $query = Query::make()->from('t_user')->where(" t_user.portal_id = ? ");
-        $queryInclude = array(
-            $portalAccount->id
-        );
-        $id = null;
-        $record = DB::getInstance()->GetOne($query,$queryInclude);
-        if(count($record) <= 0 ){
-            $id = DB::insert('t_user', array(
-                'portal_id' => $portalAccount->id,
-                'platform_key' => $portalAccount->platform_key,
-                'user_type' => DatabaseFixedValue::USER_TYPE_USER,
-                'created_date' => DB::getDate(),
-            ));
-        }else{
-            $id = $record;
-        }
-        return $id;
-    }
-    
-    function saveLogo($files)
-    {
-        $fileModel = new FileModel();
-        $fileID = null;
-        try
+        $files = $_FILES;
+        $post = $this->input->post();
+        $allowedExts = array("gif", "jpeg", "jpg", "png");
+
+        $xml = array();
+
+        //old banner
+        foreach ($post['old_banner'] as $banner_type => $json_old_banner_files)
         {
-            if (isset($files['name']))
+            if (!isset($xml[$banner_type]))
             {
-                $fileInfo = $files;
-                if (! $fileInfo['name'] ||
-                     ! is_uploaded_file($fileInfo['tmp_name']) ||
-                     ! file_exists($fileInfo['tmp_name']))
-                {
-                    //continue;
-                }
-                list ($imgWidth, $imgHeight, $imgType, $imgAttr) = getimagesize(
-                    $fileInfo['tmp_name']);
-                $fileID = $fileModel->handleImageUpload($fileInfo);
+                $xml[$banner_type] = '';
             }
-        }
-        catch (Exception $e)
+            $old_banner_files = json_decode($json_old_banner_files);
+            if (!is_array($old_banner_files))
+            {
+                continue;
+            }
+            foreach ($old_banner_files as $old_banner_file)
+            {
+                $old_banner_file = (array) $old_banner_file;
+                $banner_src = $old_banner_file['src'];
+                $banner_title = $old_banner_file['title'];
+                $banner_href = $old_banner_file['href'];
+                $xml[$banner_type] .= '<img src="' . $banner_src . '" title="' . $banner_title . '" href="' . $banner_href . '"/>';
+            };
+        }//old banner
+        //new banner
+        foreach ($files as $banner_type => $banner_files)
         {
-            throw $e;
+            if (!isset($xml[$banner_type]))
+            {
+                $xml[$banner_type] = '';
+            }
+
+            foreach ($banner_files['name'] as $banner_no => $banner_name)
+            {
+                $banner_file_type = $banner_files['type'][$banner_no];
+                $temp = explode(".", $banner_name);
+                $banner_file_extension = end($temp);
+                $banner_file_error = $banner_files['error'][$banner_no];
+                $banner_file_tmp_name = $banner_files['tmp_name'][$banner_no];
+                $banner_file_size = $banner_files['size'][$banner_no];
+                if ((($banner_file_type == "image/gif") || ($banner_file_type == "image/jpeg") || ($banner_file_type == "image/jpg") || ($banner_file_type == "image/pjpeg") || ($banner_file_type == "image/x-png") || ($banner_file_type == "image/png")) && in_array($banner_file_extension, $allowedExts))
+                {
+                    if (!$banner_file_error > 0)
+                    {
+                        $banner_src = $this->banner_location . $banner_name;
+                        move_uploaded_file($banner_file_tmp_name, $banner_src);
+                        $banner_title = $post["new_banner"][$banner_type][$banner_no]['title'];
+                        $banner_href = $post["new_banner"][$banner_type][$banner_no]['href'];
+                        $xml[$banner_type] .= '<img src="' . $banner_src . '" title="' . $banner_title . '" href="' . $banner_href . '"/>';
+                    }
+                }
+            }
+        }//new banner
+
+        foreach ($xml as $key => $value)
+        {
+            $xml[$key] = '<root>' . $value . '</root>';
         }
-        
-        return $fileID;
+
+        foreach ($xml as $banner_type => $xml_banner_type)
+        {
+            $setting = Setting::getInstance();
+            $setting->set($banner_type, $xml_banner_type);
+            $setting->save();
+        }
     }
 }

@@ -127,7 +127,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/__admin/advertisement">
                                 <i class="fa fa-th"></i> <span>Quảng cáo</span>
                             </a>
                         </li>
