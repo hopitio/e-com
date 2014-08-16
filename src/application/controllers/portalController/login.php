@@ -251,12 +251,14 @@ class login extends BasePortalController
         $portalModelUser->platform_key = DatabaseFixedValue::USER_PLATFORM_DEFAULT;
         
         $userList = $portalModelUser->getMutilCondition();
-        if(count($userList) > 0){
-            array_push($woringData, $language->msgExitEmail);
+        if(count($userList) > 0 ){
+            if($userList[0]->status != null){
+                array_push($woringData, $language->msgExitEmail);
+            }
         }
         
         $case = preg_match('@[a-z0-9A-Z]@', $password);
-        if(!$case || strlen($password) < 8 || strlen($password) > 50 || $password != $passwordRetry || strlen($password) <= 0) {
+        if(!$case || strlen($password) < 6 || strlen($password) > 50 || $password != $passwordRetry || strlen($password) <= 0) {
             array_push($woringData, $language->msgWoringPass);
         }
     

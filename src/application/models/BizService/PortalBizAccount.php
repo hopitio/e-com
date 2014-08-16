@@ -89,6 +89,15 @@ class PortalBizAccount extends PortalBizBase
     private function insertNewUser($user,$firstname, $lastname, $account, $password, 
         $sex, $DOB, $platformKey, $question = '', $answer = '')
     {
+        $userModel = new PortalModelUser(); 
+        $userModel->account = $account;
+        $results = $userModel->getMutilCondition();
+        $isInTemp = count($results) > 0 ? ($results[0]->status == null ? true : false) : false;
+        if(count($results) > 0 && !$isInTemp){
+            throw new Lynx_ModelMiscException('khởi tạo tài khoản không đúng');
+        }
+        $oldUserId = $results[0]->id;
+        
         $userModel = new PortalModelUser();
         $userModel->firstname = $firstname;
         $userModel->lastname = $lastname;
@@ -102,8 +111,14 @@ class PortalBizAccount extends PortalBizBase
         $userModel->status_reason = 'Tạo mới tài khoản';
         $userModel->last_active = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $userModel->platform_key = $platformKey;
-        $newId = $userModel->insert();
         
+        if($isInTemp){
+           $userModel->id = $oldUserId;
+           $userModel->updateById();
+           $newId = $oldUserId;
+        }else{
+            $newId =  $userModel->insert();
+        }
         $this->insertSettingKey($user,$newId, $userModel->account, $question, $answer);
         
         return $newId;

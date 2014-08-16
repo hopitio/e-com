@@ -444,7 +444,40 @@
     <dialog_findUser>
         <title>Tìm kiếm user</title>
     </dialog_findUser>
-    <admin_product>
+    <admin_product></admin_product>
+    <portalPayment_orderEmailVerify>
+        <title>Địa chỉ mail giao dịch</title>
+        <paymentProcessCart>Giỏ hàng</paymentProcessCart>
+        <paymentProcessPlaceOrder>Quầy Thanh toán</paymentProcessPlaceOrder>
+        <paymentProcessShipping>Thông tin vận chuyển</paymentProcessShipping>
+        <paymentProcessPaymentInfor>Phương thức thanh toán</paymentProcessPaymentInfor>
+        <paymentProcessPayment>Thanh toán</paymentProcessPayment>
         
-    </admin_product>
+        <lblGoBack>Trở lại</lblGoBack>
+        
+        <lblShippingAddress>Địa chỉ nhận hàng</lblShippingAddress>
+        <lblShippingInvoiceAddress>Địa chỉ nhận hóa đơn</lblShippingInvoiceAddress>
+        <lblFullname>Họ và tên : </lblFullname>
+        <lblPhone>Số điện thoại : </lblPhone>
+        <lblAddress>Địa chỉ : </lblAddress>
+        <lblEmail>Xác minh địa chỉ email</lblEmail>
+        
+        <lblPaymentType>Phương thức thanh toán</lblPaymentType>
+        <colPlaymentType>Loại thanh toán</colPlaymentType>
+        <colPlaymentFreeType>Cách tính phí</colPlaymentFreeType>
+        <colPlaymentFree>Chi phí (VND)</colPlaymentFree>
+        
+        <lblOrderSummaries>Tổng hợp đơn hàng</lblOrderSummaries>
+        <lblOrderId>Mã đơn hàng : </lblOrderId>
+        <lblInvoiceId>Mã hóa đơn : </lblInvoiceId>
+        <lblCreateDate>Ngày tạo : </lblCreateDate>
+        <lblOrderSummariesDetail>Đơn hàng gồm có</lblOrderSummariesDetail>
+        <lblProducts>Sản phẩm</lblProducts>
+        <lblOrderShipping>Thông tin vận chuyển : </lblOrderShipping>
+        <lblOrderSubtotal>Tổng hàng : </lblOrderSubtotal>
+        <lblOrderTax>Thuế : </lblOrderTax>
+        <lblOrderTotal>Tổng giá trị hóa đơn : </lblOrderTotal>
+        <btnNext>Tiếp theo</btnNext>
+        <btnBack>Trở lại giỏ hàng</btnBack>
+    </portalPayment_orderEmailVerify>
 </data>

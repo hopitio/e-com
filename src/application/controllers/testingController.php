@@ -15,5 +15,10 @@ class testingController extends BaseController{
     
     function getMockupOrderRequest (){
         
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+        ->setData(array(),false)
+        ->setCss(array('/style/list.css'))
+        ->render('portalOrder/testorder');
     }
+    
 }

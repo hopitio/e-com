@@ -145,3 +145,14 @@
 	font-size: 16px;
 	padding: 10px 30px;
 }
+.email-verify{
+    margin: auto;
+    display: inline-block;
+}
+.email-verify > input{
+    width:200px;
+}
+#email-verify{
+    float:none;
+    margin-top:12px;
+}

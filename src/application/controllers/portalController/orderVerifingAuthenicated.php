@@ -9,7 +9,7 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
 
 class orderVerifingAuthenicated extends BasePortalController
 {
-    protected $authorization_required = TRUE;
+    protected $authorization_required = FALSE;
     protected $css = array('/style/portalOrder.css');
     protected $js =  array();
     
@@ -27,7 +27,6 @@ class orderVerifingAuthenicated extends BasePortalController
             $dataview['result'] = false;
             $dataview['invoiceId'] = $invoiceId;
             $dataview['orderId'] = $orderId;
-            echo json_encode($dataview); die;
             LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
             ->setData($dataview)
             ->setCss($this->css)

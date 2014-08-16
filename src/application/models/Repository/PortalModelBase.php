@@ -10,6 +10,7 @@ class PortalModelBase extends CI_Model
     protected  $_dbPortal;
     protected  $_constIntanceName = null;
     protected  $record_status = 'ACTIVE';
+    protected  $created_at;
     
     
     static protected $_date;
