@@ -95,13 +95,13 @@
             <div class="lynx-tabs">
                 <ul>
                     <li>
-                        <a href="#tab-support">Warranty & Support</a>
+                        <a href="#tab-support"><?php echo $language[$view->view]->lblWarranty ?></a>
                     </li>
                     <li>
-                        <a href="#tab-details">Product details</a>
+                        <a href="#tab-details"><?php echo $language[$view->view]->lblDetails ?></a>
                     </li>
                     <li class="active">
-                        <a href="#tab-desc">Product description</a>
+                        <a href="#tab-desc"><?php echo $language[$view->view]->lblDes ?></a>
                     </li>
                 </ul>
                 <div class="lynx-panes">
@@ -127,15 +127,15 @@
             </div>
             <div class="clearfix"></div>
             <div class="detail-free-shipping free">
-                <label for="sel_qty">Quantity:</label> <select name="sel_qty" id="sel_qty"><option>1</option></select>
+                <label for="sel_qty"><?php echo $language[$view->view]->lblQuantity ?>:</label> <select name="sel_qty" id="sel_qty"><option>1</option></select>
             </div>
             <h4></h4>
-            <input type="button" class="btn-add-to-cart" value="Add to Cart">
+            <input type="button" class="btn-add-to-cart" value="<?php echo $language[$view->view]->btnCart ?>">
             <h4></h4>
-            <input type="button" class="btn-add-to-favorite" value="Add to Favorites">
+            <input type="button" class="btn-add-to-favorite" value="<?php echo $language[$view->view]->btnFavorite ?>">
             <h4 ></h4>
             <div class="detail-share"> 
-                <span>Share: </span>
+                <span><?php echo $language[$view->view]->lblShare ?>: </span>
                 <a href="javascript:;" class="share share-facebook"></a>
                 <a href="javascript:;" class="share share-twiter"></a>
                 <a href="javascript:;" class="share share-google"></a>
@@ -148,7 +148,7 @@
     <div class="tab tab-blue text-left width-960">
         <div class="head">
             <ul>
-                <li>Sản phẩm liên quan</li>
+                <li><?php echo $language[$view->view]->lblRelated ?></li>
                 <li class="line"></li>
             </ul>
         </div>

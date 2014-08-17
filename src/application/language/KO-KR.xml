@@ -101,22 +101,13 @@
         <lblQuantity>수량</lblQuantity>
         <btnBuyNow>바로구매</btnBuyNow>
         <lblAddTo>장바구니 </lblAddTo>
-        <btnCart>장바구니</btnCart>
-        <btnWishList>관심상품</btnWishList>
+        <btnCart>장바구니에 담기</btnCart>
+        <btnFavorite>즐겨 찾기에 추가</btnFavorite>
         <lblShare>공유</lblShare>
-        <lblDes>상품 설명</lblDes>
-        <lblOther>기타 정보</lblOther>
+        <lblDes>제품 설명</lblDes>
+        <lblDetails>제품 세부 사항</lblDetails>
         <lblWarranty>보증  &amp; 반품</lblWarranty>
         <lblRelated>Related product</lblRelated>
-        <lblBrand>상표</lblBrand>
-        <lblMadeIn>제</lblMadeIn>
-        <lblImportFrom>에서 가져</lblImportFrom>
-        <lblReturnPolicy>당신의 제품을 반환 할 수 있습니다:{0} 일.</lblReturnPolicy>
-        <lblNoReturnPolicy>이 제품은 반환 정책이 없습니다.</lblNoReturnPolicy>
-        <lblWarrantyPolicy>보장 정책 :</lblWarrantyPolicy>
-        <lblWarrantyValue>{0} 일</lblWarrantyValue>
-        <lblWarrantyLifeTime>제품 수명.</lblWarrantyLifeTime>
-        <lblNoWarrantyPolicy>이 제품은 보증 정책이 없습니다.</lblNoWarrantyPolicy>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>

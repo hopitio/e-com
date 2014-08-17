@@ -103,22 +103,13 @@
         <lblQuantity>Số lượng</lblQuantity>
         <btnBuyNow>Mua Ngay</btnBuyNow>
         <lblAddTo>Thêm vào</lblAddTo>
-        <btnCart>Giỏ hàng</btnCart>
-        <btnWishList>Mong Muốn</btnWishList>
-        <lblShare>Chia sẻ </lblShare>
+        <btnCart>Thêm vào Giỏ hàng</btnCart>
+        <btnFavorite>Thêm vào Ưa thích</btnFavorite>
+        <lblShare>Chia sẻ</lblShare>
         <lblDes>Mô tả sản phẩm</lblDes>
-        <lblOther>Thông tin khác</lblOther>
+        <lblDetails>Thông tin sản phẩm</lblDetails>
         <lblWarranty>Bảo hành &amp; trả hàng</lblWarranty>
         <lblRelated>Sản phẩm liên quan</lblRelated>
-        <lblBrand>Nhãn hiệu</lblBrand>
-        <lblMadeIn>Sản xuất tại</lblMadeIn>
-        <lblImportFrom>Nhập khẩu từ</lblImportFrom>
-        <lblReturnPolicy>Có thể hoàn trả sản phẩm trong vòng: {0} ngày.</lblReturnPolicy>
-        <lblNoReturnPolicy>Sản phẩm này không có điều khoản hoàn trả.</lblNoReturnPolicy>
-        <lblWarrantyPolicy>Thời hạn bảo hành:</lblWarrantyPolicy>
-        <lblWarrantyValue>{0} ngày.</lblWarrantyValue>
-        <lblWarrantyLifeTime>trong suốt thời gian sử dụng.</lblWarrantyLifeTime>
-        <lblNoWarrantyPolicy>Sản phẩm này không có điều khoản bảo hành.</lblNoWarrantyPolicy>
     </product_details>
     <wishlist_show>
         <title>Sản phẩm mong muốn</title>

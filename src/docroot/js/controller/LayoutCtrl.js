@@ -19,6 +19,22 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', function($sc
             return $scope.widgetRightProducts[$scope.widgetRightActive][$scope.widgetRightPage - 1];
         };
 
+        $scope.changeWidgetPage = function(direction) {
+            if (direction > 0 && $scope.widgetRightPage < $scope.widgetRightProducts[$scope.widgetRightActive].length)
+                $scope.widgetRightPage += 1;
+            else if (direction < 0 && $scope.widgetRightPage > 1)
+                $scope.widgetRightPage -= 1;
+        };
+
+        $scope.countWidgetProducts = function(type) {
+            var pages = $scope.widgetRightProducts[type];
+            var count = 0;
+            for (var i in pages) {
+                count += pages[i].length;
+            }
+            return count;
+        };
+
         $scope.getViewed = function() {
             $scope.widgetRightProducts.viewed = [[]];
             $http.get('/home/viewed_service').success(function(resp) {
@@ -28,7 +44,7 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', function($sc
                 for (var i in resp) {
                     var product = resp[i];
                     if ($scope.widgetRightProducts.viewed[currentRow].length === 3) {
-                        $scope.widgetRightProducts.viewed[currentRow].push([]);
+                        $scope.widgetRightProducts.viewed.push([]);
                         currentRow++;
                     }
                     $scope.widgetRightProducts.viewed[currentRow].push(product);

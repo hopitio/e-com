@@ -9,8 +9,7 @@
 .carousel-control{
     width:7%;
 }
-.banner-box .carousel-control.left,.banner-box .carousel-control.right,
-.tab-content .carousel-control.right,.tab-content .carousel-control.left{
+.banner-box .carousel-control.left,.banner-box .carousel-control.right{
     background: none;
 
 }
@@ -25,19 +24,6 @@
 .banner-box a.carousel-control span.fa{
     color: white;
     margin-top: 130px;
-}
-
-.tab-content .carousel-control.right:hover{
-    background-image: -webkit-linear-gradient(left,color-stop(rgba(0,0,0,.0001) 0),color-stop(rgba(0,0,0,.3) 100%));
-    background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.2) 100%);
-    background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
-}
-.tab-content .carousel-control.left:hover{
-    background-image: -webkit-linear-gradient(left,color-stop(rgba(0,0,0,.3) 0),color-stop(rgba(0,0,0,.0001) 100%));
-    background-image: linear-gradient(to right,rgba(0,0,0,.3) 0,rgba(0,0,0,.0001) 100%);
-    background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
 .tab-content .carousel-indicators{
     bottom:-40px;
@@ -54,6 +40,7 @@
 }
 
 #carousel-home-banner .carousel-control span{
+    opacity: 0;
     background: url(/images/banner-nav.png) no-repeat;
     width: 54px;
     height: 104px;
@@ -61,6 +48,9 @@
     margin: auto;
     margin-top: 128px;
     text-indent: -9999px;
+}
+#carousel-home-banner:hover .carousel-control span{
+    opacity: 1;
 }
 #carousel-home-banner .left.carousel-control span{
     background-position: 0 0;

@@ -115,13 +115,19 @@
             <div>
                 <div id="widget-right" ng-cloak>
                     <div class="product-group">
-                        <a href="javascript:;" title="View" ng-click="setWidgetRightActive('cart')">Cart <i class="fa fa-caret-down" ng-if="widgetRightActive == 'cart'"></i><div class="pull-right">0</div></a>
+                        <a href="javascript:;" title="View" ng-click="setWidgetRightActive('cart')">
+                            Cart <i class="fa fa-caret-down" ng-if="widgetRightActive == 'cart'"></i>
+                            <div class="pull-right">{{countWidgetProducts('cart')}}</div>
+                        </a>
                         <ul ng-if="widgetRightActive === 'cart'">
 
                         </ul>
                     </div>
                     <div class="product-group">
-                        <a href="javascript:;" title="View" ng-click="setWidgetRightActive('viewed')">View <i class="fa fa-caret-down" ng-if="widgetRightActive == 'viewed'"></i><div class="pull-right">12</div></a>
+                        <a href="javascript:;" title="View" ng-click="setWidgetRightActive('viewed')">
+                            View <i class="fa fa-caret-down" ng-if="widgetRightActive == 'viewed'"></i>
+                            <div class="pull-right">{{countWidgetProducts('viewed')}}</div>
+                        </a>
                         <ul ng-if="widgetRightActive === 'viewed'">
                             <li ng-repeat="product in getCurrentProducts()">
                                 <!--<a class="remove" href="javascript:;" title="Remove">x</a>-->
@@ -137,9 +143,9 @@
                             </li>
                             <div class="page">
                                 <small>
-                                    <a href="javascript:;" title="Left" class="btn-page"><i class="fa fa-angle-left"></i></a>
-                                    <strong>1/5</strong>
-                                    <a href="javascript:;" title="Right" class="btn-page"><i class="fa fa-angle-right"></i></a>
+                                    <a href="javascript:;" title="Left" class="btn-page" ng-click="changeWidgetPage(-1)"><i class="fa fa-angle-left"></i></a>
+                                    <strong>{{widgetRightPage}}/{{widgetRightProducts[widgetRightActive].length}}</strong>
+                                    <a href="javascript:;" title="Right" class="btn-page" ng-click="changeWidgetPage(+1)"><i class="fa fa-angle-right"></i></a>
                                 </small>
                             </div>
                         </ul>
