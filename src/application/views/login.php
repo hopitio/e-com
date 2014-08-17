@@ -1,4 +1,3 @@
-
 <div class="lynx_contentWarp lynx_staticWidth">
     <div class="lynx_leftContent lynx_box">
         <form id="resg" method="post">
@@ -57,7 +56,7 @@
             <button id="submitLogin" class="lynx_button btn btn-primary" type="submit" value="one"><?php echo $language[$view->view]->btnLogin;?></button>
             <a href="/portal/account/lost_password" style="width: 100%;text-align: left;"><?php echo $language[$view->view]->lblForgetPassword;?></a>
             
-            <a href="javascript:void(0)" id="likfacebooklogin" link="<?php echo UrlManager::getInstanse()->getLoginFacebookUrl();?>"><img src="/images/Social_signin_facebook.png" /></a>
+            
             <a href="#" style="display:none"><img src="/images/Social_signin_google.png" /></a>
             
             <input name='currentPage' type="hidden" value='<?php echo $cp;?>'>

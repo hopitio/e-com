@@ -37,7 +37,7 @@ var postData = {
     			"actualPrice" : 1800,
     			"taxes" : [],
     			"sellerName" : "Trial",
-    			"sellerEmail" : "admin@samsung.com",
+    			"sellerEmail" : "lethanhan.bkaptech@gmail.com",
     			"sid" : "samsung",
     			"shipping" : "standard"
     		}, {
@@ -51,7 +51,7 @@ var postData = {
     			"actualPrice" : 1800,
     			"taxes" : [],
     			"sellerName" : "Trial",
-    			"sellerEmail" : "admin@samsung.com",
+    			"sellerEmail" : "lethanhan.bkaptech@gmail.com",
     			"sid" : "samsung",
     			"shipping" : "standard"
     		}, {
@@ -69,7 +69,7 @@ var postData = {
     				}
     			],
     			"sellerName" : "GreenShop ",
-    			"sellerEmail" : "lequan.vcci@gmail.com",
+    			"sellerEmail" : "lethanhan.bkaptech@gmail.com",
     			"sid" : "quanle",
     			"shipping" : "standard"
     		}

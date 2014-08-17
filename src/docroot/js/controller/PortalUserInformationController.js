@@ -1,3 +1,7 @@
+lynxApp = angular.module('lynx', ['mainFilters','ui.bootstrap' ,'ngRoute']);
+lynxApp.config(['$routeProvider', function($routeProvider) {}]);
+lynxApp.factory('$socket', socketService);
+
 function PortalUserInformationController($scope,$modal,$http)
 {
     $scope.onLoadUserInformation = false; 

@@ -8,12 +8,14 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
 
 class userInformation extends BasePortalController
 {
-        protected $authorization_required = TRUE;
+    protected $authorization_required = TRUE;
     protected  $_css = array(
         '/style/myaccount.css'
     );
     protected $_js = array('/js/controller/PortalUserInformationController.js'
-                            ,'/js/services/PortalUserInformationServiceClient.js');
+                            ,'/js/services/PortalUserInformationServiceClient.js'
+                            ,'/js/ui-bootstrap-tpls-0.10.0.min.js'
+                            ,'/js/ng-grid.min.js');
     protected $_data = array();
     
     function showPage()

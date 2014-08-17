@@ -28,27 +28,7 @@
             </div>
         </div>
         
-        <div class="lynx_row-right">
-            <div class="lynx_row-head">
-                <span ><?php echo $language[$view->view]->emailTitle;?></span>
-            </div>
-            
-            <div class="lynx_row-content" ng-show="onUpdatingEmail" class="preload" >
-                <div  ng-if="onUpdatingEmail" class="center"><img src="/images/loading.gif" alt="Loading..." class="loading"></div>
-            </div>
-            
-            <div class="lynx_row-content">
-                <alert ng-show="alertEmailError != undefined" type="danger" close="closeAlertEmailNotify('error');" >{{alertEmailError}}</alert>
-                <alert ng-show="alertEmailSusscess != undefined" type="success" close="closeAlertEmailNotify('susscess');">{{alertEmailSusscess}}</alert>
-                
-                <div class="lynx_row">
-                    <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblEmail;?></span><input name="txtNewMailAddress" ng-model="email" type="password"/>
-                </div>
-                <div class="lynx_row">
-                    <button id="btnComfirm" ng-click="updateAlertEmail()" class="lynx_button btn btn-primary" type="submit"><?php echo $language[$view->view]->btnEmail;?></button>
-                </div>
-            </div>
-        </div>
+        
         
         <div class="lynx_row-right">
             <div class="lynx_row-head">
@@ -58,20 +38,25 @@
                 <div  ng-if="onGetHistory" class="center"><img src="/images/loading.gif" alt="Loading..." class="loading"></div>
             </div>
             <div class="lynx_row-content" ng-show="!onGetHistory">
-                <div class="lynx_historyTable">
-                    <span class="lynx_colIp"> <?php echo $language[$view->view]->historyIpColTitle;?> </span>
-                    <span class="lynx_colTime"> <?php echo $language[$view->view]->historyTimeColTitle;?></span>
-                    <span class="lynx_colSys"><?php echo $language[$view->view]->historySystemColTitle;?></span>
-                    <span class="lynx_colUserAgrent"> <?php echo $language[$view->view]->historyUserAgrentColTitle;?> </span>
-                </div>
-                <div class="lynx_historyTable" ng-repeat="history in historys">
-                    <span class="lynx_colIp">{{history.client_ip}}</span>
-                    <span class="lynx_colTime">{{history.last_activity}}</span>
-                    <span class="lynx_colSys">{{history.sub_system_name}}</span>
-                    <span class="lynx_colUserAgrent">{{history.user_agrent}}</span>
-                </div>
-                
-                
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th><?php echo $language[$view->view]->historyTimeColTitle;?></th>
+                            <th><?php echo $language[$view->view]->historyIpColTitle;?></th>
+                            <th><?php echo $language[$view->view]->historySystemColTitle;?></th>
+                            <th><?php echo $language[$view->view]->historyUserAgrentColTitle;?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="history in historys">
+                            <td>{{history.last_activity}}</td>
+                            <td>{{history.client_ip}}</td>
+                            <td>{{history.sub_system_name}}</td>
+                            <td>{{history.user_agrent}}</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 </div> 

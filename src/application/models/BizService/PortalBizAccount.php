@@ -28,22 +28,18 @@ class PortalBizAccount extends PortalBizBase
         $DOB, $question = '', $answer = '')
     {
         $newId = $this->insertNewUser($user,$firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT,$question, $answer);
-        //$this->activeUser($newId);
+        $this->activeUser($newId);
+        
         $portalUserModel = new PortalModelUser();
         $portalUserModel->id = $newId;
         $portalUserModel->getUserByUserId();
         
-        $linkActive = $this->config->item('path_to_active_account');
-        $activeKey  = SecurityManager::inital()->getEncrytion()
-                      ->accountActiveEncrytion($portalUserModel->id, $portalUserModel->account, $portalUserModel->date_joined); 
-        
-        $linkActive = str_replace('{key}', $activeKey, $linkActive);
-        $mailData = array(
-             'link' => $linkActive,
-             'name' => $lastname
-        );
-        
-        
+//         $linkActive = $this->config->item('path_to_active_account');
+//         $activeKey  = SecurityManager::inital()->getEncrytion()
+//         ->accountActiveEncrytion($portalUserModel->id, $portalUserModel->account, $portalUserModel->date_joined); 
+//         $linkActive = str_replace('{key}', $activeKey, $linkActive);
+
+        $mailData = array('user' => $portalUserModel);
         
         MailManager::initalAndSend(MailManager::TYPE_RESG_COMFIRM, $account, $mailData);
         
@@ -96,8 +92,9 @@ class PortalBizAccount extends PortalBizBase
         if(count($results) > 0 && !$isInTemp){
             throw new Lynx_ModelMiscException('khởi tạo tài khoản không đúng');
         }
-        $oldUserId = $results[0]->id;
-        
+        if(count($results) > 0){
+            $oldUserId = $results[0]->id;
+        }
         $userModel = new PortalModelUser();
         $userModel->firstname = $firstname;
         $userModel->lastname = $lastname;

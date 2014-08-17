@@ -31,10 +31,10 @@ class MailManager {
         	case self::TYPE_RESG_COMFIRM:
                 $staff = new ConfirmRegisterMailler();
         	    break;
-        	case self::TYPE_RESETPASSWORD_COMFRIM:
-        	    $staff = new ResetPasswordRegisterMailler();
-        	    break;
-        	case self::TYPE_NEWPASSWORD_NOFICATION:
+            case self::TYPE_RESETPASSWORD_COMFRIM:
+                $staff = new ResetPasswordRegisterMailler();
+                break;
+            case self::TYPE_NEWPASSWORD_NOFICATION:
         	    $staff = new NewPasswordMailler();
         	    break;
         	case self::ORDER_PLACES:
@@ -80,7 +80,7 @@ class MailManager {
     static function initalAndSend($type,$target,$mailData){
         $mail = new MailManager();
         if($target == null || !isset($target)){
-            $mailData = var_export($mailData,true);
+            //$mailData = var_export($mailData,true);
             throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__." Không có địa chỉ nhận mail :{$type},{$mailData}");
         }
         

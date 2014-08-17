@@ -12,13 +12,9 @@ class ConfirmRegisterMailler extends AbstractStaff{
      */
     protected function buildContent()
     {
-        $this->CI->load->helper('file');
-        $temp = $this->CI->config->item('temp_mail_folder');
+        $temp = $this->CI->config->item('temp_mail_view');
         $temp .= User::getCurrentUser()->languageKey.'/'.$this->config[MAILLER_TEMP];
-        $mailContent = read_file($temp);
-        $mailContent = str_replace('{link}',$this->mailData['link'],$mailContent);
-        $mailContent = str_replace('{name}',$this->mailData['name'] , $mailContent);
-        return $mailContent;
+        return $this->CI->load->view($temp,$this->mailData,true);
     }
 
     /* (non-PHPdoc)

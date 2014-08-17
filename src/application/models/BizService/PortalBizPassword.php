@@ -24,24 +24,20 @@ class PortalBizPassword extends PortalBizBase
         $portalUser->updateUser();
         
         $portalUserHistory = new PortalBizUserHistory();
+        
         $newId = $portalUserHistory->createNewHistory($user, 
             DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEPASS, 
             'Thay đổi mật khẩu', null, null);
-        $resetKey = SecurityManager::inital()->getEncrytion()->encrytResetPassword($user, $newId);
-        $resetKey =  urlencode($resetKey);
         
-        $link =  get_instance()->config->item('path_to_reset_password_reset');
-        $link =  str_replace('{key}', $resetKey, $link);
-        
+        $portalUser = new PortalModelUser();
+        $portalUser->id = $user->id;
+        $portalUser->getUserByUserId();
         $mailData = array(
-            'time'=>date(DatabaseFixedValue::DEFAULT_FORMAT_DATE),
-            'link'=>$link
+            'user' => $portalUser
         );
-        
         MailManager::initalAndSend(MailManager::TYPE_RESETPASSWORD_COMFRIM,  $user->account , $mailData);
         return  $portalUser;
     }
-    
     
     /**
      * Check valid password.
@@ -96,7 +92,7 @@ class PortalBizPassword extends PortalBizBase
         $historyId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_RESETPASS,'Reset mật khẩu',null,null);
         
         $mailData = array(
-            'time'=>date(DatabaseFixedValue::DEFAULT_FORMAT_DATE),
+            'user'=> $portalUser,
             'password'=>$newPass
         );
         
@@ -123,8 +119,9 @@ class PortalBizPassword extends PortalBizBase
         $user->id = $portalModelUsers->id;
         $portalUserHistory = new PortalBizUserHistory();
         $historyId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_RESETPASS,'Reset mật khẩu',null,null);
+        
         $mailData = array(
-            'time'=>date(DatabaseFixedValue::DEFAULT_FORMAT_DATE),
+            'user'=> $portalModelUsers,
             'password'=>$newPass
         );
         

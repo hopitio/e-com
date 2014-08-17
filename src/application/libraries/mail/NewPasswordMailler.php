@@ -12,13 +12,9 @@ class NewPasswordMailler extends AbstractStaff{
      */
     protected function buildContent()
     {
-        $this->CI->load->helper('file');
-        $temp = $this->CI->config->item('temp_mail_folder');
-        $temp .= $this->languageKey.'/'. $this->config[MAILLER_TEMP];
-        $mailContent = read_file($temp);
-        $mailContent = str_replace('{time}',$this->mailData['time'],$mailContent);
-        $mailContent = str_replace('{password}',$this->mailData['password'],$mailContent);
-        return $mailContent;
+        $temp = $this->CI->config->item('temp_mail_view');
+        $temp .= User::getCurrentUser()->languageKey.'/'.$this->config[MAILLER_TEMP];
+        return $this->CI->load->view($temp,$this->mailData,true);
     }
 
     /* (non-PHPdoc)

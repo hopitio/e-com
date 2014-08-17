@@ -282,7 +282,11 @@ a.lynx_sort-menu {
 .lynx_contentWarp {
 	display: inline-block;
 	min-height: 205px;
-	margin: 20px 0 40px 0;
+	margin: 20px 0 0 0;
+    background: white;
+    border: solid 1px #DDDDDD;
+    border-bottom: none;
+    padding: 10px;
 }
 
 .lynx_contentWarp .lynx_row-fluid {
@@ -333,7 +337,7 @@ body  .lynx_row-head span.lynx_spanButton{
     border-left: 1px solid #DDDDDD;
 	border-bottom: 1px solid #DDDDDD;
     color: #3A3A3A;
-    width: 990px;
+    width: 720px;
 	padding:10px;
 	display:inline-block;  
 }
@@ -439,4 +443,7 @@ body  .lynx_row-head span.lynx_spanButton{
 .lynx_incoiceProductButton{
     float:left;
 	margin-top:10px;
+}
+.lynx_staticWidth {
+    width:960px;
 }
