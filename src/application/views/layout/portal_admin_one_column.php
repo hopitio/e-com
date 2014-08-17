@@ -1,29 +1,174 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html ng-app="lynx">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title: '';?></title>
-        <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
-        <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
-        <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
-        <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
-        <link rel="stylesheet" type="text/css" href="/style/portalAdmin.css" media="all">
         
+        <!-- bootstrap 3.0.2 -->
+        <link href="/AdminLTE-master/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="/AdminLTE-master/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="/AdminLTE-master/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="/AdminLTE-master/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="/plugins/DataTables-1.10.0/media/css/jquery.dataTables.min.css" type="text/css" />
+
+        
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+        
+        <link rel="stylesheet" type="text/css" href="/style/mainAdminGift.css" media="all">
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
+        <?php 
+        //Thêm các js riêng biệt
+            foreach ($view->css as $item)
+            {
+                echo '<link rel="stylesheet" type="text/css" href="'.$item.'" media="all">';
+            }
+        ?>
+    </head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <a href="/__admin" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                SFRIENDLY
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        
+                       
+                        
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span><?php User::getCurrentUser()->firstname.' '.User::getCurrentUser()->lastname;?><i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                <!-- Menu Body -->
+                                <li class="user-body">
+
+                                    <div class="col-xs-12 text-right">
+                                        <a href="#">Bảo mật</a>
+                                    </div>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Tài khoản </a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="/images/no-images.jpg" class="img-circle" alt="User Image" />
+                        </div>
+                        <div class="pull-left info">
+                            <p>Hello, <?php User::getCurrentUser()->lastname;?></p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="active">
+                            <a href="/portal/__admin">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/portal/__admin/user_find">
+                                <i class="fa fa-th"></i> <span>Tài khoản</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/portal/__admin/order_find">
+                                <i class="fa fa-bar-chart-o"></i><span>Đơn đặt hàng</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
+            </aside><!-- /.right-side -->
+            
+            
+        </div><!-- ./wrapper -->
+        <script type="text/javascript">
+            function Config() {
+                this.facebookApplicationKey = '1392515564358247';
+                this.categoryService = 'http://localhost.com/category/categories_service';
+                this.cartService = 'http://localhost.com/cart/cartProductsService';
+            }
+        </script>
         <script type='text/javascript' src="/js/angular.min.js"></script>
         <script type='text/javascript' src="/js/angular-route.min.js"></script>
         <script type='text/javascript' src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
-        <script type='text/javascript' src="/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <script src="/plugins/DataTables-1.10.0/media/js/jquery.dataTables.min.js"></script>
+        <script src="/plugins/DataTables-1.10.0/media/js/custom.dataTables.js"></script>
+        <script src="/plugins/gritter/js/jquery.gritter.min.js"></script>
+        <script src="/plugins/validation/jquery.validate.min.js"></script>
+        <script src="/plugins/validation/additional-methods.min.js"></script>
+        
+        <!-- AdminLTE App -->
+        <script src="/AdminLTE-master/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/AdminLTE-master/js/AdminLTE/app.js" type="text/javascript"></script>
+        
+        
         <script type='text/javascript' src="/js/app.js"></script>
+        <script type='text/javascript' src="/js/main.js"></script>
         <script type='text/javascript' src="/js/filters.js"></script>
+        
         <script type='text/javascript' src="/js/directives.js"></script>
-        <script type='text/javascript' src="/js/ng-grid.min.js"></script>
-        <script src="/js/main.js"></script>
-        <script src="/js/services/PortalCommonServiceClient.js"></script>
+        
+        <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
+        <script type='text/javascript' src="/js/common.js"></script>
+        
+        <script type="text/javascript">
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+            }
+        </script>
+        
         <?php
         //Thêm các js riêng biệt
         foreach ($view->javascript as $jsItem)
@@ -32,86 +177,5 @@
         }
         ?>
         
-        <?php 
-        //Thêm các js riêng biệt
-            foreach ($view->css as $item)
-            {
-                echo '<link rel="stylesheet" type="text/css" href="'.$item.'" media="all">';
-            }
-        ?>
-        <script type="text/javascript">
-           function Config(){
-               this.facebookApplicationKey  = '<?php echo get_instance()->config->item('facebook_app_id');?>';
-           }
-        </script>
-    </head>
-    <body>
-    <div class="lynx_container">
-        <div class="lynx_head">
-            <div class="lynx_headWarp lynx_staticWidth">
-                <a href="/"><div class="lynx_logo"></div></a>
-            </div>
-            <div class="lynx_headMenu">
-                <div class="lynx_menuWarp lynx_staticWidth">
-                </div>
-            </div>
-        </div>
-    <?php require_once APPPATH.'views/'.$view->view.'.php';?>
-         <div class="lynx_footer">
-            <div class="lynx_content">
-                <div class="lynx_col1">
-                    <a href="/"><img class="lynx_logo" src="/images/logo-footer.png"/></a>
-                    <span class="lynx_contact">
-                          Sfriendly.com /  Sfriendly.vn <br/>
-                          Phone: 098 999 999 <br/>
-                          Email: sale@sf
-                    </span>
-                    <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
-                </div>
-                <div class="lynx_col2">
-                    <div class="lynx_cell">
-                        <ul>
-                            <span><?php echo $language['layout']->lblMakeMoneyWithUs;?></span>
-                            <li> <?php echo $language['layout']->lblSell;?> </li>
-                            <li> <?php echo $language['layout']->lblAdve;?> </li>
-                        </ul>
-                        <ul>
-    	                    <span><?php echo $language['layout']->lblCustomerService;?></span>
-    	                    <li> <?php echo $language['layout']->lblFAQs;?> </li>
-    	                    <li> <?php echo $language['layout']->lblContact;?> </li>
-    	                    <li> <?php echo $language['layout']->lblShippingvsReturn;?> </li>
-    	                    <li> <?php echo $language['layout']->lblSafeShopping;?>  </li>
-    	                    <li> <?php echo $language['layout']->lblGuaranteeSecureShopping;?>    </li>
-                        </ul>
-                    </div>
-                    <div class="lynx_cell">
-    	                <ul>
-    	                    <span><?php echo $language['layout']->lblAboutSfriendly;?></span>
-    	                    <li><?php echo $language['layout']->lblAbout;?></li>
-    	                    <li><?php echo $language['layout']->lblJobs;?></li>
-    	                    <li><?php echo $language['layout']->lblCustomerTestimonials;?></li>
-    	                    <li><?php echo $language['layout']->lblAssociatesProgram;?></li>
-    	                    <li><?php echo $language['layout']->lblGlossaryofTerms;?></li>
-    	                    <li><?php echo $language['layout']->lblDailyShowDigest;?></li>
-    	                </ul>
-    	                <ul>
-    	                    <span><?php echo $language['layout']->lblFeedback;?></span>
-    	                    <li><?php echo $language['layout']->lblHowLikeOurWebsite;?></li>
-    	                </ul>
-                    </div>
-                </div>
-                <div class="lynx_col3">
-                <img src="/images/Payment-follow.fw.png"/>
-                </div>
-            </div>
-            <div class="lynx_copyright">
-                <div class="lynx_copycontent">
-                    Copyright © 2014 Sfriendly.com. All rights Reserved
-                </div>
-            </div>
-        </div>
     </body>
 </html>

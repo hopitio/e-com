@@ -14,7 +14,7 @@ class PortalBizPayment extends PortalBizBase
        $orderStatus->updated_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
        $orderStatus->updated_user = User::getCurrentUser()->id;
        $orderStatus->fk_order = $orderId;
-       $orderStatus->status = DatabaseFixedValue::ORDER_STATUS_VERIFYING;
+       $orderStatus->status = $status;
        $orderStatus->id = $orderStatus->insert();
        return $orderStatus;
    }
@@ -41,10 +41,10 @@ class PortalBizPayment extends PortalBizBase
        return $orderInfoWithStatus;
    }
    
-   function updateOrderToVerify($isAdmin,$orderId,$invoiceId){
+   function updateOrderToOrderPlace($isAdmin,$orderId,$invoiceId){
        $orderModel = new PortalModelOrder();
        $orderModel->id = $orderId;
-       $orderStatus = $this->orderUpdateStatus($orderId, $invoiceId, DatabaseFixedValue::ORDER_STATUS_VERIFYING);
+       $orderStatus = $this->orderUpdateStatus($orderId, $invoiceId, DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED);
        $orderInfoWithStatus = $orderModel->getOrderWithCurrentStatus();
        return $orderInfoWithStatus;
    }

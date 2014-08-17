@@ -106,8 +106,16 @@ class orderReview extends BasePortalController
         exit;
     }
     
-    private function procInformationCash($orderId,$invoiceId){
+    private function procInformationCash($orderId,$invoiceId)
+    {
+        $orderManager = new PortalOrderManager();
+        $orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
         
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
+        array('isError'=>false), true)
+        ->setCss($this->css)
+        ->setJavascript($this->js)
+        ->render('portalPayment/paymentSuccess');
     }
 
 }

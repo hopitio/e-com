@@ -132,6 +132,7 @@ class T_product extends T_base
     CONST seller_name = "seller_name";
     CONST seller_email = "seller_email";
     CONST record_status = 'record_status';
+    CONST shipping = "shipping";
 
 }
 

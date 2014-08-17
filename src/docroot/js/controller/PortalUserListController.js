@@ -14,7 +14,7 @@ function PortalUserListController($scope,$http)
     $scope.totalServerItems = 0;
     $scope.pagingOptions = {
         pageSizes: [10, 20, 30, 50, 100],
-        pageSize: 10,
+        pageSize: 50,
         currentPage: 1,
     };  
     
@@ -37,13 +37,21 @@ function PortalUserListController($scope,$http)
                          ]
         };
 
-    
     $scope.setPagingData = function(data, total){  
         $scope.users = data;
         $scope.totalServerItems = total;
         if (!$scope.$$phase) {
             $scope.$apply();
         }
+        if($scope.dataTable != undefined){
+            return;
+        }
+        $scope.dataTable = $("#user-datatable").dataTable({
+            "paging":   false,
+            "ordering": false,
+            "info":     false,
+            'filter':   false
+        });
     };
     
     $scope.getPagedDataAsync = function (pageSize, page) {

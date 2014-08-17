@@ -11,7 +11,7 @@ function PortalUserController($scope,$http)
     $scope.alerts = [];
     $scope.pagingOptions = {
             pageSizes: [10, 20, 30, 50, 100],
-            pageSize: 10,
+            pageSize: 50,
             currentPage: 1,
         }; 
     $scope.gridOptionsHistory = {

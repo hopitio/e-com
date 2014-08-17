@@ -35,7 +35,7 @@ class orderVerifingAuthenicated extends BasePortalController
         
         
         $invoiceCheck = false;
-        $orderStatusCheck = ($orderInformation->status == DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED);
+        $orderStatusCheck = ($orderInformation->status == DatabaseFixedValue::ORDER_STATUS_VERIFYING);
         foreach ($orderInformation->invoices as $invoice)
         {
             if($invoice->id == $invoiceId){

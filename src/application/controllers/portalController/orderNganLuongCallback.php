@@ -33,7 +33,7 @@ class orderNganLuongCallback extends BasePortalController
                 $order_code = str_replace(' ','',$order_code);
                 list($orderId,$invoiceId) = explode('-',$order_code);
                 $portalBizPayment = new PortalBizPayment();
-                $portalBizPayment->updateOrderToVerify(false, $orderId, $invoiceId);
+                $portalBizPayment->updateOrderToOrderPlace(false, $orderId, $invoiceId);
                 $portalBizPayment->updatePaymentMethod($invoiceId, $payment_id, DatabaseFixedValue::PAYMENT_BY_NGANLUONG);
                 
                 LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(

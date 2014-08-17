@@ -82,10 +82,7 @@ class SellerPaymentVerifiedMailler extends AbstractStaff{
         
         foreach ($productCollection as $productItem)
         {
-            $imageContent = file_get_contents($productItem->sub_image);
-            $imageContent = base64_encode($imageContent);
-            $imageExt = get_mime_by_extension($productItem->sub_image);
-            $imageSrc = "data:{$imageExt};base64,{$imageContent}";
+            $imageSrc = $productItem->sub_image;
             $contentProductItem =
             "<td style='border:none;'>
                    <img style='width: 100px;height:100px' src='{$imageSrc}'>

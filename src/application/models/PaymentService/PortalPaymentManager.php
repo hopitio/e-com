@@ -64,6 +64,7 @@ class PortalPaymentManager extends PortalBizPayment{
             $product->seller_id = $obj->sid;
             $product->seller_name = $obj->sellerName;
             $product->seller_email = $obj->sellerEmail;
+            $product->shipping = $obj->shipping;
             array_push($objects, $product);
         }
         $returnValue = $productsModel->bacthInsert($objects);
@@ -107,7 +108,7 @@ class PortalPaymentManager extends PortalBizPayment{
          $userId = User::getCurrentUser()->id;
          $portalOrder = new PortalModelOrder();
          $portalOrder->sub_key = $subKey;
-         $portalOrder->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+         $portalOrder->created_date = $portalOrder->getDate();
          $portalOrder->created_user = $userId;
          $portalOrder->fk_user = $userId;
          $orderId = $portalOrder->insert();
@@ -181,7 +182,7 @@ class PortalPaymentManager extends PortalBizPayment{
             {
                 case 'shipping' :
                     $shippingItem->fk_user_contact = $contactDetail;
-                    $shippingItem->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+                    $shippingItem->created_date = $shippingItem->getDate();
                     $shippingItem->created_user = User::getCurrentUser()->id;
                     $shippingItem->fk_invoice = $invoiceId;
                     $shippingItem->status = DatabaseFixedValue::SHIPPING_STATUS_ACTIVE;
@@ -192,7 +193,7 @@ class PortalPaymentManager extends PortalBizPayment{
                 break;
                 case 'pay':
                     $shippingItem->fk_user_contact = $contactDetail;
-                    $shippingItem->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+                    $shippingItem->created_date = $shippingItem->getDate();
                     $shippingItem->created_user = User::getCurrentUser()->id;
                     $shippingItem->fk_invoice = $invoiceId;
                     $shippingItem->status = DatabaseFixedValue::SHIPPING_STATUS_ACTIVE;
@@ -231,7 +232,7 @@ class PortalPaymentManager extends PortalBizPayment{
         $paymentTemp = new PortalModelPaymentTemp();
         $paymentTemp->data = $data;
         $paymentTemp->fk_user = $dataDecoded->user->id;
-        $paymentTemp->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $paymentTemp->created_date = $paymentTemp->getDate();
         $paymentTemp->ip_address = $session['ip_address'];
         $paymentTemp->session_id = $session['session_id'];
         $paymentTemp->user_agrent = $session['user_agent'];
@@ -254,7 +255,7 @@ class PortalPaymentManager extends PortalBizPayment{
     {
         $invoiceModel = new PortalModelInvoice();
         $invoiceModel->fk_order = $orderId;
-        $invoiceModel->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $invoiceModel->created_date = $invoiceModel->getDate();
         $invoiceModel->created_user = User::getCurrentUser()->id;
         $invoiceModel->invoice_type = DatabaseFixedValue::INVOICE_TYPE_INPUT;
         $invoiceId = $invoiceModel->insert();
@@ -279,7 +280,7 @@ class PortalPaymentManager extends PortalBizPayment{
     public function insertOrderStatus($orderId,$userId)
     {
         $portalModelOrderStatus = new PortalModelOrderStatus();
-        $portalModelOrderStatus->status = DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED;
+        $portalModelOrderStatus->status = DatabaseFixedValue::ORDER_STATUS_VERIFYING;
         $portalModelOrderStatus->fk_order = $orderId;
         $portalModelOrderStatus->updated_user = $userId;
         $portalModelOrderStatus->updated_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);

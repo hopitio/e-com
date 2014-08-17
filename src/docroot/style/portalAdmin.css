@@ -98,7 +98,3 @@ table.lynx_table tbody tr td{
     line-height: 20px;
     cursor: pointer;
 }
-
-.lynx_admin_robin li:hover{
-    color:black;
-}

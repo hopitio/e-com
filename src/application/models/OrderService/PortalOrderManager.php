@@ -18,4 +18,12 @@ class PortalOrderManager extends PortalBizOrder
         parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_FAIL_TO_DELIVERED);
         return $revalue;
     }
+    
+    function orderPlace($isSendMail,$userUpdate, $orderId, $invoiceId){
+       parent::updateOrderToOrderPlace($userUpdate, $orderId, '');
+       if($isSendMail){
+           parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_PLACES);
+           parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_PAYMENT_VERIFIED);
+       }
+    }
 }

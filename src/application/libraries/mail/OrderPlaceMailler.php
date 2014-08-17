@@ -5,7 +5,7 @@
  * @since 20140330
  */
 class OrderPlaceMailler extends AbstractStaff{
-    protected $config_key = 'OrderFailToDeliveredMailler';
+    protected $config_key = 'Buyer_order_places';
     
     /* (non-PHPdoc)
      * @see AbstractStaff::buildContent()

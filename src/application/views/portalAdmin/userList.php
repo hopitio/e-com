@@ -1,34 +1,82 @@
-<div class="lynx_portalAdminContainer lynx_staticWidth" ng-controller="PortalUserListController">
-    <?php require_once APPPATH.'views/portalAdmin/menu.php'; ?>
-    <div class="lynx_portalAdminContent">
-        <div class="lynx_row">
-            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Tài khoản
+        <small>Tìm kiếm tài khoản</small>
+    </h1>
+</section>
+
+<section class="content" ng-controller="PortalUserListController">
+    <div class="box box-danger col-md-6">
+        <div class="box-header">
+            <h3 class="box-title">
+                Tìm kiếm user 
+            </h3>
+            <div class="box-tools text-right">
+                <div class="text-right">
+                    <a href="javascript:void(0);" id="btn-apply" novalidate="novalidate" class="btn" ng-click="find()"><i class="fa fa-save"></i> Tìm kiếm</a>
+                </div>
+            </div>
+            
         </div>
-        <h4>TÌM KIẾM TÀI KHOẢN</h4>
-        <div class="lynx_row">
-            <span class="lynx_fieldName" style="width:100px">ID</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="userId"/></span>
-            <span class="lynx_fieldName" style="width:100px">Email</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="account"/></span>
+        <div class="box-body ">
+            <div class="alert alert-info alert-dismissable" ng-repeat="alert in alerts" ng-click="closeAlert($index)">
+                <i class="fa fa-info"></i>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <b>{{alert.msg}} !</b> 
+            </div>
+            <div class="input-group input-group-sm col-xs-12 lynx-admin-group">
+                <span class="input-group-addon" >Mã tài khoản</span>
+                <input type="text" class="form-control" ng-model="userId"/>
+                <span class="input-group-addon">Email</span>
+                <input type="text" class="form-control" ng-model="account"/>
+                <span class="input-group-addon" >Họ và tên đệm</span>
+                <input type="text" class="form-control" ng-model="firstName"/>
+                <span class="input-group-addon">Tên</span>
+                <input type="text" class="form-control" ng-model="lastName"/>
+            </div>
         </div>
-        <div class="lynx_row">
-            <span class="lynx_fieldName" style="width:100px">Họ và tên đệm</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="firstName"/></span>
-            <span class="lynx_fieldName" style="width:100px">Tên</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="lastName"/></span>
-        </div>
-        <div class="lynx_row lynx_rowButton">
-            <button id="btnComfirm" class="lynx_button btn btn-primary" type="submit" ng-click="find()">Tìm kiếm</button>
-        </div>
-        
-        <div class="lynx_row">
-            <div style="height:500px" class="gridStyle" ng-grid="gridOptions"></div>
+        <div class="box-body">
+            <table id="user-datatable" class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Mã TK</th>
+                        <th>Email</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Ngày tham gia</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+         
+                <tfoot>
+                    <tr>
+                        <th>Mã TK</th>
+                        <th>Email</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Ngày tham gia</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </tfoot>
+                
+                <tbody>
+                    <tr ng-repeat="user in users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.account}}</td>
+                        <td>{{user.firstname}} {{user.lastname}}</td>
+                        <td>{{user.DOB}}</td>
+                        <td>{{user.date_joined}}</td>
+                        <td>
+                            <a href="{{user.detailUrl}}"><i title="Thông tin tài khoản người sử dụng" class="glyphicon glyphicon-user" style="cursor: pointer;font-size:15px; margin:5px;"></i></a>
+                            <i ng-show="user.status == '1'" ng-click="rejectLoginStatus(user.id)" title="Hủy quyền đăng nhập" class="glyphicon glyphicon-remove" style="cursor: pointer;font-size:15px; margin:5px;"></i>
+                            <i ng-show="user.status == '2'" ng-click="openLoginStatus(user.id)" title="Mở quyền đăng nhập" class="glyphicon glyphicon-flash" style="cursor: pointer;font-size:15px; margin:5px;"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-</div>
-<script type="text/ng-template" id="actionCell.html" >
-    <a href="{{row.getProperty('detailUrl')}}"><i title="Thông tin tài khoản người sử dụng" class="glyphicon glyphicon-user" style="cursor: pointer;font-size:15px; margin:5px;"></i></a>
-    <i ng-click="rejectLoginStatus(row.getProperty('id'))" title="Hủy quyền đăng nhập" class="glyphicon glyphicon-remove" style="cursor: pointer;font-size:15px; margin:5px;"></i>
-    <i ng-click="openLoginStatus(row.getProperty('id'))" title="Mở quyền đăng nhập" class="glyphicon glyphicon-flash" style="cursor: pointer;font-size:15px; margin:5px;"></i>
-</script>
+</section>
+    
 

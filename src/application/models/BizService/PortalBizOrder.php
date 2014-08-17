@@ -143,10 +143,7 @@ class PortalBizOrder extends PortalBizBase
         $status = DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
-        $portalModel->getOneById();
-        $portalModel->canceled_date =  '';
-        $portalModel->completed_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-        $portalModel->shiped_date = '';
+        $portalModel->completed_date = $portalModel->getDate();
         $portalModel->updateById();
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }

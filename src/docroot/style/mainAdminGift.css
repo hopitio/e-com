@@ -28,3 +28,16 @@ body{font-size: 12px; font-family: helvetica;}
 .navbar{min-height:40px;}
 .navbar-nav > li > a{padding:10px;}
 
+.lynx_admin_robin li:hover{
+    color:black;
+}
+.lynx-admin-group {
+    margin-top:10px;
+}
+.lynx-admin-group  > span{
+    min-width: 120px;
+    text-align: left;
+}
+.lynx-admin-group input{
+    margin-right: 5px;
+}
