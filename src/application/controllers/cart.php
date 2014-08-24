@@ -47,7 +47,7 @@ class cart extends BaseController
     {
         $data['wishlist'] = $this->wishlistModel->getOneWishlist();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
-                ->setJavascript(array('/js/controller/showCartCtrl.js'))
+                ->setJavascript(array('/js/controller/cartCtrl.js'))
                 ->setCss(array('/style/customerList.css'))
                 ->setData($data)
                 ->render('cart/showCart');
@@ -78,7 +78,9 @@ class cart extends BaseController
             $obj['price'] = $product->getPriceMoney($user->getCurrency())->getAmount();
             $obj['name'] = (string) $product->getName()->getTrueValue();
             $obj['taxes'] = $product->calculateTaxes($user->getCurrency())->getAmount();
+            $obj['sales'] = $product->getSalePercent();
             $obj['thumbnail'] = (string) $images[0]->url;
+            $obj['priceString'] = (string) $product->getFinalPriceMoney($user->getCurrency());
             $obj['stock'] = (double) strval($product->getQuantity());
             $obj['url'] = '/product/details/' . $product->id;
             if (strval($product->getQuantity()) < $product->quantity)

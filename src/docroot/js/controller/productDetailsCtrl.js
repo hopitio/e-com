@@ -64,6 +64,14 @@ $(function() {
         zoomType: 'innerzoom'
     });
 });
+$(function() {
+    $('#frmAddTo').on('click', '[data-type=button]', function() {
+        var btn = this;
+        var form = this.form;
+        form.action = btn.getAttribute('data-action');
+        form.submit();
+    });
+});
 
 //$(function() {
 //    var divSummaries = $('.detail-summaries:first');
