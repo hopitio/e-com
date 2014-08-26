@@ -36,6 +36,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['admin/product/show_list'] = 'admin/product/show_list';
 			
         $route['__admin/advertisement'] = 'admin/advertisement/main';
+        $route['__admin/hot'] = 'admin/hot/main';
 
         $route['order/place_order'] = 'devPlaceOrder/showPage';
         $route['__mockup/list'] = 'testingController/getMockupScreenList';
@@ -51,6 +52,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['__admin/login'] = 'admin/loginAdmin/login';
         $route['__admin/seller/add'] = 'admin/seller/add';
         $route['__admin/advertisement'] = 'admin/advertisement/update';
+        $route['__admin/hot'] = 'admin/hot/update';
         $route['__admin/seller/edit/(:num)'] = 'admin/seller/edit/$1';
     }
 }
