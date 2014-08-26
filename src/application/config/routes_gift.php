@@ -36,6 +36,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['admin/product/show_list'] = 'admin/product/show_list';
 			
         $route['__admin/advertisement'] = 'admin/advertisement/main';
+        
         $route['__admin/hot'] = 'admin/hot/main';
 
         $route['order/place_order'] = 'devPlaceOrder/showPage';
