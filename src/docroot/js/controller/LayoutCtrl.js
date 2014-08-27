@@ -32,6 +32,24 @@ angular.module('lynx').factory('cartService', ['$http', function($http) {
             return ret;
         }
 
+        function calculateTotalRawPrice() {
+            var ret = 0;
+            for (var i in products) {
+                var product = products[i];
+                ret += product.price * product.quantity;
+            }
+            return ret;
+        }
+
+        function calculateTotalTax() {
+            var ret = 0;
+            for (var i in products) {
+                var product = products[i];
+                ret += product.taxes * product.quantity;
+            }
+            return ret;
+        }
+
         function removeProduct(id) {
             for (var i in products) {
                 if (products[i].id == id)
@@ -49,7 +67,9 @@ angular.module('lynx').factory('cartService', ['$http', function($http) {
             getProducts: getProducts,
             registerLoadProducts: registerLoadProducts,
             removeProduct: removeProduct,
-            countProducts: countProducts
+            countProducts: countProducts,
+            calculateTotalRawPrice: calculateTotalRawPrice,
+            calculateTotalTax: calculateTotalTax
         };
     }]);
 

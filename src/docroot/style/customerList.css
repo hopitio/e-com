@@ -181,22 +181,38 @@ table.product-table .p-sale-percent{
 .product-summaries-table .total div strong{
     color: #b12c28;
 }
-.btn-cart-next, a.btn-cart-next {
+.btn-cart-next, a.btn-cart-next, .btn-cart-prev, a.btn-cart-prev{
     display:inline-block;
     height: 40px;
     line-height: 40px;
     padding: 0 10px;
     color: white !important;
-    background: url(/images/cart/btn-next.png) repeat-x;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
 }
-.btn-cart-next *{
+.btn-cart-next, a.btn-cart-next {
+    background: url(/images/cart/btn-next.png) repeat-x;
+}
+.btn-cart-prev, a.btn-cart-prev{
+    background: url(/images/cart/btn-prev.png) repeat-x;
+}
+.btn-cart-next *, .btn-cart-prev *{
     color: white !important;
 }
-.btn-cart-next .pull-right{
+.btn-cart-next .pull-right, .btn-cart-prev .pull-left{
     margin-top: 13px;
+}
+i.img-phone{
+    display: inline-block;
+    float:left;
+    width: 25px;
+    height: 21px;
+    background: url('/images/cart/phone.png')
+}
+.phone-no{
+    font-weight: bold;
+    color: #b32b29;
 }
 fieldset{
     border: 1px solid #ccc;
