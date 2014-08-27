@@ -29,17 +29,13 @@ class cart extends BaseController
     {
         $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name', true)->findAssoc();
         $data['shippingMethods'] = ShippingMethodMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->findAll();
-        $data['cartContents'] = CartMapper::make()
-                ->setLanguage(User::getCurrentUser()->languageKey)
-                ->autoloadAttributes()
-                ->autoloadTaxes()
-                ->findAll();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data)
                 ->setCss(array('/style/customerList.css'))
                 ->setJavascript(array(
                     '/plugins/validation/jquery.validate.min.js',
-                    '/plugins/validation/additional-methods.min.js'
+                    '/plugins/validation/additional-methods.min.js',
+                    '/js/controllers/cartShippingCtrl.js'
                 ))->render('cart/shipping');
     }
 

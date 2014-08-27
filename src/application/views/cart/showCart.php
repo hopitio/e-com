@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="pull-right">
-                    <a href="javascript:;" class="btn-cart-next">Tiến hành đặt hàng&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right"></i></a>
+                    <a href="/cart/shipping" class="btn-cart-next">Tiến hành đặt hàng&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <br>
-                    <a class="btn btn-cart-next" href="javascript:;" style="display: block;">
+                    <a class="btn-cart-next" href="/cart/shipping" style="display: block;">
                         Tiến hành đặt hàng
                         <div class="pull-right"><i class="fa fa-caret-right"></i></div>
                     </a>
