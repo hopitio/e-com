@@ -176,7 +176,10 @@ class cart extends BaseController
                     $sumWeight+= $product->getConvertedWeight() * $product->quantity;
                 }
                 /* @var $product CartDomain */
-                $json[$method->label] = $this->cartModel->calculateShippingPrice($location, $sumWeight, new Currency($user->getCurrency()));
+                $json[] = array(
+                    'method' => $method->label,
+                    'price'  => $this->cartModel->calculateShippingPrice($location, $sumWeight, new Currency($user->getCurrency()))
+                );
             }
         }
         header('Content-type:application/json');

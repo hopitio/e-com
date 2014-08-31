@@ -39,6 +39,7 @@ class order extends BaseController
         $shippingAddress->streetAddress = $this->input->post('txtStreetAddr');
         $shippingAddress->stateProvince = array($this->input->post('selProvinceCity'));
         $shippingAddress->stateProvince[] = LocationMapper::make()->filterCode($shippingAddress->stateProvince[0])->find()->name;
+        $shippingAddress->language = $this->input->post('txtLanguage');
 
         $shippingMethods = ShippingMethodMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->findAll();
         $shippingLocations = ShippingLocationMapper::make()->filterLocation(null, $shippingAddress->stateProvince[0])->findAll();
