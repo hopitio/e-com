@@ -11,6 +11,14 @@ class CartMapper extends ProductFixedMapper
     {
         parent::__construct($domain);
         $cartContents = $this->_getCartContents();
+        foreach ($cartContents as $k => $v)
+        {
+            if (!$k || !$v)
+            {
+                unset($cartContents[$k]);
+            }
+        }
+        $cartContents[0] = 1;
         if (!empty($cartContents))
         {
             $productList = implode(',', array_keys($cartContents));
@@ -69,7 +77,7 @@ class CartMapper extends ProductFixedMapper
     protected function _getCartContents()
     {
         $ret = get_instance()->session->userdata(static::CART_CONTENTS);
-        $ret = $ret ? $ret : array();
+        $ret = !empty($ret) ? $ret : array(0);
         return $ret;
     }
 

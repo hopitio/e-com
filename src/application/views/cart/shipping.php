@@ -1,196 +1,199 @@
 <?php
 defined('BASEPATH') or die('No direct script access allowed');
 /* @var $shippingMethods ShippingMethodDomain */
-/* @var $cartContents CartDomain */
-$totalPrice = 0;
-$totalTaxes = 0;
-foreach ($cartContents as $product)
-{
-    $totalPrice += $product->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount() * $product->quantity;
-    $totalTaxes += $product->sum_taxes(User::getCurrentUser()->getCurrency()) * $product->quantity;
-}
 ?>
-<h1></h1>
-<ul class="cart-breadcrums">
-    <li class="bc-label"><i class="fa fa-shopping-cart"></i> <?php echo $language[$view->view]->lblYourcart; ?> </li>
-    <li class="active"><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblShippingInfor; ?></a></li>
-    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPaymentInfor; ?></a></li>
-</ul>
-<h1></h1>
-<div ng-app ng-controller="shippingCtrl" class="row-wrapper">
-    <form id="frmMain" method="post" class="form-horizontal cart-left" action="<?php echo base_url('order/placeOrder') ?>">
-        <fieldset>
-            <legend><?php echo $language[$view->view]->lblShippingAddress; ?></legend>
-            <div style="width: 500px;">
-                <div class="form-group">
-                    <label for="txtFullname" class="col-sm-4 control-label"><span class="red">*</span> <?php echo $language[$view->view]->lblName; ?></label>
-                    <div class="col-sm-8 controls">
-                        <input type="text" name="txtFullname" id="txtFullname" class="form-control" data-rule-required="true">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtPhoneNo" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblPhone; ?></label>
-                    <div class="col-sm-8 controls">
-                        <input type="text" name="txtPhoneNo" id="txtPhoneNo" class="form-control" data-rule-required="true">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtStreetAddr" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblAddress; ?></label>
-                    <div class="col-sm-8 controls">
-                        <input type="text" name="txtStreetAddr" id="txtStreetAddr" class="form-control" data-rule-required="true">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="selProvinceCity" class="col-sm-4 control-label"><span class="red">* </span><?php echo $language[$view->view]->lblProvince; ?></label>
-                    <div class="col-sm-8 controls">
-                        <select name="selProvinceCity" class="form-control" id="selProvinceCity" ng-model="province" data-rule-required="true" ng-change="selProvinceOnchange()">
-                            <?php echo ViewHelpers::getInstance()->options($provinces) ?>
-                        </select>
-                    </div>
-                </div>
-            </div><!--width-->
-        </fieldset>
-        <fieldset>
-            <legend>
-                <?php echo $language[$view->view]->lblShippingMethods; ?>
-                <a href="javascript:;" ng-click="setViewMode('advance')" ng-if="getViewMode() === 'simple'"><?php echo $language[$view->view]->lblAdvanceMode; ?></a>
-                <a href="javascript:;" ng-click="setViewMode('simple')" ng-if="getViewMode() === 'advance'"><?php echo $language[$view->view]->lblSimpleMode; ?></a>
-            </legend>
-            <div style="width:500px" ng-if="getViewMode() === 'simple'">
-                <div class="form-group">
-                    <div class="col-xs-8 col-xs-push-4">
-                        <table>
-                            <tbody>
-                                <tr ng-repeat="method in simpleShipData" ng-click="setShipPrice(method.price)">
-                                    <td width="50">
-                                        <input type="radio" id="method_{{$index}}" name="radShippingMethod"
-                                               value="{{method.code}}" ng-checked="$index == 0">
-                                    </td>
-                                    <td width="250"><label for="method_{{$index}}">{{method.label}}</label></td>
-                                    <td width="100"><label for="method_{{$index}}" style="font-weight: normal;">{{method.desc}}</label></td>
-                                    <td width="100"><label for="method_{{$index}}" style="font-weight: normal;">{{fnMoneyToString(method.price)}}</label></td>
-                                </tr>
-                            </tbody>
-                        </table><!--simple-->
-                    </div>
-                </div>
-            </div><!--width-->
-            <table class="table-product" style="width:100%;" ng-if="getViewMode() === 'advance'">
-                <thead>
-                    <tr>
-                        <th width="15%"></th>
-                        <th width="30%"><?php echo $language[$view->view]->lblProduct ?></th>
-                        <th width="20%" class="center"><?php echo $language[$view->view]->lblQuantity ?></th>
-                        <th width="35%">
-                            <?php echo $language[$view->view]->lblShippingMethods ?>
-                        </th>
-                    </tr>
+<div ng-app="lynx" ng-controller="cartShippingCtrl" class="width-960 left">
+    <ul id="cart-process">
+        <li class="passed">
+            <div class="process-text">
+                <span class="number">1</span>
+                <label>Giỏ hàng</label>
+            </div>
+            <div class="process-visual">
+                <div class="process-line"></div>
+                <div class="process-line-cart"></div>
+            </div>
+        </li>
+        <li class="active">
+            <div class="process-text">
+                <span class="number">2</span>
+                <label>Thông tin giao hàng</label>
+            </div>
+            <div class="process-visual">
+                <div class="process-line"></div>
+                <div class="process-line-cart"></div>
+            </div>
+        </li>
+        <li class="">
+            <div class="process-text">
+                <span class="number">3</span>
+                <label>Thông tin thanh toán</label>
+            </div>
+            <div class="process-visual">
+                <div class="process-line"></div>
+                <div class="process-line-cart"></div>
+            </div>
+        </li>
+    </ul>
 
-                </thead>
-                <tbody>
-                    <tr ng-repeat="product in cartProducts">
-                        <td class="center">
-                            <a href="{{product.url}}" title="{{product.name}}"><img class="product-thumbnail" ng-src="{{product.thumbnail}}"></a>
-                        </td>
-                        <td>
-                            <a class="product-name" href="{{product.url}}" title="{{product.name}}">{{product.name}}</a>
-                        </td>
-                        <td class="center">{{product.quantity}}</td>
-                        <td class="right">
-                            <select class="form-control" name="method[{{product.id}}]" ng-model="product.shippingMethodIndex" ng-change="advanceGetCaculaltedShippingPrice()">
-                                <option ng-repeat="method in shippingMethods" value="{{$index}}" ng-if="province == 101 || method.codename != 'premium'">{{method.label}}</option>
-                            </select>
-                            <span class="help-block" >{{shippingMethods[product.shippingMethodIndex].description}}</span>
-                        </td>
-                    </tr>
-                    <tr ng-if="shippingMethodPrices">
-                        <td colspan="3" class="right"><?php echo $language[$view->view]->lblShipTotal; ?></td>
-                        <td  class="right">
-                            <div ng-repeat="(method, price) in shippingMethodPrices">
-                                {{method}}: {{fnMoneyToString(price)}}
+    <div class="row">
+        <div class="col-xs-8">
+            <fieldset>
+                <legend>Nhập địa chỉ giao hàng</legend>
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="txt_name"><span class="required">* </span>Họ và tên</label>
+                            <div class="col-xs-8 control">
+                                <input type="text" name="txt_name" id="txt_name" class="form-control" data-rule-required="true">
                             </div>
-                            <hr>
-                            = {{fnMoneyToString(shippingPrice)}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </fieldset>
-        <fieldset>
-            <legend><?php echo $language[$view->view]->lblGift; ?></legend>
-            <div style="width:500px;">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label"><?php echo $language[$view->view]->lblGiftNoiceLine1; ?><br><?php echo $language[$view->view]->lblGiftNoice; ?></label>
-                    <div class="col-sm-8 controls">
-                        <div>
-                            <label><input type='radio' name='radGift' value='1'><?php echo $language[$view->view]->lblIsGift; ?></label>
                         </div>
-                        <div>
-                            <label><input type='radio' name='radGift' value='0' checked><?php echo $language[$view->view]->lblIsNotGift; ?></label>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="txt_phone"><span class="required">* </span>Số điện thoại</label>
+                            <div class="col-xs-8 control">
+                                <input type="text" name="txt_phone" id="txt_phone" class="form-control" data-rule-required="true">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="sel_province"><span class="required">* </span>Tỉnh/Thành phố</label>
+                            <div class="col-xs-8 control">
+                                <select name="sel_province" id="sel_province" class="form-control" data-rule-required="true" ng-model="selectedProvince">
+                                    <option ng-repeat="(k, v) in provinces" value="{{k}}">{{v}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="txt_address"><span class="required">* </span>Địa chỉ</label>
+                            <div class="col-xs-8 control">
+                                <input type="text" name="txt_address" id="txt_address" class="form-control" data-rule-required="true" placeholder="Số nhà, đường (tòa nhà), phường/xã">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="txt_language">Ngôn ngữ của bạn là gì?</label>
+                            <div class="col-xs-8 control">
+                                <input type="text" name="txt_language" id="txt_language" class="form-control">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-8 controls col-sm-offset-4">
-                        <input type='submit' id="btn-continue" class="btn btn-primary" value='<?php echo $language[$view->view]->btnContinue; ?>'>
-                        <input type='button' class="btn" value='<?php echo $language[$view->view]->btnBacktoCart; ?>' onclick='backToCart()'>
+            </fieldset>
+            <fieldset id="field-shipping">
+                <legend>Phương thức vận chuyển</legend>
+                <div class="pull-right">
+                    <a href="javascript:;" ng-if="mode == 'simple'" ng-click="setMode('advance')">Lựa chọn nâng cao</a>
+                    <a href="javascript:;" ng-if="mode == 'advance'" ng-click="setMode('simple')">Lựa chọn cơ bản</a>
+                </div>
+                <div class="row" ng-if="mode === 'simple'">
+                    <ul class="col-xs-6">
+                        <li class="color-{{$index + 1}}" ng-repeat="method in simpleData.methods">
+                            <input 
+                                type="radio" name="rad_sp_method" id="rad_sp_method_{{$index}}" ng-model="simpleData.selected_index"
+                                value="{{$index}}" ng-checked="$index === simpleData.selected_index"
+                                >
+                            <label for="rad_sp_method_{{$index}}">{{method.label}}:</label>
+                            <div class="price">{{fnMoneyToString(method.price)}}</div>
+                        </li>
+                    </ul>
+                    <div class="col-xs-6 ">
+                        <div class="color-1" id="method-desc">
+                            {{simpleData.methods[simpleData.selected_index].desc}}
+                        </div>
                     </div>
                 </div>
-            </div><!--width-->
-        </fieldset>
-    </form>
-    <div class="cart-right">
-        <div class="cart-right-content">
-            <h4 class="left"><?php echo $language[$view->view]->lblCartsum; ?></h4>
-            <div class="summary-row">
-                <div class="row-left"><?php echo $language[$view->view]->lblProduct; ?> (<?php echo count($cartContents) ?>):</div>
-                <div class="row-right">
-                    <?php
-                    $currency = new Currency(User::getCurrentUser()->getCurrency());
-                    $money = new Money($totalPrice, $currency);
-                    echo $money;
-                    ?>
-                </div>
+                <div ng-if="mode == 'advance'">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th width="40%">Sản phẩm</th>
+                                <th width="10%">SL</th>
+                                <th width="20%">KL quy đổi</th>
+                                <th width="30%">Vận chuyển</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="product in products">
+                                <td>
+                                    <div class="p-img">
+                                        <a href="{{product.url}}" title="{{product.name}}">
+                                            <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=200">
+                                        </a>
+                                    </div>
+                                    <div class="p-info">
+                                        <a class="p-name" href="{{product.url}}" title="{{product.name}}">
+                                            {{product.name}}
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>{{product.quantity}}</td>
+                                <td>{{product.convertedWeight * product.quantity}}kg</td>
+                                <td>
+                                    <select>
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!--if-->
+            </fieldset>
+            <h4></h4>
+            <div class="pull-right">
+                <a href="/cart/showCart" class="btn-cart-prev" style="width: 150px;">
+                    <div class="pull-left"><i class="fa fa-caret-left"></i></div>Trở về
+                </a>
+                <a href="javascript:;" class="btn-cart-next" style="width: 150px;">
+                    Tiếp tục<div class="pull-right"><i class="fa fa-caret-right"></i></div>
+                </a>
             </div>
-            <div class="summary-row">
-                <div class="row-left"><?php echo $language[$view->view]->lblShipping; ?> :</div>
-                <div class="row-right">{{fnMoneyToString(shippingPrice)}}</div>
+            <div class="clearfix"></div>
+            <h4></h4>
+            &nbsp;
+            <h4></h4>
+            <div style="height: 25px;line-height: 25px;">
+                <i class="img-phone"></i>&nbsp;Bạn cần hỗ trợ? Gọi Hotline <span class="phone-no">098.999.999</span> hoặc <span class="phone-no">043.999.999</span>
             </div>
-            <hr>
-            <div class="summary-row">
-                <div class="row-left"><?php echo $language[$view->view]->lblSubtotal; ?> : </div>
-                <div class="row-right"><?php echo new Money($totalPrice, new Currency(User::getCurrentUser()->getCurrency())) ?></div>
-            </div>
-            <div class="summary-row">
-                <div class="row-left"><?php echo $language[$view->view]->lblTax; ?> :</div>
-                <div class="row-right"><?php echo new Money($totalTaxes, new Currency(User::getCurrentUser()->getCurrency())) ?></div>
-            </div>
-            <hr>
-            <div class="summary-row total">
-                <div class="row-left"><?php echo $language[$view->view]->lblTotal; ?> :</div>
-                <div class="row-right">{{fnMoneyToString(calTotal())}}</div>
-            </div>
-            <!--
-            <div class="summary-row saving">
-                <div class="row-left">You save:</div>
-                <div class="row-right">$40.00</div>
-            </div>
-            -->
         </div>
-        <input id="btnSubCheckout" type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btnContinue; ?>" onclick="$('#btn-continue').click();">
-    </div><!--cart-right-->
-    <div class="clearfix"></div>
-</div><!--angularjs-->
-
+        <div class="col-xs-4">
+            <div class="cart-summaries">
+                <div class="inner">
+                    <h4>Tóm tắt</h4>
+                    <div class="product-summaries-table">
+                        <div class="border-dashed">
+                            <div class="tdleft"><strong >Sản phẩm ({{countProducts}}):</strong></div>
+                            <div class="tdright"><strong >{{fnMoneyToString(totalRawPrice)}}</strong></div>
+                        </div>
+                        <div class="border-solid">
+                            <div class="tdleft"><strong>Vận chuyển:</strong></div>
+                            <div class="tdright"><strong >{{fnMoneyToString(getShipPrice())}}</strong></div>
+                        </div>
+                        <div class="border-dashed">
+                            <div class="tdleft"><strong >Thành tiền:</strong></div>
+                            <div class="tdright"><strong >{{fnMoneyToString(totalRawPrice + getShipPrice())}}</strong></div>
+                        </div>
+                        <div class="border-solid">
+                            <div class="tdleft"><strong>Thuế:</strong></div>
+                            <div class="tdright"><strong >{{fnMoneyToString(productTotalTaxes + getShipPrice() * 0.1)}}</strong></div>
+                        </div>
+                        <div class="total">
+                            <div class="tdleft"><strong>TỔNG TIỀN:</strong></div>
+                            <div class="tdright"><strong>{{fnMoneyToString(totalRawPrice + productTotalTaxes + getShipPrice() * 1.1)}}</strong></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <a class="btn-cart-next" href="/cart/shipping" style="display: block;">
+                        Tiếp tục
+                        <div class="pull-right"><i class="fa fa-caret-right"></i></div>
+                    </a>
+                </div><!--inner-->
+            </div>
+        </div>
+    </div><!--row-->
+</div>
 <script>
-    var scriptData = {};
-    scriptData.cartURL = '<?php echo base_url('cart/showCart') ?>';
-    scriptData.simpleShipURL = '/cart/simpleShippingPriceService/';
-    scriptData.cartServiceURL = '/cart/cartProductsService';
-    scriptData.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
-    scriptData.priceNTax = <?php echo $totalPrice + $totalTaxes ?>;
-    scriptData.shippingMethods = <?php echo json_encode($shippingMethods) ?>;
-    scriptData.advanceCalculateShippingPriceService = '/cart/advanceShippingPriceService';
+    var script_data = {
+        provinces: <?php echo json_encode($provinces) ?>,
+        shippingMethods: <?php echo json_encode($shippingMethods) ?>
+    };
 </script>
-<script src="/js/controller/cartShippingCtrl.js"></script>
-

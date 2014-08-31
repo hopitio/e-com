@@ -131,6 +131,11 @@
                                 <i class="fa fa-th"></i> <span>Quảng cáo</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="/__admin/hot">
+                                <i class="fa fa-th"></i> <span>Sản phẩm HOT</span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

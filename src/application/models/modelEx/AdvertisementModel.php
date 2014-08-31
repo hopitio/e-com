@@ -7,11 +7,15 @@ class AdvertisementModel extends BaseModel
 
     protected $banner_location = "images/banner/";
 
-    function loadBanner()
+    function loadBanner($banner_type_list = '')
     {
         $query = Query::make()
                 ->select('`key`,`value`', 1)
                 ->from('t_setting');
+        if ($banner_type_list != '')
+        {
+            $query = $query->where('`key` in (' . $banner_type_list . ')');
+        }
         $result = DB::getInstance()->GetAssoc($query);
         $banner = array();
         foreach ($result as $key => $value)
@@ -99,4 +103,5 @@ class AdvertisementModel extends BaseModel
             $setting->save();
         }
     }
+
 }

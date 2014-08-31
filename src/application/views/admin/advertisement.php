@@ -1,6 +1,6 @@
 <script>
     var scriptData = {};
-    scriptData['banner'] = <?php echo json_encode($banner) ?>;
+    scriptData = <?php echo json_encode($script_data) ?>;
     //console.log(scriptData);
 </script>
 <section class="content-header">

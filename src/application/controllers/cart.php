@@ -29,17 +29,14 @@ class cart extends BaseController
     {
         $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name', true)->findAssoc();
         $data['shippingMethods'] = ShippingMethodMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->findAll();
-        $data['cartContents'] = CartMapper::make()
-                ->setLanguage(User::getCurrentUser()->languageKey)
-                ->autoloadAttributes()
-                ->autoloadTaxes()
-                ->findAll();
+
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data)
                 ->setCss(array('/style/customerList.css'))
                 ->setJavascript(array(
                     '/plugins/validation/jquery.validate.min.js',
-                    '/plugins/validation/additional-methods.min.js'
+                    '/plugins/validation/additional-methods.min.js',
+                    '/js/controller/cartShippingCtrl.js'
                 ))->render('cart/shipping');
     }
 
@@ -47,7 +44,7 @@ class cart extends BaseController
     {
         $data['wishlist'] = $this->wishlistModel->getOneWishlist();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
-                ->setJavascript(array('/js/controller/showCartCtrl.js'))
+                ->setJavascript(array('/js/controller/cartCtrl.js'))
                 ->setCss(array('/style/customerList.css'))
                 ->setData($data)
                 ->render('cart/showCart');
@@ -78,9 +75,12 @@ class cart extends BaseController
             $obj['price'] = $product->getPriceMoney($user->getCurrency())->getAmount();
             $obj['name'] = (string) $product->getName()->getTrueValue();
             $obj['taxes'] = $product->calculateTaxes($user->getCurrency())->getAmount();
+            $obj['sales'] = $product->getSalePercent();
             $obj['thumbnail'] = (string) $images[0]->url;
+            $obj['priceString'] = (string) $product->getFinalPriceMoney($user->getCurrency());
             $obj['stock'] = (double) strval($product->getQuantity());
             $obj['url'] = '/product/details/' . $product->id;
+            $obj['convertedWeight'] = $product->getConvertedWeight();
             if (strval($product->getQuantity()) < $product->quantity)
             {
                 $json['notifications'][] = 'Sản phẩm "' . $product->getName() . '" đã hết trong kho, bạn cần giảm số lượng mua hoặc loại bỏ khỏi giỏ hàng.';

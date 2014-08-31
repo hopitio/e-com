@@ -118,30 +118,33 @@
             </div>
         </div><!--main-->
         <div class="detail-summaries">
-            <div class="detail-seller-logo"><img src="<?php echo $product->seller_logo ?>"></div>
-            <div class="detail-seller-name"><?php echo $product->seller_name ?></div>
-            <div class="left">
-                <span class="detail-sale">10%</span>
-                <div class="detail-origin-price"><?php echo $product->getPriceOrigin() ?></div>
-                <div class="detail-price"><?php echo $product->getPriceMoney() ?></div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="detail-free-shipping free">
-                <label for="sel_qty"><?php echo $language[$view->view]->lblQuantity ?>:</label> <select name="sel_qty" id="sel_qty"><option>1</option></select>
-            </div>
-            <h4></h4>
-            <input type="button" class="btn-add-to-cart" value="<?php echo $language[$view->view]->btnCart ?>">
-            <h4></h4>
-            <input type="button" class="btn-add-to-favorite" value="<?php echo $language[$view->view]->btnFavorite ?>">
-            <h4 ></h4>
-            <div class="detail-share"> 
-                <span><?php echo $language[$view->view]->lblShare ?>: </span>
-                <a href="javascript:;" class="share share-facebook"></a>
-                <a href="javascript:;" class="share share-twiter"></a>
-                <a href="javascript:;" class="share share-google"></a>
-                <a href="javascript:;" class="share share-email"></a>           
-            </div>
-            <h4 class="clearfix"></h4>
+            <form id="frmAddTo">
+                <input type="hidden" name="hdn_product" value="<?php echo $product->id ?>">
+                <div class="detail-seller-logo"><img src="<?php echo $product->seller_logo ?>"></div>
+                <div class="detail-seller-name"><?php echo $product->seller_name ?></div>
+                <div class="left">
+                    <span class="detail-sale">10%</span>
+                    <div class="detail-origin-price"><?php echo $product->getPriceOrigin() ?></div>
+                    <div class="detail-price"><?php echo $product->getPriceMoney() ?></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="detail-free-shipping free">
+                    <label for="sel_qty"><?php echo $language[$view->view]->lblQuantity ?>:</label> <select name="sel_qty" id="sel_qty"><option>1</option></select>
+                </div>
+                <h4></h4>
+                <input type="button" class="btn-add-to-cart" value="<?php echo $language[$view->view]->btnCart ?>" data-type="button" data-action="/cart/addToCart">
+                <h4></h4>
+                <input type="button" class="btn-add-to-favorite" value="<?php echo $language[$view->view]->btnFavorite ?>" data-type="button" data-action="/wishlist/addToWishlist">
+                <h4 ></h4>
+                <div class="detail-share"> 
+                    <span><?php echo $language[$view->view]->lblShare ?>: </span>
+                    <a href="javascript:;" class="share share-facebook"></a>
+                    <a href="javascript:;" class="share share-twiter"></a>
+                    <a href="javascript:;" class="share share-google"></a>
+                    <a href="javascript:;" class="share share-email"></a>           
+                </div>
+                <h4 class="clearfix"></h4>
+            </form>
         </div><!--detail-summaries-->
     </div>
     <div class="clearfix"></div>
@@ -155,10 +158,14 @@
         <div class="tab-content list-product width-960">
             <div id="carousel-hot-product" class="carousel slide carousel-mini-product"  data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-hot-product" data-slide-to="{{$index}}" ng-class="{active: $index == activeSlide}" ng-repeat="products in relatedProducts"></li>
+                    <li data-target="#carousel-hot-product" data-slide-to="{{$index}}" ng-class="{
+                                active: $index == activeSlide
+                            }" ng-repeat="products in relatedProducts"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="item" ng-repeat="products in relatedProducts" ng-class="{active: $index == activeSlide}">
+                    <div class="item" ng-repeat="products in relatedProducts" ng-class="{
+                                active: $index == activeSlide
+                            }">
                         <div class="lynx-row width-960">
                             <div class="lynx-box lynx-box-small cursor-pointer" ng-repeat="product in products" ng-product-small="product" ></div>
                         </div>

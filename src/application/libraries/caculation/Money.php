@@ -101,7 +101,7 @@ class Money
             case 'VND':
                 return format_money($this->_amount, 0) . 'đ';
             case 'KRW':
-                return 'W' . format_money($this->_amount);
+                return '&#8361;' . format_money($this->_amount);
         }
     }
 
@@ -126,7 +126,7 @@ function getJavascriptMoneyFunction($currency)
         case 'USD':
             return "function(a){var b=a.formatMoney(0);var c=a.formatMoney(1);var d=a.formatMoney(2);return '$'+(a==b?b:a==c?c:d); }";
         case 'KRW':
-            return "function(a){var b=a.formatMoney(0);var c=a.formatMoney(1);var d=a.formatMoney(2);return 'w'+(a==b?b:a==c?c:d); }";
+            return "function(a){var b=a.formatMoney(0);var c=a.formatMoney(1);var d=a.formatMoney(2);return '₩'+(a==b?b:a==c?c:d); }";
         case 'VND':
             return "function(a){return a.formatMoney(0)+'đ';}";
     }

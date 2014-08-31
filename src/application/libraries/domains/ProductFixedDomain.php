@@ -166,6 +166,14 @@ class ProductFixedDomain extends ProductDomain
         return $total->convert(new Currency($toCurrency));
     }
 
+    function getSalePercent()
+    {
+        $price = $this->getPriceMoney('VND')->getAmount();
+        $origin = $this->getPriceOrigin('VND')->getAmount();
+        $balance = $origin - $price;
+        return floor($balance * 100 / $origin);
+    }
+
     /**
      * @param string $currency [optional] default 'VND'
      * @return Money

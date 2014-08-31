@@ -995,3 +995,12 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+.green{
+    color: #507215;
+}
+.yellow{
+    color: #8a6d3b;
+}
+.red{
+    color: #a94442;
+}

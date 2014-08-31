@@ -1,179 +1,135 @@
-<?php
-defined('BASEPATH') or die('No direct script access allowed');
-/* @var $products CartDomain */
-?>
-<h1></h1>
-<ul class="cart-breadcrums">
-    <li class="bc-label"><i class="fa fa-shopping-cart"></i> <?php echo $language[$view->view]->lblYourcart; ?> </li>
-    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblShippingInfor; ?></a></li>
-    <li><?php echo htmlentities('>>>') ?>&nbsp;<a href="javascript:;"><?php echo $language[$view->view]->lblPaymentInfor; ?></a></li>
-</ul>
-<div ng-app="showCartApp" ng-controller="showCartCtrl">
-    <div class="row-wrapper left">
-        <a class="cart-back" href="javascript:;" title="Go Back"><i class="fa fa-arrow-left"></i> <?php echo $language[$view->view]->lblGoBack; ?></a>
-    </div>
-    <div class="row-wrapper">
-        <div class="cart-left">
-            <div class="notification" style="display:none">
-                <h4><?php echo $language[$view->view]->lblNotification; ?></h4>
-                <ul>
-                    <li ng-repeat="msg in notifications">- {{msg}}</li>
-                </ul>
+<?php ?>
+
+<div class="width-960 left" ng-app="lynx" ng-controller="showCartCtrl">
+    <ul id="cart-process">
+        <li class="active">
+            <div class="process-text">
+                <span class="number">1</span>
+                <label>Giỏ hàng</label>
             </div>
-            <br>
-            <table class="table-product">
+            <div class="process-visual">
+                <div class="process-line"></div>
+                <div class="process-line-cart"></div>
+            </div>
+        </li>
+        <li class="">
+            <div class="process-text">
+                <span class="number">2</span>
+                <label>Thông tin giao hàng</label>
+            </div>
+            <div class="process-visual">
+                <div class="process-line"></div>
+                <div class="process-line-cart"></div>
+            </div>
+        </li>
+        <li class="">
+            <div class="process-text">
+                <span class="number">3</span>
+                <label>Thông tin thanh toán</label>
+            </div>
+            <div class="process-visual">
+                <div class="process-line"></div>
+                <div class="process-line-cart"></div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="product-list-count">
+        Bạn có <span class="number">{{countProducts()}}</span> sản phẩm trong giỏ hàng
+    </div>
+    <h4></h4>
+    <h4></h4>
+    <div class="row">
+        <div class="col-xs-8">
+            <table class="product-table" ng-cloak>
                 <thead>
                     <tr>
-                        <th width="100">&nbsp;</th>
-                        <th width="400"><?php echo $language[$view->view]->colProduct; ?></th>
-                        <th width="100" class="right"><?php echo $language[$view->view]->colPrice; ?></th>
-                        <th width="190" class="center"><?php echo $language[$view->view]->colQty; ?></th>
-                        <th width="100" class="center"><?php echo $language[$view->view]->colSubtotal; ?></th>
+                        <th width="50%">Sản phẩm</th>
+                        <th width="20%">Giá</th>
+                        <th width="10%">SL</th>
+                        <th width="20%">Thành tiền</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-if="!products.length">
-                        <td colspan="5"><?php echo $language[$view->view]->lblNoProduct ?></td>
-                    </tr>
-                    <tr ng-repeat="product in products" ng-class-even="'even'" ng-class-odd="'odd'">
-                        <td class="center">
-                            <a href="{{product.url}}" title="product thumbnail">
-                                <img class="product-thumbnail" src="/thumbnail.php/{{product.thumbnail}}/w=200" alt="product thumbnail">
-                            </a>
+                    <tr ng-repeat="product in products">
+                        <td>
+                            <div class="p-img">
+                                <a href="{{product.url}}" title="{{product.name}}">
+                                    <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=100">
+                                </a>
+                            </div>
+                            <div class="p-info">
+                                <a class="p-name" href="{{product.url}}" title="{{product.name}}">{{product.name}}</a>
+                                <div class="p-status">
+                                    <span class="green" ng-if="product.stock > 1 && product.quantity <= product.stock">Còn hàng</span>
+                                    <span class="yellow" ng-if="product.stock == 1 && product.quantity <= product.stock">Sắp hết hàng</span>
+                                    <span class="red" ng-if="product.stock == 0 || product.quantity > product.stock">Hết hàng</span>
+                                    &nbsp;|&nbsp;
+                                    <a href="javascript:;" ng-click="removeProduct(product.id)">Xóa</a>
+                                </div>
+                            </div>
                         </td>
                         <td>
-                            <a href="{{product.url}}" class="product-name">{{product.name}}</a><br>
-                            <span class="product-seller">{{product.sellerName}}</span><br>
-                            <span class="green" ng-if="product.stock > 10"><?php echo $language[$view->view]->lblInstock; ?></span>
-                            <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty; ?></span>
-                            <span class="red" ng-if="product.stock <= 0"><?php echo $language[$view->view]->lblOutOfstock; ?></span>
-                        </td>
-                        <td class="right">
-                            <span class="product-price">{{fnMoneyToString(product.price + product.taxes)}}</span><br>
-                            <!--<span class="product-original-price">($100)</span>-->
-                        </td>
-                        <td class="center">
-                            <select ng-model="product.quantity" ng-change="updateQty(product)">
-                                <option ng-repeat="qtyVal in qtyRange track by $index" ng-selected="product.quantity == $index"
-                                        value="{{$index}}" ng-if="$index" ng-model="product.quantity">{{$index}}</option>
-                            </select>
+                            <strong>
+                                {{fnMoneyToString(product.price)}}<br>
+                                <small>{{fnMoneyToString(product.priceOrigin)}}</small>
+                            </strong>
                             <br>
-                            <a href="javascript:;" ng-click="removeFromCart(product.id)">
-                                <?php echo $language[$view->view]->btnRemoveFormCart; ?>
-                            </a><br>
-                            <?php if (User::getCurrentUser()->is_authorized): ?>
-                                <a href="javascript:;" ng-click="moveToWishlist(product.id)">
-                                    <?php echo $language[$view->view]->btnMoveToWishlist; ?>
-                                </a>
-                            <?php endif; ?>
+                            <span class="p-sale-percent" ng-if="product.sales">Giảm {{product.sales}}%</span>
                         </td>
-                        <td class="center">
-                            <span class="product-price">{{fnMoneyToString((product.price + product.taxes) * product.quantity)}}</span>
+                        <td>
+                            <select ng-model="product.quantity" ng-change="selQtyOnchange()">
+                                <option ng-repeat="i in range(1, product.stock)" value="{{i}}" ng-selected="product.quantity == i">{{i}}</option>
+                            </select>
                         </td>
-                    </tr>
-                    <tr ng-if="products.length">
-                        <td>&nbsp;</td>
-                        <td colspan="2">
-                            <!--
-                            <a href="javascript:;"><i class="fa fa-gift"></i> Enter Giftcode</a>
-                            <?php echo str_repeat('&nbsp;', 16) ?>
-                            -->
-                            <a href="/"><i class="fa fa-play"></i> <?php echo $language[$view->view]->lblContinueShopping; ?></a>
-                        </td>
-                        <td class="right">
-                            <span class="product-total-label"><?php echo $language[$view->view]->lblTotal; ?> : </span><br>
-                            <!--<span class="product-save-label">You save:</span>-->
-                        </td>
-                        <td class="center">
-                            <span class="product-total-price">{{fnMoneyToString(calPriceOnly() + calTaxes())}}</span><br>
-                            <!--<span class="product-save-price">$40.00</span>-->
-                        </td>
+                        <td><strong>{{fnMoneyToString(product.price * product.quantity)}}</strong></td>
                     </tr>
                 </tbody>
             </table>
-
-            <?php if (User::getCurrentUser()->is_authorized): ?>
-                <h3 class="left" ng-if="wishlist && wishlist.length"><?php echo $language[$view->view]->lblWishlist; ?></h3>
-                <table class="table-product">
-                    <tbody>
-                        <tr ng-repeat="product in wishlist" ng-class-even="'event'" ng-class-odd="'odd'">
-                            <td width="100" class="center">
-                                <img class="product-thumbnail" src="/thumbnail.php/{{product.thumbnail}}/w=200">
-                            </td>
-                            <td width="400">
-                                <a href="javascript:;" class="product-name">{{product.name}}</a><br>
-                                <span class="product-seller">{{product.seller_name}}</span><br>
-                                <span class="green" ng-if="product.stock > 10">In stock</span>
-                                <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty; ?></span>
-                                <span class="red" ng-if="product.stock <= 0">Out of stock</span>
-                            </td>
-                            <td width="100">
-                                <span class="product-price">{{fnMoneyToString(product.price)}}</span><br>
-                                <!--<span class="product-original-price">($100)</span>-->
-                            </td>
-                            <td width="100">&nbsp;</td>
-                            <td width="190" class="center">
-                                <input type="button" class="btn btn-primary" ng-click='addToCart(product.wishlistDetailID)' value="<?php echo $language[$view->view]->btnAddToCart ?>"><br>
-                                <a href="javascript:;" ng-click='removeFromWishlist(product.wishlistDetailID)'><?php echo $language[$view->view]->lblRemoveWishlist; ?></a><br>
-                                <a href="/wishlist/show" ><?php echo $language[$view->view]->lblViewWishlist; ?></a>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            <?php endif; ?>
-        </div><!--cart-left-->
-        <div class="cart-right">
-            <div class="cart-right-content">
-                <h4 class="left"><?php echo $language[$view->view]->lblCartsum; ?></h4>
-                <div class="summary-row">
-                    <div class="row-left"><?php echo $language[$view->view]->lblProductCount; ?> :</div>
-                    <div class="row-right">{{fnMoneyToString(calPriceOnly())}}</div>
+            <div class="pull-right" style="width: 300px;">
+                <div class="product-summaries-table">
+                    <div class="border-solid">
+                        <div class="tdleft">Sản phẩm:</div>
+                        <div class="tdright">{{fnMoneyToString(getProductSubtotal())}}</div>
+                    </div>
+                    <div class="total">
+                        <div class="tdleft"><strong>TỔNG TIỀN:</strong></div>
+                        <div class="tdright"><strong>{{fnMoneyToString(getTotal())}}</strong></div>
+                    </div>
                 </div>
-                <div class="summary-row">
-                    <div class="row-left"><?php echo $language[$view->view]->lblShipping; ?>:</div>
-                    <div class="row-right">?-----</div>
+                <div class="pull-right">
+                    <a href="/cart/shipping" class="btn-cart-next">Tiến hành đặt hàng&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right"></i></a>
                 </div>
-                <hr>
-                <div class="summary-row">
-                    <div class="row-left"><?php echo $language[$view->view]->colSubtotal; ?>:</div>
-                    <div class="row-right">{{fnMoneyToString(calPriceOnly())}}</div>
-                </div>
-                <div class="summary-row">
-                    <div class="row-left"><?php echo $language[$view->view]->lblTax; ?>:</div>
-                    <div class="row-right">{{fnMoneyToString(calTaxes())}}</div>
-                </div>
-                <hr>
-                <div class="summary-row total">
-                    <div class="row-left"><?php echo $language[$view->view]->colTotal ?>:</div>
-                    <div class="row-right">{{fnMoneyToString(calPriceOnly() + calTaxes())}}</div>
-                </div>
-                <!--
-                <div class="summary-row saving">
-                    <div class="row-left">You save:</div>
-                    <div class="row-right">$40.00</div>
-                </div>
-                -->
             </div>
-            <input type="button" class="btn btn-lg btn-primary form-control" value="<?php echo $language[$view->view]->btncheckout; ?>" 
-                   ng-click="checkout()" ng-disabled="!canCheckout">
-        </div><!--cart-right-->
-    </div><!--row-wrapper-->
-    <div class="clearfix"></div>
-
-</div><!--angular-->
-<br>
-
-<script>
-    var scriptData = {};
-    scriptData.serviceURL = '<?php echo base_url('cart/cartProductsService') ?>';
-    scriptData.checkoutURL = '<?php echo base_url('cart/shipping') ?>';
-    scriptData.updateQuantityURL = '<?php echo base_url('cart/updateQuantityService') ?>';
-    scriptData.removeFromCartURL = '<?php echo base_url('cart/removeFromCart') ?>/';
-    scriptData.moveToWishlistURL = '/cart/moveToWishlist/';
-    scriptData.addToCartURL = '/wishlist/addToCart/';
-    scriptData.removeFromWishlistURL = '/wishlist/remove/';
-    scriptData.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
-</script>
-<?php if (User::getCurrentUser()->is_authorized)  ?><script>scriptData.wishlistServiceURL = '/wishlist/wishlistDetailService/<?php echo $wishlist->id ?>';</script>
-
+        </div>
+        <div class="col-xs-4">
+            <div class="cart-summaries">
+                <div class="inner">
+                    <h4>Tóm tắt</h4>
+                    <div class="product-summaries-table">
+                        <div class="border-dashed">
+                            <div class="tdleft"><strong>Sản phẩm ({{countProducts()}}):</strong></div>
+                            <div class="tdright"><strong>{{fnMoneyToString(getProductSubtotal())}}</strong></div>
+                        </div>
+                        <div class="border-solid">
+                            <div class="tdleft"><strong>Thuế:</strong></div>
+                            <div class="tdright"><strong>{{fnMoneyToString(getTaxTotal())}}</strong></div>
+                        </div>
+                        <div class="total">
+                            <div class="tdleft"><strong>TỔNG TIỀN:</strong></div>
+                            <div class="tdright"><strong>{{fnMoneyToString(getTotal())}}</strong></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <a class="btn-cart-next" href="/cart/shipping" style="display: block;">
+                        Tiến hành đặt hàng
+                        <div class="pull-right"><i class="fa fa-caret-right"></i></div>
+                    </a>
+                </div><!--inner-->
+            </div><!--summaries-->
+        </div>
+    </div>
+    <h4></h4>
+    <h4></h4>
+</div><!--container-->

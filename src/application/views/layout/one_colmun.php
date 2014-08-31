@@ -61,7 +61,7 @@
                     <li class="vn <?php echo $active ?>"><a href="javascript:;" title="Tiếng Việt" ng-click="changeLanguage('VN-VI')"></a></li>
                 </ul>
                 <div class="cart cursor-pointer">
-                    <span class="cart-num text-center">0</span>
+                    <span class="cart-num text-center">{{countCartProducts()}}</span>
                 </div>
             </div>
         </div>
@@ -117,10 +117,21 @@
                     <div class="product-group">
                         <a href="javascript:;" title="View" ng-click="setWidgetRightActive('cart')">
                             Cart <i class="fa fa-caret-down" ng-if="widgetRightActive == 'cart'"></i>
-                            <div class="pull-right">{{countWidgetProducts('cart')}}</div>
+                            <div class="pull-right">{{countCartProducts()}}</div>
                         </a>
                         <ul ng-if="widgetRightActive === 'cart'">
-
+                            <li ng-repeat="product in getCurrentProducts()">
+                                <!--<a class="remove" href="javascript:;" title="Remove">x</a>-->
+                                <a href="{{product.url}}" title="{{product.name}}">
+                                    <div class="info">
+                                        <span class="name">{{product.name}}</span>
+                                        <span class="price">{{product.priceString}}</span>
+                                    </div>
+                                    <div class="image">
+                                        <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=170" alt="{{product.name}}"/>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="product-group">

@@ -1,12 +1,8 @@
 function AdvertisementController($scope, $http)
 {
-    $scope.old_banner = scriptData['banner'];
-    console.log($scope.banner_img);
-    $scope.banner_types =
-            [
-                {'name': 'Banner trang chủ', 'type': 'home_banner'},
-                {'name': 'Banner cuối trang', 'type': 'bottom_banner'}
-            ];
+    for (x in scriptData) {
+        $scope[x] = scriptData[x];
+    }
     $scope.add_banner = function(type) {
         if (typeof ($scope.banner[type]) == 'undefined') {
             $scope.banner[type] = [];
