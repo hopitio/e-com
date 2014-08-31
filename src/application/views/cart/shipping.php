@@ -80,6 +80,10 @@ defined('BASEPATH') or die('No direct script access allowed');
             </fieldset>
             <fieldset id="field-shipping">
                 <legend>Phương thức vận chuyển</legend>
+                <div class="pull-right">
+                    <a href="javascript:;" ng-if="mode == 'simple'" ng-click="setMode('advance')">Lựa chọn nâng cao</a>
+                    <a href="javascript:;" ng-if="mode == 'advance'" ng-click="setMode('simple')">Lựa chọn cơ bản</a>
+                </div>
                 <div class="row" ng-if="mode === 'simple'">
                     <ul class="col-xs-6">
                         <li class="color-{{$index + 1}}" ng-repeat="method in simpleData.methods">
@@ -97,6 +101,41 @@ defined('BASEPATH') or die('No direct script access allowed');
                         </div>
                     </div>
                 </div>
+                <div ng-if="mode == 'advance'">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th width="40%">Sản phẩm</th>
+                                <th width="10%">SL</th>
+                                <th width="20%">KL quy đổi</th>
+                                <th width="30%">Vận chuyển</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="product in products">
+                                <td>
+                                    <div class="p-img">
+                                        <a href="{{product.url}}" title="{{product.name}}">
+                                            <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=200">
+                                        </a>
+                                    </div>
+                                    <div class="p-info">
+                                        <a class="p-name" href="{{product.url}}" title="{{product.name}}">
+                                            {{product.name}}
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>{{product.quantity}}</td>
+                                <td>{{product.convertedWeight * product.quantity}}kg</td>
+                                <td>
+                                    <select>
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!--if-->
             </fieldset>
             <h4></h4>
             <div class="pull-right">
@@ -154,6 +193,7 @@ defined('BASEPATH') or die('No direct script access allowed');
 </div>
 <script>
     var script_data = {
-        provinces: <?php echo json_encode($provinces) ?>
+        provinces: <?php echo json_encode($provinces) ?>,
+        shippingMethods: <?php echo json_encode($shippingMethods) ?>
     };
 </script>

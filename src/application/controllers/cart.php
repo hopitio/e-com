@@ -29,7 +29,7 @@ class cart extends BaseController
     {
         $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name', true)->findAssoc();
         $data['shippingMethods'] = ShippingMethodMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->findAll();
-        
+
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setData($data)
                 ->setCss(array('/style/customerList.css'))
@@ -80,6 +80,7 @@ class cart extends BaseController
             $obj['priceString'] = (string) $product->getFinalPriceMoney($user->getCurrency());
             $obj['stock'] = (double) strval($product->getQuantity());
             $obj['url'] = '/product/details/' . $product->id;
+            $obj['convertedWeight'] = $product->getConvertedWeight();
             if (strval($product->getQuantity()) < $product->quantity)
             {
                 $json['notifications'][] = 'Sản phẩm "' . $product->getName() . '" đã hết trong kho, bạn cần giảm số lượng mua hoặc loại bỏ khỏi giỏ hàng.';

@@ -291,3 +291,15 @@ fieldset hr{
     padding: 10px 15px;
     height: 148px;
 }
+#field-shipping{
+    position: relative;
+}
+#field-shipping .pull-right{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    
+}
+#field-shipping .pull-right a{
+    color: #c4605e;
+}

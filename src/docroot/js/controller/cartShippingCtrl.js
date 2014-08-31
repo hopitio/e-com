@@ -13,7 +13,9 @@
                 methods: [],
                 selected_index: 0
             };
-            $scope.advanceData;
+            $scope.advanceData = {
+                methods: scriptData.shippingMethods
+            };
 
             $scope.setMode = function(mode) {
                 $scope.mode = mode;
