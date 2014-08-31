@@ -5,7 +5,7 @@
         <li class="active">
             <div class="process-text">
                 <span class="number">1</span>
-                <label>Giỏ hàng</label>
+                <label><?php echo $language[$view->view]->lblYourCart ?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -15,7 +15,7 @@
         <li class="">
             <div class="process-text">
                 <span class="number">2</span>
-                <label>Thông tin giao hàng</label>
+                <label><?php echo $language[$view->view]->lblShippingInfo ?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -25,7 +25,7 @@
         <li class="">
             <div class="process-text">
                 <span class="number">3</span>
-                <label>Thông tin thanh toán</label>
+                <label><?php echo $language[$view->view]->lblPaymentInfo ?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -35,7 +35,7 @@
     </ul>
 
     <div class="product-list-count">
-        Bạn có <span class="number">{{countProducts()}}</span> sản phẩm trong giỏ hàng
+        <?php echo $language[$view->view]->lblProductCount ?>
     </div>
     <h4></h4>
     <h4></h4>
@@ -44,10 +44,10 @@
             <table class="product-table" ng-cloak>
                 <thead>
                     <tr>
-                        <th width="50%">Sản phẩm</th>
-                        <th width="20%">Giá</th>
-                        <th width="10%">SL</th>
-                        <th width="20%">Thành tiền</th>
+                        <th width="50%"><?php echo $language[$view->view]->lblProduct ?></th>
+                        <th width="20%"><?php echo $language[$view->view]->lblPrice ?></th>
+                        <th width="10%"><?php echo $language[$view->view]->lblQty ?></th>
+                        <th width="20%"><?php echo $language[$view->view]->lblSubtotal ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,11 +61,11 @@
                             <div class="p-info">
                                 <a class="p-name" href="{{product.url}}" title="{{product.name}}">{{product.name}}</a>
                                 <div class="p-status">
-                                    <span class="green" ng-if="product.stock > 1 && product.quantity <= product.stock">Còn hàng</span>
-                                    <span class="yellow" ng-if="product.stock == 1 && product.quantity <= product.stock">Sắp hết hàng</span>
+                                    <span class="green" ng-if="product.stock > 1 && product.quantity <= product.stock"><?php echo $language[$view->view]->lblInStock ?></span>
+                                    <span class="yellow" ng-if="product.stock == 1 && product.quantity <= product.stock"><?php echo $language[$view->view]->lblAlmostEmpty ?></span>
                                     <span class="red" ng-if="product.stock == 0 || product.quantity > product.stock">Hết hàng</span>
                                     &nbsp;|&nbsp;
-                                    <a href="javascript:;" ng-click="removeProduct(product.id)">Xóa</a>
+                                    <a href="javascript:;" ng-click="removeProduct(product.id)"><?php echo $language[$view->view]->lblRemove ?></a>
                                 </div>
                             </div>
                         </td>
@@ -75,7 +75,7 @@
                                 <small>{{fnMoneyToString(product.priceOrigin)}}</small>
                             </strong>
                             <br>
-                            <span class="p-sale-percent" ng-if="product.sales">Giảm {{product.sales}}%</span>
+                            <span class="p-sale-percent" ng-if="product.sales"><?php echo $language[$view->view]->lblSales ?> {{product.sales}}%</span>
                         </td>
                         <td>
                             <select ng-model="product.quantity" ng-change="selQtyOnchange()">
@@ -89,41 +89,41 @@
             <div class="pull-right" style="width: 300px;">
                 <div class="product-summaries-table">
                     <div class="border-solid">
-                        <div class="tdleft">Sản phẩm:</div>
+                        <div class="tdleft"><?php echo $language[$view->view]->lblProduct ?>:</div>
                         <div class="tdright">{{fnMoneyToString(getProductSubtotal())}}</div>
                     </div>
                     <div class="total">
-                        <div class="tdleft"><strong>TỔNG TIỀN:</strong></div>
+                        <div class="tdleft"><strong><?php echo $language[$view->view]->lblTotal ?>:</strong></div>
                         <div class="tdright"><strong>{{fnMoneyToString(getTotal())}}</strong></div>
                     </div>
                 </div>
                 <div class="pull-right">
-                    <a href="/cart/shipping" class="btn-cart-next">Tiến hành đặt hàng&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right"></i></a>
+                    <a href="/cart/shipping" class="btn-cart-next"><?php echo $language[$view->view]->lblSubmit ?>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
         <div class="col-xs-4">
             <div class="cart-summaries">
                 <div class="inner">
-                    <h4>Tóm tắt</h4>
+                    <h4><?php echo $language[$view->view]->lblSummaries ?></h4>
                     <div class="product-summaries-table">
                         <div class="border-dashed">
-                            <div class="tdleft"><strong>Sản phẩm ({{countProducts()}}):</strong></div>
+                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblProduct ?> ({{countProducts()}}):</strong></div>
                             <div class="tdright"><strong>{{fnMoneyToString(getProductSubtotal())}}</strong></div>
                         </div>
                         <div class="border-solid">
-                            <div class="tdleft"><strong>Thuế:</strong></div>
+                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblTaxes ?>:</strong></div>
                             <div class="tdright"><strong>{{fnMoneyToString(getTaxTotal())}}</strong></div>
                         </div>
                         <div class="total">
-                            <div class="tdleft"><strong>TỔNG TIỀN:</strong></div>
+                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblTotal ?>:</strong></div>
                             <div class="tdright"><strong>{{fnMoneyToString(getTotal())}}</strong></div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <br>
                     <a class="btn-cart-next" href="/cart/shipping" style="display: block;">
-                        Tiến hành đặt hàng
+                        <?php echo $language[$view->view]->lblSubmit ?>
                         <div class="pull-right"><i class="fa fa-caret-right"></i></div>
                     </a>
                 </div><!--inner-->

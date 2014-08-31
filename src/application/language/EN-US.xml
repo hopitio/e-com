@@ -89,6 +89,7 @@
         <lblUserPinlist>Pinlist</lblUserPinlist>
         <lblSearch>Search</lblSearch>
         <lblMenu>Category/Menu</lblMenu>
+        <lblYourCart>Your cart</lblYourCart>
     </layout>
     
     <sitemap>
@@ -130,72 +131,52 @@
         <msgErrorActived>Account has been active</msgErrorActived>
     </portalaccount_active>
     <cart_showCart>
-        <title>Cart</title>
-        <lblYourcart>Your Cart</lblYourcart>
-        <lblPlaceOrder>Place order</lblPlaceOrder>
-        <lblShippingInfor>Shipping infor</lblShippingInfor>
-        <lblPaymentInfor>Playment infor</lblPaymentInfor>
-        <lblNotification>Notification</lblNotification>
-        <lblGoBack>Go back</lblGoBack>
-        <colProduct>Products</colProduct>
-        <colPrice>Prices</colPrice>
-        <colQty>QTY</colQty>
-        <colSubtotal>Subtotal</colSubtotal>
-        <colTotal>Total</colTotal>
-        <lblInstock>In stock</lblInstock>
-        <lblInstockQty>Just {{product.stock}} product</lblInstockQty>
-        <lblOutOfstock>Out of stock</lblOutOfstock>
-        <btnRemoveFormCart>Remove from Cart</btnRemoveFormCart>
-        <btnMoveToWishlist>Move to wishlist</btnMoveToWishlist>
-        <lblContinueShopping>Continue shopping</lblContinueShopping>
-        <lblWishlist>Wishlist</lblWishlist>
-        <lblRemoveWishlist>Remove</lblRemoveWishlist>
-        <lblViewWishlist>Show wishlist</lblViewWishlist>
-        <lblCartsum>Cart summary</lblCartsum>
-        <lblProductCount>Product ({{products.length}})</lblProductCount>
-        <lblShipping>Shipping</lblShipping>
-        <lblTax>Taxes</lblTax>
-        <lblTotal>Total</lblTotal>
-        <btncheckout>Checkout</btncheckout>
-        <btnAddToCart>Add to Cart</btnAddToCart>
-        <lblNoProduct>There is no product in your Cart</lblNoProduct>
+        <lblYourCart>Your Cart</lblYourCart>
+        <lblShippingInfo>Shipping Infomation</lblShippingInfo>
+        <lblPaymentInfo>Payment Infomation</lblPaymentInfo>
+        <lblProduct>Product</lblProduct>
+        <lblPrice>Price</lblPrice>
+        <lblQty>Qty</lblQty>
+        <lblSubtotal>Sub total</lblSubtotal>
+        <lblTotal>TOTAL</lblTotal>
+        <lblSubmit>Proceed</lblSubmit>
+        <lblSummaries>Summaries</lblSummaries>
+        <lblTaxes>Taxes</lblTaxes>
+        <lblProductCount><![CDATA[You have <span class="number">{{countProducts()}}</span> product(s) in your Cart]]></lblProductCount>
+        <lblInStock>In stock</lblInStock>
+        <lblAlmostEmpty>Almost empty</lblAlmostEmpty>
+        <lblOutOfOrder>Out of order</lblOutOfOrder>
+        <lblRemove>Remove</lblRemove>
+        <lblSales>Sales</lblSales>
     </cart_showCart>
     <cart_shipping>
-        <title>Shipping information</title>
-        <lblYourcart>Your Cart</lblYourcart>
-        <lblPlaceOrder>Place order</lblPlaceOrder>
-        <lblShippingInfor>Shipping infor</lblShippingInfor>
-        <lblPaymentInfor>Playment infor</lblPaymentInfor>
-        <lblShippingAddress>Shipping address</lblShippingAddress>
-        <lblPhone>Phone number</lblPhone>
-        <lblAddress>Street address</lblAddress>
-        <lblCity>City/district</lblCity>
-        <lblProvince>Province</lblProvince>
-        <lblShippingMethods>Shipping methods</lblShippingMethods>
-        <lblName>Full name</lblName>
-        <colName>Name</colName>
-        <colTime>Transmit time</colTime>
-        <lblGift>Gift</lblGift>
-        <lblIsGift>Is gift</lblIsGift>
-        <lblGiftNoiceLine1>Is gift</lblGiftNoiceLine1>
-        <lblGiftNoice>(Free gift wrap)</lblGiftNoice>
-        <lblIsNotGift>Yes, it's a gift</lblIsNotGift>
-        <btnContinue>Continue</btnContinue>
-        <btnBacktoCart>Back to cart</btnBacktoCart>
-        <lblCartsum>Cart summary</lblCartsum>
-        <lblProduct>Products </lblProduct>
-        <lblShipping>Shipping</lblShipping>
-        <lblTax>Tax</lblTax>
-        <lblSubtotal>Subtotal</lblSubtotal>
-        <lblTotal>Total</lblTotal>
-        <lblAdvanceMode>Advance mode</lblAdvanceMode>
-        <lblSimpleMode>Simple mode</lblSimpleMode>
+        <lblYourCart>Your Cart</lblYourCart>
+        <lblShippingInfo>Shipping Infomation</lblShippingInfo>
+        <lblPaymentInfo>Payment Infomation</lblPaymentInfo>
+        <lblFullname>Fullname</lblFullname>
+        <lblEnterShippingAddress>Enter your shipping address</lblEnterShippingAddress>
+        <lblCityProvince>City/Province</lblCityProvince>
+        <lblAddress>Address</lblAddress>
+        <lblPhoneNo>Phone number</lblPhoneNo>
+        <addressPlaceHolder>number, street, village</addressPlaceHolder>
+        <lblYourLanguage>What is your language?</lblYourLanguage>
+        <lblAdvancedOptions>Advanced Options</lblAdvancedOptions>
+        <lblSimpleOptions>Simple Options</lblSimpleOptions>
+        <lblShippingMethod>Shipping method</lblShippingMethod>
         <lblProduct>Product</lblProduct>
-        <lblQuantity>Quantity</lblQuantity>
-        <lblShipTotal>Shipping Total</lblShipTotal>
+        <lblQty>QTY</lblQty>
+        <lblConvertedWeight>Converted Weight</lblConvertedWeight>
+        <lblShipping>Shipping</lblShipping>
+        <lblTotal>TOTAL</lblTotal>
+        <lblBack>Previous</lblBack>
+        <lblNext>Proceed</lblNext>
+        <supportText><![CDATA[You need assistance? Call <span class="phone-no">098.999.999</span> or <span class="phone-no">043.999.999]]></supportText>
+        <lblSummaries>Summaries</lblSummaries>
+        <lblSubtotal>Subtotal</lblSubtotal>
+        <lblTaxes>Taxes</lblTaxes>
     </cart_shipping>
     <mail>
-         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>
+        <registerconfirm>Welcome to,Sfriendly website</registerconfirm>
         <OrderShipping>Your Sfriendly.com order has shipped! (#{order_number})</OrderShipping>
         <OrderDelivered>Your Sfriendly.com order has delivered (#{order_number})</OrderDelivered>
         <SellerOrderDelivered>Your Sfriendly.com order has delivered</SellerOrderDelivered>
@@ -300,7 +281,7 @@
         <msgUpdateContactSucess>Update has successfully address</msgUpdateContactSucess>
     </portalaccount_userInformation>
     <portalaccount_userOrderHistory>
-         <menuItemSecurity>Account Security</menuItemSecurity>
+        <menuItemSecurity>Account Security</menuItemSecurity>
         <menuItemInformation>Account information</menuItemInformation>
         <menuItemOrderHistory>Order history</menuItemOrderHistory>
         <title>Order history</title>

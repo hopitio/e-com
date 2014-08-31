@@ -8,7 +8,7 @@ defined('BASEPATH') or die('No direct script access allowed');
             <li class="passed">
                 <div class="process-text">
                     <span class="number">1</span>
-                    <label>Giỏ hàng</label>
+                    <label><?php echo $language[$view->view]->lblYourCart ?></label>
                 </div>
                 <div class="process-visual">
                     <div class="process-line"></div>
@@ -18,7 +18,7 @@ defined('BASEPATH') or die('No direct script access allowed');
             <li class="active">
                 <div class="process-text">
                     <span class="number">2</span>
-                    <label>Thông tin giao hàng</label>
+                    <label><?php echo $language[$view->view]->lblShippingInfo ?></label>
                 </div>
                 <div class="process-visual">
                     <div class="process-line"></div>
@@ -28,7 +28,7 @@ defined('BASEPATH') or die('No direct script access allowed');
             <li class="">
                 <div class="process-text">
                     <span class="number">3</span>
-                    <label>Thông tin thanh toán</label>
+                    <label><?php echo $language[$view->view]->lblPaymentInfo ?></label>
                 </div>
                 <div class="process-visual">
                     <div class="process-line"></div>
@@ -40,24 +40,24 @@ defined('BASEPATH') or die('No direct script access allowed');
         <div class="row">
             <div class="col-xs-8">
                 <fieldset>
-                    <legend>Nhập địa chỉ giao hàng</legend>
+                    <legend><?php echo $language[$view->view]->lblEnterShippingAddress ?></legend>
                     <div class="row">
                         <div class="col-xs-8 col-xs-offset-2">
                             <div class="form-group">
-                                <label class="col-xs-4 control-label" for="txtFullname"><span class="required">* </span>Họ và tên</label>
+                                <label class="col-xs-4 control-label" for="txtFullname"><span class="required">* </span><?php echo $language[$view->view]->lblFullname ?></label>
                                 <div class="col-xs-8 control">
                                     <input type="text" name="txtFullname" id="txtFullname" class="form-control" data-rule-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-xs-4 control-label" for="txtPhoneNo"><span class="required">* </span>Số điện thoại</label>
+                                <label class="col-xs-4 control-label" for="txtPhoneNo"><span class="required">* </span><?php echo $language[$view->view]->lblPhoneNo ?></label>
                                 <div class="col-xs-8 control">
                                     <input type="text" name="txtPhoneNo" id="txtPhoneNo" class="form-control" data-rule-required="true">
                                 </div>
                             </div>
                             <hr>
                             <div class="form-group">
-                                <label class="col-xs-4 control-label" for="selProvinceCity"><span class="required">* </span>Tỉnh/Thành phố</label>
+                                <label class="col-xs-4 control-label" for="selProvinceCity"><span class="required">* </span><?php echo $language[$view->view]->lblCityProvince ?></label>
                                 <div class="col-xs-8 control">
                                     <select name="selProvinceCity" id="selProvinceCity" class="form-control" data-rule-required="true" ng-model="selectedProvince">
                                         <option ng-repeat="(k, v) in provinces" value="{{k}}">{{v}}</option>
@@ -65,13 +65,13 @@ defined('BASEPATH') or die('No direct script access allowed');
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-xs-4 control-label" for="txtStreetAddr"><span class="required">* </span>Địa chỉ</label>
+                                <label class="col-xs-4 control-label" for="txtStreetAddr"><span class="required">* </span><?php echo $language[$view->view]->lblAddress ?></label>
                                 <div class="col-xs-8 control">
-                                    <input type="text" name="txtStreetAddr" id="txtStreetAddr" class="form-control" data-rule-required="true" placeholder="Số nhà, đường (tòa nhà), phường/xã">
+                                    <input type="text" name="txtStreetAddr" id="txtStreetAddr" class="form-control" data-rule-required="true" placeholder="<?php echo $language[$view->view]->addressPlaceHolder ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-xs-4 control-label" for="txtLanguage">Ngôn ngữ của bạn là gì?</label>
+                                <label class="col-xs-4 control-label" for="txtLanguage"><?php echo $language[$view->view]->lblYourLanguage ?></label>
                                 <div class="col-xs-8 control">
                                     <input type="text" name="txtLanguage" id="txtLanguage" class="form-control">
                                 </div>
@@ -80,10 +80,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                     </div>
                 </fieldset>
                 <fieldset id="field-shipping">
-                    <legend>Phương thức vận chuyển</legend>
+                    <legend><?php echo $language[$view->view]->lblShippingMethod ?></legend>
                     <div class="pull-right">
-                        <a href="javascript:;" ng-if="mode == 'simple'" ng-click="setMode('advance')">Lựa chọn nâng cao</a>
-                        <a href="javascript:;" ng-if="mode == 'advance'" ng-click="setMode('simple')">Lựa chọn cơ bản</a>
+                        <a href="javascript:;" ng-if="mode == 'simple'" ng-click="setMode('advance')"><?php echo $language[$view->view]->lblAdvancedOptions ?></a>
+                        <a href="javascript:;" ng-if="mode == 'advance'" ng-click="setMode('simple')"><?php echo $language[$view->view]->lblSimpleOptions ?></a>
                     </div>
                     <div class="row" ng-if="mode === 'simple'">
                         <ul class="col-xs-6">
@@ -106,10 +106,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                         <table class="product-table">
                             <thead>
                                 <tr>
-                                    <th width="40%">Sản phẩm</th>
-                                    <th width="5%">SL</th>
-                                    <th width="20%">KL quy đổi</th>
-                                    <th width="35%">Vận chuyển</th>
+                                    <th width="40%"><?php echo $language[$view->view]->lblProduct ?></th>
+                                    <th width="5%"><?php echo $language[$view->view]->lblQty ?></th>
+                                    <th width="20%"><?php echo $language[$view->view]->lblConvertedWeight ?></th>
+                                    <th width="35%"><?php echo $language[$view->view]->lblShipping ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -144,7 +144,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                                     <div class="tdright"><strong>{{fnMoneyToString(row.price)}}</strong></div>
                                 </div>
                                 <div class="total">
-                                    <div class="tdleft left"><strong>TỔNG TIỀN:</strong></div>
+                                    <div class="tdleft left"><strong><?php echo $language[$view->view]->lblShipping ?>:</strong></div>
                                     <div class="tdright"><strong>{{fnMoneyToString(getShipPrice())}}</strong></div>
                                 </div>
                             </div>
@@ -155,10 +155,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                 <h4></h4>
                 <div class="pull-right">
                     <a href="/cart/showCart" class="btn-cart-prev" style="width: 150px;">
-                        <div class="pull-left"><i class="fa fa-caret-left"></i></div>Trở về
+                        <div class="pull-left"><i class="fa fa-caret-left"></i></div><?php echo $language[$view->view]->lblBack ?>
                     </a>
                     <a href="javascript:;" class="btn-cart-next" style="width: 150px;" data-type="submit">
-                        Tiếp tục<div class="pull-right"><i class="fa fa-caret-right"></i></div>
+                        <?php echo $language[$view->view]->lblNext ?><div class="pull-right"><i class="fa fa-caret-right"></i></div>
                     </a>
                 </div>
                 <div class="clearfix"></div>
@@ -166,39 +166,39 @@ defined('BASEPATH') or die('No direct script access allowed');
                 &nbsp;
                 <h4></h4>
                 <div style="height: 25px;line-height: 25px;">
-                    <i class="img-phone"></i>&nbsp;Bạn cần hỗ trợ? Gọi Hotline <span class="phone-no">098.999.999</span> hoặc <span class="phone-no">043.999.999</span>
+                    <i class="img-phone"></i>&nbsp;<?php echo $language[$view->view]->supportText ?>
                 </div>
             </div>
             <div class="col-xs-4">
                 <div class="cart-summaries">
                     <div class="inner">
-                        <h4>Tóm tắt</h4>
+                        <h4><?php echo $language[$view->view]->lblSummaries ?></h4>
                         <div class="product-summaries-table">
                             <div class="border-dashed">
-                                <div class="tdleft"><strong >Sản phẩm ({{countProducts}}):</strong></div>
+                                <div class="tdleft"><strong ><?php echo $language[$view->view]->lblProduct ?> ({{countProducts}}):</strong></div>
                                 <div class="tdright"><strong >{{fnMoneyToString(totalRawPrice)}}</strong></div>
                             </div>
                             <div class="border-solid">
-                                <div class="tdleft"><strong>Vận chuyển:</strong></div>
+                                <div class="tdleft"><strong><?php echo $language[$view->view]->lblShipping ?>:</strong></div>
                                 <div class="tdright"><strong >{{fnMoneyToString(getShipPrice())}}</strong></div>
                             </div>
                             <div class="border-dashed">
-                                <div class="tdleft"><strong >Thành tiền:</strong></div>
+                                <div class="tdleft"><strong ><?php echo $language[$view->view]->lblSubtotal ?>:</strong></div>
                                 <div class="tdright"><strong >{{fnMoneyToString(totalRawPrice + getShipPrice())}}</strong></div>
                             </div>
                             <div class="border-solid">
-                                <div class="tdleft"><strong>Thuế:</strong></div>
+                                <div class="tdleft"><strong><?php echo $language[$view->view]->lblTaxes ?>:</strong></div>
                                 <div class="tdright"><strong >{{fnMoneyToString(productTotalTaxes + getShipPrice() * 0.1)}}</strong></div>
                             </div>
                             <div class="total">
-                                <div class="tdleft"><strong>TỔNG TIỀN:</strong></div>
+                                <div class="tdleft"><strong><?php echo $language[$view->view]->lblTotal ?>:</strong></div>
                                 <div class="tdright"><strong>{{fnMoneyToString(totalRawPrice + productTotalTaxes + getShipPrice() * 1.1)}}</strong></div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <br>
                         <a class="btn-cart-next" href="javascript:;" style="display: block;" data-type="submit">
-                            Tiếp tục
+                            <?php echo $language[$view->view]->lblNext ?>
                             <div class="pull-right"><i class="fa fa-caret-right"></i></div>
                         </a>
                     </div><!--inner-->
@@ -208,8 +208,8 @@ defined('BASEPATH') or die('No direct script access allowed');
     </form>
 </div>
 <script>
-    var script_data = {
-        provinces: <?php echo json_encode($provinces) ?>,
-        shippingMethods: <?php echo json_encode($shippingMethods) ?>
-    };
+            var script_data = {
+            provinces: <?php echo json_encode($provinces) ?>,
+                    shippingMethods: <?php echo json_encode($shippingMethods) ?>
+            };
 </script>

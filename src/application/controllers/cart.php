@@ -73,6 +73,7 @@ class cart extends BaseController
             $obj = (array) $product;
             $obj['quantity'] = $product->quantity;
             $obj['price'] = $product->getPriceMoney($user->getCurrency())->getAmount();
+            $obj['priceOrigin'] = $product->getPriceOrigin($user->getCurrency())->getAmount();
             $obj['name'] = (string) $product->getName()->getTrueValue();
             $obj['taxes'] = $product->calculateTaxes($user->getCurrency())->getAmount();
             $obj['sales'] = $product->getSalePercent();

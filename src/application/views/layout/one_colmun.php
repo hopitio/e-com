@@ -60,9 +60,11 @@
                     <?php $active = User::getCurrentUser()->languageKey == 'VN-VI' ? 'active' : '' ?>
                     <li class="vn <?php echo $active ?>"><a href="javascript:;" title="Tiếng Việt" ng-click="changeLanguage('VN-VI')"></a></li>
                 </ul>
-                <div class="cart cursor-pointer">
-                    <span class="cart-num text-center">{{countCartProducts()}}</span>
-                </div>
+                <a href="/cart/showCart" title="<?php echo $language['layout']->lblYourCart ?>">
+                    <div class="cart cursor-pointer">
+                        <span class="cart-num text-center">{{countCartProducts()}}</span>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="head-menu width-960 cursor-pointer">
@@ -226,12 +228,12 @@
         </div>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-                    }
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+            }
         </script>
 
 
@@ -250,11 +252,11 @@
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                    }
-                    $.browser = {};
-                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+            }
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt

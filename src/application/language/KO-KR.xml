@@ -89,6 +89,7 @@
         <lblUserPinlist>Pinlist</lblUserPinlist>
         <lblSearch>검색</lblSearch>
         <lblMenu>카테고리/메뉴 </lblMenu>
+        <lblYourCart>장바구니</lblYourCart>
     </layout>
     
     <sitemap>
@@ -131,69 +132,49 @@
         <msgErrorActived>계정이 활성화되었습니다</msgErrorActived>
     </portalaccount_active>
     <cart_showCart>
-        <title>카트</title>
-        <lblYourcart>장바구니</lblYourcart>
-        <lblPlaceOrder>장소 순서</lblPlaceOrder>
-        <lblShippingInfor>선박 정보</lblShippingInfor>
-        <lblPaymentInfor>결제 정보</lblPaymentInfor>
-        <lblNotification>유의사항</lblNotification>
-        <lblGoBack>취소하기</lblGoBack>
-        <colProduct>상품</colProduct>
-        <colPrice>가격</colPrice>
-        <colQty>수량</colQty>
-        <colSubtotal>합계</colSubtotal>
-        <colTotal>합계금액</colTotal>
-        <lblInstock>재고 있음</lblInstock>
-        <lblInstockQty>그냥  {{product.stock}} 제품</lblInstockQty>
-        <lblOutOfstock>품절</lblOutOfstock>
-        <btnRemoveFormCart>삭제</btnRemoveFormCart>
-        <btnMoveToWishlist>Wishlist 보관</btnMoveToWishlist>
-        <lblContinueShopping>계속쇼핑</lblContinueShopping>
-        <lblWishlist>Wishlist</lblWishlist>
-        <lblRemoveWishlist>제거</lblRemoveWishlist>
-        <lblViewWishlist>표시 wishlist</lblViewWishlist>
-        <lblCartsum>카트 요약</lblCartsum>
-        <lblProductCount>상품 ({{products.length}})</lblProductCount>
-        <lblShipping>배송</lblShipping>
-        <lblTotal>합계</lblTotal>
-        <lblTax>세금</lblTax>
-        <btncheckout>주문하기</btncheckout>
-        <btnAddToCart>장바구니에 담기</btnAddToCart>
-        <lblNoProduct>장바구니에 제품이 없습니다</lblNoProduct>
+        <lblYourCart>장바구니</lblYourCart>
+        <lblShippingInfo>배송 정보</lblShippingInfo>
+        <lblPaymentInfo>결제 정보</lblPaymentInfo>
+        <lblProduct>제품</lblProduct>
+        <lblPrice>가격</lblPrice>
+        <lblQty>수량</lblQty>
+        <lblSubtotal>서브 총</lblSubtotal>
+        <lblTotal>총</lblTotal>
+        <lblSubmit>진행 순서</lblSubmit>
+        <lblSummaries>요약</lblSummaries>
+        <lblTaxes>세금</lblTaxes>
+        <lblProductCount><![CDATA[당신은 당신의 장바구니에 <span class="number">{{countProducts()}}</span> 제품을 가지고]]></lblProductCount>
+        <lblInStock>재고</lblInStock>
+        <lblAlmostEmpty>거의 빈</lblAlmostEmpty>
+        <lblOutOfOrder>순서가</lblOutOfOrder>
+        <lblRemove>제거</lblRemove>
+        <lblSales>판매</lblSales>
     </cart_showCart>
     <cart_shipping>
-        <title>선박 정보</title>
-        <lblYourcart>장바구니</lblYourcart>
-        <lblPlaceOrder>장소 순서</lblPlaceOrder>
-        <lblShippingInfor>선박 정보</lblShippingInfor>
-        <lblPaymentInfor>결제 정보</lblPaymentInfor>
-        <lblShippingAddress>발송 주소</lblShippingAddress>
-        <lblPhone>전화 번호</lblPhone>
-        <lblAddress>거리 주소</lblAddress>
-        <lblCity>도시 / 지역</lblCity>
-        <lblProvince>주</lblProvince>
-        <lblShippingMethods>배송 방법</lblShippingMethods>
-        <lblName>전체 이름</lblName>
-        <colName>이름</colName>
-        <colTime>시간을 전송</colTime>
-        <lblGift>선물</lblGift>
-        <lblIsGift>선물</lblIsGift>
-        <lblGiftNoiceLine1>선물</lblGiftNoiceLine1>
-        <lblGiftNoice>(무료 선물 포장)</lblGiftNoice>
-        <lblIsNotGift>네, 선물이야</lblIsNotGift>
-        <btnContinue>계속</btnContinue>
-        <btnBacktoCart>돌아 가기 쇼핑 카트에</btnBacktoCart>
-        <lblCartsum>카트 요약</lblCartsum>
-        <lblProduct>제품 </lblProduct>
-        <lblShipping>선박</lblShipping>
-        <lblTax>세</lblTax>
-        <lblSubtotal>소계</lblSubtotal>
-        <lblTotal>합계</lblTotal>
-        <lblAdvanceMode>사전 모드</lblAdvanceMode>
-        <lblSimpleMode>단순 모드</lblSimpleMode>
-        <lblProduct>생성물</lblProduct>
-        <lblQuantity>양</lblQuantity>
-        <lblShipTotal>선박 총</lblShipTotal>
+        <lblYourCart>장바구니</lblYourCart>
+        <lblShippingInfo>배송 정보</lblShippingInfo>
+        <lblPaymentInfo>결제 정보</lblPaymentInfo>
+        <lblFullname>전체 이름</lblFullname>
+        <lblEnterShippingAddress>배송 주소를 입력</lblEnterShippingAddress>
+        <lblCityProvince>시 /도</lblCityProvince>
+        <lblAddress>주소</lblAddress>
+        <addressPlaceHolder>수, 거리, 마을</addressPlaceHolder>
+        <lblYourLanguage>언어는 무엇입니까?</lblYourLanguage>
+        <lblAdvancedOptions>고급 옵션</lblAdvancedOptions>
+        <lblSimpleOptions>간단한 옵션</lblSimpleOptions>
+        <lblPhoneNo>전화 번호</lblPhoneNo>
+        <lblShippingMethod>배송 방법</lblShippingMethod>
+        <lblProduct>제품</lblProduct>
+        <lblQty>수량</lblQty>
+        <lblConvertedWeight>변환 무게</lblConvertedWeight>
+        <lblShipping>배송</lblShipping>
+        <lblTotal>총</lblTotal>
+        <lblBack>이전</lblBack>
+        <lblNext>다음</lblNext>
+        <supportText><![CDATA[당신 도움이 필요하십니까? 전화 <span class="phone-no">098.999.999</span> 또는 <span class="phone-no">043.999.999]]></supportText>
+        <lblSummaries>요약</lblSummaries>
+        <lblSubtotal>서브 총</lblSubtotal>
+        <lblTaxes>세금</lblTaxes>
     </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

@@ -91,6 +91,7 @@
         <lblUserPinlist>Pinlist</lblUserPinlist>
         <lblSearch>Tìm kiếm</lblSearch>
         <lblMenu>Danh mục</lblMenu>
+        <lblYourCart>Giỏ hàng</lblYourCart>
     </layout>
     
     <sitemap>
@@ -133,69 +134,49 @@
         <msgErrorActived>Tài khoản đã được active</msgErrorActived>
     </portalaccount_active>
     <cart_showCart>
-        <title>Giỏ hàng</title>
-        <lblYourcart>Giỏ hàng</lblYourcart>
-        <lblPlaceOrder>Place order</lblPlaceOrder>
-        <lblShippingInfor>Thông tin vận chuyển</lblShippingInfor>
-        <lblPaymentInfor>Thông tin thanh toán</lblPaymentInfor>
-        <lblNotification>Thông báo</lblNotification>
-        <lblGoBack>Trở về</lblGoBack>
-        <colProduct>Sản phẩm</colProduct>
-        <colPrice>Giá</colPrice>
-        <colQty>SL</colQty>
-        <colSubtotal>Thành tiền</colSubtotal>
-        <colTotal>Tổng tiền</colTotal>
-        <lblInstock>Còn hàng</lblInstock>
-        <lblInstockQty>Còn {{product.stock}} sản phẩm</lblInstockQty>
-        <lblOutOfstock>Hết hàng</lblOutOfstock>
-        <btnRemoveFormCart>Xóa khỏi giỏ hàng</btnRemoveFormCart>
-        <btnMoveToWishlist>Chuyển sang wishlist</btnMoveToWishlist>
-        <lblContinueShopping>Tiếp tục mua hàng</lblContinueShopping>
-        <lblWishlist>Sản phẩm mong muốn / Wishlist</lblWishlist>
-        <lblRemoveWishlist>Hủy</lblRemoveWishlist>
-        <lblViewWishlist>Hiển thị sản phẩm mong muốn</lblViewWishlist>
-        <lblCartsum>Tóm tắt</lblCartsum>
-        <lblProductCount>Sản phẩm ({{products.length}})</lblProductCount>
-        <lblShipping>Vận chuyển</lblShipping>
-        <lblTax>Thuế</lblTax>
-        <lblTotal>Tổng</lblTotal>
-        <btncheckout>Tiếp tục</btncheckout>
-        <btnAddToCart>Chuyển vào giỏ hàng</btnAddToCart>
-        <lblNoProduct>Không có sản phẩm nào trong giỏ</lblNoProduct>
+        <lblYourCart>Giỏ hàng</lblYourCart>
+        <lblShippingInfo>Thông tin vận chuyển</lblShippingInfo>
+        <lblPaymentInfo>Thông tin thanh toán</lblPaymentInfo>
+        <lblProduct>Sản phẩm</lblProduct>
+        <lblPrice>Đơn giá</lblPrice>
+        <lblQty>SL</lblQty>
+        <lblSubtotal>Thành tiền</lblSubtotal>
+        <lblTotal>TỔNG CỘNG</lblTotal>
+        <lblSubmit>Tiến hành đặt hàng</lblSubmit>
+        <lblSummaries>Tóm tắt</lblSummaries>
+        <lblTaxes>Thuế</lblTaxes>
+        <lblProductCount><![CDATA[You have <span class="number">{{countProducts()}}</span> in your Cart]]></lblProductCount>
+        <lblInStock>Còn hàng</lblInStock>
+        <lblAlmostEmpty>Sắp hết hàng</lblAlmostEmpty>
+        <lblOutOfOrder>Hết hàng</lblOutOfOrder>
+        <lblRemove>Xóa</lblRemove>
+        <lblSales>Giảm</lblSales>
     </cart_showCart>
     <cart_shipping>
-        <title>Thông tin vận chuyển</title>
-        <lblYourcart>Giỏ hàng</lblYourcart>
-        <lblPlaceOrder>Place order</lblPlaceOrder>
-        <lblShippingInfor>Thông tin vận chuyển</lblShippingInfor>
-        <lblPaymentInfor>Thông tin thanh toán</lblPaymentInfor>
-        <lblShippingAddress>Địa chỉ</lblShippingAddress>
-        <lblPhone>Số điện thoại</lblPhone>
+        <lblYourCart>Giỏ hàng</lblYourCart>
+        <lblShippingInfo>Thông tin vận chuyển</lblShippingInfo>
+        <lblPaymentInfo>Thông tin thanh toán</lblPaymentInfo>
+        <lblFullname>Họ và tên</lblFullname>
+        <lblEnterShippingAddress>Nhập địa chỉ giao hàng</lblEnterShippingAddress>
+        <lblCityProvince>Tỉnh/Thành phố</lblCityProvince>
         <lblAddress>Địa chỉ</lblAddress>
-        <lblCity>Thành phố</lblCity>
-        <lblProvince>Tỉnh</lblProvince>
-        <lblShippingMethods>Phương thức vận chuyển</lblShippingMethods>
-        <lblName>Họ và tên</lblName>
-        <colName>Tên</colName>
-        <colTime>Thời gian vận chuyển</colTime>
-        <lblGift>Quà</lblGift>
-        <lblIsGift>Sản phẩm làm quà tặng</lblIsGift>
-        <lblGiftNoiceLine1>Sản phẩm làm quà tặng</lblGiftNoiceLine1>
-        <lblGiftNoice>(Miễn phí bọc quà)</lblGiftNoice>
-        <lblIsNotGift>Không phải là quà</lblIsNotGift>
-        <btnContinue>Tiếp tục</btnContinue>
-        <btnBacktoCart>Trở về giỏ hàng</btnBacktoCart>
-        <lblCartsum>Tóm tắt</lblCartsum>
-        <lblProduct>Sản phẩm </lblProduct>
-        <lblShipping>Vận chuyển</lblShipping>
-        <lblTax>Thuế</lblTax>
-        <lblSubtotal>Thành tiền</lblSubtotal>
-        <lblTotal>Tổng</lblTotal>
-        <lblAdvanceMode>Lựa chọn nâng cao</lblAdvanceMode>
-        <lblSimpleMode>Lựa chọn đơn giản</lblSimpleMode>
+        <addressPlaceHolder>Số nhà, đường (tòa nhà), phường/xã</addressPlaceHolder>
+        <lblYourLanguage>Bạn sử dụng ngôn ngữ nào?</lblYourLanguage>
+        <lblAdvancedOptions>Lựa chọn nâng cao</lblAdvancedOptions>
+        <lblSimpleOptions>Lựa chọn đơn giản</lblSimpleOptions>
+        <lblPhoneNo>Điện thoại</lblPhoneNo>
+        <lblShippingMethod>Phương thức vận chuyển</lblShippingMethod>
         <lblProduct>Sản phẩm</lblProduct>
-        <lblQuantity>Số lượng</lblQuantity>
-        <lblShipTotal>Thành tiền</lblShipTotal>
+        <lblQty>SL</lblQty>
+        <lblConvertedWeight>KL quy đổi</lblConvertedWeight>
+        <lblShipping>Vận chuyển</lblShipping>
+        <lblTotal>Tổng tiền</lblTotal>
+        <lblBack>Quay lại</lblBack>
+        <lblNext>Tiếp tục</lblNext>
+        <supportText><![CDATA[Bạn cần hỗ trợ? Gọi Hotline <span class="phone-no">098.999.999</span> hoặc <span class="phone-no">043.999.999]]></supportText>
+        <lblSummaries>Tóm tắt</lblSummaries>
+        <lblSubtotal>Thành tiền</lblSubtotal>
+        <lblTaxes>Thuế</lblTaxes>
     </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

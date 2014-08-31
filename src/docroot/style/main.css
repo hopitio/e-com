@@ -139,7 +139,7 @@ li{list-style: none;}
 .user-pannel > .flag > li.vn a{
     background: transparent url(/images/flag-bg.fw.png) no-repeat -68px 0px ;
 }
-.user-pannel > .cart{
+.user-pannel  .cart{
     float: right;
     margin-right:23px;
     margin-top:10px;
@@ -147,7 +147,7 @@ li{list-style: none;}
     height:41px;
     background: transparent url(/images/cart-head-bg.fw.png) no-repeat top left;
 }
-.user-pannel > .cart > .cart-num{
+.user-pannel  .cart  .cart-num{
     position: absolute;
     width: 20px;
     height: 20px;

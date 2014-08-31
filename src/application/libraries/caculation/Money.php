@@ -101,7 +101,7 @@ class Money
             case 'VND':
                 return format_money($this->_amount, 0) . 'đ';
             case 'KRW':
-                return '&#8361;' . format_money($this->_amount);
+                return '₩' . format_money($this->_amount);
         }
     }
 
