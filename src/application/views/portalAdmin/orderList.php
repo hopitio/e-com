@@ -1,39 +1,98 @@
-<div class="lynx_portalAdminContainer lynx_staticWidth" ng-controller="PortalAdminOrderListController">
-    <?php require_once APPPATH.'views/portalAdmin/menu.php'; ?>
-    <div class="lynx_portalAdminContent">
-        <div class="lynx_row">
-            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-        </div>
-        <h4>TÌM KIẾM GIAO DỊCH</h4>
-        <div class="lynx_row">
-            <span class="lynx_fieldName" style="width:100px"> ID</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="userId"/></span>
-            <span class="lynx_fieldName" style="width:100px">Mã Hóa Đơn</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="invoiceId"/></span>
-        </div>
-        <div class="lynx_row">
-            <span class="lynx_fieldName" style="width:100px">ACCOUNT</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="account"/></span>
-            <span class="lynx_fieldName" style="width:100px">NGÀY TẠO</span>
-            <span class="lynx_fieldValue"><input type="text" ng-model="lastName"/></span>
-        </div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Giao dịch
+        <small>Tìm kiếm Giao dịch</small>
+    </h1>
+</section>
 
-        <div class="lynx_row lynx_rowButton">
-            <button id="btnComfirm" class="lynx_button btn btn-primary" type="submit" ng-click="find()">Tìm kiếm</button>
+<section class="content" ng-controller="PortalAdminOrderListController">
+<div class="col-md-9">
+    <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">
+                    Tìm kiếm Giao dịch 
+                </h3>
+                <div class="box-tools text-right">
+                    <div class="text-right">
+                        <a href="javascript:void(0);" id="btn-apply" novalidate="novalidate" class="btn" ng-click="find()"><i class="fa fa-save"></i> Tìm kiếm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body ">
+                <div class="alert alert-info alert-dismissable" ng-repeat="alert in alerts" ng-click="closeAlert($index)">
+                    <i class="fa fa-info"></i>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <b>{{alert.msg}} !</b> 
+                </div>
+                <div class="input-group input-group-sm col-xs-12 lynx-admin-group">
+                    <span class="input-group-addon" >Mã giao dịch</span>
+                    <input type="text" class="form-control" ng-model="orderId"/>
+                    <span class="input-group-addon" >Tài khoản (Email)</span>
+                    <input type="text" class="form-control" ng-model="account"/>
+                    <span class="input-group-addon">Ngày tạo</span>
+                    <input type="text" class="form-control"  ng-model="createdDate"  data-inputmask="'alias': 'dd/mm/yyyy'"/>
+                </div>
+            </div>
+            <div class="box-body ">
+                <table id="user-datatable" class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Mã order </th>
+                            <th>Tài khoản</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày chuyển hàng</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Ngày hủy</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr ng-repeat="order in orders">
+                            <th>{{order.id}}</th>
+                            <th>{{order.t_user_account}}</th>
+                            <th>{{order.created_date}}</th>
+                            <th>{{order.shiped_date}}</th>
+                            <th>{{order.completed_date}}</th>
+                            <th>{{order.canceled_date}}</th>
+                            <th><a href="{{order.detailUrl}}">Chi tiết</a> <br/> <a ng-click="getInvoicesAsync(order)" href="javascript:void(0)">Hóa đơn</a></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
-        <div class="lynx_row">
-            <div style="height:250px" class="gridStyle" ng-grid="gridOptions"></div>
-        </div>
-        
-        <h4>Hóa đơn của order <a ng-show="selectdOrder[0].id != undefined" ng-href="/portal/__admin/order/{{selectdOrder[0].id}}/add_invoice" target="_blank"><i class="glyphicon glyphicon-plus-sign" style="cursor: pointer;"></i></a></h4>
-        <div class="lynx_row">
-            <div style="height:250px" class="gridStyle" ng-grid="gridInvoicesOptions"></div>
-        </div>
-        
-    </div>
 </div>
-<script type="text/ng-template" id="actionCell.html" >
-    <a href="{{row.getProperty('detailUrl')}}" target="_blank"><i title="Chi tiết đơn đặt hàng" class="glyphicon glyphicon-file" style="cursor: pointer;font-size:15px; margin:5px;"></i></a>
-</script>
+
+<div class="col-md-3">
+    <div class="box box-danger col-md-6">
+            <div class="box-header">
+                <h3 class="box-title">
+                    Hóa đơn liên quan
+                </h3>
+            </div>
+            <div class="box-body ">
+                <table id="invoice-datatable" class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Mã order </th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày thanh toán</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr ng-repeat="invoice in invoices">
+                            <td><a href="{{invoice.detailUrl}}">{{invoice.id}}</a></td>
+                            <td>{{invoice.created_date}} </td>
+                            <td>{{invoice.paid_date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+</section>
+
 

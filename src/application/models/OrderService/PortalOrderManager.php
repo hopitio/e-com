@@ -22,7 +22,7 @@ class PortalOrderManager extends PortalBizOrder
     function orderPlace($isSendMail,$userUpdate, $orderId, $invoiceId){
        $portalPaymentHistory = new PortalBizPaymentHistory();
        $order = $portalPaymentHistory->getOrderAllInformation($orderId);
-       //echo json_encode($order); die;
+
        parent::updateOrderToOrderPlace($userUpdate, $orderId, '');
        if($isSendMail){
            parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_PLACES);

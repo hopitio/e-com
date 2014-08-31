@@ -149,6 +149,9 @@
         
         <!-- AdminLTE App -->
         <script src="/AdminLTE-master/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/AdminLTE-master/js/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+        <script src="/AdminLTE-master/js/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+        <script src="/AdminLTE-master/js/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
         <script src="/AdminLTE-master/js/AdminLTE/app.js" type="text/javascript"></script>
         
         
@@ -167,6 +170,9 @@
                 this.categoryService = '<?php echo base_url('category/categories_service') ?>';
                 this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
             }
+            $(document).ready(function(){
+                $(":input").inputmask();
+            });
         </script>
         
         <?php

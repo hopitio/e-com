@@ -16,8 +16,8 @@ class apiOrder extends PortalAdminControllerAbstract
         $createDate = $postData['createdDate'];
         $limit = $postData['limit'];
         $offset = $postData['offset'];
-        $createdDateStart = date('Y-m-d',strtotime($createDate)); 
-        $createdDateEnd = date('Y-m-d',strtotime($createDate));
+        $createdDateStart = empty($createDate) ? "1970/01/01 00:00:00"  : DateTime::createFromFormat('d/m/Y', $createDate)->format('Y-m-d')." 00:00:00"; //date('Y-m-d',strtotime($createDate)); 
+        $createdDateEnd = empty($createDate) ? "2900/01/01 00:00:00"  : DateTime::createFromFormat('d/m/Y', $createDate)->format('Y-m-d')." 23:59:59";// date('Y-m-d',strtotime($createDate));
         $portalOrder = new PortalModelOrder();
         $results = $portalOrder->findOrder($userAccount, $orderId, $createdDateStart, $createdDateEnd,$limit,$offset);
         $count = $portalOrder->findOrderCount($userAccount, $orderId, $createdDateStart, $createdDateEnd);

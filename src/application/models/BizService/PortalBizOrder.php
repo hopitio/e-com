@@ -17,14 +17,14 @@ class PortalBizOrder extends PortalBizBase
         $user = User::getCurrentUser();
         switch ($result->status)
         {
-            case DatabaseFixedValue::ORDER_STATUS_VERIFYING:
+            case DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED:
                return $this->processShippingOrder($user, $orderId, $comment);
             break;
             case DatabaseFixedValue::ORDER_STATUS_SHIPPING:
                return $this->processDelivered($user, $orderId, $comment);
             break;
-            case DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED:
-               return $this->processVerifyOrder($user, $orderId, $comment);
+            case DatabaseFixedValue::ORDER_STATUS_VERIFYING:
+               return $this->processPlaceOrder($user, $orderId, $comment);
             break;
             default:
                 return null;
@@ -111,7 +111,7 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->getOneById();
         $portalModel->canceled_date =  '';
         $portalModel->completed_date = '';
-        $portalModel->shiped_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $portalModel->shiped_date = $portalModel->getDate();
         $portalModel->updateById();
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
@@ -121,7 +121,7 @@ class PortalBizOrder extends PortalBizBase
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
         $portalModel->getOneById();
-        $portalModel->canceled_date =  date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $portalModel->canceled_date =  $portalModel->getDate();
         $portalModel->completed_date = '';
         $portalModel->shiped_date = '';
         $portalModel->updateById();
@@ -134,7 +134,7 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->id = $orderId;
         $portalModel->getOneById();
         $portalModel->canceled_date =  '';
-        $portalModel->completed_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $portalModel->completed_date = $portalModel->getDate();
         $portalModel->updateById();
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
@@ -143,7 +143,6 @@ class PortalBizOrder extends PortalBizBase
         $status = DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED;
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
-        $portalModel->completed_date = $portalModel->getDate();
         $portalModel->updateById();
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
@@ -153,7 +152,7 @@ class PortalBizOrder extends PortalBizBase
         $portalModel = new PortalModelOrder();
         $portalModel->id = $orderId;
         $portalModel->getOneById();
-        $portalModel->canceled_date =  date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $portalModel->canceled_date =  $portalModel->getDate();
         $portalModel->completed_date = '';
         $portalModel->shiped_date = '';
         $portalModel->updateById();
@@ -162,7 +161,7 @@ class PortalBizOrder extends PortalBizBase
     
     private function updateOrderStatus($userUpdate, $orderId, $status, $comment){
         $orderStatus = new PortalModelOrderStatus();
-        $orderStatus->updated_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $orderStatus->updated_date = $orderStatus->getDate();
         $orderStatus->updated_user = $userUpdate->id;
         $orderStatus->fk_order = $orderId;
         $orderStatus->status = $status;

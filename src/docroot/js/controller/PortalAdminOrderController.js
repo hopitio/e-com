@@ -1,9 +1,11 @@
-function PortalAdminOrderController($scope,$http, $modal)
+function PortalAdminOrderController($scope,$http)
 {
     $scope.order = {};
     $scope.order.id = document.URL.split("/")[document.URL.split("/").length - 1];
     $scope.orderHistories = [];
     $scope.comment = '';
+    $scope.dialogCallback = function(){};
+    $scope.onSubmit = false;
     this.modalInstance = '';
     $scope.getOrder = function(){
         portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
@@ -28,66 +30,44 @@ function PortalAdminOrderController($scope,$http, $modal)
     
     function getErrorCallback(xhr,status){}
     
-    function dialogCallback (dialogResult) {
-        $scope.comment = dialogResult.comment;
-        var statusType = dialogResult.statusType;
-        portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
-        switch(statusType){
-            case 'nextStatus' :
-                portalAdminOrderServiceClient.postNextOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
-                break;
-            case 'backStatus' :
-                portalAdminOrderServiceClient.postBackOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
-                break;
-            case 'rejectStatus' :
-                portalAdminOrderServiceClient.rejectOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
-                break;
-        }
-      }
-   
+    
     
     $scope.nextStatus = function(){
-        this.modalInstance = $modal.open({
-            templateUrl: 'commentDialog.html',
-            controller: ModalInstanceCtrl,
-            resolve: {
-                statusType: function () {
-                  return 'nextStatus';
-                }
-              }
-        });
-        this.modalInstance.result.then(dialogCallback, function () {});
+        $scope.dialogCallback = function(){
+            $("#comment-dialog").modal('hide');
+            
+            portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
+            portalAdminOrderServiceClient.postNextOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+        };
+        $scope.onSubmit = true;
+        $("#comment-dialog").modal();
     };
     
     $scope.backStatus = function(){
-        this.modalInstance = $modal.open({
-            templateUrl: 'commentDialog.html',
-            controller: ModalInstanceCtrl,
-            resolve: {
-                statusType: function () {
-                  return 'backStatus';
-                }
-              }
-        });
-        this.modalInstance.result.then(dialogCallback, function () {});
+        $scope.dialogCallback = function(){
+            $("#comment-dialog").modal('hide');
+            
+            portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
+            portalAdminOrderServiceClient.postBackOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+        };
+        $scope.onSubmit = true;
+        $("#comment-dialog").modal();
     };
     
     $scope.rejectStatus = function(){
-        this.modalInstance = $modal.open({
-            templateUrl: 'commentDialog.html',
-            controller: ModalInstanceCtrl,
-            resolve: {
-                statusType: function () {
-                  return 'rejectStatus';
-                }
-              }
-        });
-        this.modalInstance.result.then(dialogCallback, function () {});
+        $scope.dialogCallback = function(){
+            $("#comment-dialog").modal('hide');
+            portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
+            portalAdminOrderServiceClient.rejectOrderStatus($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+        };
+        $scope.onSubmit = true;
+        $("#comment-dialog").modal();
     };
     
     function changStatusSucessCallback(data){
         if(!data.isError){
             alert(data.data);
+            $scope.onSubmit = false;
             location.reload();
         }else{
             alert(data.errorMessage);
@@ -101,17 +81,4 @@ function PortalAdminOrderController($scope,$http, $modal)
     $scope.getOrder();
     $scope.getHistories();
 }
-
-function ModalInstanceCtrl($scope, $modalInstance, statusType) {
-    $scope.dialog = {};
-    $scope.dialog.comment = '';
-    $scope.dialog.statusType = statusType;
-    $scope.ok = function () {
-      $modalInstance.close($scope.dialog);
-    };
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-}
-  PortalAdminOrderController.$inject = ['$scope','$http','$modal'];
-  ModalInstanceCtrl.$inject = ['$scope','$modalInstance','statusType'];
+PortalAdminOrderController.$inject = ['$scope','$http'];

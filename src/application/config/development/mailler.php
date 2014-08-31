@@ -108,7 +108,7 @@ $config['OrderDelivered']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/OrderDelivered.html',
+    MAILLER_TEMP => '/OrderDelivered',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );
@@ -164,7 +164,7 @@ $config['SellerDelivered']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/SellerDelivered.html',
+    MAILLER_TEMP => '/SellerDelivered',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );

@@ -12,14 +12,11 @@ class SellerDeliveredMailler extends AbstractStaff{
      * @see AbstractStaff::buildContent()
      */
     protected function buildContent()
-    {
-        $this->CI->load->helper('file');
-        $temp = $this->CI->config->item('temp_mail_folder');
-        $temp .= $this->languageKey.'/'. $this->config[MAILLER_TEMP];
-        $mailContent = read_file($temp);
+    {        
+        $temp = $this->CI->config->item('temp_mail_view');
+        $temp .= User::getCurrentUser()->languageKey.'/'.$this->config[MAILLER_TEMP];
         
         $order = $this->mailData['order'];
-        
         $seller_name = '';
         $order_number = $order->id;
         $buyer_name = '';
@@ -27,15 +24,13 @@ class SellerDeliveredMailler extends AbstractStaff{
         $buyer_phone = '';
         
         $this->preOrderInformation($order, $order_number, $seller_name, $buyer_name, $buyer_contact, $buyer_phone);
-         
-        $mailContent = str_replace('{seller_name}',$seller_name,$mailContent);
-        $mailContent = str_replace('{order_number}',$order_number,$mailContent);
-        $mailContent = str_replace('{buyer_name}',$buyer_name,$mailContent);
-        $mailContent = str_replace('{buyer_contact}',$buyer_contact,$mailContent);
-        $mailContent = str_replace('{buyer_phone}',$buyer_phone,$mailContent);
-
-        return $mailContent;
         
+        $name = '';
+        $order_number = $order->id;
+        $help_url = '';
+        
+        $mailData = array('name'=>$seller_name,'orderNumber' => $order_number);
+        return $this->CI->load->view($temp,$mailData,true);;
     }
 
     /* (non-PHPdoc)

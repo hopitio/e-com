@@ -15,7 +15,7 @@ function PortalAdminOrderListController($scope,$http)
     
     $scope.pagingOptions = {
         pageSizes: [10, 20, 30, 50, 100],
-        pageSize: 10,
+        pageSize: 50,
         currentPage: 1,
         
     };  
@@ -71,12 +71,10 @@ function PortalAdminOrderListController($scope,$http)
                         getOrderSucessCallback, getOrderErrorCallback);
     };
     
-    $scope.getInvoicesAsync = function(){
-        if($scope.selectdOrder.length == 0){
-            return;
-        }
+    $scope.getInvoicesAsync = function($order){
         portalAdminOrderListServiceClient = new PortalAdminOrderListServiceClient($http);
-        portalAdminOrderListServiceClient.getInvoices($scope.selectdOrder[0].id, getInvoiceSucessCallback, getInvoiceErrorCallback);
+        portalAdminOrderListServiceClient.getInvoices($order.id, getInvoiceSucessCallback, getInvoiceErrorCallback);
+        $('html,body').scrollTo('#invoice-datatable');
     };
     
     $scope.find = function(){

@@ -12,19 +12,16 @@ class OrderDeliveredMailler extends AbstractStaff{
      */
     protected function buildContent()
     {
-        $this->CI->load->helper('file');
-        $temp = $this->CI->config->item('temp_mail_folder');
-        $temp .= $this->languageKey.'/'. $this->config[MAILLER_TEMP];
-        $mailContent = read_file($temp);
         $order = $this->mailData['order'];
+        $temp = $this->CI->config->item('temp_mail_view');
+        $temp .= User::getCurrentUser()->languageKey.'/'.$this->config[MAILLER_TEMP];
+        
         $name = '';
         $order_number = $order->id;
         $help_url = '';
         $this->preOrderInformation($order, $name, $order_number,$help_url);
-        $mailContent = str_replace('{name}',$name,$mailContent);
-        $mailContent = str_replace('{order_number}',$order_number,$mailContent);
-        $mailContent = str_replace('{help_url}',$help_url,$mailContent);
-        return $mailContent;
+        $mailData = array('name'=>$name,'orderNumber' => $order_number);
+        return $this->CI->load->view($temp,$mailData,true);;
         
     }
 
