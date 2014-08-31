@@ -6,26 +6,33 @@
     </h1>
 </section>
 <section class="content" ng-controller="PortalAdminInvoiceController">
+<div id="alert-complete" class="alert alert-success alert-dismissable" display="none">
+    <i class="fa fa-check"></i>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <b>Thông báo!</b> Hoàn thành cập nhật
+</div>
 <div class="col-md-3">
     <div class="box box-danger">
         <div class="box-header">
             <h3 class="box-title">
-                Thông tin hóa đơn
+                Thông tin hóa đơn 
             </h3>
         </div>
         <div class="box-body ">
-            <span> Mã hóa đơn : </span>{{invoice.id}}</br>
-            <span> Mã đơn hàng : </span>{{invoice.fk_order}}</br>
-            <span> Loại hóa đơn : </span>{{invoice.invoice_type}}</br>
-            <span> Ngày tạo : </span>{{invoice.created_date}}</br>
-            <span> Ngày thanh toán : </span>{{invoice.paid_date}}</br>
-            <span> Ngày hủy  : </span>{{invoice.cancelled_date}}</br>
-            <span> Ngày hủy (admin) : </span>{{invoice.rejected_date}}</br>
-            <span> Mã phương thức thanh toán : </span>{{invoice.payment_method}}</br>
-            <span> Tài khoản thực hiện giao dịch : </span>{{order.user.account}}</br>
-            <span> Ghi chú : </span>{{invoice.comment}}</br>
-            <a class="btn btn-primary">Cập nhật ngày thanh toán</a>
-            <a class="btn btn-primary">Hủy hóa đơn</a>
+            <span style="font-weight: bold;"> Mã hóa đơn : </span>{{invoice.id}}</br>
+            <span style="font-weight: bold;"> Mã đơn hàng : </span>{{invoice.fk_order}}</br>
+            <span style="font-weight: bold;"> Loại hóa đơn : </span>{{invoice.invoice_type}}</br>
+            <span style="font-weight: bold;"> Ngày tạo : </span>{{invoice.created_date}}</br>
+            <span style="font-weight: bold;"> Ngày thanh toán : </span>{{invoice.paid_date}} </br>
+            <span style="font-weight: bold;"> Ngày hủy  : </span>{{invoice.cancelled_date}}</br>
+            <span style="font-weight: bold;"> Ngày hủy (admin) : </span>{{invoice.rejected_date}}</br>
+            <span style="font-weight: bold;"> Mã thanh toán : </span>{{invoice.payment_id}}</br>
+            <span style="font-weight: bold;"> Tài khoản thực hiện giao dịch : </span>{{order.user.account}}</br>
+            <span style="font-weight: bold;"> Ghi chú : </span>{{invoice.comment}}</br>
+            <br/>
+            <a class="btn btn-primary" style="width:100%" ng-click="openPaidedDateDialog()" href="javascript:void(0)"><i class="fa fa-fw fa-money"></i> Cập nhật ngày thanh toán</a>
+            <br/><br/>
+            <a class="btn btn-danger" style="width:100%" ng-click="destroyInvoice()" href="javascript:void(0)"><i class="fa fa-fw fa-edit"></i>Hủy hóa đơn</a>
         </div>
     </div>
     <div class="box box-danger">
@@ -139,6 +146,56 @@
         </div>
     </div>
 </div>
+<!-- Modal paided date -->
+<form id="frm-update-paided-date" method="post"> 
+    <input id="paided-date" type="hidden" name="paided-date"/>
+    <input id="invoice-payment-method" type="hidden" name="invoice-payment-method"/>
+    <input id="invoice-payment-id" type="hidden" name="invoice-payment-id"/>
+    <input id="callback" type="hidden" name="callback"/>
+</form>
+
+<!-- Modal paided date -->
+<form id="frm-destroy-invoice" method="post"> 
+    <input id="callback" type="hidden" name="callback"/>
+</form>
+
+
+<div id="paided-date-pop" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Nhập ngày thanh toán</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nhập ngày thanh toán</label>
+            <input ng-model="editPaidedDate" type="text" class="form-control" placeholder="ngày/tháng/năm" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask=""/>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nhập phương thức thanh toán</label>
+            <select ng-model="editPaymentMethod" class="form-control">
+                <option value="PAYMENT_BY_NGANLUONG">Thanh toán qua ngân lượng</option>
+                <option value="CASH" selected >Thanh toán bằng tiền mặt</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nhập mã thanh toán </label>
+            <input ng-model="editInvoicePaymentId" type="text" class="form-control" placeholder="Nhập mã thanh toán (nếu có)"/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button ng-click="savePaidedDate()" type="button" class="btn btn-primary">Lưu thay đổi</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
 </section>
 
 

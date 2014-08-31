@@ -10,7 +10,7 @@ $config['payment_gateway_supported'] = array(
         'value' => 0
     ),
     'CASH' => array(
-        'displayName' => 'Tiền mặt/Cash/현금',
+        'displayName' => 'Tiền mặt / Cash / 현금',
         'isPercent' => '1',
         'value' => 0
     ),

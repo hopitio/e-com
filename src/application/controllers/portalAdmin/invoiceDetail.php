@@ -31,5 +31,28 @@ class invoiceDetail extends PortalAdminControllerAbstract
         ->setJavascript($this->js)
         ->render('portalAdmin/invoiceDetail');
     }
+    
+    function updatePaidedDate($invoiceId)
+    {
+        $posts = $this->input->post();
+        $invoiceRepository = new PortalModelInvoice();
+        $invoiceRepository->paid_date = DateTime::createFromFormat('d/m/Y', $posts['paided-date'])->format('Y-m-d');
+        $invoiceRepository->payment_method = $posts['invoice-payment-method'];
+        $invoiceRepository->payment_id = $posts['invoice-payment-id'];
+        $invoiceRepository->id = $invoiceId;
+        $invoiceRepository->updateById();
+        
+        redirect($posts['callback']."?action_status=complete");
+    }
+    
+    function destroy($invoiceId){
+        $posts = $this->input->post();
+        $invoiceRepository = new PortalModelInvoice();
+        $invoiceRepository->rejected_date = $invoiceRepository->getDate();
+        $invoiceRepository->id = $invoiceId;
+        $invoiceRepository->updateById();
+        
+        redirect($posts['callback']."?action_status=complete");
+    }
 
 }
