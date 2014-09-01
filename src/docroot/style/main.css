@@ -511,7 +511,7 @@ li{list-style: none;}
 }
 .lynx-adv-box{
     background: white;
-    height:798px;
+    overflow: hidden;
     margin: auto;
     float:none;
     padding:10px;
@@ -579,19 +579,17 @@ li{list-style: none;}
     background-color: #66929D;
     color:white;
 }
-.extend{
-    height: 20px;
-    margin:auto;
-    background: transparent url(/images/extend-bg.fw.png) repeat-x top left;
-}
-.extend .btn-extend
-{
-    display:inline-block;
-    margin:auto;
-    background: transparent url(/images/extend-btn-bg.fw.png) no-repeat center top;
-    height:20px;
-    width:53px;
-    cursor: pointer;
+.btn-plus{
+    border: none;
+    background: url(/images/btn-plus.png);
+    width: 214px;
+    height: 52px;
+    padding-right: 40px;
+    line-height: 52px;
+    text-align:center;
+    font-size: 14px;
+    color:#2d739c;
+    font-weight: bold;
 }
 
 .lynx-adv{

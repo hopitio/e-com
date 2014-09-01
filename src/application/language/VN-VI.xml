@@ -92,6 +92,7 @@
         <lblSearch>Tìm kiếm</lblSearch>
         <lblMenu>Danh mục</lblMenu>
         <lblYourCart>Giỏ hàng</lblYourCart>
+        <btnPlus>Hiển thị thêm</btnPlus>
     </layout>
     
     <sitemap>

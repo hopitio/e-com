@@ -90,6 +90,7 @@
         <lblSearch>검색</lblSearch>
         <lblMenu>카테고리/메뉴 </lblMenu>
         <lblYourCart>장바구니</lblYourCart>
+        <btnPlus>더보기</btnPlus>
     </layout>
     
     <sitemap>

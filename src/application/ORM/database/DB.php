@@ -126,24 +126,25 @@ class DB
      * @param array $data Mảng 2 chiều cần insert, VD: array(array('c1' => $v1, 'c2' => $v2), array('c1' => $v3, 'c2' => $v4))
      * @return bool Thành công hay thất bại
      */
-    static public function insertMany($table, $data)
+    static public function insertMany($table, $arr_data)
     {
-        $data = array_values($data);
-        $db = static::getInstance();
-        $fields = array_keys($data[0]);
-        array_walk($fields, function(&$item)
+        if (!is_array($arr_data))
         {
-            $item = '`' . trim($item, '`') . '`';
-        });
-        $sql = "INSERT INTO $table(" . implode(',', $fields) . ") VALUES\n(?" . str_repeat(',?', count($fields) - 1) . ")";
-        $params = array_values($data[0]);
-        for ($i = 1; $i < count($data); $i++)
-        {
-            $sql .= "\n,(?" . str_repeat(',?', count($fields) - 1) . ")";
-            $params = array_merge($params, $data[$i]);
+            throw new InvalidArgumentException('$arr_data Phải là array $k=>$v');
         }
-        $db->Execute($sql, $params);
-        return ($db->ErrorNo() ? false : true);
+        if (empty($arr_data))
+        {
+            throw new InvalidArgumentException('$arr_data Không được empty()');
+        }
+        $sql = "Insert Into $table(" . implode(',', array_keys($arr_data[0])) . ") Values";
+        $values = '';
+        $params = array();
+        foreach ($arr_data as $data)
+        {
+            $values.= ($values ? ',' : '') . "(?" . str_repeat(',?', count($data) - 1) . ")";
+            $params = array_merge($params, array_values($data));
+        }
+        DB::getInstance()->Execute($sql . $values, $params);
     }
 
     /**

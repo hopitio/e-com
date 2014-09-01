@@ -9,24 +9,9 @@ class HotModel extends BaseModel
 
     function loadHot()
     {
-        $query = Query::make()
-                ->select('`key`,`value`', 1)
-                ->from('t_setting')
-                ->where("`key` = 'hot_product'");
-        $result = DB::getInstance()->GetAssoc($query);
-        $product = array();
-        foreach ($result as $key => $value)
-        {
-            $product[$key] = array();
-            $xml = new SimpleXMLElement($result[$key]);
-            $result = $xml->xpath('product');
-            for ($i = 0; $i < count($result); $i++)
-            {
-                $product_arr = (array) ($result[$i]);
-                $product[$key][$i] = $product_arr["id"];
-            }
-        }
-        return $product;
+        $arr = array('hot_product' => array());
+        $arr['hot_product'] = DB::getInstance()->GetCol('SELECT fk_product FROM t_hot ORDER BY sort');
+        return $arr;
     }
 
     function update()
@@ -37,6 +22,7 @@ class HotModel extends BaseModel
         {
             // $post['product'] = array();
         }
+        DB::delete('t_hot', '1=1');
         foreach ($post['product'] as $product_type => $json_products)
         {
             if (!isset($xml[$product_type]))
@@ -49,22 +35,12 @@ class HotModel extends BaseModel
             {
                 continue;
             }
-            foreach ($products as $product_id)
+            $arr_insert = array();
+            foreach ($products as $product)
             {
-                $xml[$product_type].='<product><id>' . $product_id . '</id></product>';
+                $arr_insert[] = array('fk_product' => $product);
             }
-        }
-
-        foreach ($xml as $key => $value)
-        {
-            $xml[$key] = '<root>' . $value . '</root>';
-        }
-
-        foreach ($xml as $product_type => $xml_product_type)
-        {
-            $setting = Setting::getInstance();
-            $setting->set($product_type, $xml_product_type);
-            $setting->save();
+            DB::insertMany('t_hot', $arr_insert);
         }
     }
 
