@@ -136,6 +136,11 @@
                                 <i class="fa fa-th"></i> <span>Sản phẩm HOT</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="/__admin/best">
+                                <i class="fa fa-th"></i> <span>Sản phẩm tốt nhất</span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
