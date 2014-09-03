@@ -20,7 +20,7 @@ class HotModel extends BaseModel
         $post = $this->input->post();
         if (!isset($post['product']))
         {
-            // $post['product'] = array();
+            $post['product'] = array();
         }
         DB::delete('t_hot', '1=1');
         foreach ($post['product'] as $product_type => $json_products)
@@ -40,7 +40,10 @@ class HotModel extends BaseModel
             {
                 $arr_insert[] = array('fk_product' => $product);
             }
-            DB::insertMany('t_hot', $arr_insert);
+            if (!empty($arr_insert))
+            {
+                DB::insertMany('t_hot', $arr_insert);
+            }
         }
     }
 
