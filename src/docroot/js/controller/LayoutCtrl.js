@@ -185,3 +185,9 @@ $(function() {
         }
     });
 });
+$(function(){
+    var $frm = $('#frm-search');
+    $('#btn-search').click(function(){
+        $frm.submit();
+    });
+});

@@ -1,62 +1,30 @@
 function SearchCtrl($scope, $http) {
-    $scope.products = [];
+    $scope.productRows = [[]];
     $scope.total_record = 0;
     $scope.limit;
-    $scope.page_nav = [];
-    $scope.total_page;
+    $scope.offset;
 
-    $scope.getCurrentPage = function() {
-        var page = parseInt(window.location.hash.replace('#/p=', ''));
-        if (!page)
-            page = 1;
-        return page;
-    };
-
-    $scope.setCurrentPage = function(number) {
-        window.location.hash = 'p=' + number;
-        getProducts(number);
-    };
-
-    function range(start, end) {
-        var arr = [];
-        for (var i = start; i <= end; i++) {
-            arr.push(i);
-        }
-        return arr;
-    }
-
-    function getProducts(page) {
+    function getProducts() {
         var params = {
-            p: page,
-            s: scriptData.keywords
+            offset: $scope.offset,
+            kw: scriptData.keywords
         };
-        $http.get(scriptData.serviceURL, {cache: false, params: params}).success(function(data) {
-            $scope.products = data.products;
+        $http.get('/search/getProductService', {cache: false, params: params}).success(function(data) {
             $scope.total_record = data.total_record;
-            $scope.limit = data.limit;
-            $scope.total_page = Math.ceil($scope.total_record / $scope.limit);
-            if (!$scope.total_page)
-                $scope.total_page = 1;
-            var expected_nav = 6;
-            var start_page = $scope.getCurrentPage() - 3;
-            var end_page = $scope.getCurrentPage() + 2;
-            //tinh toan page
-            if (expected_nav > $scope.total_page) {
-                $scope.page_nav = range(1, $scope.total_page);
-            }
-            else if (start_page <= 0) {
-                $scope.page_nav = range(1, 6);
-            }
-            else if (end_page > $scope.total_page) {
-                $scope.page_nav = range($scope.total_page - 5, $scope.total_page);
-            }
-            else {
-                $scope.page_nav = range(start_page, end_page);
+            $scope.offset += data.products.length;
+            var currentPage = $scope.productRows.length - 1;
+            for (var i in data.products) {
+                var product = data.products[i];
+                if ($scope.productRows[currentPage].length == 4) {
+                    $scope.productRows.push([]);
+                    currentPage++;
+                }
+                $scope.productRows[currentPage].push(product);
             }
         }).error(function() {
             //todo
         });
     }
-    getProducts($scope.getCurrentPage());
+    getProducts();
 
 }

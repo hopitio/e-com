@@ -36,10 +36,10 @@
         </div>
         <div class="head-box width-960">
             <a class="logo" href="/" title="sfriendly mall"><img src="/images/Logo-head.fw.png" alt="sfriendly mall"/></a>
-            <div class="search-container">
+            <form class="search-container" action="/search/showPage" id="frm-search">
                 <div class="search text-left">
-                    <input type="text" placeholder="Ex. Gift..."/>
-                    <div class="search-btn cursor-pointer color-white"><?php echo $language['layout']->lblSearch ?></div>
+                    <input type="text" name="kw" placeholder="Ex. Gift..." />
+                    <div class="search-btn cursor-pointer color-white" id="btn-search"><?php echo $language['layout']->lblSearch ?></div>
                 </div>
                 <div class="tag text-left">
                     <a href="#">Sản phẩm mới</a>
@@ -47,7 +47,7 @@
                     <a href="#">Quà tặng </a>
                     <a href="#">Sản phẩm mới</a>
                 </div>
-            </div>
+            </form>
             <div class="user-pannel text-left">
                 <img class="cursor-pointer" src="/images/Live-chat-icon.fw.png"/>
                 <ul class="flag cursor-pointer">
@@ -228,12 +228,12 @@
         </div>
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-            }
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+                    }
         </script>
 
 
@@ -252,11 +252,11 @@
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-            }
-            $.browser = {};
-            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                    }
+                    $.browser = {};
+                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt
