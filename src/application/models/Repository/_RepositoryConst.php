@@ -311,3 +311,15 @@ class T_tax extends T_base
     CONST record_status = 'record_status';
 
 }
+
+
+class T_nl_payment extends T_base
+{
+    const tableName = "t_nl_payment";
+    const deleted_at = "deleted_at";
+    const delete = "delete";
+    const order_id   = "order_id";
+    const invoice_id = "invoice_id";
+    const token_key = "token_key";
+    const expiration_at = "expiration_at";
+}

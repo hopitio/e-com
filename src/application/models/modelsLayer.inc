@@ -26,6 +26,10 @@ require_once APPPATH.'models/Repository/PortalModelUserContact.php';
 require_once APPPATH.'models/Repository/PortalModelUserHistory.php';
 require_once APPPATH.'models/Repository/PortalModelUserSetting.php';
 require_once APPPATH.'models/Repository/PortalModelOrderStatus.php';
+require_once APPPATH.'models/Repository/PortalModelNLPayment.php';
+
+
+
 
 
 

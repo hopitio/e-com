@@ -135,6 +135,13 @@ class Lynx_EmptyDataSetException extends Lynx_Exception{
     }
 }
 
+class Lynx_NganLuongIntergation extends Lynx_Exception{
+    public $title = 'Lỗi tích hợp ngân lượng';
+    public function __construct($message='Lỗi tích hợp ngân lượng'){
+        parent::__construct($message);
+    }
+}
+
 
 
 
