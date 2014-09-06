@@ -20,7 +20,7 @@ class hot extends AdminControllerAbstract
         $hot_product = $this->hotModel->loadHot();
         $data['script_data'] = array(
             'product_types' => array(
-                array('name' => 'HOT', 'type' => 'hot_product')
+                array('name' => 'HOT', 'id' => 'hot_product')
             )
         );
         $data['script_data']['product'] = $hot_product;

@@ -8,6 +8,9 @@
         Quản lý banner
     </h1>
 </section>
+<style>
+    td{vertical-align: top}
+</style>
 <!-- Main content -->
 <section class="content">
     <div ng-controller="AdvertisementController" class="ng-scope">
@@ -18,9 +21,6 @@
                     <h3 class="box-title">{{banner_type.name}}</h3>
                 </div>
                 <div class="box-body">
-                    <style>
-                        td{vertical-align: top}
-                    </style>
                     <table class="table">
                         <thead>
                         <th style="width: 10%">Banner #</th>
@@ -52,7 +52,7 @@
                                     <input id="{{banner_type.type}}_{{i}}" type="file" name="{{banner_type.type}}[{{i}}]"
                                            class="form-control" placeholder="Chọn file">
                                 </td>
-                              <td>
+                                <td>
                                     <input type="text" name="new_banner[{{banner_type.type}}][{{i}}][title]"
                                            class="form-control" placeholder="Tiêu đề">
                                 </td>

@@ -14,12 +14,12 @@
 </style>
 <!-- Main content -->
 <section class="content">
-    <div ng-controller="HotController" class="ng-scope">
+    <div ng-controller="BestController" class="ng-scope">
         <div class="box" ng-repeat="product_type in product_types">
-            <form action="<?php echo base_url('__admin/hot') ?>"
+            <form action="<?php echo base_url('__admin/best') ?>"
                   method="post" enctype="multipart/form-data">
                 <div class="box-header" style="background-color: #e6e6e6">
-                    <h3 class="box-title">Danh sách sản phẩm {{product_type.name}}</h3>
+                    <h3 class="box-title">{{product_type.name}}</h3>
                 </div>
                 <div class="box-body">
                     <table class="table">

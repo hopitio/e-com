@@ -90,6 +90,7 @@
         <lblSearch>Search</lblSearch>
         <lblMenu>Category/Menu</lblMenu>
         <lblYourCart>Your cart</lblYourCart>
+        <btnPlus>Show More</btnPlus>
     </layout>
     
     <sitemap>

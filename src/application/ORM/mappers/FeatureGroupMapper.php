@@ -9,7 +9,7 @@ class FeatureGroupMapper extends MapperAbstract
     function __construct()
     {
         $query = Query::make()->from('t_feature_group')->orderBy('sort');
-        $map = array('xmlLanguage' => 'xml_language', 'xmlImage' => 'xml_image');
+        $map = array('xmlLanguage' => 'xml_language');
         parent::__construct('FeatureGroupDomain', $query, $map);
     }
 
@@ -32,30 +32,21 @@ class FeatureGroupMapper extends MapperAbstract
         {
             $domainInstance->name = (string) Common::fetch_array($domLanguage->xpath("//language[@id=\"{$this->_language}\"]/name"), 0);
         }
-        $domImages = simplexml_load_string($domainInstance->xmlImage);
-        if ($domImages)
-        {
-            $domImages = $domImages->xpath("//language[@id=\"{$this->_language}\"]/img");
-            foreach ($domImages as $domImage)
-            {
-                $domainInstance->addImage((string) $domImage->attributes()->src, (string) $domImage->attributes()->title, (string) $domImage->attributes()->href);
-            }
-        }
 
         if ($this->_autoloadProducts)
         {
-            $mapper = ProductFixedMapper::make()
+            $mapper = FeatureGroupDetailsMapper::make()
+                    ->filterGroup($domainInstance->id)
                     ->setLanguage($this->_language)
                     ->autoloadAttributes();
             $mapper->getQuery()
                     ->select('seller.name AS seller_name', false)
-                    ->innerJoin('t_seller seller', 'seller.id = p.fk_seller')
-                    ->innerJoin('t_feature_product fp', 'fp.fk_product=p.id AND fp.fk_group=' . intval($domainInstance->id))
-                    ->orderBy('fp.sort');
-            $products = $mapper->findAll(function($record, $entity){
+                    ->leftJoin('t_seller seller', 'seller.id = p.fk_seller');
+            $products = $mapper->findAll(function($record, $entity)
+            {
                 $entity->seller_name = $record['seller_name'];
             });
-            $domainInstance->setProducts($products);
+            $domainInstance->setDetails($products);
         }
     }
 

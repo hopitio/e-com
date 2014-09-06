@@ -14,7 +14,7 @@ class search extends BaseController
                 ->setCss(array('/style/customerList.css'))
                 ->setJavascript(array('/js/controller/SearchCtrl.js'))
                 ->setData(array(
-                    'keywords' => $this->input->get('s')
+                    'search_keywords' => $this->input->get('kw')
                 ))
                 ->render('search/show_page');
     }
@@ -23,14 +23,9 @@ class search extends BaseController
     {
         header('Content-type:application/json');
         $user = User::getCurrentUser();
-        $keywords = $this->input->get('s');
+        $keywords = $this->input->get('kw');
         $limit = 20;
-        $page_no = (int) $this->input->get('p');
-        if (!$page_no)
-        {
-            $page_no = 1;
-        }
-        $offset = ($page_no - 1) * $limit;
+        $offset = (int) $this->input->get('offset');
         $mapper = SearchMapper::make()
                 ->setLanguage($user->languageKey)
                 ->autoloadAttributes()
@@ -47,8 +42,7 @@ class search extends BaseController
         $total_record = $mapper->count();
         $json = array(
             'products'     => array(),
-            'total_record' => $total_record,
-            'limit'        => $limit
+            'total_record' => $total_record
         );
         foreach ($products as $product)
         {
@@ -57,7 +51,7 @@ class search extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = (string) $product->getName();
             $obj['price'] = (string) $product->getFinalPriceMoney($user->getCurrency());
-            $obj['thumbnail'] = $images[0]->url;
+            $obj['thumbnail'] = isset($images[0]) ? $images[0]->url : '';
             $obj['url'] = '/product/details/' . $product->id;
             $json['products'][] = $obj;
         }

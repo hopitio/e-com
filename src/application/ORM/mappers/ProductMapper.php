@@ -200,12 +200,12 @@ class ProductMapper extends MapperAbstract
     function makeDomainCallback(&$domainInstance)
     {
         parent::makeDomainCallback($domainInstance);
-        if ($this->_autoloadAttributes)
+        if ($this->_autoloadAttributes && $domainInstance->id)
         {
             $this->loadAttributes($domainInstance, $this->_attributeLanguage);
             $this->loadImages($domainInstance);
         }
-        if ($this->_autoloadTaxes)
+        if ($this->_autoloadTaxes && $domainInstance->id)
         {
             $this->loadTaxes($domainInstance);
         }

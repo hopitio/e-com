@@ -78,17 +78,20 @@ class home extends BaseController
                 ->findAll();
         foreach ($groups as $group)
         {
-            foreach ($group->getProducts() as $product)
+            $group->details = array(1 => array(), 2 => array());
+            foreach ($group->getDetails() as $product)
             {
-                $images = $product->getImages('thumbnail');
-                $product->name = strval($product->getName());
-                $product->thumbnail = $images[0]->url;
-                $product->priceString = strval($product->getFinalPriceMoney($user->getCurrency()));
-                $product->url = base_url('product/details') . '/' . $product->id;
-                $product->priceOrigin = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
+                if ($product->id)
+                {
+                    $images = $product->getImages('thumbnail');
+                    $product->name = strval($product->getName());
+                    $product->thumbnail = $images[0]->url;
+                    $product->priceString = strval($product->getFinalPriceMoney($user->getCurrency()));
+                    $product->url = base_url('product/details') . '/' . $product->id;
+                    $product->priceOrigin = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
+                }
+                $group->details[$product->row][] = $product;
             }
-            $group->images = $group->getImages();
-            $group->products = $group->getProducts();
         }
         echo json_encode($groups);
     }

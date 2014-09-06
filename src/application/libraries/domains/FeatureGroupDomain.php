@@ -7,32 +7,19 @@ class FeatureGroupDomain implements DomainInterface
     public $codename;
     public $url;
     public $xmlLanguage;
-    public $xmlImage;
     public $sort;
     public $name;
-    protected $_products = array();
-    protected $_images = array();
+    protected $_details = array();
 
-    function setProducts($products)
+    function setDetails($arr)
     {
-        $this->_products = $products;
+        $this->_details = $arr;
         return $this;
     }
 
-    function getProducts()
+    function getDetails()
     {
-        return $this->_products;
-    }
-
-    function addImage($src, $title, $href)
-    {
-        $this->_images[] = array('src' => $src, 'title' => $title, 'href' => $href);
-        return $this;
-    }
-
-    function getImages()
-    {
-        return $this->_images;
+        return $this->_details;
     }
 
 }

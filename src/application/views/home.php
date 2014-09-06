@@ -41,10 +41,14 @@ defined('BASEPATH') or die('No direct script access allowed');
         <div class="tab-content width-960">
             <div id="carousel-hot-product" class="carousel slide carousel-mini-product"  data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-hot-product" data-slide-to="{{$index}}" ng-class="{active: $index == activeHot}" ng-repeat="products in hotProducts"></li>
+                    <li data-target="#carousel-hot-product" data-slide-to="{{$index}}" ng-class="{
+                                active: $index == activeHot
+                            }" ng-repeat="products in hotProducts"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="item" ng-repeat="products in hotProducts" ng-class="{active: $index == activeHot}">
+                    <div class="item" ng-repeat="products in hotProducts" ng-class="{
+                                active: $index == activeHot
+                            }">
                         <div class="lynx-row width-960">
                             <div class="lynx-box lynx-box-small cursor-pointer" ng-repeat="product in products" ng-product-small="product" ></div>
                         </div>
@@ -62,20 +66,22 @@ defined('BASEPATH') or die('No direct script access allowed');
     <div class="clear-fix"></div>
     <div class="lynx-box width-960 lynx-adv-box text-left lynx-adv-home cursor-pointer">
         <div class="head">
-            <div class="title" ng-mouseover="setSelectedGroup(0)" ng-class="{active: selectedGroupIndex == 0}">{{featureGroups[0].name}}</div>
+            <div class="title" ng-mouseover="setSelectedGroup(0)" ng-class="{
+                        active: selectedGroupIndex == 0
+                    }">{{featureGroups[0].name}}</div>
             <div class="choice">
                 <a ng-repeat="group in featureGroups" ng-if="$index > 0" href="{{group.url}}" 
-                   ng-mouseover="setSelectedGroup($index)" ng-class="{active: selectedGroupIndex == $index}">{{group.name}}</a>
+                   ng-mouseover="setSelectedGroup($index)" ng-class="{
+                               active: selectedGroupIndex == $index
+                           }">{{group.name}}</a>
             </div>
         </div>
-        <div ng-cloak ng-repeat="group in featureGroups" ng-show="selectedGroupIndex == $index">
-            <div class="lynx-row" style="display:block;">
-                <a ng-repeat="image in group.images" href="{{image.href}}" title="{{image.title}}" class="lynx-adv-img">
-                    <img class="adv-img-box" ng-src="{{image.src}}" alt="{{image.title}}"/>
+        <div ng-cloak ng-repeat="group in featureGroups" ng-show="selectedGroupIndex == $index" class="group-{{group.codename}} <?php echo User::getCurrentUser()->languageKey ?>">
+            <div class="lynx-row row-{{$index + 1}}" style="display:block;" ng-repeat="items in group.details">
+                <div ng-if="item.id" class="lynx-box lynx-box-small" ng-product-small="item" ng-repeat-start="item in items"><!--product--></div>
+                <a ng-if="item.imgSrc" href="{{item.imgUrl}}" title="{{item.imgTitle}}" class="lynx-adv-img feature-img-{{$index}}" ng-repeat-end>
+                    <img class="adv-img-box" ng-src="{{item.imgSrc}}" alt="{{item.imgTitle}}"/>
                 </a>
-            </div>
-            <div class="lynx-row" style="display:block;">
-                <div ng-repeat="product in group.products" class="lynx-box lynx-box-large" ng-product-large="product"></div>
             </div>
         </div>
     </div>
@@ -93,8 +99,10 @@ defined('BASEPATH') or die('No direct script access allowed');
                 <div class="lynx-box lynx-box-medium" ng-repeat="product in products" ng-product-medium="product"></div>
             </div>
         </div>
-        <div class="extend width-960 text-center">
-            <a href="javascript:;" title="More" ng-click="getMoreNewProduct()"><div class="btn-extend"></div></a>
+
+        <div class="width-960 text-center">
+            <h4>&nbsp;</h4>
+            <input type='button' class='btn-plus' ng-click='getMoreNewProduct()' value='<?php echo $language['layout']->btnPlus ?>'>
         </div>
     </div>
     <div class="lynx-adv width-960">
