@@ -31,9 +31,9 @@
 }
 .notification *{text-align: left;}
 .notification ul{padding-left:8px;}
-.cart-left{width:690px;float:left;}
+.cart-left{padding-left:0px;}
 .summary-row{display: block;}
-.cart-right{width:255px;margin-left:10px;padding:10px;border: 1px solid #d6d6d6;float:right;background: #eceeef;}
+.cart-right{padding-right:0px}
 .summary-row .row-left{float:left;text-align:left;line-height: 30px;}
 .summary-row .row-right{margin-left:40%;text-align: right;line-height: 30px;}
 .cart-right-content{padding:10px;border:1px solid #d6d6d6;background-color: white;overflow: hidden;}
@@ -94,8 +94,10 @@
 	width: 100%;
 	padding-bottom:10px;
 }
+.lynx_orderInformation{
+    padding: 45px 10px 30px 10px;
+}
 .lynx_orderInformation *{
-    
     float: left;
 }
 .lynx_orderInformationBlock{
@@ -156,3 +158,101 @@
     float:none;
     margin-top:12px;
 }
+.shipping{
+    padding:0px 10px 10px 10px;
+    margin-top:20px;
+    background: white;
+    border:solid 1px #CCCCCC;
+}
+.shipping h5{
+    font-weight: bold;
+    border-bottom:solid 1px #CCCCCC;
+    padding-bottom:5px;
+}
+.payment-methods{
+    float:left;
+    width:222px;
+    margin-left:-10px;
+    margin-top: -1px;
+}
+.payment-methods li{
+    cursor:pointer;
+    width:100%;
+    height:59px;
+    float:left;
+    line-height: 59px;
+    color: black;
+    color: rgba(0,0,0,0.3);
+    padding-left: 20px;
+    font-weight:bold;
+    background: transparent url('/images/payment-method.fw.png') no-repeat top left;
+}
+.payment-methods li.active{
+    color: #10728C;
+    height:59px;
+    background: transparent url('/images/payment-method-acitve.fw.png') no-repeat top left;
+    
+}
+.payment-box{
+    min-height:300px;
+    float:right;
+    width:385px;
+    border:solid 1px #CCCCCC;
+    padding:10px;
+}
+.border-full-dashed{
+    border-bottom:dashed 1px #CCCCCC;
+    padding-bottom:5px;
+}
+
+/*NL-CSS ------------------------------------------------------------------------------------------------------*/
+ul.cardList li {
+    cursor: pointer;
+    float: left;
+    margin-right: 0;
+    padding: 5px 4px;
+    text-align: center;
+    width: 90px;
+    opacity:0.1;
+}
+ul.cardList li.active{
+    opacity:1;
+}
+ul.cardList li label{
+    cursor: pointer;
+}
+ul.cardList li input{
+    margin: auto;
+    float:none;
+    display: none;
+}
+i.VISA, i.MASTE, i.AMREX, i.JCB, i.VCB, i.TCB, i.MB, i.VIB, i.ICB, i.EXB, i.ACB, i.HDB, i.MSB, i.NVB, i.DAB, i.SHB, i.OJB, i.SEA, i.TPB, i.PGB, i.BIDV, i.AGB, i.SCB, i.VPB, i.VAB, i.GPB, i.SGB,i.NAB,i.BAB 
+{ width:80px; height:30px; display:block; background:url(https://www.nganluong.vn/webskins/skins/nganluong/checkout/version3/images/bank_logo.png) no-repeat;}
+i.MASTE { background-position:0px -31px}
+i.AMREX { background-position:0px -62px}
+i.JCB { background-position:0px -93px;}
+i.VCB { background-position:0px -124px;}
+i.TCB { background-position:0px -155px;}
+i.MB { background-position:0px -186px;}
+i.VIB { background-position:0px -217px;}
+i.ICB { background-position:0px -248px;}
+i.EXB { background-position:0px -279px;}
+i.ACB { background-position:0px -310px;}
+i.HDB { background-position:0px -341px;}
+i.MSB { background-position:0px -372px;}
+i.NVB { background-position:0px -403px;}
+i.DAB { background-position:0px -434px;}
+i.SHB { background-position:0px -465px;}
+i.OJB { background-position:0px -496px;}
+i.SEA { background-position:0px -527px;}
+i.TPB { background-position:0px -558px;}
+i.PGB { background-position:0px -589px;}
+i.BIDV { background-position:0px -620px;}
+i.AGB { background-position:0px -651px;}
+i.SCB { background-position:0px -682px;}
+i.VPB { background-position:0px -713px;}
+i.VAB { background-position:0px -744px;}
+i.GPB { background-position:0px -775px;}
+i.SGB { background-position:0px -806px;}
+i.NAB { background-position:0px -837px;}
+i.BAB { background-position:0px -868px;}

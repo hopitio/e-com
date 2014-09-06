@@ -1,8 +1,4 @@
-lynxApp = angular.module('lynx', ['mainFilters','ui.bootstrap' ,'ngRoute']);
-lynxApp.config(['$routeProvider', function($routeProvider) {}]);
-lynxApp.factory('$socket', socketService);
-
-function PortalUserInformationController($scope,$modal,$http)
+function PortalUserInformationController($scope,$http)
 {
     $scope.onLoadUserInformation = false; 
     $scope.userInformationError = undefined;
@@ -156,5 +152,4 @@ var ModalContactDialog = function ($scope, $http, $modalInstance, item)
     
 }
 
-PortalUserInformationController.$inject = ['$scope','$modal','$http'];
-ModalContactDialog.$inject = ['$scope','$http','$modalInstance','item'];
+PortalUserInformationController.$inject = ['$scope','$http'];

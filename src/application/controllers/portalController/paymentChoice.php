@@ -9,8 +9,9 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
 class paymentChoice extends BasePortalController
 {
     protected $authorization_required = false;
-    protected $css = array('/style/portalOrder.css');
-    protected $js = array('/js/controller/PortalOrderComplete.js');
+    protected $css = array('/style/portalOrder.css','/style/customerList.css');
+    protected $js = array('/js/controller/PortalOrderPaymentChoiceController.js');
+    
     function showPage(){
         $postData = $this->input->post();
         $orderId = $postData['orderId'];

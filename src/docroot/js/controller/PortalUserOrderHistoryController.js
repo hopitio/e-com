@@ -1,5 +1,5 @@
 
-function PortalUserOrderHistoryController($scope,$modal,$http)
+function PortalUserOrderHistoryController($scope,$http)
 {
     $scope.onLoadOrder = false;
     $scope.template = "ModalOrderList.html";
@@ -84,5 +84,5 @@ function ModalInstanceCtrl($scope, $modalInstance, order) {
     };
 }
 
-PortalUserOrderHistoryController.$inject = ['$scope','$modal','$http'];
+PortalUserOrderHistoryController.$inject = ['$scope','$http'];
 
