@@ -9,15 +9,23 @@ $config['payment_gateway_supported'] = array(
         'isPercent' => '1',
         'value' => 0
     ),
+    'CASH' => array(
+        'displayName' => 'Tiền mặt / Cash / 현금',
+        'isPercent' => '1',
+        'value' => 0
+    ),
 );
+
 $config['ngan_luong'] = array(
-    'NGANLUONG_URL' => 'https://www.nganluong.vn/checkout.php',
+    'NGANLUONG_URL' => 'http://localhost.com/portal/__mock/ngan_luong_payment',
     'MERCHANT_ID'=> '33812',
     'MERCHANT_PASS'=>'qazwsxedc',
     'receiver' => 'transaction@sfriendly.com',
-    'return_url' => 'http://sfriendly.com/portal/order/nganluong_callback',
+    'return_url' => 'http://localhost.com/portal/order/nganluong_callback',
     'order_name' => 'SFRIENDLY',
 );
+
+
 /* End of file config.php */
 /* Location: ./application/config/maintenance.php */
 

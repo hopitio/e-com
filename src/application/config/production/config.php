@@ -369,9 +369,11 @@ $config['proxy_ips'] = '';
  */
 
 
-$config['platform_login_url'] = 'http://localhost.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
-$config['portal_login_url'] = 'http://localhost.com/portal/login?cp={cp}';
-$config['platform_login_callback'] = 'http://localhost.com/__portal/callback';
+$config['platform_login_url'] = 'http://sfriendly.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
+$config['portal_login_url'] = 'http://sfriendly.com/portal/login?cp={cp}';
+
+
+$config['platform_login_callback'] = 'http://sfriendly.com/__portal/login_callback';
 $config['platform_logout'] = '/logout';
 $config['subSystemName'] = 'GIFT';
 
@@ -383,15 +385,16 @@ $config['calendar_month_diff_from'] = -6;
 $config['calendar_month_diff_to'] = +6;
 
 $config['languagePath'] = 'language/';
-$config['languages_supported'] = array('VN-VI','EN-US');
+$config['languages_supported'] = array('VN-VI', 'EN-US', 'KO-KR');
 
 $config['facebook_app_id'] = '1392515564358247';
 $config['facebook_authen_url'] = 'https://www.facebook.com/dialog/oauth?client_id=[YOUR_APP_ID]&redirect_uri=http://localhost/portal/login/facbook_callback';
 
+
 $config['temp_mail_folder'] = APPPATH . 'temp/mail/';
-$config['path_to_active_account'] = 'http://localhost.com/portal/active?k={key}';
-$config['path_to_reset_password_reset'] = 'http://localhost.com/portal/reset_password?k={key}';
-$config['portal_payment_entry'] = "http://localhost.com/portal/order_place/portal_get_information";
+$config['path_to_active_account'] = 'http://sfriendly.com/portal/active?k={key}';
+$config['path_to_reset_password_reset'] = 'http://sfriendly.com/portal/reset_password?k={key}';
+$config['portal_payment_entry'] = "http://sfriendly.com/portal/order_verifing/portal_get_information";
 
 $config['sub_system_name'] = array(
     'default' => 'PORTAL',
@@ -399,5 +402,12 @@ $config['sub_system_name'] = array(
 );
 
 $config['limit_hot'] = 4;
+
+
+
+
+
+
+
 /* End of file config.php */
 /* Location: ./application/config/config.php */

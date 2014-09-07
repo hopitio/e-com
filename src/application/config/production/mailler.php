@@ -16,6 +16,7 @@ define('MAILLER_TYPE','mailtype');
 define('MAILLER_NEWLINE','newline');
 
 $config['temp_mail_folder'] = APPPATH . 'temp/mail/';
+$config['temp_mail_view'] = 'mail/';
 $config['ConfirmRegisterMailler']=  array(
     MAILLER_PROTOCOL => 'smtp',
     MAILLER_USERAGENT => 'Sfriendly',
@@ -25,7 +26,7 @@ $config['ConfirmRegisterMailler']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/RegisterConfirm.txt',
+    MAILLER_TEMP => '/CreatedAccount',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );
@@ -38,7 +39,7 @@ $config['ResetPasswordMailler']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/ResetPassword.txt',
+    MAILLER_TEMP => '/ChangePassword',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );
@@ -51,7 +52,7 @@ $config['NewPasswordMailler']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/NewPassword.txt',
+    MAILLER_TEMP => '/ForgetPassword',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );
@@ -65,7 +66,7 @@ $config['Buyer_order_places']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/OrderPlace.html',
+    MAILLER_TEMP => '/OrderPlace',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );
@@ -107,7 +108,7 @@ $config['OrderDelivered']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/OrderDelivered.html',
+    MAILLER_TEMP => '/OrderDelivered',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );
@@ -163,7 +164,7 @@ $config['SellerDelivered']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/SellerDelivered.html',
+    MAILLER_TEMP => '/SellerDelivered',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );
@@ -191,7 +192,7 @@ $config['SellerPaymentVerified']=  array(
     MAILLER_PORT => '465',
     MAILLER_PASS => '1234567$',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/SellerPaymentVerified.html',
+    MAILLER_TEMP => '/SellerVerified',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );
