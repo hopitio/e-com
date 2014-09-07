@@ -5,59 +5,81 @@
  * @since 20140405
  */
 if (! defined('BASEPATH')) exit('No direct script access allowed');
-
+require_once APPPATH.'/libraries/NL_Checkoutv3.php';
 class orderNganLuongCallback extends BasePortalController
 {
     protected $authorization_required = false;
     protected $css = array('/style/portalOrder.css');
-    protected $js = array('/js/controller/PortalOrderComplete.js');
-    function showPage(){
-        $isError = true;
-        if (isset($_GET['payment_id'])) {
-            $nganLuongConfig = get_instance()->config->item('ngan_luong');
-            $transaction_info =$_GET['transaction_info'];
-            $order_code =$_GET['order_code'];
-            $price =$_GET['price'];
-            $payment_id =$_GET['payment_id'];
-            $payment_type =$_GET['payment_type'];
-            $error_text =$_GET['error_text'];
-            $secure_code =$_GET['secure_code'];
-            //Khai báo đối tượng của lớp NL_Checkout
-            $nl= new NL_Checkout();
-            $nl->merchant_site_code = $nganLuongConfig['MERCHANT_ID'];
-            $nl->secure_pass = $nganLuongConfig['MERCHANT_PASS'];;
-            //Tạo link thanh toán đến nganluong.vn
-            $checkpay= $nl->verifyPaymentUrl($transaction_info, $order_code, $price, $payment_id, $payment_type, $error_text, $secure_code);
-            if ($checkpay) {
-                $order_code = str_replace($nganLuongConfig['order_name'],'',$order_code);
-                $order_code = str_replace(' ','',$order_code);
-                list($orderId,$invoiceId) = explode('-',$order_code);
-                $portalBizPayment = new PortalBizPayment();
-                $portalBizPayment->updateOrderToOrderPlace(false, $orderId, $invoiceId);
-                $portalBizPayment->updatePaymentMethod($invoiceId, $payment_id, DatabaseFixedValue::PAYMENT_BY_NGANLUONG);
-                
-                LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
-                array('isError'=>false), true)
-                ->setCss($this->css)
-                ->setJavascript($this->js)
-                ->render('portalPayment/paymentSuccess');
-                
-            }else{
-                LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
-                array('isError'=>false), true)
-                ->setCss($this->css)
-                ->setJavascript($this->js)
-                ->render('portalPayment/paymentSuccess');
-                
-            }
-        }else {
-            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
-            array('isError'=>true), true)
-            ->setCss($this->css)
-            ->setJavascript($this->js)
-            ->render('portalPayment/paymentSuccess');
+    protected $js = array();
+    
+    function success()
+    {
+        $tokenKey = $this->session->userdata('NGANLUONG_PAYMENT_TOKEN_KEY');
+        $orderId = $this->session->userdata('NGANLUONG_PAYMENT_ORDER_ID');
+        $invocieId = $this->session->userdata('NGANLUONG_PAYMENT_INVOICE_ID');
+        
+        if(!isset($tokenKey) || !isset($orderId) || !isset($invocieId)){
+            $tokenKey = $this->input->get('token');
+            $orderId = $this->input->get('invoice-id');
+            $invocieId = $this->input->get('order-id');
         }
-
+        
+        if(!isset($tokenKey) || !isset($orderId) || !isset($invocieId)){
+            throw new Lynx_BusinessLogicException('Không xác định được giao dịch');
+        }
+        
+        $nganLuongConfig = $this->config->item('ngan_luong');
+        $nlcheckout= new NL_CheckOutV3( $nganLuongConfig['MERCHANT_ID'], $nganLuongConfig['MERCHANT_PASS'], $nganLuongConfig['receiver'] );
+        $order  =  $nlcheckout->GetTransactionDetail($tokenKey);
+        if($order->error_code != 00){
+            throw new Lynx_BusinessLogicException('Ngân lương error code:'.$order->error_code->__toString());
+        }
+        log_message('error',var_export($order,true));
+        
+        $portalBizPayment = new PortalBizPayment();
+        $portalBizPayment->updateOrderToOrderPlace(false, $orderId, $invocieId);
+        $portalBizPayment->updatePaymentMethod($invocieId, $tokenKey, DatabaseFixedValue::PAYMENT_BY_NGANLUONG);
+        
+        
+        $this->session->unset_userdata('NGANLUONG_PAYMENT_TOKEN_KEY');
+        $this->session->unset_userdata('NGANLUONG_PAYMENT_ORDER_ID');
+        $this->session->unset_userdata('NGANLUONG_PAYMENT_INVOICE_ID');
+        
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
+        array('isError'=>false), true)
+        ->setCss($this->css)
+        ->setJavascript($this->js)
+        ->render('portalPayment/paymentSuccess');
+    }
+    
+    function cancel()
+    {
+        $tokenKey = $this->session->userdata('NGANLUONG_PAYMENT_TOKEN_KEY');
+        $orderId = $this->session->userdata('NGANLUONG_PAYMENT_ORDER_ID');
+        $invocieId = $this->session->userdata('NGANLUONG_PAYMENT_INVOICE_ID');
+        $nganLuongConfig = $this->config->item('ngan_luong');
+        $nlRepository = new PortalModelNLPayment();
+        $nlRepository->token_key = $tokenKey;
+        $nlRepository->order_id = $orderId;
+        $nlRepository->invoice_id = $invocieId;
+        $results = $nlRepository->getMutilCondition();
+        if(count($results) == 0){
+            throw new Lynx_BusinessLogicException('Giao dịch không tồn tại');
+        }
+        
+        $this->session->unset_userdata('NGANLUONG_PAYMENT_TOKEN_KEY');
+        $this->session->unset_userdata('NGANLUONG_PAYMENT_ORDER_ID');
+        $this->session->unset_userdata('NGANLUONG_PAYMENT_INVOICE_ID');
+        
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+        ->setData(
+            array('isError'=>true,'',"orderId"=>$orderId, "invocieId"=>$invocieId, "isBack" => false), 
+            true)
+        ->setCss($this->css)
+        ->setJavascript($this->js)
+        ->render('portalPayment/paymentSuccess');
+        
+        
     }
     
 

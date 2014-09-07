@@ -1,4 +1,4 @@
-<div class="lynx_paymentComplete lynx_staticWidth" ng-controller="PortalOrderComplete">
+<div class="lynx_paymentComplete lynx_staticWidth" >
     <h3><?php echo $language[$view->view]->lblNotify;?></h3>
     <div class="lynx_orderInformation">
         <div class="lynx_orderInformationRow">
@@ -12,5 +12,16 @@
                 </span>
             <?php }?>
         </div>
+        <form id="frm-back" action="/portal/order_place/payment_choice" method="post">
+            <input type="hidden" name="orderId" value="<?php echo isset($orderId) ? $orderId : "";?>"/>
+            <input type="hidden" name="invoiceId" value="<?php echo isset($invocieId) ? $invocieId : "";?>"/>
+        </form>
     </div>
 </div>
+
+<script type="text/javascript">
+    function submitBack(){
+        $(document).ready(function(){$("#frm-back").submit();});
+    }
+    <?php echo isset($isBack) ? "submitBack()" : "";?>
+</script>

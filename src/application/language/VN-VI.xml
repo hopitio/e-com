@@ -338,7 +338,7 @@
         <lblPersonPhone>SĐT Người nhận</lblPersonPhone>
         <lblPersonPhone>SĐT Người nhận</lblPersonPhone>
         <lblState>Quốc gia</lblState>
-        <lblDetail>Quốc gia</lblDetail>
+        <lblDetail>Địa chỉ cụ thể</lblDetail>
         <lblCity>Thành phố</lblCity>
         <lblStatus>Tình trạng</lblStatus>
         <lblTitleRootCause>Nguyên nhân hủy đơn hàng</lblTitleRootCause>

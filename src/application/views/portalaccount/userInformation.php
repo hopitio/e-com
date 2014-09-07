@@ -48,26 +48,14 @@
             
             <div class="lynx_row-content" ng-show="!onLoadUserContact">
                 <div class="lynx_row lynx_rowGroup lynx_contactList" ng-repeat="contact in userContacts">
-                    <div class="lynx_row lynx_left" ng-click="openModalContactDialog(contact)">
-                        <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsFullname;?></span>
-                        {{contact.full_name}}
-                    </div>
-                    <div class="lynx_row lynx_right" ng-click="openModalContactDialog(contact)">
-                        <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsTelephone;?></span>
-                        {{contact.telephone}}
-                    </div>
-                    <div class="lynx_row lynx_left" ng-click="openModalContactDialog(contact)">
-                        <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsStateProvince;?></span>
-                        {{contact.state_province}}
-                    </div>
-                    <div class="lynx_row lynx_right" ng-click="openModalContactDialog(contact)">
-                        <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsCity;?></span>
-                        {{contact.city_district}}
-                    </div>
-                    <div class="lynx_row" ng-click="openModalContactDialog(contact)">
-                        <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsAddress;?></span>
-                        {{contact.street_address}}
-                    </div>
+                    <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsFullname;?></span>
+                    {{contact.full_name}}<br/>
+                    <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsTelephone;?></span>
+                    {{contact.telephone}}<br/>
+                    <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsStateProvince;?></span>
+                    {{contact.state_province}}<br/>
+                    <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblContactsAddress;?></span>
+                    {{contact.street_address}}<br/>
                 </div>
             </div>
             

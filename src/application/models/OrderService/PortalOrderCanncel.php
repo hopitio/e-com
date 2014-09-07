@@ -62,10 +62,13 @@ class PortalOrderCanncel
         $portalModelInvoice->fk_order = $this->orderId;
         $portalModelInvoice->created_user = $this->user->id;
         $portalModelInvoice->created_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
-        $portalModelInvoice->paid_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $portalModelInvoice->comment = $this->comment;
         $portalModelInvoice->invoice_type = DatabaseFixedValue::INVOICE_TYPE_OUTPUT;
         $invoiceId = $portalModelInvoice->insert();
+        
+        
+        $portalBizPaymentHistory = new PortalBizPaymentHistory();
+        $order = $portalBizPaymentHistory->getOrderAllInformation($this->orderId);
         
         $portModelInvoiceProduct = new PortalModelInvoiceProduct();
         $portalInvoiceProducts = array();
@@ -74,6 +77,18 @@ class PortalOrderCanncel
             $item = new PortalModelInvoiceProduct();
             $item->fk_product = $product->id;
             $item->fk_invoice = $invoiceId;
+            $item->product_price = $product->sell_price;
+            
+            foreach ($order->invoices[0]->products as $last){
+                if($last->id == $product->id)
+                {
+                    $item->product_price = $last->product_price;
+                    $item->product_quantity = $last->product_quantity;
+                    break 1;
+                }
+            }
+            
+            
             array_push($portalInvoiceProducts, $item);
         }
         $portModelInvoiceProduct->bacthInsert($portalInvoiceProducts);

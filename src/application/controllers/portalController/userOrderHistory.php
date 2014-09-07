@@ -31,7 +31,7 @@ class userOrderHistory extends BasePortalController
         $portalOrderStatusBiz = new PortalBizPaymentHistory();
         $orders = $portalOrderStatusBiz->getUserOrderWithStatus(User::getCurrentUser(),$filter);
         foreach ($orders as &$order){
-            $order->returnUrl = "/portal/order_place/verify?o={$order->id}&i={$order->invoices[0]->id}";
+            $order->returnUrl = "/portal/order_verifing/verify?o={$order->id}&i={$order->invoices[0]->id}";
         }
         $async = new AsyncResult();
         $async->isError = false;

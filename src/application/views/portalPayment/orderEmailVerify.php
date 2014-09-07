@@ -147,7 +147,6 @@
 
 <script type="text/javascript">
     $("input[type=submit]").click(function(){
-        
             var errors = $("#frmsub").validate().errorList;
             if(errors.length == 0){
                 $("#frmsub").submit();

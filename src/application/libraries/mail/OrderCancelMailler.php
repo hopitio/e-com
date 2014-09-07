@@ -38,7 +38,7 @@ class OrderCancelMailler extends AbstractStaff{
     private function preOrderInformation($order,&$name,&$order_number){
         foreach ($order->invoice->shippings as $shipping){
             $contact = $shipping->contact;
-            if($this->to == $contact->email_contact){
+            if($this->to == $order->user->account){
                 $name = $contact->full_name;
                 break;
             }

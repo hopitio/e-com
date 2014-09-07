@@ -39,7 +39,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         
         $route['portal/order_verifing/verify'] = 'portalController/orderVerifingAuthenicated/orderPlaceVerifyOrder';
         
-        $route['portal/order/nganluong_callback'] = 'portalController/orderNganLuongCallback/showPage';
+        $route['portal/ngan-luong/callback/success'] = 'portalController/orderNganLuongCallback/success';
+        $route['portal/ngan-luong/callback/cancel'] = 'portalController/orderNganLuongCallback/cancel';
         
         $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';

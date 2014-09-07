@@ -2,7 +2,10 @@
 function PortalUserOrderHistoryController($scope,$http)
 {
     $scope.onLoadOrder = false;
+    $scope.Common = new Common();
     $scope.template = "ModalOrderList.html";
+    $scope.comment = '';
+    $scope.cancelOrder = {};
     var modalInstance ;
     $scope.loadAllOrder = function(){
         userOrderHistoryServiceClient = new PortalUserOrderHistoryServiceClient($http);
@@ -28,7 +31,7 @@ function PortalUserOrderHistoryController($scope,$http)
     $scope.preStatusOrder = function(val){
        return val.replace("_", " ");
     };
-    $scope.loadAllOrder();
+    
     
     $scope.showOrderDetail = function(order)
     {
@@ -41,34 +44,31 @@ function PortalUserOrderHistoryController($scope,$http)
     };
     
     $scope.cancelOrder = function(order){
-        this.modalInstance = $modal.open({
-            templateUrl: 'commentDialog.html',
-            controller: ModalInstanceCtrl,
-            resolve: {
-                order: function () {
-                  return order;
-                }
-              }
-        });
-        this.modalInstance.result.then(dialogCallback, function () {});
+        $("#comment-modal").modal('show');
+        $scope.cancelOrder = order;
     };
+    
+    $scope.cancelOrderPost = function(){
+        $scope.Common.onLoading();
+        $("#comment-modal").modal('hide');
+        userOrderHistoryServiceClient = new PortalUserOrderHistoryServiceClient($http);
+        userOrderHistoryServiceClient.cancelOrder(JSON.stringify($scope.cancelOrder), $scope.comment, onCancelOrderSucessCallback, getAllOrderHistoryErrorCallback);
+    };
+    
+    
     $scope.returnOrder = function(order){
         window.location = order.returnUrl;
     };
     
-    function dialogCallback (dialogResult) {
-        $scope.comment = dialogResult.comment;
-        AppCommon.onLoading();
-        userOrderHistoryServiceClient = new PortalUserOrderHistoryServiceClient($http);
-        userOrderHistoryServiceClient.cancelOrder(JSON.stringify(dialogResult.order), $scope.comment, onCancelOrderSucessCallback, getAllOrderHistoryErrorCallback);
-    }
     function onCancelOrderSucessCallback(reuslt){
         if(!reuslt.isError){
-            AppCommon.onLoaded();
+            $scope.Common.onLoaded();
             alert(reuslt.data.message);
-            $scope.loadAllOrder();
+            location.reload();
         }
     }
+    
+    $scope.loadAllOrder();
 
 }
 

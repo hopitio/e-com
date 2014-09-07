@@ -41,19 +41,19 @@ class orderReview extends BasePortalController
     
     function checkoutWithATM($orderId,$invoiceId)
     {
-        $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'ATM');
+       $nl_result =  $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'ATM');
         redirect($nl_result->checkout_url);
     }
     
     function checkoutWithVISA($orderId, $invoiceId)
     {
-        $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'VISA');
+        $nl_result = $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'VISA');
         redirect($nl_result->checkout_url);
     }
     
     function checkoutWithNL($orderId, $invoiceId)
     {
-        $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'NL');
+       $nl_result =  $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'NL');
         redirect($nl_result->checkout_url);
     }
     
@@ -92,29 +92,50 @@ class orderReview extends BasePortalController
         
         $bank_code = $this->input->post('bank-code');
         $order_code = "{$nganLuongConfig['order_name']}-{$orderId}-{$invoiceId}";
-        $total_amount = $invoice->totalCost;
+        $total_amount = 0;
         $payment_type = 1;
         $discount_amount = 0;
         $order_description = '';
         $tax_amount = 0;
-        $fee_shipping = 0;
-        $return_url = Common::getCurrentHost().'/ngan-luong/callback/success';
-        $cancel_url = Common::getCurrentHost().'/ngan-luong/callback/canncel';
+        $fee_shipping = $shipping->price;
+        $return_url = urlencode(Common::getCurrentHost()."/portal/ngan-luong/callback/success?order-id={$orderId}&invoice-id={$invoiceId}");
+        $cancel_url = urlencode(Common::getCurrentHost()."/portal/ngan-luong/callback/cancel?order-id={$orderId}&invoice-id={$invoiceId}");
         $buyer_fullname = $shipping->contact->full_name;
         $buyer_email = $orderInformation->user->account;
         $buyer_mobile = $shipping->contact->telephone;
         $buyer_address = "{$shipping->contact->street_address}, {$shipping->contact->city_district}";
         $array_items = array();
+        
+        $index = 1;
         foreach ($invoice->products as $product){
+            $total_amount +=  $product->product_price;
             array_push($array_items,
             array(
-                'item_name1' => $product->name,
-                'item_quantity1' => $product->product_quantity,
-                'item_amount1' => $product->product_price,
-                'item_url1' => Common::getCurrentHost().'/product/details/'.$product->sub_id)
+                "item_name{$index}" => empty($product->name) ? 'sfriendly' : $product->name,
+                "item_quantity{$index}" => $product->product_quantity,
+                "item_amount{$index}" => $product->product_price / $product->product_quantity,
+                "item_url{$index}"=> Common::getCurrentHost().'/product/details/'.$product->sub_id)
             );
+            $index++;
         }
-
+        
+        if(ENVIRONMENT == "development"){
+            $total_amount =  2000;
+            $fee_shipping = 0;
+            $index = 1;
+            foreach ($array_items as &$item){
+                if($index == 1){
+                    $item["item_quantity{$index}"] = 2; 
+                    $item["item_amount{$index}"] = 1000;
+                }else{
+                    $item["item_amount{$index}"] = 0;
+                }
+                 
+                $index++;
+            }
+            unset($item);
+        }
+        
         switch ($paymentMethod){
             case 'ATM':
                 $nl_result = $nlcheckout->BankCheckout($order_code, 
@@ -125,19 +146,32 @@ class orderReview extends BasePortalController
                 break;
             case 'VISA':
                 $nl_result = $nlcheckout->VisaCheckout($order_code, 
-                    $total_amount, $bank_code, $payment_type, $order_description, 
+                    $total_amount, $payment_type, $order_description, 
                     $tax_amount, $fee_shipping, $discount_amount, $return_url, 
                     $cancel_url, $buyer_fullname, $buyer_email, $buyer_mobile, 
                     $buyer_address, $array_items);
                 break;
             case 'NL':
                 $nl_result = $nlcheckout->NLCheckout($order_code, $total_amount, 
-                    $bank_code, $payment_type, $order_description, $tax_amount, 
+                    $payment_type, $order_description, $tax_amount, 
                     $fee_shipping, $discount_amount, $return_url, $cancel_url, 
                     $buyer_fullname, $buyer_email, $buyer_mobile, $buyer_address, 
                     $array_items);
                 break;
         }
+        if($nl_result->error_code != 00)
+        {
+            $errorMsg = $nl_result->error_message;
+            $errorMsg .= "\n";
+            $errorMsg .= "Post data".json_encode($this->input->post());
+            throw new Lynx_NganLuongIntergation($errorMsg);
+            return;
+        }
+        
+        $this->session->set_userdata('NGANLUONG_PAYMENT_TOKEN_KEY',$nl_result->token->__toString());
+        $this->session->set_userdata('NGANLUONG_PAYMENT_ORDER_ID',$orderId);
+        $this->session->set_userdata('NGANLUONG_PAYMENT_INVOICE_ID',$invoiceId);
+        
         $this->savePayment($orderId,$invoiceId,$nl_result);
         return $nl_result;
     }
@@ -145,20 +179,11 @@ class orderReview extends BasePortalController
     
     private function savePayment($orderId,$invoiceId,$getTokenResult)
     {
-        if($getTokenResult->error_code != 00)
-        {
-            $errorMsg = $getTokenResult->error_message;
-            $errorMsg .= "\n";
-            $errorMsg .= "Post data".json_encode($this->input->post());
-            throw new Lynx_NganLuongIntergation($errorMsg);
-            return;
-        }
-        
         $paymentNganLuongRepository = new PortalModelNLPayment();
         $paymentNganLuongRepository->order_id = $orderId;
         $paymentNganLuongRepository->invoice_id = $invoiceId;
-        $paymentNganLuongRepository->token_key = $getTokenResult->token;
-        $paymentNganLuongRepository->expiration_at = date('Y-m-d', strtotime("+1 day")); // hết hạn trong vong 1 ngày
+        $paymentNganLuongRepository->token_key = $getTokenResult->token->__toString();
+        $paymentNganLuongRepository->expiration_at = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE, strtotime("+1 day")); // hết hạn trong vong 1 ngày
         $paymentNganLuongRepository->insert();
     }
 }

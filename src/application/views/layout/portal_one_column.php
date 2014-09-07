@@ -237,7 +237,7 @@
         <script type='text/javascript' src="/js/filters.js"></script>
         <script type='text/javascript' src="/js/directives.js"></script>
 
-
+        <script type='text/javascript' src="/js/common.js"></script>
         <script type='text/javascript' src="/js/controller/LayoutCtrl.js"></script>
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
 

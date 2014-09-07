@@ -15,6 +15,7 @@ $config['payment_gateway_supported'] = array(
         'value' => 0
     ),
 );
+
 $config['ngan_luong'] = array(
     'NGANLUONG_URL' => 'http://localhost.com/portal/__mock/ngan_luong_payment',
     'MERCHANT_ID'=> '33812',
@@ -23,6 +24,8 @@ $config['ngan_luong'] = array(
     'return_url' => 'http://localhost.com/portal/order/nganluong_callback',
     'order_name' => 'SFRIENDLY',
 );
+
+
 /* End of file config.php */
 /* Location: ./application/config/maintenance.php */
 

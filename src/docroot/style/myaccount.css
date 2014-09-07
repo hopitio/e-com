@@ -323,9 +323,9 @@ body  .lynx_row-head span.lynx_spanButton{
 
 .lynx_row-right .lynx_row-head span
 {
-    font-size: 22px;
-	line-height: 31px;
-	padding: 4px 80px 0px 5px;
+    font-size: 12px;
+	line-height: 20px;
+	padding: 9px 80px 0px 5px;
 	float: left;
 	color: white;
 }
@@ -446,4 +446,14 @@ body  .lynx_row-head span.lynx_spanButton{
 }
 .lynx_staticWidth {
     width:960px;
+}
+#pageMask{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: fixed;
+    z-index: 99999;
+    top: 0px;
+    left: 0px;
+    background: rgba(255,255,255,0.5) url('/images/loading.gif') no-repeat center center ;
 }

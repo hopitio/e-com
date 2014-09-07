@@ -26,6 +26,7 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
      */
     protected function buildContent()
     {
+        $this->to = 'lethanhan.bkaptech@gmail.com';
         $this->CI->load->helper('file');
         $temp = $this->CI->config->item('temp_mail_folder');
         $temp .= $this->languageKey.'/'. $this->config[MAILLER_TEMP];
@@ -52,7 +53,7 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
     protected function buildTitle()
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        return $mailLanguage->SellerOrderRejected;;
+        return $mailLanguage->SellerOrderRejected;
     }
 
     private function preOrderInformation($order,&$order_number,&$seller_name,&$products){
@@ -89,10 +90,10 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
                <td style='border:none;'>
                    <p style='font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333'>
                         Item: {$productItem->name}<br/>
-                        Quantity: {$productItem->quantity}<br/>
-                        Price: {$productItem->total_price}<br/>
+                        Quantity: {$productItem->product_quantity}<br/>
+                        Price: {$productItem->product_price}<br/>
                         Buyer: {$buyerContact->full_name}<br/>
-                        {$buyerContact->street_address}, {$buyerContact->city_district}, {$buyerContact->state_province}<br/>
+                        {$buyerContact->street_address}, {$buyerContact->state_province}<br/>
                         {$buyerContact->telephone} <br/>
                    </p>
                </td>";
