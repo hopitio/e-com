@@ -26,7 +26,6 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
      */
     protected function buildContent()
     {
-        $this->to = 'lethanhan.bkaptech@gmail.com';
         $this->CI->load->helper('file');
         $temp = $this->CI->config->item('temp_mail_folder');
         $temp .= $this->languageKey.'/'. $this->config[MAILLER_TEMP];
