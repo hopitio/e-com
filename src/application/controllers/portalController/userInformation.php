@@ -10,12 +10,14 @@ class userInformation extends BasePortalController
 {
     protected $authorization_required = TRUE;
     protected  $_css = array(
-        '/style/myaccount.css'
+         '/style/myaccount.css'
+        ,'/plugins/datepicker/css/datepicker.css'
     );
     protected $_js = array('/js/controller/PortalUserInformationController.js'
                             ,'/js/services/PortalUserInformationServiceClient.js'
                             ,'/js/ui-bootstrap-tpls-0.10.0.min.js'
-                            ,'/js/ng-grid.min.js');
+                            ,'/js/ng-grid.min.js'
+                            ,'/plugins/datepicker/js/bootstrap-datepicker.js');
     protected $_data = array();
     
     function showPage()
@@ -28,7 +30,7 @@ class userInformation extends BasePortalController
         $viewdata['fristName'] = $this->obj_user->firstname;
         $viewdata['lastName'] = $this->obj_user->lastname;
         $viewdata['sex'] = $this->obj_user->sex;
-        $viewdata['dob'] = $this->obj_user->DOB;
+        $viewdata['dob'] = DateTime::createFromFormat(DatabaseFixedValue::DEFAULT_FORMAT_DATE, $this->obj_user->DOB)->format('d/m/Y');
         
         $language = MultilLanguageManager::getInstance()->getLangViaScreen('portalaccount/userInformation', $this->obj_user->languageKey);
         
@@ -76,7 +78,7 @@ class userInformation extends BasePortalController
         $data = json_decode($data['userInformation']);
         $fristName = $data->fristName;
         $lastName = $data->lastName;
-        $dob =  $data->dob;
+        $dob = DateTime::createFromFormat('d/m/Y', $data->dob)->format(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $sex = $data->sex;
         if(!isset($fristName) || !isset($lastName) || !isset($dob) || !isset($sex)){
             throw new Lynx_RequestException(__CLASS__.' '.__METHOD__.' Request change user information error');

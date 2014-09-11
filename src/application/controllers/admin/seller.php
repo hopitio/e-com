@@ -11,6 +11,7 @@ class seller extends AdminControllerAbstract
     {
         $this->js[] = '/js/controller/SellerController.js';
         $this->js[] = '/js/services/SellerServiceClient.js';
+        $this->js[] = '/js/services/SellerServiceClient.js';
         LayoutFactory::getLayout(LayoutFactory::TEMP_ADMIN)
         ->setData(array(),false)
         ->setCss($this->css)

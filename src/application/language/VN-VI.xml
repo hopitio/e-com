@@ -50,6 +50,7 @@
         
     </Details>
     <layout>
+        <lblAccount>Tài khoản</lblAccount>
         <lblSellerOffice>Bán hàng</lblSellerOffice>
         <lblMyOrder>Kiểm tra đơn hàng</lblMyOrder>
         <lblRegister>Đăng kí</lblRegister>

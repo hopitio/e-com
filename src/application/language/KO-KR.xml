@@ -48,6 +48,7 @@
         <label>abc{0}</label>
     </Details>
     <layout>
+        <lblAccount>Tài khoản</lblAccount>
         <lblSellerOffice>판매자 사무실</lblSellerOffice>
         <lblMyOrder>내 순서</lblMyOrder>
         <lblRegister>레지스터</lblRegister>

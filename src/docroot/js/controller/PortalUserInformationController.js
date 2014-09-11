@@ -6,6 +6,9 @@ function PortalUserInformationController($scope,$http)
     $scope.onLoadUserContact = false;
     $scope.userContactError = undefined;
     $scope.userContactSucess = undefined;
+    $('input[data-provide=datepicker]').datepicker();
+    
+    
     var modalInstance;
     $scope.getUserInformation = function(){
         portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
@@ -34,16 +37,10 @@ function PortalUserInformationController($scope,$http)
             $scope.userInformationSucess = undefined;
         }
     };
-    Date.prototype.yyyymmdd = function() {
-        var yyyy = this.getFullYear().toString();
-        var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
-        var dd  = this.getDate().toString();
-        return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) +'-'+ (dd[1]?dd:"0"+dd[0]); // padding
-       };
      
     $scope.updateInformation = function(){
         var d1 = new Date($scope.warpDate);
-        $scope.userInformation.dob = d1.yyyymmdd() + ' 00:00:00';
+        //$scope.userInformation.dob = d1.yyyymmdd() + ' 00:00:00';
         
         portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
         portalUserInformationServiceClient.updateUserInformation($scope.userInformation,updateUserInformationSucessCallback,updateUserInformationErrorCallback);
@@ -151,5 +148,5 @@ var ModalContactDialog = function ($scope, $http, $modalInstance, item)
     };
     
 }
-
 PortalUserInformationController.$inject = ['$scope','$http'];
+

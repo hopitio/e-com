@@ -48,6 +48,7 @@
         <label>abc{0}</label>
     </Details>
     <layout>
+        <lblAccount>Account information</lblAccount>
         <lblSellerOffice>Seller Office</lblSellerOffice>
         <lblMyOrder>My Order</lblMyOrder>
         <lblRegister>Register</lblRegister>
