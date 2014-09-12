@@ -38,12 +38,12 @@ class Lynx_ErrorException extends ErrorException
 
 }
 
-function _exception_handler($errno, $errstr, $errfile, $errline)
-{
-    throw new Lynx_ErrorException($errstr, $errno, 0, $errfile, $errline);
-}
+// function _exception_handler($errno, $errstr, $errfile, $errline)
+// {
+//     throw new Lynx_ErrorException($errstr, $errno, 0, $errfile, $errline);
+// }
 
-set_error_handler("_exception_handler");
+// set_error_handler("_exception_handler");
 
 
 /*
