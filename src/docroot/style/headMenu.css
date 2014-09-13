@@ -4,16 +4,16 @@ li#menu-family > a{
 li#menu-family.active > a{
     background-image: url(/images/categories/Icon-gia-dinh-active.png)
 }
-li#menu-kid > a{
+li#menu-mom_baby > a{
     background-image: url(/images/categories/Icon-me-va-be.png);
 }
-li#menu-kid.active > a{
+li#menu-mom_baby.active > a{
     background-image: url(/images/categories/Icon-me-va-be-active.png);
 }
-li#menu-food > a{
+li#menu-food_drink > a{
     background-image: url(/images/categories/Icon-thuc-pham.png);
 }
-li#menu-food.active > a{
+li#menu-food_drink.active > a{
     background-image: url(/images/categories/Icon-thuc-pham-active.png);
 }
 li#menu-gift > a{
@@ -34,15 +34,15 @@ ul.lynx-menu-lvl-2 li#menu-best > a > span.menu-icon{
     background-position: 50% 0;
 }
 
-.head-menu > ul > li.EN-US > a{width: 149px;}
-.head-menu > ul > li.VN-VI > a{min-width: 140px;}
+.head-menu > ul > li.EN-US > a{min-width: 149px;}
+.head-menu > ul > li.VN-VI > a{min-width: 135px;}
 .head-menu > ul > li.KO-KR > a{min-width: 148px;}
 li#menu-family.VN-VI > a{
-    width: 160px;
+    min-width: 147px;
 }
 li#menu-family.EN-US > a{
-    width: 151px;
+    min-width: 100px;
 }
 li#menu-family.KO-KR > a{
-    width: 155px;
+    min-width: 150px;
 }

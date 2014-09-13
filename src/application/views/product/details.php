@@ -82,13 +82,13 @@
             </div>
             <ul class="detail-social">
                 <li class="detail-social-cart">
-                    <a href="javascript:;"><span class="icon">Số lượng mua</span></a>
+                    <a href="javascript:;"><span class="icon"><?php echo $language[$view->view]->lblBoughtQty ?></span></a>
                 </li>
                 <li class="detail-social-rate">
-                    <a href="javascript:;"><span class="icon">Đánh giá cao</span></a>
+                    <a href="javascript:;"><span class="icon"><?php echo $language[$view->view]->lblSatisfied ?></span></a>
                 </li>
                 <li class="detail-social-comment last">
-                    <a href="javascript:;"><span class="icon">Nói về</span></a>
+                    <a href="javascript:;"><span class="icon"><?php echo $language[$view->view]->lblComment ?></span></a>
                 </li>
             </ul>
             <br>
@@ -124,8 +124,8 @@
                 <div class="detail-seller-name"><?php echo $product->seller_name ?></div>
                 <div class="left">
                     <span class="detail-sale">10%</span>
-                    <div class="detail-origin-price"><?php echo $product->getPriceOrigin() ?></div>
-                    <div class="detail-price"><?php echo $product->getPriceMoney() ?></div>
+                    <div class="detail-origin-price"><?php echo $product->getPriceOrigin(User::getCurrentUser()->getCurrency()) ?></div>
+                    <div class="detail-price"><?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?></div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="detail-free-shipping free">

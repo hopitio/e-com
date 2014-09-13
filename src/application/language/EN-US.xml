@@ -110,6 +110,9 @@
         <lblDetails>Product details</lblDetails>
         <lblWarranty>Warranty &amp; Return</lblWarranty>
         <lblRelated>Related product</lblRelated>
+        <lblBoughtQty>Bought</lblBoughtQty>
+        <lblSatisfied>Satisfied</lblSatisfied>
+        <lblComment>Comments</lblComment>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>

@@ -110,7 +110,10 @@
         <lblDes>제품 설명</lblDes>
         <lblDetails>제품 세부 사항</lblDetails>
         <lblWarranty>보증  &amp; 반품</lblWarranty>
-        <lblRelated>Related product</lblRelated>
+        <lblRelated>관련 제품</lblRelated>
+        <lblBoughtQty>구매</lblBoughtQty>
+        <lblSatisfied>만족</lblSatisfied>
+        <lblComment>코멘트</lblComment>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>

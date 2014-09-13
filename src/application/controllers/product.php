@@ -48,7 +48,7 @@ class product extends BaseController
         }
 
         $breadcrums[$parentCategory->name] = $parentCategory->getURL();
-        $productName = strlen(strval($product->getName())) > 50 ? substr((string) $product->getName(), 0, 50) . '...' : (string) $product->getName();
+        $productName = strlen(strval($product->getName())) > 50 ? mb_substr((string) $product->getName(), 0, 50, 'UTF-8') . '...' : (string) $product->getName();
         $breadcrums[$productName] = NULL;
 
         $data = array(

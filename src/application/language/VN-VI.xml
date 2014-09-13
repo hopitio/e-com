@@ -113,6 +113,9 @@
         <lblDetails>Thông tin sản phẩm</lblDetails>
         <lblWarranty>Bảo hành &amp; trả hàng</lblWarranty>
         <lblRelated>Sản phẩm liên quan</lblRelated>
+        <lblBoughtQty>Số lượng mua</lblBoughtQty>
+        <lblSatisfied>Đánh giá cao</lblSatisfied>
+        <lblComment>Nói về</lblComment>
     </product_details>
     <wishlist_show>
         <title>Sản phẩm mong muốn</title>
