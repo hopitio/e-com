@@ -47,6 +47,7 @@ abstract class AbstractLayout
         $item->css = $this->_css;
         $item->javascript = $this->_javascript;
         $item->breadcrums = $this->_breadcrums;
+        $item->title = $this->_title;
         $data['view'] = $item;
         return $data;
     }
@@ -86,6 +87,12 @@ abstract class AbstractLayout
     public function setJavascript($js = array())
     {
         $this->_javascript = array_merge($this->_javascript, $js);
+        return $this;
+    }
+
+    function setTitle($title)
+    {
+        $this->_title = (string) $title;
         return $this;
     }
 

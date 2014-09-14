@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1,user-scalabel=no' name='viewport'>
 
-        <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title : ''; ?></title>
+        <title><?php echo!empty($language[$view->view]->title) ? $language[$view->view]->title : isset($view->title) ? $view->title : 'Sfriendly.com'; ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
@@ -119,7 +119,7 @@
                 <div id="widget-right" ng-cloak>
                     <div class="product-group">
                         <a href="javascript:;" title="View" ng-click="setWidgetRightActive('cart')">
-                            Cart <i class="fa fa-caret-down" ng-if="widgetRightActive == 'cart'"></i>
+                            <?php echo $language['layout']->wdCart ?> <i class="fa fa-caret-down" ng-if="widgetRightActive == 'cart'"></i>
                             <div class="pull-right">{{countCartProducts()}}</div>
                         </a>
                         <ul ng-if="widgetRightActive === 'cart'">
@@ -139,7 +139,7 @@
                     </div>
                     <div class="product-group">
                         <a href="javascript:;" title="View" ng-click="setWidgetRightActive('viewed')">
-                            View <i class="fa fa-caret-down" ng-if="widgetRightActive == 'viewed'"></i>
+                            <?php echo $language['layout']->wdView ?> <i class="fa fa-caret-down" ng-if="widgetRightActive == 'viewed'"></i>
                             <div class="pull-right">{{countWidgetProducts('viewed')}}</div>
                         </a>
                         <ul ng-if="widgetRightActive === 'viewed'">
@@ -164,8 +164,8 @@
                             </div>
                         </ul>
                     </div>
-                    <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top">TOP<div class="pull-right"><i class="fa fa-caret-up"></i></div></a>
-                    <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom">BOTTOM<div class="pull-right"><i class="fa fa-caret-down"></i></div></a>
+                    <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top"><?php echo $language['layout']->wdTop ?><div class="pull-right"><i class="fa fa-caret-up"></i></div></a>
+                    <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom"><?php echo $language['layout']->wdBottom ?><div class="pull-right"><i class="fa fa-caret-down"></i></div></a>
                 </div><!--wiggget-->
             </div>
         </div>
@@ -229,12 +229,12 @@
         </div>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-                    }
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+            }
         </script>
 
 
@@ -253,11 +253,11 @@
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                    }
-                    $.browser = {};
-                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+            }
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt

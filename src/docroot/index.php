@@ -19,9 +19,9 @@ class Lynx_ErrorException extends ErrorException
         $class = get_class($this);
         $title = isset($this->title) ? $this->title : '-';
         $ha = array(
-            'error' => true,
-            'class' => $class,
-            'title' => $title,
+            'error'   => true,
+            'class'   => $class,
+            'title'   => $title,
             'message' => $this->getMessage()
         );
         if (ENVIRONMENT == 'development')
@@ -42,7 +42,6 @@ class Lynx_ErrorException extends ErrorException
 // {
 //     throw new Lynx_ErrorException($errstr, $errno, 0, $errfile, $errline);
 // }
-
 // set_error_handler("_exception_handler");
 
 
@@ -83,8 +82,7 @@ include_once 'ENVIRONMENT.php';
 
 if (defined('ENVIRONMENT'))
 {
-    switch (ENVIRONMENT)
-    {
+    switch (ENVIRONMENT) {
         case 'development':
         case 'development_smaeda':
         case 'kakunin':
@@ -98,9 +96,10 @@ if (defined('ENVIRONMENT'))
         case 'production_fc':
         case 'demoeg':
         case 'production':
+            ini_set('display_errors', 0);
             error_reporting(0);
+            session_save_path('/var/sessions/');
             break;
-
         default:
             exit('The application environment is not set correctly.');
     }

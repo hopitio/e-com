@@ -21,7 +21,21 @@ class home extends BaseController
     {
         $data = array();
         $data['banners'] = Setting::getInstance()->get('home_banner');
+
+        switch (User::getCurrentUser()->languageKey) {
+            case 'VN-VI':
+                $title = 'Trang chủ - Sfriendly.com';
+                break;
+            case 'EN-US':
+                $title = 'Home Page - Sfriendly.com';
+                break;
+            case 'KO-KR':
+                $title = '홈페이지';
+                break;
+        }
+
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                ->setTitle($title)
                 ->setJavascript(array(
                     '/js/controller/HomeCtrl.js'
                 ))
@@ -64,6 +78,7 @@ class home extends BaseController
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
             $obj['best'] = $i++ < 2 ? $i : false;
+            $obj['salesPercent'] = $product->getSalesPercent();
             $json[] = $obj;
         }
         echo json_encode($json);
@@ -84,11 +99,13 @@ class home extends BaseController
                 if ($product->id)
                 {
                     $images = $product->getImages('thumbnail');
+                    $product->salesPercent = $product->getSalesPercent();
                     $product->name = strval($product->getName());
                     $product->thumbnail = $images[0]->url;
                     $product->priceString = strval($product->getFinalPriceMoney($user->getCurrency()));
                     $product->url = base_url('product/details') . '/' . $product->id;
                     $product->priceOrigin = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
+                    
                 }
                 $group->details[$product->row][] = $product;
             }
@@ -112,6 +129,7 @@ class home extends BaseController
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
+            $obj['salesPercent'] = $product->getSalesPercent();
             $json[] = $obj;
         }
         echo json_encode($json);

@@ -30,7 +30,7 @@ foreach ($cartContents as $cartInstance)
         'id'          => $cartInstance->id,
         'name'        => (string) $cartInstance->getName(),
         'image'       => base_url($images[0]->url),
-        'shortDesc'   => (string) $cartInstance->getDescription(),
+        'shortDesc'   => mb_strlen($cartInstance->getDescription()) > 50 ? mb_substr($cartInstance->getDescription(), 0, 50) . '...' : (string) $cartInstance->getDescription(),
         'price'       => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount(),
         'quantity'    => $cartInstance->quantity,
         'totalPrice'  => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount() * $cartInstance->quantity,

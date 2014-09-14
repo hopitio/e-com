@@ -92,6 +92,10 @@
         <lblMenu>카테고리/메뉴 </lblMenu>
         <lblYourCart>장바구니</lblYourCart>
         <btnPlus>더보기</btnPlus>
+        <wdCart>카트</wdCart>
+        <wdView>조회</wdView>
+        <wdTop>최고</wdTop>
+        <wdBottom>바닥</wdBottom>
     </layout>
     
     <sitemap>

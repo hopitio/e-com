@@ -321,7 +321,7 @@ li{list-style: none;}
     background: transparent url(/images/box-opacity.fw.png) repeat top left;
     display: none;
 }
-.lynx-box .best{
+.lynx-box .best-balloon{
     position:absolute;
     background:transparent url(/images/best.png) no-repeat;
     top: 0;
@@ -333,6 +333,23 @@ li{list-style: none;}
     font-weight:bold;
     z-index:20;
     padding-left:10px;
+}
+.lynx-box .sales-balloon{
+    width: 35px;
+    height: 35px;
+    background:transparent url(/images/product-sales.png) no-repeat;
+    position:absolute;
+    left: -1px;
+    text-align: center;
+    color :white;
+    line-height: 35px;
+    z-index: 10;
+}
+.lynx-box.lynx-box-small .sales-balloon{
+    top: 141px;
+}
+.lynx-box.lynx-box-medium .sales-balloon{
+    top: 190px;
 }
 .lynx-box .name, .lynx-box .seller-name, .lynx-box .dis-price{
     width:100%;
