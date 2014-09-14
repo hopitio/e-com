@@ -95,12 +95,14 @@ class product extends BaseController
         $json = array();
         foreach ($products as $product)
         {
+            /* @var $product ProductFixedDomain */
             $images = $product->getImages('thumbnail');
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getPriceMoney(User::getCurrentUser()->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
+            $obj['priceOrigin'] = (string) $product->getPriceOrigin(User::getCurrentUser()->getCurrency());
             $json[] = $obj;
         }
         return $json;
