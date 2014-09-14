@@ -4,10 +4,15 @@
     var cnf = new Config;
 
     /* directives */
-    lynxApp.directive('ngThumbnail', function() {
+    lynxApp.directive('ngProductSmall', function() {
         function link(scope, elem, attr) {
+            var limit = cnf.language === 'KO-KR' ? 10 : 20;
+            var img_container = $('.image:first', elem);
+
+            scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
+
             var img = document.createElement('img');
-            img.src = scope.src;
+            img.src = '/thumbnail.php/' + scope.product.thumbnail + '/w=170';
             img.onload = function() {
                 if (img.width > img.height) {
                     img.style.width = '100%';
@@ -15,19 +20,7 @@
                     img.style.height = '100%';
                 }
             };
-            elem.append(img);
-        }
-        return {
-            link: link,
-            scope: {
-                'src': '@ngThumbnail'
-            }
-        };
-    }).directive('ngProductSmall', function() {
-        function link(scope, elem, attr) {
-            var limit = cnf.language === 'KO-KR' ? 10 : 20;
-            scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
-            scope.product.thumbnail = '/thumbnail.php/' + scope.product.thumbnail + '/w=170';
+            img_container.append(img);
         }
         return {
             link: link,
@@ -39,8 +32,20 @@
     }).directive('ngProductLarge', function() {
         function link(scope, elem, attr) {
             var limit = cnf.language === 'KO-KR' ? 18 : 35;
+            var img_container = $('.image:first', elem);
+
             scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
-            scope.product.thumbnail = '/thumbnail.php/' + scope.product.thumbnail + '/w=280';
+
+            var img = document.createElement('img');
+            img.src = '/thumbnail.php/' + scope.product.thumbnail + '/w=280';
+            img.onload = function() {
+                if (img.width > img.height) {
+                    img.style.width = '100%';
+                } else {
+                    img.style.height = '100%';
+                }
+            };
+            img_container.append(img);
         }
         return {
             link: link,
@@ -51,9 +56,20 @@
         };
     }).directive('ngProductMedium', function() {
         function link(scope, elem, attr) {
-            var limit = cnf.language === 'KO-KR' ? 12 : 25;
+            var limit = cnf.language === 'KO-KR' ? 18 : 35;
+            var img_container = $('.image:first', elem);
             scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
-            scope.product.thumbnail = '/thumbnail.php/' + scope.product.thumbnail + '/w=200';
+
+            var img = document.createElement('img');
+            img.src = '/thumbnail.php/' + scope.product.thumbnail + '/w=200';
+            img.onload = function() {
+                if (img.width > img.height) {
+                    img.style.width = '100%';
+                } else {
+                    img.style.height = '100%';
+                }
+            };
+            img_container.append(img);
         }
         return {
             link: link,
