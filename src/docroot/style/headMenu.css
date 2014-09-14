@@ -46,3 +46,164 @@ li#menu-family.EN-US > a{
 li#menu-family.KO-KR > a{
     min-width: 150px;
 }
+/* family children */
+.child li#menu-living > a{
+    background-image: url('/images/categories/family/Family2_2.png');
+}
+.lynx-menu-lvl-2 li#menu-living .menu-icon{
+    background-image: url('/images/categories/family/Family2_2.png');
+}
+.child li#menu-kitchen_dinning > a{
+    background-image: url('/images/categories/family/Kitchen1_2.png');
+}
+.lynx-menu-lvl-2 li#menu-kitchen_dinning .menu-icon{
+    background-image: url('/images/categories/family/Kitchen1_2.png');
+}
+.child li#menu-bath_bed > a{
+    background-image: url('/images/categories/family/Bath1_2.png');
+    background-position-x: 12px;
+}
+.lynx-menu-lvl-2 li#menu-bath_bed .menu-icon{
+    background-image: url('/images/categories/family/Bath1_2.png');
+}
+.child li#menu-home_deco > a{
+    background-image: url('/images/categories/family/Decor2_2.png');
+}
+.lynx-menu-lvl-2 li#menu-home_deco .menu-icon{
+    background-image: url('/images/categories/family/Decor2_2.png');
+}
+.child li#menu-cloths_towels > a{
+    background-image:  url('/images/categories/family/Khan1.png');
+}
+.lynx-menu-lvl-2 li#menu-cloths_towels .menu-icon{
+    background-image:  url('/images/categories/family/Khan1.png');
+}
+.child li#menu-sport > a{
+    background-image: url('/images/categories/family/Thethao1.png');
+}
+.lynx-menu-lvl-2 li#menu-sport .menu-icon{
+    background-image: url('/images/categories/family/Thethao1.png');
+}
+.child li#menu-family_other > a{
+    background-image: url('/images/categories/family/Other1_2.png');
+    background-position-x: 12px;
+}
+.lynx-menu-lvl-2 li#menu-family_other .menu-icon{
+    background-image: url('/images/categories/family/Other1_2.png');
+}
+/* mom baby */
+.child li#menu-diapering > a{
+    background-image: url('/images/categories/mom_baby/Diaper1.png');
+    background-size: 45px 45px;
+}
+.lynx-menu-lvl-2 li#menu-diapering .menu-icon{
+    background-image: url('/images/categories/mom_baby/Diaper1.png');
+}
+.child li#menu-baby_clothings > a{
+    background-image: url('/images/categories/mom_baby/Cloth1.png');
+}
+.lynx-menu-lvl-2 li#menu-baby_clothings .menu-icon{
+    background-image: url('/images/categories/mom_baby/Cloth1.png');
+}
+.child li#menu-smart_toys > a{
+    background-image: url('/images/categories/mom_baby/toy1.png');
+}
+.lynx-menu-lvl-2 li#menu-smart_toys .menu-icon{
+    background-image: url('/images/categories/mom_baby/toy1.png');
+}
+.child li#menu-mom_clothings > a{
+    background-image: url('/images/categories/mom_baby/icon_babau-1_2.png');
+    background-position-x: 12px;
+}
+.lynx-menu-lvl-2 li#menu-mom_clothings .menu-icon{
+    background-image: url('/images/categories/mom_baby/icon_babau-1_2.png');
+}
+.child li#menu-bath_baby_care > a{
+    background-image: url('/images/categories/mom_baby/Bath1.png');
+}
+.lynx-menu-lvl-2 li#menu-bath_baby_care .menu-icon{
+    background-image: url('/images/categories/mom_baby/Bath1.png');
+}
+.child li#menu-accessories_bed > a{
+    background-image: url('/images/categories/mom_baby/Sleep1.png');
+}
+.lynx-menu-lvl-2 li#menu-accessories_bed .menu-icon{
+    background-image: url('/images/categories/mom_baby/Sleep1.png');
+}
+.child li#menu-mom_other > a{
+    background-image: url('/images/categories/mom_baby/Other1_2.png');
+    background-position-x: 12px;
+}
+.lynx-menu-lvl-2 li#menu-mom_other .menu-icon{
+    background-image: url('/images/categories/mom_baby/Other1_2.png');
+}
+/* food */
+.child li#menu-junk_food > a{
+    background-image: url('/images/categories/food/Instant1.png');
+    background-position-x: 7px;
+}
+.lynx-menu-lvl-2 li#menu-junk_food .menu-icon{
+    background-image: url('/images/categories/food/Instant1.png');
+}
+.child li#menu-drink > a{
+    background-image: url('/images/categories/food/Drink1.png');
+    background-position-x: 10px;
+}
+.lynx-menu-lvl-2 li#menu-drink .menu-icon{
+    background-image: url('/images/categories/food/Drink1.png');
+}
+.child li#menu-sweetened > a{
+    background-image: url('/images/categories/food/Banh1.png');
+    background-position-x: -10px;
+}
+.lynx-menu-lvl-2 li#menu-sweetened .menu-icon{
+    background-image: url('/images/categories/food/Banh1.png');
+}
+.child li#menu-condiments > a{
+    background-image: url('/images/categories/food/Giavi1.png');
+    background-position-x: 10px;
+}
+.lynx-menu-lvl-2 li#menu-condiments .menu-icon{
+    background-image: url('/images/categories/food/Giavi1.png');
+}
+.child li#menu-food_other > a{
+    background-image: url('/images/categories/food/Others.png');
+    background-position-x: 10px;
+}
+.lynx-menu-lvl-2 li#menu-food_other .menu-icon{
+    background-image: url('/images/categories/food/Others.png');
+}
+.child li#menu-food_special > a{
+    background-image: url('/images/categories/food/Special.png');
+}
+.lynx-menu-lvl-2 li#menu-food_special .menu-icon{
+    background-image: url('/images/categories/food/Special.png');
+}
+/* gift */
+.child li#menu-traditional_clothes > a{
+    background-image: url('/images/categories/gift/Clothes1.png');
+    background-position-x: 10px;
+}
+.lynx-menu-lvl-2 li#menu-traditional_clothes .menu-icon{
+    background-image: url('/images/categories/gift/Clothes1.png');
+}
+.child li#menu-handmade > a{
+    background-image: url('/images/categories/gift/Handmade.png');
+    background-size: 45px auto;
+}
+.lynx-menu-lvl-2 li#menu-handmade .menu-icon{
+    background-image: url('/images/categories/gift/Handmade.png');
+}
+.child li#menu-greeting_card > a{
+    background-image: url('/images/categories/gift/Card1.png');
+    background-position-x: 10px;
+}
+.lynx-menu-lvl-2 li#menu-greeting_card .menu-icon{
+    background-image: url('/images/categories/gift/Card1.png');
+}
+.child li#menu-gift_other > a{
+    background-image: url('/images/categories/gift/Other1.png');
+}
+.lynx-menu-lvl-2 li#menu-gift_other .menu-icon{
+    background-image: url('/images/categories/gift/Other1.png');
+}

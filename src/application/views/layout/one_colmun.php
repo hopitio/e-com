@@ -20,6 +20,7 @@
         }
         ?>
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
+        <script type='text/javascript' src="/js/belazy.js"></script>	
     </head>
     <body>
         <div class="head-tool-box text-center">
@@ -97,8 +98,8 @@
                                         $currentRow = ceil(($i + 1) / 2);
                                         $class = $currentRow == $lastRow ? 'last-row' : '';
                                         ?>
-                                        <li>
-                                            <a href="/category/show/<?php echo $childCate->id ?>" id="menu-<?php echo $childCate->codename ?>" class="<?php echo $class ?>">
+                                        <li id="menu-<?php echo $childCate->codename ?>">
+                                            <a href="/category/show/<?php echo $childCate->id ?>"  class="<?php echo $class ?>">
                                                 <span><?php echo $childCate->name ?></span>
                                             </a>
                                         </li>
@@ -229,12 +230,12 @@
         </div>
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-            }
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+                    }
         </script>
 
 
@@ -253,11 +254,11 @@
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-            }
-            $.browser = {};
-            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                    }
+                    $.browser = {};
+                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt
