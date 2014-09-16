@@ -31,6 +31,7 @@ class cart extends BaseController
         $data['shippingMethods'] = ShippingMethodMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->findAll();
 
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                ->setTitle('Shipping Information')
                 ->setData($data)
                 ->setCss(array('/style/customerList.css'))
                 ->setJavascript(array(
@@ -44,6 +45,7 @@ class cart extends BaseController
     {
         $data['wishlist'] = $this->wishlistModel->getOneWishlist();
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                ->setTitle('Your Cart')
                 ->setJavascript(array('/js/controller/cartCtrl.js'))
                 ->setCss(array('/style/customerList.css'))
                 ->setData($data)
@@ -76,7 +78,7 @@ class cart extends BaseController
             $obj['priceOrigin'] = $product->getPriceOrigin($user->getCurrency())->getAmount();
             $obj['name'] = (string) $product->getName()->getTrueValue();
             $obj['taxes'] = $product->calculateTaxes($user->getCurrency())->getAmount();
-            $obj['sales'] = $product->getSalePercent();
+            $obj['sales'] = $product->getSalesPercent();
             $obj['thumbnail'] = (string) $images[0]->url;
             $obj['priceString'] = (string) $product->getFinalPriceMoney($user->getCurrency());
             $obj['stock'] = (double) strval($product->getQuantity());

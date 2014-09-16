@@ -92,6 +92,10 @@
         <lblMenu>Category/Menu</lblMenu>
         <lblYourCart>Your cart</lblYourCart>
         <btnPlus>Show More</btnPlus>
+        <wdCart>Cart</wdCart>
+        <wdView>Viewed</wdView>
+        <wdTop>TOP</wdTop>
+        <wdBottom>BOTTOM</wdBottom>
     </layout>
     
     <sitemap>

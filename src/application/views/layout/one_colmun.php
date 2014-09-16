@@ -5,11 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1,user-scalabel=no' name='viewport'>
 
-        <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title : ''; ?></title>
+        <title><?php echo!empty($language[$view->view]->title) ? $language[$view->view]->title : isset($view->title) ? $view->title : 'Sfriendly.com'; ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
-        <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
+        <!--<link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">-->
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/headMenu.css" media="all">
         <?php
@@ -20,6 +20,7 @@
         }
         ?>
         <script type='text/javascript' src="/js/jquery-1.11.0.min.js"></script>	
+        <script type='text/javascript' src="/js/belazy.js"></script>	
     </head>
     <body>
         <div class="head-tool-box text-center">
@@ -97,8 +98,8 @@
                                         $currentRow = ceil(($i + 1) / 2);
                                         $class = $currentRow == $lastRow ? 'last-row' : '';
                                         ?>
-                                        <li>
-                                            <a href="/category/show/<?php echo $childCate->id ?>" id="menu-<?php echo $childCate->codename ?>" class="<?php echo $class ?>">
+                                        <li id="menu-<?php echo $childCate->codename ?>">
+                                            <a href="/category/show/<?php echo $childCate->id ?>"  class="<?php echo $class ?>">
                                                 <span><?php echo $childCate->name ?></span>
                                             </a>
                                         </li>
@@ -119,7 +120,7 @@
                 <div id="widget-right" ng-cloak>
                     <div class="product-group">
                         <a href="javascript:;" title="View" ng-click="setWidgetRightActive('cart')">
-                            Cart <i class="fa fa-caret-down" ng-if="widgetRightActive == 'cart'"></i>
+                            <?php echo $language['layout']->wdCart ?> <i class="fa fa-caret-down" ng-if="widgetRightActive == 'cart'"></i>
                             <div class="pull-right">{{countCartProducts()}}</div>
                         </a>
                         <ul ng-if="widgetRightActive === 'cart'">
@@ -139,7 +140,7 @@
                     </div>
                     <div class="product-group">
                         <a href="javascript:;" title="View" ng-click="setWidgetRightActive('viewed')">
-                            View <i class="fa fa-caret-down" ng-if="widgetRightActive == 'viewed'"></i>
+                            <?php echo $language['layout']->wdView ?> <i class="fa fa-caret-down" ng-if="widgetRightActive == 'viewed'"></i>
                             <div class="pull-right">{{countWidgetProducts('viewed')}}</div>
                         </a>
                         <ul ng-if="widgetRightActive === 'viewed'">
@@ -164,8 +165,8 @@
                             </div>
                         </ul>
                     </div>
-                    <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top">TOP<div class="pull-right"><i class="fa fa-caret-up"></i></div></a>
-                    <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom">BOTTOM<div class="pull-right"><i class="fa fa-caret-down"></i></div></a>
+                    <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top"><?php echo $language['layout']->wdTop ?><div class="pull-right"><i class="fa fa-caret-up"></i></div></a>
+                    <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom"><?php echo $language['layout']->wdBottom ?><div class="pull-right"><i class="fa fa-caret-down"></i></div></a>
                 </div><!--wiggget-->
             </div>
         </div>

@@ -123,7 +123,7 @@
                 <div class="detail-seller-logo"><img src="<?php echo $product->seller_logo ?>"></div>
                 <div class="detail-seller-name"><?php echo $product->seller_name ?></div>
                 <div class="left">
-                    <span class="detail-sale">10%</span>
+                    <span class="detail-sale"><?php echo $product->getSalesPercent() ? $product->getSalesPercent() . '%' : '' ?></span>
                     <div class="detail-origin-price"><?php echo $product->getPriceOrigin(User::getCurrentUser()->getCurrency()) ?></div>
                     <div class="detail-price"><?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?></div>
                 </div>

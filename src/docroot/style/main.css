@@ -178,6 +178,10 @@ li{list-style: none;}
     background: transparent url(/images/mn-spe-bg.fw.png) no-repeat top right;
     position: relative;
 }
+.head-menu > ul > li > .child > ul > li > a{
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
 .head-menu > ul > li > a{
     display:inline-block;
     font-size: 13px;
@@ -321,7 +325,7 @@ li{list-style: none;}
     background: transparent url(/images/box-opacity.fw.png) repeat top left;
     display: none;
 }
-.lynx-box .best{
+.lynx-box .best-balloon{
     position:absolute;
     background:transparent url(/images/best.png) no-repeat;
     top: 0;
@@ -333,6 +337,23 @@ li{list-style: none;}
     font-weight:bold;
     z-index:20;
     padding-left:10px;
+}
+.lynx-box .sales-balloon{
+    width: 35px;
+    height: 35px;
+    background:transparent url(/images/product-sales.png) no-repeat;
+    position:absolute;
+    left: -1px;
+    text-align: center;
+    color :white;
+    line-height: 35px;
+    z-index: 10;
+}
+.lynx-box.lynx-box-small .sales-balloon{
+    top: 141px;
+}
+.lynx-box.lynx-box-medium .sales-balloon{
+    top: 190px;
 }
 .lynx-box .name, .lynx-box .seller-name, .lynx-box .dis-price{
     width:100%;
@@ -926,6 +947,7 @@ ul.lynx-menu-lvl-2{
     top: -4px;
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
 }
 ul.lynx-menu-lvl-2 > li{
     display: inline-block;
@@ -943,12 +965,14 @@ ul.lynx-menu-lvl-2 > li > a{
     text-align: center;
 }
 ul.lynx-menu-lvl-2 > li:hover > a, ul.lynx-menu-lvl-2 > li.active > a{
-    background: #F2F2F2;
+    background-color: #F2F2F2;
     border-color: #84C7D8;
 }
 ul.lynx-menu-lvl-2 > li > a > span.menu-icon{
     height: 46px;
     display:block;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 }
 ul.lynx-menu-lvl-2 > li > a > span.menu-name{
     margin: 0;
@@ -1001,4 +1025,14 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
 }
 .red{
     color: #a94442;
+}
+.b-lazy, .lynx-box .image img{
+    -webkit-transition: opacity 500ms ease-in-out;
+    -moz-transition: opacity 500ms ease-in-out;
+    -o-transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out;
+    opacity: 0.2;
+}
+.b-lazy.b-loaded, .lynx-box .image img.b-loaded{
+    opacity: 1;
 }

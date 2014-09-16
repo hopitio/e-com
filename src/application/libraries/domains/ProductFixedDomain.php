@@ -166,11 +166,11 @@ class ProductFixedDomain extends ProductDomain
         return $total->convert(new Currency($toCurrency));
     }
 
-    function getSalePercent()
+    function getSalesPercent()
     {
         $price = $this->getPriceMoney('VND')->getAmount();
         $origin = $this->getPriceOrigin('VND')->getAmount();
-        $balance = $origin - $price;
+        $balance = max(array($origin - $price, 0));
         return floor($balance * 100 / $origin);
     }
 

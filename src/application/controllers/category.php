@@ -47,6 +47,7 @@ class category extends BaseController
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
         call_user_func_array(array($view, 'setActiveCates'), $activeCates);
         $view->setData($data)
+                ->setTitle($thisCate->name)
                 ->setJavascript(array('/js/controller/CategoryListCtrl.js'))
                 ->setCss(array('/style/category.css'))
                 ->render('category/show');

@@ -2,7 +2,7 @@
 <data>
     <home>
         <lblBestSeller>SẢN PHẨM BÁN CHẠY</lblBestSeller>
-        <lblNewProduct>NEW PRODUCT</lblNewProduct>
+        <lblNewProduct>SẢN PHẨM MỚI</lblNewProduct>
     </home>
     <login>
         <title>PROJECT E Đăng nhập</title>
@@ -94,6 +94,10 @@
         <lblMenu>Danh mục</lblMenu>
         <lblYourCart>Giỏ hàng</lblYourCart>
         <btnPlus>Hiển thị thêm</btnPlus>
+        <wdCart>Giỏ</wdCart>
+        <wdView>Đã xem</wdView>
+        <wdTop>TRÊN</wdTop>
+        <wdBottom>DƯỚI</wdBottom>
     </layout>
     
     <sitemap>
@@ -150,7 +154,7 @@
         <lblSubmit>Tiến hành đặt hàng</lblSubmit>
         <lblSummaries>Tóm tắt</lblSummaries>
         <lblTaxes>Thuế</lblTaxes>
-        <lblProductCount><![CDATA[You have <span class="number">{{countProducts()}}</span> in your Cart]]></lblProductCount>
+        <lblProductCount><![CDATA[Bạn có <span class="number">{{countProducts()}}</span> trong Giỏ hàng]]></lblProductCount>
         <lblInStock>Còn hàng</lblInStock>
         <lblAlmostEmpty>Sắp hết hàng</lblAlmostEmpty>
         <lblOutOfOrder>Hết hàng</lblOutOfOrder>

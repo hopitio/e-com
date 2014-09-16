@@ -28,6 +28,10 @@ class product extends BaseController
         $mapper->getQuery()->select('seller.name as seller_name, seller.logo AS seller_logo')->innerJoin('t_seller as seller', 'seller.id = p.fk_seller');
         $product = $mapper->find(function($rawData, $instance)
         {
+            if (!$instance->id)
+            {
+                throw new Lynx_RoutingException();
+            }
             $instance->seller_name = $rawData['seller_name'];
             $instance->seller_logo = $rawData['seller_logo'];
         });
@@ -59,6 +63,7 @@ class product extends BaseController
         $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($ancestors[0])->findAll();
         $data['relatedProducts'] = $this->_get_related_products($product->id);
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                ->setTitle($product->getName())
                 ->setCss(array(
                     '/style/details.css',
                     '/plugins/jqzoom_ev-2.3/css/jquery.jqzoom.css'
@@ -90,12 +95,14 @@ class product extends BaseController
         $json = array();
         foreach ($products as $product)
         {
+            /* @var $product ProductFixedDomain */
             $images = $product->getImages('thumbnail');
             $obj = get_object_vars($product);
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getPriceMoney(User::getCurrentUser()->getCurrency()));
             $obj['url'] = base_url('product/details') . '/' . $product->id;
+            $obj['priceOrigin'] = (string) $product->getPriceOrigin(User::getCurrentUser()->getCurrency());
             $json[] = $obj;
         }
         return $json;
