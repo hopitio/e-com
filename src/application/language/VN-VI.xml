@@ -196,6 +196,7 @@
         <orderCancel>Your Sfriendly.com order has cancelled</orderCancel>
         <newpasswordNofication>Reset password</newpasswordNofication>
         <passwordNotify>Changed password</passwordNotify>
+        <orderRefuned>[Sfriendly] Trả hàng thành công </orderRefuned>
     </mail>
     
     <portalaccount_resetPassword></portalaccount_resetPassword>

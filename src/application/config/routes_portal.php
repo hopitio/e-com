@@ -52,7 +52,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/order_find'] = 'portalAdmin/orderList/showpage';
         $route['portal/__admin/order/(:num)'] = 'portalAdmin/orderDetail/showpage/$1';
         $route['portal/__admin/order/(:num)/add_invoice'] = 'portalAdmin/addInvoice/showPage/$1';
-        //$route['portal/__admin/order/(:num)/refuned'] = 'portalAdmin/addInvoice/showPage/$1';
+        $route['portal/__admin/order/(:num)/refuned'] = 'portalAdmin/orderRefuned/showPage/$1';
         
         $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/apiUser/contact/$1';
         $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/apiUser/setting/$1';
@@ -106,6 +106,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/__admin/user/(:num)/reject_login'] = 'portalAdmin/apiUser/rejectLoginAccount/$1';
         $route['portal/api/__admin/user/(:num)/open_login'] = 'portalAdmin/apiUser/openLoginAccount/$1';
         $route['portal/api/__admin/order_find_post_xhr'] ="portalAdmin/apiOrder/findOrderXhr";
+        $route['portal/__admin/order/(:num)/refuned'] ="portalAdmin/orderRefuned/postOrderRefuned/$1";
         
         $route['portal/api/__admin/order/(:num)/status_next'] ="portalAdmin/orderDetail/nextUpdateStatus/$1";
         $route['portal/api/__admin/order/(:num)/status_back'] ="portalAdmin/orderDetail/backOrderStatus/$1";

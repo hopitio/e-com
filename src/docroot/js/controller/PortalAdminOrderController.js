@@ -64,6 +64,10 @@ function PortalAdminOrderController($scope,$http)
         $("#comment-dialog").modal();
     };
     
+    $scope.driectToRefuned = function(){
+        window.location = "/portal/__admin/order/"+$scope.order.id+"/refuned";
+    };
+    
     function changStatusSucessCallback(data){
         if(!data.isError){
             alert(data.data);

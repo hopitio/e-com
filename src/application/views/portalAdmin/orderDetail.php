@@ -23,11 +23,12 @@
                 <span style="font-weight: bold;">Ngày kết thúc : </span> {{order.canceled_date}} <br/>
                 <span style="font-weight: bold;">Tài khoản thực hiện giao dịch : </span> {{order.user.account}} <br/>
                 <span style="font-weight: bold;">Tổng giá trị đơn hàng : </span> {{order.cost | number}} VND <br/>
-                <a class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'VERIFYING' && !onSubmit">Xác nhận đơn hàng (order place) </a>
-                <a class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'ORDER_PLACED' && !onSubmit">Đang vận chuyển (Shipping)</a>
-                <a class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'SHIPPING' && !onSubmit">Hoàn thành (Complete)</a>
-                <a class="btn btn-primary" href="javascript:void(0)" ng-click="rejectStatus()" ng-show="order.status != 'DELIVERED' && order.status != 'REJECTED' && order.status != 'ORDER_CANCELLED' && !onSubmit">Hủy đơn hàng</a>
-                <a class="btn btn-default btn-flat" href="javascript:void(0)" ng-show="onSubmit">Đang thực hiện giao dịch ...</a>
+                <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'VERIFYING' && !onSubmit">Xác nhận đơn hàng (order place) </a>
+                <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'ORDER_PLACED' && !onSubmit">Đang vận chuyển (Shipping)</a>
+                <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'SHIPPING' && !onSubmit">Hoàn thành (Complete)</a>
+                <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="driectToRefuned()" ng-show="(order.status == 'ORDER_PLACED' || order.status == 'VERIFYING') && !onSubmit">Trả hàng</a>
+                <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="rejectStatus()" ng-show="order.status != 'DELIVERED' && order.status != 'REJECTED' && order.status != 'ORDER_CANCELLED' && !onSubmit">Hủy đơn hàng</a>
+                <a style="width: 100%;margin-top:20px" class="btn btn-default btn-flat" href="javascript:void(0)" ng-show="onSubmit">Đang thực hiện giao dịch ...</a>
             </div>
         </div>
         <div class="box box-danger">

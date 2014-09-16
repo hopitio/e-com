@@ -19,6 +19,15 @@ class PortalOrderManager extends PortalBizOrder
         return $revalue;
     }
     
+    function refunedOrder($user,$orderId,$products,$contact,$otherCosts,$comment)
+    {
+        $PortalOrderCanncel = new PortalOrderRefuned($user, $orderId, $products, $contact, $otherCosts, $comment);
+        $invoiceId = $PortalOrderCanncel->process($orderId);
+        parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_REFUND);
+        parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_FAIL_TO_DELIVERED);
+        return $invoiceId;
+    }
+    
     function orderPlace($isSendMail,$userUpdate, $orderId, $invoiceId){
        $portalPaymentHistory = new PortalBizPaymentHistory();
        $order = $portalPaymentHistory->getOrderAllInformation($orderId);
