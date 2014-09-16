@@ -22,24 +22,42 @@
             scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
 
             var img = document.createElement('img');
-            img_container.append(img);
-            $(img).attr('data-src', '/thumbnail.php/' + scope.product.thumbnail + '/w=170')
-                    .attr('src', '/images/loading.gif')
-                    .attr('id', 'img-' + generateUUID());
+            var src = '/thumbnail.php/' + scope.product.thumbnail + '/w=170';
 
-            new Blazy({
-                selector: '#' + img.id,
-                success: function() {
+            if (!scope.product.lazy_image) {
+                img.src = src;
+                img.onload = function() {
                     if (img.width > img.height) {
                         img.style.width = '100%';
                     } else {
                         img.style.height = '100%';
                     }
-                },
-                error: function(ele) {
-                    ele.src = '';
-                }
-            });
+                    img.onload = null;
+                };
+
+                img_container.append(img);
+            } else {
+                img_container.append(img);
+                $(img).attr('data-src', src)
+                        .attr('src', '/images/loading.gif')
+                        .attr('id', 'img-' + generateUUID());
+
+                new Blazy({
+                    selector: '#' + img.id,
+                    success: function() {
+                        if (img.width > img.height) {
+                            img.style.width = '100%';
+                        } else {
+                            img.style.height = '100%';
+                        }
+                    },
+                    error: function(ele) {
+                        ele.src = '';
+                    }
+                });
+            }
+
+
         }
         return {
             link: link,
@@ -56,24 +74,40 @@
             scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
 
             var img = document.createElement('img');
-            img_container.append(img);
-            $(img).attr('data-src', '/thumbnail.php/' + scope.product.thumbnail + '/w=280')
-                    .attr('src', '/images/loading.gif')
-                    .attr('id', 'img-' + generateUUID());
+            var src = '/thumbnail.php/' + scope.product.thumbnail + '/w=280';
 
-            new Blazy({
-                selector: '#' + img.id,
-                success: function() {
+            if (!scope.product.lazy_image) {
+                img.src = src;
+                img.onload = function() {
                     if (img.width > img.height) {
                         img.style.width = '100%';
                     } else {
                         img.style.height = '100%';
                     }
-                },
-                error: function(ele) {
-                    ele.src = '';
-                }
-            });
+                    img.onload = null;
+                };
+
+                img_container.append(img);
+            } else {
+                img_container.append(img);
+                $(img).attr('data-src', src)
+                        .attr('src', '/images/loading.gif')
+                        .attr('id', 'img-' + generateUUID());
+
+                new Blazy({
+                    selector: '#' + img.id,
+                    success: function() {
+                        if (img.width > img.height) {
+                            img.style.width = '100%';
+                        } else {
+                            img.style.height = '100%';
+                        }
+                    },
+                    error: function(ele) {
+                        ele.src = '';
+                    }
+                });
+            }
         }
         return {
             link: link,
@@ -89,24 +123,40 @@
             scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
 
             var img = document.createElement('img');
-            img_container.append(img);
-            $(img).attr('data-src', '/thumbnail.php/' + scope.product.thumbnail + '/w=200')
-                    .attr('src', '/images/loading.gif')
-                    .attr('id', 'img-' + generateUUID());
+            var src = '/thumbnail.php/' + scope.product.thumbnail + '/w=200';
 
-            new Blazy({
-                selector: '#' + img.id,
-                success: function(ele) {
-                    if (ele.width > ele.height) {
-                        ele.style.width = '100%';
+            if (!scope.product.lazy_image) {
+                img.src = src;
+                img.onload = function() {
+                    if (img.width > img.height) {
+                        img.style.width = '100%';
                     } else {
-                        ele.style.height = '100%';
+                        img.style.height = '100%';
                     }
-                },
-                error: function(ele) {
-                    ele.src = '';
-                }
-            });
+                    img.onload = null;
+                };
+
+                img_container.append(img);
+            } else {
+                img_container.append(img);
+                $(img).attr('data-src', src)
+                        .attr('src', '/images/loading.gif')
+                        .attr('id', 'img-' + generateUUID());
+
+                new Blazy({
+                    selector: '#' + img.id,
+                    success: function() {
+                        if (img.width > img.height) {
+                            img.style.width = '100%';
+                        } else {
+                            img.style.height = '100%';
+                        }
+                    },
+                    error: function(ele) {
+                        ele.src = '';
+                    }
+                });
+            }
         }
         return {
             link: link,

@@ -37,6 +37,7 @@ angular.module('lynx').controller('homeCtrl', ['$scope', '$http', '$timeout', fu
                     });
                 }
             });
+            
         };
         $scope.getMoreNewProduct();
 
