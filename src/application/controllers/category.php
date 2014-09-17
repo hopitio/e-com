@@ -77,8 +77,10 @@ class category extends BaseController
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
-            $obj['priceOrigin'] = $product->priceOrigin ? (string)$product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
+            $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
             $obj['url'] = '/product/details/' . $product->id;
+            $obj['isNew'] = $product->isNew();
+            $obj['salesPercent'] = $product->getSalesPercent();
             $json[] = $obj;
         }
         echo json_encode($json);

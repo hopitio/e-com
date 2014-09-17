@@ -79,6 +79,7 @@ class home extends BaseController
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
             $obj['best'] = $i++ < 2 ? $i : false;
             $obj['salesPercent'] = $product->getSalesPercent();
+            $obj['isNew'] = $product->isNew();
             $json[] = $obj;
         }
         echo json_encode($json);
@@ -105,7 +106,8 @@ class home extends BaseController
                     $product->priceString = strval($product->getFinalPriceMoney($user->getCurrency()));
                     $product->url = base_url('product/details') . '/' . $product->id;
                     $product->priceOrigin = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
-                    
+                    $product->isNew = $product->isNew();
+                    $product->salesPercent = $product->getSalesPercent();
                 }
                 $group->details[$product->row][] = $product;
             }
@@ -130,6 +132,7 @@ class home extends BaseController
             $obj['url'] = base_url('product/details') . '/' . $product->id;
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
             $obj['salesPercent'] = $product->getSalesPercent();
+            $obj['isNew'] = $product->isNew();
             $json[] = $obj;
         }
         echo json_encode($json);

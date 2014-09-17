@@ -224,6 +224,7 @@ class ProductFixedDomain extends ProductDomain
         return ((bool) $this->getQuantity());
     }
 
+
     /**
      * Trọng lượng quy đổi bằng max(trọng lượng kq, x*y*z/6000)
      */

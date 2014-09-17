@@ -17,6 +17,7 @@ class ProductDomain implements DomainInterface
     public $status;
     public $price;
     public $priceOrigin;
+    public $releaseDate;
     protected $_attributes = array();
 
     /** @var ProductImage */
@@ -105,6 +106,16 @@ class ProductDomain implements DomainInterface
         {
             return $this->_taxes;
         }
+    }
+
+    function isNew()
+    {
+        $release_date = date_create($this->releaseDate);
+        if (!$release_date)
+        {
+            return false;
+        }
+        return (date_add($release_date, new DateInterval('P3D')) >= date_create(DB::getDate()));
     }
 
     /**

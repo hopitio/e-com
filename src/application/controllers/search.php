@@ -51,8 +51,12 @@ class search extends BaseController
             $obj = get_object_vars($product);
             $obj['name'] = (string) $product->getName();
             $obj['price'] = (string) $product->getFinalPriceMoney($user->getCurrency());
+            $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
+            $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
             $obj['thumbnail'] = isset($images[0]) ? $images[0]->url : '';
             $obj['url'] = '/product/details/' . $product->id;
+            $obj['isNew'] = $product->isNew();
+            $obj['salesPercent'] = $product->getSalesPercent();
             $json['products'][] = $obj;
         }
         echo json_encode($json);

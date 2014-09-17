@@ -20,7 +20,8 @@ class ProductMapper extends MapperAbstract
             'isGroup'     => 'is_group',
             'dateCreated' => 'date_created',
             'countPin'    => 'count_pin',
-            'priceOrigin' => 'price_origin'
+            'priceOrigin' => 'price_origin',
+            'releaseDate' => 'release_date'
         );
 
         parent::__construct($domain, $query, $map);

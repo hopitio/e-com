@@ -1,5 +1,6 @@
 <span class="best-balloon" ng-if="product.best">BEST {{product.best}}</span>
 <span class="sales-balloon" ng-if="product.salesPercent">{{product.salesPercent}}%</span>
+<span class="new-balloon" ng-if="!product.best && product.isNew"></span>
 <a class="opacity" href="{{product.url}}"></a>
 <div class="image"></div>
 <div class="name">{{product.name}}</div>
