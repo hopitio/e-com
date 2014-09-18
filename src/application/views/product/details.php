@@ -73,7 +73,7 @@
                 <div class="detail-main-right">
                     <h4 class="product-name"><?php echo $product->getName() ?></h4>
                     <a href="<?php echo $firstLargeImage ?>" class="jqzoom" rel='gal1' title="Zoom">
-                        <img src="<?php echo $firstMediumImage ?>" id="thumbViewing"  title="thumbnail" style="width:560px;">
+                        <img src="<?php echo $firstMediumImage ?>" id="thumbViewing"  title="thumbnail" style="width:450px;">
                     </a>
                 </div>
             </div>
@@ -123,8 +123,10 @@
                 <div class="detail-seller-logo"><img src="<?php echo $product->seller_logo ?>"></div>
                 <div class="detail-seller-name"><?php echo $product->seller_name ?></div>
                 <div class="left">
-                    <span class="detail-sale"><?php echo $product->getSalesPercent() ? $product->getSalesPercent() . '%' : '' ?></span>
-                    <div class="detail-origin-price"><?php echo $product->getPriceOrigin(User::getCurrentUser()->getCurrency()) ?></div>
+                    <?php if ($product->getSalesPercent()): ?>
+                        <span class="detail-sale"><?php echo $product->getSalesPercent() ?>%</span>
+                        <div class="detail-origin-price"><?php echo $product->getPriceOrigin(User::getCurrentUser()->getCurrency()) ?></div>
+                    <?php endif; ?>
                     <div class="detail-price"><?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?></div>
                 </div>
                 <div class="clearfix"></div>

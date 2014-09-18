@@ -228,7 +228,7 @@ li{list-style: none;}
 }
 .head-menu ul > li > .child{
     background: transparent url(/images/mn-child-bg.fw.png) repeat top left;
-    z-index: 50;
+    z-index: 500;
     display: none;
     position: absolute;
     padding:0px;

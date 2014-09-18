@@ -4,6 +4,7 @@ defined('BASEPATH') or die('No direct script access allowed');
 <div ng-controller="homeCtrl">
     <div class="banner-box width-960">
         <?php $banners = simplexml_load_string($banners); ?>
+        <h4></h4>
         <div id="carousel-home-banner" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <?php $i = 0; ?>
@@ -31,8 +32,9 @@ defined('BASEPATH') or die('No direct script access allowed');
             </a>
         </div>
     </div>
+    
     <div class="tab tab-orange width-960 text-left">
-        <div class="head width-960">
+        <div class="head width-960" style="margin-top: 15px;">
             <ul>
                 <li><?php echo $language[$view->view]->lblBestSeller ?></li>
                 <li class="line"></li>

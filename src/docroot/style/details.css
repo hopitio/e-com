@@ -49,7 +49,9 @@ ul.lynx-product-breadcrums li a:hover{
     padding-left: 5px;
 }
 .detail-main .detail-main-right .jqzoom{
-    width: 100%;
+    width: 450px;
+    display:block;
+    margin: 0 auto;
 }
 .detail-main .product-image{
     width: 100%;
