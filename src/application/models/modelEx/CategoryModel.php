@@ -83,7 +83,7 @@ class CategoryModel extends BaseModel
                 $mapper->orderByPrice(true);
                 break;
             case 'sale':
-                $mapper->orderBy('p.price_origin - p.price DESc');
+                $mapper->orderBy('p.sales_percent DESc');
                 break;
         }
 
@@ -109,18 +109,38 @@ class CategoryModel extends BaseModel
                     INNER JOIN t_category c ON c.id=p.fk_category AND c.path LIKE '{$category->path}%'
                 WHERE p.`status`=1
                 ";
+        switch ($sort) {
+            case 'new':
+                $sqlNormalProduct .= ' ORDER BY p.date_created DESC';
+                break;
+            case 'priceasc':
+                $sqlNormalProduct .= ' ORDER BY p.price ASC';
+                break;
+            case 'pricedesc':
+                $sqlNormalProduct .= ' ORDER BY p.price DESC';
+                break;
+            case 'sale':
+                $sqlNormalProduct .= ' ORDER BY p.sales_percent DESC';
+                break;
+        }
+        $sqlTemp = $sort ? $sqlNormalProduct : "$sqlBest UNION $sqlNormalProduct";
 
-        $sql = "SELECT p.*,(SELECT SUM(count_view) FROM t_product_view WHERE fk_product=p.id) AS count_view,
-                    seller.name AS seller_name 
-                FROM t_product p
-                    INNER JOIN ($sqlBest UNION $sqlNormalProduct) temp ON temp.id=p.id
-                    INNER JOIN t_seller seller ON p.fk_seller = seller.id
-                    ORDER BY temp.sort_best
-                LIMIT $limit OFFSET $offset";
+
+        $query = Query::make()
+                ->select('p.*,(SELECT SUM(count_view) FROM t_product_view WHERE fk_product=p.id) AS count_view, seller.name AS seller_name ')
+                ->from('t_product p')
+                ->innerJoin("($sqlTemp) temp", 'temp.id=p.id')
+                ->innerJoin('t_seller seller', 'p.fk_seller = seller.id')
+                ->limit($limit, $offset);
+        if (!$sort)
+        {
+            $query->orderBy('temp.sort_best');
+        }
+
         return ProductFixedMapper::make()
                         ->setLanguage($user->languageKey)
                         ->autoloadAttributes()
-                        ->setQuery($sql)
+                        ->setQuery((string) $query)
                         ->findAll(function($record, ProductFixedDomain $instance)
                         {
                             $instance->seller_name = $record['seller_name'];

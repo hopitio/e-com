@@ -1,5 +1,6 @@
 <?php
 /* @var $secondLvlCates CategoryDomain */
+/* @var $thisCate CategoryDomain */
 ?>
 <div ng-controller="CategoryListCtrl">
     <div class="lynx-menu-lvl2-container width-960">
@@ -46,17 +47,18 @@
 <?php
 $sortOptions = array(
     array('lynx_sorterNew', 'new', (string) $language[$view->view]->lblSortNew),
-    array('lynx_sorterSellOnline', 'bestseller', (string) $language[$view->view]->lblSortBestbuy),
+    //array('lynx_sorterSellOnline', 'bestseller', (string) $language[$view->view]->lblSortBestbuy),
     array('lynx_sorterPriceAsc', 'priceasc', (string) $language[$view->view]->lblSortPriceDown),
     array('lynx_sorterPriceDesc', 'pricedesc', (string) $language[$view->view]->lblSortPriceUp),
     array('lynx_sorterSaleAsc', 'sale', (string) $language[$view->view]->lblSortSaleoff),
-    array('lynx_sorterHot', 'hot', (string) $language[$view->view]->lblSortHot),
-    array('lynx_sorterMostLiked', 'like', (string) $language[$view->view]->lblSortLike)
+        //array('lynx_sorterHot', 'hot', (string) $language[$view->view]->lblSortHot),
+        //array('lynx_sorterMostLiked', 'like', (string) $language[$view->view]->lblSortLike)
         )
 ?>
 <script>
     var scriptData = {
         categoryId: <?php echo (int) $thisCate->id ?>,
-        sortOptions: <?php echo json_encode($sortOptions) ?>
+        sortOptions: <?php echo json_encode($sortOptions) ?>,
+        isCategoryContainer: <?php echo $thisCate->isContainer ? 'true' : 'false' ?>
     };
 </script>

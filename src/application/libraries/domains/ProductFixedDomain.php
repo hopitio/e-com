@@ -168,10 +168,7 @@ class ProductFixedDomain extends ProductDomain
 
     function getSalesPercent()
     {
-        $price = $this->getPriceMoney('VND')->getAmount();
-        $origin = $this->getPriceOrigin('VND')->getAmount();
-        $balance = max(array($origin - $price, 0));
-        return floor($balance * 100 / $origin);
+        return $this->salesPercent;
     }
 
     /**
@@ -223,7 +220,6 @@ class ProductFixedDomain extends ProductDomain
     {
         return ((bool) $this->getQuantity());
     }
-
 
     /**
      * Trọng lượng quy đổi bằng max(trọng lượng kq, x*y*z/6000)

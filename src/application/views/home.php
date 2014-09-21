@@ -103,7 +103,6 @@ defined('BASEPATH') or die('No direct script access allowed');
         </div>
 
         <div class="width-960 text-center">
-            <h4>&nbsp;</h4>
             <input type='button' class='btn-plus' ng-click='getMoreNewProduct()' value='<?php echo $language['layout']->btnPlus ?>'>
         </div>
     </div>

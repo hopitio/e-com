@@ -14,14 +14,15 @@ class ProductMapper extends MapperAbstract
         $query = Query::make()->select('p.*', true)->from('t_product p');
 
         $map = array(
-            'fkCategory'  => 'fk_category',
-            'fkRetailer'  => 'fk_retailer',
-            'fkGroup'     => 'fk_group',
-            'isGroup'     => 'is_group',
-            'dateCreated' => 'date_created',
-            'countPin'    => 'count_pin',
-            'priceOrigin' => 'price_origin',
-            'releaseDate' => 'release_date'
+            'fkCategory'   => 'fk_category',
+            'fkRetailer'   => 'fk_retailer',
+            'fkGroup'      => 'fk_group',
+            'isGroup'      => 'is_group',
+            'dateCreated'  => 'date_created',
+            'countPin'     => 'count_pin',
+            'priceOrigin'  => 'price_origin',
+            'releaseDate'  => 'release_date',
+            'salesPercent' => 'sales_percent'
         );
 
         parent::__construct($domain, $query, $map);

@@ -126,17 +126,21 @@ class ProductModel extends BaseModel
 
     function updateProduct($productID, $language, $productFields, $attributes = false)
     {
+        $price = $productFields['price'];
+        $priceOrigin = isset($productFields['price_origin']) ? $productFields['price_origin'] : 0;
+        $salesPercent = $priceOrigin && $priceOrigin > $price ? floor(($priceOrigin - $price) * 100 / $priceOrigin) : 0;
         if ($productID)
         {
-            DB::update('t_product', array(
-                'fk_category'  => (int) $productFields['fk_category'],
-                'price'        => (double) str_replace(',', '', $productFields['price']),
-                'price_origin' => (double) str_replace(',', '', $productFields['price_origin'])
+            DB:: update('t_product', array(
+                'fk_category'   => (int) $productFields['fk_category'],
+                'price'         => (double) str_replace(',', '', $productFields['price']),
+                'price_origin'  => (double) str_replace(',', '', $productFields['price_origin']),
+                'sales_percent' => $salesPercent
                     ), 'id=' . intval($productID));
         }
         else
         {
-            $productID = DB::insert('t_product', $productFields);
+            $productID = DB:: insert('t_product', $productFields);
         }
         foreach ($attributes as $attrType => $attrVal):
             $attrType = ProductAttributeTypeMapper::make()->filterCode($attrType)->find();
@@ -157,7 +161,9 @@ class ProductModel extends BaseModel
             }
         endforeach;
         $this->updateProductImages($productID);
-        return $productID;
+        return
+
+                $productID;
     }
 
     function updateProductImages($productID)
@@ -176,14 +182,14 @@ class ProductModel extends BaseModel
             foreach ($imgTypes as $imgType => $multiple)
             {
                 $field = $map[$imgType];
-                $updateData['sort'] = isset($_POST['txtSort']) && isset($_POST['txtSort'][$fileID]) ? (int) $_POST['txtSort'][$fileID] : 0;
+                $updateData['sort'] = isset($_POST ['txtSort']) && isset($_POST['txtSort'][$fileID]) ? (int) $_POST['txtSort'][$fileID] : 0;
                 if ($multiple)
                 {
                     $updateData[$field] = isset($_POST['chkType']) ? 1 : 0;
                 }
                 else
                 {
-                    $updateData[$field] = isset($_POST['radType']) && isset($_POST['radType'][$imgType]) && $_POST['radType'][$imgType] == $fileID ? 1 : 0;
+                    $updateData[$field] = isset($_POST ['radType']) && isset($_POST['radType'] [$imgType]) && $_POST['radType'] [$imgType] == $fileID ? 1 : 0;
                 }
             }
             DB::update('t_product_image', $updateData, 'fk_product=? AND fk_file=?', array($productID, $fileID));
@@ -222,7 +228,9 @@ class ProductModel extends BaseModel
         {
             throw new Lynx_BusinessLogicException("Duplicate xảy ra lỗi SQL");
         }
-        return $newProductID;
+        return
+
+                $newProductID;
     }
 
     function updateAttribute($productID, $language, ProductAttributeTypeDomain $attrType, $value)
@@ -296,7 +304,8 @@ class ProductModel extends BaseModel
 
     function deleteTax($productID, $taxID)
     {
-        DB::delete('t_product_tax', 'fk_product=? AND fk_tax=?', array($productID, $taxID));
+        DB::delete('t_product_tax', 'fk_product=? AND fk_tax=?', array($productID,
+            $taxID));
     }
 
     function deleteImage($productID, $fileID)
@@ -306,7 +315,8 @@ class ProductModel extends BaseModel
         {
             throw new Exception('Bạn không thể xóa ảnh cuối cùng');
         }
-        DB::delete('t_product_image', 'fk_product=? AND fk_file=?', array($productID, $fileID));
+        DB::delete('t_product_image', 'fk_product=? AND fk_file=?', array($productID,
+            $fileID));
     }
 
     function addtoViewList($productID)
@@ -315,7 +325,10 @@ class ProductModel extends BaseModel
         $products = $CI->session->userdata(static::SESS_VIEW);
         $products[$productID] = $productID;
         $CI->session->set_userdata(array(static::SESS_VIEW => $products));
-        return $this;
+
+        return
+
+                $this;
     }
 
     function getViewedProducts()

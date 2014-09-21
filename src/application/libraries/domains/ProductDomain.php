@@ -18,6 +18,7 @@ class ProductDomain implements DomainInterface
     public $price;
     public $priceOrigin;
     public $releaseDate;
+    public $salesPercent;
     protected $_attributes = array();
 
     /** @var ProductImage */

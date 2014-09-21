@@ -2,7 +2,7 @@ angular.module('lynx').controller('CategoryListCtrl', ['$scope', '$http', '$time
         $scope.productRows = [[]];
         $scope.sortOptions = scriptData.sortOptions;
         $scope.hashParams = {
-            sort: $.hashParam('sort') || 'new'
+            sort: $.hashParam('sort') || (scriptData.isCategoryContainer ? '' : 'new')
         };
         $scope.offset = 0;
 
@@ -15,20 +15,26 @@ angular.module('lynx').controller('CategoryListCtrl', ['$scope', '$http', '$time
                 return;
             window.location.hash = $.param($scope.hashParams);
             $scope.offset = 0;
-            $scope.productRows = [[]];
             getProducts();
         });
 
         var getParams;
         function getProducts() {
+            var resetProducts = false;
             newParams = {
                 offset: $scope.offset,
                 sort: $scope.hashParams.sort
             };
             if (JSON.stringify(newParams) == JSON.stringify(getParams))
                 return;
+
+            if (getParams && newParams.sort !== getParams.sort) {
+                resetProducts = true;
+            }
             getParams = newParams;
             $http.get('/category/productService/' + scriptData.categoryId, {params: getParams}).success(function(products) {
+                if (resetProducts)
+                    $scope.productRows = [[]];
                 var currentRow = Math.max($scope.productRows.length - 1, 0);
                 $scope.offset += products.length;
                 //productRow

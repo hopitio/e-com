@@ -63,7 +63,7 @@ class category extends BaseController
 
         if ($category->getLevel() == 1)
         {
-            $products = $this->categoryModel->getBestProduct($category, $offset);
+            $products = $this->categoryModel->getBestProduct($category, $offset, $sort);
         }
         else
         {

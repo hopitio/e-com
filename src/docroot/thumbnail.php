@@ -40,7 +40,15 @@ if (!$orgil_img)
     not_found();
 }
 
-$cached_img = __DIR__ . '/cache/thumb/' . md5($uri);
+if (DIRECTORY_SEPARATOR == "\\")
+{
+    $cacheDir = __DIR__ . '/cache/thumb/';
+}
+else
+{
+    $cacheDir = '/var/www/thumbnails/';
+}
+$cached_img = $cacheDir . md5($uri);
 if (!file_exists($cached_img) || filemtime($cached_img) < time() - CACHE_TIME)
 {
     if (!getimagesize($orgil_img))

@@ -14,17 +14,14 @@ angular.module('lynx').controller('productDetailsCtrl', ['$scope', '$timeout', f
         }
 
         $scope.shareFacbook = function() {
-            var productName = $(".lynx_productImageHead .lynx_title").text();
-            var caption = $(".lynx_productChoicePannel .lynx_productPrice").text();
-            var des = $(".lynx_productDetailDescription").text();
 //        var src = $(".lynx_productImageContainer .lynx_image img").attr('src').replace('..', '');
 //        var picturePro = window.location.protocol + window.location.hostname + src;
             FB.ui(
                     {
                         method: 'feed',
-                        name: productName,
-                        caption: caption,
-                        description: des,
+                        name: scriptData.productName,
+                        caption: scriptData.productPrice,
+                        description: scriptData.productDesc,
                         link: document.URL,
                         picture: scriptData.facebookImage
                     },

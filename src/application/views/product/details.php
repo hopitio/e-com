@@ -2,6 +2,12 @@
 /* @var $product ProductFixedDomain */
 /* @var $breadcrums array */
 /* @var $ancestors array */
+$images = $product->getImages('thumbnail');
+$facebookImage = '';
+if (!empty($images))
+{
+    $facebookImage = $images[0];
+}
 ?>
 <div ng-app="lynx" ng-controller="productDetailsCtrl">
     <div class="lynx-menu-lvl2-container width-960">
@@ -116,6 +122,12 @@
                     </div>
                 </div>
             </div>
+            <h4></h4>
+            <div class="lynx_facebookReview">
+                <div class="fb-comments" data-width="675" data-href="<?php echo Common::curPageURL(); ?>" data-numposts="10" data-colorscheme="light">
+                    Loading Facebook...
+                </div>
+            </div>
         </div><!--main-->
         <div class="detail-summaries">
             <form id="frmAddTo">
@@ -140,7 +152,7 @@
                 <h4 ></h4>
                 <div class="detail-share"> 
                     <span><?php echo $language[$view->view]->lblShare ?>: </span>
-                    <a href="javascript:;" class="share share-facebook"></a>
+                    <a href="javascript:;" class="share share-facebook" ng-click="shareFacbook()" title="Share on Facebook"></a>
                     <a href="javascript:;" class="share share-twiter"></a>
                     <a href="javascript:;" class="share share-google"></a>
                     <a href="javascript:;" class="share share-email"></a>           
@@ -188,6 +200,10 @@
 </div><!--ng-ctrl-->
 <script>
     var scriptData = {
-        relatedProducts: <?php echo json_encode($relatedProducts) ?>
+        relatedProducts: <?php echo json_encode($relatedProducts) ?>,
+        productName: <?php echo json_encode((string) $product->getName()) ?>,
+        productPrice: '<?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?>',
+        productDescription: '<?php echo json_encode(strip_tags($product->getDescription())) ?>',
+        facebookImage: '<?php echo $_SERVER['HTTP_HOST'] ?>/thumbnail.php/<?php echo $facebookImage->url ?>/w=200'
     };
 </script>

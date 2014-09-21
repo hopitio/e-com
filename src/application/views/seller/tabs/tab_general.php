@@ -53,14 +53,14 @@ defined('BASEPATH') or die('no direct access alowed');
         <div class="row">
             <div class="col-sm-4">
                 <input type="text" class="" name="pattr[dimension_width]" id="txtDimensionWidth" 
-                       placeholder="chiều rộng" value="<?php echo $product->getDimensionWidth() ?>" data-rule-required="true">
+                       placeholder="chiều dài" value="<?php echo $product->getDimensionWidth() ?>" data-rule-required="true">
             </div>
             <div class="col-sm-4">
-                <input type="text" class="" name="pattr[dimension_height]" id="txtDimensionHeight" placeholder="chiều cao" 
+                <input type="text" class="" name="pattr[dimension_height]" id="txtDimensionHeight" placeholder="chiều rộng" 
                        value="<?php echo $product->getDimensionHeight() ?>" data-rule-required="true">
             </div>
             <div class="col-sm-4">
-                <input type="text" class="" name="pattr[dimension_depth]" id="txtDimensionDepth" placeholder="chiều sâu"
+                <input type="text" class="" name="pattr[dimension_depth]" id="txtDimensionDepth" placeholder="chiều cao"
                        value="<?php echo $product->getDimensionDepth() ?>" data-rule-required="true">
             </div>
         </div>            

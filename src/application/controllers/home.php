@@ -119,7 +119,8 @@ class home extends BaseController
     {
         header('content-type:application/json');
         $user = User::getCurrentUser();
-        $products = $this->product_model->getAllNewProduct(8, (int) $offset);
+        $limit = !$offset ? 12 : 8;
+        $products = $this->product_model->getAllNewProduct($limit, (int) $offset);
         $json = array();
         /* @var $products ProductFixedDomain */
         foreach ($products as $product)

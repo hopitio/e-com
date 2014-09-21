@@ -178,20 +178,16 @@ li{list-style: none;}
     background: transparent url(/images/mn-spe-bg.fw.png) no-repeat top right;
     position: relative;
 }
-.head-menu > ul > li > .child > ul > li > a{
-    background-position-y: 50%;
-    background-repeat: no-repeat;
-}
 .head-menu > ul > li > a{
     display:inline-block;
-    font-size: 13px;
-    padding: 0px 23px 0 60px;
+    font-size: 12px;
+    padding: 0px 20px 0 50px;
     line-height: 35px;
     color:#414f53;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration:none;
-    background-position: 23px 3px;
+    background-position: 15px 3px;
     background-repeat: no-repeat;
     background-size: auto 80%;
 }
@@ -257,10 +253,12 @@ li{list-style: none;}
 }
 .head-menu .child ul > li > a {
     color:#333;text-decoration:none;
-    padding-left: 53px;
+    padding-left: 10px;
     display:block;
 }
-
+.head-menu .child ul > li > a:hover{
+    background: whitesmoke;
+}
 .head-menu .child ul > li > a > span{
     height:50px;
     line-height:50px;
@@ -315,10 +313,6 @@ li{list-style: none;}
 .lynx-box:hover  > .opacity{
     display: inline-block;
     z-index:4;
-}
-
-.lynx-box:hover > .image{
-    border:solid 1px rgba(0,0,0,.2);
 }
 .lynx-box > .opacity{
     position: absolute;
