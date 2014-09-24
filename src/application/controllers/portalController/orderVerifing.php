@@ -106,6 +106,7 @@ class orderVerifing extends BasePortalController
             ->render('portalPayment/orderEmailVerify');
             
         }else{
+            //echo "<pre>"; var_dump($user); die;
             $this->obj_user =  $user;
             $this->obj_user->is_authorized = true;
             $this->obj_user->portal_id = $user->id;
@@ -160,7 +161,6 @@ class orderVerifing extends BasePortalController
                 $userContactRespository->id = $shipping->contact->id;
                 $userContactRespository->fk_user = $userId;
                 $userContactRespository->updateById();
-                echo "<pre/>"; echo json_encode($shipping->contact);die;
             }
         }
     }

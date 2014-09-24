@@ -346,7 +346,51 @@
     </category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
-    <portalPayment_paymentChoice></portalPayment_paymentChoice>
+    <portalPayment_paymentChoice>
+        <title>Choosing a payment method</title>
+        <fieldsetTitle>Choose payment</fieldsetTitle>
+        <paymentByNL>For electronic payments under</paymentByNL>
+        <paymentByCash>Payment in cash</paymentByCash>
+        <paymentByVisa>Payment by Visa / Master</paymentByVisa>
+        <paymentByATM>Payment by ATM</paymentByATM>
+        <paymentNLNoteTitle>You will be paid by such Ngan Luong :</paymentNLNoteTitle>
+        <paymentCashNoteTitle>You will pay with cash on delivery at home :</paymentCashNoteTitle>
+        <paymentVisaNoteTitle>You will pay with Visa / Master :</paymentVisaNoteTitle>
+        <paymentATMNoteTitle>You will pay online with your ATM / bank account domestic :</paymentATMNoteTitle>
+        <paymentNLNoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 You need to register bank accounts amount <br /> <br />]]></paymentNLNoteContent>
+        <paymentCashNoteContent><![CDATA[<br /> Note: Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if applicable) <br /> <br />]]></paymentCashNoteContent>
+        <paymentVISANoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 Accept all cards from local banks and international release <br /> <br />]]></paymentVISANoteContent>
+        <paymentATMNoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 You need to register or Internet-banking services online payment at the bank implementation <br /> <br /> Bank transaction:]]></paymentATMNoteContent>
+        <paymentInoivceNote><![CDATA[<br /> Note: Invoices for products sold by merchants member will be made ​​in 7 days of delivery success. <br /> <br />]]></paymentInoivceNote>
+        <paymentNoficationNote>You will be informed about the order status via email and SMS.</paymentNoficationNote>
+        <paymentSecurity>Information and personal accounts will be encrypted to ensure absolute safety</paymentSecurity>
+        <paymentSupport><![CDATA[Do you need assistance? Call Hotline <span style = "color: red;"> 098 999 999 </ span> or <span style = "color: red;"> 043. 999.999 </ span>]]></paymentSupport>
+        <paymentProductionCount><![CDATA[You have <span class="number"> {{orderInformation.invoice.products.length}} </span> products in cart<br />]]></paymentProductionCount>
+        <colProduction>Product</colProduction>
+        <colPrice>Price</colPrice>
+        <colQuantity>Quantity</colQuantity>
+        <colTotal>Total</colTotal>
+        <shippingTo>Shipping to</shippingTo>
+        <lblOrderSummaries>Synthesis orders</lblOrderSummaries>
+        <lblOrderId>Order Id : </lblOrderId>
+        <lblInvoiceId>Invoice : </lblInvoiceId>
+        <lblCreateDate>Created at : </lblCreateDate>
+        <lblOrderSummariesDetail>The order have </lblOrderSummariesDetail>
+        <lblProducts>Products</lblProducts>
+        <lblOrderShipping>  Transport Information : </lblOrderShipping>
+        <lblOrderSubtotal>Total goods : </lblOrderSubtotal>
+        <lblOrderTax>Taxes : </lblOrderTax>
+        <lblOrderTotal>The total value of bills : </lblOrderTotal>
+        <lblUsingForShipping>Use as billing address</lblUsingForShipping>
+        <lblprocessCart>Cart</lblprocessCart>
+        <lblprocessShipping>Delivery information</lblprocessShipping>
+        <lblprocessPayment>Payment information</lblprocessPayment>
+        <lblPhone>Phone Number : </lblPhone>
+        <paidTo>Payment in</paidTo>
+        <btnNext>Next</btnNext>
+        <btnBack>Go back</btnBack>
+        <btnNextHigh>Continue to order</btnNextHigh>
+    </portalPayment_paymentChoice>
     <portalPayment_orderReview></portalPayment_orderReview>
     <portalPayment_paymentSuccess>
         <title>Successful transactions</title>
@@ -372,38 +416,43 @@
         
     </admin_product>
     <portalPayment_orderEmailVerify>
-        <title>Địa chỉ mail giao dịch</title>
-        <paymentProcessCart>Giỏ hàng</paymentProcessCart>
-        <paymentProcessPlaceOrder>Quầy Thanh toán</paymentProcessPlaceOrder>
-        <paymentProcessShipping>Thông tin vận chuyển</paymentProcessShipping>
-        <paymentProcessPaymentInfor>Phương thức thanh toán</paymentProcessPaymentInfor>
-        <paymentProcessPayment>Thanh toán</paymentProcessPayment>
+        <title>Verify email</title>
+        <paymentProcessCart>Cart</paymentProcessCart>
+        <paymentProcessPlaceOrder>Checkout Counters</paymentProcessPlaceOrder>
+        <paymentProcessShipping>Transport Information</paymentProcessShipping>
+        <paymentProcessPaymentInfor>Payment Methods</paymentProcessPaymentInfor>
+        <paymentProcessPayment>Payment</paymentProcessPayment>
+        <lblprocessCart>Cart</lblprocessCart>
+        <lblprocessShipping>Delivery information</lblprocessShipping>
+        <lblprocessPayment>Payment information</lblprocessPayment>
+        <lblGoBack>Go back</lblGoBack>
+        <txtEmailInput>Enter your email address:</txtEmailInput>
+        <orderWithoutAccount>Order without registration</orderWithoutAccount>
+        <orderWithAccount>I already have an account at Sfriendly.com</orderWithAccount>
+        <lostPassword>Forgot password</lostPassword>
+        <lblShippingAddress>Consignee address</lblShippingAddress>
+        <lblShippingInvoiceAddress>Billing address</lblShippingInvoiceAddress>
+        <lblFullname>Full name : </lblFullname>
+        <lblPhone>Phone number : </lblPhone>
+        <lblAddress>Address : </lblAddress>
+        <lblEmail>Verify email</lblEmail>
+        <loginWrongMsg>Wrong username or password</loginWrongMsg>
+        <lblPaymentType>Payment Methods</lblPaymentType>
+        <colPlaymentType>Payment Types</colPlaymentType>
+        <colPlaymentFreeType>Charges</colPlaymentFreeType>
+        <colPlaymentFree>Costs (VND)</colPlaymentFree>
         
-        <lblGoBack>Trở lại</lblGoBack>
-        
-        <lblShippingAddress>Địa chỉ nhận hàng</lblShippingAddress>
-        <lblShippingInvoiceAddress>Địa chỉ nhận hóa đơn</lblShippingInvoiceAddress>
-        <lblFullname>Họ và tên : </lblFullname>
-        <lblPhone>Số điện thoại : </lblPhone>
-        <lblAddress>Địa chỉ : </lblAddress>
-        <lblEmail>Xác minh địa chỉ email</lblEmail>
-        
-        <lblPaymentType>Phương thức thanh toán</lblPaymentType>
-        <colPlaymentType>Loại thanh toán</colPlaymentType>
-        <colPlaymentFreeType>Cách tính phí</colPlaymentFreeType>
-        <colPlaymentFree>Chi phí (VND)</colPlaymentFree>
-        
-        <lblOrderSummaries>Tổng hợp đơn hàng</lblOrderSummaries>
-        <lblOrderId>Mã đơn hàng : </lblOrderId>
-        <lblInvoiceId>Mã hóa đơn : </lblInvoiceId>
-        <lblCreateDate>Ngày tạo : </lblCreateDate>
-        <lblOrderSummariesDetail>Đơn hàng gồm có</lblOrderSummariesDetail>
-        <lblProducts>Sản phẩm</lblProducts>
-        <lblOrderShipping>Thông tin vận chuyển : </lblOrderShipping>
-        <lblOrderSubtotal>Tổng hàng : </lblOrderSubtotal>
-        <lblOrderTax>Thuế : </lblOrderTax>
-        <lblOrderTotal>Tổng giá trị hóa đơn : </lblOrderTotal>
-        <btnNext>Tiếp theo</btnNext>
-        <btnBack>Trở lại giỏ hàng</btnBack>
+        <lblOrderSummaries>Synthesis orders</lblOrderSummaries>
+        <lblOrderId>Order Id : </lblOrderId>
+        <lblInvoiceId>Invoice Id : </lblInvoiceId>
+        <lblCreateDate>Created t : </lblCreateDate>
+        <lblOrderSummariesDetail>Orders include</lblOrderSummariesDetail>
+        <lblProducts>Products</lblProducts>
+        <lblOrderShipping>Transport Information : </lblOrderShipping>
+        <lblOrderSubtotal>Total goods : </lblOrderSubtotal>
+        <lblOrderTax>Taxes : </lblOrderTax>
+        <lblOrderTotal>The total value of bills : </lblOrderTotal>
+        <btnNext>Next</btnNext>
+        <btnBack>Back cart</btnBack>
     </portalPayment_orderEmailVerify>
 </data>

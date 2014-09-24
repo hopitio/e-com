@@ -2,7 +2,7 @@
     <ul id="cart-process">
         <li class="passed">
             <div class="process-text">
-                <span class="number">1</span> <label>Giỏ hàng</label>
+                <span class="number">1</span> <label><?php echo $language[$view->view]->lblprocessCart;?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -11,7 +11,7 @@
         </li>
         <li class="passed">
             <div class="process-text">
-                <span class="number">2</span> <label>Thông tin giao hàng</label>
+                <span class="number">2</span> <label><?php echo $language[$view->view]->lblprocessShipping;?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -20,8 +20,7 @@
         </li>
         <li class="active">
             <div class="process-text">
-                <span class="number">3</span> <label>Thông tin thanh
-                    toán</label>
+                <span class="number">3</span> <label><?php echo $language[$view->view]->lblprocessPayment;?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -39,58 +38,24 @@
 
         <div class="cart-left col-xs-8">
             <fieldset class="lynx_orderInformation">
-                <legend style="text-align: left;">Chọn thanh toán</legend>
+                <legend style="text-align: left;"><?php echo $language[$view->view]->fieldsetTitle;?></legend>
                 <div class="payment-methods">
                     <ul>
-                        <li ng-click="paymentMethodChanged('NL')" ng-class="{active:paymentMethodCode == 'NL'}">Thanh toán theo Ví điện tử</li>
-                        <li ng-click="paymentMethodChanged('CASH')" ng-class="{active:paymentMethodCode == 'CASH'}">Thanh toán bằng tiền mặt</li>
-                        <li ng-click="paymentMethodChanged('VISA')" ng-class="{active:paymentMethodCode == 'VISA'}">Thanh toán bằng Visa/Master</li>
-                        <li ng-click="paymentMethodChanged('ATM')" ng-class="{active:paymentMethodCode == 'ATM'}">Thanh toán bằng ATM</li>
+                        <li ng-click="paymentMethodChanged('NL')" ng-class="{active:paymentMethodCode == 'NL'}"><?php echo $language[$view->view]->paymentByNL;?></li>
+                        <li ng-click="paymentMethodChanged('CASH')" ng-class="{active:paymentMethodCode == 'CASH'}"><?php echo $language[$view->view]->paymentByCash;?></li>
+                        <li ng-click="paymentMethodChanged('VISA')" ng-class="{active:paymentMethodCode == 'VISA'}"><?php echo $language[$view->view]->paymentByVisa;?></li>
+                        <li ng-click="paymentMethodChanged('ATM')" ng-class="{active:paymentMethodCode == 'ATM'}"><?php echo $language[$view->view]->paymentByATM;?></li>
                     </ul>
                 </div>
                 <div class="payment-box">
-                    <strong ng-show="paymentMethodCode == 'NL'">Bạn sẽ
-                        thanh toán bằng ví Ngân Lượng :</strong> <strong
-                        ng-show="paymentMethodCode == 'CASH'">Bạn sẽ
-                        thanh toán bằng tiền mặt khi nhận hàng tại nhà :</strong>
-                    <strong ng-show="paymentMethodCode == 'VISA'">Bạn sẽ
-                        thanh toán bằng thẻ visa/mastercard :</strong> <strong
-                        ng-show="paymentMethodCode == 'ATM'">Bạn sẽ
-                        thanh toán online bằng thẻ ATM/ Tài khoản ngân
-                        hàng nội địa :</strong>
-                    <p ng-show="paymentMethodCode == 'NL'"
-                        style="margin: auto">
-                        <br /> Lưu ý: <br /> 1. Vui lòng kiểm tra kỹ
-                        thông tin đơn hàng bên tay phải về:<br /> - Phí
-                        thực hiện đơn hàng<br /> - Phí giao hàng (nếu
-                        có)<br /> 2. Bạn cần đăng ký tài khoản Ngân
-                        Lượng<br /> <br />
-                    </p>
-                    <p ng-show="paymentMethodCode == 'CASH'"
-                        style="margin: auto">
-                        <br /> Lưu ý: Vui lòng kiểm tra kỹ thông tin đơn
-                        hàng bên tay phải về:<br /> - Phí thực hiện đơn
-                        hàng<br /> - Phí giao hàng (nếu có)<br /> <br />
-                    </p>
-                    <p ng-show="paymentMethodCode == 'VISA'"
-                        style="margin: auto">
-                        <br /> Lưu ý: <br /> 1. Vui lòng kiểm tra kỹ
-                        thông tin đơn hàng bên tay phải về:<br /> - Phí
-                        thực hiện đơn hàng<br /> - Phí giao hàng (nếu
-                        có)<br /> 2. Chấp nhận tất cả thẻ do ngân hàng
-                        trong nước và quốc tế phát hành<br /> <br />
-                    </p>
-                    <p ng-show="paymentMethodCode == 'ATM'"
-                        style="margin: auto">
-                        <br /> Lưu ý: <br /> 1. Vui lòng kiểm tra kỹ
-                        thông tin đơn hàng bên tay phải về:<br /> - Phí
-                        thực hiện đơn hàng<br /> - Phí giao hàng (nếu
-                        có)<br /> 2. Bạn cần đăng ký Internet-Banking
-                        hoặc dịch vụ thanh toán trực tuyến tại ngân hàng
-                        thực hiện <br /> <br />
-
-                    Ngân hàng thực hiện giao dịch : 
-                    <br/>
+                    <strong ng-show="paymentMethodCode == 'NL'"><?php echo $language[$view->view]->paymentNLNoteTitle;?></strong> 
+                    <strong ng-show="paymentMethodCode == 'CASH'"><?php echo $language[$view->view]->paymentCashNoteTitle;?></strong>
+                    <strong ng-show="paymentMethodCode == 'VISA'"><?php echo $language[$view->view]->paymentVisaNoteTitle;?></strong> 
+                    <strong ng-show="paymentMethodCode == 'ATM'"><?php echo $language[$view->view]->paymentATMNoteTitle;?></strong>
+                    <p ng-show="paymentMethodCode == 'NL'" style="margin: auto"><?php echo $language[$view->view]->paymentNLNoteContent; ?></p>
+                    <p ng-show="paymentMethodCode == 'CASH'" style="margin: auto"><?php echo $language[$view->view]->paymentCashNoteContent; ?></p>
+                    <p ng-show="paymentMethodCode == 'VISA'" style="margin: auto"><?php echo $language[$view->view]->paymentVISANoteContent; ?></p>
+                    <p ng-show="paymentMethodCode == 'ATM'" style="margin: auto"><?php echo $language[$view->view]->paymentATMNoteContent; ?><br/>
 					<ul ng-show="paymentMethodCode == 'ATM'" class="cardList clearfix">
                         <li class="bank-online-methods " ng-click="setSelectedBankCode($event)">
 							<label for="bidv_ck_on">
@@ -307,53 +272,49 @@
                     
                     
                     
-                    <p style="font-size: 11px;color:#1F7992;margin:auto">
-                        <br />Lưu ý: Hóa đơn cho các sản phẩm được bán bởi thương nhân thành viên sẽ được xuất trong 7 ngày kể từ ngày giao hàng thành công.<br />
-                        <br />
-                    </p>
+                    <p style="font-size: 11px;color:#1F7992;margin:auto"><?php echo $language[$view->view]->paymentInoivceNote; ?></p>
                     
                     <div class="pull-right">
                         <a href="/cart/shipping" class="btn-cart-prev" style="width: 150px; margin-right:10px;">
                             <div class="pull-left"><i class="fa fa-caret-left"></i></div>
-                            Quay lại
+                            <?php echo $language[$view->view]->btnBack; ?>
                         </a>
                         <a ng-click="submit()" href="javascript:;" class="btn-cart-next" style="width: 150px;" data-type="submit">
-                                Đặt hàng <div class="pull-right"><i class="fa fa-caret-right"></i></div>
+                                <?php echo $language[$view->view]->btnNext; ?> 
+                                <div class="pull-right"><i class="fa fa-caret-right"></i></div>
                         </a>
                     </div>
                     
                     <p>
-                        <br />Bạn sẽ được thông báo về tình trạng đơn hàng qua email và tin nhắn.<br />
+                        <br /><?php echo $language[$view->view]->paymentNoficationNote; ?> <br />
                     </p>
                 </div>
             </fieldset>
             
             <div class="border-full-dashed">
-               <strong><img alt="" src="/images/lock.fw.png"> Thông tin và tài khoản cá nhân sẽ được mã hóa để đảm bảo an toàn tuyệt đối</strong>
+               <strong><img alt="" src="/images/lock.fw.png"> <?php echo $language[$view->view]->paymentSecurity; ?></strong>
             </div>
             <h4></h4>
             <h4></h4>
             <div class="border-full-dashed">
                <strong><img alt="" src="/images/phone.fw.png"> 
-                    Bạn cần hỗ trợ? Gọi Hotline <span
-                    style="color: red;">098.999.999</span> hoặc <span
-                    style="color: red;">043. 999.999</span>
+                <?php echo $language[$view->view]->paymentSupport; ?>
                </strong>
             </div>
             <h4></h4>
             <h4></h4>
             <div class="product-list-count">
-                You have <span class="number ng-binding">{{orderInformation.invoice.products.length}}</span> in your Cart<br />
+                <?php echo $language[$view->view]->paymentProductionCount; ?>
             </div>
             <h4></h4>
             <h4></h4>
             <table class="product-table">
                 <thead>
                     <tr>
-                        <th width="50%">Sản phẩm</th>
-                        <th width="20%">Đơn giá</th>
-                        <th width="10%">SL</th>
-                        <th width="20%">Thành tiền</th>
+                        <th width="50%"><?php echo $language[$view->view]->colProduction; ?></th>
+                        <th width="20%"><?php echo $language[$view->view]->colPrice; ?></th>
+                        <th width="10%"><?php echo $language[$view->view]->colQuantity; ?></th>
+                        <th width="20%"><?php echo $language[$view->view]->colTotal; ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -476,21 +437,21 @@
                         </div>
                         <br />
                         <a ng-click="submit()" class="btn-cart-next" href="javascript:;" style="display: block;" data-type="submit">
-                            Tiếp tục đặt hàng <div class="pull-right"><i class="fa fa-caret-right"></i></div>
+                             <?php echo $language[$view->view]->btnNextHigh;?><div class="pull-right"><i class="fa fa-caret-right"></i></div>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="shipping"
                 ng-repeat="shipping in orderInformation.invoice.shippings">
-                <h5 ng-show="shipping.shipping_type == 'SHIP'">Giao hàng đến</h5>
-                <h5 ng-show="shipping.shipping_type != 'SHIP'">Thanh toán tại</h5>
+                <h5 ng-show="shipping.shipping_type == 'SHIP'"><?php echo $language[$view->view]->shippingTo;?></h5>
+                <h5 ng-show="shipping.shipping_type != 'SHIP'"><?php echo $language[$view->view]->paidTo;?></h5>
                 {{shipping.contact.full_name}}<br />
                 {{shipping.contact.street_address}}<br />
                 {{shipping.contact.state_province}}<br />
-                Số điện thoại : {{shipping.contact.telephone}}<br />
+                <?php echo $language[$view->view]->lblPhone;?> {{shipping.contact.telephone}}<br />
                 <br />
-                <strong ng-show="orderInformation.invoice.shippings.length == 1">Dùng làm địa chỉ thanh toán</strong>
+                <strong ng-show="orderInformation.invoice.shippings.length == 1"><?php echo $language[$view->view]->lblUsingForShipping;?></strong>
             </div>
         </div>
     </div>

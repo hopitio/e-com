@@ -56,7 +56,7 @@ p {
 <body>
 	<div id="container">
 		<h1>SYSTEM ERROR</h1>
-		Sảy ra lỗi hệ thống : <?php var_dump($e);?><br/>
+		Sảy ra lỗi hệ thống : <?php  ENVIRONMENT == 'development1' ? var_dump($e) : "";?><br/>
 		Thông tin Liên hệ : LeThanhAn.bkaptech@gmail.com
 	</div>
 </body>

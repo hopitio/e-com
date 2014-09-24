@@ -42,18 +42,39 @@ class orderReview extends BasePortalController
     function checkoutWithATM($orderId,$invoiceId)
     {
        $nl_result =  $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'ATM');
-        redirect($nl_result->checkout_url);
+       switch ($this->obj_user->languageKey){
+            case "VN-VI":
+                $nl_result->checkout_url = $nl_result->checkout_url."&lang=vn";
+            default:
+                $nl_result->checkout_url = $nl_result->checkout_url."&lang=en";
+                break;
+       }
+       redirect($nl_result->checkout_url);
     }
     
     function checkoutWithVISA($orderId, $invoiceId)
     {
         $nl_result = $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'VISA');
+        switch ($this->obj_user->languageKey){
+        	case "VN-VI":
+        	    $nl_result->checkout_url = $nl_result->checkout_url."&lang=vn";
+        	default:
+        	    $nl_result->checkout_url = $nl_result->checkout_url."&lang=en";
+        	    break;
+        }
         redirect($nl_result->checkout_url);
     }
     
     function checkoutWithNL($orderId, $invoiceId)
     {
        $nl_result =  $this->getNganLuongCheckoutUrl($orderId, $invoiceId, 'NL');
+       switch ($this->obj_user->languageKey){
+       	case "VN-VI":
+       	    $nl_result->checkout_url = $nl_result->checkout_url."&lang=vn";
+       	default:
+       	    $nl_result->checkout_url = $nl_result->checkout_url."&lang=en";
+       	    break;
+       }
         redirect($nl_result->checkout_url);
     }
     

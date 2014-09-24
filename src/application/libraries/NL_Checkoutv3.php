@@ -85,7 +85,7 @@
 		 */			
 		function VisaCheckout($order_code,$total_amount,$payment_type,$order_description,$tax_amount,
 									$fee_shipping,$discount_amount,$return_url,$cancel_url,$buyer_fullname,$buyer_email,$buyer_mobile, 
-									$buyer_address,$array_items,$language) 
+									$buyer_address,$array_items) 
 				{
 				 $params = array(
 						'cur_code'			=>	$this->cur_code,

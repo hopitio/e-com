@@ -2,8 +2,7 @@
     <ul id="cart-process">
         <li class="passed">
             <div class="process-text">
-                <span class="number">1</span>
-                <label>Giỏ hàng</label>
+                <span class="number">1</span> <label><?php echo $language[$view->view]->lblprocessCart;?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -12,8 +11,7 @@
         </li>
         <li class="passed">
             <div class="process-text">
-                <span class="number">2</span>
-                <label>Thông tin giao hàng</label>
+                <span class="number">2</span> <label><?php echo $language[$view->view]->lblprocessShipping;?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -22,8 +20,7 @@
         </li>
         <li class="active">
             <div class="process-text">
-                <span class="number">3</span>
-                <label>Thông tin thanh toán</label>
+                <span class="number">3</span> <label><?php echo $language[$view->view]->lblprocessPayment;?></label>
             </div>
             <div class="process-visual">
                 <div class="process-line"></div>
@@ -40,20 +37,20 @@
                             <?php 
                                 if(isset($loginError)){
                                     echo "<div class='alert alert-danger alert-dismissable text-left' style='width: 100%'>
-                                             Sai tên đăng nhập hoặc mật khẩu
+                                             {$language[$view->view]->loginWrongMsg}
                                           </div>";
                                 }
                             ?>
                             <div class="form-group col-md-12" style="margin-top:30px">
                                 
-                                <label for="inputEmail3" class="col-sm-4 control-label text-left">Nhập vào địa chỉ E-mail: </label>
+                                <label for="inputEmail3" class="col-sm-4 control-label text-left"><?php echo $language[$view->view]->txtEmailInput;?></label>
                                 <div class="col-sm-8">
                                     <input id="mailInput" type="email" ng-model="email" name="email"  required="required"  aria-required="true" class="form-control" placeholder="email@mail.com " >
                                 </div>
                                 <label for="inputEmail3" class="col-sm-4 control-label "></label>
                                 <div class="col-sm-8 text-left" style="line-height: 20px;">
-                                    <input name="rbx-haveAccount" ng-model="isHave" value="NOTHAVE" class="" type="radio"/>&nbsp; Đặt hàng mà không cần đăng ký <br/>
-                                    <input name="rbx-haveAccount" ng-model="isHave" value="HAVE" checked="checked"  class="" type="radio"/>&nbsp; Tôi đã có tài khoản tại Sfriendly.com  <br/>
+                                    <input name="rbx-haveAccount" ng-model="isHave" value="NOTHAVE" class="" type="radio"/>&nbsp; <?php echo $language[$view->view]->orderWithoutAccount;?> <br/>
+                                    <input name="rbx-haveAccount" ng-model="isHave" value="HAVE" checked="checked"  class="" type="radio"/>&nbsp;<?php echo $language[$view->view]->orderWithAccount;?> <br/>
                                 </div>
                                 
                                 <label for="inputEmail3" class="col-sm-4 control-label "></label>
@@ -63,16 +60,16 @@
                                 
                                 <label for="inputEmail3" class="col-sm-4 control-label "></label>
                                 <div class="col-sm-8 text-right" style="line-height: 20px;">
-                                    <a style="float: right;" href="/portal/account/lost_password">Quên mật khẩu</a>
+                                    <a style="float: right;" href="/portal/account/lost_password"><?php echo $language[$view->view]->lostPassword;?></a>
                                 </div>
                                 
                                 <label for="inputEmail3" class="col-sm-4 control-label "></label>
                                 <div class="col-sm-8 text-left" style="line-height: 20px;">
                                     <div class="pull-left" style="margin-top:10px;">
                                         <a href="/cart/shipping" class="btn-cart-prev" style="width: 150px;margin-right:10px">
-                                            <div class="pull-left"><i class="fa fa-caret-left"></i></div>Quay lại                    </a>
+                                            <div class="pull-left"><i class="fa fa-caret-left"></i></div><?php echo $language[$view->view]->lblGoBack?></a>
                                         <a href="javascript:;" ng-click="submitForm()" class="btn-cart-next" style="width: 150px;" data-type="submit">
-                                            Tiếp tục<div class="pull-right"><i class="fa fa-caret-right"></i></div>
+                                            <?php echo $language[$view->view]->btnNext?><div class="pull-right"><i class="fa fa-caret-right"></i></div>
                                         </a>
                                     </div>
                                 </div>
