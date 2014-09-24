@@ -42,6 +42,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/ngan-luong/callback/success'] = 'portalController/orderNganLuongCallback/success';
         $route['portal/ngan-luong/callback/cancel'] = 'portalController/orderNganLuongCallback/cancel';
         
+        $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/userAuthenVerify';
+        $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
+        
         $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
         $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
@@ -94,9 +97,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
         $route['portal/api/account/order_history/cancel_order'] ="portalController/userOrderHistory/cancelOrder";
         
-        $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/getInformation';
+        $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/saveInformation';
         $route['portal/order_verifing/email_verify'] = 'portalController/orderVerifing/mergeEmail';
-        $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
+        
         $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
         $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';

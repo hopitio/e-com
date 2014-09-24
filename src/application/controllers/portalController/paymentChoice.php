@@ -13,7 +13,7 @@ class paymentChoice extends BasePortalController
     protected $js = array('/js/controller/PortalOrderPaymentChoiceController.js');
     
     function showPage(){
-        $postData = $this->input->post();
+        $postData = $this->input->get();
         $orderId = $postData['orderId'];
         $invoiceId = $postData['invoiceId'];
         $portalBizOrderHistory = new PortalBizPaymentHistory();

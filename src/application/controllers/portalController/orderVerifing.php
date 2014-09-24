@@ -12,35 +12,33 @@ class orderVerifing extends BasePortalController
     protected $css = array('/style/portalOrder.css','/style/customerList.css');
     protected $js =  array();
     
-    function getInformation()
-    {
+    function saveInformation(){
         $data = $this->input->post();
         $data = json_decode($data['order']);
         $tempId = $this->insertTempData();
-        
         $paymentManager = new PortalPaymentManager();
         $tempData = $paymentManager->getPaymentByPaymentKey($tempId);
-        
         $portalOrderData = $paymentManager->createNewOrder($data, $data->su,$data->secretKey);
         $tempData->order_id = $portalOrderData['orderId'];
         $paymentManager->updatePaymentTempToProcessed($tempData);
         
-        if($data->user->is_authorized === true || $data->user->is_authorized == 'true')
+        redirect("portal/order_verifing/portal_get_information?o={$portalOrderData['orderId']}&i={$portalOrderData['invoiceId']}");
+    }
+    
+    function userAuthenVerify(){
+        $orderId = $this->input->get('o');
+        $invoiceId = $this->input->get('i');
+        if($this->obj_user->is_authorized === true || $this->obj_user->is_authorized == 'true')
         {
-            redirect("portal/order_verifing/verify?o={$portalOrderData['orderId']}&i={$portalOrderData['invoiceId']}");
+            redirect("portal/order_verifing/verify?o={$orderId}&i={$invoiceId}");
             return;
         }
-        
-        $orderId = $portalOrderData['orderId'];
-        $invoiceId = $portalOrderData['invoiceId'];
         $portalBizOrderHistory = new PortalBizPaymentHistory();
         $orderInformation = $portalBizOrderHistory->getOrderAllInformation($orderId);
         if($orderInformation == null){
             throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__.' Không tìm thấy order với key = '.$orderId);
         }
-        
         $this->calutionForviewView($orderInformation,$invoiceId);
-        
         $dataView = array();
         $dataView['order'] = $orderInformation;
         $dataView['payment'] = $this->config->item('payment_gateway_supported');
@@ -50,7 +48,6 @@ class orderVerifing extends BasePortalController
         ->setJavascript(array('/js/controller/PortalOrderEmailVerifyingController.js'))
         ->setCss($this->css)
         ->render('portalPayment/orderEmailVerify');
-
     }
     
     /**
