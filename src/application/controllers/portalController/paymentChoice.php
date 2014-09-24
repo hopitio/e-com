@@ -14,8 +14,8 @@ class paymentChoice extends BasePortalController
     
     function showPage(){
         $postData = $this->input->get();
-        $orderId = $postData['orderId'];
-        $invoiceId = $postData['invoiceId'];
+        $orderId = $postData['o'];
+        $invoiceId = $postData['i'];
         $portalBizOrderHistory = new PortalBizPaymentHistory();
         $orderInformation = $portalBizOrderHistory->getOrderAllInformation($orderId);
         if($orderInformation == null){
