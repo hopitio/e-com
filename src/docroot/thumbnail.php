@@ -2,6 +2,7 @@
 
 define('CACHE_TIME', 3600 * 24 * 30);
 define('DEFAULT_THUMB_WIDTH', 150);
+$seconds_to_cache = 3600 * 24 * 365;
 
 function make_thumb($src, $dest, $desired_width)
 {
@@ -29,10 +30,19 @@ function not_found()
     die;
 }
 
+if (DIRECTORY_SEPARATOR == "\\")
+{
+    $upload_root = __DIR__ . '/uploads/';
+}
+else
+{
+    $upload_root = '/var/www/uploads/';
+}
+
 $uri = $_SERVER['REQUEST_URI'];
 $uri_parts = explode('/w=', $uri);
 
-$orgil_img = isset($uri_parts[0]) ? __DIR__ . '/' . str_replace('thumbnail.php/', '', $uri_parts[0]) : '';
+$orgil_img = isset($uri_parts[0]) ? $upload_root . '/' . str_replace('thumbnail.php/', '', $uri_parts[0]) : '';
 $desired_width = isset($uri_parts[1]) ? (int) $uri_parts[1] : DEFAULT_THUMB_WIDTH;
 //check if file exists
 if (!$orgil_img)
@@ -63,4 +73,9 @@ if (!file_exists($cached_img) || filemtime($cached_img) < time() - CACHE_TIME)
     make_thumb($orgil_img, $cached_img, $desired_width);
 }
 header("Content-Type: image/JPEG");
+$ts = gmdate("D, d M Y H:i:s", time() + $seconds_to_cache) . " GMT";
+header("Expires: $ts");
+header("Pragma: cache");
+header("Cache-Control: max-age=$seconds_to_cache");
+
 readfile($cached_img);
