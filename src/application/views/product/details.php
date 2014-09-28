@@ -53,8 +53,8 @@ if (!empty($images))
                         <?php
                         $class = $i++ == 0 ? 'zoomThumbActive' : '';
                         $smallImage = '/thumbnail.php/' . $img->url . '/w=70';
-                        $mediumImage = $img->width > 560 ? '/thumbnail.php/' . $img->url . '/w=560' : $img->url;
-                        $largeImage = $img->width > 1000 ? $img->url : '/thumbnail.php/' . $img->url . '/w=1000';
+                        $mediumImage = $img->width > 560 ? '/thumbnail.php/' . $img->url . '/w=560' : '/thumbnail.php/' . $img->url;
+                        $largeImage = $img->width > 1000 ? '/thumbnail.php/' . $img->url : '/thumbnail.php/' . $img->url . '/w=1000';
                         if (!isset($firstMediumImage))
                         {
                             $firstMediumImage = $mediumImage;

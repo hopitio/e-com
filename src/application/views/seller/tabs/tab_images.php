@@ -28,8 +28,8 @@
                     <input type="hidden" name="hdnImage[]" value="<?php echo $img->fkFile ?>">
                 </td>
                 <td>
-                    <a href="<?php echo $img->url ?>" target="_blank" title="img">
-                        <img width="160" height="120" src="<?php echo $img->url ?>">
+                    <a href="/thumbnail.php/<?php echo $img->url ?>" target="_blank" title="img">
+                        <img width="160" height="120" src="/thumbnail.php/<?php echo $img->url ?>">
                     </a>
                 </td>
                 <?php foreach ($imgTypes as $imgType => $multiple): ?>
