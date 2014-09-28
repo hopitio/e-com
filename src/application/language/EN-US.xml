@@ -183,6 +183,9 @@
         <lblSummaries>Summaries</lblSummaries>
         <lblSubtotal>Subtotal</lblSubtotal>
         <lblTaxes>Taxes</lblTaxes>
+        <northernVietnam>Northen</northernVietnam>
+        <centreVietnam>Centre</centreVietnam>
+        <southernVietnam>Southern</southernVietnam>
     </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

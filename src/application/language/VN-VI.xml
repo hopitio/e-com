@@ -186,6 +186,9 @@
         <lblSummaries>Tóm tắt</lblSummaries>
         <lblSubtotal>Thành tiền</lblSubtotal>
         <lblTaxes>Thuế</lblTaxes>
+        <northernVietnam>Bắc Bộ</northernVietnam>
+        <centreVietnam>Trung Bộ</centreVietnam>
+        <southernVietnam>Nam Bộ</southernVietnam>
     </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>
