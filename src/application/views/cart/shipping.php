@@ -60,7 +60,9 @@ defined('BASEPATH') or die('No direct script access allowed');
                                 <label class="col-xs-4 control-label" for="selProvinceCity"><span class="required">* </span><?php echo $language[$view->view]->lblCityProvince ?></label>
                                 <div class="col-xs-8 control">
                                     <select name="selProvinceCity" id="selProvinceCity" class="form-control" data-rule-required="true" ng-model="selectedProvince">
-                                        <option ng-repeat="(k, v) in provinces" value="{{k}}">{{v}}</option>
+                                        <optgroup ng-repeat="region in regions" label="{{region[0]}}">
+                                            <option ng-repeat="province in region[1]" value="{{province[0]}}">{{province[1]}}</option>
+                                        </optgroup>
                                     </select>
                                 </div>
                             </div>
@@ -106,9 +108,8 @@ defined('BASEPATH') or die('No direct script access allowed');
                         <table class="product-table">
                             <thead>
                                 <tr>
-                                    <th width="40%"><?php echo $language[$view->view]->lblProduct ?></th>
+                                    <th width="55%"><?php echo $language[$view->view]->lblProduct ?></th>
                                     <th width="5%"><?php echo $language[$view->view]->lblQty ?></th>
-                                    <th width="20%"><?php echo $language[$view->view]->lblConvertedWeight ?></th>
                                     <th width="35%"><?php echo $language[$view->view]->lblShipping ?></th>
                                 </tr>
                             </thead>
@@ -127,10 +128,14 @@ defined('BASEPATH') or die('No direct script access allowed');
                                         </div>
                                     </td>
                                     <td>{{product.quantity}}</td>
-                                    <td>{{product.convertedWeight * product.quantity}}kg</td>
                                     <td>
-                                        <select name="method[{{product.id}}]" style="width: 100%;" ng-model="product.shipping" class="form-control">
-                                            <option ng-repeat="method in advanceData.methods" value="{{$index}}">{{method.label}}</option>
+                                        <select name="method[{{product.id}}]" style="width: 100%;" ng-model="product.shipping" class="form-control" ng-change="loadAdvanceData()">
+                                            <option
+                                                ng-repeat="method in advanceData.methods" 
+                                                value="{{$index}}" ng-if="selectedProvince == 101 || (selectedProvice != 101 && method.codename != 'premium')"
+                                                >
+                                                {{method.label}}
+                                            </option>
                                         </select>
                                     </td>
                                 </tr>
@@ -207,9 +212,20 @@ defined('BASEPATH') or die('No direct script access allowed');
         </div><!--row-->
     </form>
 </div>
+<?php
+$regions = array(
+    array((string) $language[$view->view]->northernVietnam, array()),
+    array((string) $language[$view->view]->centreVietnam, array()),
+    array((string) $language[$view->view]->southernVietnam, array())
+);
+foreach ($provinces as $k => $v)
+{
+    $regions[floor($k / 100) - 1][1][] = array($k, $v);
+}
+?>
 <script>
             var script_data = {
-            provinces: <?php echo json_encode($provinces) ?>,
+            regions: <?php echo json_encode($regions) ?>,
                     shippingMethods: <?php echo json_encode($shippingMethods) ?>
             };
 </script>

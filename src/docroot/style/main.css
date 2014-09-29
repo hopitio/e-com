@@ -242,7 +242,7 @@ li{list-style: none;}
     top: 43px;
     left: 0;
     width: 100%;
-    z-index: 11;
+    z-index: 501;
     background-position: 50% 50%;
 }
 .head-menu .child ul > li{
@@ -313,11 +313,13 @@ li{list-style: none;}
 .lynx-box:hover  > .opacity{
     display: inline-block;
     z-index:4;
+    opacity: 1;
 }
 .lynx-box > .opacity{
     position: absolute;
     background: transparent url(/images/box-opacity.fw.png) repeat top left;
-    display: none;
+    display: inline-block;
+    opacity: 0;
 }
 .lynx-box .best-balloon{
     position:absolute;

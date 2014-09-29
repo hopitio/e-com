@@ -184,6 +184,9 @@
         <lblSummaries>요약</lblSummaries>
         <lblSubtotal>서브 총</lblSubtotal>
         <lblTaxes>세금</lblTaxes>
+        <northernVietnam>북부</northernVietnam>
+        <centreVietnam>센터</centreVietnam>
+        <southernVietnam>남부</southernVietnam>
     </cart_shipping>
     <mail>
         <registerconfirm>Welcome to,Sfriendly website</registerconfirm>

@@ -3,6 +3,21 @@
 class FileModel extends BaseModel
 {
 
+    protected $_upload_root;
+
+    function __construct()
+    {
+        parent::__construct();
+        if (DIRECTORY_SEPARATOR == "\\")
+        {
+            $$this->_upload_root = dirname(BASEPATH) . '/docroot/uploads/';
+        }
+        else
+        {
+            $this->_upload_root = '/var/www/uploads/';
+        }
+    }
+
     function handleImageUpload($fileInfo)
     {
         //validate
@@ -17,8 +32,8 @@ class FileModel extends BaseModel
             $extension = substr($fileInfo['name'], $dotPosition + 1);
         }
         $newName = md5(uniqid()) . '.' . $extension;
-        $path = 'uploads/' . date_create(DB::getDate())->format('Y/m/d') . '/';
-        $destination = dirname(BASEPATH) . '/docroot/' . $path;
+        $path = date_create(DB::getDate())->format('Y/m/d') . '/';
+        $destination = $this->_upload_root . $path;
         if (!is_dir($destination) && !mkdir($destination, 0777, true))
         {
             throw new Lynx_BusinessLogicException("Khong tao duoc dir: '$destination'");

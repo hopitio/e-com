@@ -39,9 +39,9 @@ class ProductFixedDomain extends ProductDomain
     }
 
     /** @return ProductAttributeDomain */
-    function getDescription()
+    function getDescription($strip_tags = false)
     {
-        return $this->_getAttributeByName('description');
+        return $strip_tags ? strip_tags((string) $this->_getAttributeByName('description')) : $this->_getAttributeByName('description');
     }
 
     /** @return ProductAttributeDomain */
@@ -224,13 +224,14 @@ class ProductFixedDomain extends ProductDomain
     /**
      * Trọng lượng quy đổi bằng max(trọng lượng kq, x*y*z/6000)
      */
-    function getConvertedWeight()
+    function getConvertedWeight($is_express = false)
     {
         $weight = (string) $this->getWeight();
         $x = (string) $this->getDimensionWidth();
         $y = (string) $this->getDimensionHeight();
         $z = (string) $this->getDimensionDepth();
-        return max(array($weight, $x * $y * $z / 6000));
+        $div = $is_express ? 3000 : 6000;
+        return max(array($weight, $x * $y * $z / $div));
     }
 
 }
