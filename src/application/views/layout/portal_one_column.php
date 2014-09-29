@@ -220,11 +220,13 @@
         </div>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                    }
+                function Config() {
+                    this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                    this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                    this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                }
+                $.browser = {};
+                window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
 
 
@@ -242,11 +244,6 @@
         <script type='text/javascript' src="/js/controller/LayoutCtrl.js"></script>
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
 
-        <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                    }
-        </script>
         <?php
         //Thêm các js riêng biệt
         foreach ($view->javascript as $jsItem)

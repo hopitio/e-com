@@ -377,7 +377,7 @@
         <lblCreateDate>Created at : </lblCreateDate>
         <lblOrderSummariesDetail>The order have </lblOrderSummariesDetail>
         <lblProducts>Products</lblProducts>
-        <lblOrderShipping>  Transport Information : </lblOrderShipping>
+        <lblOrderShipping>Transport : </lblOrderShipping>
         <lblOrderSubtotal>Total goods : </lblOrderSubtotal>
         <lblOrderTax>Taxes : </lblOrderTax>
         <lblOrderTotal>The total value of bills : </lblOrderTotal>
@@ -442,13 +442,17 @@
         <colPlaymentFreeType>Charges</colPlaymentFreeType>
         <colPlaymentFree>Costs (VND)</colPlaymentFree>
         
+        <shippingTo>Shipping to</shippingTo>
+        <paidTo>Payment in</paidTo>
+        <lblUsingForShipping>Use as billing address</lblUsingForShipping>
+        
         <lblOrderSummaries>Synthesis orders</lblOrderSummaries>
         <lblOrderId>Order Id : </lblOrderId>
         <lblInvoiceId>Invoice Id : </lblInvoiceId>
         <lblCreateDate>Created t : </lblCreateDate>
         <lblOrderSummariesDetail>Orders include</lblOrderSummariesDetail>
         <lblProducts>Products</lblProducts>
-        <lblOrderShipping>Transport Information : </lblOrderShipping>
+        <lblOrderShipping>Transport : </lblOrderShipping>
         <lblOrderSubtotal>Total goods : </lblOrderSubtotal>
         <lblOrderTax>Taxes : </lblOrderTax>
         <lblOrderTotal>The total value of bills : </lblOrderTotal>

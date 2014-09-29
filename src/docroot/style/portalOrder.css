@@ -33,7 +33,7 @@
 .notification ul{padding-left:8px;}
 .cart-left{padding-left:0px;}
 .summary-row{display: block;}
-.cart-right{padding-right:0px}
+.cart-right{padding-right:0px;margin-bottom:15px;}
 .summary-row .row-left{float:left;text-align:left;line-height: 30px;}
 .summary-row .row-right{margin-left:40%;text-align: right;line-height: 30px;}
 .cart-right-content{padding:10px;border:1px solid #d6d6d6;background-color: white;overflow: hidden;}
@@ -96,9 +96,6 @@
 }
 .lynx_orderInformation{
     padding: 45px 10px 30px 10px;
-}
-.lynx_orderInformation *{
-    float: left;
 }
 .lynx_orderInformationBlock{
     width:100%;

@@ -38,6 +38,7 @@ class orderVerifing extends BasePortalController
         if($orderInformation == null){
             throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__.' Không tìm thấy order với key = '.$orderId);
         }
+        $this->convertCurrencyOrder($orderInformation);
         $this->calutionForviewView($orderInformation,$invoiceId);
         $dataView = array();
         $dataView['order'] = $orderInformation;
@@ -48,6 +49,32 @@ class orderVerifing extends BasePortalController
         ->setJavascript(array('/js/controller/PortalOrderEmailVerifyingController.js'))
         ->setCss($this->css)
         ->render('portalPayment/orderEmailVerify');
+    }
+    
+    function convertCurrencyOrder(&$order)
+    {
+        foreach ($order->invoices as &$invoice){
+            foreach($invoice->products as &$product){
+                $product->sell_price =  $this->convertToCurrentCurrency($product->sell_price);
+                $product->product_price =  $this->convertToCurrentCurrency($product->product_price);
+            }
+            unset($product);
+            
+            foreach ($invoice->shippings as &$shipping){
+                $shipping->price = $this->convertToCurrentCurrency($shipping->price);
+            }
+            unset($shipping);
+            
+            foreach ($invoice->otherCosts as &$cost){
+                $cost->value = $this->convertToCurrentCurrency($cost->value);
+            }
+            unset($cost);
+            
+            $invoice->totalCost = $this->convertToCurrentCurrency($invoice->totalCost);
+        }
+        unset($invoice);
+        
+        
     }
     
     /**

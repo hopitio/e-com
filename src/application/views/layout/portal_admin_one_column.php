@@ -169,10 +169,13 @@
                 this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
                 this.categoryService = '<?php echo base_url('category/categories_service') ?>';
                 this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                
             }
             $(document).ready(function(){
                 $(":input").inputmask();
             });
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         
         <?php

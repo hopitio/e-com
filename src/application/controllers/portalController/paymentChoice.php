@@ -22,6 +22,7 @@ class paymentChoice extends BasePortalController
             throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__.' Không tìm thấy order với key = '.$orderId);
         }
         
+        $this->convertCurrencyOrder($orderInformation);
         $this->calutionForviewView($orderInformation,$invoiceId);
         
         $dataView = array();
@@ -32,6 +33,33 @@ class paymentChoice extends BasePortalController
         ->setCss($this->css)
         ->setJavascript($this->js)
         ->render('portalPayment/paymentChoice');
+    }
+    
+
+    function convertCurrencyOrder(&$order)
+    {
+        foreach ($order->invoices as &$invoice){
+            foreach($invoice->products as &$product){
+                $product->sell_price =  $this->convertToCurrentCurrency($product->sell_price);
+                $product->product_price =  $this->convertToCurrentCurrency($product->product_price);
+            }
+            unset($product);
+    
+            foreach ($invoice->shippings as &$shipping){
+                $shipping->price = $this->convertToCurrentCurrency($shipping->price);
+            }
+            unset($shipping);
+    
+            foreach ($invoice->otherCosts as &$cost){
+                $cost->value = $this->convertToCurrentCurrency($cost->value);
+            }
+            unset($cost);
+    
+            $invoice->totalCost = $this->convertToCurrentCurrency($invoice->totalCost);
+        }
+        unset($invoice);
+    
+    
     }
     
     private function calutionForviewView(&$orderInfor,$invoiceId){

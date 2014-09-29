@@ -285,7 +285,7 @@
                         </a>
                     </div>
                     
-                    <p>
+                    <p style="float: left">
                         <br /><?php echo $language[$view->view]->paymentNoficationNote; ?> <br />
                     </p>
                 </div>
@@ -338,7 +338,7 @@
                         </td>
                         <td>
                             <strong>
-                                {{product.sell_price | number}}đ<br>
+                                {{fnMoneyToString(product.sell_price)}}<br>
                             </strong>
                         </td>
                         <td>
@@ -346,94 +346,37 @@
                                 {{product.product_quantity | number}}<br>
                             </strong>
                         </td>
-                        <td>{{product.product_price | number}}đ</td>
+                        <td>{{fnMoneyToString(product.product_price)}}</td>
                     </tr>
                 </tbody>
             </table>
             
         </div>
-        <?php 
-            $productPrices = 0;
-            $taxPrices = 0;
-            foreach ($order->invoice->products as $product)
-            {
-                $productPrices += $product->product_price;
-                foreach ($product->taxs as $tax){
-                    $taxPrices += $tax->sub_tax_value;
-                }
-            }
-        ?>
+        
         <div class="cart-right col-xs-4">
             <div class="cart-summaries ">
                 <div class="inner">
                     <h4 class="left"><?php echo $language[$view->view]->lblOrderSummaries;?></h4>
                     <div class="product-summaries-table"> 
                         <div class="border-dashed">
-                            <div class="tdleft">
-                                
-                                <strong class="ng-binding"><?php echo $language[$view->view]->lblProducts;?> (<?php echo count($order->invoice->products);?>):</strong>
-                            
-                            </div>
-                            <div class="tdright">
-                                
-                                <strong class="ng-binding"><?php echo number_format(ceil($productPrices));?> đ</strong>
-                            
-                            </div>
+                            <div class="tdleft"><strong class="ng-binding"><?php echo $language[$view->view]->lblProducts;?> (<?php echo count($order->invoice->products);?>):</strong></div>
+                            <div class="tdright"><strong class="ng-binding">{{fnMoneyToString(productPrices)}}</strong></div>
                         </div>
                         <div class="border-solid">
-                            <?php 
-                                $shippingPrices = 0;
-                                foreach ($order->invoice->shippings as $shipping)
-                                {
-                                    $shippingPrices += $shipping->price;
-                                }
-                            ?>
-                            <div class="tdleft">
-                                
-                                <strong><?php echo $language[$view->view]->lblOrderShipping;?></strong>
-                            
-                            </div>
-                            <div class="tdright">
-                                
-                                <strong><?php echo number_format($shippingPrices);?> đ</strong>
-                            
-                            </div>
+                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderShipping;?></strong></div>
+                            <div class="tdright"><strong>{{fnMoneyToString(shippingPrices)}}</strong></div>
                         </div>
                         <div class="border-dashed">
-                            <div class="tdleft">
-                                
-                                <strong><?php echo $language[$view->view]->lblOrderSubtotal;?></strong>
-                            
-                            </div>
-                            <div class="tdright">
-                                
-                                <strong><?php echo number_format(ceil($order->invoice->totalCost - $taxPrices));?> đ</strong>
-                            
-                            </div>
+                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderSubtotal;?></strong></div>
+                            <div class="tdright"><strong>{{fnMoneyToString(orderInformation.invoice.totalCost - taxPrices)}}</strong></div>
                         </div>
                         <div class="border-dashed">
-                            <div class="tdleft">
-                                
-                                <strong><?php echo $language[$view->view]->lblOrderTax;?></strong>
-                            
-                            </div>
-                            <div class="tdright">
-                                
-                                <strong><?php echo number_format(ceil($taxPrices));?> đ</strong>
-                            
-                            </div>
+                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderTax;?></strong></div>
+                            <div class="tdright"><strong>{{fnMoneyToString(taxPrices)}}</strong></div>
                         </div>
                         <div class="total">
-                            <div class="tdleft">
-                                
-                                <strong><?php echo $language[$view->view]->lblOrderTotal;?></strong>
-                            
-                            </div>
-                            <div class="tdright">
-                                
-                                <strong><?php echo number_format(ceil($order->invoice->totalCost));?> đ</strong>
-                            
-                            </div>
+                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderTotal;?></strong></div>
+                            <div class="tdright"><strong>{{fnMoneyToString(orderInformation.invoice.totalCost)}}</strong></div>
                         </div>
                         <br />
                         <a ng-click="submit()" class="btn-cart-next" href="javascript:;" style="display: block;" data-type="submit">
@@ -442,8 +385,7 @@
                     </div>
                 </div>
             </div>
-            <div class="shipping"
-                ng-repeat="shipping in orderInformation.invoice.shippings">
+            <div class="shipping" ng-repeat="shipping in orderInformation.invoice.shippings">
                 <h5 ng-show="shipping.shipping_type == 'SHIP'"><?php echo $language[$view->view]->shippingTo;?></h5>
                 <h5 ng-show="shipping.shipping_type != 'SHIP'"><?php echo $language[$view->view]->paidTo;?></h5>
                 {{shipping.contact.full_name}}<br />

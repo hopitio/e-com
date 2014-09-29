@@ -400,7 +400,7 @@
         <lblCreateDate>Ngày tạo : </lblCreateDate>
         <lblOrderSummariesDetail>Đơn hàng gồm có</lblOrderSummariesDetail>
         <lblProducts>Sản phẩm</lblProducts>
-        <lblOrderShipping>Thông tin vận chuyển : </lblOrderShipping>
+        <lblOrderShipping>Vận chuyển : </lblOrderShipping>
         <lblOrderSubtotal>Tổng hàng : </lblOrderSubtotal>
         <lblOrderTax>Thuế : </lblOrderTax>
         <lblOrderTotal>Tổng giá trị hóa đơn : </lblOrderTotal>
@@ -462,13 +462,17 @@
         <colPlaymentFreeType>Cách tính phí</colPlaymentFreeType>
         <colPlaymentFree>Chi phí (VND)</colPlaymentFree>
         
+        <shippingTo>Giao hàng đến</shippingTo>
+        <paidTo>Thanh toán tại</paidTo>
+        <lblUsingForShipping>Dùng làm địa chỉ thanh toán</lblUsingForShipping>
+        
         <lblOrderSummaries>Tổng hợp đơn hàng</lblOrderSummaries>
         <lblOrderId>Mã đơn hàng : </lblOrderId>
         <lblInvoiceId>Mã hóa đơn : </lblInvoiceId>
         <lblCreateDate>Ngày tạo : </lblCreateDate>
         <lblOrderSummariesDetail>Đơn hàng gồm có</lblOrderSummariesDetail>
         <lblProducts>Sản phẩm</lblProducts>
-        <lblOrderShipping>Thông tin vận chuyển : </lblOrderShipping>
+        <lblOrderShipping>Vận chuyển: </lblOrderShipping>
         <lblOrderSubtotal>Tổng hàng : </lblOrderSubtotal>
         <lblOrderTax>Thuế : </lblOrderTax>
         <lblOrderTotal>Tổng giá trị hóa đơn : </lblOrderTotal>

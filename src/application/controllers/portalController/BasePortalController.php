@@ -5,4 +5,11 @@ class BasePortalController extends BaseController{
     function init(){
         parent::init();
     }
+    
+    function convertToCurrentCurrency($amount,$currentCurrency = 'VND')
+    {
+        $money = new Money($amount, new Currency($currentCurrency));
+        return $money->convert(new Currency($this->obj_user->getCurrency()))->getAmount();
+    }
+    
 }
