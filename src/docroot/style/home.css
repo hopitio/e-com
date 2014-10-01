@@ -3,9 +3,6 @@
     margin:auto;
     background-color: white;
 }
-.carousel-inner>.item>img, .carousel-inner>.item>a>img{
-    height:360px;
-}
 .carousel-control{
     width:7%;
 }
