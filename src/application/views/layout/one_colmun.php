@@ -32,7 +32,7 @@
                     <a href="/logout"><?php echo $language['layout']->lblUserLogout ?></a>
                 <?php else: ?>
                     <a href="<?php echo User::getCurrentUser()->getLoginAuthenUrl() ?>"><?php echo $language['layout']->lblUserStatusNotSign ?></a>|
-                    <a href="#" class="last"><?php echo $language['layout']->lblRegister ?></a>
+                    <a href="/portal/login" class="last"><?php echo $language['layout']->lblRegister ?></a>
                 <?php endif; ?>
             </div>
         </div>
