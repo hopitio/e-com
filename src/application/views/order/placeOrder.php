@@ -25,12 +25,14 @@ foreach ($shippingMethods as $method)
 
 foreach ($cartContents as $cartInstance)
 {
+    $shortDesRemovedHtmlTags = strip_tags($cartInstance->getDescription());
+    $shortDes = mb_strlen($shortDesRemovedHtmlTags) > 50 ? mb_substr($shortDesRemovedHtmlTags, 0, 50) . '...' : $shortDesRemovedHtmlTags;
     $images = $cartInstance->getImages('thumbnail');
     $json_product = array(
         'id'          => $cartInstance->id,
         'name'        => (string) $cartInstance->getName(),
         'image'       => base_url($images[0]->url),
-        'shortDesc'   => mb_strlen($cartInstance->getDescription()) > 50 ? mb_substr($cartInstance->getDescription(), 0, 50) . '...' : (string) $cartInstance->getDescription(),
+        'shortDesc'   => $shortDes,
         'price'       => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount(),
         'quantity'    => $cartInstance->quantity,
         'totalPrice'  => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount() * $cartInstance->quantity,
@@ -52,13 +54,16 @@ foreach ($cartContents as $cartInstance)
 }
 $json = json_encode($json);
 ?>
-<div class="contentWarp wStaticPx" style="min-height:500px;">
+<div class="contentWarp wStaticPx" style="min-height: 500px;">
     <script type="text/javascript">
         window.onload = function() {
             document.getElementById("submit").submit();
         };
     </script>
-    <form id="submit" action="<?php echo get_instance()->config->item('portal_payment_entry'); ?>" method="POST">
-        <input name='order' type="text" value='<?php echo $json; ?>' style="display:none;"/>
+    <form id="submit"
+        action="<?php echo get_instance()->config->item('portal_payment_entry'); ?>"
+        method="POST">
+        <input name='order' type="text" value='<?php echo $json; ?>'
+            style="display: none;" />
     </form>
-</div> 
+</div>
