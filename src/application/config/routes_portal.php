@@ -11,7 +11,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 {
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-        $route['portal/page/(:any)'] = 'staticPage/showPage/$1';
+        $route['portal/page/policy'] = 'portalController/staticPage/showPolicy';
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
         $route['portal/active'] = 'portalController/activeAccount/active';

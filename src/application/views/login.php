@@ -35,7 +35,7 @@
                     </select> 
                  </div>
                 <div class="lynx_row"><span><?php echo $language[$view->view]->lblanswer;?> </span> <input name='answer' type="text" /></div>
-                <div class="lynx_row"><span></span><a href="/portal/policy"><?php echo $language[$view->view]->lblLinkPolice;?></a> </div>
+                <div class="lynx_row"><span></span><a href="/portal/page/policy"><?php echo $language[$view->view]->lblLinkPolice;?></a> </div>
                 <div class="lynx_row">
                     <button id="submitResg" class="lynx_button btn btn-primary" type="submit" value="one"><?php echo $language[$view->view]->btnResg;?></button>
                 </div>
