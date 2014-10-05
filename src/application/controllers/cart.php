@@ -103,12 +103,7 @@ class cart extends BaseController
                 ->findAll();
         $shippingMethods = ShippingMethodMapper::make()->setLanguage($user->languageKey)->findAll();
         $shippingLocations = ShippingLocationMapper::make()->filterLocation(null, $locationCode)->findAll();
-        $sumWeight = 0;
-        /* @var $products CartDomain */
-        foreach ($products as $product)
-        {
-            $sumWeight += $product->getConvertedWeight() * (double) $product->quantity;
-        }
+
         $json = array();
         foreach ($shippingMethods as $method)
         {
@@ -117,6 +112,13 @@ class cart extends BaseController
                 if ($location->fkShippingMethod != $method->id)
                 {
                     continue;
+                }
+                /* @var $products CartDomain */
+                $sumWeight = 0;
+                foreach ($products as $product)
+                {
+                    $weight = $method->codename == 'premium' ? $product->getConvertedWeight() * 2 : $product->getConvertedWeight();
+                    $sumWeight += $weight * (double) $product->quantity;
                 }
 
                 $json[] = array(
@@ -176,7 +178,8 @@ class cart extends BaseController
                     {
                         continue;
                     }
-                    $sumWeight+= $product->getConvertedWeight() * $product->quantity;
+                    $weight = $method->codename == 'premium' ? $product->getConvertedWeight() * 2 : $product->getConvertedWeight();
+                    $sumWeight+= $weight * $product->quantity;
                 }
                 /* @var $product CartDomain */
                 $json[] = array(

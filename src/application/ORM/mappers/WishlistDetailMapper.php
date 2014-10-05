@@ -8,7 +8,9 @@ class WishListDetailMapper extends ProductFixedMapper
     function __construct($domain = 'WishlistDetailDomain')
     {
         parent::__construct($domain);
-        $this->_query->innerJoin('t_wishlist_detail wd', 'wd.fk_product=p.id');
+        $this->_query
+                ->select('wd.*, p.*', true)
+                ->innerJoin('t_wishlist_detail wd', 'wd.fk_product=p.id');
         $this->_map['fkWishlist'] = 'fk_wishlist';
         $this->_map['fkProduct'] = 'fk_product';
     }
@@ -22,7 +24,14 @@ class WishListDetailMapper extends ProductFixedMapper
 
     function filterStatus($status)
     {
-        $this->_query->where('wd.status=' . intval($status));
+        if ($status !== null)
+        {
+            $this->_query->where('wd.status=' . intval($status), __FUNCTION__);
+        }
+        else
+        {
+            $this->_query->where(null, __FUNCTION__);
+        }
         return $this;
     }
 

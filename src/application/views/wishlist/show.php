@@ -3,10 +3,10 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 /* @var $wishlist WishlistDomain */
 ?>
-<div ng-app ng-controller="showWishlistController" class="row-wrapper">
+<div ng-app ng-controller="showWishlistController" class="width-960">
     <h3 class="left"><?php echo $language[$view->view]->title; ?></h3>
     <div class="cart-left">
-        <table class="table-product">
+        <table class="product-table">
             <thead>
                 <tr>
                     <th width="100">&nbsp;</th>
@@ -25,15 +25,15 @@ if (!defined('BASEPATH'))
                             <img class="product-thumbnail" src="/thumbnail.php/{{product.thumbnail}}/w=200" alt="product thumbnail">
                         </a>
                     </td>
-                    <td>
-                        <a href="{{product.url}}" class="product-name">{{product.name}}</a><br>
+                    <td class="left">
+                        <a href="{{product.url}}" class="p-name">{{product.name}}</a><br>
                         <span class="product-seller">{{product.sellerName}}</span><br>
                         <span class="green" ng-if="product.stock > 10"><?php echo $language[$view->view]->lblInstock; ?></span>
                         <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty; ?></span>
                         <span class="red" ng-if="product.stock <= 0"><?php echo $language[$view->view]->lblOutOfstock; ?></span>
                     </td>
                     <td class="right">
-                        <span class="product-price">{{fnMoneyToString(product.price + product.taxes)}}</span>
+                        <span class="product-price"><strong>{{fnMoneyToString(product.price + product.taxes)}}</strong></span>
                     </td>
                     <td class="center">
                         <a href="javascript:;" ng-click="addToCart(product.wishlistDetailID)"><?php echo $language[$view->view]->lblAddToCart; ?></a><br>

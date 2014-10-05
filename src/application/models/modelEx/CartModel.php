@@ -17,8 +17,14 @@ class cartModel extends BaseModel
         $price = $location->basePrice;
         $bulkyWeight = max(array(0, $sumWeight - $location->bulkyWeight));
         $overWeight = max(array(0, $sumWeight - $location->baseWeight - $bulkyWeight));
-        $price += ceil($overWeight / $location->weightStep) * $location->weightStepPrice;
-        $price += ceil($bulkyWeight / $location->weightStep) * $location->bulkyStepPrice;
+        if ($location->weightStep)
+        {
+            $price += ceil($overWeight / $location->weightStep) * $location->weightStepPrice;
+        }
+        if ($location->bulkyWeightStep)
+        {
+            $price += ceil($bulkyWeight / $location->bulkyWeightStep) * $location->bulkyStepPrice;
+        }
         $price = new Money($price, new Currency('VND'));
         return $price->convert($toCurrency)->getAmount();
     }

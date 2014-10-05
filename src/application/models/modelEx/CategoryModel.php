@@ -108,6 +108,7 @@ class CategoryModel extends BaseModel
                 FROM t_product p
                     INNER JOIN t_category c ON c.id=p.fk_category AND c.path LIKE '{$category->path}%'
                 WHERE p.`status`=1
+                AND p.id NOT IN(SELECT fk_product FROM t_best WHERE fk_category=$cateID)
                 ";
         switch ($sort) {
             case 'new':
@@ -127,7 +128,7 @@ class CategoryModel extends BaseModel
 
 
         $query = Query::make()
-                ->select('p.*,(SELECT SUM(count_view) FROM t_product_view WHERE fk_product=p.id) AS count_view, seller.name AS seller_name ')
+                ->select('p.*,(SELECT SUM(count_view) FROM t_product_view WHERE fk_product=p.id) AS count_view, seller.name AS seller_name ', true)
                 ->from('t_product p')
                 ->innerJoin("($sqlTemp) temp", 'temp.id=p.id')
                 ->innerJoin('t_seller seller', 'p.fk_seller = seller.id')

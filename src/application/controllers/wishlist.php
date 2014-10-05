@@ -94,7 +94,9 @@ class wishlist extends BaseController
 
     function addToCart($detailID)
     {
-        $detailInstance = WishListDetailMapper::make()->find($detailID);
+        $detailInstance = WishListDetailMapper::make()
+                ->select('wd.*', true)
+                ->find($detailID);
         if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
         {
             throw new Lynx_RequestException("You are not owner");
