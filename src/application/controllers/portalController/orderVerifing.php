@@ -30,6 +30,10 @@ class orderVerifing extends BasePortalController
         $invoiceId = $this->input->get('i');
         if($this->obj_user->is_authorized === true || $this->obj_user->is_authorized == 'true')
         {
+            $orderRespository = new PortalModelOrder();
+            $orderRespository->id = $orderId;
+            $orderRespository->fk_user = $this->obj_user->portal_id;
+            $orderRespository->updateById();
             redirect("portal/order_verifing/verify?o={$orderId}&i={$invoiceId}");
             return;
         }
