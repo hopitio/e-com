@@ -16,6 +16,8 @@ class WishlistModel extends BaseModel
         $wishlist = $this->getOneWishlist();
         //validate
         $duplicate = WishListDetailMapper::make()
+                ->select('wd.*', true)
+                ->filterStatus(null)
                 ->filterWishlist($wishlist->id)
                 ->filterProductID($productID)
                 ->findAll();
@@ -29,6 +31,7 @@ class WishlistModel extends BaseModel
             }
             DB::delete('t_wishlist_detail', 'id=?', array($detailInstance->id));
         }
+
         DB::insert('t_wishlist_detail', array(
             'fk_wishlist' => $wishlist->id,
             'fk_product'  => $productID
@@ -53,7 +56,6 @@ class WishlistModel extends BaseModel
         }
         return $wishlist;
     }
-
 
     function updateDetailStatus($detailID, $status)
     {

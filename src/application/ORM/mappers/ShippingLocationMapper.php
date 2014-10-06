@@ -18,6 +18,7 @@ class ShippingLocationMapper extends MapperAbstract
             'weightStepPrice'  => 'weight_step_price',
             'bulkyWeight'      => 'bulky_weight',
             'bulkyStepPrice'   => 'bulky_step_price',
+            'bulkyWeightStep'  => 'bulky_weight_step'
         );
 
         parent::__construct($domain, $query, $map);

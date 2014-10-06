@@ -14,6 +14,6 @@ class ShippingLocationDomain implements DomainInterface
     public $weightStepPrice;
     public $bulkyWeight;
     public $bulkyStepPrice;
-    
-    
+    public $bulkyWeightStep;
+
 }

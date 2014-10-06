@@ -10,7 +10,7 @@ class FileModel extends BaseModel
         parent::__construct();
         if (DIRECTORY_SEPARATOR == "\\")
         {
-            $$this->_upload_root = dirname(BASEPATH) . '/docroot/uploads/';
+            $this->_upload_root = dirname(BASEPATH) . '/docroot/uploads/';
         }
         else
         {
