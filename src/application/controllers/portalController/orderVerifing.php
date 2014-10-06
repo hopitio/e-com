@@ -95,7 +95,7 @@ class orderVerifing extends BasePortalController
         }
     
         $case = preg_match('@[a-z0-9A-Z]@', $password);
-        if(!$case || strlen($password) < 8) {
+        if(!$case || strlen($password) < 6) {
             return false;
         }
     
