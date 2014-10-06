@@ -112,10 +112,12 @@ class orderVerifing extends BasePortalController
         $isValid = $this->isValidLoginData($email, $password);
         $portalAccountBiz = new PortalBizAccount();
         $user = $portalAccountBiz->getLogin($email,$password);
-        if (!$isValid || !isset($user))
+        
+        if (!$isValid || !$user)
         {
             $portalBizOrderHistory = new PortalBizPaymentHistory();
             $orderInformation = $portalBizOrderHistory->getOrderAllInformation($orderId);
+            
             if($orderInformation == null){
                 throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__.' Không tìm thấy order với key = '.$orderId);
             }
@@ -134,8 +136,7 @@ class orderVerifing extends BasePortalController
             ->render('portalPayment/orderEmailVerify');
             
         }else{
-            //echo "<pre>"; var_dump($user); die;
-            $this->obj_user =  $user;
+            $this->obj_user = $user;
             $this->obj_user->is_authorized = true;
             $this->obj_user->portal_id = $user->id;
             $this->set_obj_user_to_me($this->obj_user);
@@ -150,6 +151,7 @@ class orderVerifing extends BasePortalController
         $orderId = $this->input->post('orderId');
         $invoiceId = $this->input->post('invoiceId');
         $isHave = $this->input->post("rbx-haveAccount");
+        
         if($isHave == 'HAVE')
         {
             $this->loginAndThen();
