@@ -25,7 +25,7 @@ foreach ($shippingMethods as $method)
 
 foreach ($cartContents as $cartInstance)
 {
-    $shortDesRemovedHtmlTags = strip_tags($cartInstance->getDescription());
+    $shortDesRemovedHtmlTags = strip_tags(html_entity_decode($cartInstance->getDescription()));
     $shortDes = mb_strlen($shortDesRemovedHtmlTags) > 50 ? mb_substr($shortDesRemovedHtmlTags, 0, 50) . '...' : $shortDesRemovedHtmlTags;
     $images = $cartInstance->getImages('thumbnail');
     $json_product = array(
@@ -60,8 +60,7 @@ $json = json_encode($json);
             document.getElementById("submit").submit();
         };
     </script>
-    <form id="submit"
-        action="<?php echo get_instance()->config->item('portal_payment_entry'); ?>"
+    <form id="submit" action="<?php echo get_instance()->config->item('portal_payment_entry'); ?>"
         method="POST">
         <input name='order' type="text" value='<?php echo $json; ?>'
             style="display: none;" />
