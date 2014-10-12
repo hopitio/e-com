@@ -86,6 +86,7 @@ class login extends BasePortalController
         if (! $isValid)
         {
            $this->canNotLogin();
+           return;
         }
         $portalAccountBiz = new PortalBizAccount();
         $user = $portalAccountBiz->getLogin($us,$pw);
@@ -100,6 +101,7 @@ class login extends BasePortalController
         else
         {
             $this->canNotLogin();
+            return;
         }
     }
 
@@ -157,7 +159,7 @@ class login extends BasePortalController
         }
         
         $case = preg_match('@[a-z0-9A-Z]@', $password);
-        if(!$case || strlen($password) < 8) {
+        if(!$case || strlen($password) < 6) {
             return false;
         }
         
@@ -186,7 +188,7 @@ class login extends BasePortalController
             !isset($lastName) ||
             !isset($sex) ||
             !isset($question) ||
-            !isset($answer)
+            !isset($answer) 
         ){
             throw new Lynx_RequestException(__CLASS__.'::registerAccount:request login thiếu tham số');
         }

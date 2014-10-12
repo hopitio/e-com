@@ -111,56 +111,6 @@
                 <li class="last <?php echo User::getCurrentUser()->languageKey ?>" id="menu-hot"><a href="#"><?php echo $language['layout']->lblHot ?></a></li>
             </ul>
         </div>
-        <div id="widget-right" ng-cloak>
-            <div class="product-group">
-                <a href="javascript:;" title="View">Cart</a>
-            </div>
-            <div class="product-group">
-                <a href="javascript:;" title="View">View</a>
-                <ul>
-                    <li>
-                        <a href="#" title="">
-                            <div class="info">
-                                <span class="name">product name</span>
-                                <span class="price">$123</span>
-                            </div>
-                            <div class="image">
-                                <img src="/thumbnail.php//uploads/2014/07/26/2ac73dcd2861aed13372f036c9c558fd.jpg/w=170" alt=""/>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" title="">
-                            <div class="info">
-                                <span class="name">product name</span>
-                                <span class="price">$123</span>
-                            </div>
-                            <div class="image">
-                                <img src="/thumbnail.php//uploads/2014/07/26/2ac73dcd2861aed13372f036c9c558fd.jpg/w=170" alt=""/>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" title="">
-                            <div class="info">
-                                <span class="name">product name</span>
-                                <span class="price">$123</span>
-                            </div>
-                            <div class="image">
-                                <img src="/thumbnail.php//uploads/2014/07/26/2ac73dcd2861aed13372f036c9c558fd.jpg/w=170" alt=""/>
-                            </div>
-                        </a>
-                    </li>
-                    <div>
-                        <a href="javascript:;" title="" class="btn-next-page"></a>
-                        <a href="javascript:;" title="" class="btn-prev-page"></a>
-
-                    </div>
-                </ul>
-            </div>
-            <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top">TOP</a>
-            <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom">BOTTOM</a>
-        </div>
         <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
         <div class="lynx_footer ">
             <div class="lynx_content width-960">

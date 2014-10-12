@@ -322,18 +322,17 @@
                         ng-repeat="product in orderInformation.invoice.products">
                         <td>
                             <div class="p-img">
-                                <a
-                                    href="/product/details/{{product.sub_id}}"
-                                    title="{{product.name}}">
-                                    <img ng-src="{{product.sub_image}}">
+                                <a href="/product/details/{{product.sub_id}}" >
+                                    <img ng-src="{{product.sub_image}}" title="{{product.name}}">
                                 </a>
                             </div>
                             <div class="p-info">
                                 <a class="p-name"
                                     href="/product/details/{{product.sub_id}}"
                                     title="{{product.name}}">
-                                    {{product.short_description}}
+                                    {{product.name}}
                                 </a>
+                                <p>{{product.short_description}}</p>
                             </div>
                         </td>
                         <td>
