@@ -15,7 +15,7 @@ class WishlistModel extends BaseModel
     {
         $wishlist = $this->getOneWishlist();
         //validate
-        $duplicate = WishListDetailMapper::make()
+        $duplicate = WishlistDetailMapper::make()
                 ->select('wd.*', true)
                 ->filterStatus(null)
                 ->filterWishlist($wishlist->id)

@@ -1,11 +1,11 @@
 var config = new Config;
 
-angular.module('lynx').factory('cartService', ['$http', function($http) {
+angular.module('lynx').factory('cartService', ['$http', function ($http) {
         var products = [];
         var callbacks = [];
 
         function loadProducts() {
-            $http.get('/cart/cartProductsService').success(function(resp) {
+            $http.get('/cart/cartProductsService').success(function (resp) {
                 products = resp.products;
                 for (var i in callbacks)
                     callbacks[i](products);
@@ -73,7 +73,7 @@ angular.module('lynx').factory('cartService', ['$http', function($http) {
         };
     }]);
 
-angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService', function($scope, $http, cartService) {
+angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService', function ($scope, $http, cartService) {
         $scope.widgetRightActive = 'viewed';
         $scope.widgetRightPage = 1;
         $scope.widgetRightProducts = {
@@ -81,11 +81,11 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService
             'viewed': [[]]
         };
 
-        $scope.setWidgetRightActive = function(name) {
+        $scope.setWidgetRightActive = function (name) {
             $scope.widgetRightActive = name;
         };
 
-        $scope.getCurrentProducts = function() {
+        $scope.getCurrentProducts = function () {
             if (!$scope.widgetRightProducts[$scope.widgetRightActive])
                 return;
             if (!$scope.widgetRightProducts[$scope.widgetRightActive][$scope.widgetRightPage - 1])
@@ -93,7 +93,7 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService
             return $scope.widgetRightProducts[$scope.widgetRightActive][$scope.widgetRightPage - 1];
         };
 
-        $scope.changeWidgetPage = function(direction) {
+        $scope.changeWidgetPage = function (direction) {
             if (direction > 0 && $scope.widgetRightPage < $scope.widgetRightProducts[$scope.widgetRightActive].length)
                 $scope.widgetRightPage += 1;
             else if (direction < 0 && $scope.widgetRightPage > 1)
@@ -102,7 +102,7 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService
 
         $scope.countCartProducts = cartService.countProducts;
 
-        $scope.countWidgetProducts = function(type) {
+        $scope.countWidgetProducts = function (type) {
             var pages = $scope.widgetRightProducts[type];
             var count = 0;
             for (var i in pages) {
@@ -111,9 +111,9 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService
             return count;
         };
 
-        $scope.getViewed = function() {
+        $scope.getViewed = function () {
             $scope.widgetRightProducts.viewed = [[]];
-            $http.get('/home/viewed_service').success(function(resp) {
+            $http.get('/home/viewed_service').success(function (resp) {
                 if (!resp[0] || !resp[0].id)
                     return;
                 var currentRow = 0;
@@ -129,7 +129,7 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService
         };
         $scope.getViewed();
 
-        cartService.registerLoadProducts(function(products) {
+        cartService.registerLoadProducts(function (products) {
             $scope.widgetRightProducts.cart = [[]];
             var currentRow = 0;
             for (var i in products) {
@@ -143,7 +143,7 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService
 
         });
 
-        $scope.changeLanguage = function(languageKey) {
+        $scope.changeLanguage = function (languageKey) {
             commonServiceClient = new CommonServiceClient($http);
             commonServiceClient.updateLanguage(languageKey, updateLanguageSucessCallback, updateLanguageErrorCallback);
         };
@@ -161,19 +161,58 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService
 
         }
 
+        $scope.removeFromCart = function (productID) {
+            cartService.removeProduct(productID);
+        };
+
+        $scope.removeFromHistory = function (productID) {
+            $.ajax({
+                cache: false,
+                url: '/home/remove_from_history/' + productID,
+                success: function () {
+                    setTimeout(function () {
+                        $scope.$apply(function () {
+                            removeProductFromWidget('viewed', productID);
+                        });
+                    });
+                }
+            });
+        };
+
+        function removeProductFromWidget(listName, productID) {
+            var list = $scope.widgetRightProducts[listName];
+            var last_product;
+            outer_loop:
+                    for (var i = list.length - 1; i >= 0; i--) {
+                var page = $scope.widgetRightProducts.viewed[i];
+                if (last_product) {
+                    page.push(last_product);
+                    last_product = null;
+                }
+                for (var j in page) {
+
+                    var product = page[j];
+                    if (product.id == productID) {
+                        page.splice(j, 1);
+                        break outer_loop;
+                    }
+                }
+                last_product = page.splice(0, 1)[0];
+            }
+        }
     }]);
 
-$(function() {
-    $('#scroll-to-top').click(function() {
+$(function () {
+    $('#scroll-to-top').click(function () {
         $('body').animate({'scrollTop': 0});
     });
-    $('#scroll-to-bottom').click(function() {
+    $('#scroll-to-bottom').click(function () {
         $('body').animate({'scrollTop': $('body').height()});
     });
 
     var widgetRight = $('#widget-right');
     widgetRight.data().top = widgetRight.offset().top;
-    $(document).scroll(function() {
+    $(document).scroll(function () {
         if ($(this).scrollTop() >= widgetRight.data().top - 10) {
             if (!widgetRight.data().cls)
                 widgetRight.addClass('fixed-top');
@@ -185,9 +224,9 @@ $(function() {
         }
     });
 });
-$(function(){
+$(function () {
     var $frm = $('#frm-search');
-    $('#btn-search').click(function(){
+    $('#btn-search').click(function () {
         $frm.submit();
     });
 });

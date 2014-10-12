@@ -331,6 +331,19 @@ class ProductModel extends BaseModel
                 $this;
     }
 
+    function removeFromHistory($productID)
+    {
+        $productIDs = get_instance()->session->userdata(static::SESS_VIEW);
+        $pos = array_search($productID, $productIDs);
+        if ($pos !== false)
+        {
+            unset($productIDs[$pos]);
+        }
+        get_instance()->session->set_userdata(array(
+            static::SESS_VIEW => $productIDs
+        ));
+    }
+
     function getViewedProducts()
     {
         $productIDs = get_instance()->session->userdata(static::SESS_VIEW);

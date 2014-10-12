@@ -800,8 +800,8 @@ li{list-style: none;}
 }
 #widget-right .product-group li .remove{
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -1px;
+    top: -1px;
     background: #343c53;
     color: white;
     z-index:1;

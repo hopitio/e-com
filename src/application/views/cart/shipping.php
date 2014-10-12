@@ -193,11 +193,11 @@ defined('BASEPATH') or die('No direct script access allowed');
                             </div>
                             <div class="border-solid">
                                 <div class="tdleft"><strong><?php echo $language[$view->view]->lblTaxes ?>:</strong></div>
-                                <div class="tdright"><strong >{{fnMoneyToString(productTotalTaxes + getShipPrice() * 0.1)}}</strong></div>
+                                <div class="tdright"><strong >{{fnMoneyToString(productTotalTaxes)}}</strong></div>
                             </div>
                             <div class="total">
                                 <div class="tdleft"><strong><?php echo $language[$view->view]->lblTotal ?>:</strong></div>
-                                <div class="tdright"><strong>{{fnMoneyToString(totalRawPrice + productTotalTaxes + getShipPrice() * 1.1)}}</strong></div>
+                                <div class="tdright"><strong>{{fnMoneyToString(totalRawPrice + productTotalTaxes)}}</strong></div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
