@@ -29,7 +29,7 @@ foreach ($cartContents as $cartInstance)
     $json_product = array(
         'id'          => $cartInstance->id,
         'name'        => (string) $cartInstance->getName(),
-        'image'       => base_url($images[0]->url),
+        'image'       => '/thumbnail.php/' . $images[0]->url,
         'shortDesc'   => mb_strlen($cartInstance->getDescription()) > 50 ? mb_substr($cartInstance->getDescription(), 0, 50) . '...' : (string) $cartInstance->getDescription(),
         'price'       => $cartInstance->getPriceMoney(User::getCurrentUser()->getCurrency())->getAmount(),
         'quantity'    => $cartInstance->quantity,
@@ -54,7 +54,7 @@ $json = json_encode($json);
 ?>
 <div class="contentWarp wStaticPx" style="min-height:500px;">
     <script type="text/javascript">
-        window.onload = function() {
+        window.onload = function () {
             document.getElementById("submit").submit();
         };
     </script>

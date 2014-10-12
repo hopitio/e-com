@@ -69,7 +69,7 @@ class WishlistMapper extends MapperAbstract
 
     function loadDetails(WishlistDomain $wishlist, $language)
     {
-        $details = WishListDetailMapper::make()
+        $details = WishlistDetailMapper::make()
                 ->filterWishlist($wishlist->id)
                 ->setLanguage($language)
                 ->autoloadAttributes()

@@ -19,7 +19,7 @@ class wishlist extends BaseController
 
     function remove($wishlistDetailID)
     {
-        $detailInstance = WishListDetailMapper::make()->select('p.*,wd.*', true)->filterWishlistDetailID($wishlistDetailID)->find();
+        $detailInstance = WishlistDetailMapper::make()->select('p.*,wd.*', true)->filterWishlistDetailID($wishlistDetailID)->find();
         if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
         {
             throw new Lynx_RequestException("You are not owner");
@@ -36,7 +36,7 @@ class wishlist extends BaseController
     {
         header('Content-type: application/json');
         $user = User::getCurrentUser();
-        $mapper = WishListDetailMapper::make()
+        $mapper = WishlistDetailMapper::make()
                 ->select('p.*, wd.id AS wishlistDetailID', true)
                 ->filterWishlist($wishlistID)
                 ->filterStatus(1)
@@ -94,7 +94,7 @@ class wishlist extends BaseController
 
     function addToCart($detailID)
     {
-        $detailInstance = WishListDetailMapper::make()
+        $detailInstance = WishlistDetailMapper::make()
                 ->select('wd.*', true)
                 ->find($detailID);
         if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
@@ -117,7 +117,7 @@ class wishlist extends BaseController
 
     function undoRemove($detailID)
     {
-        $detailInstance = WishListDetailMapper::make()->filterID($detailID)->find();
+        $detailInstance = WishlistDetailMapper::make()->filterID($detailID)->find();
         if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
         {
             throw new Lynx_RequestException("You are not owner");

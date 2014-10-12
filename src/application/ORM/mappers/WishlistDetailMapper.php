@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or die('No direct script access allowed');
 
-class WishListDetailMapper extends ProductFixedMapper
+class WishlistDetailMapper extends ProductFixedMapper
 {
 
     function __construct($domain = 'WishlistDetailDomain')

@@ -125,7 +125,7 @@
                         </a>
                         <ul ng-if="widgetRightActive === 'cart'">
                             <li ng-repeat="product in getCurrentProducts()">
-                                <!--<a class="remove" href="javascript:;" title="Remove">x</a>-->
+                                <a class="remove" href="javascript:;" title="Remove" ng-click="removeFromCart(product.id)">x</a>
                                 <a href="{{product.url}}" title="{{product.name}}">
                                     <div class="info">
                                         <span class="name">{{product.name}}</span>
@@ -145,7 +145,7 @@
                         </a>
                         <ul ng-if="widgetRightActive === 'viewed'">
                             <li ng-repeat="product in getCurrentProducts()">
-                                <!--<a class="remove" href="javascript:;" title="Remove">x</a>-->
+                                <a class="remove" href="javascript:;" title="Remove" ng-click="removeFromHistory(product.id)">x</a>
                                 <a href="{{product.url}}" title="{{product.name}}">
                                     <div class="info">
                                         <span class="name">{{product.name}}</span>

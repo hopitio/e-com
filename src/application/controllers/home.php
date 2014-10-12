@@ -159,4 +159,9 @@ class home extends BaseController
         echo json_encode($json);
     }
 
+    function remove_from_history($productID)
+    {
+        $this->product_model->removeFromHistory($productID);
+    }
+
 }
