@@ -44,11 +44,25 @@ class orderVerifing extends BasePortalController
         }
         $this->convertCurrencyOrder($orderInformation);
         $this->calutionForviewView($orderInformation,$invoiceId);
+        
+        $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
+        switch(User::getCurrentUser()->languageKey){
+        	case 'VN-VI' :
+        	    $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
+        	    break;
+        	case 'EN-US' :
+        	    $jqueryValidateLanguagefileName = "/js/jquery-validate-en.js";
+        	    break;
+        	case 'KO-KR' :
+        	    $jqueryValidateLanguagefileName = "/js/jquery-validate-kr.js";
+        	    break;
+        }
+        
         $dataView = array();
         $dataView['order'] = $orderInformation;
         $dataView['payment'] = $this->config->item('payment_gateway_supported');
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
-        ->setJavascript(array("/cerulean/plugins/validation/jquery.validate.min.js"))
+        ->setJavascript(array("/cerulean/plugins/validation/jquery.validate.min.js",$jqueryValidateLanguagefileName))
         ->setData($dataView)
         ->setJavascript(array('/js/controller/PortalOrderEmailVerifyingController.js'))
         ->setCss($this->css)

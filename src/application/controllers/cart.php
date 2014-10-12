@@ -30,6 +30,20 @@ class cart extends BaseController
         $data['provinces'] = LocationMapper::make()->filterLevel('province')->select('codename, name', true)->findAssoc();
         $data['shippingMethods'] = ShippingMethodMapper::make()->setLanguage(User::getCurrentUser()->languageKey)->findAll();
 
+        $this->obj_user->languageKey;
+        
+        $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
+        switch(User::getCurrentUser()->languageKey){
+        	case 'VN-VI' :
+        	    $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
+        	    break;
+        	case 'EN-US' :
+        	    $jqueryValidateLanguagefileName = "/js/jquery-validate-en.js";
+        	    break;
+        	case 'KO-KR' :
+        	    $jqueryValidateLanguagefileName = "/js/jquery-validate-kr.js";
+        	    break;
+        }
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                 ->setTitle('Shipping Information')
                 ->setData($data)
@@ -37,6 +51,7 @@ class cart extends BaseController
                 ->setJavascript(array(
                     '/plugins/validation/jquery.validate.min.js',
                     '/plugins/validation/additional-methods.min.js',
+                    $jqueryValidateLanguagefileName,
                     '/js/controller/cartShippingCtrl.js'
                 ))->render('cart/shipping');
     }

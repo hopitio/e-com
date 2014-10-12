@@ -10,7 +10,7 @@
         <form id='frmReset' action="/portal/account/lost_password" enctype="application/x-www-form-urlencoded" method="post">
             <br/>
             <span><?php echo $language[$view->view]->lblMail;?> </span> : <input name="email" type="text"/> <br/>
-            <input id="btnSubmit" type="button" value="<?php echo $language[$view->view]->lblMail;?>" />
+            <input id="btnSubmit" type="button" value="<?php echo $language[$view->view]->btnMailler;?>" />
              <?php 
                 if(isset($msg))
                 {

@@ -148,7 +148,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
         unset($orderStatus);
         foreach ($orders as &$order)
         {
-            $order->invoices = $this->getOrderInforamtion($order->id);
+            $order->invoices = $this->getInvoicesInforamtion($order->id);
             $portalModelUser = new PortalModelUser();
             $order->user = null;
             if($order->fk_user == null || !isset($order->fk_user)){
@@ -171,10 +171,10 @@ class PortalBizPaymentHistory extends PortalBizBase{
 
     
     /**
-     * get Order ID.
+     * get Order ID. All information 
      * @param unknown $orderId
      */
-    function getOrderInforamtion($orderId){
+    function getInvoicesInforamtion($orderId){
         $portalInvoice = new PortalModelInvoice();
         $invoices = $portalInvoice->getInvociesByOrderIds(array($orderId));
         $products = $this->getProductsOfInvoices($invoices);

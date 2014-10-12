@@ -253,6 +253,21 @@
         <script type='text/javascript' src="/js/controller/LayoutCtrl.js"></script>
         <script type='text/javascript' src="/js/services/CommonServiceClient.js"></script>
 
+        <!-- Đa ngôn ngữ -->
+        <?php
+            $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
+            switch(User::getCurrentUser()->languageKey){
+                case 'VN-VI' :
+                    $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
+                break;
+                case 'EN-US' :
+                    $jqueryValidateLanguagefileName = "/js/jquery-validate-e.js";
+                break;
+            }
+        ?>
+        
+        <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
+        
         <script type="text/javascript">
                     function Config() {
                         this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
