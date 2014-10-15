@@ -12,6 +12,7 @@
         <!--<link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">-->
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/headMenu.css" media="all">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" >
         <?php
         //Thêm các js riêng biệt
         foreach ($view->css as $item)
@@ -255,19 +256,19 @@
 
         <!-- Đa ngôn ngữ -->
         <?php
-            $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
-            switch(User::getCurrentUser()->languageKey){
-                case 'VN-VI' :
-                    $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
+        $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
+        switch (User::getCurrentUser()->languageKey) {
+            case 'VN-VI' :
+                $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
                 break;
-                case 'EN-US' :
-                    $jqueryValidateLanguagefileName = "/js/jquery-validate-e.js";
+            case 'EN-US' :
+                $jqueryValidateLanguagefileName = "/js/jquery-validate-e.js";
                 break;
-            }
+        }
         ?>
-        
+
         <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
-        
+
         <script type="text/javascript">
                     function Config() {
                         this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';

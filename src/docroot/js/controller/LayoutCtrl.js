@@ -211,18 +211,20 @@ $(function () {
     });
 
     var widgetRight = $('#widget-right');
-    widgetRight.data().top = widgetRight.offset().top;
-    $(document).scroll(function () {
-        if ($(this).scrollTop() >= widgetRight.data().top - 10) {
-            if (!widgetRight.data().cls)
-                widgetRight.addClass('fixed-top');
-            widgetRight.data().cls = true;
-        } else {
-            if (widgetRight.data().cls)
-                widgetRight.removeClass('fixed-top');
-            widgetRight.data().cls = false;
-        }
-    });
+    if (widgetRight.length) {
+        widgetRight.data().top = widgetRight.offset().top;
+        $(document).scroll(function () {
+            if ($(this).scrollTop() >= widgetRight.data().top - 10) {
+                if (!widgetRight.data().cls)
+                    widgetRight.addClass('fixed-top');
+                widgetRight.data().cls = true;
+            } else {
+                if (widgetRight.data().cls)
+                    widgetRight.removeClass('fixed-top');
+                widgetRight.data().cls = false;
+            }
+        });
+    }
 });
 $(function () {
     var $frm = $('#frm-search');

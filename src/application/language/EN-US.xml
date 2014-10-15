@@ -157,8 +157,11 @@
         <lblOutOfOrder>Out of order</lblOutOfOrder>
         <lblRemove>Remove</lblRemove>
         <lblSales>Sales</lblSales>
+        <lblShipping>Shipping</lblShipping>
+        <lblTransferFee>Transfer Fee</lblTransferFee>
     </cart_showCart>
     <cart_shipping>
+        <lblTransferFee>Transfer Fee</lblTransferFee>
         <lblYourCart>Your Cart</lblYourCart>
         <lblShippingInfo>Shipping Infomation</lblShippingInfo>
         <lblPaymentInfo>Payment Infomation</lblPaymentInfo>

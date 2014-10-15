@@ -191,9 +191,13 @@ defined('BASEPATH') or die('No direct script access allowed');
                                 <div class="tdleft"><strong ><?php echo $language[$view->view]->lblSubtotal ?>:</strong></div>
                                 <div class="tdright"><strong >{{fnMoneyToString(totalRawPrice + getShipPrice())}}</strong></div>
                             </div>
-                            <div class="border-solid">
+                            <div class="border-dashed">
                                 <div class="tdleft"><strong><?php echo $language[$view->view]->lblTaxes ?>:</strong></div>
                                 <div class="tdright"><strong >{{fnMoneyToString(productTotalTaxes)}}</strong></div>
+                            </div>
+                            <div class="border-solid">
+                                <div class="tdleft"><strong><?php echo $language[$view->view]->lblTransferFee ?>:</strong></div>
+                                <div class="tdright"><strong >----?</strong></div>
                             </div>
                             <div class="total">
                                 <div class="tdleft"><strong><?php echo $language[$view->view]->lblTotal ?>:</strong></div>

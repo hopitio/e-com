@@ -158,8 +158,11 @@
         <lblOutOfOrder>순서가</lblOutOfOrder>
         <lblRemove>제거</lblRemove>
         <lblSales>판매</lblSales>
+        <lblShipping>배송</lblShipping>
+        <lblTransferFee>송금 수수료</lblTransferFee>
     </cart_showCart>
     <cart_shipping>
+        <lblTransferFee>송금 수수료</lblTransferFee>
         <lblYourCart>장바구니</lblYourCart>
         <lblShippingInfo>배송 정보</lblShippingInfo>
         <lblPaymentInfo>결제 정보</lblPaymentInfo>

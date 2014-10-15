@@ -160,8 +160,11 @@
         <lblOutOfOrder>Hết hàng</lblOutOfOrder>
         <lblRemove>Xóa</lblRemove>
         <lblSales>Giảm</lblSales>
+        <lblShipping>Vận chuyển</lblShipping>
+        <lblTransferFee>Phí giao dịch</lblTransferFee>
     </cart_showCart>
     <cart_shipping>
+        <lblTransferFee>Phí giao dịch</lblTransferFee>
         <lblYourCart>Giỏ hàng</lblYourCart>
         <lblShippingInfo>Thông tin vận chuyển</lblShippingInfo>
         <lblPaymentInfo>Thông tin thanh toán</lblPaymentInfo>

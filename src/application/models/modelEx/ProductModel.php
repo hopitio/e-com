@@ -126,15 +126,15 @@ class ProductModel extends BaseModel
 
     function updateProduct($productID, $language, $productFields, $attributes = false)
     {
-        $price = $productFields['price'];
-        $priceOrigin = isset($productFields['price_origin']) ? $productFields['price_origin'] : 0;
+        $price = (double) str_replace(',', '', $productFields['price']);
+        $priceOrigin = isset($productFields['price_origin']) ? (double) str_replace(',', '', $productFields['price_origin']) : 0;
         $salesPercent = $priceOrigin && $priceOrigin > $price ? floor(($priceOrigin - $price) * 100 / $priceOrigin) : 0;
         if ($productID)
         {
             DB:: update('t_product', array(
                 'fk_category'   => (int) $productFields['fk_category'],
-                'price'         => (double) str_replace(',', '', $productFields['price']),
-                'price_origin'  => (double) str_replace(',', '', $productFields['price_origin']),
+                'price'         => $price,
+                'price_origin'  => $priceOrigin,
                 'sales_percent' => $salesPercent
                     ), 'id=' . intval($productID));
         }
@@ -161,9 +161,7 @@ class ProductModel extends BaseModel
             }
         endforeach;
         $this->updateProductImages($productID);
-        return
-
-                $productID;
+        return $productID;
     }
 
     function updateProductImages($productID)
