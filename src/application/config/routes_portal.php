@@ -33,6 +33,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/account/get_user_contacts'] = "portalController/userInformation/getUserContactXhr";
         $route['portal/account/order_history'] = 'portalController/userOrderHistory/showPage';
         $route['portal/api/account/order_history/(:any)'] = 'portalController/userOrderHistory/getOrderHistory/$1';
+        $route['protal/api/product/gift/(:num)/selled_time'] = 'portalController/apiProduct/getSelledProductTime/$1';
         
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
