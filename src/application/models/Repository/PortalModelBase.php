@@ -256,5 +256,64 @@ class PortalModelBase extends CI_Model
         }
         return  $queryResult;
     }
+    
+    public function getSpeciallyColWithMutilCondition($colCollection, $orderProperty = null,$orderLogic = 'asc',$limit = null, $offset = null){
+        $condition = array();
+        $refl = new ReflectionClass($this->_constIntanceName);
+        $propertiesList = $refl->getConstants();
+        $class = $this->_constIntanceName;
+        if(in_array(T_base::id, $colCollection)){
+            array_push($colCollection, T_base::id);
+        }
+        $strSelect = "";
+        foreach ($propertiesList as $property){
+            if($property == $class::tableName || !isset($this->$property) || $this->$property === null)
+            {
+                continue;
+            }
+            if(in_array($property, $colCollection)){
+                $strSelect .= "'{$property}',";
+            }
+            $condition[$property] = $this->$property;
+        }
+        if(strlen($strSelect) > 0){
+            $strSelect =  $strSelect->substr($strSelect, 0, -1);
+            $this->_dbPortal->select($strSelect);
+        }
+        
+        if ($orderProperty != null)
+        {
+            $this->_dbPortal->order_by($orderProperty, $orderLogic);
+        }
+        if($limit != null){
+            if($offset != null){
+                $this->_dbPortal->limit($offset,$limit);
+            }else{
+                $this->_dbPortal->limit($limit);
+            }
+        }
+        
+        $queryResult = $this->_dbPortal->get_where($class::tableName,$condition);
+        $result = $queryResult->result();
+        return $result;
+    }
+    
+    public function getCountOfConditions(){
+        $condition = array();
+        $refl = new ReflectionClass($this->_constIntanceName);
+        $propertiesList = $refl->getConstants();
+        $class = $this->_constIntanceName;
+        foreach ($propertiesList as $property){
+            if($property == $class::tableName || !isset($this->$property) || $this->$property === null)
+            {
+                continue;
+            }
+        
+            $condition[$property] = $this->$property;
+        }
+        $this->_dbPortal->where($condition);
+        $this->_dbPortal->from($class::tableName);
+        return $this->_dbPortal->count_all_results();
+    }
 
 }

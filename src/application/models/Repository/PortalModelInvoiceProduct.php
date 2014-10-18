@@ -12,4 +12,17 @@ class PortalModelInvoiceProduct extends PortalModelBase
     {
         return parent::bacthInsert($collection);
     }
+    
+    function getProductionByProductsId($products){
+        $values = array();
+        foreach ($products as $product){
+            array_push($values, $product->id);
+        }
+        return $this->getWhereIn(T_invoice_product::fk_product, $values);
+    }
+    
+    
+    function getAvgPriceForProduct($productId){
+        
+    }
 }

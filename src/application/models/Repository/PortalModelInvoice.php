@@ -16,4 +16,12 @@ class PortalModelInvoice extends PortalModelBase
     function getInvociesByOrderIds($orderIds){
         return parent::getWhereIn(T_invoice::fk_order, $orderIds); 
     }
+        
+    function getInvoicesByInvoiceProductCollection($invoiceProductCollection){
+        $invoicesId = array();
+        foreach ($invoiceProductCollection as $invoiceProduct){
+            array_push($invoicesId, $invoiceProduct->fk_invoice);
+        }
+        return parent::getWhereIn(T_invoice::id, $invoicesId);
+    }
 }

@@ -105,4 +105,13 @@ class PortalModelOrder extends PortalModelBase
 
         return $query->result();
     }
+    
+    function getOrderByInvoices($invoices){
+        $ordersId = array();
+        foreach ($invoices as $invoice){
+            array_push($ordersId, $invoice->fk_order);
+        }
+        return parent::getWhereIn(T_order::id, $ordersId);
+    }
+    
 }
