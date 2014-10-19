@@ -34,6 +34,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/order_history'] = 'portalController/userOrderHistory/showPage';
         $route['portal/api/account/order_history/(:any)'] = 'portalController/userOrderHistory/getOrderHistory/$1';
         $route['protal/api/product/gift/(:num)/selled_time'] = 'portalController/apiProduct/getSelledProductTime/$1';
+        $route['protal/api/invoice/(:num)'] = 'portalController/apiInvoice/getInvoice/$1';
         
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
@@ -97,6 +98,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['api/language/submit_change'] = 'userLanguage/submitChangeXhr';
         $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
         $route['portal/api/account/order_history/cancel_order'] ="portalController/userOrderHistory/cancelOrder";
+        $route['protal/api/gift/seller/(:num)/search'] = 'portalController/apiSeller/searchSellerProduct/$1';
         
         $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/saveInformation';
         $route['portal/order_verifing/email_verify'] = 'portalController/orderVerifing/mergeEmail';

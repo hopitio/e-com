@@ -4,7 +4,7 @@
  * @author ANLT
  *
  */
-class SerllerOrderService{
+class SellerOrderService{
     
     function __construct() {
         

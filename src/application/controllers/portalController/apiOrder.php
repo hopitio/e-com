@@ -4,11 +4,10 @@ if (! defined('BASEPATH'))
 
 class apiOrder extends BasePortalController
 {
-    function getSellerOrder($sellerId)
-    {
-        $page = 0;
-        $pageCount = 20;
-        
+    function getOrder($orderId){
+        $serviceRepository = new PortalBizPaymentHistory();
+        $orders = $serviceRepository->getOrderAllInformation($orderId);
+        $this->output->set_content_type('application/json')->set_output(json_encode($orders, true));
     }
     
     

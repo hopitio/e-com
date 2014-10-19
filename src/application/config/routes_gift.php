@@ -23,6 +23,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['api/__admin/seller/change_status/(:num)'] = 'admin/sellerAPI/changeStatus/$1';
         $route['api/__admin/user/(:num)'] = 'admin/userAPI/getGiftUserId/$1';
 
+        $route['seller/order/search'] = "sellerOrder/showPage";
+        $route['seller/invoice/(:num)'] = "sellerOrder/invocieDetail/$1";
+        
         $route['__admin/product'] = 'admin/product/main';
         $route['__admin/product/svc_all_products'] = 'admin/product/svc_all_products';
 

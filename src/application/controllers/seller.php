@@ -23,7 +23,7 @@ class seller extends BaseController
         $this->_layout = LayoutFactory::getLayout(LayoutFactory::TEMP_SELLER);
         $this->_layout->addMainNav(new Nav_Item('dashboard', '<i class="fa fa-dashboard"></i> Trang chủ', '/seller/dashboard'))
                 ->addMainNav(new Nav_Item('sales', '<i class="fa fa-dollar"></i> Bán hàng', 'javascript:;', true, array(
-                    new Nav_Item('order', 'Đơn hàng', '/seller/order'),
+                    new Nav_Item('order', 'Đơn hàng', '/seller/order/search'),
                     new Nav_Item('invoice', 'Hóa đơn', '/seller/invoice'),
                     new Nav_Item('shipment', 'Vận chuyển', '/seller/shipment')
                 )))
@@ -313,5 +313,5 @@ class seller extends BaseController
                 ->setHeading('<i class="fa fa-folder"></i> Chọn chuyên mục cho sản phẩm')
                 ->render('seller/add_product');
     }
-
+    
 }

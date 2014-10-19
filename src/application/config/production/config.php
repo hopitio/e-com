@@ -371,7 +371,8 @@ $config['proxy_ips'] = '';
 
 $config['platform_login_url'] = 'http://sfriendly.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
 $config['portal_login_url'] = 'http://sfriendly.com/portal/login?cp={cp}';
-
+$config['portal_seller_search_api'] = '/protal/api/gift/seller/{seller_id}/search';
+$config['portal_seller_invoice_detail_api'] = '/protal/api/invoice/{invoice_id}';
 
 $config['platform_login_callback'] = 'http://sfriendly.com/__portal/login_callback';
 $config['platform_logout'] = '/logout';

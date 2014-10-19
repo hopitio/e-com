@@ -45,6 +45,7 @@ class PortalModelBase extends CI_Model
         parent::__construct();
         $this->initalDatabasePortal();
     }
+    
 	/**
 	 * Khởi tạo kết nối database và đối tượng database của framework.
 	 */

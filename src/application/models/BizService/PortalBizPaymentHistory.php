@@ -171,12 +171,26 @@ class PortalBizPaymentHistory extends PortalBizBase{
 
     
     /**
-     * get Order ID. All information 
+     * get all invoice information 
      * @param unknown $orderId
      */
     function getInvoicesInforamtion($orderId){
         $portalInvoice = new PortalModelInvoice();
         $invoices = $portalInvoice->getInvociesByOrderIds(array($orderId));
+        foreach($invoices as &$invoice){
+            $invoice = $this->getInvoiceInformation($invoice->id);
+        }
+        return $invoices;
+    }
+    
+    /**
+     * get information of invoice
+     * @param string $invocieId
+     */
+    function getInvoiceInformation($invocieId){
+        $portalInvoice = new PortalModelInvoice();
+        $portalInvoice->id = $invocieId;
+        $invoices = $portalInvoice->getMutilCondition();
         $products = $this->getProductsOfInvoices($invoices);
         $taxs = $this->getTaxOfProducts($products);
         foreach ($products as &$product){
@@ -193,9 +207,9 @@ class PortalBizPaymentHistory extends PortalBizBase{
         {
             $invocie->products = array();
             foreach ($products as $product){
-                 if($product->invoice_id == $invocie->id){
-                     array_push($invocie->products, $product);
-                 }
+                if($product->invoice_id == $invocie->id){
+                    array_push($invocie->products, $product);
+                }
             }
         }
         unset($invocie);
@@ -225,7 +239,7 @@ class PortalBizPaymentHistory extends PortalBizBase{
         }
         unset($invocie);
         
-        return $invoices;
+        return $invoices[0];
     }
     
     private function preGetUserOrderWithStatusResult($orders){

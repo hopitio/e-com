@@ -114,4 +114,76 @@ class PortalModelOrder extends PortalModelBase
         return parent::getWhereIn(T_order::id, $ordersId);
     }
     
+    function getSearchSellerOrder($sellerId, $productsId, $orderStatus, $startedAt = null, $endedAt = null, $limit, $offset){
+        $sql = "SELECT DISTINCT user_order.id,  
+                    (SELECT t_order_status.status FROM t_order_status 
+                         WHERE user_order.id = t_order_status.fk_order
+                         ORDER BY t_order_status.created_at DESC LIMIT 1) AS 'status'
+                FROM t_order AS user_order
+                    INNER JOIN t_invoice AS invoice ON user_order.id = invoice.fk_order
+                    INNER JOIN t_invoice_product ON invoice.id = t_invoice_product.fk_invoice
+                    INNER JOIN t_product AS product ON t_invoice_product.fk_product = product.id
+                WHERE ('' = ? OR product.sub_id IN (?))
+                AND   ('' = ? OR ? = (SELECT t_order_status.status FROM t_order_status 
+                            WHERE user_order.id = t_order_status.fk_order
+                            ORDER BY t_order_status.created_at DESC LIMIT 1))
+                AND   ('' = ? OR ? >= (SELECT t_order_status.updated_date FROM t_order_status 
+                            WHERE user_order.id = t_order_status.fk_order
+                            ORDER BY t_order_status.created_at DESC LIMIT 1) )
+                AND   ('' = ? OR ? <= (SELECT t_order_status.updated_date FROM t_order_status 
+                            WHERE user_order.id = t_order_status.fk_order
+                            ORDER BY t_order_status.created_at DESC LIMIT 1) )
+                AND   product.seller_id = ? 
+                ORDER BY user_order.created_at DESC
+                LIMIT ?,?";
+        $productsId = is_array($productsId) && count($productsId) == 0 ? "" : $productsId;
+        $productsId = is_array($productsId) ? implode(",",$productsId) : $productsId;
+        $startedAt = $startedAt == null ? "2000-01-01 00:00:00" : $startedAt;
+        $endedAt = $endedAt == null ? "2900-01-01 00:00:00" : $endedAt;
+        $limit = intval($limit);
+        $offset = intval($offset);
+        $param = array (
+                $productsId,$productsId,
+                $orderStatus,$orderStatus, 
+                $endedAt,$endedAt,
+                $startedAt,$startedAt,
+                $sellerId,
+                $offset,$limit
+        );
+        $query = $this->_dbPortal->query($sql,$param);
+        //echo $this->_dbPortal->last_query();die;
+        return $query->result();
+    }
+    
+    function getSearchSellerOrderCountAllResult($sellerId, $productsId, $orderStatus, $startedAt, $endedAt){
+        $sql = "SELECT count(user_order.id) as 'count'
+                FROM t_order AS user_order
+                    INNER JOIN t_invoice AS invoice ON user_order.id = invoice.fk_order
+                    INNER JOIN t_invoice_product ON invoice.id = t_invoice_product.fk_invoice
+                    INNER JOIN t_product AS product ON t_invoice_product.fk_product = product.id
+                WHERE ('' = ? OR product.sub_id IN (?))
+                AND   ('' = ? OR ? = (SELECT t_order_status.status FROM t_order_status
+                            WHERE user_order.id = t_order_status.fk_order
+                            ORDER BY t_order_status.created_at DESC LIMIT 1))
+                AND   ('' = ? OR ? >= (SELECT t_order_status.updated_date FROM t_order_status
+                            WHERE user_order.id = t_order_status.fk_order
+                            ORDER BY t_order_status.created_at DESC LIMIT 1) )
+                AND   ('' = ? OR ? <= (SELECT t_order_status.updated_date FROM t_order_status
+                            WHERE user_order.id = t_order_status.fk_order
+                            ORDER BY t_order_status.created_at DESC LIMIT 1) )
+                AND   product.seller_id = ?";
+        $productsId = is_array($productsId) && count($productsId) == 0 ? "" : $productsId;
+        $productsId = is_array($productsId) ? implode(",",$productsId) : $productsId;
+        $startedAt = $startedAt == null ? "2000-01-01 00:00:00" : $startedAt;
+        $endedAt = $endedAt == null ? "2900-01-01 00:00:00" : $endedAt;
+        $param = array (
+                $productsId,$productsId,
+                $orderStatus,$orderStatus,
+                $endedAt,$endedAt,
+                $startedAt,$startedAt,
+                $sellerId
+        );
+        $query = $this->_dbPortal->query($sql,$param);
+        return $query->result();
+    }
 }

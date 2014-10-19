@@ -50,4 +50,15 @@ class PortalModelProduct extends PortalModelBase
         $result = $query->result();
         return $result;
     }
+    
+    function getPreferOrder($productId){
+        $sql = "SELECT DISTINCT t_invoice.fk_order as 'order_id' FROM t_product 
+                INNER JOIN t_invoice_product ON t_product.id = t_invoice_product.fk_product 
+                INNER JOIN t_invoice ON t_invoice_product.fk_invoice = t_invoice.id
+                WHERE t_product.id = {$productId}";
+        $query =  $this->_dbPortal->query($sql);
+        $result = $query->result();
+        return $result;
+        
+    }
 }
