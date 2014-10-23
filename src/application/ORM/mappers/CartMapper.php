@@ -29,7 +29,7 @@ class CartMapper extends ProductFixedMapper
             //không lấy sp nào do không có phần tử trong cart
             $this->_query->where('1=2', 'cart');
         }
-        $this->_query->select('p.*, seller.name AS seller_name, seller.email as seller_email, seller.sid', true)
+        $this->_query->select('p.*, seller.name AS seller_name, seller.email as seller_email, seller.sid, seller.id AS seller_id', true)
                 ->innerJoin('t_seller seller', 'p.fk_seller = seller.id');
     }
 

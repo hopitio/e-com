@@ -90,6 +90,7 @@ class ProductModel extends BaseModel
             throw new Lynx_BusinessLogicException("Bạn cần nhập đủ các ngôn ngữ");
         }
         DB::update('t_product', array('status' => 1), 'id=?', array($productID));
+        DB::update('t_product', array('date_created' => DB::getDate()), 'id=? AND date_created IS NULL', array($productID));
     }
 
     function deactivate($productID)
