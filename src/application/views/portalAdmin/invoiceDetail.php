@@ -115,7 +115,7 @@
                 <thead>
                     <tr>
                         <th style="width: 75px">Mã</th>
-                        <th>Mô tả</th>
+                        <th style="width: 500px">Mô tả</th>
                         <th style="width: 200px">Giá / Thuế</th>
                     </tr>
                 </thead>

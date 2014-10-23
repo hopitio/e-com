@@ -119,11 +119,12 @@ class PortalBizPaymentHistory extends PortalBizBase{
             array_push($orders, $order);
         }
         unset($orderStatus);
-        foreach ($orders as &$order)
-        {
-            $order->invoices = $this->getOrderInforamtion($order->id);
+        $orderIds = array();
+        foreach ($orders as $order){
+            array_push($orderIds, $order->id);
         }
-        unset($order);
+        
+        $orders = $this->getOrderAllInformation($orderIds);
         
         foreach ($orders as &$order){
             $this->preGetUserOrderWithStatusResult($orders);
@@ -131,11 +132,18 @@ class PortalBizPaymentHistory extends PortalBizBase{
         return $orders;
     }
     
+    
+    /**
+     * get orders
+     * @param array | orderId $orderId
+     * @return array | orderId
+     */
     function getOrderAllInformation($orderId){
+        $selectOne = (!is_array($orderId)) || (is_array($orderId) && count($orderId) == 1);
+        $orderIds = is_array($orderId) ? $orderId : array($orderId);
         $portalModelOrder = new PortalModelOrder();
-        $portalModelOrder->id = $orderId;
         $orders = array();
-        $status = $portalModelOrder->getOrderWithCurrentStatus($orderId);
+        $status = $portalModelOrder->getOrderWithCurrentStatus($orderIds);
         foreach ($status as $orderStatus)
         {
             $status = $orderStatus->status;
@@ -146,40 +154,86 @@ class PortalBizPaymentHistory extends PortalBizBase{
             array_push($orders, $order);
         }
         unset($orderStatus);
-        foreach ($orders as &$order)
-        {
-            $order->invoices = $this->getInvoicesInforamtion($order->id);
-            $portalModelUser = new PortalModelUser();
-            $order->user = null;
-            if($order->fk_user == null || !isset($order->fk_user)){
-                continue;
+        
+        $arrOrderIds = array();
+        foreach ($orders as $order){
+            array_push($arrOrderIds, $order->id);
+        };
+        
+        $invoices = $this->getInvoicesInforamtion($arrOrderIds);
+        foreach ($orders as &$order){
+            $order->invoices = array();
+            foreach ($invoices as $invoice){
+                if($invoice->fk_order == $order->id){
+                    array_push($order->invoices, $invoice);
+                }
             }
-            $portalModelUser->id = $order->fk_user;
-            $portalModelUser->getUserByUserId();
-            unset($portalModelUser->password);
-            $order->user = $portalModelUser;
         }
-        unset($order);
         foreach ($orders as &$order){
             $this->preGetUserOrderWithStatusResult($orders);
         }
-        if(count($orders)>0){
+        if($selectOne){
             return $orders[0];
         }
-        return null;
+        return $orders;
     }
 
     
     /**
      * get all invoice information 
-     * @param unknown $orderId
+     * @param array $orderId
      */
-    function getInvoicesInforamtion($orderId){
+    function getInvoicesInforamtion(array $orderIds){
         $portalInvoice = new PortalModelInvoice();
-        $invoices = $portalInvoice->getInvociesByOrderIds(array($orderId));
-        foreach($invoices as &$invoice){
-            $invoice = $this->getInvoiceInformation($invoice->id);
+        $invoices = $portalInvoice->getInvociesByOrderIds($orderIds);
+        $products = $this->getProductsOfInvoices($invoices);
+        $taxs = $this->getTaxOfProducts($products);
+        foreach ($products as &$product){
+            $product->taxs = array();
+            foreach ($taxs as $tax){
+                if($tax->fk_product == $product->id){
+                    array_push($product->taxs, $tax);
+                }
+            }
         }
+        unset($product);
+
+        foreach ($invoices as &$invocie)
+        {
+            $invocie->products = array();
+            foreach ($products as $product){
+                if($product->invoice_id == $invocie->id){
+                    array_push($invocie->products, $product);
+                }
+            }
+        }
+        unset($invocie);
+
+        $shippings = $this->getShippingOfInvoices($invoices,true);
+        foreach ($invoices as &$invocie)
+            {
+            $invocie->shippings = array();
+            foreach ($shippings as $shipping){
+                if($shipping->fk_invoice == $invocie->id){
+                    array_push($invocie->shippings, $shipping);
+                }
+            }
+        }
+
+        unset($invocie);
+
+        $otherCosts = $this->getOtherCostOfInvoices($invoices);
+        foreach ($invoices as &$invocie)
+            {
+            $invocie->otherCosts = array();
+            foreach ($otherCosts as $otherCost){
+                if($otherCost->fk_invoice == $invocie->id){
+                    array_push($invocie->otherCosts, $otherCost);
+                }
+            }
+        }
+        unset($invocie);
+        
         return $invoices;
     }
     

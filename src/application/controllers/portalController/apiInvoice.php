@@ -11,8 +11,7 @@ class apiInvoice extends BasePortalController
         $invocie = $serviceRepository->getInvoiceInformation($invocieId);
         
         $orderResopsitory = new PortalModelOrder();
-        $orderResopsitory->id = $invocie->fk_order;
-        $order = $orderResopsitory->getOrderWithCurrentStatus();
+        $order = $orderResopsitory->getOrderWithCurrentStatus(array($invocie->fk_order));
         
         $invocie->order = $order[0];
         $this->output->set_content_type('application/json')->set_output(json_encode($invocie, true));

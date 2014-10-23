@@ -25,10 +25,12 @@ class PortalModelOrder extends PortalModelBase
         return $query->result();
     }
     
-    function getOrderWithCurrentStatus(){
-        $sql = "SELECT	t_order.*,t_order_status.status
+    function getOrderWithCurrentStatus($ordersId){
+        $ordersCollection = implode(",", $ordersId);
+        $sql = 
+        "SELECT	t_order.*,t_order_status.status
         FROM t_order INNER JOIN t_order_status ON t_order.id = t_order_status.fk_order
-        WHERE t_order.id = {$this->id}
+        WHERE t_order.id in ({$ordersCollection})
         AND  t_order_status.id =
             (SELECT t_order_status.id
             FROM t_order_status
@@ -151,12 +153,11 @@ class PortalModelOrder extends PortalModelBase
                 $offset,$limit
         );
         $query = $this->_dbPortal->query($sql,$param);
-        //echo $this->_dbPortal->last_query();die;
         return $query->result();
     }
     
     function getSearchSellerOrderCountAllResult($sellerId, $productsId, $orderStatus, $startedAt, $endedAt){
-        $sql = "SELECT count(user_order.id) as 'count'
+        $sql = "SELECT DISTINCT user_order.id as 'id'
                 FROM t_order AS user_order
                     INNER JOIN t_invoice AS invoice ON user_order.id = invoice.fk_order
                     INNER JOIN t_invoice_product ON invoice.id = t_invoice_product.fk_invoice
@@ -172,6 +173,7 @@ class PortalModelOrder extends PortalModelBase
                             WHERE user_order.id = t_order_status.fk_order
                             ORDER BY t_order_status.created_at DESC LIMIT 1) )
                 AND   product.seller_id = ?";
+        
         $productsId = is_array($productsId) && count($productsId) == 0 ? "" : $productsId;
         $productsId = is_array($productsId) ? implode(",",$productsId) : $productsId;
         $startedAt = $startedAt == null ? "2000-01-01 00:00:00" : $startedAt;

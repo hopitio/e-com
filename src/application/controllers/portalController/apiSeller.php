@@ -24,15 +24,24 @@ class apiSeller extends BasePortalController
         $stdClass = new stdClass();
         $orderRepository = new PortalModelOrder();
         $orders = $orderRepository->getSearchSellerOrder($sellerId, $subProductsId, $status,$startedAt,$endedAt, $limit, $offset);
+        $orderIds = array();
+        foreach ($orders as $order){
+            array_push($orderIds, $order->id);
+        }
+        $servicePaymentHistory = new PortalBizPaymentHistory();
+        $ordersInfo = $servicePaymentHistory->getOrderAllInformation($orderIds);
         foreach ($orders as &$order){
-            $servicePaymentHistory = new PortalBizPaymentHistory();
-            $order->information =  $servicePaymentHistory->getOrderAllInformation($order->id);
+            foreach ($ordersInfo as $info){
+                 if($order->id == $info->id){
+                     $order->information = $info;
+                 }
+            }
         }
         $counts = $orderRepository->getSearchSellerOrderCountAllResult($sellerId, $subProductsId, $status,$startedAt,$endedAt);
         $stdClass->start = $offset;
         $stdClass->length = $limit;
-        $stdClass->recordsTotal = $counts[0]->count;
-        $stdClass->recordsFiltered = $counts[0]->count;
+        $stdClass->recordsTotal = count($counts);
+        $stdClass->recordsFiltered = count($counts);
         $stdClass->data = $orders;
         
         $this->output->set_content_type('application/json')->set_output(json_encode($stdClass, true));
