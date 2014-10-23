@@ -61,8 +61,8 @@ $json = json_encode($json);
         };
     </script>
     <form id="submit" action="<?php echo get_instance()->config->item('portal_payment_entry'); ?>"
-        method="POST">
+          method="POST">
         <input name='order' type="text" value='<?php echo $json; ?>'
-            style="display: none;" />
+               style="display: none;" />
     </form>
 </div>

@@ -91,10 +91,10 @@ if (!empty($images))
                     <a href="javascript:;"><span class="icon"><?php echo $language[$view->view]->lblBoughtQty ?></span></a>
                 </li>
                 <li class="detail-social-rate">
-                    <a href="javascript:;"><span class="icon"><?php echo $language[$view->view]->lblSatisfied ?></span></a>
+                    <a href="javascript:;" ><span class="icon" style="color: gray;"><?php echo $language[$view->view]->lblSatisfied ?></span></a>
                 </li>
                 <li class="detail-social-comment last">
-                    <a href="javascript:;"><span class="icon"><?php echo $language[$view->view]->lblComment ?></span></a>
+                    <a href="#lynx_facebookReview"><span class="icon"><?php echo $language[$view->view]->lblComment ?></span></a>
                 </li>
             </ul>
             <br>
@@ -123,7 +123,7 @@ if (!empty($images))
                 </div>
             </div>
             <h4></h4>
-            <div class="lynx_facebookReview">
+            <div class="lynx_facebookReview" id="lynx_facebookReview">
                 <div class="fb-comments" data-width="675" data-href="<?php echo Common::curPageURL(); ?>" data-numposts="10" data-colorscheme="light">
                     Loading Facebook...
                 </div>
