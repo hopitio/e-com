@@ -33,6 +33,10 @@ function PortalAdminOrderController($scope,$http)
     
     
     $scope.nextStatus = function(){
+    	var r = confirm("Bạn có thực sự muốn chuyển trạng thái của order hiện tại");
+    	if(!r){
+    		return;
+    	}
         $scope.dialogCallback = function(){
             $("#comment-dialog").modal('hide');
             
@@ -44,6 +48,10 @@ function PortalAdminOrderController($scope,$http)
     };
     
     $scope.backStatus = function(){
+    	var r = confirm("Bạn có thực sự muốn chuyển trạng thái của order hiện tại");
+    	if(!r){
+    		return;
+    	}
         $scope.dialogCallback = function(){
             $("#comment-dialog").modal('hide');
             
@@ -55,6 +63,10 @@ function PortalAdminOrderController($scope,$http)
     };
     
     $scope.rejectStatus = function(){
+    	var r = confirm("Bạn có thực sự muốn chuyển trạng thái của order hiện tại");
+    	if(!r){
+    		return;
+    	}
         $scope.dialogCallback = function(){
             $("#comment-dialog").modal('hide');
             portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);

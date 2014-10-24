@@ -41,10 +41,10 @@
                 <legend style="text-align: left;"><?php echo $language[$view->view]->fieldsetTitle;?></legend>
                 <div class="payment-methods">
                     <ul>
-                        <li ng-click="paymentMethodChanged('NL')" ng-class="{active:paymentMethodCode == 'NL'}"><?php echo $language[$view->view]->paymentByNL;?></li>
-                        <li ng-click="paymentMethodChanged('CASH')" ng-class="{active:paymentMethodCode == 'CASH'}"><?php echo $language[$view->view]->paymentByCash;?></li>
                         <li ng-click="paymentMethodChanged('VISA')" ng-class="{active:paymentMethodCode == 'VISA'}"><?php echo $language[$view->view]->paymentByVisa;?></li>
+                        <li ng-click="paymentMethodChanged('CASH')" ng-class="{active:paymentMethodCode == 'CASH'}"><?php echo $language[$view->view]->paymentByCash;?></li>
                         <li ng-click="paymentMethodChanged('ATM')" ng-class="{active:paymentMethodCode == 'ATM'}"><?php echo $language[$view->view]->paymentByATM;?></li>
+                        <li ng-click="paymentMethodChanged('NL')" ng-class="{active:paymentMethodCode == 'NL'}"><?php echo $language[$view->view]->paymentByNL;?></li>
                     </ul>
                 </div>
                 <div class="payment-box">
@@ -376,6 +376,14 @@
                         <div class="total">
                             <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderTotal;?></strong></div>
                             <div class="tdright"><strong>{{fnMoneyToString(orderInformation.invoice.totalCost)}}</strong></div>
+                            <div class="payment-choice-tooltip">
+                                <div class="tooltip-head">Công thức tính</div>
+                                <div class="tooltip-content">
+                                    Công thức tính dựa trên tỷ giá hối đoái liên ngân hàng :<br/>
+                                    Hiển thị = tỷ giá hối đoái x Giá trị đơn hàng (VND) <br/>
+                                    <span style="color:red;font-size: 10px">Giá trị đơn hàng chỉ được tính theo VND hiển thị chỉ mang tính chất tương đương. Khi bạn thanh toán sẽ được ngân hàng quy đổi theo tỷ giá noại tệ</span>
+                                </div>
+                            </div>
                         </div>
                         <br />
                         <a ng-click="submit()" class="btn-cart-next" href="javascript:;" style="display: block;" data-type="submit">
