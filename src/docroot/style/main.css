@@ -1045,3 +1045,7 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
 #carousel-hot-product .carousel-indicators{
 	bottom: -25px;
 }
+.detail-summaries .left .no-sale{
+	margin:0px;
+	text-align: center;
+}

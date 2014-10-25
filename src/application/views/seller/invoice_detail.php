@@ -71,6 +71,7 @@ a.p-name {
             <b>Mã hóa đơn : #{{invoice.invoice_type}}-{{invoice.id}}</b>  <br/>
             <br/>
             <b>Mã đơn hàng :</b> #{{invoice.order.id}}<br/>
+            <b>Trạng thái đơn hàng :</b> {{invoice.order.status}}<br/>
             <b>Ngày thanh toán : </b> {{invoice.paid_date.split(" ")[0]}}<br/>
             <b>Tài khoản : </b> {{invoice.order.fk_user}}
         </div>

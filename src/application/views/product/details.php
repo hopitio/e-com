@@ -139,7 +139,7 @@ if (!empty($images))
                         <span class="detail-sale"><?php echo $product->getSalesPercent() ?>%</span>
                         <div class="detail-origin-price"><?php echo $product->getPriceOrigin(User::getCurrentUser()->getCurrency()) ?></div>
                     <?php endif; ?>
-                    <div class="detail-price"><?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?></div>
+                    <div class="detail-price <?php echo $product->getSalesPercent() ? "" : "no-sale" ?>"><?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?></div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="detail-free-shipping free">
