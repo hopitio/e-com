@@ -98,6 +98,22 @@
         <wdView>Đã xem</wdView>
         <wdTop>TRÊN</wdTop>
         <wdBottom>DƯỚI</wdBottom>
+        <lblCustomerCare>CHĂM SÓC KHÁCH HÀNG</lblCustomerCare>
+        <lblShoppingAtSfriendly>MUA HÀNG TRÊN SFRIENDLY</lblShoppingAtSfriendly>
+        <lblSellingAtSfriendly>BÁN HÀNG TRÊN SFRIENDLY</lblSellingAtSfriendly>
+        <lblSupportedPayment>THANH TOÁN ĐƯỢC CHẤP NHẬN</lblSupportedPayment>
+        <lblWorkingTime>Thời gian làm việc</lblWorkingTime>
+        <lblHanoiShip>Hà Nội: Giao hàng từ 2-5 ngày</lblHanoiShip>
+        <lblDistrictShip>Tỉnh: Liên hệ</lblDistrictShip>
+        <lblHowToBuy>Mua thế nào nhỉ?</lblHowToBuy>
+        <lblShippingPolicy>Giao nhận hàng hóa</lblShippingPolicy>
+        <lblSellingGuide>Bán hàng với Sfriendly</lblSellingGuide>
+        <lblRegisterSeller>Đăng ký Seller</lblRegisterSeller>
+        <lblPublishProduct>Đăng sản phẩm</lblPublishProduct>
+        <lblQualityAssurance>Cam kết chất lượng</lblQualityAssurance>
+        <lblTermsOfUse>Điều khoản sử dụng</lblTermsOfUse>
+        <lblPrivacyPolicy>Chính sách bảo mật</lblPrivacyPolicy>
+        <lblAboutUs>Về chúng tôi</lblAboutUs>
     </layout>
     
     <sitemap>

@@ -176,50 +176,95 @@
         <div class="lynx_footer ">
             <div class="footer-top">
                 <div class="width-960">
-                    <div class="footer-col-1">CHĂM SÓC KHÁCH HÀNG</div>
-                    <div class="footer-col-2">MUA HÀNG TRÊN SFRIENDLY</div>
-                    <div class="footer-col-3">BÁN HÀNG TRÊN SFRIENDLY</div>
-                    <div class="footer-col-4">THANH TOÁN ĐƯỢC CHẤP NHẬN</div>
+                    <div class="footer-col-1"><?php echo $language['layout']->lblCustomerCare ?></div>
+                    <div class="footer-col-2"><?php echo $language['layout']->lblShoppingAtSfriendly ?></div>
+                    <div class="footer-col-3"><?php echo $language['layout']->lblSellingAtSfriendly ?></div>
+                    <div class="footer-col-4"><?php echo $language['layout']->lblSupportedPayment ?></div>
                 </div>
             </div>
             <div class="footer-middle">
                 <div class="width-960 clearfix">
                     <div class="footer-col-1">
-                        <div class="footer-group-header"><h4>Hỗ trợ</h4></div>
-                        <div class="footer-icon icon-phone">Hotline: (04) 3865 2455</div>
+                        <div class="footer-group-header"><h4>Hỗ trợ<?php echo $language['layout']->lblSupport ?></h4></div>
+                        <a href="javascript:;" title="Hotline" class="footer-icon icon-phone">Hotline: (04) 3865 2455</a>
                         <h4></h4>
-                        <div class="footer-icon icon-email">Email: info@sfriendly.com</div>
+                        <a href="mailto:info@sfriendly.com" title="Email" class="footer-icon icon-email">Email: <script>document.write('info@sfriendly.com');</script></a>
                         <h4 class="clearfix"></h4>
                         <h4 class="clearfix"></h4>
-                        <div class="footer-group-header"><h4>Thời gian làm việc</h4></div>
+                        <div class="footer-group-header"><h4><?php echo $language['layout']->lblWorkingTime ?></h4></div>
                         <ul>
                             <li>M - F: 9:00 to 19:00<br>Weekends: 9:00 to 15:00</li>
-                            <li>Hà Nội: Giao hàng từ 2-5 ngày<br>Tỉnh: Liên hệ</li>
+                            <li>
+                                <?php echo $language['layout']->lblHanoiShip ?>
+                                <br>
+                                <?php echo $language['layout']->lblDistrictShip ?>
+                            </li>
                         </ul>
                     </div>
                     <div class="footer-col-2">
-                        ádsd
+                        <a class="footer-icon icon-cart" href="javascript:;" title="How to buy"><?php echo $language['layout']->lblHowToBuy ?></a>
+                        <h4></h4>
+                        <a class="footer-icon icon-truck" href="javascript:;" title="Shipping policy"><?php echo $language['layout']->lblShippingPolicy ?></a>
                     </div>
                     <div class="footer-col-3">
-                        dfs
+                        <a class="footer-icon icon-dollar" href="javascript:;" title="Selling with Sfriendly"><?php echo $language['layout']->lblSellingGuide ?></a>
+                        <h4></h4>
+                        <a class="footer-icon icon-best" href="javascript:;" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
+                        <h4></h4>
+                        <a class="footer-icon icon-product" href="javascript:;" title="Publish Product"><?php echo $language['layout']->lblPublishProduct ?></a>
                     </div>
                     <div class="footer-col-4">
-                        dsfds
+                        <a href="javascript:;" title="Payment methods">
+                            <img src="/images/footer/payment.png" style="width: 100%;">
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                sfdsf
+            <div class="footer-bottom clearfix">
+                <div class="width-960">
+                    <div class="footer-col-1">
+                        <div class="footer-link">
+                            <a href="javascript:;">Q & A</a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="javascript:;"><?php echo $language['layout']->lblQualityAssurance ?></a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="javascript:;"><?php echo $language['layout']->lblTermsOfUse ?></a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="javascript:;"><?php echo $language['layout']->lblPrivacyPolicy ?></a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="javascript:;"><?php echo $language['layout']->lblAboutUs ?></a>
+                        </div>
+                        <div class="footer-info">
+                            Bản quyền @ 2014 Sfriendly.com / Sfriendly.vn - Được bảo vệ<br>
+                            Công ty TNHH Hoàng Quân - Trụ sở chính: 19/62 Trần Bình, Mai Dịch, Câu giấy Hà Nội<br>
+                            Giấy phép đăng kí kinh doanh số 0106519613 do Sở kế hoạch và Đầu tư Thành phố Hà Nội cấp lần đầu ngày 24/04/2014
+                        </div>
+                    </div>
+                    <div class="footer-col-2">
+                        <img src="/images/footer/registered.png" alt="Registered at Misnistry of Commerce and Industry" style="float: left;">
+                        <div style="float:right;">
+                            <h4></h4>
+                            Sfriendly.com/Sfriendly.vn
+                            <h4></h4>
+                            <div>
+                                <a href="javascript:;" title="Share Facebook" class="footer-social facebook"></a>
+                                <a href="javascript:;" title="Share Twiter" class="footer-social twiter"></a>
+                                <a href="javascript:;" title="Share Google Plus" class="footer-social google"></a>
+                                <a href="javascript:;" title="Share Pinterest" class="footer-social pinterest"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div><!--footer-->
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-            }
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+                    }
         </script>
 
 
@@ -253,11 +298,11 @@
         <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-            }
-            $.browser = {};
-            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                    }
+                    $.browser = {};
+                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt
