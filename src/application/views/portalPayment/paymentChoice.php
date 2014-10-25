@@ -407,4 +407,17 @@
 </div>
 <script type="text/javascript">
      var orderInformation = <?php echo json_encode($order)?>;
+     $(document).ready(function(){
+    	 $(".total").on("mousemove",function(e){
+    		 $(".total .payment-choice-tooltip").show();
+ 	   	    $(".total .payment-choice-tooltip").css("left",e.clientX + "px").css("top",e.clientY + "px");
+ 	      });
+    	 $( window ).scroll(function() {
+    		 $(".total .payment-choice-tooltip").hide();
+   		});
+    	 $(".total").on("mouseout",function(e){
+    		 $(".total .payment-choice-tooltip").hide();
+ 	      });
+ 	});
+     
 </script>

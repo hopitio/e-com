@@ -40,7 +40,7 @@
 .cart-right-content hr{margin: 2px 0;}
 .cart-right-content h4{color:#44aeff;margin:5px 0;font-weight: bold;}
 .cart-right .btn-lg{margin-top:10px;}
-.summary-row.total *{color: #44aeff;font-size:20px;font-weight: bold;}
+.summary-row.total *{color: #44aeff;font-size:20px;font-weight: bold;cursor: pointer;}
 .summary-row.saving *{color:#858585;font-size: 16px;}
 .summary-row.total .row-left, .summary-row.saving .row-left{text-align: right;}
 .summary-row.total .row-right, .summary-row.saving .row-right{text-decoration: underline;}
@@ -253,8 +253,14 @@ i.GPB { background-position:0px -775px;}
 i.SGB { background-position:0px -806px;}
 i.NAB { background-position:0px -837px;}
 i.BAB { background-position:0px -868px;}
+.total{
+	cursor: pointer;
+}
 .payment-choice-tooltip{
+	position:fixed;
     display: none;
+	width:300px;
+	float:left;
     border:solid 1px rgba(0,0,0,0.5);
 	min-height:50px;
 	border-radius: 3px;
@@ -277,8 +283,5 @@ i.BAB { background-position:0px -868px;}
 }
 .payment-choice-tooltip .tooltip-content{
 	color:#747474;
-}
-.total:hover .payment-choice-tooltip{
-	display: block;
 }
 
