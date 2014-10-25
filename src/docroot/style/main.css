@@ -1042,3 +1042,6 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
 .b-lazy.b-loaded, .lynx-box .image img.b-loaded{
     opacity: 1;
 }*/
+#carousel-hot-product .carousel-indicators{
+	bottom: -25px;
+}

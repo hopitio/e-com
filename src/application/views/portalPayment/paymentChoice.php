@@ -410,7 +410,12 @@
      $(document).ready(function(){
     	 $(".total").on("mousemove",function(e){
     		 $(".total .payment-choice-tooltip").show();
- 	   	    $(".total .payment-choice-tooltip").css("left",e.clientX + "px").css("top",e.clientY + "px");
+    		 var x = e.clientX;
+    		 var y = e.clientY;
+    		 if($(".total .payment-choice-tooltip").width()+ e.clientX >= $(window).width()){
+        		 x = x - $(".total .payment-choice-tooltip").width();
+        	 }
+ 	   	    $(".total .payment-choice-tooltip").css("left",x + "px").css("top",e.clientY + "px");
  	      });
     	 $( window ).scroll(function() {
     		 $(".total .payment-choice-tooltip").hide();
