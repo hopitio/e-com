@@ -174,69 +174,52 @@
         <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
         <div class="clearfix"></div>
         <div class="lynx_footer ">
-            <div class="lynx_content width-960">
-                <div class="lynx_col1">
-                    <img class="lynx_logo" src="/images/logo-footer.png"/>
-                    <span class="lynx_contact">
-                        Sfriendly.com /  Sfriendly.vn <br/>
-                        Phone: 098 999 999 <br/>
-                        Email: sale@sf
-                    </span>
-                    <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
-                </div>
-                <div class="lynx_col2">
-                    <div class="lynx_cell">
-                        <ul>
-                            <span><?php echo $language['layout']->lblMakeMoneyWithUs; ?></span>
-                            <li> <?php echo $language['layout']->lblSell; ?> </li>
-                            <li> <?php echo $language['layout']->lblAdve; ?> </li>
-                        </ul>
-                        <ul>
-                            <span><?php echo $language['layout']->lblCustomerService; ?></span>
-                            <li> <?php echo $language['layout']->lblFAQs; ?> </li>
-                            <li> <?php echo $language['layout']->lblContact; ?> </li>
-                            <li> <?php echo $language['layout']->lblShippingvsReturn; ?> </li>
-                            <li> <?php echo $language['layout']->lblSafeShopping; ?>  </li>
-                            <li> <?php echo $language['layout']->lblGuaranteeSecureShopping; ?>    </li>
-                        </ul>
-                    </div>
-                    <div class="lynx_cell">
-                        <ul>
-                            <span><?php echo $language['layout']->lblAboutSfriendly; ?></span>
-                            <li><a href="/portal/page/about_us"><?php echo $language['layout']->lblAbout; ?></a></li>
-                            <li><?php echo $language['layout']->lblJobs; ?></li>
-                            <li><?php echo $language['layout']->lblCustomerTestimonials; ?></li>
-                            <li><?php echo $language['layout']->lblAssociatesProgram; ?></li>
-                            <li><?php echo $language['layout']->lblGlossaryofTerms; ?></li>
-                            <li><?php echo $language['layout']->lblDailyShowDigest; ?></li>
-                        </ul>
-                        <ul>
-                            <span><?php echo $language['layout']->lblFeedback; ?></span>
-                            <li><?php echo $language['layout']->lblHowLikeOurWebsite; ?></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="lynx_col3">
-                    <img src="/images/Payment-follow.fw.png"/>
+            <div class="footer-top">
+                <div class="width-960">
+                    <div class="footer-col-1">CHĂM SÓC KHÁCH HÀNG</div>
+                    <div class="footer-col-2">MUA HÀNG TRÊN SFRIENDLY</div>
+                    <div class="footer-col-3">BÁN HÀNG TRÊN SFRIENDLY</div>
+                    <div class="footer-col-4">THANH TOÁN ĐƯỢC CHẤP NHẬN</div>
                 </div>
             </div>
-            <div class="lynx_copyright">
-                <div class="lynx_copycontent">
-                    Copyright © 2014 Sfriendly.com. All rights Reserved
+            <div class="footer-middle">
+                <div class="width-960 clearfix">
+                    <div class="footer-col-1">
+                        <div class="footer-group-header"><h4>Hỗ trợ</h4></div>
+                        <div class="footer-icon icon-phone">Hotline: (04) 3865 2455</div>
+                        <h4></h4>
+                        <div class="footer-icon icon-email">Email: info@sfriendly.com</div>
+                        <h4 class="clearfix"></h4>
+                        <h4 class="clearfix"></h4>
+                        <div class="footer-group-header"><h4>Thời gian làm việc</h4></div>
+                        <ul>
+                            <li>M - F: 9:00 to 19:00<br>Weekends: 9:00 to 15:00</li>
+                            <li>Hà Nội: Giao hàng từ 2-5 ngày<br>Tỉnh: Liên hệ</li>
+                        </ul>
+                    </div>
+                    <div class="footer-col-2">
+                        ádsd
+                    </div>
+                    <div class="footer-col-3">
+                        dfs
+                    </div>
+                    <div class="footer-col-4">
+                        dsfds
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="footer-bottom">
+                sfdsf
+            </div>
+        </div><!--footer-->
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-                    }
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+            }
         </script>
 
 
@@ -270,11 +253,11 @@
         <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                    }
-                    $.browser = {};
-                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+            }
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt
