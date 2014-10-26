@@ -294,4 +294,13 @@ class ProductMapper extends MapperAbstract
         return $this;
     }
 
+    function filterTag($tag)
+    {
+        $tag = mysql_escape_string($tag);
+        $tagID = "SELECT id FROM t_tag WHERE codename='$tag'";
+        $productIDs = "SELECT DISTINCT fk_product FROM t_product_tag WHERE fk_tag=($tagID)";
+        $this->_query->where("p.id IN($productIDs)", __FUNCTION__);
+        return $this;
+    }
+
 }

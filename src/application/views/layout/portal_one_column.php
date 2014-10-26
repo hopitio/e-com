@@ -113,70 +113,98 @@
         </div>
         <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>
         <div class="lynx_footer ">
-            <div class="lynx_content width-960">
-                <div class="lynx_col1">
-                    <img class="lynx_logo" src="/images/logo-footer.png"/>
-                    <span class="lynx_contact">
-                        Sfriendly.com /  Sfriendly.vn <br/>
-                        Phone: 098 999 999 <br/>
-                        Email: sale@sf
-                    </span>
-                    <a href="#" class="lynx_share"><img src="/images/share-face.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-tiwwer.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-google.png" /></a>
-                    <a href="#" class="lynx_share"><img src="/images/share-plumber.png" /></a>
-                </div>
-                <div class="lynx_col2">
-                    <div class="lynx_cell">
-                        <ul>
-                            <span><?php echo $language['layout']->lblMakeMoneyWithUs; ?></span>
-                            <li> <?php echo $language['layout']->lblSell; ?> </li>
-                            <li> <?php echo $language['layout']->lblAdve; ?> </li>
-                        </ul>
-                        <ul>
-                            <span><?php echo $language['layout']->lblCustomerService; ?></span>
-                            <li> <?php echo $language['layout']->lblFAQs; ?> </li>
-                            <li> <?php echo $language['layout']->lblContact; ?> </li>
-                            <li> <?php echo $language['layout']->lblShippingvsReturn; ?> </li>
-                            <li> <?php echo $language['layout']->lblSafeShopping; ?>  </li>
-                            <li> <?php echo $language['layout']->lblGuaranteeSecureShopping; ?>    </li>
-                        </ul>
-                    </div>
-                    <div class="lynx_cell">
-                        <ul>
-                            <span><?php echo $language['layout']->lblAboutSfriendly; ?></span>
-                            <li><a href="/portal/page/about_us"><?php echo $language['layout']->lblAbout; ?></a></li>
-                            <li><?php echo $language['layout']->lblJobs; ?></li>
-                            <li><?php echo $language['layout']->lblCustomerTestimonials; ?></li>
-                            <li><?php echo $language['layout']->lblAssociatesProgram; ?></li>
-                            <li><?php echo $language['layout']->lblGlossaryofTerms; ?></li>
-                            <li><?php echo $language['layout']->lblDailyShowDigest; ?></li>
-                        </ul>
-                        <ul>
-                            <span><?php echo $language['layout']->lblFeedback; ?></span>
-                            <li><?php echo $language['layout']->lblHowLikeOurWebsite; ?></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="lynx_col3">
-                    <img src="/images/Payment-follow.fw.png"/>
+            <div class="footer-top">
+                <div class="width-960">
+                    <div class="footer-col-1"><?php echo $language['layout']->lblCustomerCare ?></div>
+                    <div class="footer-col-2"><?php echo $language['layout']->lblShoppingAtSfriendly ?></div>
+                    <div class="footer-col-3"><?php echo $language['layout']->lblSellingAtSfriendly ?></div>
+                    <div class="footer-col-4"><?php echo $language['layout']->lblSupportedPayment ?></div>
                 </div>
             </div>
-            <div class="lynx_copyright">
-                <div class="lynx_copycontent">
-                    Copyright © 2014 Sfriendly.com. All rights Reserved
+            <div class="footer-middle">
+                <div class="width-960 clearfix">
+                    <div class="footer-col-1">
+                        <div class="footer-group-header"><h4>Hỗ trợ<?php echo $language['layout']->lblSupport ?></h4></div>
+                        <a href="javascript:;" title="Hotline" class="footer-icon icon-phone">Hotline: (04) 3865 2455</a>
+                        <h4></h4>
+                        <a href="mailto:info@sfriendly.com" title="Email" class="footer-icon icon-email">Email: <script>document.write('info@sfriendly.com');</script></a>
+                        <h4 class="clearfix"></h4>
+                        <h4 class="clearfix"></h4>
+                        <div class="footer-group-header"><h4><?php echo $language['layout']->lblWorkingTime ?></h4></div>
+                        <ul>
+                            <li>M - F: 9:00 to 19:00<br>Weekends: 9:00 to 15:00</li>
+                            <li>
+                                <?php echo $language['layout']->lblHanoiShip ?>
+                                <br>
+                                <?php echo $language['layout']->lblDistrictShip ?>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col-2">
+                        <a class="footer-icon icon-cart" href="javascript:;" title="How to buy"><?php echo $language['layout']->lblHowToBuy ?></a>
+                        <h4></h4>
+                        <a class="footer-icon icon-truck" href="javascript:;" title="Shipping policy"><?php echo $language['layout']->lblShippingPolicy ?></a>
+                    </div>
+                    <div class="footer-col-3">
+                        <a class="footer-icon icon-dollar" href="javascript:;" title="Selling with Sfriendly"><?php echo $language['layout']->lblSellingGuide ?></a>
+                        <h4></h4>
+                        <a class="footer-icon icon-best" href="javascript:;" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
+                        <h4></h4>
+                        <a class="footer-icon icon-product" href="javascript:;" title="Publish Product"><?php echo $language['layout']->lblPublishProduct ?></a>
+                    </div>
+                    <div class="footer-col-4">
+                        <a href="javascript:;" title="Payment methods">
+                            <img src="/images/footer/payment.png" style="width: 100%;">
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="footer-bottom clearfix">
+                <div class="width-960">
+                    <div class="footer-col-1">
+                        <div class="footer-link">
+                            <a href="javascript:;">Q & A</a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="javascript:;"><?php echo $language['layout']->lblQualityAssurance ?></a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="javascript:;"><?php echo $language['layout']->lblTermsOfUse ?></a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="javascript:;"><?php echo $language['layout']->lblPrivacyPolicy ?></a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="javascript:;"><?php echo $language['layout']->lblAboutUs ?></a>
+                        </div>
+                        <div class="footer-info">
+                            Bản quyền @ 2014 Sfriendly.com / Sfriendly.vn - Được bảo vệ<br>
+                            Công ty TNHH Hoàng Quân - Trụ sở chính: 19/62 Trần Bình, Mai Dịch, Câu giấy Hà Nội<br>
+                            Giấy phép đăng kí kinh doanh số 0106519613 do Sở kế hoạch và Đầu tư Thành phố Hà Nội cấp lần đầu ngày 24/04/2014
+                        </div>
+                    </div>
+                    <div class="footer-col-2">
+                        <img src="/images/footer/registered.png" alt="Registered at Misnistry of Commerce and Industry" style="float: left;">
+                        <div style="float:right;">
+                            <h4></h4>
+                            Sfriendly.com/Sfriendly.vn
+                            <h4></h4>
+                            <div>
+                                <a href="javascript:;" title="Share Facebook" class="footer-social facebook"></a>
+                                <a href="javascript:;" title="Share Twiter" class="footer-social twiter"></a>
+                                <a href="javascript:;" title="Share Google Plus" class="footer-social google"></a>
+                                <a href="javascript:;" title="Share Pinterest" class="footer-social pinterest"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--footer-->
 
         <script type="text/javascript">
-                function Config() {
-                    this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                    this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                    this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                }
-                $.browser = {};
-                window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                    }
+                    $.browser = {};
+                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
 
 

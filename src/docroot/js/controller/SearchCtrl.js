@@ -7,9 +7,10 @@ function SearchCtrl($scope, $http) {
     function getProducts() {
         var params = {
             offset: $scope.offset,
-            kw: scriptData.keywords
+            kw: scriptData.keywords,
+            tag: scriptData.tag
         };
-        $http.get('/search/getProductService', {cache: false, params: params}).success(function(data) {
+        $http.get('/search/getProductService', {cache: false, params: params}).success(function (data) {
             $scope.total_record = data.total_record;
             $scope.offset += data.products.length;
             var currentPage = $scope.productRows.length - 1;
@@ -21,7 +22,7 @@ function SearchCtrl($scope, $http) {
                 }
                 $scope.productRows[currentPage].push(product);
             }
-        }).error(function() {
+        }).error(function () {
             //todo
         });
     }

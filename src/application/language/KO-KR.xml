@@ -96,6 +96,23 @@
         <wdView>조회</wdView>
         <wdTop>최고</wdTop>
         <wdBottom>바닥</wdBottom>
+        
+        <lblCustomerCare>고객 지원</lblCustomerCare>
+        <lblShoppingAtSfriendly>SFRIENDLY 에서 쇼핑</lblShoppingAtSfriendly>
+        <lblSellingAtSfriendly>SFRIENDLY 에 판매</lblSellingAtSfriendly>
+        <lblSupportedPayment>지불 방법</lblSupportedPayment>
+        <lblWorkingTime>작업 시간</lblWorkingTime>
+        <lblHanoiShip>Hanoi: 2-5 일 선적</lblHanoiShip>
+        <lblDistrictShip>지역</lblDistrictShip>
+        <lblHowToBuy>어떻게 구입 하는가?</lblHowToBuy>
+        <lblShippingPolicy>배송 정책</lblShippingPolicy>
+        <lblSellingGuide>판매 가이드</lblSellingGuide>
+        <lblRegisterSeller>판매자 계정을 등록</lblRegisterSeller>
+        <lblPublishProduct>제품을 게시</lblPublishProduct>
+        <lblQualityAssurance>품질 보증</lblQualityAssurance>
+        <lblTermsOfUse>이용 약관</lblTermsOfUse>
+        <lblPrivacyPolicy>개인 정보 보호 정책</lblPrivacyPolicy>
+        <lblAboutUs>회사 소개</lblAboutUs>
     </layout>
     
     <sitemap>

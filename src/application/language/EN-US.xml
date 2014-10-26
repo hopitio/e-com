@@ -96,6 +96,22 @@
         <wdView>Viewed</wdView>
         <wdTop>TOP</wdTop>
         <wdBottom>BOTTOM</wdBottom>
+        <lblCustomerCare>CUSTOMER CARE</lblCustomerCare>
+        <lblShoppingAtSfriendly>SHOPPING AT SFRIENLY</lblShoppingAtSfriendly>
+        <lblSellingAtSfriendly>SELLING AT SFRIENDLY</lblSellingAtSfriendly>
+        <lblSupportedPayment>PAYMENT METHODS</lblSupportedPayment>
+        <lblWorkingTime>Working time</lblWorkingTime>
+        <lblHanoiShip>Hanoi: 2-5 days shipping</lblHanoiShip>
+        <lblDistrictShip>District: Please contact us</lblDistrictShip>
+        <lblHowToBuy>How to buy?</lblHowToBuy>
+        <lblShippingPolicy>Shipping policy</lblShippingPolicy>
+        <lblSellingGuide>Selling guide</lblSellingGuide>
+        <lblRegisterSeller>Register Seller Account</lblRegisterSeller>
+        <lblPublishProduct>Publish Product</lblPublishProduct>
+        <lblQualityAssurance>Quality Assurance</lblQualityAssurance>
+        <lblTermsOfUse>Terms of Use</lblTermsOfUse>
+        <lblPrivacyPolicy>Privacy Policy</lblPrivacyPolicy>
+        <lblAboutUs>About Us</lblAboutUs>
     </layout>
     
     <sitemap>
