@@ -45,10 +45,11 @@
                     <div class="search-btn cursor-pointer color-white" id="btn-search"><?php echo $language['layout']->lblSearch ?></div>
                 </div>
                 <div class="tag text-left">
-                    <a href="#">Sản phẩm mới</a>
-                    <a href="#">Hàng việt nam</a>
-                    <a href="#">Quà tặng </a>
-                    <a href="#">Sản phẩm mới</a>
+                    &nbsp;
+                    <!--                    <a href="#">Sản phẩm mới</a>
+                                        <a href="#">Hàng việt nam</a>
+                                        <a href="#">Quà tặng </a>
+                                        <a href="#">Sản phẩm mới</a>-->
                 </div>
             </form>
             <div class="user-pannel text-left">
@@ -114,8 +115,12 @@
                     </li>
 
                 <?php endforeach; ?>
-                <li class=" <?php echo User::getCurrentUser()->languageKey ?>" id="menu-vietnam"><a href="#"><?php echo $language['layout']->lblMadeinVietnam ?></a></li>
-                <li class="last <?php echo User::getCurrentUser()->languageKey ?>" id="menu-hot"><a href="#"><?php echo $language['layout']->lblHot ?></a></li>
+                <li class=" <?php echo User::getCurrentUser()->languageKey ?>" id="menu-vietnam">
+                    <a href="/search/showPage?tag=madeinvietnam"><?php echo $language['layout']->lblMadeinVietnam ?></a>
+                </li>
+                <li class="last <?php echo User::getCurrentUser()->languageKey ?>" id="menu-hot">
+                    <a href="/search/showPage?tag=hot"><?php echo $language['layout']->lblHot ?></a>
+                </li>
             </ul>
             <div>
                 <div id="widget-right" ng-cloak>
@@ -259,12 +264,12 @@
         </div><!--footer-->
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-                    }
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+            }
         </script>
 
 
@@ -298,11 +303,11 @@
         <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                    }
-                    $.browser = {};
-                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+            }
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt

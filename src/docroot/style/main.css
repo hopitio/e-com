@@ -956,6 +956,7 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
     font-size: 0.85em;
     text-transform: uppercase;
     color: #494f51;
+    font-family: arial;
 }
 .footer-top .footer-col-1{
     text-align: left;

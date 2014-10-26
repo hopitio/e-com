@@ -1,40 +1,33 @@
 <?php
-
 defined('DS') or die('no direct script access allowed');
-
-/* @var $product ProductFixedDomain */
-//madein
-$selected = $product->getMadeIn();
-if ($selected)
-{
-    $selected = $selected->getTrueValue()->id;
-}
-else
-{
-    $selected = 0;
-}
-$selMadeIn = new WrapDecorator('div', 'col-xs-8 row', new SelectEnumControl('selMadeIn', 'pattr[made_in]', 'country', $selected));
-$selMadeIn = new ControlGroupDecorator('Sản xuất tại: ', $selMadeIn);
-$selMadeIn->get_a('SelectControl')->addClass('input-size-medium')->addOption('0', 'Null', true);
-echo $selMadeIn;
-//import from
-$selected = $product->getImportFrom();
-if ($selected)
-{
-    $selected = $selected->getTrueValue()->id;
-}
-else
-{
-    $selected = 0;
-}
-$selImportFrom = new WrapDecorator('div', 'col-xs-8 row', new SelectEnumControl('selImportFrom', 'pattr[import_from]', 'country', $selected));
-$selImportFrom = new ControlGroupDecorator('Nhập khẩu từ:', $selImportFrom);
-$selImportFrom->get_a('SelectControl')->addClass('input-size-medium')->addOption('0', 'Null', true);
-echo $selImportFrom;
 ?>
+<div class="form-group control-group">
+    <label for="selMadeIn" class="col-xs-2 control-label">Sản xuất tại: </label>
+    <div class="col-xs-10 controls">
+        <div class="col-xs-8 row">
+            <div class="col-xs-6 row">
+                <?php
+                /* @var $product ProductFixedDomain */
+                $selected = $product->getMadeIn();
+                if ($selected)
+                {
+                    $selected = $selected->getTrueValue()->id;
+                }
+                else
+                {
+                    $selected = 0;
+                }
+                $selMadeIn = new SelectEnumControl('selMadeIn', 'pattr[made_in]', 'country', $selected);
+                $selMadeIn->get_a('SelectControl')->addClass('input-size-medium')->addOption('0', 'Khác', true);
+                echo $selMadeIn;
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php
-
 //meta title
 $txtMetaTitle = new WrapDecorator('div', 'col-xs-8 row', new TextboxInput('txtMetaTitle', 'pattr[meta_title]', (string) $product->getMetaTitle()));
 echo $txtMetaTitle->decorate(new ControlGroupDecorator('Meta Title:'));

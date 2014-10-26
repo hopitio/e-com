@@ -54,7 +54,7 @@ class SearchMapper extends ProductFixedMapper
         $sql = "SELECT $fields FROM ($union_1 UNION $union_2) temp";
         return DB::getInstance()->GetOne($sql, $this->_queryParams);
     }
-
+    
     function find($callback = null)
     {
         $this->onBeforeQuery();
