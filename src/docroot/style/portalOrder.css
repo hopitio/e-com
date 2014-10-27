@@ -210,7 +210,7 @@ ul.cardList li {
     padding: 5px 4px;
     text-align: center;
     width: 90px;
-    opacity:0.1;
+    opacity:0.4;
 }
 ul.cardList li.active{
     opacity:1;
