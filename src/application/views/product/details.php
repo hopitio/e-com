@@ -53,8 +53,8 @@ if (!empty($images))
                         <?php
                         $class = $i++ == 0 ? 'zoomThumbActive' : '';
                         $smallImage = '/thumbnail.php/' . $img->url . '/w=70';
-                        $mediumImage = $img->width > 560 ? '/thumbnail.php/' . $img->url . '/w=560' : '/thumbnail.php/' . $img->url;
-                        $largeImage = $img->width > 1000 ? '/thumbnail.php/' . $img->url : '/thumbnail.php/' . $img->url . '/w=1000';
+                        $mediumImage = '/thumbnail.php/' . $img->url . '/w=560';
+                        $largeImage = '/thumbnail.php/' . $img->url . '/w=800';
                         if (!isset($firstMediumImage))
                         {
                             $firstMediumImage = $mediumImage;
@@ -143,7 +143,14 @@ if (!empty($images))
                 </div>
                 <div class="clearfix"></div>
                 <div class="detail-free-shipping free">
-                    <label for="sel_qty"><?php echo $language[$view->view]->lblQuantity ?>:</label> <select name="sel_qty" id="sel_qty"><option>1</option></select>
+                    <label for="sel_qty"><?php echo $language[$view->view]->lblQuantity ?>:</label> <select name="sel_qty" id="sel_qty">
+                        <?php
+                        $stockQTY = intval(strval($product->getQuantity()));
+                        ?>
+                        <?php for ($i = 1; $i <= min(array($stockQTY, 30)); $i++): ?>
+                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                        <?php endfor; ?>
+                    </select>
                 </div>
                 <h4></h4>
                 <input type="button" class="btn-add-to-cart" value="<?php echo $language[$view->view]->btnCart ?>" data-type="button" data-action="/cart/addToCart">
@@ -173,12 +180,14 @@ if (!empty($images))
             <div id="carousel-hot-product" class="carousel slide carousel-mini-product"  data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-hot-product" data-slide-to="{{$index}}" ng-class="{
-                                active: $index == activeSlide
+                                active: $index == ac
+                                        tiveSlide
                             }" ng-repeat="products in relatedProducts"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="item" ng-repeat="products in relatedProducts" ng-class="{
-                                active: $index == activeSlide
+                                active: $index == ac
+                                            tiveSlide
                             }">
                         <div class="lynx-row width-960">
                             <div class="lynx-box lynx-box-small cursor-pointer" ng-repeat="product in products" ng-product-small="product" ></div>
