@@ -10,6 +10,7 @@ function PortalOrderPaymentChoiceController($scope, $http) {
     
     $scope.paymentMethodChanged = function($methodName){
         $scope.paymentMethodCode = $methodName;
+        $("input[name=payment-method]").val($methodName);
     };
     
     $scope.orderInformation.invoice.products.forEach(function(product,index, array){
