@@ -134,7 +134,7 @@ if (!empty($images))
                 <input type="hidden" name="hdn_product" value="<?php echo $product->id ?>">
                 <div class="detail-seller-logo"><img src="<?php echo $product->seller_logo ?>"></div>
                 <div class="detail-seller-name"><?php echo $product->seller_name ?></div>
-                <div class="left">
+                <div class="text-center">
                     <?php if ($product->getSalesPercent()): ?>
                         <span class="detail-sale"><?php echo $product->getSalesPercent() ?>%</span>
                         <div class="detail-origin-price"><?php echo $product->getPriceOrigin(User::getCurrentUser()->getCurrency()) ?></div>
@@ -142,7 +142,7 @@ if (!empty($images))
                     <div class="detail-price <?php echo $product->getSalesPercent() ? "" : "no-sale" ?>"><?php echo $product->getPriceMoney(User::getCurrentUser()->getCurrency()) ?></div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="detail-free-shipping free">
+                <div class="detail-fast-shipping fast">
                     <label for="sel_qty"><?php echo $language[$view->view]->lblQuantity ?>:</label> <select name="sel_qty" id="sel_qty">
                         <?php
                         $stockQTY = intval(strval($product->getQuantity()));

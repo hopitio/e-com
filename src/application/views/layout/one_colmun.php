@@ -57,13 +57,20 @@
                 <img class="cursor-pointer" src="/images/Live-chat-icon.fw.png"/>
                 <ul class="flag cursor-pointer">
                     <?php $active = User::getCurrentUser()->languageKey == 'EN-US' ? 'active' : '' ?>
-                    <li class="us <?php echo $active ?>"><a href="javascript:;" title="English" ng-click="changeLanguage('EN-US')"></a></li>
+                    <li class="us <?php echo $active ?>">
+                        <a href="javascript:;" title="English" ng-click="changeLanguage('EN-US')"></a>
+                    </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'KO-KR' ? 'active' : '' ?>
-                    <li class="kr <?php echo $active ?>"><a href="javascript:;" title="Korean" ng-click="changeLanguage('KO-KR')"></a></li>
+                    <li class="kr <?php echo $active ?>">
+                        <a href="javascript:;" title="Korean" ng-click="changeLanguage('KO-KR')"></a>
+                    </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'VN-VI' ? 'active' : '' ?>
-                    <li class="vn <?php echo $active ?>"><a href="javascript:;" title="Tiếng Việt" ng-click="changeLanguage('VN-VI')"></a></li>
+                    <li class="vn <?php echo $active ?>">
+                        <a href="javascript:;" title="Tiếng Việt" ng-click="changeLanguage('VN-VI')"></a>
+                    </li>
+                    
                 </ul>
                 <a href="/cart/showCart" title="<?php echo $language['layout']->lblYourCart ?>">
                     <div class="cart cursor-pointer">

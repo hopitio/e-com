@@ -112,12 +112,11 @@ ul.lynx-product-breadcrums li a:hover{
     text-align:center;
     height: 30px;
     line-height: 30px;
-    font-size: 120%;
+    font-size: 15px;
 }
 .detail-summaries .detail-sale{
-    float:left;
     width: 56px;
-    height: 70px;
+    height: 56px;
     background-size: 100%;
     background: url(/images/sale-arrow.png) no-repeat;
     background-position: 0 0;
@@ -129,26 +128,37 @@ ul.lynx-product-breadcrums li a:hover{
     color: white;
 }
 .detail-summaries .detail-origin-price{
-    margin-left: 70px;
-    padding-top: 7px;
-    height: 30px;
+    padding-top: 15px;
+    height: 35px;
     font-size:130%;
     color: #b3b2b2;
     text-decoration: line-through;
     overflow: hidden;
+	display: inline-block;
+	width:auto;
 }
 .detail-summaries .detail-price{
-    text-align: left;
+    text-align: center;
     font-size: 24px;
     line-height: 100%;
     color: #ff6800;
     font-weight: bold;
-    margin-left: 70px;
+    width:100%;
 }
 .detail-summaries .detail-free-shipping{
     text-align: right;
     height: 44px;
     line-height: 44px;
+}
+.detail-summaries .detail-fast-shipping{
+    height: 44px;
+    line-height: 44px;
+	padding-top:25px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.detail-summaries .detail-fast-shipping.fast{
+	background: url(/images/fast-shipping.fw.png) no-repeat top center;
 }
 .detail-summaries .detail-free-shipping.free{
     background: url(/images/free-shipping.png) no-repeat;

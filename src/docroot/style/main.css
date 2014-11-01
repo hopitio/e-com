@@ -125,11 +125,21 @@ li{list-style: none;}
     height:19px;
     width:27px;
     background: red;
-    opacity: 0.5;
+    opacity: 0;
 }
 .user-pannel > .flag > li.active a{
     opacity: 1;
 }
+.user-pannel > .flag > li.us{
+    background: transparent url(/images/us-inactive.fw.png) no-repeat top left;
+}
+.user-pannel > .flag > li.kr{
+    background: transparent url(/images/kr-inactive.fw.png) no-repeat top left ;
+}
+.user-pannel > .flag > li.vn{
+    background: transparent url(/images/vn-inactive.fw.png) no-repeat top left ;
+}
+
 .user-pannel > .flag > li.us a{
     background: transparent url(/images/flag-bg.fw.png) no-repeat top left;
 }
