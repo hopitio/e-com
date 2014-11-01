@@ -62,11 +62,11 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Giá chưa thuế:'));
     };
 </script>
 <script>
-    $(function() {
-        $('#txtPrice, #txtOriginPrice').keyup(function(evt) {
+    $(function () {
+        $('#txtPrice, #txtOriginPrice').change(function (evt) {
             var val = $(this).val();
             $(this).val(val.toString().replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        }).keypress(function(evt) {
+        }).keypress(function (evt) {
             var theEvent = evt || window.event;
             var key = theEvent.keyCode || theEvent.which;
             if ((key < 48 || key > 57) && !(key == 8 || key == 9 || key == 13 || key == 37 || key == 39)) {
@@ -74,15 +74,17 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Giá chưa thuế:'));
                 if (theEvent.preventDefault)
                     theEvent.preventDefault();
             }
-        }).trigger('keyup');
+        }).focus(function () {
+            $(this).val($(this).val().replace(/,/g, ''));
+        }).trigger('change');
     });
-    (function(window, $, scriptData) {
-        window.taxCtrl = function($scope, $http) {
+    (function (window, $, scriptData) {
+        window.taxCtrl = function ($scope, $http) {
             $scope.productTaxes = [];
             $scope.taxOptions = scriptData.taxOptions;
             $scope.taxID;
 
-            $scope.isTaxAdded = function(taxName) {
+            $scope.isTaxAdded = function (taxName) {
                 for (var i in $scope.productTaxes) {
                     var productTax = $scope.productTaxes[i];
                     if (productTax.name == taxName) {
@@ -94,48 +96,48 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Giá chưa thuế:'));
 
 
             function getTaxes(callback) {
-                $http.get(scriptData.taxURL).success(function(data) {
+                $http.get(scriptData.taxURL).success(function (data) {
                     $scope.productTaxes = data;
                     if (callback) {
                         callback();
                     }
-                }).error(function() {
+                }).error(function () {
                     //todo
                 });
             } //getTaxes
             getTaxes();
 
-            $scope.addTax = function() {
+            $scope.addTax = function () {
                 $.ajax({
                     type: 'post',
                     url: scriptData.addTaxURL,
                     data: {productID: scriptData.productID, taxID: $scope.taxID},
-                    success: function() {
-                        getTaxes(function() {
-                            setTimeout(function() {
+                    success: function () {
+                        getTaxes(function () {
+                            setTimeout(function () {
                                 $scope.$apply();
                             });
                         });
                     },
-                    error: function() {
+                    error: function () {
                         //todo
                     }
                 });
             };//addTax
 
-            $scope.deleteTax = function(taxID) {
+            $scope.deleteTax = function (taxID) {
                 $.ajax({
                     type: 'post',
                     url: scriptData.deleteTaxURL,
                     data: {taxID: taxID, productID: scriptData.productID},
-                    success: function() {
-                        getTaxes(function() {
-                            setTimeout(function() {
+                    success: function () {
+                        getTaxes(function () {
+                            setTimeout(function () {
                                 $scope.$apply();
                             });
                         });
                     },
-                    error: function() {
+                    error: function () {
                         //todo
                     }
                 });

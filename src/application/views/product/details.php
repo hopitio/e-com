@@ -153,7 +153,10 @@ if (!empty($images))
                     </select>
                 </div>
                 <h4></h4>
-                <input type="button" class="btn-add-to-cart" value="<?php echo $language[$view->view]->btnCart ?>" data-type="button" data-action="/cart/addToCart">
+                <?php $disabled = strval($product->getQuantity()) == 0 ? 'disabled' : '' ?>
+                <input type="button" class="btn-add-to-cart" <?php echo $disabled ?>
+                       value="<?php echo $language[$view->view]->btnCart ?>" 
+                       data-type="button" data-action="/cart/addToCart">
                 <h4></h4>
                 <input type="button" class="btn-add-to-favorite" value="<?php echo $language[$view->view]->btnFavorite ?>" data-type="button" data-action="/wishlist/addToWishlist">
                 <h4 ></h4>
