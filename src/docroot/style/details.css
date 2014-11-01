@@ -325,6 +325,13 @@ ul.lynx-product-breadcrums li a:hover{
     padding: 20px;
     background: white;
     display:none;
+    overflow:hidden;
+}
+.lynx-tabs .lynx-panes .lynx-pane img{
+    max-width: 100%;
+}
+.lynx-tabs .lynx-panes .lynx-pane img table{
+    max-width: 100%;
 }
 .lynx-tabs .lynx-panes .lynx-pane.active{
     display:block;

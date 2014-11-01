@@ -72,7 +72,7 @@
                         <td>
                             <strong>
                                 {{fnMoneyToString(product.price)}}<br>
-                                <small>{{fnMoneyToString(product.priceOrigin)}}</small>
+                                <small ng-if="product.salesPercent != '0'">{{fnMoneyToString(product.priceOrigin)}}</small>
                             </strong>
                             <br>
                             <span class="p-sale-percent" ng-if="product.sales"><?php echo $language[$view->view]->lblSales ?> {{product.sales}}%</span>
