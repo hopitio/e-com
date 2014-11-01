@@ -58,20 +58,21 @@
 .group-__root__ .row-1 .feature-img-0{
     width: 49.25%;
     height: 311px;
+    margin-right: 1.25%;
 }
 .group-__root__ .row-2 .feature-img-3{
     width: 366px;
     height: 263px;
 }
 .row-1 .lynx-box-small{
-    width: 24%;
+    width: 23.75%;
     height: 311px;
     margin-right: 1.25%;
     padding:8px;
 }
 .row-1 .lynx-box-small .image{
     width: 100%;
-    height: 160px;
+    height: 207px;
 }
 .row-1 .lynx-box-small .sales-balloon{
     top: 125px;

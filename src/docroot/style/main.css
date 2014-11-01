@@ -439,9 +439,6 @@ li{list-style: none;}
     width: 100%;
     height: 276px;
 }
-.lynx-adv-home .lynx-adv-img:first-child{
-    margin-right:2%;
-}
 .lynx-adv-home .lynx-adv-img img{
     width:100%;border:none;
 }
