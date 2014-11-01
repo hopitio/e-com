@@ -35,4 +35,20 @@ class userLanguage extends BaseController
         log_message('error',var_export($this->obj_user,true));
         $this->output->set_content_type('application/json')->set_output(json_encode($asyncResult, true));
     }
+    
+     
+    function languageSwitcher($newLanguage){
+        if($newLanguage == null || !isset($newLanguage))
+        {
+            $newLanguage = 'VN-VI';
+        }
+        $supportedLanguages = $this->config->item('languages_supported');
+        if(!in_array($newLanguage, $supportedLanguages)){
+            throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__.' '.'Ngôn ngữ không tồn tại '.'"'.$newLanguage.'"');
+        }
+        $this->obj_user->languageKey = $newLanguage;
+        $this->set_obj_user_to_me($this->obj_user);
+        
+        redirect('/home');
+    }
 }

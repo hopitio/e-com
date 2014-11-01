@@ -168,5 +168,6 @@ class home extends BaseController
         LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setTitle("Comming soom")
         ->render('ComingSoon');
     }
+    
 
 }

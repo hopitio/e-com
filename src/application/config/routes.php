@@ -10,6 +10,10 @@ $route['default_controller'] = "home/showHome";
 $route['404_override'] = 'error/notFound';
 $route['portal/order/nganluong_sync'] = 'portalController/syncNganLuong';
 $route['coming-soon'] = 'home/comingSoon';
+$route['kr'] = 'userLanguage/languageSwitcher/KO-KR';
+$route['vn'] = 'userLanguage/languageSwitcher/VN-VI';
+$route['en'] = 'userLanguage/languageSwitcher/EN-US';
+
 include_once APPPATH.'config/routes_gift.php';
 include_once APPPATH.'config/routes_portal.php';
 //
