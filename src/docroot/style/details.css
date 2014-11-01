@@ -118,7 +118,7 @@ ul.lynx-product-breadcrums li a:hover{
     width: 56px;
     height: 56px;
     background-size: 100%;
-    background: url(/images/sale-arrow.png) no-repeat;
+    background: url(/images/sale-arrow.png) no-repeat -5px center;
     background-position: 0 0;
     display:inline-block;
     line-height: 56px;
@@ -133,7 +133,6 @@ ul.lynx-product-breadcrums li a:hover{
     font-size:130%;
     color: #b3b2b2;
     text-decoration: line-through;
-    overflow: hidden;
 	display: inline-block;
 	width:auto;
 }
