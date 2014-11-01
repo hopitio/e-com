@@ -949,11 +949,10 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
     border-bottom: 1px solid #e9e8e8;
 }
 .footer-top > div >  div{
-    font-weight: 800;
-    font-size: 0.85em;
+    font-weight: 900;
     text-transform: uppercase;
     color: #494f51;
-    font-family: arial;
+    font-family: 'Roboto', sans-serif;
 }
 .footer-top .footer-col-1{
     text-align: left;

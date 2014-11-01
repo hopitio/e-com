@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/headMenu.css" media="all">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:900&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
         <?php
         //Thêm các js riêng biệt
         foreach ($view->css as $item)
