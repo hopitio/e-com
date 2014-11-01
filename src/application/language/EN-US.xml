@@ -481,4 +481,7 @@
         <btnNext>Next</btnNext>
         <btnBack>Back cart</btnBack>
     </portalPayment_orderEmailVerify>
+    <ComingSoon>
+        <title>Coming soom</title>
+    </ComingSoon>
 </data>

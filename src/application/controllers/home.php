@@ -163,5 +163,10 @@ class home extends BaseController
     {
         $this->product_model->removeFromHistory($productID);
     }
+    
+    function comingSoon(){
+        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)->setTitle("Comming soom")
+        ->render('ComingSoon');
+    }
 
 }

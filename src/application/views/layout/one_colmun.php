@@ -138,7 +138,7 @@
                                         <span class="price">{{product.priceString}}</span>
                                     </div>
                                     <div class="image">
-                                        <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=170" alt="{{product.name}}"/>
+                                        <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=168" alt="{{product.name}}"/>
                                     </div>
                                 </a>
                             </li>
@@ -158,7 +158,7 @@
                                         <span class="price">{{product.priceString}}</span>
                                     </div>
                                     <div class="image">
-                                        <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=170" alt="{{product.name}}"/>
+                                        <img ng-src="/thumbnail.php/{{product.thumbnail}}/w=168" alt="{{product.name}}"/>
                                     </div>
                                 </a>
                             </li>

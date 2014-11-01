@@ -85,7 +85,7 @@ class order extends BaseController
                 {
                     continue;
                 }
-                $method->price = $this->cartModel->calculateShippingPrice($location, $method->sumWeight, new Currency(User::getCurrentUser()->getCurrency()));
+                $method->price = $this->cartModel->calculateShippingPrice($location, $method->sumWeight, new Currency("VND"));
             }
         }
         $data = array(

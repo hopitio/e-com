@@ -22,7 +22,7 @@
             scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
 
             var img = document.createElement('img');
-            var src = '/thumbnail.php/' + scope.product.thumbnail + '/w=170';
+            var src = '/thumbnail.php/' + scope.product.thumbnail + '/w=168';
 
             if (!scope.product.lazy_image) {
                 img.src = src;

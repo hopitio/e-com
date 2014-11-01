@@ -498,4 +498,7 @@
         <btnNext>다음</btnNext>
         <btnBack>돌아 가기 카트</btnBack>
     </portalPayment_orderEmailVerify>
+    <ComingSoon>
+        <title>출시 예정</title>
+    </ComingSoon>
 </data>

@@ -501,4 +501,7 @@
         <btnNext>Tiếp theo</btnNext>
         <btnBack>Trở lại giỏ hàng</btnBack>
     </portalPayment_orderEmailVerify>
+    <ComingSoon>
+        <title>Đang xây dựng</title>
+    </ComingSoon>
 </data>
