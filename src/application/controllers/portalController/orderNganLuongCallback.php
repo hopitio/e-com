@@ -72,7 +72,7 @@ class orderNganLuongCallback extends BasePortalController
         $this->session->unset_userdata('NGANLUONG_PAYMENT_ORDER_ID');
         $this->session->unset_userdata('NGANLUONG_PAYMENT_INVOICE_ID');
         
-        redirect("order_place/payment_choice?o={$orderId}&i={$invocieId}");
+        redirect("/portal/order_place/payment_choice?o={$orderId}&i={$invocieId}");
     }
     
 
