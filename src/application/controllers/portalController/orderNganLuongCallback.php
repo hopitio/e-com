@@ -67,19 +67,12 @@ class orderNganLuongCallback extends BasePortalController
             throw new Lynx_BusinessLogicException('Giao dịch không tồn tại');
         }
         
+        
         $this->session->unset_userdata('NGANLUONG_PAYMENT_TOKEN_KEY');
         $this->session->unset_userdata('NGANLUONG_PAYMENT_ORDER_ID');
         $this->session->unset_userdata('NGANLUONG_PAYMENT_INVOICE_ID');
         
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
-        ->setData(
-            array('isError'=>true,'',"orderId"=>$orderId, "invocieId"=>$invocieId, "isBack" => false), 
-            true)
-        ->setCss($this->css)
-        ->setJavascript($this->js)
-        ->render('portalPayment/paymentSuccess');
-        
-        
+        redirect("order_place/payment_choice?o={$orderId}&i={$invocieId}");
     }
     
 
