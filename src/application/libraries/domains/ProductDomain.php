@@ -112,7 +112,7 @@ class ProductDomain implements DomainInterface
 
     function isNew()
     {
-        $release_date = date_create($this->releaseDate);
+        $release_date = date_create($this->dateCreated);
         if (!$release_date)
         {
             return false;
