@@ -88,7 +88,14 @@ if (!empty($images))
             </div>
             <ul class="detail-social">
                 <li class="detail-social-cart">
-                    <a href="javascript:;"><span class="icon"><?php echo $language[$view->view]->lblBoughtQty ?></span></a>
+                    <a href="javascript:;">
+                        <span class="icon">
+                            <?php echo $language[$view->view]->lblBoughtQty ?>
+                            <?php if ($product->getSaleOf()): ?>
+                                &nbsp;(<?php echo $product->getSaleOf() ?>)
+                            <?php endif; ?>
+                        </span>
+                    </a>
                 </li>
                 <li class="detail-social-rate">
                     <a href="javascript:;" ><span class="icon" style="color: gray;"><?php echo $language[$view->view]->lblSatisfied ?></span></a>
@@ -184,13 +191,13 @@ if (!empty($images))
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-hot-product" data-slide-to="{{$index}}" ng-class="{
                                 active: $index == ac
-                                        tiveSlide
+                                tiveSlide
                             }" ng-repeat="products in relatedProducts"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="item" ng-repeat="products in relatedProducts" ng-class="{
                                 active: $index == ac
-                                            tiveSlide
+                                tiveSlide
                             }">
                         <div class="lynx-row width-960">
                             <div class="lynx-box lynx-box-small cursor-pointer" ng-repeat="product in products" ng-product-small="product" ></div>

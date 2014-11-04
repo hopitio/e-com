@@ -19,6 +19,7 @@ class ProductDomain implements DomainInterface
     public $priceOrigin;
     public $releaseDate;
     public $salesPercent;
+    protected $saleOf;
     protected $_attributes = array();
 
     /** @var ProductImage */
@@ -133,6 +134,26 @@ class ProductDomain implements DomainInterface
     protected function _getAttributeByName($name)
     {
         return (isset($this->_attributes[$name]) ? $this->_attributes[$name] : false);
+    }
+
+    /** Doanh số */
+    function getSaleOf()
+    {
+        if ($this->saleOf === null)
+        {
+            $url = Common::getCurrentHost() . "/portal/api/product/gift/{$this->id}/selled_time";
+            $this->saleOf = 0;
+            $res = file_get_contents($url);
+            if ($res != false)
+            {
+                $res = json_decode($res);
+                if (isset($res->selled_time))
+                {
+                    $this->saleOf = (int) $res->selled_time;
+                }
+            }
+        }
+        return $this->saleOf;
     }
 
 }

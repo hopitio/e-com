@@ -17,12 +17,12 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
-        
+
         $route['portal/admin/support'] = 'portalAdmin/support/showPage';
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
         $route['portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
-        
+
         $route['portal/account/lost_password'] = 'portalController/lostPassword/showPage';
         $route['portal/policy'] = 'portalController/lostPassword/showPage';
         $route['portal/account'] = 'portalController/userInformation/showPage';
@@ -33,57 +33,57 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/account/get_user_contacts'] = "portalController/userInformation/getUserContactXhr";
         $route['portal/account/order_history'] = 'portalController/userOrderHistory/showPage';
         $route['portal/api/account/order_history/(:any)'] = 'portalController/userOrderHistory/getOrderHistory/$1';
-        $route['protal/api/product/gift/(:num)/selled_time'] = 'portalController/apiProduct/getSelledProductTime/$1';
+        $route['portal/api/product/gift/(:num)/selled_time'] = 'portalController/apiProduct/getSelledProductTime/$1';
         $route['protal/api/invoice/(:num)'] = 'portalController/apiInvoice/getInvoice/$1';
-        
+
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
-        
+
         $route['portal/order_verifing/verify'] = 'portalController/orderVerifingAuthenicated/orderPlaceVerifyOrder';
-        
+
         $route['portal/ngan-luong/callback/success'] = 'portalController/orderNganLuongCallback/success';
         $route['portal/ngan-luong/callback/cancel'] = 'portalController/orderNganLuongCallback/cancel';
-        
+
         $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/userAuthenVerify';
         $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
-        
+
         $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
         $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
         $route['portal/__admin/invoice/(:num)'] = 'portalAdmin/invoiceDetail/showPage/$1';
-        
+
         $route['portal/__mock/ngan_luong_payment'] = 'mock/mockNganLuongPayment/mockPaymentNganLuong';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/showpage';
         $route['portal/__admin/order_find'] = 'portalAdmin/orderList/showpage';
         $route['portal/__admin/order/(:num)'] = 'portalAdmin/orderDetail/showpage/$1';
         $route['portal/__admin/order/(:num)/add_invoice'] = 'portalAdmin/addInvoice/showPage/$1';
         $route['portal/__admin/order/(:num)/refuned'] = 'portalAdmin/orderRefuned/showPage/$1';
-        
+
         $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/apiUser/contact/$1';
         $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/apiUser/setting/$1';
-        
+
         $route['portal/api/__admin/order/(:num)'] = 'portalAdmin/apiOrder/getOrder/$1';
         $route['portal/api/__admin/order/(:num)/invoices'] = 'portalAdmin/apiOrder/getInvoices/$1';
         $route['portal/api/__admin/order/(:num)/status_histories'] = 'portalAdmin/apiOrder/getOrderStatusHistory/$1';
-        
+
         $route['portal/api/__admin/invoice/(:num)'] = 'portalAdmin/apiInvoice/getInvoiceFullInformation/$1';
         $route['portal/api/__admin/invoice/(:num)/products'] = 'portalAdmin/apiInvoice/getInvoiceProducts/$1';
         $route['portal/api/__admin/invoice/(:num)/other_costs'] = 'portalAdmin/apiInvoice/getInvoiceOtherCost/$1';
         $route['portal/api/__admin/invoice/(:num)/shippings'] = 'portalAdmin/apiInvoice/getInvoiceShipping/$1';
         $route['portal/api/__admin/contact/(:num)'] = 'portalAdmin/apiContact/getContact/$1';
-        
+
         $route['portal/api/user/find'] = "portalController/apiUser/findUser";
         $route['portal/dialog/user/find'] = "portalController/account/showDialog";
-        
+
         $route['portal/__test/order_request'] = 'testingController/getMockupOrderRequest';
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        
+
         $route['portal/__admin/invoice/(:num)/update_paided_date'] = 'portalAdmin/invoiceDetail/updatePaidedDate/$1';
         $route['portal/__admin/invoice/(:num)/destroy'] = 'portalAdmin/invoiceDetail/destroy/$1';
-        
+
         $route['portal/login'] = 'portalController/login/indexPost';
         $route['portal/login/facbook_callback'] = 'portalController/platform/facebook/authenCallback';
         $route['portal/login/facebook'] = 'portalController/loginfacebook/loginFb';
@@ -97,26 +97,26 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/language/submit_change'] = 'portalController/userLanguage/submitChangeXhr';
         $route['api/language/submit_change'] = 'userLanguage/submitChangeXhr';
         $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
-        $route['portal/api/account/order_history/cancel_order'] ="portalController/userOrderHistory/cancelOrder";
+        $route['portal/api/account/order_history/cancel_order'] = "portalController/userOrderHistory/cancelOrder";
         $route['protal/api/gift/seller/(:num)/search'] = 'portalController/apiSeller/searchSellerProduct/$1';
-        
+
         $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/saveInformation';
         $route['portal/order_verifing/email_verify'] = 'portalController/orderVerifing/mergeEmail';
-        
+
         $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
         $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';
-        
-        $route['portal/api/__admin/user_find_post_xhr'] ="portalAdmin/apiUser/searchUserInformationXhr";
+
+        $route['portal/api/__admin/user_find_post_xhr'] = "portalAdmin/apiUser/searchUserInformationXhr";
         $route['portal/api/__admin/user/(:num)/history'] = 'portalAdmin/apiUser/history/$1';
         $route['portal/api/__admin/user/(:num)/reject_login'] = 'portalAdmin/apiUser/rejectLoginAccount/$1';
         $route['portal/api/__admin/user/(:num)/open_login'] = 'portalAdmin/apiUser/openLoginAccount/$1';
-        $route['portal/api/__admin/order_find_post_xhr'] ="portalAdmin/apiOrder/findOrderXhr";
-        $route['portal/__admin/order/(:num)/refuned'] ="portalAdmin/orderRefuned/postOrderRefuned/$1";
-        
-        $route['portal/api/__admin/order/(:num)/status_next'] ="portalAdmin/orderDetail/nextUpdateStatus/$1";
-        $route['portal/api/__admin/order/(:num)/status_back'] ="portalAdmin/orderDetail/backOrderStatus/$1";
-        $route['portal/api/__admin/order/(:num)/status_reject'] ="portalAdmin/orderDetail/rejectOrder/$1";
+        $route['portal/api/__admin/order_find_post_xhr'] = "portalAdmin/apiOrder/findOrderXhr";
+        $route['portal/__admin/order/(:num)/refuned'] = "portalAdmin/orderRefuned/postOrderRefuned/$1";
+
+        $route['portal/api/__admin/order/(:num)/status_next'] = "portalAdmin/orderDetail/nextUpdateStatus/$1";
+        $route['portal/api/__admin/order/(:num)/status_back'] = "portalAdmin/orderDetail/backOrderStatus/$1";
+        $route['portal/api/__admin/order/(:num)/status_reject'] = "portalAdmin/orderDetail/rejectOrder/$1";
     }
 }
 //
