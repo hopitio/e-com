@@ -383,4 +383,19 @@ class ProductModel extends BaseModel
         }
     }
 
+    function productSold($product, $quantity)
+    {
+        $db = DB::getInstance();
+        $db->StartTrans();
+        $quantityAttr = "SELECT id FROM t_product_attribute_type WHERE codename='quantity'";
+        $remain = $db->GetOne("SELECT value_number FROM t_product_attribute WHERE fk_attribute_type=($quantityAttr) AND fk_product=" . $product);
+        if ($remain < $quantity)
+        {
+            return false;
+        }
+        DB::update('t_product_attribute', array('value_number' => $remain - $quantity), "fk_product=? AND fk_attribute_type=($quantityAttr)", array($product));
+        $success = $db->CompleteTrans();
+        return $success;
+    }
+
 }

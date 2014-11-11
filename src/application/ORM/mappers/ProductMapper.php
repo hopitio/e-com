@@ -92,7 +92,8 @@ class ProductMapper extends MapperAbstract
 
     function filterRelatedProduct($productID)
     {
-        //TODO
+        $categoryID = "SELECT fk_category FROM t_product WHERE id=" . intval($productID);
+        $this->_query->where("fk_category=($categoryID)");
         return $this;
     }
 

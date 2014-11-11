@@ -190,14 +190,12 @@ if (!empty($images))
             <div id="carousel-hot-product" class="carousel slide carousel-mini-product"  data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-hot-product" data-slide-to="{{$index}}" ng-class="{
-                                active: $index == ac
-                                tiveSlide
+                                active: $index == activeSlide
                             }" ng-repeat="products in relatedProducts"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="item" ng-repeat="products in relatedProducts" ng-class="{
-                                active: $index == ac
-                                tiveSlide
+                                active: $index == activeSlide
                             }">
                         <div class="lynx-row width-960">
                             <div class="lynx-box lynx-box-small cursor-pointer" ng-repeat="product in products" ng-product-small="product" ></div>
