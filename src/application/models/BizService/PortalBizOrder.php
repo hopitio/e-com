@@ -9,7 +9,7 @@ class PortalBizOrder extends PortalBizBase
     function nextUpdateStatus($orderId, $comment){
         $portalmodelOrder = new PortalModelOrder();
         $portalmodelOrder->id = $orderId;
-        $result = $portalmodelOrder->getOrderWithCurrentStatus();
+        $result = $portalmodelOrder->getOrderWithCurrentStatus(array($orderId));
         if(count($result) == 0 ) {
             return null;
         }
@@ -192,8 +192,13 @@ class PortalBizOrder extends PortalBizBase
                      "Dữ liệu order và invoice không khớp {$orderId} - {$invoiceId}");
         }
         
+        
         $order->invoice = $expectedInvoice;
-        $target = isset($order->user->account) ? $order->user->account : 'lethanhan.bkaptech@gmail.com';
+        $repositoryUser = new PortalModelUser();
+        $repositoryUser->id = $order->fk_user;
+        $user = $repositoryUser->getOneById();
+        $order->user = $user;
+        $target = isset($user->account) ? $user->account : 'lethanhan.bkaptech@gmail.com';  
 //         foreach ($order->invoice->shippings as $shipping){
 //             if($shipping->status != DatabaseFixedValue::SHIPPING_STATUS_ACTIVE && $shipping->shipping_type != 'SHIP')
 //             {

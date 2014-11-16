@@ -106,7 +106,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/review'] = 'portalController/orderReview/showPage';
         $route['portal/order_place/submit_order_gateway'] = "portalController/orderReview/submitOrder";
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/login';
-
+        $route['portal/__admin/order/(:num)/add_invoice'] = 'portalAdmin/addInvoice/add/$1';
         $route['portal/api/__admin/user_find_post_xhr'] = "portalAdmin/apiUser/searchUserInformationXhr";
         $route['portal/api/__admin/user/(:num)/history'] = 'portalAdmin/apiUser/history/$1';
         $route['portal/api/__admin/user/(:num)/reject_login'] = 'portalAdmin/apiUser/rejectLoginAccount/$1';

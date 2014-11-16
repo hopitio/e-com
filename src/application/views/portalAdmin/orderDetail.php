@@ -61,12 +61,10 @@
     <div class="col-md-8">
         <div class="box box-danger">
             <div class="box-header">
-                <h3 class="box-title">
-                    Danh sách hóa đơn giao dịch
-                </h3>
+                <h3 class="box-title">Danh sách hóa đơn giao dịch <a href="/portal/__admin/order/{{order.id}}/add_invoice"><i class="fa fa-fw fa-plus-square"></i></a></h3>
             </div>
             <div class="box-body ">
-                <table class="lynx_table">
+                <table class="lynx_table table">
                     <thead>
                         <tr>
                             <th style="width: 100px">Loại - Mã</th>
@@ -81,9 +79,9 @@
                           <td><span>{{invoice.created_date}}</span></td>
                           <td><span>{{invoice.comment}}</span></td>
                           <td>
-                            <span>Mã : {{invoice.payment_id}}<br/></span>
+                            <span>Mã : {{invoice.id}}<br/></span>
                             <span>Phương thức : {{invoice.payment_method}}<br/></span>
-                            <span>Loại tiền : {{invoice.payment_currency}}<br/></span>
+                            <span>Loại tiền : VND<br/></span>
                           </td>
                         </tr>
                     </tbody>

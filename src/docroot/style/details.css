@@ -225,16 +225,16 @@ ul.lynx-product-breadcrums li a:hover{
     background: url(/images/share-icon.fw.png) no-repeat;
 }
 .detail-share a.share.share-facebook{
-    background-position-x: 0;
+    background-position:0 0;
 }
 .detail-share a.share.share-twiter{
-    background-position-x: -25px;
+    background-position:-25px 0px ;
 }
 .detail-share a.share.share-google{
-    background-position-x: -50px;
+    background-position:-50px 0px ;
 }
 .detail-share a.share.share-email{
-    background-position-x: -75px;
+    background-position:-75px 0px ;
 }
 .detail-main ul.detail-social{
     display: block;

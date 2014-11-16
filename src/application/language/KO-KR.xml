@@ -400,7 +400,7 @@
         <paymentVisaNoteTitle>당신은 비자 / 마스터로 결제됩니다 :</paymentVisaNoteTitle>
         <paymentATMNoteTitle>당신은 당신의 국내 ATM / 은행 계좌로 온라인 지불 :</paymentATMNoteTitle>
         <paymentNLNoteContent><![CDATA[<br /> 참고: <br /> 오른쪽에 순서 정보를 확인하세요 <br /> - 주문 처리 수수료 <br /> - 배달 비용 (있는 경우) <br /> 2 당신은 은행이 금액을 계정 등록해야 <br /> <br />]]></paymentNLNoteContent>
-        <paymentCashNoteContent><![CDATA[<br /> 참고: <br /> 오른쪽 순서에 대한 정보를 확인하세요: <br /> - 주문 처리 수수료 <br /> - 배달 수수료 (해당되는 경우) <br /> <br / >]]></paymentCashNoteContent>
+        <paymentCashNoteContent><![CDATA[<br/>참고 :<br/>1. 오른쪽에서 요약 정보를 확인하시기 바랍니다 :<br/>- 주문 처리 수수료<br/>- 배송 수수료 (있는 경우)<br/>2. Sfriendly 배달하기 전에를 호출합니다<br/>3. 지불하고 주문이 전달되었을 때 서명<br/><br/>]]></paymentCashNoteContent>
         <paymentVISANoteContent><![CDATA[<br /> 참고: <br /> 오른쪽 순서에 대한 정보를 확인하세요: <br /> - 주문 처리 수수료 <br /> - 배달 수수료 (해당되는 경우) <br /> <br / > 2 그냥 출시 국내 은행 비자 / 마스터에 동의 <br /> <br />]]></paymentVISANoteContent>
         <paymentATMNoteContent><![CDATA[<br /> 참고: <br /> 오른쪽 순서에 대한 정보를 확인하세요: <br /> - 주문 처리 수수료 <br /> - 배달 수수료 (해당되는 경우) <br /> <br / > 2 당신은 은행 구현에서 인터넷 뱅킹 서비스 온라인 결제에 등록해야 <br /> <br /> 은행 거래:]]></paymentATMNoteContent>
         <paymentInoivceNote><![CDATA[<br /> 참고: 상인 부재에 의해 판매 된 제품에 대한 청구서가 배달 성공의 칠일하기로한다. <br /> <br />]]></paymentInoivceNote>

@@ -151,7 +151,7 @@
     <input id="paided-date" type="hidden" name="paided-date"/>
     <input id="invoice-payment-method" type="hidden" name="invoice-payment-method"/>
     <input id="invoice-payment-id" type="hidden" name="invoice-payment-id"/>
-    <input id="callback" type="hidden" name="callback"/>
+    <input type="hidden" name="callback"/>
 </form>
 
 <!-- Modal paided date -->

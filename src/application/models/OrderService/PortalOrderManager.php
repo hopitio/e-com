@@ -31,11 +31,19 @@ class PortalOrderManager extends PortalBizOrder
     function orderPlace($isSendMail,$userUpdate, $orderId, $invoiceId){
        $portalPaymentHistory = new PortalBizPaymentHistory();
        $order = $portalPaymentHistory->getOrderAllInformation($orderId);
-
        parent::updateOrderToOrderPlace($userUpdate, $orderId, '');
        if($isSendMail){
            parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_PLACES);
            parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_PAYMENT_VERIFIED);
        }
+    }
+    
+    /**
+     * 
+     */
+    function addNewInvoice($user,$orderId,$invoiceType,$products,$contact,$otherCosts,$comment,$paidedDate,$nlCode){
+        $PortalOrderCanncel = new PortalOrderInvoice($user, $orderId, $products, $contact, $otherCosts, $comment,$paidedDate,$nlCode);
+        $invoiceId = $PortalOrderCanncel->process($orderId,$invoiceType);
+        return $invoiceId;
     }
 }

@@ -83,6 +83,7 @@ class orderReview extends BasePortalController
         $orderManager = new PortalOrderManager();
         $orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
         
+        
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
         array('isError'=>false), true)
         ->setCss($this->css)

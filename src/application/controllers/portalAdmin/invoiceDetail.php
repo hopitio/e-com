@@ -50,6 +50,7 @@ class invoiceDetail extends PortalAdminControllerAbstract
         $invoiceRepository = new PortalModelInvoice();
         $invoiceRepository->rejected_date = $invoiceRepository->getDate();
         $invoiceRepository->id = $invoiceId;
+        $invoiceRepository->record_status = "DEACTIVE";
         $invoiceRepository->updateById();
         
         redirect($posts['callback']."?action_status=complete");

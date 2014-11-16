@@ -26,17 +26,17 @@ function PortalAdminInvoiceController($scope,$http)
     $scope.openPaidedDateDialog = function(){
         $('#paided-date-pop').modal('show');
     };
+    $("#frm-update-paided-date input[name=callback]").val(window.location.href.split('?')[0]);
+    $("#frm-destroy-invoice input[name=callback]").val(window.location.href.split('?')[0]);
     
     $scope.savePaidedDate = function(){
         $("#paided-date").val($scope.editPaidedDate);
         $("#invoice-payment-method").val($scope.editPaidedDate);
         $("#invoice-payment-id").val($scope.editInvoicePaymentId);
-        $("#callback").val(window.location.href.split('?')[0]);
         $("#frm-destroy-invoice").submit();
     };
     
     $scope.destroyInvoice = function(){
-        $("#frm-destroy-invoice input[name=callback]").val(window.location.href.split('?')[0]);
         $("#frm-destroy-invoice").submit();
     };
     

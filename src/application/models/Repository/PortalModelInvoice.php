@@ -7,7 +7,7 @@ class PortalModelInvoice extends PortalModelBase
 {
     protected $_constIntanceName = 'T_invoice';
     var $id, $fk_order, $created_user, $created_date, $paid_date, $cancelled_date, $rejected_date, $comment, $payment_method, $payment_currency, $invoice_type, $payment_id;
-    
+    var $invoice_status, $record_status;
     /**
      * 
      * @param array $orderIds Id Collection
