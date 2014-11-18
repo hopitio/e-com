@@ -1,5 +1,0 @@
-﻿- banner cho bé lại : 450px;
-- bỏ 1-2-3:
-- TA: chốt dc phần sản phẩm của màn hình home.  có mutilanguage.
-- Hot (người làm, và có thống kê theo số lượng bán dc) và sale (Theo % giảm giá lớn nhất) e là tự động chưa cần nhiều tiêu chí. 
-- thống kê sản phẩm theo số lượng, chỉ để admin xem.

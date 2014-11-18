@@ -1,0 +1,10 @@
+﻿- Tuần 1 : 
+	+ Hoàn thành đưa lên môi trường thực 
+	+ Lên policy cho phần shipping cho từng sản phẩm 
+	+ Seller và quản lý tài khoản ở sub system.
+- Tuần 2 : 
+	+ Cập nhật tính năng shipping
+	+ Cập nhật chỉnh sửa giá 
+	
+	
+	

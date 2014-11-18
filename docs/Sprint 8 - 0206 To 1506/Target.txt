@@ -1,7 +1,0 @@
-﻿- Hoàn thành các chức năng còn thiếu cho đợt release và chuẩn bị đưa lên test hệ thông 
-- Các chức năng cần làm :
-     + Search 
-	 + Chat
-	 + Sub-admin : seller, products (active,deactive)
-	 + Làm lại giao diện portal giống như client
-	 + Rejected order :D.

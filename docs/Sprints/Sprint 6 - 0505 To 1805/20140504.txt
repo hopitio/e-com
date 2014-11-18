@@ -1,0 +1,8 @@
+﻿-  Baseline màn hình list, giao diện mới
+ -> màn hình home, details baseline lại theo màn hình mới chỉ chấp nhận đổi mầu.
+	NOTE: K update thêm giao diện cho đến khi làm xong biz cơ bản (Release  3 tháng)
+-  Sản phẩm nào cũng có tag.
+-  A.Hoàng soạn thông tin về các static page.
+-  Payment sẽ làm vs ngân lượng, sang tuần (12/05).
+-  Review vs rating do portal cung cấp - ANLT làm việc trực tiếp với ANHDT.
+-  User quản lý được lượng bán sản phẩm order, in-stock

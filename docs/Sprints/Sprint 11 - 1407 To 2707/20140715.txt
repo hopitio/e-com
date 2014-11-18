@@ -1,0 +1,13 @@
+﻿- TA: 
+  + Config seller chạy được 
+  + Cập nhật DB seller  / setting 
+  + Tạo API cho home 
+- ANLT : 
+  + Cập nhật seller Admin 
+  + Cắt giao diện home 
+- Văn 
+  + Setting - admin 
+  + Sản phẩm - admin 
+-----------------------------------
+- Về shipping cần chuyển Verifying --> orderplace
+- Về thực hiện thanh toán với cash: order --> verifing --> orderplace --> shipping ...

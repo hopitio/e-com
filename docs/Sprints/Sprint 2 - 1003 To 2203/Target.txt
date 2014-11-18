@@ -1,0 +1,14 @@
+﻿ - Sprint 2 : start làm phần khách hàng. 
+     + Đa ngôn ngữ core xml - 8h;
+     + Layout PHP - 2 masterpage : 4h;
+     + Common : Cate, user infor. - 8h
+     + home -  Chỉ chơi là emun đưa lên được trang chủ. toàn bộ các giá trị đưa về enum bắt kh phải làm dc. - 16h. (* - làm 1 phần chưa hoàn thiện) 
+     + detail - 8h 
+     + list - cần hỏi lại A.Hoàng
+     + sitemap - 4h (*)
+     + search - 4h
+     + Login - 4h
+     + Framework -  20h (* - làm 1 phần)
+     + mockup - 16h.
+     + Login screen - 8.
+- Sang Sprint 2 Quang,TA 4Ng/tuần. 

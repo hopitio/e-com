@@ -1,0 +1,7 @@
+﻿- Seller có thời gian áp dụng dc phép bán.
+- Commit: seller , quản lý sản phẩm , tìm kiếm model, nếu có thơi gian cho màn hình quảng cáo.
+- Các ảnh banner có thể thay đổi theo ngôn ngữ.
+- TA : commit list, detail, home từ giờ cuối tháng
+- Màn hình list :
+     + Quảng cáo : sẽ chỉ hiển thị khi ở tất cả 
+     + Fitler : chỉ hiển thị ở các tab con khác 

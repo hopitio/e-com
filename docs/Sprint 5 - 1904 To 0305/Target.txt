@@ -1,7 +1,0 @@
-﻿ - Sprint 5 : Tập chung vào cắt html và dựng giao diện cho sub system
-		- cắt html và dựng giao diện cho sub system
-		- Hoàn thành thêm sản phẩm.
-NOTE : 
-	
- 
-

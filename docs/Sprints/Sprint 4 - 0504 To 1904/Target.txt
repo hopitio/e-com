@@ -1,0 +1,30 @@
+﻿ - SPRINT 3 :
+	(1) Pin - chưa hoàn thành (0%)
+	(2) cart - 100%
+	(3) Shipping - CN có hàng
+	
+ - Sprint 4 : Thực hiện ghép nối các màn hình, kết nối UI.
+	(1) Phần màn hình khách hàng
+		+ Hoàn chỉnh Follow thanh toán. -> Kéo dài từ sprint 3 :: phụ thuộc vào mức độ hoàn thành ở sprint 3 
+		+ Màn hình chat -> bị pending từ sprint 3 - 12h 
+		+ Lịch sử giao dịch 12h
+		+ Chi tiết giao dịch 12h
+		+ Khách hàng đăng được sản phẩm 12h
+		
+	(2)	Phần màn hình Admin
+		+ Login Admin -> mức cao.
+		+ Admin chat -> mức cao. 8h
+		+ Sản phẩm list 12h
+		+ Sản phẩm thêm 12h
+		+ Sản phẩm chỉnh sửa 12h
+		
+	(3) Các chức năng core
+		+ Tích hợp portal và subsystem
+		+ Đưa UI vào sử dụng  -> cái này có thể biêt được sau khi có mockup
+		
+NOTE : 
+ -  (4) Email thông báo đã thanh toán thành công. không có action sau đó nữa.
+ -  (5) Xác nhận gửi hàng.
+ -  (6) Khảo sát shipchung.vn
+ 
+
