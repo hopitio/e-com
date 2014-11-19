@@ -111,11 +111,6 @@
                             <div class="tdleft"><strong><?php echo $language[$view->view]->lblProduct ?> ({{countProducts()}}):</strong></div>
                             <div class="tdright"><strong>{{fnMoneyToString(getProductSubtotal())}}</strong></div>
                         </div>
-
-                        <div class="border-dashed">
-                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblTaxes ?>:</strong></div>
-                            <div class="tdright"><strong>{{fnMoneyToString(getTaxTotal())}}</strong></div>
-                        </div>
                         <div class="border-dashed">
                             <div class="tdleft"><strong><?php echo $language[$view->view]->lblShipping ?>:</strong></div>
                             <div class="tdright"><strong>----?</strong></div>

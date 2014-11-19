@@ -175,13 +175,13 @@
 //}//controller
 
 angular.module('lynx')
-        .controller('showCartCtrl', ['$scope', '$http', 'cartService', function($scope, $http, cartService) {
+        .controller('showCartCtrl', ['$scope', '$http', 'cartService', function ($scope, $http, cartService) {
                 $scope.products = [];
-                cartService.registerLoadProducts(function(products) {
+                cartService.registerLoadProducts(function (products) {
                     $scope.products = products;
                 });
 
-                $scope.range = function(start, end) {
+                $scope.range = function (start, end) {
                     var ret = [];
                     for (var i = start; i <= end; i++) {
                         ret.push(i);
@@ -192,7 +192,7 @@ angular.module('lynx')
                 $scope.fnMoneyToString = window.fnMoneyToString;
 
                 var ajaxReq;
-                $scope.selQtyOnchange = function() {
+                $scope.selQtyOnchange = function () {
                     var data = {products: {}};
                     if (ajaxReq) {
                         ajaxReq.abort();
@@ -202,7 +202,7 @@ angular.module('lynx')
                         var product = $scope.products[i];
                         data.products[product.id] = product.quantity;
                     }
-                    setTimeout(function() {
+                    setTimeout(function () {
                         ajaxReq = $.ajax({
                             type: 'post',
                             url: '/cart/updateQuantityService',
@@ -213,7 +213,7 @@ angular.module('lynx')
 
                 $scope.removeProduct = cartService.removeProduct;
 
-                $scope.getProductSubtotal = function() {
+                $scope.getProductSubtotal = function () {
                     var ret = 0;
                     for (var i in $scope.products) {
                         ret += $scope.products[i].price * $scope.products[i].quantity;
@@ -221,18 +221,10 @@ angular.module('lynx')
                     return ret;
                 };
 
-                $scope.getTaxTotal = function() {
+                $scope.getTotal = function () {
                     var ret = 0;
                     for (var i in $scope.products) {
-                        ret += $scope.products[i].taxes * $scope.products[i].quantity;
-                    }
-                    return ret;
-                };
-
-                $scope.getTotal = function() {
-                    var ret = 0;
-                    for (var i in $scope.products) {
-                        ret += ($scope.products[i].price + $scope.products[i].taxes) * $scope.products[i].quantity;
+                        ret += $scope.products[i].price * $scope.products[i].quantity;
                     }
                     return ret;
                 };

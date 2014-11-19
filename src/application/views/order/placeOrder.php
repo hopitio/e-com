@@ -19,7 +19,9 @@ foreach ($shippingMethods as $method)
     $json['shipping'][] = array(
         'shippingKey'         => $method->codename . '-' . 'projecte',
         'shippingDisplayName' => $method->label,
-        'shippingPrice'       => $method->price
+        'shippingPrice'       => $method->price,
+        'estimateDateMin'     => $method->get_estimate_min()->format('Y-m-d H:i'),
+        'estimateDateMax'     => $method->get_estimate_max()->format('Y-m-d H:i')
     );
 }
 
@@ -37,19 +39,11 @@ foreach ($cartContents as $cartInstance)
         'quantity'    => $cartInstance->quantity,
         'totalPrice'  => $cartInstance->getPriceMoney("VND")->getAmount() * $cartInstance->quantity,
         'actualPrice' => $cartInstance->getPriceMoney("VND")->getAmount() * $cartInstance->quantity,
-        'taxes'       => array(),
         'sellerName'  => $cartInstance->sellerName,
         'sellerEmail' => $cartInstance->sellerEmail,
         'sid'         => $cartInstance->sid,
         'shipping'    => $cartInstance->shipping
     );
-    foreach ($cartInstance->taxes() as $tax)
-    {
-        $json_product['taxes'][] = array(
-            'name'     => $tax->name,
-            'totalTax' => $json_product['actualPrice'] * $tax->costPercent + $tax->costFixed * $cartInstance->quantity
-        );
-    }
     $json['products'][] = $json_product;
 }
 $json = json_encode($json);

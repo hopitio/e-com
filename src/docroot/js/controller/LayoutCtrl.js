@@ -41,15 +41,6 @@ angular.module('lynx').factory('cartService', ['$http', function ($http) {
             return ret;
         }
 
-        function calculateTotalTax() {
-            var ret = 0;
-            for (var i in products) {
-                var product = products[i];
-                ret += product.taxes * product.quantity;
-            }
-            return ret;
-        }
-
         function removeProduct(id) {
             for (var i in products) {
                 if (products[i].id == id)
@@ -68,8 +59,7 @@ angular.module('lynx').factory('cartService', ['$http', function ($http) {
             registerLoadProducts: registerLoadProducts,
             removeProduct: removeProduct,
             countProducts: countProducts,
-            calculateTotalRawPrice: calculateTotalRawPrice,
-            calculateTotalTax: calculateTotalTax
+            calculateTotalRawPrice: calculateTotalRawPrice
         };
     }]);
 

@@ -10,6 +10,8 @@ class ShippingMethodDomain implements DomainInterface
     public $language;
     public $label;
     public $description;
+    public $min_day;
+    public $max_day;
     public $localization;
     protected $_shippingLocations = array();
 
@@ -22,6 +24,18 @@ class ShippingMethodDomain implements DomainInterface
     {
         $this->_shippingLocations[] = $instance;
         return $this;
+    }
+
+    function get_estimate_min()
+    {
+        $now = date_create();
+        return $now->add(new DateInterval('P' . $this->min_day . 'D'));
+    }
+
+    function get_estimate_max()
+    {
+        $now = date_create();
+        return $now->add(new DateInterval('P' . $this->max_day . 'D'));
     }
 
     /**

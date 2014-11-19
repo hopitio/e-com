@@ -125,7 +125,6 @@
                 }
                 $scope.countProducts = cartService.countProducts();
                 $scope.totalRawPrice = cartService.calculateTotalRawPrice();
-                $scope.productTotalTaxes = cartService.calculateTotalTax();
             });
         }]);
 })();

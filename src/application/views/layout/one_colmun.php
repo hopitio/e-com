@@ -254,7 +254,7 @@
                         </div>
                     </div>
                     <div class="footer-col-2">
-                        <img src="/images/footer/registered.png" alt="Registered at Misnistry of Commerce and Industry" style="float: left;">
+                        <!--<img src="/images/footer/registered.png" alt="Registered at Misnistry of Commerce and Industry" style="float: left;">-->
                         <div style="float:right;">
                             <h4></h4>
                             Sfriendly.com/Sfriendly.vn
