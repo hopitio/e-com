@@ -98,10 +98,6 @@
                                 <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderSubtotal;?></strong></div>
                                 <div class="tdright"><strong>{{fnMoneyToString(orderInformation.invoice.totalCost - taxPrices)}}</strong></div>
                             </div>
-                            <div class="border-dashed">
-                                <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderTax;?></strong></div>
-                                <div class="tdright"><strong>{{fnMoneyToString(taxPrices)}}</strong></div>
-                            </div>
                             <div class="total">
                                 <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderTotal;?></strong></div>
                                 <div class="tdright"><strong>{{fnMoneyToString(orderInformation.invoice.totalCost)}}</strong></div>

@@ -65,28 +65,28 @@ class PortalModelUser extends PortalModelBase
         return  true;
     }
     
-    /**
-     * Update user id.
-     */
-    function updateUser(){
-        $data = array(
-            T_user::firstname=>$this->firstname,
-            T_user::lastname=>$this->lastname,
-            T_user::account=>$this->account,
-            T_user::password=>$this->password,
-            T_user::sex=>$this->sex,
-            T_user::DOB=>$this->DOB,
-            T_user::date_joined=>$this->date_joined,
-            T_user::status=>$this->status,
-            T_user::status_date=>$this->status_date,
-            T_user::status_reason=>$this->status_reason,
-            T_user::last_active=>$this->last_active,
-            T_user::platform_key=>$this->platform_key,
-            T_user::user_type => $this->user_type
-        );
-        $this->_dbPortal->where(T_user::id,$this->id);
-        $this->_dbPortal->update(T_user::tableName,$data);
-    }
+//     /**
+//      * Update user id.
+//      */
+//     function updateUser(){
+//         $data = array(
+//             T_user::firstname=>$this->firstname,
+//             T_user::lastname=>$this->lastname,
+//             T_user::account=>$this->account,
+//             T_user::password=>$this->password,
+//             T_user::sex=>$this->sex,
+//             T_user::DOB=>$this->DOB,
+//             T_user::date_joined=>$this->date_joined,
+//             T_user::status=>$this->status,
+//             T_user::status_date=>$this->status_date,
+//             T_user::status_reason=>$this->status_reason,
+//             T_user::last_active=>$this->last_active,
+//             T_user::platform_key=>$this->platform_key,
+//             T_user::user_type => $this->user_type
+//         );
+//         $this->_dbPortal->where(T_user::id,$this->id);
+//         $this->_dbPortal->update(T_user::tableName,$data);
+//     }
     
     /**
      * Lấy thông tin của user thông qua username.

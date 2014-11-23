@@ -101,6 +101,4 @@ abstract class AbstractLayout
 class warper
 {
     
-}
-
-;
+};

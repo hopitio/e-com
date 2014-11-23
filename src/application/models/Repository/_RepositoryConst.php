@@ -199,7 +199,8 @@ class T_invoice_shipping extends T_base
     CONST complete_date = "complete_date";
     CONST shipping_type = "shipping_type";
     CONST record_status = 'record_status';
-
+    CONST estimated_max = "estimated_max";
+    CONST estimated_min = "estimated_min";
 }
 
 class T_order extends T_base

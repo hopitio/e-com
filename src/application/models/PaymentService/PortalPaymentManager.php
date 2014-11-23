@@ -16,7 +16,7 @@ class PortalPaymentManager extends PortalBizPayment{
         
         $products =  $orderInformation->products;
         $portalProducts = $this->saveProducts($products);
-        $protalTax = $this->saveTax($portalProducts,$products);
+//         $protalTax = $this->saveTax($portalProducts,$products);
         
         $contactInformation = $orderInformation->addresses;
         $portalContactIds = $this->insertContact($contactInformation);
@@ -190,6 +190,8 @@ class PortalPaymentManager extends PortalBizPayment{
                     $shippingItem->price = $shippingInformation->shippingPrice;
                     $shippingItem->display_name = $shippingInformation->shippingDisplayName;
                     $shippingItem->sub_id = $shippingInformation->shippingKey;
+                    $shippingItem->estimated_max = $shippingInformation->estimateDateMax;
+                    $shippingItem->estimated_min = $shippingInformation->estimateDateMin;
                 break;
                 case 'pay':
                     $shippingItem->fk_user_contact = $contactDetail;
@@ -198,6 +200,11 @@ class PortalPaymentManager extends PortalBizPayment{
                     $shippingItem->fk_invoice = $invoiceId;
                     $shippingItem->status = DatabaseFixedValue::SHIPPING_STATUS_ACTIVE;
                     $shippingItem->shipping_type = DatabaseFixedValue::SHIPPING_TYPE_PAY;
+                    $shippingItem->price = $shippingInformation->shippingPrice;
+                    $shippingItem->display_name = $shippingInformation->shippingDisplayName;
+                    $shippingItem->sub_id = $shippingInformation->shippingKey;
+                    $shippingItem->estimated_max = $shippingInformation->estimateDateMax;
+                    $shippingItem->estimated_min = $shippingInformation->estimateDateMin;
                     break;
                 default:
                     continue;

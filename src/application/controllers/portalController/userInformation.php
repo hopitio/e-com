@@ -17,7 +17,8 @@ class userInformation extends BasePortalController
                             ,'/js/services/PortalUserInformationServiceClient.js'
                             ,'/js/ui-bootstrap-tpls-0.10.0.min.js'
                             ,'/js/ng-grid.min.js'
-                            ,'/plugins/datepicker/js/bootstrap-datepicker.js');
+                            ,'/plugins/datepicker/js/bootstrap-datepicker.js'
+                            ,'/js/date_function.js');
     protected $_data = array();
     
     function showPage()
@@ -78,13 +79,14 @@ class userInformation extends BasePortalController
         $data = json_decode($data['userInformation']);
         $fristName = $data->fristName;
         $lastName = $data->lastName;
-        $dob = DateTime::createFromFormat('d/m/Y', $data->dob)->format(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
+        $dobDatetimeObject = DateTime::createFromFormat('d/m/Y', $data->dob);
+        $dob = $dobDatetimeObject === false ?  "" : $dobDatetimeObject->format(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $sex = $data->sex;
         if(!isset($fristName) || !isset($lastName) || !isset($dob) || !isset($sex)){
             throw new Lynx_RequestException(__CLASS__.' '.__METHOD__.' Request change user information error');
         }
         $error = $this->validForm($fristName, $lastName, $dob, $sex);
-        
+        echo $dob;
         if($error != null){
             $asyn = new AsyncResult(); 
             $asyn->isError = true;

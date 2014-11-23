@@ -369,19 +369,13 @@
                             <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderSubtotal;?></strong></div>
                             <div class="tdright"><strong>{{fnMoneyToString(orderInformation.invoice.totalCost - taxPrices)}}</strong></div>
                         </div>
-                        <div class="border-dashed">
-                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderTax;?></strong></div>
-                            <div class="tdright"><strong>{{fnMoneyToString(taxPrices)}}</strong></div>
-                        </div>
                         <div class="total">
                             <div class="tdleft"><strong><?php echo $language[$view->view]->lblOrderTotal;?></strong></div>
                             <div class="tdright"><strong>{{fnMoneyToString(orderInformation.invoice.totalCost)}}</strong></div>
                             <div class="payment-choice-tooltip">
-                                <div class="tooltip-head">Công thức tính</div>
+                                <div class="tooltip-head"><?php echo $language[$view->view]->lblToolTipTitle;?></div>
                                 <div class="tooltip-content">
-                                    Công thức tính dựa trên tỷ giá hối đoái liên ngân hàng :<br/>
-                                    Hiển thị = tỷ giá hối đoái x Giá trị đơn hàng (VND) <br/>
-                                    <span style="color:red;font-size: 10px">Giá trị đơn hàng chỉ được tính theo VND hiển thị chỉ mang tính chất tương đương. Khi bạn thanh toán sẽ được ngân hàng quy đổi theo tỷ giá noại tệ</span>
+                                    <?php echo $language[$view->view]->lblToolTip;?>
                                 </div>
                             </div>
                         </div>

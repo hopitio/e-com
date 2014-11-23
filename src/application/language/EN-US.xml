@@ -412,6 +412,8 @@
         <btnNext>Next</btnNext>
         <btnBack>Go back</btnBack>
         <btnNextHigh>Continue to order</btnNextHigh>
+        <lblToolTip><![CDATA[Within Vietnam, your transaction will be paid in VND at the prevailing exchange rate verses the USD</br></br>The exchange rate is used according to Vietcombank</br></br>View more exchange rate here</br>]]></lblToolTip>
+        <lblToolTipTitle>Total</lblToolTipTitle>
     </portalPayment_paymentChoice>
     <portalPayment_orderReview></portalPayment_orderReview>
     <portalPayment_paymentSuccess>

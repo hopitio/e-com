@@ -21,7 +21,7 @@
                 <div class="lynx_row">
                     <div class="lynx_lblFromtitle lynx_datePicketLbl"> <?php echo $language[$view->view]->lblDob;?> </div>
                     <div style="display:inline-block; ">
-                        <input data-provide="datepicker" data-date-format="mm/dd/yyyy" ng-model="warpDate"/>
+                        <input data-provide="datepicker" data-date-format="dd/mm/yyyy" ng-model="warpDate"/>
                     </div>
                     <!-- <input name="txtDOB" type="text" ng-model="userInformation.dob"/> -->
                 </div>

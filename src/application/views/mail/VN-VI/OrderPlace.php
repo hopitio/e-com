@@ -2,9 +2,12 @@
     $contactShipping = '';
     $contactPay = null;
     $shippingsPrice = 0;
+    $shippingInfor = null;
     foreach ($order->invoice->shippings as $shipping){
+        
         if($shipping->shipping_type == "SHIP"){
             $contactShipping = $shipping->contact;
+            $shippingInfor = $shipping;
         }
         if($shipping->shipping_type == "PAY"){
             $contactPay = $shipping->contact;
@@ -31,7 +34,7 @@
 <p style="padding:0px; margin:0px;" ><strong>Nội dung đơn hàng: </strong></p>
 <p style="padding:0px; margin:0px;" >Mã đơn hàng: <?php echo "SFRIENDLY {$order->id}" ?><br/></p>
 <br/>
-<table style="border-collapse:collapse;" border="1" cellspacing="0" cellpadding="0">
+<table style="border-collapse:collapse;border-color: #b6b9ba #b6b9ba; " border="1" cellspacing="0" cellpadding="0">
     <thead>
        <tr>
            <th valign="top" style="background: #215868;line-height: 30px;color: white; "><p style="padding:0px; margin:0px;" align="center">Sản phẩm/Dịch vụ</p></th>
@@ -95,7 +98,7 @@
 <p style="padding:0px; margin:0px;" >Ngày dự kiến giao hàng:</p>
 <p style="padding:0px; margin:0px;" >Địa chỉ nhận hàng: <?php echo "{$contactShipping->street_address},{$contactShipping->city_district},{$contactShipping->state_province}"?></p>
 <p style="padding:0px; margin:0px;" >Hình thức thanh toán: <?php echo $paymentType; ?></p>
-<p style="padding:0px; margin:0px;" >Chúng tôi sẽ đóng gói đơn hàng chuẩn bị cho việc vận chuyển. Thời hạn vận chuyển như sau: 2 – 5 ngày</p>
+<p style="padding:0px; margin:0px;" >Chúng tôi sẽ đóng gói đơn hàng chuẩn bị cho việc vận chuyển. Thời hạn vận chuyển như sau: <?php echo $shippingInfor->display_name;?></p>
 <p style="padding:0px; margin:0px;" >Trân trọng cảm ơn!</p>
      
 <br/>

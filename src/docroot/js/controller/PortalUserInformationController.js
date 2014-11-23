@@ -39,8 +39,7 @@ function PortalUserInformationController($scope,$http)
     };
      
     $scope.updateInformation = function(){
-        var d1 = new Date($scope.warpDate);
-        //$scope.userInformation.dob = d1.yyyymmdd() + ' 00:00:00';
+        $scope.userInformation.dob = $("input[ng-model=warpDate]").val();
         
         portalUserInformationServiceClient = new PortalUserInformationServiceClient($http);
         portalUserInformationServiceClient.updateUserInformation($scope.userInformation,updateUserInformationSucessCallback,updateUserInformationErrorCallback);

@@ -386,12 +386,11 @@ class PortalBizAccount extends PortalBizBase
     function updateUserInformation($user,$fristName, $lastName,$dob,$sex){
         $portalUserModel = new PortalModelUser();
         $portalUserModel->id = $user->id;
-        $portalUserModel->getUserByUserId();
         $portalUserModel->firstname = $fristName;
         $portalUserModel->lastname = $lastName;
         $portalUserModel->DOB = $dob;
         $portalUserModel->sex = $sex;
-        $portalUserModel->updateUser();
+        $portalUserModel->updateById();
         
         $portalUserHistoryBiz = new PortalBizUserHistory();
         $portalUserHistoryBiz->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_CHANGEINFORMATION ,'Thay đổi thông tin cá nhân',null,null);
