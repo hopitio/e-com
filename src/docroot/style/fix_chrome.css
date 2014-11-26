@@ -4,7 +4,8 @@
 ul.lynx-menu-lvl-2 > li > a > span.menu-name,
 .detail-fast-shipping label,
 .detail-share span,
-.tab-blue .head li
+.tab-blue .head li,
+.lynx-adv-box > .head > .title
 {
     white-space: nowrap;
 }
