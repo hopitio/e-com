@@ -113,6 +113,7 @@
         <lblTermsOfUse>이용 약관</lblTermsOfUse>
         <lblPrivacyPolicy>개인 정보 보호 정책</lblPrivacyPolicy>
         <lblAboutUs>회사 소개</lblAboutUs>
+        <lblSupport>지원</lblSupport>
     </layout>
     
     <sitemap>

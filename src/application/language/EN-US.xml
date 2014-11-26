@@ -112,6 +112,7 @@
         <lblTermsOfUse>Terms of Use</lblTermsOfUse>
         <lblPrivacyPolicy>Privacy Policy</lblPrivacyPolicy>
         <lblAboutUs>About Us</lblAboutUs>
+        <lblSupport>Support</lblSupport>
     </layout>
     
     <sitemap>

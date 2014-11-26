@@ -63,15 +63,17 @@ li{list-style: none;}
     margin: 0px 38px;
     display: inline-block;
     height: 75px;
+    padding-top: 28px;
 }
 .search-container > .search{
     float:left;
-    height: 43px;
+    height: 35px;
     width: 446px;
-    background: #3F5A60;
-    padding: 6px 0px 6px 15px;
+    background: #4886a3;
+    padding: 2px 0px 2px 2px;
     border-top: solid 1px #CFD6D7;
     border-left: solid 1px #CFD6D7;
+    border-radius: 7px;
 }
 .search > input{
     height:30px;
@@ -88,6 +90,8 @@ li{list-style: none;}
     float: left;
     font-weight: bold;
     text-transform: uppercase;
+    width: 80px;
+    text-align:center;
 }
 .search-container > .tag{
     float: left;
@@ -1149,9 +1153,9 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
     opacity: 1;
 }*/
 #carousel-hot-product .carousel-indicators{
-	bottom: -25px;
+    bottom: -25px;
 }
 .detail-summaries .left .no-sale{
-	margin:0px;
-	text-align: center;
+    margin:0px;
+    text-align: center;
 }

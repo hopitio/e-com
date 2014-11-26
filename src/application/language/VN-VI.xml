@@ -114,6 +114,7 @@
         <lblTermsOfUse>Điều khoản sử dụng</lblTermsOfUse>
         <lblPrivacyPolicy>Chính sách bảo mật</lblPrivacyPolicy>
         <lblAboutUs>Về chúng tôi</lblAboutUs>
+        <lblSupport>Hỗ trợ</lblSupport>
     </layout>
     
     <sitemap>
