@@ -134,6 +134,9 @@
         <lblBoughtQty>Bought</lblBoughtQty>
         <lblSatisfied>Satisfied</lblSatisfied>
         <lblComment>Comments</lblComment>
+        <lblDimension>Dimension</lblDimension>
+        <lblWeight>Weight</lblWeight>
+        <lblBrand>Brand</lblBrand>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>

@@ -3,7 +3,8 @@
 .lynx_searchResult .lynx_sort ul li a,
 ul.lynx-menu-lvl-2 > li > a > span.menu-name,
 .detail-fast-shipping label,
-.detail-share span
+.detail-share span,
+.tab-blue .head li
 {
     white-space: nowrap;
 }
