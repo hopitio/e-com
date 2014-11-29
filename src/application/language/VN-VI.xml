@@ -114,6 +114,7 @@
         <lblTermsOfUse>Điều khoản sử dụng</lblTermsOfUse>
         <lblPrivacyPolicy>Chính sách bảo mật</lblPrivacyPolicy>
         <lblAboutUs>Về chúng tôi</lblAboutUs>
+        <lblSupport>Hỗ trợ</lblSupport>
     </layout>
     
     <sitemap>
@@ -136,6 +137,9 @@
         <lblBoughtQty>Số lượng mua</lblBoughtQty>
         <lblSatisfied>Đánh giá cao</lblSatisfied>
         <lblComment>Nói về</lblComment>
+        <lblDimension>Kích thước</lblDimension>
+        <lblWeight>Khối lượng</lblWeight>
+        <lblBrand>Nhãn hiệu</lblBrand>
     </product_details>
     <wishlist_show>
         <title>Sản phẩm mong muốn</title>

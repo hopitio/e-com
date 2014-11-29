@@ -122,7 +122,41 @@ if (!empty($images))
                         support
                     </div>
                     <div class="lynx-pane" id="tab-details">
-                        details
+                        <?php
+                        if ((string) $product->getStorageCode())
+                        {
+                            echo '- SKU: ' . $product->getStorageCode() . '<br>';
+                        }
+                        $dx = (string) $product->getDimensionDepth();
+                        $dy = (string) $product->getDimensionHeight();
+                        $dz = (string) $product->getDimensionWidth();
+                        if ($dx || $dy || $dz)
+                        {
+                            echo '- ' . $language[$view->view]->lblDimension . ': ';
+                            $arr_d = array();
+                            if ($dx)
+                            {
+                                $arr_d[] = $dx;
+                            }
+                            if ($dy)
+                            {
+                                $arr_d[] = $dy;
+                            }
+                            if ($dz)
+                            {
+                                $arr_d[] = $dz;
+                            }
+                            echo implode('x', $arr_d) . '<br>';
+                        }
+                        if ((string) $product->getWeight())
+                        {
+                            echo '- ' . $language[$view->view]->lblWeight . ': ' . $product->getWeight() . ' kg<br>';
+                        }
+                        if ((string) $product->getBrand())
+                        {
+                            echo '- ' . $language[$view->view]->lblBrand . ': ' . $product->getBrand() . '<br>';
+                        }
+                        ?>
                     </div>
                     <div class="lynx-pane active" id="tab-desc">
                         <?php echo $product->getDescription() ?>

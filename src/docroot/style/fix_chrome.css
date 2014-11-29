@@ -1,0 +1,12 @@
+.lynx-adv-box > .head > .choice a,
+.lynx_footer .footer-group-header h4,
+.lynx_searchResult .lynx_sort ul li a,
+ul.lynx-menu-lvl-2 > li > a > span.menu-name,
+.detail-fast-shipping label,
+.detail-share span,
+.tab-blue .head li,
+.lynx-adv-box > .head > .title
+{
+    white-space: nowrap;
+}
+

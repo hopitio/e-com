@@ -112,6 +112,7 @@
         <lblTermsOfUse>Terms of Use</lblTermsOfUse>
         <lblPrivacyPolicy>Privacy Policy</lblPrivacyPolicy>
         <lblAboutUs>About Us</lblAboutUs>
+        <lblSupport>Support</lblSupport>
     </layout>
     
     <sitemap>
@@ -133,6 +134,9 @@
         <lblBoughtQty>Bought</lblBoughtQty>
         <lblSatisfied>Satisfied</lblSatisfied>
         <lblComment>Comments</lblComment>
+        <lblDimension>Dimension</lblDimension>
+        <lblWeight>Weight</lblWeight>
+        <lblBrand>Brand</lblBrand>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>

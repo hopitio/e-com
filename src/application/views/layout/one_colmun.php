@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="/style/headMenu.css" media="all">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" >
         <link href='http://fonts.googleapis.com/css?family=Roboto:900&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link href='/style/fix_chrome.css' rel='stylesheet' type='text/css'>
         <?php
         //Thêm các js riêng biệt
         foreach ($view->css as $item)
@@ -198,7 +199,7 @@
             <div class="footer-middle">
                 <div class="width-960 clearfix">
                     <div class="footer-col-1">
-                        <div class="footer-group-header"><h4>Hỗ trợ<?php echo $language['layout']->lblSupport ?></h4></div>
+                        <div class="footer-group-header"><h4><?php echo $language['layout']->lblSupport ?></h4></div>
                         <a href="javascript:;" title="Hotline" class="footer-icon icon-phone">Hotline: (04) 3865 2455</a>
                         <h4></h4>
                         <a href="mailto:info@sfriendly.com" title="Email" class="footer-icon icon-email">Email: <script>document.write('info@sfriendly.com');</script></a>
