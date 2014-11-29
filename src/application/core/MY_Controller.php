@@ -18,6 +18,7 @@ require_once APPPATH . 'models/biz.inc';
 require_once APPPATH . 'models/OrderService/order.inc';
 require_once APPPATH . 'models/PaymentService/payment.inc';
 require_once APPPATH . 'models/modelsLayer.inc';
+require_once APPPATH . 'models/ServiceClient/ServiceClient.inc';
 
 require_once APPPATH . 'libraries/nusoap/nusoap.inc';
 require_once APPPATH . 'libraries/thirdParty/nganluong/nganluong.inc';

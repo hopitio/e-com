@@ -397,6 +397,7 @@ $config['temp_mail_folder'] = APPPATH . 'temp/mail/';
 $config['path_to_active_account'] = '/portal/active?k={key}';
 $config['path_to_reset_password_reset'] = '/portal/reset_password?k={key}';
 $config['portal_payment_entry'] = "/portal/order_verifing/portal_get_information";
+$config['portal_gift_update_product_entry'] = "/api/productSold&product={id}&quantity={total}";
 
 $config['sub_system_name'] = array(
     'default' => 'PORTAL',

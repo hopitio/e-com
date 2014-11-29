@@ -373,6 +373,7 @@ $config['platform_login_url'] = 'http://sfriendly.com/portal/login?cp={cp}&ep={e
 $config['portal_login_url'] = 'http://sfriendly.com/portal/login?cp={cp}';
 $config['portal_seller_search_api'] = '/protal/api/gift/seller/{seller_id}/search';
 $config['portal_seller_invoice_detail_api'] = '/protal/api/invoice/{invoice_id}';
+$config['portal_gift_update_product_entry'] = "/api/productSold&product={id}&quantity={total}";
 
 $config['platform_login_callback'] = 'http://sfriendly.com/__portal/login_callback';
 $config['platform_logout'] = '/logout';
