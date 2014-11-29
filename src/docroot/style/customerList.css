@@ -6,7 +6,7 @@ ul#cart-process{
 ul#cart-process > li{
     display: inline-block;
     float: left;
-    padding-right: 117px;
+    padding-right: 103px;
 }
 ul#cart-process > li:first-child{
     margin-left: 0;

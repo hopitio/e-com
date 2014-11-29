@@ -45,6 +45,7 @@
                         <li ng-click="paymentMethodChanged('CASH')" ng-class="{active:paymentMethodCode == 'CASH'}"><?php echo $language[$view->view]->paymentByCash;?></li>
                         <li ng-click="paymentMethodChanged('ATM')" ng-class="{active:paymentMethodCode == 'ATM'}"><?php echo $language[$view->view]->paymentByATM;?></li>
                         <li ng-click="paymentMethodChanged('NL')" ng-class="{active:paymentMethodCode == 'NL'}"><?php echo $language[$view->view]->paymentByNL;?></li>
+                        <li ng-click="paymentMethodChanged('TRANSFER')" ng-class="{active:paymentMethodCode == 'TRANSFER'}"><?php echo $language[$view->view]->paymentByTRANSFER;?></li>
                     </ul>
                 </div>
                 <div class="payment-box">
@@ -52,9 +53,11 @@
                     <strong ng-show="paymentMethodCode == 'CASH'"><?php echo $language[$view->view]->paymentCashNoteTitle;?></strong>
                     <strong ng-show="paymentMethodCode == 'VISA'"><?php echo $language[$view->view]->paymentVisaNoteTitle;?></strong> 
                     <strong ng-show="paymentMethodCode == 'ATM'"><?php echo $language[$view->view]->paymentATMNoteTitle;?></strong>
+                    <strong ng-show="paymentMethodCode == 'TRANSFER'"><?php echo $language[$view->view]->paymentTRANSFERNoteTitle;?></strong>
                     <p ng-show="paymentMethodCode == 'NL'" style="margin: auto"><?php echo $language[$view->view]->paymentNLNoteContent; ?></p>
                     <p ng-show="paymentMethodCode == 'CASH'" style="margin: auto"><?php echo $language[$view->view]->paymentCashNoteContent; ?></p>
                     <p ng-show="paymentMethodCode == 'VISA'" style="margin: auto"><?php echo $language[$view->view]->paymentVISANoteContent; ?></p>
+                    <p ng-show="paymentMethodCode == 'TRANSFER'" style="margin: auto"><?php echo $language[$view->view]->paymentTRANSFERNoteContent; ?></p>
                     <p ng-show="paymentMethodCode == 'ATM'" style="margin: auto"><?php echo $language[$view->view]->paymentATMNoteContent; ?><br/>
 					<ul ng-show="paymentMethodCode == 'ATM'" class="cardList clearfix">
                         <li class="bank-online-methods " ng-click="setSelectedBankCode($event)">

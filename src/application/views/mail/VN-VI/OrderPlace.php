@@ -15,7 +15,7 @@
         $shippingsPrice += $shipping->price;
     }
     $contactPay = $contactPay != null ? $contactPay : $contactShipping;
-    $paymentType = "Giao hàng thu tiền";
+    $paymentType = $order->invoice->payment_method == DatabaseFixedValue::PAYMENT_BY_CASH ? "Giao hàng thu tiền" : "Thanh toán chuyển khoản";
     if($order->invoice->payment_method == DatabaseFixedValue::PAYMENT_BY_NGANLUONG || 
        $order->invoice->payment_method == DatabaseFixedValue::PAYMENT_BY_ONEPAY || 
        $order->invoice->payment_method == DatabaseFixedValue::PAYMENT_BY_VISA){

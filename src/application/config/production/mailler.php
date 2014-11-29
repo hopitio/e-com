@@ -150,7 +150,7 @@ $config['OrderShipping']=  array(
     MAILLER_PORT => '25',
     MAILLER_PASS => '0uxj7cECd',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/OrderShipping.html',
+    MAILLER_TEMP => '/OrderShipping',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );

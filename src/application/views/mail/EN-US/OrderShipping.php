@@ -21,10 +21,9 @@
        $order->invoice->payment_method == DatabaseFixedValue::PAYMENT_BY_VISA){
         $paymentType = "Thanh toán điện tử";
     }
-    
 ?>
 <p style="padding:0px; margin:0px;" > Xin chào <?php echo $contactPay->full_name;?>,</p>
-<p style="padding:0px; margin:0px;" >Bạn đã đặt hàng thành công! Đây là thông tin đơn hàng của bạn:</p>
+<p style="padding:0px; margin:0px;" >Đơn hàng của bạn đã được đóng gói xong và sẽ được giao cho bạn trong trước <?php echo $shippingInfor->estimated_max;?>. Nhân viên giao hàng có thể liên lạc với bạn trước khi đi giao. Xin lưu ý là kể từ lúc này bạn không thể thay đổi đơn hàng. Đây là thông tin đơn hàng của bạn :</p>
 <p style="padding:0px; margin:0px;" ><strong>Thông tin người mua: </strong></p>
 <div style="padding-left: 30px;">
 <p style="padding:0px; margin:0px;" >Họ và tên: <?php echo $contactPay->full_name;?></p>

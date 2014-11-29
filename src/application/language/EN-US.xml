@@ -32,7 +32,7 @@
         <lblQ4>Name What is your pet?</lblQ4>
         <lblQ5>What animal do you like most?</lblQ5>
         <lblanswer>Answer</lblanswer>
-        <btnResg>Agree to the terms of use and Registration </btnResg>
+        <btnResg>I agree to terms of use and continue to register</btnResg>
         <lblLinkPolice>Details and terms of use of the website charter.</lblLinkPolice>
         <msgWoringEmail>Email the wrong format or exceed 254 characters</msgWoringEmail>
         <msgWoringPass>Passwords do not match and contain only characters from 0-9, AZ </msgWoringPass>
@@ -375,14 +375,17 @@
         <paymentByCash>Payment in cash</paymentByCash>
         <paymentByVisa>Payment by Visa / Master</paymentByVisa>
         <paymentByATM>Payment by ATM</paymentByATM>
+        <paymentByTRANSFER>Transfer payments</paymentByTRANSFER>
         <paymentNLNoteTitle>You will be paid by such Ngan Luong :</paymentNLNoteTitle>
         <paymentCashNoteTitle>You will pay with cash on delivery at home :</paymentCashNoteTitle>
         <paymentVisaNoteTitle>You will pay with Visa / Master :</paymentVisaNoteTitle>
         <paymentATMNoteTitle>You will pay online with your ATM / bank account domestic :</paymentATMNoteTitle>
+        <paymentTRANSFERNoteTitle>You will be paid by bank transfer :</paymentTRANSFERNoteTitle>
         <paymentNLNoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 You need to register bank accounts amount <br /> <br />]]></paymentNLNoteContent>
         <paymentCashNoteContent><![CDATA[<br/>Note:<br/>1. Please check the information on the right hand side summary:<br/>- Order fulfillment fee<br/>- Shipping fee (if any)<br/>2. Sfriendly will call you before delivery<br/>3. Pay and sign when the order gets delivered<br/><br/>]]></paymentCashNoteContent>
         <paymentVISANoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 Just accept Visa / Master by domestic banks released <br /> <br />]]></paymentVISANoteContent>
         <paymentATMNoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 You need to register or Internet-banking services online payment at the bank implementation <br /> <br /> Bank transaction:]]></paymentATMNoteContent>
+        <paymentTRANSFERNoteContent><![CDATA[<br /> Note : <br /> 1. Please check the information on the right hand side orders:<br /> - Fee for order fulfillment<br /> - Delivery fee ( if applicable )<br />]]></paymentTRANSFERNoteContent>
         <paymentInoivceNote><![CDATA[<br /> Note: Invoices for products sold by merchants member will be made ​​in 7 days of delivery success. <br /> <br />]]></paymentInoivceNote>
         <paymentNoficationNote>You will be informed about the order status via email and SMS.</paymentNoficationNote>
         <paymentSecurity>Information and personal accounts will be encrypted to ensure absolute safety</paymentSecurity>

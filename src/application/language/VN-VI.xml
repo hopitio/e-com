@@ -32,7 +32,7 @@
         <lblQ4>Tên vật nuôi của bạn là gì ?</lblQ4>
         <lblQ5>Bạn thích con vật nào nhất ?</lblQ5>
         <lblanswer>Trả lời</lblanswer>
-        <btnResg>Đồng ý điều khoản sử dụng và Đăng ký </btnResg>
+        <btnResg>Tôi đã đồng ý với điều khoản sử dụng và tiếp tục đăng ký</btnResg>
         <lblLinkPolice>Chi tiết điều khoản sử dụng và điều lệ của website.</lblLinkPolice>
         <msgWoringEmail>Email sai địng dạng hoặc dài quá 254 ký tự</msgWoringEmail>
         <msgWoringPass>Mật khẩu không khớp và chỉ chứa ký tự từ 0-9, A-Z </msgWoringPass>
@@ -398,14 +398,17 @@
         <paymentByCash>Thanh toán bằng tiền mặt</paymentByCash>
         <paymentByVisa>Thanh toán bằng Visa/Master</paymentByVisa>
         <paymentByATM>Thanh toán bằng ATM</paymentByATM>
+        <paymentByTRANSFER>Thanh toán chuyển khoản</paymentByTRANSFER>
         <paymentNLNoteTitle>Bạn sẽ thanh toán bằng ví Ngân Lượng :</paymentNLNoteTitle>
         <paymentCashNoteTitle>Bạn sẽ thanh toán bằng tiền mặt khi nhận hàng tại nhà :</paymentCashNoteTitle>
         <paymentVisaNoteTitle>Bạn sẽ thanh toán bằng thẻ visa/mastercard :</paymentVisaNoteTitle>
+        <paymentTRANSFERNoteTitle>Bạn sẽ thanh toán bằng phương thức chuyển khoản :</paymentTRANSFERNoteTitle>
         <paymentATMNoteTitle>Bạn sẽ thanh toán online bằng thẻ ATM/ Tài khoản ngân hàng nội địa :</paymentATMNoteTitle>
         <paymentNLNoteContent><![CDATA[<br /> Lưu ý: <br /> 1. Vui lòng kiểm tra kỹ thông tin đơn hàng bên tay phải về:<br /> - Phí thực hiện đơn hàng<br /> - Phí giao hàng (nếu có)<br /> 2. Bạn cần đăng ký tài khoản Ngân Lượng<br /> <br />]]></paymentNLNoteContent>
         <paymentCashNoteContent><![CDATA[<br /> Lưu ý: <br />1. Vui lòng kiểm tra kỹ thông tin đơn hàng bên tay phải về:<br />- Phí thực hiện đơn hàng<br />- Phí giao hàng (nếu có)<br />2. Sfriendly sẽ gọi điện cho bạn trước khi giao hàng<br /> 3. Bạn sẽ thanh toán và ký nhận khi đơn hàng được giao<br /><br />]]></paymentCashNoteContent>
         <paymentVISANoteContent><![CDATA[<br /> Lưu ý: <br /> 1. Vui lòng kiểm tra kỹ thông tin đơn hàng bên tay phải về:<br /> - Phí thực hiện đơn hàng<br /> - Phí giao hàng (nếu có)<br /> 2. Chỉ chấp nhận thẻ Visa/master do ngân hàng trong nước phát hành<br /> <br />]]></paymentVISANoteContent>
         <paymentATMNoteContent><![CDATA[<br /> Lưu ý: <br /> 1. Vui lòng kiểm tra kỹ thông tin đơn hàng bên tay phải về:<br /> - Phí thực hiện đơn hàng<br /> - Phí giao hàng (nếu có)<br /> 2. Bạn cần đăng ký Internet-Banking hoặc dịch vụ thanh toán trực tuyến tại ngân hàng thực hiện <br /> <br />Ngân hàng thực hiện giao dịch : ]]></paymentATMNoteContent>
+        <paymentTRANSFERNoteContent><![CDATA[<br /> Lưu ý: <br /> 1. Vui lòng kiểm tra kỹ thông tin đơn hàng bên tay phải về:<br /> - Phí thực hiện đơn hàng<br /> - Phí giao hàng (nếu có)<br />]]></paymentTRANSFERNoteContent>
         <paymentInoivceNote><![CDATA[<br />Lưu ý: Hóa đơn cho các sản phẩm được bán bởi thương nhân thành viên sẽ được xuất trong 7 ngày kể từ ngày giao hàng thành công.<br /><br />]]></paymentInoivceNote>
         <paymentNoficationNote>Bạn sẽ được thông báo về tình trạng đơn hàng qua email và tin nhắn.</paymentNoficationNote>
         <paymentSecurity>Thông tin và tài khoản cá nhân sẽ được mã hóa để đảm bảo an toàn tuyệt đối</paymentSecurity>

@@ -36,6 +36,9 @@ class orderReview extends BasePortalController
             case 'NL' :
                 $this->checkoutWithNL($orderId,$invoiceId);
             break;
+            case "TRANSFER" : 
+                $this->checkoutWithTransfer($orderId,$invoiceId);
+            break;
         }
     }
     
@@ -83,6 +86,26 @@ class orderReview extends BasePortalController
         $orderManager = new PortalOrderManager();
         $orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
         
+        $orderRepository = new PortalModelInvoice();
+        $orderRepository->id = $orderId;
+        $orderRepository->payment_method = DatabaseFixedValue::PAYMENT_BY_CASH;
+        
+        $orderRepository->updateById();
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
+        array('isError'=>false), true)
+        ->setCss($this->css)
+        ->setJavascript($this->js)
+        ->render('portalPayment/paymentSuccess');
+    }
+    
+    private function checkoutWithTransfer($orderId,$invoiceId)
+    {
+        $orderManager = new PortalOrderManager();
+        $orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
+        
+        $orderRepository = new PortalModelInvoice();
+        $orderRepository->id = $orderId;
+        $orderRepository->payment_method = DatabaseFixedValue::PAYMENT_BY_TRANSFER;
         
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
         array('isError'=>false), true)
