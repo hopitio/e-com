@@ -227,7 +227,12 @@
         <passwordNotify>Changed password</passwordNotify>
     </mail>
     
-    <portalaccount_resetPassword></portalaccount_resetPassword>
+    <portalaccount_resetPassword>
+        <title>Retrieve password</title>
+        <lblError>You can not reset the password by not ensuring information security</lblError>
+        <lblDone>You have successfully reset your password please check the mail for password</lblDone>
+    </portalaccount_resetPassword>
+    
     <order_placeOrder></order_placeOrder>
     <pin_showPage>
         <title>PIN</title>
@@ -510,4 +515,7 @@
     <ComingSoon>
         <title>출시 예정</title>
     </ComingSoon>
+    <portalaccount_resend>
+        <title>인증 이메일을 다시 보내</title>
+    </portalaccount_resend>
 </data>

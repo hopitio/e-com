@@ -17,7 +17,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
-
+        $route['portal/account/resend'] = "portalController/passwordUnauthen/resend";
+                
         $route['portal/admin/support'] = 'portalAdmin/support/showPage';
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
@@ -74,7 +75,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 
         $route['portal/api/user/find'] = "portalController/apiUser/findUser";
         $route['portal/dialog/user/find'] = "portalController/account/showDialog";
-
+        
         $route['portal/__test/order_request'] = 'testingController/getMockupOrderRequest';
     }
 

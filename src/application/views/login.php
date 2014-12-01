@@ -55,6 +55,7 @@
             <input name='txtPw' type="password">
             <button id="submitLogin" class="lynx_button btn btn-primary" type="submit" value="one"><?php echo $language[$view->view]->btnLogin;?></button>
             <a href="/portal/account/lost_password" style="width: 100%;text-align: left;"><?php echo $language[$view->view]->lblForgetPassword;?></a>
+            <a href="/portal/account/resend" style="width: 100%;text-align: left;"><?php echo $language[$view->view]->lblForgetPassword;?></a>
             
             
             <a href="#" style="display:none"><img src="/images/Social_signin_google.png" /></a>

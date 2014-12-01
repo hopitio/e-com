@@ -10,7 +10,9 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
 class passwordUnauthen extends BasePortalController
 {
     protected $authorization_required = FALSE;
-
+    protected  $_css = array(
+        '/style/lostPassword.css'
+    );
     function resetPassword()
     {
         $data = $this->getQueryStringParams();
@@ -20,11 +22,26 @@ class passwordUnauthen extends BasePortalController
         $passwordBiz = new PortalBizPassword();
         $result = $passwordBiz->resetPassword($this->obj_user, $data['k']);
         $viewdata = array();
+        $woringData = array();
+        $language = MultilLanguageManager::getInstance()
+        ->getLangViaScreen('portalaccount_resetPassword', User::getCurrentUser()->languageKey);
         if(!$result){
-            $viewdata['error'] = "Bạn không thể reset mật khẩu do không đảm bảo thông tin bảo mât";
+            $viewdata['error'] = $language->lblError;
         }else {
-            $viewdata['msg'] ="Bạn đã reset mật khẩu thành công vui lòng kiểm tra mail để lấy mật khẩu";
+            $viewdata['msg'] = $language->lblDone;
         }
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($viewdata)->render('portalaccount/resetPassword');
+    }
+    
+    function resend(){
+        
+        $viewdata = array();
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+        ->setCss($this->_css)
+        ->setData($viewdata)->render('portalaccount/resend');
+    }
+    
+    function resend_check_and_send(){
+        
     }
 }

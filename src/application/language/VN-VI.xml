@@ -229,7 +229,12 @@
         <orderRefuned>[Sfriendly] Trả hàng thành công </orderRefuned>
     </mail>
     
-    <portalaccount_resetPassword></portalaccount_resetPassword>
+    <portalaccount_resetPassword>
+        <title>비밀번호 찾기</title>
+        <lblError>당신은 정보 보안을 보장하지 않음으로써 암호를 재설정 할 수 없습니다</lblError>
+        <lblDone>성공적으로 암호 메일을 확인하시기 바랍니다 암호를 재설정 한</lblDone>
+    </portalaccount_resetPassword>
+    
     <order_placeOrder></order_placeOrder>
     <pin_showPage>
         <title>Sản phẩm đánh dấu</title>
@@ -513,4 +518,7 @@
     <ComingSoon>
         <title>Đang xây dựng</title>
     </ComingSoon>
+    <portalaccount_resend>
+        <title>Gửi lại mail active</title>
+    </portalaccount_resend>
 </data>
