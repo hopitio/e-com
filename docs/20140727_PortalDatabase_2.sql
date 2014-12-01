@@ -2,7 +2,7 @@
 SQLyog Ultimate v11.3 (64 bit)
 MySQL - 5.5.32 : Database - portal_e_project
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 

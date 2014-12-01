@@ -223,7 +223,7 @@
                     <div class="footer-col-3">
                         <a class="footer-icon icon-dollar" href="javascript:;" title="Selling with Sfriendly"><?php echo $language['layout']->lblSellingGuide ?></a>
                         <h4></h4>
-                        <a class="footer-icon icon-best" href="javascript:;" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
+                        <a class="footer-icon icon-best" href="/portal/login/registerSellerAccount" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
                         <h4></h4>
                         <a class="footer-icon icon-product" href="javascript:;" title="Publish Product"><?php echo $language['layout']->lblPublishProduct ?></a>
                     </div>

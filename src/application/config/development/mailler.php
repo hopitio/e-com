@@ -197,6 +197,21 @@ $config['SellerPaymentVerified']=  array(
     MAILLER_NEWLINE=> "\r\n"
 );
 
+$config['SellerRegistered']=  array(
+    MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST => 'mail.sfriendly.com',
+    MAILLER_FULLNAME => 'Sfriendly Customer Service',
+    MAILLER_USER => 'transaction@sfriendly.com',
+    MAILLER_PORT => '25',
+    MAILLER_PASS => '0uxj7cECd',
+    MAILLER_TIMEOUT => '1',
+    MAILLER_TEMP => '/SellerRegister',
+    MAILLER_TYPE => 'html',
+    MAILLER_NEWLINE=> "\r\n",
+    'SEND_TO'         => 'goat91@gmail.com'
+);
+
 
 
 

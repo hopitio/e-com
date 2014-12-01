@@ -136,9 +136,15 @@
         <lblBoughtQty>구매</lblBoughtQty>
         <lblSatisfied>만족</lblSatisfied>
         <lblComment>코멘트</lblComment>
-        <lblDimension>차원</lblDimension>
+        <lblDimension>차원(cm)</lblDimension>
         <lblWeight>무게</lblWeight>
         <lblBrand>상표</lblBrand>
+        <lblOrigin>출발지</lblOrigin>
+        <htmlRPolicy>
+             <![CDATA[
+             Coming soon
+            ]]>
+        </htmlRPolicy>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>

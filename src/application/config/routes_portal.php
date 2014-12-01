@@ -9,14 +9,17 @@ if (!defined('BASEPATH'))
 
 if (array_key_exists('REQUEST_METHOD', $_SERVER))
 {
+    
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
+        $route['portal/login/registerSellerAccount'] = 'portalController/login/registerSellerAccount';
         $route['portal/page/policy'] = 'portalController/staticPage/showPolicy';
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
+        
         $route['portal/account/resend'] = "portalController/passwordUnauthen/resend";
                 
         $route['portal/admin/support'] = 'portalAdmin/support/showPage';
@@ -100,6 +103,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
         $route['portal/api/account/order_history/cancel_order'] = "portalController/userOrderHistory/cancelOrder";
         $route['protal/api/gift/seller/(:num)/search'] = 'portalController/apiSeller/searchSellerProduct/$1';
+        
 
         $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/saveInformation';
         $route['portal/order_verifing/email_verify'] = 'portalController/orderVerifing/mergeEmail';

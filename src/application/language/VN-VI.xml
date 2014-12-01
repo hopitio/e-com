@@ -137,9 +137,47 @@
         <lblBoughtQty>Số lượng mua</lblBoughtQty>
         <lblSatisfied>Đánh giá cao</lblSatisfied>
         <lblComment>Nói về</lblComment>
-        <lblDimension>Kích thước</lblDimension>
+        <lblDimension>Kích thước(cm)</lblDimension>
         <lblWeight>Khối lượng</lblWeight>
         <lblBrand>Nhãn hiệu</lblBrand>
+        <lblOrigin>Xuất xứ</lblOrigin>
+        <htmlRPolicy>
+            <![CDATA[
+                <h4>HƯỚNG DẪN TRẢ HÀNG/ĐỔI HÀNG</h4>
+                1) Quy định chung : <br>
+                - Hàng còn nguyên tem, mạc, không bị dơ bẩn, hư hỏng, trầy xước, có mùi đã qua sử dụng hoặc đã qua giặt, tẩy <br>
+                - Đăng ký trả hàng <strong>trong vòng 3 ngày</strong> kể từ ngày nhận hàng.<br>
+                2) Vấn đề đổi hàng: <br>
+                - Có thể đổi hàng khi giao nhầm màu, nhầm size , nhầm sản phẩm .<br>
+                3) Vấn đề trả hàng: Được quyền trả hàng: sản phẩm bị hư hỏng do nhà sản xuất, hãng vận chuyển<br>
+                4) Phí gửi hàng lần 2 : <br>
+                - Vấn đề đổi hàng xuất phát từ phía KH: Tính theo bảng phí giao hàng; KH sẽ được gửi hóa đơn điện tử bổ sung và cần thanh toán trước khi trung tâm gửi hàng lần 2<br>
+                - Vấn đề đổi hàng do lỗi từ Sfriendly: miễn phí gửi hàng lần 2<br>
+                5) Các trường hợp gửi trả phát sinh từ quý khách hàng, các phiếu Coupon, Spoint sử dụng khi đặt hàng sẽ không được hoàn trả , khôi phục lại.<br>
+                6) Lưu ý : <strong>Trừ trường hợp được quyền đổi trả hàng nêu trên, chúng tôi không chấp nhận xử lí các vấn đề khác.</strong><br>
+                <br>
+                <h4>ĐỊA CHỈ GỬI TRẢ HÀNG (Trung tâm phân phối hàng hóa Sfriendly Việt Nam)</h4>
+                Xin quý khách vui lòng gửi hàng về trung tâm phân phối hàng hóa Sfriendly Việt Nam
+                , địa chỉ – <strong>19/62 phố Trần Bình, phường Mai Dịch, quận Cầu Giấy, Hà Nội.</strong><br>
+                <br>
+                <h4>HOÀN TRẢ TIỀN CHO ĐƠN HÀNG</h4>
+                Sau khi xác nhận sản phẩm gửi trả đã nhập kho, chúng tôi sẽ  tiến hành hoàn tiền cho quý khách theo đúng phương thức quý khách chọn để trả tiền cho chúng tôi
+                . Nếu có vấn đề về tài khoản, Sfriendly sẽ liên hệ trực tiếp theo số điện thoại mà quý khách cung cấp.<br>
+                <br>
+                <h4>HƯỚNG DẪN HỦY ĐƠN ĐẶT HÀNG</h4>
+                1) Quý khách chỉ có thể hủy đơn đặt hàng khi hàng vẫn còn trong trạng thái "Sản phẩm đang được chuẩn bị".<br>
+                Liên hệ sớm nhất với Trung tâm khách hàng để được hỗ trợ.<br>
+                2) Hoàn tiền tùy theo phương thức thức thanh toán khi hủy đơn đặt hàng:<br>
+                <i>- Thanh toán bằng Internet Banking, Ví điện tử, Visa/Master:</i> Được hoàn lại theo tài khoản quý khách đã dùng để thanh toán <br>
+                <i>- Thanh toán bằng cách chuyển khoản/ COD:</i> Được hoàn lại bằng hình thức chuyển khoản.<br>
+                <i>- Thanh toán bằng Spoint/Coupon:</i> Được hoàn tiền lại bằng Spoint/Coupon.<br>
+                <br>
+                Hướng dẫn các vấn đề liên quan đến hết hàng<br>
+                Đơn hàng sẽ được hủy và hoàn lại tiền cho khách hàng theo phương thức ở trên.<br>
+                * Lưu ý, các loại Coupon dành cho các sản phẩm được chỉ định, dù hủy đơn đặt hàng, Coupon cũng sẽ không được khôi phục lại.<br>
+
+            ]]>
+        </htmlRPolicy>
     </product_details>
     <wishlist_show>
         <title>Sản phẩm mong muốn</title>

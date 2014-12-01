@@ -15,3 +15,4 @@ require_once APPPATH.'libraries/mail/SellerDeliveredMailler.php';
 require_once APPPATH.'libraries/mail/SellerFailToDeliveredMailler.php';
 require_once APPPATH.'libraries/mail/SellerPaymentVerified.php';
 require_once APPPATH.'libraries/mail/OrderPlaceMailler.php';
+require_once APPPATH.'libraries/mail/SellerRegisteredMailer.php';

@@ -177,7 +177,6 @@ li{list-style: none;}
     margin:auto;
     height:51px;
     background:url(/images/mn-bg.fw.png) no-repeat center;
-    margin-bottom: 3px;
 }
 .head-menu > ul, .head-box ul{
     margin-bottom: 0px;
@@ -185,7 +184,7 @@ li{list-style: none;}
 }
 .head-menu ul li{
     display:inline-block;
-    min-height:50px;
+    /*min-height:50px;*/
     color:#414f53;
     float:left;
     border:solid 1px transparent;
@@ -877,6 +876,7 @@ ul.lynx-menu-lvl-2{
     width: 100%;
     box-sizing: border-box;
     text-align: center;
+    margin-top: 3px;
 }
 ul.lynx-menu-lvl-2 > li{
     display: inline-block;

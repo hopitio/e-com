@@ -71,6 +71,7 @@ class MailManager {
         	    throw new Lynx_EmailException(__CLASS__.'::requestSendMail Không hỗ trợ định dạng mail này');
         	    break;
         }
+        
         $staff->setMailData($mailData)->setTo($target)->send();
     }
     

@@ -134,9 +134,50 @@
         <lblBoughtQty>Bought</lblBoughtQty>
         <lblSatisfied>Satisfied</lblSatisfied>
         <lblComment>Comments</lblComment>
-        <lblDimension>Dimension</lblDimension>
+        <lblDimension>Dimension(cm)</lblDimension>
         <lblWeight>Weight</lblWeight>
         <lblBrand>Brand</lblBrand>
+        <lblOrigin>Origin</lblOrigin>
+        <htmlRPolicy>
+            <![CDATA[
+            <h4>RETURN / REFUND / EXCHANGE</h4>
+            1) General Policy<br>
+            - The returned product must be in a perfect condition,with the original package and all its accessories 
+            ( warranty stamp or card, free gift received with the product).<br>
+            - Product must be returned with the receipt of Sfriendly.com / Sfriendly.vn<br>
+            <strong>- You should report to return your order within 3 days following the reception of your order</strong><br>
+            2) Exchange<br>
+            - You are able to exchange orders for FREE only in case of wrong colors, sizes, and products<br>
+            3) Return<br>
+            - You are able to return order(s) in case of failure products, accidents in delivery for FREE<br>
+            4) Second attempt fee:<br>
+            - Request from customer: Delivery fee will be accounted for following regular Shipping Fee Table of Sfriendly
+            . If the customer wants to change their shipping address, they will receive an electronic invoice and have to pay it prior to shipping.<br>
+            - Mistake from Sfriendly: Free of the next attempt<br>
+            5) If the return is from customers, Coupons, Spoint used when ordering will not be refunded, restored<br>
+            6) Please note: Except exchange/return/refund cases above, we do not process any other cases<br>
+            <br>
+            <h4>RETURN CENTER ADDRESS: ( SFRIENDLY DISTRIBUTION CENTER)</h4>
+            Please send returned products with their receipt to: <strong>19/62 Tran Binh, Mai Dich, Cau Giay, Hanoi, Vietnam</strong>
+            <br><br>
+            <h4>REFUND</h4>
+            After confirmation returned products in warehouse, we will proceed to reimburse you in accordance with the payment method you choose to pay for Sfriendly
+            . If we face any problems with your account, Sfriendly will contact the telephone number which you provided
+            . Therefore, providing exactly numbers is a must.<br>
+            <br>
+            <h4>CANCEL ORDER</h4>
+            1) Orders can be cancelled only during status “Verifying”<br>
+            Other cases, please contact Sfriendly Customer Center asap. We are happy to help you.<br>
+            2) Reimbursement depends on the method of payment you used:<br>
+            - Pay by Internet banking, E-wallet, Visa/Master card: Refund to your account which was used to pay<br>
+            - Pay by money transfer/C.O.D: refunded by using money transfer to your bank account<br>
+            - Pay by Spoint/Coupon: refunded by Spoint/Coupon<br>
+            <br>
+            <h4>OUT OF STOCK ISSUES</h4> 
+            Orders will be cancelled automatically when your items are permanently out of stock. You will be refunded by the above method of payment.<br>
+            * Note: Coupons for designated products will not be reimbursed in any cases, even for cancellation
+             ]]>
+        </htmlRPolicy>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>
