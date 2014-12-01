@@ -136,9 +136,15 @@
         <lblBoughtQty>구매</lblBoughtQty>
         <lblSatisfied>만족</lblSatisfied>
         <lblComment>코멘트</lblComment>
-        <lblDimension>차원</lblDimension>
+        <lblDimension>차원(cm)</lblDimension>
         <lblWeight>무게</lblWeight>
         <lblBrand>상표</lblBrand>
+        <lblOrigin>출발지</lblOrigin>
+        <htmlRPolicy>
+             <![CDATA[
+             Coming soon
+            ]]>
+        </htmlRPolicy>
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>
@@ -510,4 +516,20 @@
     <ComingSoon>
         <title>출시 예정</title>
     </ComingSoon>
+    <registerSellerAccount>
+        <lblShopName>가게 이름</lblShopName>
+        <lblContactPerson>담당자</lblContactPerson>
+        <lblEmail>Email</lblEmail>
+        <lblPhone>전화 번호</lblPhone>
+        <lblAddress>주소</lblAddress>
+        <lblSlogan>슬로건</lblSlogan>
+        <lblAdditionalInfo>추가 정보</lblAdditionalInfo>
+        <lblRegister>판매자 계정을 등록</lblRegister>
+        <title>판매자 계정을 등록</title>
+        <errShopNameRequired>가게 이름이 필요합니다</errShopNameRequired>
+        <errContactPerson>담당자가 필요합니다</errContactPerson>
+        <errEmail>유효한 이메일 주소를 입력해야합니다</errEmail>
+        <errPhone>전화 번호가 필요합니다</errPhone>
+        <errAddress>주소 필요</errAddress>
+    </registerSellerAccount>
 </data>

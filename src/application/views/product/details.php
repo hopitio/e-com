@@ -9,6 +9,9 @@ if (!empty($images))
     $facebookImage = $images[0];
 }
 ?>
+<style>
+    i{font-style:italic;}
+</style>
 <div ng-app="lynx" ng-controller="productDetailsCtrl">
     <div class="lynx-menu-lvl2-container width-960">
         <ul class="lynx-menu-lvl-2">
@@ -119,7 +122,7 @@ if (!empty($images))
                 </ul>
                 <div class="lynx-panes">
                     <div class="lynx-pane " id="tab-support">
-                        support
+                        <?php echo $language[$view->view]->htmlRPolicy ?>
                     </div>
                     <div class="lynx-pane" id="tab-details">
                         <?php
@@ -155,6 +158,10 @@ if (!empty($images))
                         if ((string) $product->getBrand())
                         {
                             echo '- ' . $language[$view->view]->lblBrand . ': ' . $product->getBrand() . '<br>';
+                        }
+                        if ((string) $product->getMadeIn())
+                        {
+                            echo '- ' . $language[$view->view]->lblOrigin . ': ' . $product->getMadeIn() . '<br>';
                         }
                         ?>
                     </div>

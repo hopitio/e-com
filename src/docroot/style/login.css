@@ -43,7 +43,7 @@ span input{text-align: left;}
 	padding-bottom: 10px;
 }
 
-form input[type='text'],input[type='password'] {
+form input[type='text'],input[type='password'], textarea {
 	padding: 6px;
 	width: 265px;
 	border: solid 1px #b2b2b2;
@@ -117,22 +117,26 @@ form input[type='text'],input[type='password'] {
 	width: 165px;
 	min-height: 28px;
 }
-
-.lynx_leftContent form input[name="password"] {
-	width: 150px;
+.lynx_register_seller_form .lynx_leftContent input[type="text"],
+.lynx_register_seller_form .lynx_leftContent input[type="password"], 
+.lynx_register_seller_form .lynx_leftContent textarea{
+    width: 430px;
 }
 
-.lynx_leftContent form input[name="passwordRetry"] {
+.lynx_leftContent form input[name="password"],
+.lynx_leftContent form input[name="passwordRetry"],
+.lynx_leftContent form input[name="fristName"],
+.lynx_leftContent form input[name="lastName"] ,
+.lynx_register_seller_form .lynx_leftContent form input[name="txt_email"],
+.lynx_register_seller_form .lynx_leftContent form input[name="txt_phone"]
+{
 	width: 150px;
+}
+#lbl-additional-info{
+    float:left;
+    margin-right: 5px;
 }
 
-.lynx_leftContent form input[name="fristName"] {
-	width: 150px;
-}
-
-.lynx_leftContent form input[name="lastName"] {
-	width: 150px;
-}
 
 .lynx_leftContent form input[name="username"] {
 	width: 430px;

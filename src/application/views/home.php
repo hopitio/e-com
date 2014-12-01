@@ -2,37 +2,38 @@
 defined('BASEPATH') or die('No direct script access allowed');
 ?>
 <div ng-controller="homeCtrl">
-    <div class="banner-box width-960">
-        <?php $banners = simplexml_load_string($banners); ?>
-        <h4></h4>
-        <div id="carousel-home-banner" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <?php $i = 0; ?>
-                <?php foreach ($banners as $banner): ?>
-                    <?php $class = $i == 0 ? 'active' : '' ?>
-                    <li data-target="#carousel-home-banner" data-slide-to="<?php echo $i++ ?>" class="<?php echo $class ?>"></li>
-                <?php endforeach; ?>
-            </ol>
-            <div class="carousel-inner">
-                <?php $i = 0; ?>
-                <?php foreach ($banners as $banner): ?>
-                    <?php $class = $i++ == 0 ? 'active' : '' ?>
-                    <div class="item <?php echo $class ?>">
-                        <a href="<?php echo $banner->attributes()->href ?>" title="<?php $banner->attributes()->title ?>">
-                            <img src="<?php echo $banner->attributes()->src ?>" alt="<?php echo $banner->attributes()->title ?>">
-                        </a>
-                    </div>
-                <?php endforeach; ?>
+    <div class="banner-box width-960" style="position:relative;height: 358px;">
+        <div style="position: absolute;width: 100%;top:0;left:0;">
+            <?php $banners = simplexml_load_string($banners); ?>
+            <div id="carousel-home-banner" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <?php $i = 0; ?>
+                    <?php foreach ($banners as $banner): ?>
+                        <?php $class = $i == 0 ? 'active' : '' ?>
+                        <li data-target="#carousel-home-banner" data-slide-to="<?php echo $i++ ?>" class="<?php echo $class ?>"></li>
+                    <?php endforeach; ?>
+                </ol>
+                <div class="carousel-inner">
+                    <?php $i = 0; ?>
+                    <?php foreach ($banners as $banner): ?>
+                        <?php $class = $i++ == 0 ? 'active' : '' ?>
+                        <div class="item <?php echo $class ?>">
+                            <a href="<?php echo $banner->attributes()->href ?>" title="<?php $banner->attributes()->title ?>">
+                                <img src="<?php echo $banner->attributes()->src ?>" alt="<?php echo $banner->attributes()->title ?>">
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <a class="left carousel-control cursor-pointer" href="#carousel-home-banner" data-slide="prev">
+                    <span class=""></span>
+                </a>
+                <a class="right carousel-control cursor-pointer" href="#carousel-home-banner" data-slide="next">
+                    <span class=""></span>
+                </a>
             </div>
-            <a class="left carousel-control cursor-pointer" href="#carousel-home-banner" data-slide="prev">
-                <span class=""></span>
-            </a>
-            <a class="right carousel-control cursor-pointer" href="#carousel-home-banner" data-slide="next">
-                <span class=""></span>
-            </a>
         </div>
     </div>
-    
+
     <div class="tab tab-orange width-960 text-left">
         <div class="head width-960" style="margin-top: 15px;">
             <ul>
@@ -113,7 +114,7 @@ defined('BASEPATH') or die('No direct script access allowed');
 <script>
     var scriptData = {
     };
-    $(function() {
+    $(function () {
         $('#carousel-hot-product').carousel({
             interval: false
         });

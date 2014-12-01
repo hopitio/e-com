@@ -45,10 +45,10 @@
                     <div class="search-btn cursor-pointer color-white"><?php echo $language['layout']->lblSearch ?></div>
                 </div>
                 <div class="tag text-left">
-                    <a href="#">Sản phẩm mới</a>
+<!--                    <a href="#">Sản phẩm mới</a>
                     <a href="#">Hàng việt nam</a>
                     <a href="#">Quà tặng </a>
-                    <a href="#">Sản phẩm mới</a>
+                    <a href="#">Sản phẩm mới</a>-->
                 </div>
             </div>
             <div class="user-pannel text-left">
@@ -149,7 +149,7 @@
                     <div class="footer-col-3">
                         <a class="footer-icon icon-dollar" href="javascript:;" title="Selling with Sfriendly"><?php echo $language['layout']->lblSellingGuide ?></a>
                         <h4></h4>
-                        <a class="footer-icon icon-best" href="javascript:;" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
+                        <a class="footer-icon icon-best" href="/portal/login/registerSellerAccount" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
                         <h4></h4>
                         <a class="footer-icon icon-product" href="javascript:;" title="Publish Product"><?php echo $language['layout']->lblPublishProduct ?></a>
                     </div>
