@@ -39,6 +39,7 @@
         <msgWoringFristName>50 자보다 긴 이름</msgWoringFristName>
         <msgWoringLastName>마지막으로 이름을 50 자 이상</msgWoringLastName>
         <msgWoringAns>50 자보다 긴 답변</msgWoringAns>
+        <lblResend>계정을 활성화하기 메일 보내기</lblResend>
     </login>
     <registercomplete>
         <title>전체 등록</title>
@@ -234,9 +235,9 @@
     </mail>
     
     <portalaccount_resetPassword>
-        <title>Retrieve password</title>
-        <lblError>You can not reset the password by not ensuring information security</lblError>
-        <lblDone>You have successfully reset your password please check the mail for password</lblDone>
+        <title>비밀번호 찾기</title>
+        <lblError>당신은 정보 보안을 보장하지 않음으로써 암호를 재설정 할 수 없습니다</lblError>
+        <lblDone>성공적으로 암호 메일을 확인하시기 바랍니다 암호를 재설정 한</lblDone>
     </portalaccount_resetPassword>
     
     <order_placeOrder></order_placeOrder>
@@ -522,6 +523,14 @@
         <title>출시 예정</title>
     </ComingSoon>
     <portalaccount_resend>
-        <title>인증 이메일을 다시 보내</title>
+        <title>정품 인증 이메일을 다시 보내기</title>
+        <lblStepDes>다시 전송하는 단계 : </lblStepDes>
+        <lblStep1>입력 이메일</lblStep1>
+        <lblStep2>귀하의 이메일을 확인</lblStep2>
+        <lblStep3>계정 활성화</lblStep3>
+        <lblMail>Email</lblMail>
+        <btnMailler>Resend</btnMailler>
+        <lblMsgOk>이메일의 성공을 다시 보내기, 이메일을 확인하시기 바랍니다.</lblMsgOk>
+        <lblMsgNotOk>해결되지 이메일.</lblMsgNotOk>
     </portalaccount_resend>
 </data>

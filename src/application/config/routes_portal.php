@@ -84,7 +84,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-
+        $route['portal/account/resend'] = "portalController/passwordUnauthen/resend_check_and_send";
         $route['portal/__admin/invoice/(:num)/update_paided_date'] = 'portalAdmin/invoiceDetail/updatePaidedDate/$1';
         $route['portal/__admin/invoice/(:num)/destroy'] = 'portalAdmin/invoiceDetail/destroy/$1';
 

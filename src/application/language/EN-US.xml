@@ -39,6 +39,7 @@
         <msgWoringFristName>First Name longer than 50 characters</msgWoringFristName>
         <msgWoringLastName>Last name longer than 50 characters</msgWoringLastName>
         <msgWoringAns>Answers longer than 50 characters</msgWoringAns>
+        <lblResend>Resend activion email</lblResend>
     </login>
     <registercomplete>
         <title>Register complete</title>
@@ -298,7 +299,17 @@
     <seller_add_product></seller_add_product>
     <seller_dashboard></seller_dashboard>
     <seller_product></seller_product>
-    <portalaccount_lostPassword></portalaccount_lostPassword>
+    <portalaccount_lostPassword>
+        <title>Forgot password</title>
+        <lblStepDes>Step to get password </lblStepDes>
+        <lblStep1>Input your's mail address</lblStep1>
+        <lblStep2>Check mail</lblStep2>
+        <lblStep3>Login with new password information</lblStep3>
+        <lblMail>Email</lblMail>
+        <btnMailler>Ok, get password</btnMailler>
+        <lblMsgOk>Please check your's email for new password information.</lblMsgOk>
+        <lblMsgNotOk>Email not correct.</lblMsgNotOk>
+    </portalaccount_lostPassword>
     <portalHelp_policy></portalHelp_policy>
     
     <portalaccount_userSecurity>
@@ -540,6 +551,14 @@
         <title>Coming soom</title>
     </ComingSoon>
     <portalaccount_resend>
-        <title>Resend activation email</title>
+        <title>Resend active email</title>
+        <lblStepDes>Step to resend : </lblStepDes>
+        <lblStep1>Input email</lblStep1>
+        <lblStep2>Check your's email</lblStep2>
+        <lblStep3>Active your's account</lblStep3>
+        <lblMail>Email</lblMail>
+        <btnMailler>Resend</btnMailler>
+        <lblMsgOk>Resend email success, Please check your's email.</lblMsgOk>
+        <lblMsgNotOk>Email not correct.</lblMsgNotOk>
     </portalaccount_resend>
 </data>

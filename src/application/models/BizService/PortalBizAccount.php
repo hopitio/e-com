@@ -313,7 +313,7 @@ class PortalBizAccount extends PortalBizBase
         $userModel->status = $status;
         $userModel->status_date = date(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $userModel->status_reason = $reason;
-        $userModel->updateUser();
+        $userModel->updateById();
         
         return $userModel->getUserByUserId();
     }

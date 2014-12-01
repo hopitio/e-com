@@ -37,6 +37,6 @@ class activeAccount extends BasePortalController
             'activeStatus' => $activeStatus,
         );
         
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data)->render('portalaccount/active');
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setCss(array('/style/myaccount.css'))->setData($data)->render('portalaccount/active');
     }
 }

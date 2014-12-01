@@ -40,6 +40,7 @@
         <msgWoringFristName>Họ và tên đệm dài quá 50 ký tự</msgWoringFristName>
         <msgWoringLastName>Tên dài quá 50 ký tự</msgWoringLastName>
         <msgWoringAns>Tên dài quá 50 ký tự</msgWoringAns>
+        <lblResend>Gửi lại mail kích hoạt tài khoản</lblResend>
     </login>
     <registercomplete>
         <title>Đăng ký thành công</title>
@@ -268,9 +269,9 @@
     </mail>
     
     <portalaccount_resetPassword>
-        <title>비밀번호 찾기</title>
-        <lblError>당신은 정보 보안을 보장하지 않음으로써 암호를 재설정 할 수 없습니다</lblError>
-        <lblDone>성공적으로 암호 메일을 확인하시기 바랍니다 암호를 재설정 한</lblDone>
+        <title>Lấy lại mật khẩu</title>
+        <lblError>Thông tin cung cấp không chính xác</lblError>
+        <lblDone>Bạn đã lấy lại mật khẩu thành công vui lòng kiểm tra mail để lấy lại thông tin đăng nhập</lblDone>
     </portalaccount_resetPassword>
     
     <order_placeOrder></order_placeOrder>
@@ -557,6 +558,14 @@
         <title>Đang xây dựng</title>
     </ComingSoon>
     <portalaccount_resend>
-        <title>Gửi lại mail active</title>
+        <title>Gửi lại mail kích hoạt tài khoản</title>
+        <lblStepDes>Các bước thực hiện bao gồm </lblStepDes>
+        <lblStep1>Nhập địa chỉ email</lblStep1>
+        <lblStep2>Kiểm tra email</lblStep2>
+        <lblStep3>Kích hoạt tài khoản</lblStep3>
+        <lblMail>Email</lblMail>
+        <btnMailler>Xác nhận</btnMailler>
+        <lblMsgOk>Gửi email thành công, bạn hãy kiểm tra mail để biết thêm thông tin.</lblMsgOk>
+        <lblMsgNotOk>Email bạn vừa nhập chưa chính xác.</lblMsgNotOk>
     </portalaccount_resend>
 </data>

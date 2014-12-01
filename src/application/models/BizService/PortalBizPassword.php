@@ -128,4 +128,28 @@ class PortalBizPassword extends PortalBizBase
         MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalModelUsers->account , $mailData);
         return true;
     }
+    
+    /**
+     * input email
+     * @param string $email
+     * @return boolean
+     */
+    function resendActiveEmail($email){
+        $portalModelUser = new PortalModelUser();
+        $portalModelUser->account = $email;
+        $portalModelUser->platform_key =  DatabaseFixedValue::USER_PLATFORM_DEFAULT;
+        $portalModelUsers = $portalModelUser->getMutilCondition();
+        if(!isset($portalModelUsers[0])){
+            return false;
+        }
+        $portalModelUser = $portalModelUsers[0];
+        $portalModelUser instanceof PortalModelUser;
+        if($portalModelUser->status != DatabaseFixedValue::USER_STATUS_REGISTED){
+            return false;
+        }
+        
+        MailManager::initalAndSend(MailManager::TYPE_RESG_COMFIRM, $portalModelUser->account,array('user'=>$portalModelUser) );
+        
+        return true;
+    }
 }
