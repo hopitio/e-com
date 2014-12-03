@@ -561,4 +561,24 @@
         <lblMsgOk>Resend email success, Please check your's email.</lblMsgOk>
         <lblMsgNotOk>Email not correct.</lblMsgNotOk>
     </portalaccount_resend>
+    <registerSellerAccount>
+        <lblShopName>Shop name</lblShopName>
+        <lblContactPerson>Contact person</lblContactPerson>
+        <lblEmail>Email</lblEmail>
+        <lblPhone>Phone number</lblPhone>
+        <lblAddress>Contact address</lblAddress>
+        <lblSlogan>Slogan</lblSlogan>
+        <lblAdditionalInfo>Additional infomation</lblAdditionalInfo>
+        <lblRegister>Register Seller Account</lblRegister>
+        <title>Register Seller Account</title>
+        <errShopNameRequired>Shop name required</errShopNameRequired>
+        <errContactPerson>Contact person required</errContactPerson>
+        <errEmail>You must enter a valid email address</errEmail>
+        <errPhone>Phone number required</errPhone>
+        <errAddress>Address required</errAddress>
+    </registerSellerAccount>
+    <registerSellerSuccessed>
+        <title>Register successed</title>
+        <message><![CDATA[Thank you for registered, we will contact you as soon as posible!]]></message>
+    </registerSellerSuccessed>
 </data>

@@ -9,19 +9,20 @@ if (!defined('BASEPATH'))
 
 if (array_key_exists('REQUEST_METHOD', $_SERVER))
 {
-    
+    //post & get
+    $route['portal/login/registerSellerAccount'] = 'portalController/login/registerSellerAccount';
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-        $route['portal/login/registerSellerAccount'] = 'portalController/login/registerSellerAccount';
         $route['portal/page/policy'] = 'portalController/staticPage/showPolicy';
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
-        
+        $route['portal/login/registerSellerSuccessed'] = 'portalController/login/registerSellerSuccessed';
+
         $route['portal/account/resend'] = "portalController/passwordUnauthen/resend";
-                
+
         $route['portal/admin/support'] = 'portalAdmin/support/showPage';
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
@@ -78,7 +79,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 
         $route['portal/api/user/find'] = "portalController/apiUser/findUser";
         $route['portal/dialog/user/find'] = "portalController/account/showDialog";
-        
+
         $route['portal/__test/order_request'] = 'testingController/getMockupOrderRequest';
     }
 
@@ -103,7 +104,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
         $route['portal/api/account/order_history/cancel_order'] = "portalController/userOrderHistory/cancelOrder";
         $route['protal/api/gift/seller/(:num)/search'] = 'portalController/apiSeller/searchSellerProduct/$1';
-        
+
 
         $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/saveInformation';
         $route['portal/order_verifing/email_verify'] = 'portalController/orderVerifing/mergeEmail';

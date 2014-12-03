@@ -1,5 +1,8 @@
 (function () {
-    angular.module('lynx').controller('cartShippingCtrl', ['$scope', '$http', 'cartService', function ($scope, $http, cartService) {
+    angular.module('lynx')
+            .config(function ($sceProvider) {
+                $sceProvider.enabled(false);
+            }).controller('cartShippingCtrl', ['$scope', '$http', 'cartService', function ($scope, $http, cartService) {
             $scope.selectedProvince = 101;
             $scope.regions = script_data.regions;
             $scope.mode = 'simple';
@@ -21,7 +24,7 @@
             $scope.getMethodDesc = function (methodCode) {
                 for (var i in script_data.shippingMethods) {
                     if (script_data.shippingMethods[i].codename === methodCode)
-                        return script_data.shippingMethods[i].label;
+                        return script_data.shippingMethods[i].description;
                 }
             };
 
