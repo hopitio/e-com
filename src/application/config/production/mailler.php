@@ -169,7 +169,7 @@ $config['SellerDelivered']=  array(
     MAILLER_NEWLINE=> "\r\n"
 );
 
-$config['SellerFailToDeliveredMailler']=  array(
+$config['SellerFailDelivered']=  array(
     MAILLER_PROTOCOL => 'smtp',
     MAILLER_USERAGENT => 'Sfriendly',
     MAILLER_HOST => 'mail.sfriendly.com',
@@ -178,7 +178,7 @@ $config['SellerFailToDeliveredMailler']=  array(
     MAILLER_PORT => '25',
     MAILLER_PASS => '0uxj7cECd',
     MAILLER_TIMEOUT => '1',
-    MAILLER_TEMP => '/SellerFailToDelivered.html',
+    MAILLER_TEMP => '/SellerFailDelivered',
     MAILLER_TYPE => 'html',
     MAILLER_NEWLINE=> "\r\n"
 );

@@ -5,98 +5,61 @@
  * @since 20140330
  */
 class SellerFailToDeliveredMailler extends AbstractStaff{
-    protected $config_key = 'SellerFailToDeliveredMailler';
-    CONST PRODUCT_ITEM = "
-               <td style='border:none;'>
-                   <img style='width: 100px;height:100px' src='{image}'>
-               </td>
-               <td style='border:none;'>
-                   <p style='font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333'>
-                        Item: {product_name}<br/>
-                        Quantity: {quantity}<br/>
-                        Price: {price}<br/>
-                        Buyer: {buyer_name}<br/>
-                        {buyer_contact<br/>
-                        {buyer_phone} <br/>
-                   </p>
-               </td>";
+    protected $config_key = 'SellerFailDelivered';
+    
     
     /* (non-PHPdoc)
      * @see AbstractStaff::buildContent()
      */
     protected function buildContent()
-    {
-        $this->CI->load->helper('file');
-        $temp = $this->CI->config->item('temp_mail_folder');
-        $temp .= $this->languageKey.'/'. $this->config[MAILLER_TEMP];
-        $mailContent = read_file($temp);
+    {        
+        $temp = $this->CI->config->item('temp_mail_view');
+        $temp .= User::getCurrentUser()->languageKey.'/'.$this->config[MAILLER_TEMP];
         
         $order = $this->mailData['order'];
-        
         $seller_name = '';
         $order_number = $order->id;
-        $products = '';
+        $buyer_name = '';
+        $buyer_contact = '';
+        $buyer_phone = '';
         
-        $this->preOrderInformation($order, $order_number, $seller_name, $products);
+        $this->preOrderInformation($order, $order_number, $seller_name, $buyer_name, $buyer_contact, $buyer_phone);
         
-        $mailContent = str_replace('{seller_name}',$seller_name,$mailContent);
-        $mailContent = str_replace('{order_number}',$order_number,$mailContent);
-        $mailContent = str_replace('{products}',$products,$mailContent);
-        return $mailContent;
+        $name = '';
+        $order_number = $order->id;
+        $help_url = '';
         
+        $mailData = array('name'=>$seller_name,'orderNumber' => $order_number,'order'=>$order,'target'=>$this->to);
+        return $this->CI->load->view($temp,$mailData,true);
     }
 
-	/* (non-PHPdoc)
+    /* (non-PHPdoc)
      * @see AbstractStaff::buildTitle()
      */
     protected function buildTitle()
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
-        return $mailLanguage->SellerOrderRejected;
+        $subject = $mailLanguage->SellerOrderFailDelivered;
+        return $subject;
     }
 
-    private function preOrderInformation($order,&$order_number,&$seller_name,&$products){
-        $productCollection = array();
+    private function preOrderInformation($order,&$order_number,&$seller_name,&$buyer_name,&$buyer_contact,&$buyer_phone){
         foreach ($order->invoice->products as $product){
             if($product->seller_email == $this->to){
                 $seller_name = $product->seller_name;
-                array_push($productCollection, $product);
+                break;
             }
         }
-        $buyerContact = null;
+        
         foreach ($order->invoice->shippings as $shipping)
         {
             if($shipping->shipping_type == DatabaseFixedValue::SHIPPING_TYPE_SHIP && $shipping->status == DatabaseFixedValue::SHIPPING_STATUS_ACTIVE){
-                $buyerContact = $shipping->contact;
-                break;
+               $buyer_name = $shipping->contact->full_name;
+               $buyer_contact = "{$shipping->contact->street_address} , {$shipping->contact->city_district}, {$shipping->contact->state_province}";
+               $buyer_phone = $shipping->contact->telephone;
+               break;
             }
-        } 
-        
-        foreach ($productCollection as $productItem)
-        {
-            if(!file_exists($productItem->sub_image)){
-                $productItem->sub_image = Common::getCurrentHost().'/images/no-images.jpg';
-            }
-            
-            $imageContent = file_get_contents($productItem->sub_image);
-            $imageContent = base64_encode($imageContent);
-            $imageExt = get_mime_by_extension($productItem->sub_image);
-            $imageSrc = "data:{$imageExt};base64,{$imageContent}";
-            $contentProductItem =
-            "<td style='border:none;'>
-                   <img style='width: 100px;height:100px' src='{$imageSrc}'>
-               </td>
-               <td style='border:none;'>
-                   <p style='font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333'>
-                        Item: {$productItem->name}<br/>
-                        Quantity: {$productItem->product_quantity}<br/>
-                        Price: {$productItem->product_price}<br/>
-                        Buyer: {$buyerContact->full_name}<br/>
-                        {$buyerContact->street_address}, {$buyerContact->state_province}<br/>
-                        {$buyerContact->telephone} <br/>
-                   </p>
-               </td>";
-            $products .= $contentProductItem;
         }
+        
     }
 }

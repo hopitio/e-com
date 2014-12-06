@@ -24,6 +24,7 @@ class PortalBizOrder extends PortalBizBase
                return $this->processDelivered($user, $orderId, $comment);
             break;
             case DatabaseFixedValue::ORDER_STATUS_VERIFYING:
+               //var_dump($result->status);die;
                return $this->processPlaceOrder($user, $orderId, $comment);
             break;
             default:
@@ -66,14 +67,14 @@ class PortalBizOrder extends PortalBizBase
 
     
     function processPlaceOrder($user, $orderId, $comment, $invoice = null){
-        $status = $this->updateOrderToVerify($user, $orderId, $comment);
+        $status = $this->updateOrderToOrderPlace($user, $orderId, $comment);
         $this-> mailBuyer($orderId,null, MailManager::ORDER_PLACES);
+        $this->mailSeller($orderId,null ,MailManager::SELLER_PAYMENT_VERIFIED);
         return $status;
     }
     
     function processVerifyOrder($user, $orderId, $comment, $invoiceId = null){
         $status = $this->updateOrderToVerify($user, $orderId, $comment);
-        $this->mailSeller($orderId,null ,MailManager::SELLER_PAYMENT_VERIFIED);
         return $status;
     }
     
@@ -198,21 +199,9 @@ class PortalBizOrder extends PortalBizBase
         $repositoryUser->id = $order->fk_user;
         $user = $repositoryUser->getOneById();
         $order->user = $user;
-        $target = isset($user->account) ? $user->account : 'lethanhan.bkaptech@gmail.com';  
-//         foreach ($order->invoice->shippings as $shipping){
-//             if($shipping->status != DatabaseFixedValue::SHIPPING_STATUS_ACTIVE && $shipping->shipping_type != 'SHIP')
-//             {
-//                 continue;
-//             }
-//             if($shipping->contact->email_contact == null || !isset($shipping->contact->email_contact)){
-//                 $target = 'lethanhan.bkaptech@gmail.com';
-//             }else{
-//                 $target = $shipping->contact->email_contact;
-//             }
-//         }
         $mailData = array();
         $mailData['order'] = $order;
-        MailManager::initalAndSend($mailType, $target, $mailData);
+        MailManager::initalAndSend($mailType, $user->account, $mailData);
     }
     
     protected function mailSeller($orderId,$invoiceId = null,$mailType){
@@ -241,9 +230,13 @@ class PortalBizOrder extends PortalBizBase
             if($product->seller_email == null || !isset($product->seller_email)){
                 $product->seller_email = 'lethanhan.bkaptech@gmail.com';
             }
+            if(ENVIRONMENT == "development"){
+                $product->seller_email = 'lethanhan.bkaptech@gmail.com';
+            }
             if(!array_key_exists($product->seller_email,$sellerMail)){
                 $sellerMail[$product->seller_email] = $order;
             }
+            
         }
         
         $mailData = array();

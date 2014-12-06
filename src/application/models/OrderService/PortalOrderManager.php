@@ -31,17 +31,23 @@ class PortalOrderManager extends PortalBizOrder
     function orderPlace($isSendMail,$userUpdate, $orderId, $invoiceId){
        $portalPaymentHistory = new PortalBizPaymentHistory();
        $order = $portalPaymentHistory->getOrderAllInformation($orderId);
+       $order->invoices = $portalPaymentHistory->getInvoicesInforamtion(array($orderId));
+       $order->invoice = $order->invoices[0];
+       foreach ($order->invoices as $invoice){
+            if($invoice == $invoiceId){
+                $order->invoice = $invoice;
+                break;
+            }
+       }
        $product_sub_service = new product_sub_service_client();
        $url = get_instance()->config->item("portal_gift_update_product_entry");
        foreach ($order->invoice->products as $product ){
            $product instanceof PortalModelProduct;
            $urls =  str_replace("{id}",$product->id,$url);
-           $urls =  str_replace("{total}",$product->quatity,$urls);
+           $urls =  str_replace("{total}",$product->product_quantity,$urls);
            $product_sub_service->call_api_get($urls);
            log_message("info","call gift service");
        }
-       
-       $product_sub_service->call_api_get($product_sub_service_url);
        parent::updateOrderToOrderPlace($userUpdate, $orderId, '');
        if($isSendMail){
            parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_PLACES);

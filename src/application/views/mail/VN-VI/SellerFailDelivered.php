@@ -21,11 +21,13 @@
             $sellerName = $product->seller_name;
         }
     }
+    $lastInvoice = $order->invoice;
 ?>
 <div style="background: white; margin-top: 11.25pt;">
     <p> Chào <?php echo $sellerName;?>,  </p>
     
-    <p> Chúng tôi đã hoàn tất việc giao đơn hàng cho khách hàng</p>
+    <p> Người mua đơn hàng mã số <?php echo $order->id?>. mà bạn cung cấp/giới thiệu tại Sfriendly đã hủy đơn hàng. </p>
+    <p>Lý do hủy đơn hàng:<?php echo $lastInvoice->comment?></p>
     
     <p>
         <b>Nội dung đơn hàng:  </b><br/>
@@ -74,10 +76,7 @@
         
     </table>
     
-    <p><br/>Bạn sẽ nhận được tiền hàng trong vòng tối đa 10 ngày theo quy định của Sfriendly. Bạn có thể kiểm tra số dư tài khoản của mình tại đây: Balance</p>
-    <p><br/>Trân trọng cảm ơn bạn đã chọn Sfriendly và hi vọng bạn hài lòng với sản phẩm, cũng như tiếp tục sử dụng dịch vụ của chúng tôi!</p>
-        
-    
+    <p><br/>Chúng tôi thông báo để bạn được biết. Trân trọng cảm ơn bạn đã sử dụng dịch vụ của Sfriendly!</p>
     
     <br/>
     <br/>

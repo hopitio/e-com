@@ -29,7 +29,7 @@ class SellerDeliveredMailler extends AbstractStaff{
         $order_number = $order->id;
         $help_url = '';
         
-        $mailData = array('name'=>$seller_name,'orderNumber' => $order_number);
+        $mailData = array('name'=>$seller_name,'orderNumber' => $order_number,'order'=>$order,'target'=>$this->to);
         return $this->CI->load->view($temp,$mailData,true);;
     }
 

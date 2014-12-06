@@ -21,9 +21,11 @@
        $order->invoice->payment_method == DatabaseFixedValue::PAYMENT_BY_VISA){
         $paymentType = "Thanh toán điện tử";
     }
+    $endDate = DateTime::createFromFormat(DatabaseFixedValue::DEFAULT_FORMAT_DATE, $shippingInfor->estimated_max); 
+    
 ?>
 <p style="padding:0px; margin:0px;" > Xin chào <?php echo $contactPay->full_name;?>,</p>
-<p style="padding:0px; margin:0px;" >Đơn hàng của bạn đã được đóng gói xong và sẽ được giao cho bạn trong trước <?php echo $shippingInfor->estimated_max;?>. Nhân viên giao hàng có thể liên lạc với bạn trước khi đi giao. Xin lưu ý là kể từ lúc này bạn không thể thay đổi đơn hàng. Đây là thông tin đơn hàng của bạn :</p>
+<p style="padding:0px; margin:0px;" >Đơn hàng của bạn đã được đóng gói xong và sẽ được giao cho bạn trong trước <?php echo $endDate->format("d/m/Y");?>. Nhân viên giao hàng có thể liên lạc với bạn trước khi đi giao. Xin lưu ý là kể từ lúc này bạn không thể thay đổi đơn hàng. Đây là thông tin đơn hàng của bạn :</p>
 <p style="padding:0px; margin:0px;" ><strong>Thông tin người mua: </strong></p>
 <div style="padding-left: 30px;">
 <p style="padding:0px; margin:0px;" >Họ và tên: <?php echo $contactPay->full_name;?></p>
@@ -97,12 +99,23 @@
 <p style="padding:0px; margin:0px;" >Ngày dự kiến giao hàng:</p>
 <p style="padding:0px; margin:0px;" >Địa chỉ nhận hàng: <?php echo "{$contactShipping->street_address},{$contactShipping->city_district},{$contactShipping->state_province}"?></p>
 <p style="padding:0px; margin:0px;" >Hình thức thanh toán: <?php echo $paymentType; ?></p>
-<p style="padding:0px; margin:0px;" >Chúng tôi sẽ đóng gói đơn hàng chuẩn bị cho việc vận chuyển. Thời hạn vận chuyển như sau: <?php echo $shippingInfor->display_name;?></p>
 <p style="padding:0px; margin:0px;" >Trân trọng cảm ơn!</p>
      
 <br/>
 <br/>
-Công ty TNHH Hoàng Quân<br/>
-(Địa chỉ)………..<br/>
-SDT: 090 770 4437/ 09xxxxxxxx<br/>
-Website: www.sfriendly.vn<br/>
+Trân trọng cảm ơn!<br/>
+<i>Sfriendly M.D</i><br/>
+<hr/>
+<i>Copyright © *Sfriendly Vietnam*, All rights reserved.</i><br/>
+<br/>
+Check our website:<br/>
+<a href="www.sfriendly.com">www.sfriendly.com</a><br/>
+<a href="www.sfriendly.com">www.sfriendly.vn</a><br/>
+<br/>
+F: facebook/sfriendlyvietnam<br/>
+E: info@sfriendly.com<br/>
+A: 19/62 Trần Bình, Mai Dịch, Cầu Giấy, Hn<br/>
+<br/>
+This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.
+unsubscribe from this list  <br/>
+<u>update subscription</u> &nbsp;&nbsp;&nbsp;&nbsp; <u>preferences</u> 

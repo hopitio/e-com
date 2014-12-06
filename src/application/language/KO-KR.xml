@@ -220,18 +220,20 @@
         <southernVietnam>남부</southernVietnam>
     </cart_shipping>
     <mail>
-        <registerconfirm>Welcome to,Sfriendly website</registerconfirm>
-        <OrderShipping>Your Sfriendly.com order has shipped! (#{order_number})</OrderShipping>
-        <OrderDelivered>Your Sfriendly.com order has delivered (#{order_number})</OrderDelivered>
-        <SellerOrderDelivered>Your Sfriendly.com order has delivered</SellerOrderDelivered>
-        <OrderPlace>Your Sfriendly.com order has placed (#{order_number})</OrderPlace>
-        <OrderAskReview>Would you like to rate your transaction at Sfriendly.com?</OrderAskReview>
-        <SellerPaymentVerified>You sold an item from your customer – Ship now</SellerPaymentVerified>
-        <OrderRejected>Fail to Attempt Your Sfriendly.com order (#{order_number})</OrderRejected>
-        <SellerOrderRejected>Your item failed to attempt your customer!</SellerOrderRejected>
-        <orderCancel>Your Sfriendly.com order has cancelled</orderCancel>
-        <newpasswordNofication>Reset password</newpasswordNofication>
-        <passwordNotify>Changed password</passwordNotify>
+        <registerconfirm>[Sfriendly] Tạo account thành công</registerconfirm>
+        <OrderShipping>[Sfriendly] Đơn hàng đang được giao</OrderShipping>
+        <OrderDelivered>[Sfriendly] Đã giao hàng</OrderDelivered>
+        <SellerOrderDelivered>[Sfriendly] Đã giao cho khách hàng</SellerOrderDelivered>
+        <SellerPaymentVerified>[Sfriendly] Hàng đã được bán - thanh toán xong</SellerPaymentVerified>
+        <SellerOrderFailDelivered>[Sfriendly] Đơn hàng được hủy</SellerOrderFailDelivered>
+        <OrderPlace>[Sfriendly] Đặt hàng thành công</OrderPlace>
+        <OrderAskReview>[Sfriendly] Hỏi về Review, Feedback</OrderAskReview>
+        <OrderRejected>[Sfriendly] Đơn hàng được huỷ</OrderRejected>
+        <SellerOrderRejected>[Sfriendly] Đơn hàng được huỷ</SellerOrderRejected>
+        <orderCancel>[Sfriendly] Đơn hàng được huỷ</orderCancel>
+        <newpasswordNofication>[Sfriendly] Quên password</newpasswordNofication>
+        <passwordNotify>[Sfriendly] Đổi mật khẩu thành công</passwordNotify>
+        <orderRefuned>[Sfriendly] Trả hàng thành công </orderRefuned>
     </mail>
     
     <portalaccount_resetPassword>
