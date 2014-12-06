@@ -415,6 +415,7 @@ class login extends BasePortalController
         if ($_POST)
         {
             $errors = $this->emailSellerInfo($sellerData);
+
             if (!$errors || empty($errors))
             {
                 redirect('/portal/login/registerSellerSuccessed');
@@ -431,6 +432,15 @@ class login extends BasePortalController
                 ->setData($data)
                 ->setCss(array('/style/login.css'))
                 ->render('registerSellerAccount');
+    }
+
+    function registerSellerSuccessed()
+    {
+        $language = MultilLanguageManager::getInstance()->getLangViaScreen('registerSellerSuccessed', User::getCurrentUser()->languageKey);
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+                ->setTitle($language->successTitle)
+                ->setCss(array('/style/login.css'))
+                ->render('registerSellerSuccessed');
     }
 
     function emailSellerInfo($sellerData)
@@ -465,20 +475,16 @@ class login extends BasePortalController
         $config = get_instance()->config->item('SellerRegistered');
 
         $mailer = new SellerRegisteredMailler();
-        $result = $mailer->setMailData(array(
-                    'shopName'       => $sellerData['shopName'],
-                    'contactPerson'  => $sellerData['contactPerson'],
-                    'email'          => $sellerData['email'],
-                    'phone'          => $sellerData['phone'],
-                    'address'        => $sellerData['address'],
-                    'slogan'         => $sellerData['slogan'],
-                    'additionalInfo' => $sellerData['additionalInfo']
-                ))->setTo($config['SEND_TO'])->send();
+        $mailer->setMailData(array(
+            'shopName'       => $sellerData['shopName'],
+            'contactPerson'  => $sellerData['contactPerson'],
+            'email'          => $sellerData['email'],
+            'phone'          => $sellerData['phone'],
+            'address'        => $sellerData['address'],
+            'slogan'         => $sellerData['slogan'],
+            'additionalInfo' => $sellerData['additionalInfo']
+        ))->setTo($config['SEND_TO'])->send();
 
-        if (!$result)
-        {
-            $errors[] = $language->errUpdate;
-        }
         return $errors;
     }
 

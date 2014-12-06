@@ -569,4 +569,24 @@
         <lblMsgOk>Gửi email thành công, bạn hãy kiểm tra mail để biết thêm thông tin.</lblMsgOk>
         <lblMsgNotOk>Email bạn vừa nhập chưa chính xác.</lblMsgNotOk>
     </portalaccount_resend>
+    <registerSellerAccount>
+        <lblShopName>Tên cửa hàng</lblShopName>
+        <lblContactPerson>Người đại diện</lblContactPerson>
+        <lblEmail>Email</lblEmail>
+        <lblPhone>Số điện thoại</lblPhone>
+        <lblAddress>Địa chỉ cửa hàng</lblAddress>
+        <lblSlogan>Slogan</lblSlogan>
+        <lblAdditionalInfo>Thông tin khác</lblAdditionalInfo>
+        <lblRegister>Đăng ký gian hàng</lblRegister>
+        <title>Đăng ký gian hàng</title>
+        <errShopNameRequired>Bạn cần nhập tên gian hàng</errShopNameRequired>
+        <errContactPerson>Bạn cần nhập tên người liên hệ</errContactPerson>
+        <errEmail>Bạn cần nhập Email hợp lệ</errEmail>
+        <errPhone>Bạn cần nhập số điện thoại</errPhone>
+        <errAddress>Bạn cần nhập địa chỉ gian hàng</errAddress>
+    </registerSellerAccount>
+    <registerSellerSuccessed>
+        <title>Đăng ký thành công</title>
+        <message><![CDATA[Cảm ơn bạn đã đăng ký gian hàng, chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!]]></message>
+    </registerSellerSuccessed>
 </data>

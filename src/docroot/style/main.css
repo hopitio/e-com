@@ -177,6 +177,7 @@ li{list-style: none;}
     margin:auto;
     height:51px;
     background:url(/images/mn-bg.fw.png) no-repeat center;
+    margin-bottom: 3px;
 }
 .head-menu > ul, .head-box ul{
     margin-bottom: 0px;

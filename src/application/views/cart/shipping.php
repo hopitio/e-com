@@ -99,8 +99,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                             </li>
                         </ul>
                         <div class="col-xs-6 ">
-                            <div class="color-1" id="method-desc">
-                                {{getMethodDesc(simpleData.selected_index)}}
+                            <div class="color-1" id="method-desc" ng-bind-html="getMethodDesc(simpleData.selected_index)">
                             </div>
                         </div>
                     </div>
