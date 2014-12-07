@@ -39,8 +39,16 @@
         <msgExitEmail>Địa chỉ mail đã tồn tại</msgExitEmail>
         <msgWoringFristName>Họ và tên đệm dài quá 50 ký tự</msgWoringFristName>
         <msgWoringLastName>Tên dài quá 50 ký tự</msgWoringLastName>
-        <msgWoringAns>Tên dài quá 50 ký tự</msgWoringAns>
+        <msgWoringAns>Câu trả lời dài quá 250 ký tự</msgWoringAns>
         <lblResend>Gửi lại mail kích hoạt tài khoản</lblResend>
+        <lblFullName>Họ và tên</lblFullName>
+        <lblPhone>Số điện thoại</lblPhone>
+        <lblDob>Ngày sinh</lblDob>
+        <lblGender>Giới tính</lblGender>
+        <lblQuestionGuide>( Câu hỏi bí mật sẽ giúp chúng tôi xác minh khi có yêu cầu về tài khoản của bạn )</lblQuestionGuide>
+        <lblAnswerGuide>( Hãy ghi lại câu trả lời của bạn vào một chỗ dễ nhớ. Để bảo mật, chúng tôi sẽ không khôi phục câu trả lời nếu bạn quên )</lblAnswerGuide>
+        <lblRegsterGiude>( Để được hưởng các quyền lợi khi là thành viên của Sfriendly.com )</lblRegsterGiude>
+        <lblPhoneGuide>Vui lòng nhập chính xác</lblPhoneGuide>
     </login>
     <registercomplete>
         <title>Đăng ký thành công</title>
@@ -358,8 +366,8 @@
         <userInformationMsgSucess>Cập nhật thông tin thành công</userInformationMsgSucess>
         
         <lblInformationTitle>Thông tin cá nhân</lblInformationTitle>
-        <lblFristName>Họ và tên đệm</lblFristName>
-        <lblLastName>Tên</lblLastName>
+        <lblName>Họ và tên</lblName>
+        <lblPhone>Số điện thoại</lblPhone>
         <lblDob>Ngày sinh</lblDob>
         <lblSex>Giới tính</lblSex>
         <btnSaveInformation>Lưu thay đổi</btnSaveInformation>

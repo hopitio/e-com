@@ -13,17 +13,16 @@
                   <alert ng-show="userInformationError != undefined" type="danger" close="closeAlertUserinformation('error');" >{{userInformationError}}</alert>
                   <alert ng-show="userInformationSucess != undefined" type="success" close="closeAlertUserinformation('susscess');">{{userInformationSucess}}</alert>
                 <div class="lynx_row">
-                    <span class="lynx_lblFromtitle"> <?php echo $language[$view->view]->lblFristName;?> </span><input name="txtFristname" type="text" ng-model="userInformation.fristName"/>
+                    <span class="lynx_lblFromtitle"> <?php echo $language[$view->view]->lblName;?> </span><input name="txtFristname" type="text" ng-model="userInformation.full_name"/>
                 </div>
                 <div class="lynx_row">
-                    <span class="lynx_lblFromtitle"> <?php echo $language[$view->view]->lblLastName;?> </span><input name="txtLastName" type="text" ng-model="userInformation.lastName"/>
+                    <span class="lynx_lblFromtitle"> <?php echo $language[$view->view]->lblPhone;?> </span><input name="txtLastName" type="text" ng-model="userInformation.phone"/>
                 </div>
                 <div class="lynx_row">
                     <div class="lynx_lblFromtitle lynx_datePicketLbl"> <?php echo $language[$view->view]->lblDob;?> </div>
                     <div style="display:inline-block; ">
                         <input data-provide="datepicker" data-date-format="dd/mm/yyyy" ng-model="warpDate"/>
                     </div>
-                    <!-- <input name="txtDOB" type="text" ng-model="userInformation.dob"/> -->
                 </div>
                 <div class="lynx_row">
                     <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblSex;?> </span><select ng-model="userInformation.sex" ng-options="sex.key as sex.display for sex in sexCollection"></select>

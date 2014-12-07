@@ -171,6 +171,7 @@ $config['SellerDelivered'] = array(
 
 $config['SellerFailDelivered']=  array(
     MAILLER_PROTOCOL => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
     MAILLER_HOST => 'ssl://smtp.gmail.com',
     MAILLER_FULLNAME => 'Sfriendly Customer Service',
     MAILLER_USER => 'projecte2002@gmail.com',

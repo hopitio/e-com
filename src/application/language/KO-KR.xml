@@ -38,8 +38,16 @@
         <msgWoringPass>비밀번호가 일치 0-9, 애리조나에서만 문자를 포함하지 않는 </msgWoringPass>
         <msgWoringFristName>50 자보다 긴 이름</msgWoringFristName>
         <msgWoringLastName>마지막으로 이름을 50 자 이상</msgWoringLastName>
-        <msgWoringAns>50 자보다 긴 답변</msgWoringAns>
+        <msgWoringAns>250 자보다 긴 답변</msgWoringAns>
         <lblResend>계정을 활성화하기 메일 보내기</lblResend>
+        <lblFullName>전체 이름</lblFullName>
+        <lblPhone>전화 번호</lblPhone>
+        <lblDob>생년월일</lblDob>
+        <lblGender>성별</lblGender>
+        <lblQuestionGuide>( 비밀 질문은 우리가 당신의 계정에 요청을 확인할 수 있도록합니다 )</lblQuestionGuide>
+        <lblAnswerGuide>( 기억에 남는 장소에 답을 적어 둡니다. 당신이 잊어 버린 경우 보안을 위해, 우리는 답을 복원 할 수는 없습니다 )</lblAnswerGuide>
+        <lblRegsterGiude>( Sfriendly.co의 구성원이의 혜택을 즐길 수m )</lblRegsterGiude>
+        <lblPhoneGuide>정확한을 입력하세요</lblPhoneGuide>
     </login>
     <registercomplete>
         <title>전체 등록</title>
@@ -325,8 +333,8 @@
         <userInformationMsgSucess>업데이트 성공</userInformationMsgSucess>
         
         <lblInformationTitle>개인 정보</lblInformationTitle>
-        <lblFristName>이름</lblFristName>
-        <lblLastName>이름</lblLastName>
+        <lblName>이름</lblName>
+        <lblPhone>전화 번호</lblPhone>
         <lblDob>생년월일</lblDob>
         <lblSex>성</lblSex>
         <btnSaveInformation>변경 사항을 저장</btnSaveInformation>

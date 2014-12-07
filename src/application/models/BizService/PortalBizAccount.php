@@ -24,10 +24,10 @@ class PortalBizAccount extends PortalBizBase
      * @param string $DOB
      *            //format YYYY-MM-DD HH:MM:SS
      */
-    function insertNewUserNormal($user,$firstname, $lastname, $account, $password, $sex, 
+    function insertNewUserNormal($user,$full_name, $phone, $account, $password, $sex, 
         $DOB, $question = '', $answer = '')
     {
-        $newId = $this->insertNewUser($user,$firstname, $lastname, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT,$question, $answer);
+        $newId = $this->insertNewUser($user,$full_name, $phone, $account, $password, $sex, $DOB, DatabaseFixedValue::USER_PLATFORM_DEFAULT,$question, $answer);
         $this->activeUser($newId);
         
         $portalUserModel = new PortalModelUser();
@@ -61,7 +61,7 @@ class PortalBizAccount extends PortalBizBase
      * @param string $DOB
      *            //format YYYY-MM-DD HH:MM:SS
      */
-    function insertNewUserFormPlatform($user,$firstname, $lastname, $account, $password, $sex, 
+    function insertNewUserFormPlatform($user,$full_name, $phone, $account, $password, $sex, 
         $DOB, $platformKey = DatabaseFixedValue::USER_PLATFORM_DEFAULT )
     {
         $newId = $this->insertNewUser($user,$firstname, $lastname, $account, $password, $sex, $DOB, $platformKey);
@@ -82,7 +82,7 @@ class PortalBizAccount extends PortalBizBase
      *            //format YYYY-MM-DD HH:MM:SS
      * @param string $phoneno            
      */
-    private function insertNewUser($user,$firstname, $lastname, $account, $password, 
+    private function insertNewUser($user,$full_name, $phone, $account, $password, 
         $sex, $DOB, $platformKey, $question = '', $answer = '')
     {
         $userModel = new PortalModelUser(); 
@@ -96,8 +96,9 @@ class PortalBizAccount extends PortalBizBase
             $oldUserId = $results[0]->id;
         }
         $userModel = new PortalModelUser();
-        $userModel->firstname = $firstname;
-        $userModel->lastname = $lastname;
+        $userModel->phone = $phone;
+        $userModel->full_name = $full_name;
+        $userModel->phone = $phone;
         $userModel->account = $account;
         $userModel->password = $password;
         $userModel->sex = $sex;
@@ -179,10 +180,9 @@ class PortalBizAccount extends PortalBizBase
         $user->account = $userModel->account;
         $user->date_joined = $userModel->date_joined;
         $user->DOB = $userModel->DOB;
-        $user->firstname = $userModel->firstname;
-        $user->lastname = $userModel->lastname;
+        $user->full_name = $userModel->full_name;
         $user->last_active = $userModel->last_active;
-        $user->lastname = $userModel->lastname;
+        $user->phone = $userModel->phone;
         $user->platform_key = $userModel->platform_key;
         $user->sex = $userModel->sex;
         $user->status = $userModel->status;
@@ -383,11 +383,11 @@ class PortalBizAccount extends PortalBizBase
      * @param string $dob
      * @param string $sex
      */
-    function updateUserInformation($user,$fristName, $lastName,$dob,$sex){
+    function updateUserInformation($user,$full_name, $phone,$dob,$sex){
         $portalUserModel = new PortalModelUser();
         $portalUserModel->id = $user->id;
-        $portalUserModel->firstname = $fristName;
-        $portalUserModel->lastname = $lastName;
+        $portalUserModel->phone = $phone;
+        $portalUserModel->full_name = $full_name;
         $portalUserModel->DOB = $dob;
         $portalUserModel->sex = $sex;
         $portalUserModel->updateById();

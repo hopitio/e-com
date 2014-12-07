@@ -7,8 +7,8 @@ class login extends BasePortalController
 {
 
     protected $authorization_required = FALSE;
-    private $_css = array('/style/login.css');
-    private $_js = array('/js/login.js');
+    private $_css = array('/style/login.css',"/plugins/datepicker/css/datepicker.css");
+    private $_js = array('/js/login.js',"/plugins/datepicker/js/bootstrap-datepicker.js","/js/date_function.js");
 
     CONST URL_TO_POST = '/portal/login';
     CONST URL_TO_POST_RES = '/portal/register';
@@ -179,9 +179,10 @@ class login extends BasePortalController
         $email = $this->input->post('username');
         $password = $this->input->post('password');
         $passwordRetry = $this->input->post('passwordRetry');
-        $fristName = $this->input->post('fristName');
-        $lastName = $this->input->post('lastName');
-        $dob = '0000-00-00 00:00:00';
+        $fristName = $this->input->post('fullName');
+        $lastName = $this->input->post('phone');
+        $dobDatetime = DateTime::createFromFormat("d/m/y", $this->input->post('dob'));
+        $dob = empty($dobDatetime) ? "0000-00-00 00:00:00" : $dobDatetime->format(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $sex = $this->input->post('sex');
         $question = $this->input->post('question');
         $answer = $this->input->post('answer');
@@ -243,8 +244,7 @@ class login extends BasePortalController
         $email = $this->input->post('username');
         $password = $this->input->post('password');
         $passwordRetry = $this->input->post('passwordRetry');
-        $fristName = $this->input->post('fristName');
-        $lastName = $this->input->post('lastName');
+        $fullName = $this->input->post('fullName');
         $dob = '0000-00-00 00:00:00';
         $sex = $this->input->post('sex');
         $question = $this->input->post('question');
@@ -277,17 +277,13 @@ class login extends BasePortalController
             array_push($woringData, $language->msgWoringPass);
         }
 
-        if (strlen($lastName) <= 0 || strlen($lastName) >= 49)
+        if (strlen($fullName) <= 0 || strlen($fullName) >= 250)
         {
+            
             array_push($woringData, $language->msgWoringLastName);
         }
 
-        if (strlen($fristName) <= 0 || strlen($fristName) >= 49)
-        {
-            array_push($woringData, $language->msgWoringFristName);
-        }
-
-        if (strlen($answer) >= 49)
+        if (strlen($answer) >= 250)
         {
             array_push($woringData, $language->msgWoringAns);
         }

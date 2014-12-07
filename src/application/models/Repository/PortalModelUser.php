@@ -8,8 +8,7 @@ class PortalModelUser extends PortalModelBase
 {
     protected $_constIntanceName = 'T_user';
     public $id;
-    public $firstname;
-    public $lastname;
+    public $full_name;
     public $account;
     public $password;
     public $sex;
@@ -21,6 +20,7 @@ class PortalModelUser extends PortalModelBase
     public $last_active;
     public $platform_key;
     public $user_type;
+    public $phone;
     
     /**
      * insert thêm một user mới
@@ -45,8 +45,7 @@ class PortalModelUser extends PortalModelBase
         foreach($queryResult->result() as $row)
         {
             $this->id = $row->id;
-            $this->firstname = $row->firstname;
-            $this->lastname = $row->lastname;
+            $this->full_name = $row->full_name;
             $this->last_active = $row->last_active;
             $this->account = $row->account;
             $this->password = $row->password;
@@ -59,6 +58,7 @@ class PortalModelUser extends PortalModelBase
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
             $this->user_type = $row->user_type;
+            $this->phone = $row->phone;
             break;
             
         }
@@ -101,8 +101,7 @@ class PortalModelUser extends PortalModelBase
         }else{
             $row = $result[0];
             $this->id = $row->id;
-            $this->firstname = $row->firstname;
-            $this->lastname = $row->lastname;
+            $this->full_name = $row->full_name;
             $this->last_active = $row->last_active;
             $this->account = $row->account;
             $this->password = $row->password;
@@ -115,6 +114,7 @@ class PortalModelUser extends PortalModelBase
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
             $this->user_type = $row->user_type;
+            $this->phone = $row->phone;
             return $result;
         }
         
@@ -136,8 +136,7 @@ class PortalModelUser extends PortalModelBase
         }else{
             $row = $result[0];
             $this->id = $row->id;
-            $this->firstname = $row->firstname;
-            $this->lastname = $row->lastname;
+            $this->full_name = $row->full_name;
             $this->last_active = $row->last_active;
             $this->account = $row->account;
             $this->password = $row->password;
@@ -150,6 +149,7 @@ class PortalModelUser extends PortalModelBase
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
             $this->user_type = $row->user_type;
+            $this->phone = $row->phone;
             return true;
         }
     }
@@ -169,8 +169,7 @@ class PortalModelUser extends PortalModelBase
         }else{
             $row = $result[0];
             $this->id = $row->id;
-            $this->firstname = $row->firstname;
-            $this->lastname = $row->lastname;
+            $this->full_name = $row->full_name;
             $this->last_active = $row->last_active;
             $this->account = $row->account;
             $this->password = $row->password;
@@ -183,6 +182,7 @@ class PortalModelUser extends PortalModelBase
             $this->last_active = $row->last_active;
             $this->platform_key = $row->platform_key;
             $this->user_type = $row->user_type;
+            $this->phone = $row->phone;
             return true;
         }
     }

@@ -38,8 +38,16 @@
         <msgWoringPass>Passwords do not match and contain only characters from 0-9, AZ </msgWoringPass>
         <msgWoringFristName>First Name longer than 50 characters</msgWoringFristName>
         <msgWoringLastName>Last name longer than 50 characters</msgWoringLastName>
-        <msgWoringAns>Answers longer than 50 characters</msgWoringAns>
+        <msgWoringAns>Answers longer than 250 characters</msgWoringAns>
         <lblResend>Resend activion email</lblResend>
+        <lblFullName>Full name</lblFullName>
+        <lblPhone>Phone number</lblPhone>
+        <lblDob>Date of birth</lblDob>
+        <lblGender>Gender</lblGender>
+        <lblQuestionGuide>( Secret question will help us verify the request on to your account )</lblQuestionGuide>
+        <lblAnswerGuide>( Write down your answers in a memorable place. For security, we will not restore the answer if you forget )</lblAnswerGuide>
+        <lblRegsterGiude>( To enjoy the benefits of being a member of Sfriendly.com )</lblRegsterGiude>
+        <lblPhoneGuide>Please enter the exact</lblPhoneGuide>
     </login>
     <registercomplete>
         <title>Register complete</title>
@@ -356,8 +364,8 @@
         <userInformationMsgSucess>Updates success</userInformationMsgSucess>
         
         <lblInformationTitle>Personal Information</lblInformationTitle>
-        <lblFristName>Frist Name</lblFristName>
-        <lblLastName>Name</lblLastName>
+        <lblName>Full Name</lblName>
+        <lblPhone>Phone number</lblPhone>
         <lblDob>Date of birth</lblDob>
         <lblSex>Gender</lblSex>
         <btnSaveInformation>Save change</btnSaveInformation>

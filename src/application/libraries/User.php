@@ -26,8 +26,7 @@ class User
     );
     //Database mapping
     public $id;
-    public $firstname = 'Anonymous';
-    public $lastname;
+    public $full_name;
     public $account = 'Anonymous';
     public $sex;
     public $DOB;
@@ -39,6 +38,7 @@ class User
     public $secretKey;
     public $portal_id;
     public $sub_id;
+    public $phone;
 
     //END DATABASE
     function __construct()
@@ -83,7 +83,7 @@ class User
 
     function getFullname()
     {
-        return $this->firstname . ' ' . $this->lastname;
+        return $this->full_name;
     }
 
     function getCurrency()

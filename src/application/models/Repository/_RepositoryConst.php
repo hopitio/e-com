@@ -72,8 +72,7 @@ class T_user extends T_base
 {
 
     CONST tableName = 't_user';
-    CONST firstname = 'firstname';
-    CONST lastname = 'lastname';
+    CONST full_name = 'full_name';
     CONST account = 'account';
     CONST password = 'password';
     CONST sex = 'sex';
@@ -86,6 +85,7 @@ class T_user extends T_base
     CONST platform_key = 'platform_key';
     CONST user_type = 'user_type';
     CONST record_status = 'record_status';
+    CONST phone = 'phone';
 
 }
 

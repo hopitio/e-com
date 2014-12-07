@@ -1,9 +1,9 @@
 <?php $key = SecurityManager::inital()->getEncrytion()->accountActiveEncrytion($user->id, $user->account, $user->date_joined);?>
-Xin chào <?php echo $user->lastname;?>!<br/>
+Xin chào <?php echo $user->full_name;?>!<br/>
 Chúc mừng bạn đã tạo tài khoản thành công tại Sfriendly.<br/>
 Sau đây là thông tin về tài khoản của bạn:<br/>
 Tài khoản đăng nhập: <?php echo $user->account;?><br/>
-Tên hiển thị: <?php echo $user->lastname;?><br/>
+Tên hiển thị: <?php echo $user->full_name;?><br/>
 Email: <?php echo $user->account;?><br/>
 Vui lòng click vào : <a href="<?php echo Common::getCurrentHost()."/portal/active?k={$key}" ?>">Đây </a>để kích hoạt tài khoản.
 <br/>

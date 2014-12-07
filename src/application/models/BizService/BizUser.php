@@ -31,10 +31,10 @@ class BizUser extends BaseBiz{
         $user->account = $dataDecode->account;
         $user->date_joined = $dataDecode->date_joined;
         $user->DOB = $dataDecode->DOB;
-        $user->firstname = $dataDecode->firstname;
+        $user->full_name = $dataDecode->full_name;
+        $user->phone =$dataDecode->phone;
         $user->languageKey =$dataDecode->languageKey;
         $user->last_active =$dataDecode->last_active;
-        $user->lastname =$dataDecode->lastname;
         $user->platform_key =$dataDecode->platform_key;
         $user->sex = $dataDecode->sex;
         $user->status = $dataDecode->status;
