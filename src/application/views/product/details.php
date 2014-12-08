@@ -170,7 +170,7 @@ if (!empty($images))
                     </div>
                 </div>
             </div>
-            <h4></h4>
+            <div class="seperator"></div>
             <div class="lynx_facebookReview" id="lynx_facebookReview">
                 <div class="fb-comments" data-width="675" data-href="<?php echo Common::curPageURL(); ?>" data-numposts="10" data-colorscheme="light">
                     Loading Facebook...
@@ -200,12 +200,12 @@ if (!empty($images))
                         <?php endfor; ?>
                     </select>
                 </div>
-                <h4></h4>
+                <div class="seperator"></div>
                 <?php $disabled = strval($product->getQuantity()) == 0 ? 'disabled' : '' ?>
                 <input type="button" class="btn-add-to-cart" <?php echo $disabled ?>
                        value="<?php echo $language[$view->view]->btnCart ?>" 
                        data-type="button" data-action="/cart/addToCart">
-                <h4></h4>
+                <div class="seperator"></div>
                 <input type="button" class="btn-add-to-favorite" value="<?php echo $language[$view->view]->btnFavorite ?>" data-type="button" data-action="/wishlist/addToWishlist">
                 <h4 ></h4>
                 <div class="detail-share"> 

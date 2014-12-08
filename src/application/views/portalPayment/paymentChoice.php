@@ -297,20 +297,20 @@
             <div class="border-full-dashed">
                <strong><img alt="" src="/images/lock.fw.png"> <?php echo $language[$view->view]->paymentSecurity; ?></strong>
             </div>
-            <h4></h4>
-            <h4></h4>
+            <div class="seperator"></div>
+            <div class="seperator"></div>
             <div class="border-full-dashed">
                <strong><img alt="" src="/images/phone.fw.png"> 
                 <?php echo $language[$view->view]->paymentSupport; ?>
                </strong>
             </div>
-            <h4></h4>
-            <h4></h4>
+            <div class="seperator"></div>
+            <div class="seperator"></div>
             <div class="product-list-count">
                 <?php echo $language[$view->view]->paymentProductionCount; ?>
             </div>
-            <h4></h4>
-            <h4></h4>
+            <div class="seperator"></div>
+            <div class="seperator"></div>
             <table class="product-table">
                 <thead>
                     <tr>

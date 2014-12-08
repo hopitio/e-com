@@ -37,8 +37,8 @@
     <div class="product-list-count">
         <?php echo $language[$view->view]->lblProductCount ?>
     </div>
-    <h4></h4>
-    <h4></h4>
+    <div class="seperator"></div>
+    <div class="seperator"></div>
     <div class="row">
         <div class="col-xs-8">
             <table class="product-table" ng-cloak>
@@ -134,6 +134,6 @@
             </div><!--summaries-->
         </div>
     </div>
-    <h4></h4>
-    <h4></h4>
+    <div class="seperator"></div>
+    <div class="seperator"></div>
 </div><!--container-->

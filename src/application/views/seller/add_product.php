@@ -19,7 +19,7 @@
             </td>
         </tr>
     </table>
-    <h4></h4>
+    <div class="seperator"></div>
     <form method="get" action="<?php echo base_url('seller/product_details/') ?>">
         <input type="hidden" name="category" value="{{selectedCategory}}">
         <input type="submit" class="btn btn-primary btn-sm" value="Chọn chuyên mục này" ng-disabled="!selectedCategory">

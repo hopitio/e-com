@@ -92,7 +92,7 @@ abstract class AbstractLayout
 
     function setTitle($title)
     {
-        $this->_title = (string) $title;
+        $this->_title = 'Sfriendly.com: ' . (string) $title;
         return $this;
     }
 
@@ -101,4 +101,6 @@ abstract class AbstractLayout
 class warper
 {
     
-};
+}
+
+;

@@ -190,6 +190,7 @@
     </product_details>
     <wishlist_show>
         <title>Sản phẩm mong muốn</title>
+        <subtitle>Wishlist (những sản phẩm bạn yêu thích. Hãy thêm vào giỏ hàng ngay trước khi chúng hết hàng!)</subtitle>
         <colProduct>Sản phẩm</colProduct>
         <colPrice>Giá</colPrice>
         <colAction> </colAction>
@@ -199,6 +200,7 @@
         <lblAddToCart>Thêm vào giỏ hàng</lblAddToCart>
         <lblRemoveItem>Xóa khỏi dánh sach</lblRemoveItem>
         <lblNoProduct>Bạn chưa thêm sản phẩm nào</lblNoProduct>
+        
     </wishlist_show>
     <portalaccount_account>
         <title>Thông tin tài khoản cá nhân</title>

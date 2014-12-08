@@ -1160,3 +1160,7 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
     margin:0px;
     text-align: center;
 }
+.seperator{
+    margin: 5px 0;
+    clear: both;
+}

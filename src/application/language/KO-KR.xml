@@ -157,6 +157,7 @@
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>
+        <subtitle>위시리스트 (곧 품절 전에 MA 항목 목록을 사랑했다. 장바구니에 담기입니다!)</subtitle>
         <colProduct>제품</colProduct>
         <colPrice>가격</colPrice>
         <colAction> </colAction>

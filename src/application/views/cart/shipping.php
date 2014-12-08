@@ -156,7 +156,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                         <div class="clearfix"></div>
                     </div><!--if-->
                 </fieldset>
-                <h4></h4>
+                <div class="seperator"></div>
                 <div class="pull-right">
                     <a href="/cart/showCart" class="btn-cart-prev" style="width: 150px;">
                         <div class="pull-left"><i class="fa fa-caret-left"></i></div><?php echo $language[$view->view]->lblBack ?>
@@ -166,9 +166,9 @@ defined('BASEPATH') or die('No direct script access allowed');
                     </a>
                 </div>
                 <div class="clearfix"></div>
-                <h4></h4>
+                <div class="seperator"></div>
                 &nbsp;
-                <h4></h4>
+                <div class="seperator"></div>
                 <div style="height: 25px;line-height: 25px;">
                     <i class="img-phone"></i>&nbsp;<?php echo $language[$view->view]->supportText ?>
                 </div>

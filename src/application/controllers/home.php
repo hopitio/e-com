@@ -24,10 +24,10 @@ class home extends BaseController
 
         switch (User::getCurrentUser()->languageKey) {
             case 'VN-VI':
-                $title = 'Trang chủ - Sfriendly.com';
+                $title = 'Trang chủ';
                 break;
             case 'EN-US':
-                $title = 'Home Page - Sfriendly.com';
+                $title = 'Home Page';
                 break;
             case 'KO-KR':
                 $title = '홈페이지';

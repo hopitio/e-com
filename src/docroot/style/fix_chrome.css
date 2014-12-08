@@ -5,7 +5,9 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name,
 .detail-fast-shipping label,
 .detail-share span,
 .tab-blue .head li,
-.lynx-adv-box > .head > .title
+.lynx-adv-box > .head > .title,
+ul.lynx-product-breadcrums li,
+.detail-main ul.detail-social li.detail-social-comment a span
 {
     white-space: nowrap;
 }

@@ -1,11 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?php $title = !empty($language[$view->view]->title) ? $language[$view->view]->title : isset($view->title) ? $view->title : 'Sfriendly.com'; ?>
 <html ng-app="lynx" ng-controller="LayoutCtrl">
     <head >
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1,user-scalabel=no' name='viewport'>
+        <meta name="title" content="<?php echo $title ?>">
 
-        <title><?php echo!empty($language[$view->view]->title) ? $language[$view->view]->title : isset($view->title) ? $view->title : 'Sfriendly.com'; ?></title>
+        <title><?php echo $title ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
@@ -71,7 +73,7 @@
                     <li class="vn <?php echo $active ?>">
                         <a href="javascript:;" title="Tiếng Việt" ng-click="changeLanguage('VN-VI')"></a>
                     </li>
-                    
+
                 </ul>
                 <a href="/cart/showCart" title="<?php echo $language['layout']->lblYourCart ?>">
                     <div class="cart cursor-pointer">
@@ -201,7 +203,7 @@
                     <div class="footer-col-1">
                         <div class="footer-group-header"><h4><?php echo $language['layout']->lblSupport ?></h4></div>
                         <a href="javascript:;" title="Hotline" class="footer-icon icon-phone">Hotline: (04) 3865 2455</a>
-                        <h4></h4>
+                        <div class="seperator"></div>
                         <a href="mailto:info@sfriendly.com" title="Email" class="footer-icon icon-email">Email: <script>document.write('info@sfriendly.com');</script></a>
                         <h4 class="clearfix"></h4>
                         <h4 class="clearfix"></h4>
@@ -217,14 +219,14 @@
                     </div>
                     <div class="footer-col-2">
                         <a class="footer-icon icon-cart" href="javascript:;" title="How to buy"><?php echo $language['layout']->lblHowToBuy ?></a>
-                        <h4></h4>
+                        <div class="seperator"></div>
                         <a class="footer-icon icon-truck" href="javascript:;" title="Shipping policy"><?php echo $language['layout']->lblShippingPolicy ?></a>
                     </div>
                     <div class="footer-col-3">
                         <a class="footer-icon icon-dollar" href="javascript:;" title="Selling with Sfriendly"><?php echo $language['layout']->lblSellingGuide ?></a>
-                        <h4></h4>
+                        <div class="seperator"></div>
                         <a class="footer-icon icon-best" href="/portal/login/registerSellerAccount" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
-                        <h4></h4>
+                        <div class="seperator"></div>
                         <a class="footer-icon icon-product" href="javascript:;" title="Publish Product"><?php echo $language['layout']->lblPublishProduct ?></a>
                     </div>
                     <div class="footer-col-4">
@@ -257,9 +259,9 @@
                     <div class="footer-col-2">
                         <!--<img src="/images/footer/registered.png" alt="Registered at Misnistry of Commerce and Industry" style="float: left;">-->
                         <div style="float:right;">
-                            <h4></h4>
+                            <div class="seperator"></div>
                             Sfriendly.com/Sfriendly.vn
-                            <h4></h4>
+                            <div class="seperator"></div>
                             <div>
                                 <a href="javascript:;" title="Share Facebook" class="footer-social facebook"></a>
                                 <a href="javascript:;" title="Share Twiter" class="footer-social twiter"></a>
@@ -273,12 +275,12 @@
         </div><!--footer-->
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-            }
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+                    }
         </script>
 
 
@@ -312,11 +314,11 @@
         <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-            }
-            $.browser = {};
-            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                    }
+                    $.browser = {};
+                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt

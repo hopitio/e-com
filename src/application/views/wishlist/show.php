@@ -5,6 +5,7 @@ if (!defined('BASEPATH'))
 ?>
 <div ng-app ng-controller="showWishlistController" class="width-960">
     <h3 class="left"><?php echo $language[$view->view]->title; ?></h3>
+    <div style="color: grey"><?php echo $language[$view->view]->subtitle ?></div>
     <div class="cart-left">
         <table class="product-table">
             <thead>

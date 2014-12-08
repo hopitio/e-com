@@ -96,7 +96,8 @@ class wishlist extends BaseController
     {
         $detailInstance = WishlistDetailMapper::make()
                 ->select('wd.*', true)
-                ->find($detailID);
+                ->filterWishlistDetailID(intval($detailID))
+                ->find();
         if (!$this->wishlistModel->isOwner(User::getCurrentUser()->id, $detailInstance->fkWishlist))
         {
             throw new Lynx_RequestException("You are not owner");

@@ -127,7 +127,7 @@
                     <div class="footer-col-1">
                         <div class="footer-group-header"><h4>Hỗ trợ<?php echo $language['layout']->lblSupport ?></h4></div>
                         <a href="javascript:;" title="Hotline" class="footer-icon icon-phone">Hotline: (04) 3865 2455</a>
-                        <h4></h4>
+                        <div class="seperator"></div>
                         <a href="mailto:info@sfriendly.com" title="Email" class="footer-icon icon-email">Email: <script>document.write('info@sfriendly.com');</script></a>
                         <h4 class="clearfix"></h4>
                         <h4 class="clearfix"></h4>
@@ -143,14 +143,14 @@
                     </div>
                     <div class="footer-col-2">
                         <a class="footer-icon icon-cart" href="javascript:;" title="How to buy"><?php echo $language['layout']->lblHowToBuy ?></a>
-                        <h4></h4>
+                        <div class="seperator"></div>
                         <a class="footer-icon icon-truck" href="javascript:;" title="Shipping policy"><?php echo $language['layout']->lblShippingPolicy ?></a>
                     </div>
                     <div class="footer-col-3">
                         <a class="footer-icon icon-dollar" href="javascript:;" title="Selling with Sfriendly"><?php echo $language['layout']->lblSellingGuide ?></a>
-                        <h4></h4>
+                        <div class="seperator"></div>
                         <a class="footer-icon icon-best" href="/portal/login/registerSellerAccount" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
-                        <h4></h4>
+                        <div class="seperator"></div>
                         <a class="footer-icon icon-product" href="javascript:;" title="Publish Product"><?php echo $language['layout']->lblPublishProduct ?></a>
                     </div>
                     <div class="footer-col-4">
@@ -183,9 +183,9 @@
                     <div class="footer-col-2">
                         <img src="/images/footer/registered.png" alt="Registered at Misnistry of Commerce and Industry" style="float: left;">
                         <div style="float:right;">
-                            <h4></h4>
+                            <div class="seperator"></div>
                             Sfriendly.com/Sfriendly.vn
-                            <h4></h4>
+                            <div class="seperator"></div>
                             <div>
                                 <a href="javascript:;" title="Share Facebook" class="footer-social facebook"></a>
                                 <a href="javascript:;" title="Share Twiter" class="footer-social twiter"></a>
