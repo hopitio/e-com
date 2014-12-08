@@ -84,8 +84,8 @@
              <p><b>ID :</b> {{user.id}}</p>
              <p><b>Email :</b> {{user.account}}</p>
              <p><b>Ngày tham gia  :</b> {{user.date_joined}}</p>
-             <p><b>Họ và tên đệm : </b> {{user.firstname}}</p>
-             <p><b>Tên : </b> {{user.lastname}} </p> </span>
+             <p><b>Họ và tên đệm : </b> {{user.full_name}}</p>
+             <p><b>SĐT : </b> {{user.phone}}</p>
              <p><b>Ngày sinh : </b>{{user.DOB}}</p></span>
              <p><b>Mô tả lần thay đổi status cuối : </b>{{user.status_reason}}</p></span>
         </div>

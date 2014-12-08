@@ -401,13 +401,13 @@ class PortalBizAccount extends PortalBizBase
         return $user;
     }
     
-    function findUser($userId,$account,$firstName,$lastname, $limit, $offset){
+    function findUser($userId,$account,$fullname, $limit, $offset){
         $portalModel  = new PortalModelUser();
-        return $portalModel->findUsers($userId, $account, $firstName, $lastname, $limit, $offset);
+        return $portalModel->findUsers($userId, $account, $fullname, $limit, $offset);
     }
-    function findUserCount($userId,$account,$firstName,$lastname){
+    function findUserCount($userId,$account,$fullname){
         $portalModel  = new PortalModelUser();
-        return $portalModel->findUsersCount($userId, $account, $firstName, $lastname);
+        return $portalModel->findUsersCount($userId, $account, $fullname);
     }
     
     private function updateLoginStatus($userid,$status,$msg){

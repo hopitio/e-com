@@ -10,7 +10,7 @@
     <div class="box box-danger col-md-6">
         <div class="box-header">
             <h3 class="box-title">
-                Tìm kiếm user 
+                Tìm kiếm user <a href="<?php echo site_url("portal/__admin/user/create"); ?>" title="Thêm mới tài khoản"><i class="fa fa-fw fa-plus-square"></i></a>
             </h3>
             <div class="box-tools text-right">
                 <div class="text-right">
@@ -30,10 +30,8 @@
                 <input type="text" class="form-control" ng-model="userId"/>
                 <span class="input-group-addon">Email</span>
                 <input type="text" class="form-control" ng-model="account"/>
-                <span class="input-group-addon" >Họ và tên đệm</span>
-                <input type="text" class="form-control" ng-model="firstName"/>
-                <span class="input-group-addon">Tên</span>
-                <input type="text" class="form-control" ng-model="lastName"/>
+                <span class="input-group-addon" >Họ và tên</span>
+                <input type="text" class="form-control" ng-model="full_name"/>
             </div>
         </div>
         <div class="box-body">
@@ -64,7 +62,7 @@
                     <tr ng-repeat="user in users">
                         <td>{{user.id}}</td>
                         <td>{{user.account}}</td>
-                        <td>{{user.firstname}} {{user.lastname}}</td>
+                        <td>{{user.full_name}}</td>
                         <td>{{user.DOB}}</td>
                         <td>{{user.date_joined}}</td>
                         <td>

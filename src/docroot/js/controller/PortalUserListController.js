@@ -3,8 +3,7 @@ function PortalUserListController($scope,$http)
     
     $scope.userId = ""; 
     $scope.account = "";
-    $scope.firstName = "";
-    $scope.lastName = "";
+    $scope.full_name = "";
     $scope.filterOptions = {
             filterText: "",
             useExternalFilter: true
@@ -27,8 +26,7 @@ function PortalUserListController($scope,$http)
             multiSelect: false,
             columnDefs: [
                          {field: 'id',displayName: 'ID'},
-                         {field: 'firstname',displayName: 'Họ và tên đệm'},
-                         {field: 'lastname',displayName: 'Tên'},
+                         {field: 'full_name',displayName: 'Họ và tên'},
                          {field: 'account',displayName: 'Email'},
                          {field: 'DOB',displayName: 'Ngày sinh'},
                          {field: 'status',displayName: 'Trạng thái'},
@@ -65,7 +63,7 @@ function PortalUserListController($scope,$http)
     $scope.find = function(){
         portalUserListController = new PortalUserListServiceClient($http);
         portalUserListController.findUser($scope.userId, $scope.account,
-                $scope.firstName, $scope.lastName, $scope.pagingOptions.pageSize, 0,
+                $scope.full_name,$scope.pagingOptions.pageSize, 0,
                 getSellerSucessCallback, getSellerErrorCallback);
     };
     

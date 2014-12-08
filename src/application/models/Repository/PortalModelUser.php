@@ -188,19 +188,17 @@ class PortalModelUser extends PortalModelBase
     }
     
     
-    function findUsers($id,$account,$firstname,$lastname, $limit, $offset)
+    function findUsers($id,$account,$full_name, $limit, $offset)
     {
         $sql = "SELECT * FROM t_user
                     WHERE 
                     	(t_user.id = ? OR t_user.id LIKE CONCAT('%',?,'%')) 
                     	AND 
-                    	(t_user.firstname = ? OR t_user.firstname LIKE CONCAT('%',?,'%')) 
-                    	AND
-                    	(t_user.lastname = ? OR t_user.lastname LIKE CONCAT('%',?,'%')) 
+                    	(t_user.full_name = ? OR t_user.full_name LIKE CONCAT('%',?,'%'))
                     	AND
                     	(t_user.account = ? OR t_user.account LIKE CONCAT('%',?,'%'))
                     LIMIT {$offset},{$limit}";
-        $param = array($id,$id,$firstname,$firstname,$lastname,$lastname,$account,$account);
+        $param = array($id,$id,$full_name,$full_name,$account,$account);
         $query = $this->_dbPortal->query($sql,$param);
         $results = $query->result();
         $users = array();
@@ -213,15 +211,13 @@ class PortalModelUser extends PortalModelBase
         return $users;
     }
 
-    function findUsersCount($id, $account, $firstname, $lastname)
+    function findUsersCount($id, $account, $full_name)
     {
         $sql = "SELECT COUNT(id) as id FROM t_user
                 WHERE
                 (t_user.id = ? OR t_user.id LIKE CONCAT('%',?,'%'))
                 AND
-                (t_user.firstname = ? OR t_user.firstname LIKE CONCAT('%',?,'%'))
-                AND
-                (t_user.lastname = ? OR t_user.lastname LIKE CONCAT('%',?,'%'))
+                (t_user.full_name = ? OR t_user.full_name LIKE CONCAT('%',?,'%'))
                 AND
                 (t_user.account = ? OR t_user.account LIKE CONCAT('%',?,'%'))";
         $param = array(
@@ -229,10 +225,8 @@ class PortalModelUser extends PortalModelBase
             $id,
             $account,
             $account,
-            $firstname,
-            $firstname,
-            $lastname,
-            $lastname
+            $full_name,
+            $full_name
         );
         $query = $this->_dbPortal->query($sql, $param);
         $results = $query->result();

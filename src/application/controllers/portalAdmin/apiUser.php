@@ -75,13 +75,12 @@ class apiUser extends PortalAdminControllerAbstract
         $postData = $this->input->post();
         $userId = $postData['userId'];
         $account = $postData['account'];
-        $firstName = $postData['firstName'];
-        $lastname = $postData['lastname'];
+        $fullName = $postData['full_name'];
         $limit = $postData['limit'];
         $offset = $postData['offset'];
         $portalBizAccount =  new PortalBizAccount();
-        $count = $portalBizAccount->findUserCount($userId, $account, $firstName, $lastname);
-        $results = $portalBizAccount->findUser($userId, $account, $firstName, $lastname, $limit, $offset);
+        $count = $portalBizAccount->findUserCount($userId, $account, $fullName);
+        $results = $portalBizAccount->findUser($userId, $account, $fullName, $limit, $offset);
         $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
         foreach ($results as &$result){
             $result->detailUrl = $protocol.$_SERVER['HTTP_HOST']."/portal/__admin/user/{$result->id}";

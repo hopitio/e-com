@@ -26,4 +26,11 @@ class userDetail extends PortalAdminControllerAbstract
         ->setJavascript($this->js)
         ->render('portalAdmin/userDetail');
     }
+    
+    function create(){
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ADMIN_ONE_COLUMN)
+        ->setData(array(),false)
+        ->setJavascript(array("/js/controller/PortalUserAddController.js"))
+        ->render('portalAdmin/userAdd');
+    }
 }

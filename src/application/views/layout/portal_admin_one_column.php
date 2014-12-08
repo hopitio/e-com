@@ -59,7 +59,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span><?php User::getCurrentUser()->firstname.' '.User::getCurrentUser()->lastname;?><i class="caret"></i></span>
+                                <span><?php User::getCurrentUser()->full_name?><i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 
@@ -67,16 +67,16 @@
                                 <li class="user-body">
 
                                     <div class="col-xs-12 text-right">
-                                        <a href="#">Bảo mật</a>
+                                        <a href="<?php echo site_url("/portal/account/security");?>">Bảo mật</a>
                                     </div>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Tài khoản </a>
+                                        <a href="<?php echo  site_url("/portal/account/user_information");?>" class="btn btn-default btn-flat">Tài khoản </a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="<?php echo site_url("/logout");?>" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -96,7 +96,7 @@
                             <img src="/images/no-images.jpg" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hello, <?php User::getCurrentUser()->lastname;?></p>
+                            <p>Hello, <?php User::getCurrentUser()->full_name?></p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>

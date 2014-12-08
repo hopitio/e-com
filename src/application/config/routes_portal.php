@@ -56,6 +56,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
         $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
         $route['portal/__admin/invoice/(:num)'] = 'portalAdmin/invoiceDetail/showPage/$1';
+        $route['portal/__admin/user/create'] = 'portalAdmin/userDetail/create';
 
         $route['portal/__mock/ngan_luong_payment'] = 'mock/mockNganLuongPayment/mockPaymentNganLuong';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/showpage';
