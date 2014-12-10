@@ -3,14 +3,15 @@
 class LayoutFactory
 {
 
-    CONST TEMP_ONE_COl        = 'TEMP_ONE_COL';
-    CONST TEMP_TOW_COL        = 'TEMP_TOW_COL';
+    CONST TEMP_ONE_COl = 'TEMP_ONE_COL';
+    CONST TEMP_TOW_COL = 'TEMP_TOW_COL';
     CONST TEMP_PORTAL_ONE_COL = 'TEMP_PORTAL_ONE_COL';
-    CONST TEMP_ADMIN          = 'TEMP_ADMIN';
-    CONST TEMP_CONTENT_ONLY   = 'TEMP_CONTENT_ONLY';
-    CONST TEMP_SELLER         = 'TEMP_SELLER';
+    CONST TEMP_ADMIN = 'TEMP_ADMIN';
+    CONST TEMP_CONTENT_ONLY = 'TEMP_CONTENT_ONLY';
+    CONST TEMP_SELLER = 'TEMP_SELLER';
     CONST TEMP_PORTAL_ADMIN_ONE_COLUMN = 'TEMP_PORTAL_ADMIN_ONE_COLUMN';
     CONST TEMP_PORTAL_DIALOG = 'TEMP_PORTAL_DIALOG';
+    CONST TEMP_STATIC_PAGE = 'TEMP_STATIC_PAGE';
 
     /**
      * get template render.
@@ -45,6 +46,8 @@ class LayoutFactory
                 break;
             case self::TEMP_PORTAL_DIALOG:
                 return new PortalDialogLayout();
+            case self::TEMP_STATIC_PAGE:
+                return new StaticPageLayout();
             default:
                 throw new Exception('Template not supported');
                 break;

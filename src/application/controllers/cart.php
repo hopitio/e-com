@@ -34,7 +34,7 @@ class cart extends BaseController
         foreach ($data['shippingMethods'] as &$method)
         {
             $estDate = date_create(DB::getDate())->add(new DateInterval('P' . ($method->max_day + 1) . 'D'));
-            $method->description = str_replace('((est))', $estDate->format('d/m'), $method->description);
+            $method->description = str_replace('((est))', $estDate->format('d F'), $method->description);
         }
 
         $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";

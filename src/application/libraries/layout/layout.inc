@@ -10,5 +10,6 @@ include_once (APPPATH . "libraries/layout/ContentOnlyLayout.php");
 include_once (APPPATH . "libraries/layout/SellerLayout.php");
 include_once (APPPATH . "libraries/layout/PortalAdminLayout.php");
 include_once (APPPATH . "libraries/layout/PortalDialogLayout.php");
+include_once (APPPATH . "libraries/layout/StaticPageLayout.php");
 
 ?>
