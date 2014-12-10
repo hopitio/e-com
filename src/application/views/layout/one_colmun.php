@@ -242,11 +242,11 @@
                         <div class="footer-link">
                             <a href="javascript:;">Q & A</a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="javascript:;"><?php echo $language['layout']->lblQualityAssurance ?></a>
+                            <a href="/staticpage/quality_assurance"><?php echo $language['layout']->lblQualityAssurance ?></a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="javascript:;"><?php echo $language['layout']->lblTermsOfUse ?></a>
+                            <a href="/staticpage/terms_n_conditions"><?php echo $language['layout']->lblTermsOfUse ?></a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="javascript:;"><?php echo $language['layout']->lblPrivacyPolicy ?></a>
+                            <a href="/staticpage/privacy_policy"><?php echo $language['layout']->lblPrivacyPolicy ?></a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
                             <a href="javascript:;"><?php echo $language['layout']->lblAboutUs ?></a>
                         </div>
