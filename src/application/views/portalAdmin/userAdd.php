@@ -7,5 +7,7 @@
 </section>
 
 <section class="content" ng-controller="PortalUserListController">
-    
+    <div class="col-md-12">
+        
+    </div>
 </section>

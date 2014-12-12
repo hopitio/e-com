@@ -64,7 +64,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/order/(:num)'] = 'portalAdmin/orderDetail/showpage/$1';
         $route['portal/__admin/order/(:num)/add_invoice'] = 'portalAdmin/addInvoice/showPage/$1';
         $route['portal/__admin/order/(:num)/refuned'] = 'portalAdmin/orderRefuned/showPage/$1';
-
+        $route['portal/__admin/order/create'] = 'portalAdmin/orderNewController/showPage';
+        
+        
         $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/apiUser/contact/$1';
         $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/apiUser/setting/$1';
 
