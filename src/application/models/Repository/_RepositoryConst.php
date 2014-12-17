@@ -124,7 +124,7 @@ class T_product extends T_base
 {
 
     CONST tableName = "t_product";
-    
+    CONST product_url = "product_url";
     CONST sub_id = "sub_id";
     CONST name = "name";
     CONST sub_image = "sub_image";

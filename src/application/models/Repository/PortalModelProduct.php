@@ -18,6 +18,8 @@ class PortalModelProduct extends PortalModelBase
     var $seller_email;
     var $record_status;
     var $shipping;
+    var $product_url;
+    
     
     
     /**

@@ -91,7 +91,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/account/resend'] = "portalController/passwordUnauthen/resend_check_and_send";
         $route['portal/__admin/invoice/(:num)/update_paided_date'] = 'portalAdmin/invoiceDetail/updatePaidedDate/$1';
         $route['portal/__admin/invoice/(:num)/destroy'] = 'portalAdmin/invoiceDetail/destroy/$1';
-
+        $route['portal/__admin/order/create'] = 'portalAdmin/orderNewController/save';
+        
         $route['portal/login'] = 'portalController/login/indexPost';
         $route['portal/login/facbook_callback'] = 'portalController/platform/facebook/authenCallback';
         $route['portal/login/facebook'] = 'portalController/loginfacebook/loginFb';
