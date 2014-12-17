@@ -69,14 +69,16 @@ defined('BASEPATH') or die('No direct script access allowed');
     <div class="clear-fix"></div>
     <div class="lynx-box width-960 lynx-adv-box text-left lynx-adv-home cursor-pointer">
         <div class="head">
-            <div class="title" ng-mouseover="setSelectedGroup(0)" ng-class="{
-                        active: selectedGroupIndex == 0
-                    }">{{featureGroups[0].name}}</div>
+            <div class="title"><?php echo $language[$view->view]->lblFeatureProduct ?></div>
             <div class="choice">
-                <a ng-repeat="group in featureGroups" ng-if="$index > 0" href="{{group.url}}" 
-                   ng-mouseover="setSelectedGroup($index)" ng-class="{
+                <a ng-repeat="group in featureGroups" href="javascript:;" 
+                   class="feature_{{group.codename}}"
+                   ng-click="setSelectedGroup($index)" ng-class="{
                                active: selectedGroupIndex == $index
-                           }">{{group.name}}</a>
+                           }">
+                    {{group.name}}
+                    <span class="bottom-tab"></span>
+                </a>
             </div>
         </div>
         <div ng-cloak ng-repeat="group in featureGroups" ng-show="selectedGroupIndex == $index" class="group-{{group.codename}} <?php echo User::getCurrentUser()->languageKey ?>">

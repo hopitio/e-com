@@ -3,6 +3,7 @@
     <home>
         <lblBestSeller>BEST SELLERS</lblBestSeller>      
         <lblNewProduct>NEW PRODUCT</lblNewProduct>  
+        <lblFeatureProduct>FEATURE PRODUCT</lblFeatureProduct>
     </home>
     <login>
         <title>PROJECT E Login</title>

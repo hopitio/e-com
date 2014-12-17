@@ -3,6 +3,7 @@
     <home>
         <lblBestSeller>베스트 셀러</lblBestSeller>
         <lblNewProduct>새로운 제품</lblNewProduct>
+        <lblFeatureProduct>기능 제품</lblFeatureProduct>
     </home>
     <login>
         <title>PROJECT E 로그인</title>

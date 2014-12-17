@@ -3,6 +3,7 @@
     <home>
         <lblBestSeller>SẢN PHẨM BÁN CHẠY</lblBestSeller>
         <lblNewProduct>SẢN PHẨM MỚI</lblNewProduct>
+        <lblFeatureProduct>SẢN PHẨM NỔI BẬT</lblFeatureProduct>
     </home>
     <login>
         <title>PROJECT E Đăng nhập</title>

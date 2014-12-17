@@ -37,17 +37,15 @@
     <div class="product-list-count">
         <?php echo $language[$view->view]->lblProductCount ?>
     </div>
-    <div class="seperator"></div>
-    <div class="seperator"></div>
-    <div class="row">
+    <div class="row" style="margin-top:20px;">
         <div class="col-xs-8">
             <table class="product-table" ng-cloak>
                 <thead>
                     <tr>
                         <th width="50%"><?php echo $language[$view->view]->lblProduct ?></th>
-                        <th width="20%"><?php echo $language[$view->view]->lblPrice ?></th>
-                        <th width="10%"><?php echo $language[$view->view]->lblQty ?></th>
-                        <th width="20%"><?php echo $language[$view->view]->lblSubtotal ?></th>
+                        <th width="20%" class="right"><?php echo $language[$view->view]->lblPrice ?></th>
+                        <th width="10%" class="center"><?php echo $language[$view->view]->lblQty ?></th>
+                        <th width="20%" class="right"><?php echo $language[$view->view]->lblSubtotal ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,7 +67,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td>
+                        <td class="right">
                             <strong>
                                 {{fnMoneyToString(product.price)}}<br>
                                 <small ng-if="product.salesPercent != '0'">{{fnMoneyToString(product.priceOrigin)}}</small>
@@ -82,7 +80,7 @@
                                 <option ng-repeat="i in range(1, product.stock)" value="{{i}}" ng-selected="product.quantity == i">{{i}}</option>
                             </select>
                         </td>
-                        <td><strong>{{fnMoneyToString(product.price * product.quantity)}}</strong></td>
+                        <td class="right"><strong>{{fnMoneyToString(product.price * product.quantity)}}</strong></td>
                     </tr>
                 </tbody>
             </table>

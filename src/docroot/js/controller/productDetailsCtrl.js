@@ -1,4 +1,4 @@
-angular.module('lynx').controller('productDetailsCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+angular.module('lynx').controller('productDetailsCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
         $scope.productID = scriptData.productID;
         $scope.relatedProducts = [[]];
         $scope.activeSlide = 0;
@@ -13,7 +13,7 @@ angular.module('lynx').controller('productDetailsCtrl', ['$scope', '$timeout', f
             $scope.relatedProducts[currentRow].push(product);
         }
 
-        $scope.shareFacbook = function() {
+        $scope.shareFacbook = function () {
 //        var src = $(".lynx_productImageContainer .lynx_image img").attr('src').replace('..', '');
 //        var picturePro = window.location.protocol + window.location.hostname + src;
             FB.ui(
@@ -25,7 +25,7 @@ angular.module('lynx').controller('productDetailsCtrl', ['$scope', '$timeout', f
                         link: document.URL,
                         picture: scriptData.facebookImage
                     },
-            function(response) {
+            function (response) {
                 var res = response;
             }
             );
@@ -34,18 +34,18 @@ angular.module('lynx').controller('productDetailsCtrl', ['$scope', '$timeout', f
 
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     loadComment(document, 'script', 'facebook-jssdk');
-    $('.detail-main-left li a').click(function() {
+    $('.detail-main-left li a').click(function () {
         $('.zoomThumbActive').removeClass('zoomThumbActive');
         $(this).parent().addClass('zoomThumbActive');
     });
 });
-$(function() {
+$(function () {
     var container = $('.lynx-tabs');
-    $('.lynx-tabs > ul > li > a').each(function() {
+    $('.lynx-tabs > ul > li > a').each(function () {
         var $a = $(this);
-        $a.click(function(e) {
+        $a.click(function (e) {
             e.preventDefault();
             $('li.active', container).removeClass('active');
             $a.parent().addClass('active');
@@ -54,15 +54,13 @@ $(function() {
         });
     });
 });
-$(function() {
+$(function () {
     $('.jqzoom').jqzoom({
-        zoomWidth: 400,
-        zoomHeight: 300,
         zoomType: 'innerzoom'
     });
 });
-$(function() {
-    $('#frmAddTo').on('click', '[data-type=button]', function() {
+$(function () {
+    $('#frmAddTo').on('click', '[data-type=button]', function () {
         var btn = this;
         var form = this.form;
         form.action = btn.getAttribute('data-action');
