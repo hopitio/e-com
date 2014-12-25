@@ -58,8 +58,6 @@ class paymentChoice extends BasePortalController
             $invoice->totalCost = $this->convertToCurrentCurrency($invoice->totalCost);
         }
         unset($invoice);
-    
-    
     }
     
     private function calutionForviewView(&$orderInfor,$invoiceId){

@@ -45,7 +45,10 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
 
         $route['portal/order_verifing/verify'] = 'portalController/orderVerifingAuthenicated/orderPlaceVerifyOrder';
-
+        $route['portal/order/checking'] = "portalController/orderChecking/showPage";
+        $route['portal/order/checking/show'] = "portalController/orderChecking/showResult";
+        
+        
         $route['portal/ngan-luong/callback/success'] = 'portalController/orderNganLuongCallback/success';
         $route['portal/ngan-luong/callback/cancel'] = 'portalController/orderNganLuongCallback/cancel';
 

@@ -856,4 +856,7 @@
         ]]>
         </content>
     </static_terms_n_conditions>
+    <portalOrder_orderChecking>
+        <title>Kiểm tra đơn hàng</title>
+    </portalOrder_orderChecking>
 </data>
