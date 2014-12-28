@@ -18,6 +18,7 @@ class MailManager {
     CONST SELLER_DELIVERED = 'SELLER_DELIVERED';
     CONST SELLER_FAIL_TO_DELIVERED = 'SELLER_FAIL_TO_DELIVERED';
     CONST SELLER_PAYMENT_VERIFIED = 'SELLER_PAYMENT_VERIFIED';
+    CONST SHIPPING_FROM_USA = 'SHIPPING_FROM_USA';
     
     /**
      * Người dùng request gửi mail.
@@ -66,6 +67,9 @@ class MailManager {
                 break;
             case self::SELLER_PAYMENT_VERIFIED:
                 $staff = new SellerPaymentVerifiedMailler();
+                break;
+            case self::SHIPPING_FROM_USA:
+                $staff = new ShippingFromUSAMailler();
                 break;
         	default:
         	    throw new Lynx_EmailException(__CLASS__.'::requestSendMail Không hỗ trợ định dạng mail này');

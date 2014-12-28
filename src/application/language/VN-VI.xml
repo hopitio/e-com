@@ -278,6 +278,7 @@
         <newpasswordNofication>[Sfriendly] Quên password</newpasswordNofication>
         <passwordNotify>[Sfriendly] Đổi mật khẩu thành công</passwordNotify>
         <orderRefuned>[Sfriendly] Trả hàng thành công </orderRefuned>
+        <ShippingFromUSAMailler>[Sfriendly] Có sản phẩm yêu cầu ship hàng từ mỹ</ShippingFromUSAMailler>
     </mail>
     
     <portalaccount_resetPassword>
@@ -859,4 +860,10 @@
     <portalOrder_orderChecking>
         <title>Kiểm tra đơn hàng</title>
     </portalOrder_orderChecking>
+    <portalOrder_ShippingFromUSA>
+        <title>Nhờ đặt hàng từ Mỹ</title>
+    </portalOrder_ShippingFromUSA>
+    <portalOrder_ShippingFromUSADone>
+        <title>Nhờ đặt hàng từ Mỹ</title>
+    </portalOrder_ShippingFromUSADone>
 </data>

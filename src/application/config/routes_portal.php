@@ -47,7 +47,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_verifing/verify'] = 'portalController/orderVerifingAuthenicated/orderPlaceVerifyOrder';
         $route['portal/order/checking'] = "portalController/orderChecking/showPage";
         $route['portal/order/checking/show'] = "portalController/orderChecking/showResult";
-        
+        $route['portal/shipping_from_usa'] = "portalController/shippingFromUSA/showPage";
+        $route['portal/shipping_from_usa/done'] = "portalController/shippingFromUSA/done";
         
         $route['portal/ngan-luong/callback/success'] = 'portalController/orderNganLuongCallback/success';
         $route['portal/ngan-luong/callback/cancel'] = 'portalController/orderNganLuongCallback/cancel';
@@ -96,6 +97,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/invoice/(:num)/destroy'] = 'portalAdmin/invoiceDetail/destroy/$1';
         $route['portal/__admin/order/create'] = 'portalAdmin/orderNewController/save';
         
+        $route['portal/shipping_from_usa'] = "portalController/shippingFromUSA/save";
         $route['portal/login'] = 'portalController/login/indexPost';
         $route['portal/login/facbook_callback'] = 'portalController/platform/facebook/authenCallback';
         $route['portal/login/facebook'] = 'portalController/loginfacebook/loginFb';

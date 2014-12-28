@@ -213,6 +213,21 @@ $config['SellerRegistered'] = array(
     'SEND_TO'         => 'goat91@gmail.com'
 );
 
+$config['ShippingFromUSA'] = array(
+    MAILLER_PROTOCOL  => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST      => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME  => 'Sfriendly Customer Service',
+    MAILLER_USER      => 'projecte2002@gmail.com',
+    MAILLER_PORT      => '465',
+    MAILLER_PASS      => '1234567$',
+    MAILLER_TIMEOUT   => '1',
+    MAILLER_TEMP      => '/ShippingFromUSA',
+    MAILLER_TYPE      => 'html',
+    MAILLER_NEWLINE   => "\r\n",
+    'SEND_TO'         => "lethanhan.bkaptech@gmail.com"
+);
+
 
 
 
