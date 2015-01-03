@@ -130,21 +130,8 @@ form input[type='text'],input[type='password'], textarea {
 	width: 165px;
 	min-height: 28px;
 }
-.lynx_register_seller_form .lynx_leftContent input[type="text"],
-.lynx_register_seller_form .lynx_leftContent input[type="password"], 
-.lynx_register_seller_form .lynx_leftContent textarea{
-    width: 430px;
-}
 
-.lynx_leftContent form input[name="password"],
-.lynx_leftContent form input[name="passwordRetry"],
-.lynx_leftContent form input[name="fristName"],
-.lynx_leftContent form input[name="lastName"] ,
-.lynx_register_seller_form .lynx_leftContent form input[name="txt_email"],
-.lynx_register_seller_form .lynx_leftContent form input[name="txt_phone"]
-{
-	width: 150px;
-}
+
 #lbl-additional-info{
     float:left;
     margin-right: 5px;

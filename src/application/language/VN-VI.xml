@@ -582,6 +582,16 @@
         <lblMsgNotOk>Email bạn vừa nhập chưa chính xác.</lblMsgNotOk>
     </portalaccount_resend>
     <registerSellerAccount>
+        <loginTitle>Đăng nhập</loginTitle>
+        <registeTitle>Đăng Ký</registeTitle>
+        <lblUs>Tên Đăng nhập : </lblUs>
+        <lblPs>Mật khẩu :</lblPs>
+        <btnLogin>Đăng nhập</btnLogin>
+        <lblResend>Gửi lại mail kích hoạt tài khoản</lblResend>
+        <lblForgetPassword>Bạn không thể đăng nhập tài khoản </lblForgetPassword>
+        <lblCreateNewAccount>Đăng ký tài khoản mới </lblCreateNewAccount>
+        <lblError>Tên đăng nhập hoặc mật khẩu không đúng.</lblError>
+        <lblCreateFristName>Họ và tên đệm </lblCreateFristName>
         <lblShopName>Tên cửa hàng</lblShopName>
         <lblContactPerson>Người đại diện</lblContactPerson>
         <lblEmail>Email</lblEmail>

@@ -574,6 +574,14 @@
         <lblMsgNotOk>Email not correct.</lblMsgNotOk>
     </portalaccount_resend>
     <registerSellerAccount>
+        <lblResend>Resend activion email</lblResend>
+        <loginTitle>Login</loginTitle>
+        <registeTitle>Sign up</registeTitle>
+        <lblUs>Account / Email : </lblUs>
+        <lblPs>Password :</lblPs>
+        <btnLogin>Login</btnLogin>
+        <lblForgetPassword>You can not sign in to account </lblForgetPassword>
+        <lblCreateNewAccount>Register </lblCreateNewAccount>
         <lblShopName>Shop name</lblShopName>
         <lblContactPerson>Contact person</lblContactPerson>
         <lblEmail>Email</lblEmail>

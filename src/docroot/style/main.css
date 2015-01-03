@@ -368,6 +368,10 @@ li{list-style: none;}
     line-height: 35px;
     z-index: 10;
 }
+.lynx-box .img-loading{
+    width: 32px;
+    height: 32px;
+}
 .lynx-box.lynx-box-small .sales-balloon{
     top: 141px;
 }
@@ -457,7 +461,7 @@ li{list-style: none;}
     width:100%;
     height: 100%;
     border:none;
-    
+
 }
 .lynx-box-small{
     padding:5px;

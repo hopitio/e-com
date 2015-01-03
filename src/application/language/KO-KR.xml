@@ -546,6 +546,15 @@
         <lblMsgNotOk>해결되지 이메일.</lblMsgNotOk>
     </portalaccount_resend>
     <registerSellerAccount>
+        <title>PROJECT E 로그인</title>
+        <loginTitle>로그인</loginTitle>
+        <registeTitle>가입</registeTitle>
+        <lblUs>계정 / 이메일 : </lblUs>
+        <lblPs>암호 :</lblPs>
+        <btnLogin>로그인</btnLogin>
+        <lblResend>계정을 활성화하기 메일 보내기</lblResend>
+        <lblForgetPassword>당신은 계정에 로그인 할 수 없습니다 </lblForgetPassword>
+        <lblCreateNewAccount>레지스터 </lblCreateNewAccount>
         <lblShopName>가게 이름</lblShopName>
         <lblContactPerson>담당자</lblContactPerson>
         <lblEmail>Email</lblEmail>
