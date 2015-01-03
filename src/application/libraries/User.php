@@ -14,8 +14,8 @@ class User
 {
 
     public $is_authorized = false;
-    public $languageKey = 'VN-VI';
-    public $currencyKey = 'VN';
+    public $languageKey = 'EN-US';
+    public $currencyKey = 'USD';
     private $authenUrl = '/portal/login';
     private $callBack = '/__portal/authen';
     private $logout = "/logout";
@@ -99,7 +99,39 @@ class User
             $objUser = new User();
         }
         $objUser->fullname = $objUser->getFullname();
+        $objUser->full_name = $objUser->getFullname();
         return $objUser;
+    }
+
+    /** biến window.$user */
+    static function getCurrentUserForJson()
+    {
+        $objUser = get_instance()->session->userdata(USER_SESSION);
+        if (!is_a($objUser, 'User'))
+        {
+            $objUser = new User();
+        }
+        $user = clone $objUser;
+        $user->fullname = $user->getFullname();
+        $allowedKeys = array(
+            'DOB',
+            'account',
+            'currencyKey',
+            'date_joined',
+            'fullname',
+            'is_authorized',
+            'languageKey',
+            'phone',
+            'sex'
+        );
+        foreach (get_object_vars($user) as $k => $v)
+        {
+            if (!in_array($k, $allowedKeys))
+            {
+                unset($user->{$k});
+            }
+        }
+        return $user;
     }
 
 }

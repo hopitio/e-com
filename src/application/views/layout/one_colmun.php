@@ -275,12 +275,12 @@
         </div><!--footer-->
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-                    }
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+            }
         </script>
 
 
@@ -314,11 +314,11 @@
         <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                    }
-                    $.browser = {};
-                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+            }
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt
@@ -327,5 +327,43 @@
             echo '<script src="' . $jsItem . '"></script>';
         }
         ?>
+        <!--Start of Zopim Live Chat Script-->
+        <script type="text/javascript">
+            window.$user = <?php echo json_encode(User::getCurrentUserForJson()) ?>;
+
+            window.$zopim || (function (d, s) {
+                var z = $zopim = function (c) {
+                    z._.push(c);
+                }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+                z.set = function (o) {
+                    z.set._.push(o);
+                };
+                z._ = [];
+                z.set._ = [];
+                $.async = !0;
+                $.setAttribute('charset', 'utf-8');
+                $.src = '//v2.zopim.com/?2h1mxYTKoeMFbOGXiqEH5ioYtTa4t5MT';
+                z.t = +new Date;
+                $.type = 'text/javascript';
+                e.parentNode.insertBefore($, e);
+            })(document, 'script');
+
+            $zopim(function () {
+                if (!$user.is_authorized) {
+                    return;
+                }
+                if ($user.fullname)
+                    $zopim.livechat.setName($user.fullname);
+                if ($user.account)
+                    $zopim.livechat.setEmail($user.account);
+                if ($user.languageKey === 'KO-KR')
+                    zopim.livechat.setLanguage('ko');
+                if ($user.languageKey === 'EN-US')
+                    zopim.livechat.setLanguage('en');
+                if ($user.languageKey === 'VN-VI')
+                    zopim.livechat.setLanguage('vi');
+            });
+        </script>
+        <!--End of Zopim Live Chat Script-->
     </body>
 </html>
