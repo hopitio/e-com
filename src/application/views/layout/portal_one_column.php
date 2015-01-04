@@ -8,13 +8,13 @@
         <title><?php echo isset($language[$view->view]) ? $language[$view->view]->title : ''; ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" media="all">
-        
+
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/ng-grid.min.css" media="all">
         <link href="/AdminLTE-master/css/AdminLTE.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="/style/main.css" media="all">
         <link rel="stylesheet" type="text/css" href="/style/headMenu.css" media="all">
-        
+
         <link href='http://fonts.googleapis.com/css?family=Roboto:900&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
         <?php
         //Thêm các js riêng biệt
@@ -48,14 +48,14 @@
                     <div class="search-btn cursor-pointer color-white"><?php echo $language['layout']->lblSearch ?></div>
                 </div>
                 <div class="tag text-left">
-<!--                    <a href="#">Sản phẩm mới</a>
-                    <a href="#">Hàng việt nam</a>
-                    <a href="#">Quà tặng </a>
-                    <a href="#">Sản phẩm mới</a>-->
+                    <!--                    <a href="#">Sản phẩm mới</a>
+                                        <a href="#">Hàng việt nam</a>
+                                        <a href="#">Quà tặng </a>
+                                        <a href="#">Sản phẩm mới</a>-->
                 </div>
             </div>
             <div class="user-pannel text-left">
-                <img class="cursor-pointer" src="/images/Live-chat-icon.fw.png"/>
+                 <img class="cursor-pointer" src="/images/Live-chat-icon.fw.png" onclick="$zopim.livechat.window.toggle();" alt="Sfriendly live support"/>
                 <ul class="flag cursor-pointer">
                     <?php $active = User::getCurrentUser()->languageKey == 'EN-US' ? 'active' : '' ?>
                     <li class="us <?php echo $active ?>"><a href="javascript:;" title="English" ng-click="changeLanguage('EN-US')"></a></li>
@@ -202,13 +202,13 @@
         </div><!--footer-->
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                    }
-                    $.browser = {};
-                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+            }
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
 
 
@@ -233,5 +233,43 @@
             echo '<script src="' . $jsItem . '"></script>';
         }
         ?>
+        <!--Start of Zopim Live Chat Script-->
+        <script type="text/javascript">
+            window.$user = <?php echo json_encode(User::getCurrentUserForJson()) ?>;
+
+            window.$zopim || (function (d, s) {
+                var z = $zopim = function (c) {
+                    z._.push(c);
+                }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+                z.set = function (o) {
+                    z.set._.push(o);
+                };
+                z._ = [];
+                z.set._ = [];
+                $.async = !0;
+                $.setAttribute('charset', 'utf-8');
+                $.src = '//v2.zopim.com/?2h1mxYTKoeMFbOGXiqEH5ioYtTa4t5MT';
+                z.t = +new Date;
+                $.type = 'text/javascript';
+                e.parentNode.insertBefore($, e);
+            })(document, 'script');
+
+            $zopim(function () {
+                if (!$user.is_authorized) {
+                    return;
+                }
+                if ($user.fullname)
+                    $zopim.livechat.setName($user.fullname);
+                if ($user.account)
+                    $zopim.livechat.setEmail($user.account);
+                if ($user.languageKey === 'KO-KR')
+                    zopim.livechat.setLanguage('ko');
+                if ($user.languageKey === 'EN-US')
+                    zopim.livechat.setLanguage('en');
+                if ($user.languageKey === 'VN-VI')
+                    zopim.livechat.setLanguage('vi');
+            });
+        </script>
+        <!--End of Zopim Live Chat Script-->
     </body>
 </html>

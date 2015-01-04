@@ -776,4 +776,164 @@
         ]]>
         </content>
     </static_terms_n_conditions>
+    <static_shipping_policy>
+        <title>Shipping policy</title>
+        <content>
+        <![CDATA[
+        <h1>Why SFRIENDLY VIETNAM?</h1>
+        <center><img style="width:60%" src="/images/static/shipping_policy.jpg"/></center>
+        <h4>1. Shipping charges apply for each zone; details below:</h4>
+        1.1. Within Hanoi and Ho Chi Minh city
+        <table cellspacing="0" cellpadding="0"> 
+            <tr>
+                <th width="40%" rowspan="2">Service details</th>
+                <th colspan="3"><center>Within Hanoi and Ho Chi Minh city *</center></th>
+            </tr>
+            <tr>
+                <th width="20%"><center>Standard</center></th>
+                <th width="20%"><center>Express</center></th>
+                <th width="20%"><center>Premium</center></th>
+            </tr>
+            <tr>
+                <th>=< 3kg</th>
+                <td>30,000</td>
+                <td>35,000</td>
+                <td>55,000</td>
+            </tr>
+            <tr>
+                <th colspan="4">Over 3kg</th>
+            </tr>
+            <tr>
+                <th>For each 1kg additional</th>
+                <td>5,000</td>
+                <td>5,000</td>
+                <td>5,000</td>
+            </tr>
+            <tr>
+                <th>Delivery time</th>
+                <td>2 – 5 days</td>
+                <td>1 – 3 days</td>
+                <td>In 1 day (order before 12:00 pm)</td>
+            </tr>
+        </table>
+        * Other zones outside Hanoi and Ho Chi Minh city will be applied following other zones table which is refered in section 1.2
+        <br><br>
+        1.2. Other zones
+        <table cellspacing="0" cellpadding="0">
+            <tr>
+                <th width="33%">Weight level</th>
+                <th width="33%">Standard</th>
+                <th width="33%">Express</th>
+            </tr>
+            <tr>
+                <th>From 0 - 0,5 kg</th>
+                <td rowspan="2">35,000 VND</td>
+                <td>40,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 0,5 – 1 kg</th>
+                <td>51,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 1 - 1,5 kg</th>
+                <td rowspan="2">40,000 VND</td>
+                <td>62,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 1,5 – 2 kg</th>
+                <td>73,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 2,0 - 2,5 kg</th>
+                <td rowspan="2">45,000 VND</td>
+                <td>84,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 2,5 - 3,0 kg</th>
+                <td>95,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 3,0 - 3,5 kg</th>
+                <td rowspan="2">50,000 VND</td>
+                <td>106,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 3,5 - 4,0 kg</th>
+                <td>117,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 4,0 - 4,5 kg</th>
+                <td rowspan="2">55,000 VND</td>
+                <td>128,000 VND</td>
+            </tr>
+             <tr>
+                <th>From 4,5 – 5 kg</th>
+                <td>139,000 VND</td>
+            </tr>
+            <tr >
+                <th colspan="3">Additional fee for each 500 gram added</th>
+            </tr>
+            <tr>
+                <th>Each 500 gram added</th>
+                <td>5,000 VND</td>
+                <td>15,000 VND</td>
+            </tr>
+            <tr>
+                <th>Delivery time</th>
+                <td>2 – 5 days</td>
+                <td>1 – 3 days</td>
+            </tr>
+        </table>
+        * Price list above is included 10% VAT<br>
+        * Maximum weight or conversion weight is 100 kg <br>
+        * Oversize goods: Refer section 2.1<br>
+        <h4>2. Additional Information</h4>
+        2.1. Oversize goods<br>
+        Weight of Oversize goods would be calculated by this formula: (called conversion weight)<br>
+        <br>
+        Express or premium service:<br>
+        Conversion weight (kg) = (LxWxH) / 3000<br>
+        (units: cm)<br>
+        <br>
+       Standard service:<br>
+        Conversion weight (kg) = (LxWxH) / 6000<br>
+       (units: cm)<br>
+        <br>
+        * If the conversion weight is greater than the actual weight of goods, it would be used to calculated shipping fees<br>
+        Ex: Product A weighing 1 kg. Its dimension is 30cm x 50cm x 2cm. Then its conversion weight is (30x50x6) / 6000 = 1.5 kg. Because A’s conversion weight is greater than its actual weight, 1.5 kg will be used to calculated the shipping fee of standard service.<br>
+        2.2. Scope of delivery service<br>
+        Sfriendly gladly announces that we are able to deliver to Hanoi, Ho Chi Minh city and 63 other provinces within Vietnam (exclude islands. If you need to delivery to these areas, please contact us for assistant) Shipping fee is refered to section 1.<br>
+        2.3. Zones applied as within Hanoi and Ho Chi Minh city<br>
+        <table cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="20%" rowspan="3">Hanoi</td>
+                <td width="20%">Urban</td>
+                <td width="60%">County: Ba Đình, Hoàn Kiếm, Đống Đa, Hai Bà Trưng, Thanh Xuân, Cầu Giấy, Tây Hồ, Hoàng Mai</td>
+            </tr>
+            <tr>
+                <td>Suburban 1</td>
+                <td>County: Long Biên, Bắc Từ Liêm, Nam Từ Liêm, Hà Đông</td>
+            </tr>
+            <tr>
+                <td>Suburban 2</td>
+                <td>Thanh Trì, Gia Lâm</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Ho Chi Minh city</td>
+                <td>Urban</td>
+                <td>County: 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, Tân Bình, Tân Phú, Phú Nhuận, Bình Thạnh, Gò Vấp</td>
+            </tr>
+            <tr>
+                <td>Suburban 1</td>
+                <td>County: 9, 12, Thủ Đức, Bình Tân</td>
+            </tr>
+            <tr>
+                <td>Suburban 2</td>
+                <td>Hóc Môn, Bình Chánh, Nhà Bè</td>
+            </tr>
+        </table>
+        * Addresses are not in Hanoi / Ho Chi Minh city are considered to other zones when calculating shipping fees and delivery time.
+        ]]>
+        </content>
+    </static_shipping_policy>
 </data>

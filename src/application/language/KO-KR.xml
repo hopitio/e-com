@@ -672,4 +672,14 @@
         ]]>
         </content>
     </static_terms_n_conditions>
+    <static_shipping_policy>
+        <title>Shipping policy</title>
+        <content>
+        <![CDATA[
+        <h1>Why SFRIENDLY VIETNAM?</h1>
+        <center><img style="width:60%" src="/images/static/shipping_policy.jpg"/></center>
+        Coming Soon
+        ]]>
+        </content>
+    </static_shipping_policy>
 </data>

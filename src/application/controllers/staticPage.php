@@ -44,4 +44,9 @@ class staticPage extends BaseController
         $this->layout->render('static/terms_n_conditions');
     }
 
+    function shipping_policy()
+    {
+        $this->layout->render('static/shipping_policy');
+    }
+
 }
