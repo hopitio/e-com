@@ -413,6 +413,13 @@
         <lblSortSaleoff>할인</lblSortSaleoff>
         <lblSortHot>뜨거운</lblSortHot>
         <lblSortLike>같은</lblSortLike>
+        <lblAvdvancedFilter>고급 필터</lblAvdvancedFilter>
+        <lblFilterPrice>가격</lblFilterPrice>
+        <lblFilterHeader>필터 제품</lblFilterHeader>
+        <lblPriceLow>가장 낮은</lblPriceLow>
+        <lblPriceHigh>최고</lblPriceHigh>
+        <lblCurrency>KRW</lblCurrency>
+        <lblFilter>필터</lblFilter>
     </category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>

@@ -438,6 +438,13 @@
         <lblSortSaleoff>Discounts</lblSortSaleoff>
         <lblSortHot>Hot</lblSortHot>
         <lblSortLike>Like</lblSortLike>
+        <lblAvdvancedFilter>Advanced filter</lblAvdvancedFilter>
+        <lblFilterPrice>Price</lblFilterPrice>
+        <lblFilterHeader>Filter product</lblFilterHeader>
+        <lblPriceLow>Lowest</lblPriceLow>
+        <lblPriceHigh>Highest</lblPriceHigh>
+        <lblCurrency>USD</lblCurrency>
+        <lblFilter>Filter</lblFilter>
     </category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>

@@ -60,14 +60,22 @@ class category extends BaseController
         $sort = $this->input->get('sort');
         $user = User::getCurrentUser();
         $category = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($cateID)->find();
+        $priceLow = (double) $this->input->get('priceLow');
+        $priceHigh = (double) $this->input->get('priceHigh');
+
+        $priceLow = new Money($priceLow, new Currency(User::getCurrentUser()->getCurrency()));
+        $priceHigh = new Money($priceHigh, new Currency(User::getCurrentUser()->getCurrency()));
+
+        $priceLow = $priceLow->convert(new Currency('VND'))->getAmount();
+        $priceHigh = $priceHigh->convert(new Currency('VND'))->getAmount();
 
         if ($category->getLevel() == 1)
         {
-            $products = $this->categoryModel->getBestProduct($category, $offset, $sort);
+            $products = $this->categoryModel->getBestProduct($category, $offset, $sort, $priceLow, $priceHigh);
         }
         else
         {
-            $products = $this->categoryModel->getProductByCategory($category, $offset, $sort);
+            $products = $this->categoryModel->getProductByCategory($category, $offset, $sort, $priceLow, $priceHigh);
         }
         $json = array();
         foreach ($products as $product)

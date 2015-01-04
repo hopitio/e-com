@@ -44,3 +44,49 @@
 .lynx_searchResult .lynx_sort ul li.lynx_sortActive,.lynx_searchResult .lynx_sort ul li:hover{
     opacity: 1;
 }
+.btn_advance_filter{
+    color:#fd782f;
+    text-decoration: underline;
+    line-height: 40px;
+}
+#box_advanced_filter{
+    width: 100%;
+    margin-top: 5px;
+    background: white;
+}
+#box_advanced_filter .box_header{
+    background: url(/images/categories/advanced_filter.png) no-repeat;
+    bacground-position: 0 0;
+    height: 27px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: white;
+    text-align: left;
+    padding-left: 10px;
+}
+#box_advanced_filter .box_content{
+    padding: 15px 24px;
+    text-align:left;
+}
+#box_advanced_filter .border-right{
+    border-right: 1px dotted #a9a7a8;
+    padding-right: 15px;
+}
+#box_advanced_filter .div-inline{
+    display: inline-block;
+}
+#box_advanced_filter label{
+    font-weight: normal;
+    margin:0;
+    display:inline;
+}
+#box_advanced_filter input[type="button"]{
+    background: none;
+    border: none;
+    height: 24px;
+    line-height: 24px;
+    width: 51px;
+    background: url(/images/categories/btn_filter.png) no-repeat;
+    color: white;
+    text-align:center;
+}

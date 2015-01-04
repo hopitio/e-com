@@ -27,14 +27,45 @@
     </div>
     <div class="lynx_searchResult width-960">
         <div style="overflow:hidden">
+            <div class="pull-left">
+                <a href="javascript:;" class="btn_advance_filter" ng-click="toggleFilter()">
+                    <?php echo $language[$view->view]->lblAvdvancedFilter ?>
+                </a>
+            </div>
             <div class="lynx_sort pull-right">
                 <ul>
-                    <li ng-repeat="option in sortOptions" ng-class="{lynx_sortActive: hashParams.sort === option[1]}">
+                    <li ng-repeat="option in sortOptions" ng-class="{
+                                lynx_sortActive: hashParams.sort === option[1]
+                            }">
                         <a class="{{option[0]}}" title="{{option[2]}}" href="javascript:;" ng-click="sortBy(option[1])">
                             {{option[2]}}
                         </a>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="width-960" ng-cloak ng-show="advancedFilter">
+        <div class="lynx-box" id="box_advanced_filter">
+            <div class="box_header"><?php echo $language[$view->view]->lblFilterHeader ?>:</div>
+            <div class="box_content">
+                <div class='row'>
+                    <div class='col-xs-1'><?php echo $language[$view->view]->lblFilterPrice ?></div>
+                    <div class='col-xs-11'>
+                        <label for="txt_price_low"><?php echo $language[$view->view]->lblPriceLow ?> </label>
+                        <div class='border-right div-inline'>
+                            <input type='text'  id="txt_price_low" placeholder="<?php echo $language[$view->view]->lblCurrency ?>" 
+                                   onkeypress="return isNumber(event)" ng-model="advancedParams.priceLow"/>
+                        </div>
+                        <label for="txt_price_high">&nbsp;&nbsp;<?php echo $language[$view->view]->lblPriceHigh ?> </label>
+                        <div class='border-right div-inline'>
+                            <input type='text'  id="txt_price_high" placeholder="<?php echo $language[$view->view]->lblCurrency ?>" 
+                                   onkeypress="return isNumber(event)" ng-model="advancedParams.priceHigh"/>
+                        </div>
+                        &nbsp;&nbsp;
+                        <input type="button" value="<?php echo $language[$view->view]->lblFilter ?>" ng-click="getProducts(true)"/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

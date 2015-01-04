@@ -55,7 +55,7 @@ class CategoryModel extends BaseModel
         return CategoryMapper::make()->filterParent(NULL)->setLanguage($language)->findAll();
     }
 
-    function getProductByCategory($category, $offset, $sort = null)
+    function getProductByCategory($category, $offset, $sort, $priceLow, $priceHigh)
     {
         $limit = $offset ? 10 : 20;
         $user = User::getCurrentUser();
@@ -86,7 +86,7 @@ class CategoryModel extends BaseModel
                 $mapper->orderBy('p.sales_percent DESc');
                 break;
         }
-
+        $mapper->filterPrice($priceLow, $priceHigh);
         $products = $mapper->findAll(function($record, ProductFixedDomain $instance)
         {
             $instance->seller_name = $record['seller_name'];
@@ -94,7 +94,7 @@ class CategoryModel extends BaseModel
         return $products;
     }
 
-    function getBestProduct($category, $offset, $sort = null)
+    function getBestProduct($category, $offset, $sort, $priceLow, $priceHigh)
     {
         $limit = $offset ? 10 : 20;
         $cateID = (int) $category->id;
@@ -124,8 +124,17 @@ class CategoryModel extends BaseModel
                 $sqlNormalProduct .= ' ORDER BY p.sales_percent DESC';
                 break;
         }
+        if ($priceLow)
+        {
+            $sqlBest .= " AND p.price >= " . doubleval($priceLow);
+            $sqlNormalProduct .= " AND p.price >= " . doubleval($priceLow);
+        }
+        if ($priceHigh)
+        {
+            $sqlBest .= " AND p.price <= " . doubleval($priceHigh);
+            $sqlNormalProduct .= " AND p.price <= " . doubleval($priceHigh);
+        }
         $sqlTemp = $sort ? $sqlNormalProduct : "$sqlBest UNION $sqlNormalProduct";
-
 
         $query = Query::make()
                 ->select('p.*,(SELECT SUM(count_view) FROM t_product_view WHERE fk_product=p.id) AS count_view, seller.name AS seller_name ', true)

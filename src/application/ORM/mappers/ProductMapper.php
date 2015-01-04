@@ -28,6 +28,21 @@ class ProductMapper extends MapperAbstract
         parent::__construct($domain, $query, $map);
     }
 
+    function filterPrice($low = null, $high = null)
+    {
+        if ($low)
+        {
+            $this->_query->where('p.price >= ?', 'pricelow');
+            $this->_queryParams['pricelow'] = $low;
+        }
+        if ($high)
+        {
+            $this->_query->where('p.price <= ?', 'pricehigh');
+            $this->_queryParams['pricehigh'] = $high;
+        }
+        return $this;
+    }
+
     function filterID($id)
     {
         $this->_query->where('p.id=?', __METHOD__);

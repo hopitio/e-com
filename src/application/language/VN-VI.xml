@@ -449,6 +449,13 @@
         <lblSortSaleoff>Giảm giá mạnh</lblSortSaleoff>
         <lblSortHot>Sản phẩm hot</lblSortHot>
         <lblSortLike>Sản phẩm yêu thích</lblSortLike>
+        <lblAvdvancedFilter>Bộ lọc nâng cao</lblAvdvancedFilter>
+        <lblFilterPrice>Khoảng giá</lblFilterPrice>
+        <lblFilterHeader>Lọc sản phẩm</lblFilterHeader>
+        <lblPriceLow>Thấp nhất</lblPriceLow>
+        <lblPriceHigh>Cao nhất</lblPriceHigh>
+        <lblCurrency>VND</lblCurrency>
+        <lblFilter>Lọc</lblFilter>
     </category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
