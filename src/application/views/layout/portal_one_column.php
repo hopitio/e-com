@@ -55,16 +55,22 @@
                 </div>
             </div>
             <div class="user-pannel text-left">
-                 <img class="cursor-pointer" src="/images/Live-chat-icon.fw.png" onclick="$zopim.livechat.window.toggle();" alt="Sfriendly live support"/>
+                <img class="cursor-pointer" src="/images/Live-chat-icon.fw.png" onclick="$zopim.livechat.window.toggle();" alt="Sfriendly live support"/>
                 <ul class="flag cursor-pointer">
                     <?php $active = User::getCurrentUser()->languageKey == 'EN-US' ? 'active' : '' ?>
-                    <li class="us <?php echo $active ?>"><a href="javascript:;" title="English" ng-click="changeLanguage('EN-US')"></a></li>
+                    <li class="us <?php echo $active ?>">
+                        <a href="<?php echo Common::current_url_language('EN-US') ?>" title="English"></a>
+                    </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'KO-KR' ? 'active' : '' ?>
-                    <li class="kr <?php echo $active ?>"><a href="javascript:;" title="Korean" ng-click="changeLanguage('KO-KR')"></a></li>
+                    <li class="kr <?php echo $active ?>">
+                        <a href="<?php echo Common::current_url_language('KO-KR') ?>" title="Korean" ></a>
+                    </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'VN-VI' ? 'active' : '' ?>
-                    <li class="vn <?php echo $active ?>"><a href="javascript:;" title="Tiếng Việt" ng-click="changeLanguage('VN-VI')"></a></li>
+                    <li class="vn <?php echo $active ?>">
+                        <a href="<?php echo Common::current_url_language('VN-VI') ?>" title="Tiếng Việt"></a>
+                    </li>
                 </ul>
                 <div class="cart cursor-pointer">
                     <span class="cart-num text-center">0</span>

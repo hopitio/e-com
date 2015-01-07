@@ -48,6 +48,7 @@
     color:#fd782f;
     text-decoration: underline;
     line-height: 40px;
+    white-space: nowrap;
 }
 #box_advanced_filter{
     width: 100%;

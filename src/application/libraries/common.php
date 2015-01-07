@@ -89,4 +89,38 @@ class Common
         return (isset($arr[$key]) ? $arr[$key] : $default);
     }
 
+    static function current_url_language($new_language)
+    {
+        $uri = explode('/', trim($_SERVER['REQUEST_URI'], "\/\\"));
+        $arr_lang = array(
+            'EN-US' => 'en',
+            'VN-VI' => 'vi',
+            'KO-KR' => 'kr'
+        );
+        if (!$uri[0])
+        {
+            $uri[0] = $arr_lang[$new_language];
+        }
+        else if (in_array($uri[0], array('en', 'vi', 'kr')))
+        {
+            $uri[0] = $arr_lang[$new_language];
+        }
+        else
+        {
+            array_unshift($uri, $arr_lang[$new_language]);
+        }
+
+        return '/' . implode('/', $uri);
+    }
+
+    static function language_url($uri)
+    {
+        $arr_lang = array(
+            'EN-US' => 'en',
+            'VN-VI' => 'vi',
+            'KO-KR' => 'kr'
+        );
+        return '/' . $arr_lang[User::getCurrentUser()->languageKey] . '/' . trim($uri, "\\\/");
+    }
+
 }

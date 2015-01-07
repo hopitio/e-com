@@ -133,24 +133,6 @@ angular.module('lynx').controller('LayoutCtrl', ['$scope', '$http', 'cartService
 
         });
 
-        $scope.changeLanguage = function (languageKey) {
-            commonServiceClient = new CommonServiceClient($http);
-            commonServiceClient.updateLanguage(languageKey, updateLanguageSucessCallback, updateLanguageErrorCallback);
-        };
-
-        function updateLanguageSucessCallback(result)
-        {
-            if (result.isError) {
-
-            } else {
-                location.reload();
-            }
-        }
-
-        function updateLanguageErrorCallback(xhr, status) {
-
-        }
-
         $scope.removeFromCart = function (productID) {
             cartService.removeProduct(productID);
         };

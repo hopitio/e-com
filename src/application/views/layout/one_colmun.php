@@ -30,19 +30,19 @@
     <body>
         <div class="head-tool-box text-center">
             <div class="conatiner width-960 text-right">
-                <a href="/seller/product"><?php echo $language['layout']->lblSellerOffice ?></a>|
-                <a href="/portal/account/order_history"><?php echo $language['layout']->lblMyOrder ?></a>|
+                <a href="<?php echo Common::language_url("/seller/product") ?>"><?php echo $language['layout']->lblSellerOffice ?></a>|
+                <a href="<?php echo Common::language_url("/portal/account/order_history") ?>"><?php echo $language['layout']->lblMyOrder ?></a>|
                 <?php if (User::getCurrentUser()->is_authorized): ?>
-                    <a href="/portal/account/user_information"><?php echo User::getCurrentUser()->getFullname() ?></a>|
+                    <a href="<?php echo Common::language_url("/portal/account/user_information") ?>"><?php echo User::getCurrentUser()->getFullname() ?></a>|
                     <a href="/logout"><?php echo $language['layout']->lblUserLogout ?></a>
                 <?php else: ?>
                     <a href="<?php echo User::getCurrentUser()->getLoginAuthenUrl() ?>"><?php echo $language['layout']->lblUserStatusNotSign ?></a>|
-                    <a href="/portal/login" class="last"><?php echo $language['layout']->lblRegister ?></a>
+                    <a href="<?php echo Common::language_url("/portal/login") ?>" class="last"><?php echo $language['layout']->lblRegister ?></a>
                 <?php endif; ?>
             </div>
         </div>
         <div class="head-box width-960">
-            <a class="logo" href="/" title="sfriendly mall"><img src="/images/Logo-head.fw.png" alt="sfriendly mall"/></a>
+            <a class="logo" href="<?php echo Common::language_url("/") ?>" title="sfriendly mall"><img src="/images/Logo-head.fw.png" alt="sfriendly mall"/></a>
             <form class="search-container" action="/search/showPage" id="frm-search">
                 <div class="search text-left">
                     <input type="text" name="kw" placeholder="Ex. Gift..." />
@@ -61,21 +61,21 @@
                 <ul class="flag cursor-pointer">
                     <?php $active = User::getCurrentUser()->languageKey == 'EN-US' ? 'active' : '' ?>
                     <li class="us <?php echo $active ?>">
-                        <a href="javascript:;" title="English" ng-click="changeLanguage('EN-US')"></a>
+                        <a href="<?php echo Common::current_url_language('EN-US') ?>" title="English"></a>
                     </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'KO-KR' ? 'active' : '' ?>
                     <li class="kr <?php echo $active ?>">
-                        <a href="javascript:;" title="Korean" ng-click="changeLanguage('KO-KR')"></a>
+                        <a href="<?php echo Common::current_url_language('KO-KR') ?>" title="Korean" ></a>
                     </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'VN-VI' ? 'active' : '' ?>
                     <li class="vn <?php echo $active ?>">
-                        <a href="javascript:;" title="Tiếng Việt" ng-click="changeLanguage('VN-VI')"></a>
+                        <a href="<?php echo Common::current_url_language('VN-VI') ?>" title="Tiếng Việt"></a>
                     </li>
 
                 </ul>
-                <a href="/cart/showCart" title="<?php echo $language['layout']->lblYourCart ?>">
+                <a href="<?php echo Common::language_url("/cart/showCart") ?>" title="<?php echo $language['layout']->lblYourCart ?>">
                     <div class="cart cursor-pointer">
                         <span class="cart-num text-center">{{countCartProducts()}}</span>
                     </div>
@@ -112,7 +112,7 @@
                                         $class = $currentRow == $lastRow ? 'last-row' : '';
                                         ?>
                                         <li id="menu-<?php echo $childCate->codename ?>">
-                                            <a href="/category/show/<?php echo $childCate->id ?>"  class="<?php echo $class ?>">
+                                            <a href="<?php echo Common::language_url("/category/show/{$childCate->id}") ?>"  class="<?php echo $class ?>">
                                                 <span><?php echo $childCate->name ?></span>
                                             </a>
                                         </li>
@@ -120,17 +120,17 @@
                                 </ul>
                             </div>
                         <?php endif; ?>
-                        <a href="/category/show/<?php echo $parentCate->id ?>">
+                        <a href="<?php echo Common::language_url("/category/show/{$parentCate->id}") ?>">
                             <?php echo $parentCate->name ?>
                         </a>
                     </li>
 
                 <?php endforeach; ?>
                 <li class=" <?php echo User::getCurrentUser()->languageKey ?>" id="menu-vietnam">
-                    <a href="/search/showPage?tag=madeinvietnam"><?php echo $language['layout']->lblMadeinVietnam ?></a>
+                    <a href="<?php echo Common::language_url("/search/showPage?tag=madeinvietnam") ?>"><?php echo $language['layout']->lblMadeinVietnam ?></a>
                 </li>
                 <li class="last <?php echo User::getCurrentUser()->languageKey ?>" id="menu-hot">
-                    <a href="/search/showPage?tag=hot"><?php echo $language['layout']->lblHot ?></a>
+                    <a href="<?php echo Common::language_url("/search/showPage?tag=hot") ?>"><?php echo $language['layout']->lblHot ?></a>
                 </li>
             </ul>
             <div>
@@ -225,7 +225,7 @@
                     <div class="footer-col-3">
                         <a class="footer-icon icon-dollar" href="javascript:;" title="Selling with Sfriendly"><?php echo $language['layout']->lblSellingGuide ?></a>
                         <div class="seperator"></div>
-                        <a class="footer-icon icon-best" href="/portal/login/registerSellerAccount" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
+                        <a class="footer-icon icon-best" href="<?php echo Common::language_url("/portal/login/registerSellerAccount") ?>" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
                         <div class="seperator"></div>
                         <a class="footer-icon icon-product" href="javascript:;" title="Publish Product"><?php echo $language['layout']->lblPublishProduct ?></a>
                     </div>
@@ -242,11 +242,11 @@
                         <div class="footer-link">
                             <a href="javascript:;">Q & A</a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="/staticpage/quality_assurance"><?php echo $language['layout']->lblQualityAssurance ?></a>
+                            <a href="<?php echo Common::language_url("/staticpage/quality_assurance") ?>"><?php echo $language['layout']->lblQualityAssurance ?></a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="/staticpage/terms_n_conditions"><?php echo $language['layout']->lblTermsOfUse ?></a>
+                            <a href="<?php echo Common::language_url("/staticpage/terms_n_conditions") ?>"><?php echo $language['layout']->lblTermsOfUse ?></a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="/staticpage/privacy_policy"><?php echo $language['layout']->lblPrivacyPolicy ?></a>
+                            <a href="<?php echo Common::language_url("/staticpage/privacy_policy") ?>"><?php echo $language['layout']->lblPrivacyPolicy ?></a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
                             <a href="javascript:;"><?php echo $language['layout']->lblAboutUs ?></a>
                         </div>
@@ -275,12 +275,12 @@
         </div><!--footer-->
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-                    }
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+            }
         </script>
 
 
@@ -314,11 +314,11 @@
         <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                    }
-                    $.browser = {};
-                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+            }
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt
@@ -329,40 +329,40 @@
         ?>
         <!--Start of Zopim Live Chat Script-->
         <script type="text/javascript">
-                    window.$user = <?php echo json_encode(User::getCurrentUserForJson()) ?>;
+            window.$user = <?php echo json_encode(User::getCurrentUserForJson()) ?>;
 
-                    window.$zopim || (function (d, s) {
-                        var z = $zopim = function (c) {
-                            z._.push(c);
-                        }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
-                        z.set = function (o) {
-                            z.set._.push(o);
-                        };
-                        z._ = [];
-                        z.set._ = [];
-                        $.async = !0;
-                        $.setAttribute('charset', 'utf-8');
-                        $.src = '//v2.zopim.com/?2h1mxYTKoeMFbOGXiqEH5ioYtTa4t5MT';
-                        z.t = +new Date;
-                        $.type = 'text/javascript';
-                        e.parentNode.insertBefore($, e);
-                    })(document, 'script');
+            window.$zopim || (function (d, s) {
+                var z = $zopim = function (c) {
+                    z._.push(c);
+                }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+                z.set = function (o) {
+                    z.set._.push(o);
+                };
+                z._ = [];
+                z.set._ = [];
+                $.async = !0;
+                $.setAttribute('charset', 'utf-8');
+                $.src = '//v2.zopim.com/?2h1mxYTKoeMFbOGXiqEH5ioYtTa4t5MT';
+                z.t = +new Date;
+                $.type = 'text/javascript';
+                e.parentNode.insertBefore($, e);
+            })(document, 'script');
 
-                    $zopim(function () {
-                        if (!$user.is_authorized) {
-                            return;
-                        }
-                        if ($user.fullname)
-                            $zopim.livechat.setName($user.fullname);
-                        if ($user.account)
-                            $zopim.livechat.setEmail($user.account);
-                        if ($user.languageKey === 'KO-KR')
-                            zopim.livechat.setLanguage('ko');
-                        if ($user.languageKey === 'EN-US')
-                            zopim.livechat.setLanguage('en');
-                        if ($user.languageKey === 'VN-VI')
-                            zopim.livechat.setLanguage('vi');
-                    });
+            $zopim(function () {
+                if (!$user.is_authorized) {
+                    return;
+                }
+                if ($user.fullname)
+                    $zopim.livechat.setName($user.fullname);
+                if ($user.account)
+                    $zopim.livechat.setEmail($user.account);
+                if ($user.languageKey === 'KO-KR')
+                    zopim.livechat.setLanguage('ko');
+                if ($user.languageKey === 'EN-US')
+                    zopim.livechat.setLanguage('en');
+                if ($user.languageKey === 'VN-VI')
+                    zopim.livechat.setLanguage('vi');
+            });
         </script>
         <!--End of Zopim Live Chat Script-->
     </body>
