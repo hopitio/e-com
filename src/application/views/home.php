@@ -84,7 +84,7 @@ defined('BASEPATH') or die('No direct script access allowed');
         <div ng-cloak ng-repeat="group in featureGroups" ng-show="selectedGroupIndex == $index" class="group-{{group.codename}} <?php echo User::getCurrentUser()->languageKey ?>">
             <div class="lynx-row row-{{$index + 1}}" style="display:block;" ng-repeat="items in group.details">
                 <div ng-if="item.id" class="lynx-box lynx-box-small" ng-product-small="item" ng-repeat-start="item in items"><!--product--></div>
-                <a ng-if="item.imgSrc" href="{{item.imgUrl}}" title="{{item.imgTitle}}" class="lynx-adv-img feature-img-{{$index}}" ng-repeat-end>
+                <a ng-if="item.imgSrc" ng-href="{{item.imgUrl}}" title="{{item.imgTitle}}" class="lynx-adv-img feature-img-{{$index}}" ng-repeat-end>
                     <img class="adv-img-box" ng-src="{{item.imgSrc}}" alt="{{item.imgTitle}}"/>
                 </a>
             </div>

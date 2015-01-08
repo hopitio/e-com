@@ -22,12 +22,12 @@ if (!defined('BASEPATH'))
                 </tr>
                 <tr ng-repeat="product in products" ng-class-even="'even'" ng-class-odd="'odd'">
                     <td class="center">
-                        <a href="{{product.url}}" title="product thumbnail">
+                        <a ng-href="{{product.url}}" title="product thumbnail">
                             <img class="product-thumbnail" src="/thumbnail.php/{{product.thumbnail}}/w=200" alt="product thumbnail">
                         </a>
                     </td>
                     <td class="left">
-                        <a href="{{product.url}}" class="p-name">{{product.name}}</a><br>
+                        <a ng-href="{{product.url}}" class="p-name">{{product.name}}</a><br>
                         <span class="product-seller">{{product.sellerName}}</span><br>
                         <span class="green" ng-if="product.stock > 10"><?php echo $language[$view->view]->lblInstock; ?></span>
                         <span class="red" ng-if="product.stock <= 10 && product.stock > 0"><?php echo $language[$view->view]->lblInstockQty; ?></span>
