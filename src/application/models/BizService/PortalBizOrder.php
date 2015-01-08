@@ -199,6 +199,9 @@ class PortalBizOrder extends PortalBizBase
         $repositoryUser->id = $order->fk_user;
         $user = $repositoryUser->getOneById();
         $order->user = $user;
+        
+        //echo "<pre/>"; var_dump($order);die;
+        
         $mailData = array();
         $mailData['order'] = $order;
         MailManager::initalAndSend($mailType, $user->account, $mailData);

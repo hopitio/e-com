@@ -86,7 +86,7 @@ class MailManager {
         $mail = new MailManager();
         if($target == null || !isset($target)){
             //$mailData = var_export($mailData,true);
-            throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__." Không có địa chỉ nhận mail :{$type},{$mailData}");
+            throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__." Không có địa chỉ nhận mail :{$type}");
         }
         
         $mail->requestSendMail($type, $target, $mailData);

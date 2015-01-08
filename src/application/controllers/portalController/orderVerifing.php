@@ -150,6 +150,12 @@ class orderVerifing extends BasePortalController
             ->render('portalPayment/orderEmailVerify');
             
         }else{
+            
+            $orderRespository = new PortalModelOrder();
+            $orderRespository->fk_user = $user->id;
+            $orderRespository->id = $orderId;
+            $orderRespository->updateById();
+            
             $this->obj_user = $user;
             $this->obj_user->is_authorized = true;
             $this->obj_user->portal_id = $user->id;
@@ -162,6 +168,7 @@ class orderVerifing extends BasePortalController
     
     function mergeEmail()
     {
+        
         $orderId = $this->input->post('orderId');
         $invoiceId = $this->input->post('invoiceId');
         $isHave = $this->input->post("rbx-haveAccount");
@@ -171,7 +178,6 @@ class orderVerifing extends BasePortalController
             $this->loginAndThen();
             return;
         }
-        
         $email = $this->input->post('email');
         $userRespository = new PortalModelUser();
         $userRespository->account = $email;

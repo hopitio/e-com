@@ -451,32 +451,73 @@
     <portalPayment_paymentChoice>
         <title>Choosing a payment method</title>
         <fieldsetTitle>Choose payment</fieldsetTitle>
-        <paymentByNL>For electronic payments under</paymentByNL>
-        <paymentByCash>Payment in cash</paymentByCash>
-        <paymentByVisa>Payment by Visa / Master</paymentByVisa>
-        <paymentByATM>Payment by ATM</paymentByATM>
+        <paymentByNL>Pay with E-Wallet NganLuong</paymentByNL>
+        <paymentByCash>Cash on delivery (C.O.D)</paymentByCash>
+        <paymentByVisa>Pay with by Visa / Master card</paymentByVisa>
+        <paymentByATM>Pay with ATM card</paymentByATM>
         <paymentByTRANSFER>Transfer payments</paymentByTRANSFER>
-        <paymentNLNoteTitle>You will be paid by such Ngan Luong :</paymentNLNoteTitle>
-        <paymentCashNoteTitle>You will pay with cash on delivery at home :</paymentCashNoteTitle>
-        <paymentVisaNoteTitle>You will pay with Visa / Master :</paymentVisaNoteTitle>
-        <paymentATMNoteTitle>You will pay online with your ATM / bank account domestic :</paymentATMNoteTitle>
-        <paymentTRANSFERNoteTitle>You will be paid by bank transfer :</paymentTRANSFERNoteTitle>
-        <paymentNLNoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 You need to register bank accounts amount <br /> <br />]]></paymentNLNoteContent>
-        <paymentCashNoteContent><![CDATA[<br/>Note:<br/>1. Please check the information on the right hand side summary:<br/>- Order fulfillment fee<br/>- Shipping fee (if any)<br/>2. Sfriendly will call you before delivery<br/>3. Pay and sign when the order gets delivered<br/><br/>]]></paymentCashNoteContent>
-        <paymentVISANoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 Just accept Visa / Master by domestic banks released <br /> <br />]]></paymentVISANoteContent>
-        <paymentATMNoteContent><![CDATA[<br /> Note: <br /> 1 Please check the information on the right hand side orders: <br /> - order fulfillment fee <br /> - delivery fee (if any) <br /> 2 You need to register or Internet-banking services online payment at the bank implementation <br /> <br /> Bank transaction:]]></paymentATMNoteContent>
-        <paymentTRANSFERNoteContent><![CDATA[<br /> Note : <br /> 1. Please check the information on the right hand side orders:<br /> - Fee for order fulfillment<br /> - Delivery fee ( if applicable )<br />]]></paymentTRANSFERNoteContent>
-        <paymentInoivceNote><![CDATA[<br /> Note: Invoices for products sold by merchants member will be made ​​in 7 days of delivery success. <br /> <br />]]></paymentInoivceNote>
-        <paymentNoficationNote>You will be informed about the order status via email and SMS.</paymentNoficationNote>
+        <paymentNLNoteTitle>Pay your order by using E-wallet NganLuong :</paymentNLNoteTitle>
+        <paymentCashNoteTitle>Pay your order by using Cash on delivery (C.O.D) :</paymentCashNoteTitle>
+        <paymentVisaNoteTitle>Pay your order by using Visa / Master card :</paymentVisaNoteTitle>
+        <paymentATMNoteTitle>Pay your order by using ATM card :</paymentATMNoteTitle>
+        <paymentTRANSFERNoteTitle>Pay your order by using Transfer payments :</paymentTRANSFERNoteTitle>
+        
+        <paymentNLNoteContent>
+	        <![CDATA[
+	        <br /> Note: 
+            <br /> 1 Please check the information on the right hand side summary: 
+            <br /> - order fulfillment fee 
+            <br /> - shipping fee (if any) 
+            <br /> 2 You can choose to register E-Wallet NganLuong account. 
+            <br /> 
+            <br />]]></paymentNLNoteContent>
+        <paymentCashNoteContent>
+            <![CDATA[
+            <br/>Note:
+            <br/>1. Please check the information on the right hand side summary:
+            <br/>- Order fulfillment fee
+            <br/>- shipping fee (if any)
+            <br/>2. Sfriendly will call you before delivery
+            <br/>3. Pay and sign when the order gets delivere
+            <br/>
+            <br/>]]></paymentCashNoteContent>
+        <paymentVISANoteContent>
+            <![CDATA[
+            <br /> Note: 
+            <br /> 1 Please check the information on the right hand side summary: 
+            <br /> - order fulfillment fee 
+            <br /> - shipping fee (if any) 
+            <br /> 2 Just accept Visa / Master by domestic banks released 
+            <br /> <br />]]></paymentVISANoteContent>
+        <paymentATMNoteContent>
+            <![CDATA[
+            <br /> Note: 
+            <br /> 1 Please check the information on the right hand side summary: 
+            <br /> - order fulfillment fee 
+            <br /> - shipping fee (if any) 
+            <br /> 2 You need to register Internet-banking or online payment services at the your bank
+            <br /> 
+            <br /> Choose your bank:]]></paymentATMNoteContent>
+        <paymentTRANSFERNoteContent>
+            <![CDATA[
+            <br /> Note : 
+            <br /> 1. Please check the information on the right hand side summary:
+            <br /> - Fee for order fulfillment
+            <br /> - shipping fee ( if applicable )
+            <br />]]></paymentTRANSFERNoteContent>
+        <paymentInoivceNote><![CDATA[]]></paymentInoivceNote>
+        <paymentNoficationNote>You will be informed about the order status via email or SMS.</paymentNoficationNote>
         <paymentSecurity>Information and personal accounts will be encrypted to ensure absolute safety</paymentSecurity>
         <paymentSupport><![CDATA[Do you need assistance? Call Hotline <span style = "color: red;"> 098 999 999 </ span> or <span style = "color: red;"> 043. 999.999 </ span>]]></paymentSupport>
         <paymentProductionCount><![CDATA[You have <span class="number"> {{orderInformation.invoice.products.length}} </span> products in cart<br />]]></paymentProductionCount>
+        
+        
         <colProduction>Product</colProduction>
         <colPrice>Price</colPrice>
         <colQuantity>Quantity</colQuantity>
         <colTotal>Total</colTotal>
         <shippingTo>Shipping to</shippingTo>
-        <lblOrderSummaries>Synthesis orders</lblOrderSummaries>
+        <lblOrderSummaries>Summary</lblOrderSummaries>
         <lblOrderId>Order Id : </lblOrderId>
         <lblInvoiceId>Invoice : </lblInvoiceId>
         <lblCreateDate>Created at : </lblCreateDate>
@@ -500,9 +541,20 @@
     </portalPayment_paymentChoice>
     <portalPayment_orderReview></portalPayment_orderReview>
     <portalPayment_paymentSuccess>
-        <title>Successful transactions</title>
-        <lblNotify>Successful transactions</lblNotify>
-        <lblSucessMsg>You've successfully payment please mail check. {br} sales staff will contact you as soon as the.</lblSucessMsg>
+        <title>You have ordered succesfully</title>
+        <lblNotify>You have ordered succesfully</lblNotify>
+        <lblSucessMsg>
+            <![CDATA[
+                You will receive an email shortly. Our sales representatives will contact you before delivering your order.
+                <br/>
+                To review your order again, please click <a href="/portal/order/checking"> here </a>
+                <br/>
+                <br/>
+                Thank you for shopping with Sfriendly.com !
+            ]]>
+            
+            
+        </lblSucessMsg>
         <lblFaileMsg>Payment failure, please check the information.</lblFaileMsg>
     </portalPayment_paymentSuccess>
     
@@ -943,4 +995,13 @@
         ]]>
         </content>
     </static_shipping_policy>
+    <portalOrder_orderChecking>
+        <title>Kiểm tra đơn hàng</title>
+    </portalOrder_orderChecking>
+    <portalOrder_ShippingFromUSA>
+        <title>Nhờ đặt hàng từ Mỹ</title>
+    </portalOrder_ShippingFromUSA>
+    <portalOrder_ShippingFromUSADone>
+        <title>Nhờ đặt hàng từ Mỹ</title>
+    </portalOrder_ShippingFromUSADone>
 </data>

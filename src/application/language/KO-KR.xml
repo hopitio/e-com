@@ -689,4 +689,13 @@
         ]]>
         </content>
     </static_shipping_policy>
+    <portalOrder_orderChecking>
+        <title>Kiểm tra đơn hàng</title>
+    </portalOrder_orderChecking>
+    <portalOrder_ShippingFromUSA>
+        <title>Nhờ đặt hàng từ Mỹ</title>
+    </portalOrder_ShippingFromUSA>
+    <portalOrder_ShippingFromUSADone>
+        <title>Nhờ đặt hàng từ Mỹ</title>
+    </portalOrder_ShippingFromUSADone>
 </data>
