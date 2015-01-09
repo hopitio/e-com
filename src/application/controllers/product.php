@@ -101,7 +101,7 @@ class product extends BaseController
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getPriceMoney(User::getCurrentUser()->getCurrency()));
-            $obj['url'] = base_url('product/details') . '/' . $product->id;
+            $obj['url'] = Common::language_url('product/details') . '/' . $product->id;
             $obj['priceOrigin'] = (string) $product->getPriceOrigin(User::getCurrentUser()->getCurrency());
             $json[] = $obj;
         }

@@ -23,7 +23,7 @@ class category extends BaseController
         $json = array();
         foreach ($categories as $cate)
         {
-            $cate->url = base_url('category/show/' . $cate->id);
+            $cate->url = Common::language_url('category/show/' . $cate->id);
             $json[] = $cate;
         }
         header('content-type: application/json');
@@ -86,7 +86,7 @@ class category extends BaseController
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
-            $obj['url'] = '/product/details/' . $product->id;
+            $obj['url'] = Common::language_url('/product/details/' . $product->id);
             $obj['isNew'] = $product->isNew();
             $obj['salesPercent'] = $product->getSalesPercent();
             $json[] = $obj;
