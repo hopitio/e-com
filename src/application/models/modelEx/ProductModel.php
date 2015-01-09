@@ -89,7 +89,18 @@ class ProductModel extends BaseModel
         {
             throw new Lynx_BusinessLogicException("Bạn cần nhập đủ các ngôn ngữ");
         }
-        DB::update('t_product', array('status' => 1), 'id=?', array($productID));
+
+        //generate friendly name from english
+        $name_in_english = DB::getInstance()->GetOne("SELECT value_varchar FROM t_product_attribute WHERE
+            fk_attribute_type = 1 AND `language`='EN-US' AND fk_product=$productID");
+        $friendly_name = strtolower($name_in_english);
+        //Strip any unwanted characters
+        $friendly_name = preg_replace("/[^a-z0-9_\s-]/", "", $friendly_name);
+        //Clean multiple dashes or whitespaces
+        $friendly_name = preg_replace("/[\s-]+/", " ", $friendly_name);
+        //Convert whitespaces and underscore to dash
+        $friendly_name = preg_replace("/[\s_]/", "-", $friendly_name);
+        DB::update('t_product', array('status' => 1, 'friendly_name' => $friendly_name), 'id=?', array($productID));
         DB::update('t_product', array('date_created' => DB::getDate()), 'id=? AND date_created IS NULL', array($productID));
     }
 

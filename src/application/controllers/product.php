@@ -15,6 +15,17 @@ class product extends BaseController
         $this->load->model('modelEx/ProductModel', 'productModel');
     }
 
+    function __call($productID, $args)
+    {
+        $this->details($productID);
+    }
+
+    protected function extractSlugFromURL()
+    {
+        $uri = explode('/', trim($_SERVER['REQUEST_URI'], "\/\\"));
+        return array_pop($uri);
+    }
+
     function details($productID)
     {
         //query product
@@ -25,6 +36,7 @@ class product extends BaseController
                 ->autoloadAttributes()
                 ->autoloadTaxes()
                 ->filterID($productID);
+
         $mapper->getQuery()->select('seller.name as seller_name, seller.logo AS seller_logo')->innerJoin('t_seller as seller', 'seller.id = p.fk_seller');
         $product = $mapper->find(function($rawData, $instance)
         {
@@ -35,6 +47,11 @@ class product extends BaseController
             $instance->seller_name = $rawData['seller_name'];
             $instance->seller_logo = $rawData['seller_logo'];
         });
+        if ($product->friendlyName != $this->extractSlugFromURL())
+        {
+            header('location:' . $product->getURL());
+            exit;
+        }
         $this->productModel->addtoViewList($productID);
         $user = User::getCurrentUser();
         //query ancestor cates
@@ -101,7 +118,7 @@ class product extends BaseController
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getPriceMoney(User::getCurrentUser()->getCurrency()));
-            $obj['url'] = Common::language_url('product/details') . '/' . $product->id;
+            $obj['url'] = $product->getURL();
             $obj['priceOrigin'] = (string) $product->getPriceOrigin(User::getCurrentUser()->getCurrency());
             $json[] = $obj;
         }

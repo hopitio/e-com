@@ -1,11 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<?php $title = !empty($language[$view->view]->title) ? $language[$view->view]->title : isset($view->title) ? $view->title : 'Sfriendly.com'; ?>
-<html ng-app="lynx" ng-controller="LayoutCtrl">
+<?php
+$title = !empty($language[$view->view]->title) ? $language[$view->view]->title : isset($view->title) ? $view->title : 'Sfriendly.com';
+$arr_meta_lang = array(
+    'VN-VI' => 'vi',
+    'EN-US' => 'en',
+    'KO-KR' => 'ko'
+);
+$meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
+?>
+<html ng-app="lynx" ng-controller="LayoutCtrl" lang='<?php echo $meta_lang_code ?>' xml:lang='<?php echo $meta_lang_code ?>' xmlns="http://www.w3.org/1999/xhtml">
     <head >
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1,user-scalabel=no' name='viewport'>
         <meta name="title" content="<?php echo $title ?>">
+        <meta http-equiv="Content-Language" content="<?php echo $meta_lang_code ?>">
 
         <title><?php echo $title ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
@@ -17,6 +26,12 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" >
         <link href='http://fonts.googleapis.com/css?family=Roboto:900&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
         <link href='/style/fix_chrome.css' rel='stylesheet' type='text/css'>
+
+        <!--lang-->
+        <link title="English" type="text/html" rel="alternate" hreflang="en" href="/en" lang="en" xml:lang="en" />
+        <link title="Tiếng Việt" type="text/html" rel="alternate" hreflang="vi" href="/vi" lang="vi" xml:lang="vi" />
+        <link title="Korean" type="text/html" rel="alternate" hreflang="ko" href="/kr" lang="ko" xml:lang="ko" />
+        
         <?php
         //Thêm các js riêng biệt
         foreach ($view->css as $item)
@@ -61,17 +76,17 @@
                 <ul class="flag cursor-pointer">
                     <?php $active = User::getCurrentUser()->languageKey == 'EN-US' ? 'active' : '' ?>
                     <li class="us <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('EN-US') ?>" title="English"></a>
+                        <a href="<?php echo Common::current_url_language('EN-US') ?>" title="English" lang="en"></a>
                     </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'KO-KR' ? 'active' : '' ?>
                     <li class="kr <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('KO-KR') ?>" title="Korean" ></a>
+                        <a href="<?php echo Common::current_url_language('KO-KR') ?>" title="Korean" lang="ko"></a>
                     </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'VN-VI' ? 'active' : '' ?>
                     <li class="vn <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('VN-VI') ?>" title="Tiếng Việt"></a>
+                        <a href="<?php echo Common::current_url_language('VN-VI') ?>" title="Tiếng Việt" lang="vi"></a>
                     </li>
 
                 </ul>
@@ -112,7 +127,7 @@
                                         $class = $currentRow == $lastRow ? 'last-row' : '';
                                         ?>
                                         <li id="menu-<?php echo $childCate->codename ?>">
-                                            <a href="<?php echo Common::language_url("/category/show/{$childCate->id}") ?>"  class="<?php echo $class ?>">
+                                            <a href="<?php echo $childCate->getURL() ?>"  class="<?php echo $class ?>">
                                                 <span><?php echo $childCate->name ?></span>
                                             </a>
                                         </li>
@@ -120,7 +135,7 @@
                                 </ul>
                             </div>
                         <?php endif; ?>
-                        <a href="<?php echo Common::language_url("/category/show/{$parentCate->id}") ?>">
+                            <a href="<?php echo $parentCate->getURL() ?>">
                             <?php echo $parentCate->name ?>
                         </a>
                     </li>
@@ -275,12 +290,12 @@
         </div><!--footer-->
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
-            }
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+                        this.language = '<?php echo User::getCurrentUser()->languageKey ?>';
+                    }
         </script>
 
 
@@ -314,11 +329,11 @@
         <script type='text/javascript' src="/js/jquery-validate-vn.js"></script>
 
         <script type="text/javascript">
-            function Config() {
-                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-            }
-            $.browser = {};
-            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+                    function Config() {
+                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                    }
+                    $.browser = {};
+                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
         <?php
         //Thêm các js riêng biệt
@@ -329,40 +344,40 @@
         ?>
         <!--Start of Zopim Live Chat Script-->
         <script type="text/javascript">
-            window.$user = <?php echo json_encode(User::getCurrentUserForJson()) ?>;
+                    window.$user = <?php echo json_encode(User::getCurrentUserForJson()) ?>;
 
-            window.$zopim || (function (d, s) {
-                var z = $zopim = function (c) {
-                    z._.push(c);
-                }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
-                z.set = function (o) {
-                    z.set._.push(o);
-                };
-                z._ = [];
-                z.set._ = [];
-                $.async = !0;
-                $.setAttribute('charset', 'utf-8');
-                $.src = '//v2.zopim.com/?2h1mxYTKoeMFbOGXiqEH5ioYtTa4t5MT';
-                z.t = +new Date;
-                $.type = 'text/javascript';
-                e.parentNode.insertBefore($, e);
-            })(document, 'script');
+                    window.$zopim || (function (d, s) {
+                        var z = $zopim = function (c) {
+                            z._.push(c);
+                        }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+                        z.set = function (o) {
+                            z.set._.push(o);
+                        };
+                        z._ = [];
+                        z.set._ = [];
+                        $.async = !0;
+                        $.setAttribute('charset', 'utf-8');
+                        $.src = '//v2.zopim.com/?2h1mxYTKoeMFbOGXiqEH5ioYtTa4t5MT';
+                        z.t = +new Date;
+                        $.type = 'text/javascript';
+                        e.parentNode.insertBefore($, e);
+                    })(document, 'script');
 
-            $zopim(function () {
-                if (!$user.is_authorized) {
-                    return;
-                }
-                if ($user.fullname)
-                    $zopim.livechat.setName($user.fullname);
-                if ($user.account)
-                    $zopim.livechat.setEmail($user.account);
-                if ($user.languageKey === 'KO-KR')
-                    zopim.livechat.setLanguage('ko');
-                if ($user.languageKey === 'EN-US')
-                    zopim.livechat.setLanguage('en');
-                if ($user.languageKey === 'VN-VI')
-                    zopim.livechat.setLanguage('vi');
-            });
+                    $zopim(function () {
+                        if (!$user.is_authorized) {
+                            return;
+                        }
+                        if ($user.fullname)
+                            $zopim.livechat.setName($user.fullname);
+                        if ($user.account)
+                            $zopim.livechat.setEmail($user.account);
+                        if ($user.languageKey === 'KO-KR')
+                            zopim.livechat.setLanguage('ko');
+                        if ($user.languageKey === 'EN-US')
+                            zopim.livechat.setLanguage('en');
+                        if ($user.languageKey === 'VN-VI')
+                            zopim.livechat.setLanguage('vi');
+                    });
         </script>
         <!--End of Zopim Live Chat Script-->
     </body>

@@ -36,7 +36,7 @@ class CategoryDomain implements DomainInterface
 
     function getURL()
     {
-        return Common::language_url('/category/show/' . $this->id);
+        return Common::language_url('/category/' . $this->codename);
     }
 
     function getLevel()

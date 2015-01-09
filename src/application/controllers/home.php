@@ -75,7 +75,7 @@ class home extends BaseController
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images[0]->url;
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
-            $obj['url'] = Common::language_url('product/details') . '/' . $product->id;
+            $obj['url'] = $product->getURL();
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
             $obj['best'] = $i++ < 2 ? $i : false;
             $obj['salesPercent'] = $product->getSalesPercent();
@@ -104,7 +104,7 @@ class home extends BaseController
                     $product->name = strval($product->getName());
                     $product->thumbnail = $images[0]->url;
                     $product->priceString = strval($product->getFinalPriceMoney($user->getCurrency()));
-                    $product->url = Common::language_url('product/details') . '/' . $product->id;
+                    $product->url = $product->getURL();
                     $product->priceOrigin = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
                     $product->isNew = $product->isNew();
                     $product->salesPercent = $product->getSalesPercent();
@@ -130,7 +130,7 @@ class home extends BaseController
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
-            $obj['url'] = Common::language_url('product/details') . '/' . $product->id;
+            $obj['url'] = $product->getURL();
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
             $obj['salesPercent'] = $product->getSalesPercent();
             $obj['isNew'] = $product->isNew();
@@ -152,7 +152,7 @@ class home extends BaseController
             $obj['name'] = strval($product->getName());
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
-            $obj['url'] = Common::language_url('product/details') . '/' . $product->id;
+            $obj['url'] = $product->getURL();
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
             $json[] = $obj;
         }

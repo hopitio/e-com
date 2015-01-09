@@ -22,7 +22,8 @@ class ProductMapper extends MapperAbstract
             'countPin'     => 'count_pin',
             'priceOrigin'  => 'price_origin',
             'releaseDate'  => 'release_date',
-            'salesPercent' => 'sales_percent'
+            'salesPercent' => 'sales_percent',
+            'friendlyName' => 'friendly_name'
         );
 
         parent::__construct($domain, $query, $map);
