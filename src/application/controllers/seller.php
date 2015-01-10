@@ -314,24 +314,24 @@ class seller extends BaseController
                 ->render('seller/add_product');
     }
 
-    function auto_update_friendly()
-    {
-        DB::getInstance()->debug = 1;
-        $arr = DB::getInstance()->GetAssoc("SELECT fk_product, value_varchar FROM t_product_attribute WHERE
-            fk_attribute_type = 1 AND `language`='EN-US'");
-
-        foreach ($arr as $k => $v)
-        {
-            $friendly_name = strtolower($v);
-            //Strip any unwanted characters
-            $friendly_name = preg_replace("/[^a-z0-9_\s-]/", "", $friendly_name);
-            //Clean multiple dashes or whitespaces
-            $friendly_name = preg_replace("/[\s-]+/", " ", $friendly_name);
-            //Convert whitespaces and underscore to dash
-            $friendly_name = preg_replace("/[\s_]/", "-", $friendly_name);
-
-            DB::update('t_product', array('friendly_name' => $friendly_name), 'id=?', array($k));
-        }
-    }
+//    function auto_update_friendly()
+//    {
+//        DB::getInstance()->debug = 1;
+//        $arr = DB::getInstance()->GetAssoc("SELECT fk_product, value_varchar FROM t_product_attribute WHERE
+//            fk_attribute_type = 1 AND `language`='EN-US'");
+//
+//        foreach ($arr as $k => $v)
+//        {
+//            $friendly_name = strtolower($v);
+//            //Strip any unwanted characters
+//            $friendly_name = preg_replace("/[^a-z0-9_\s-]/", "", $friendly_name);
+//            //Clean multiple dashes or whitespaces
+//            $friendly_name = preg_replace("/[\s-]+/", " ", $friendly_name);
+//            //Convert whitespaces and underscore to dash
+//            $friendly_name = preg_replace("/[\s_]/", "-", $friendly_name);
+//
+//            DB::update('t_product', array('friendly_name' => $friendly_name), 'id=?', array($k));
+//        }
+//    }
 
 }

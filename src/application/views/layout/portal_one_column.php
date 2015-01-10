@@ -26,9 +26,9 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
         <link rel="stylesheet" type="text/css" href="/style/headMenu.css" media="all">
 
         <!--lang-->
-        <link title="English" type="text/html" rel="alternate" hreflang="en" href="/en" lang="en" xml:lang="en" />
-        <link title="Tiếng Việt" type="text/html" rel="alternate" hreflang="vi" href="/vi" lang="vi" xml:lang="vi" />
-        <link title="Korean" type="text/html" rel="alternate" hreflang="ko" href="/kr" lang="ko" xml:lang="ko" />
+        <link title="English" type="text/html" rel="alternate" hreflang="en" href="http://www.sfriendly.com/en" lang="en" xml:lang="en" />
+        <link title="Tiếng Việt" type="text/html" rel="alternate" hreflang="vi" href="http://www.sfriendly.com/vi" lang="vi" xml:lang="vi" />
+        <link title="Korean" type="text/html" rel="alternate" hreflang="ko" href="http://www.sfriendly.com/kr" lang="ko" xml:lang="ko" />
 
         <link href='http://fonts.googleapis.com/css?family=Roboto:900&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
         <?php
@@ -74,17 +74,17 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                 <ul class="flag cursor-pointer">
                     <?php $active = User::getCurrentUser()->languageKey == 'EN-US' ? 'active' : '' ?>
                     <li class="us <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('EN-US') ?>" title="English" lang="en"></a>
+                        <a href="<?php echo Common::current_url_language('EN-US') ?>" title="English" lang="en" rel="alternate"></a>
                     </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'KO-KR' ? 'active' : '' ?>
                     <li class="kr <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('KO-KR') ?>" title="Korean" lang="ko"></a>
+                        <a href="<?php echo Common::current_url_language('KO-KR') ?>" title="Korean" lang="ko" rel="alternate"></a>
                     </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'VN-VI' ? 'active' : '' ?>
                     <li class="vn <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('VN-VI') ?>" title="Tiếng Việt" lang="vi"></a>
+                        <a href="<?php echo Common::current_url_language('VN-VI') ?>" title="Tiếng Việt" lang="vi" rel="alternate"></a>
                     </li>
                 </ul>
                 <div class="cart cursor-pointer">

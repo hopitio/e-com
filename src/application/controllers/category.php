@@ -63,6 +63,7 @@ class category extends BaseController
             header('location:' . $thisCate->getURL());
             exit;
         }
+        $data['firstLvlCate'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($activeCates[0])->find();
         $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($activeCates[0])->findAll();
 
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);

@@ -76,17 +76,17 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                 <ul class="flag cursor-pointer">
                     <?php $active = User::getCurrentUser()->languageKey == 'EN-US' ? 'active' : '' ?>
                     <li class="us <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('EN-US') ?>" title="English" lang="en"></a>
+                        <a href="<?php echo Common::current_url_language('EN-US') ?>" title="English" lang="en" rel="alternate"></a>
                     </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'KO-KR' ? 'active' : '' ?>
                     <li class="kr <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('KO-KR') ?>" title="Korean" lang="ko"></a>
+                        <a href="<?php echo Common::current_url_language('KO-KR') ?>" title="Korean" lang="ko" rel="alternate"></a>
                     </li>
 
                     <?php $active = User::getCurrentUser()->languageKey == 'VN-VI' ? 'active' : '' ?>
                     <li class="vn <?php echo $active ?>">
-                        <a href="<?php echo Common::current_url_language('VN-VI') ?>" title="Tiếng Việt" lang="vi"></a>
+                        <a href="<?php echo Common::current_url_language('VN-VI') ?>" title="Tiếng Việt" lang="vi" rel="alternate"></a>
                     </li>
 
                 </ul>
