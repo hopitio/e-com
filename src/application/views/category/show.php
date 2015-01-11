@@ -1,6 +1,7 @@
 <?php
 /* @var $secondLvlCates CategoryDomain */
 /* @var $thisCate CategoryDomain */
+/* @var $firstLvlCate CategoryDomain */
 ?>
 <div ng-controller="CategoryListCtrl">
     <div class="lynx-menu-lvl2-container width-960">
@@ -10,7 +11,7 @@
             $class .= isset($view->activeCates[1]) ? '' : ' active';
             ?>
             <li class='<?php echo $class ?>' id="menu-best">
-                <a href='/category/show/<?php echo $view->activeCates[0] ?>'>
+                <a href='<?php echo $firstLvlCate->getURL() ?>'>
                     <span class="menu-icon"></span><span class="menu-name">Best</span>
                 </a>
             </li>

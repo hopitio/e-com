@@ -11,6 +11,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
         $route['home'] = 'home/showHome';
+        $route['category'] = $route['home'];
+        $route['product'] = $route['home'];
+
         $route['logout'] = 'login/out';
         $route['sitemap'] = 'sitemap/showPage';
 
@@ -25,7 +28,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 
         $route['seller/order/search'] = "sellerOrder/showPage";
         $route['seller/invoice/(:num)'] = "sellerOrder/invocieDetail/$1";
-        
+
         $route['__admin/product'] = 'admin/product/main';
         $route['__admin/product/svc_all_products'] = 'admin/product/svc_all_products';
 
@@ -37,9 +40,9 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 
         $route['admin/product'] = 'admin/product/show_list';
         $route['admin/product/show_list'] = 'admin/product/show_list';
-			
+
         $route['__admin/advertisement'] = 'admin/advertisement/main';
-        
+
         $route['__admin/hot'] = 'admin/hot/main';
         $route['__admin/best'] = 'admin/best/main';
 

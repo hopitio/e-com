@@ -94,7 +94,7 @@ if ($product->id)
                         <?php endif; ?>
                         <?php if ($product->status == 1): ?>
                             <a href="javascript:;" class="btn" data-type="submit" data-action="/seller/update_product/deactivate"><i class="fa fa-check"></i> Ngừng bán</a>
-                            <a href="/product/details/<?php echo $product->id ?>" class="btn" target="_blank"><i class="fa fa-eye"></i> Xem thử</a>
+                            <a href="<?php echo $product->getURL() ?>" class="btn" target="_blank"><i class="fa fa-eye"></i> Xem thử</a>
                         <?php endif; ?>
                         <a href="/seller/duplicate_product/<?php echo $product->id ?>" class="btn"><i class="fa fa-copy"></i> Sao chép</a>
                     <?php endif; ?>
@@ -115,17 +115,17 @@ if ($product->id)
 </form>
 <br>
 <script>
-    $(function() {
+    $(function () {
         var tab = window.location.hash.replace('#/', '') || 'tab_general';
         $('a[href="#' + tab + '"]', $('.nav-tabs:first')).tab('show');
         $('#hdnTab').val(tab || 'tab_general');
-        $('a[data-toggle=tab]', $('.nav-tabs:first')).on('show.bs.tab', function() {
+        $('a[data-toggle=tab]', $('.nav-tabs:first')).on('show.bs.tab', function () {
             $('#hdnTab').val($(this).attr('href').replace('#', ''));
             window.location.hash = $(this).attr('href').replace('#', '#/');
         });
     });
-    $(function() {
-        $('[data-type=submit]').click(function() {
+    $(function () {
+        $('[data-type=submit]').click(function () {
             var $this = $(this);
             var $form = $this.parents('form:first');
             if ($this.attr('data-action') != '') {
@@ -133,14 +133,14 @@ if ($product->id)
             }
             $form.submit();
         });
-        $('[data-type=reset]').click(function() {
+        $('[data-type=reset]').click(function () {
             var $this = $(this);
             var $form = $this.parents('form:first');
             $form[0].reset();
         });
     });
-    $(function() {
-        $('#selLanguage').change(function() {
+    $(function () {
+        $('#selLanguage').change(function () {
             var url = '/seller/product_details/<?php echo $product->id ?>?language=' + $(this).val() + window.location.hash;
             window.location.href = url;
         });
@@ -157,7 +157,7 @@ if ($product->id)
 
         $('#frm-main').validate({
             ignore: ".ignore",
-            invalidHandler: function(event, validator) {
+            invalidHandler: function (event, validator) {
                 var $ul = $('.nav-tabs');
                 $ul.find('span.error').remove();
                 $ul.find('li').removeClass('error');

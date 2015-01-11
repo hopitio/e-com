@@ -19,6 +19,7 @@ class ProductDomain implements DomainInterface
     public $priceOrigin;
     public $releaseDate;
     public $salesPercent;
+    public $friendlyName;
     protected $saleOf;
     protected $_attributes = array();
 
@@ -154,6 +155,11 @@ class ProductDomain implements DomainInterface
             }
         }
         return $this->saleOf;
+    }
+
+    function getURL()
+    {
+        return Common::language_url('/product/' . $this->id . '/' . $this->friendlyName);
     }
 
 }

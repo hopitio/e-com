@@ -102,7 +102,7 @@ class cart extends BaseController
             $obj['thumbnail'] = (string) $images[0]->url;
             $obj['priceString'] = (string) $product->getFinalPriceMoney($user->getCurrency());
             $obj['stock'] = (double) strval($product->getQuantity());
-            $obj['url'] = '/product/details/' . $product->id;
+            $obj['url'] = $product->getURL();
             $obj['convertedWeight'] = $product->getConvertedWeight();
             if (strval($product->getQuantity()) < $product->quantity)
             {

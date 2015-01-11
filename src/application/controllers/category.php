@@ -14,6 +14,22 @@ class category extends BaseController
         $this->load->model('modelEx/CategoryModel', 'categoryModel');
     }
 
+    protected function extractSlugFromURL()
+    {
+        $uri = explode('/', trim($_SERVER['REQUEST_URI'], "\/\\"));
+        return array_pop($uri);
+    }
+
+    function __call($cate_code, $args)
+    {
+        $cate_id = DB::getInstance()->GetOne("SELECT id FROM t_category WHERE codename=?", array($cate_code));
+        if (!$cate_id)
+        {
+            throw new Lynx_RoutingException;
+        }
+        $this->show($cate_id);
+    }
+
     function categories_service($parent = NULL)
     {
         $categories = CategoryMapper::make()
@@ -23,7 +39,7 @@ class category extends BaseController
         $json = array();
         foreach ($categories as $cate)
         {
-            $cate->url = base_url('category/show/' . $cate->id);
+            $cate->url = Common::language_url('category/show/' . $cate->id);
             $json[] = $cate;
         }
         header('content-type: application/json');
@@ -42,6 +58,12 @@ class category extends BaseController
             $activeCates[] = $parentID;
         }
         $data['thisCate'] = $thisCate;
+        if ($thisCate->codename != $this->extractSlugFromURL())
+        {
+            header('location:' . $thisCate->getURL());
+            exit;
+        }
+        $data['firstLvlCate'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($activeCates[0])->find();
         $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($activeCates[0])->findAll();
 
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
@@ -86,7 +108,7 @@ class category extends BaseController
             $obj['thumbnail'] = $images ? strval($images[0]->url) : '';
             $obj['priceString'] = strval($product->getPriceMoney($user->getCurrency()));
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin()->convert(new Currency($user->getCurrency())) : '';
-            $obj['url'] = '/product/details/' . $product->id;
+            $obj['url'] = $product->getURL();
             $obj['isNew'] = $product->isNew();
             $obj['salesPercent'] = $product->getSalesPercent();
             $json[] = $obj;
