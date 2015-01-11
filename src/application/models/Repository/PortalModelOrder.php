@@ -26,7 +26,8 @@ class PortalModelOrder extends PortalModelBase
     }
     
     function getOrderWithCurrentStatus($ordersId){
-        $ordersCollection = implode(",", $ordersId);
+        $ordersCollection = count($ordersId) == 0 ? implode(",", array(0,0)) : implode(",", $ordersId);
+        
         $sql = 
         "SELECT	t_order.*,t_order_status.status
         FROM t_order INNER JOIN t_order_status ON t_order.id = t_order_status.fk_order
@@ -129,62 +130,66 @@ class PortalModelOrder extends PortalModelBase
                 AND   ('' = ? OR ? = (SELECT t_order_status.status FROM t_order_status 
                             WHERE user_order.id = t_order_status.fk_order
                             ORDER BY t_order_status.created_at DESC LIMIT 1))
-                AND   ('' = ? OR ? >= (SELECT t_order_status.updated_date FROM t_order_status 
+                AND   ((SELECT t_order_status.updated_date FROM t_order_status 
                             WHERE user_order.id = t_order_status.fk_order
-                            ORDER BY t_order_status.created_at DESC LIMIT 1) )
-                AND   ('' = ? OR ? <= (SELECT t_order_status.updated_date FROM t_order_status 
-                            WHERE user_order.id = t_order_status.fk_order
-                            ORDER BY t_order_status.created_at DESC LIMIT 1) )
+                            ORDER BY t_order_status.created_at DESC LIMIT 1)  BETWEEN ? AND ?)
                 AND   product.seller_id = ? 
                 ORDER BY user_order.created_at DESC
                 LIMIT ?,?";
+        
+        
         $productsId = is_array($productsId) && count($productsId) == 0 ? "" : $productsId;
         $productsId = is_array($productsId) ? implode(",",$productsId) : $productsId;
-        $startedAt = $startedAt == null ? "2000-01-01 00:00:00" : $startedAt;
-        $endedAt = $endedAt == null ? "2900-01-01 00:00:00" : $endedAt;
+        //$productsId = empty($productsId) ? implode(",", array(0)) : $productsId;
+        $startedAt = empty($startedAt) ? "2000-01-01 00:00:00" : $startedAt;
+        $endedAt = empty($endedAt) ? "2900-01-01 00:00:00" : $endedAt;
         $limit = intval($limit);
         $offset = intval($offset);
         $param = array (
                 $productsId,$productsId,
                 $orderStatus,$orderStatus, 
-                $endedAt,$endedAt,
-                $startedAt,$startedAt,
+                $startedAt,$endedAt,
                 $sellerId,
                 $offset,$limit
         );
+        //var_dump($param);die;
+        //var_dump($param);die;
         $query = $this->_dbPortal->query($sql,$param);
+        //var_dump($this->_dbPortal->last_query());die;
         return $query->result();
     }
     
     function getSearchSellerOrderCountAllResult($sellerId, $productsId, $orderStatus, $startedAt, $endedAt){
-        $sql = "SELECT DISTINCT user_order.id as 'id'
+        $sql = "SELECT DISTINCT user_order.id,  
+                    (SELECT t_order_status.status FROM t_order_status 
+                         WHERE user_order.id = t_order_status.fk_order
+                         ORDER BY t_order_status.created_at DESC LIMIT 1) AS 'status'
                 FROM t_order AS user_order
                     INNER JOIN t_invoice AS invoice ON user_order.id = invoice.fk_order
                     INNER JOIN t_invoice_product ON invoice.id = t_invoice_product.fk_invoice
                     INNER JOIN t_product AS product ON t_invoice_product.fk_product = product.id
                 WHERE ('' = ? OR product.sub_id IN (?))
-                AND   ('' = ? OR ? = (SELECT t_order_status.status FROM t_order_status
+                AND   ('' = ? OR ? = (SELECT t_order_status.status FROM t_order_status 
                             WHERE user_order.id = t_order_status.fk_order
                             ORDER BY t_order_status.created_at DESC LIMIT 1))
-                AND   ('' = ? OR ? >= (SELECT t_order_status.updated_date FROM t_order_status
+                AND   ((SELECT t_order_status.updated_date FROM t_order_status 
                             WHERE user_order.id = t_order_status.fk_order
-                            ORDER BY t_order_status.created_at DESC LIMIT 1) )
-                AND   ('' = ? OR ? <= (SELECT t_order_status.updated_date FROM t_order_status
-                            WHERE user_order.id = t_order_status.fk_order
-                            ORDER BY t_order_status.created_at DESC LIMIT 1) )
+                            ORDER BY t_order_status.created_at DESC LIMIT 1)  BETWEEN ? AND ?)
                 AND   product.seller_id = ?";
         
         $productsId = is_array($productsId) && count($productsId) == 0 ? "" : $productsId;
         $productsId = is_array($productsId) ? implode(",",$productsId) : $productsId;
-        $startedAt = $startedAt == null ? "2000-01-01 00:00:00" : $startedAt;
-        $endedAt = $endedAt == null ? "2900-01-01 00:00:00" : $endedAt;
+        //$productsId = empty($productsId) ? implode(",", array(0)) : $productsId;
+        $startedAt = empty($startedAt) ? "2000-01-01 00:00:00" : $startedAt;
+        $endedAt = empty($endedAt) ? "2900-01-01 00:00:00" : $endedAt;
         $param = array (
                 $productsId,$productsId,
-                $orderStatus,$orderStatus,
-                $endedAt,$endedAt,
-                $startedAt,$startedAt,
-                $sellerId
+                $orderStatus,$orderStatus, 
+                $startedAt,$endedAt,
+                $sellerId,
         );
+        //var_dump($param);
+        //var_dump($param);die;
         $query = $this->_dbPortal->query($sql,$param);
         return $query->result();
     }

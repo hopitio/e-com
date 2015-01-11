@@ -24,8 +24,8 @@ class seller extends BaseController
         $this->_layout->addMainNav(new Nav_Item('dashboard', '<i class="fa fa-dashboard"></i> Trang chủ', '/seller/dashboard'))
                 ->addMainNav(new Nav_Item('sales', '<i class="fa fa-dollar"></i> Bán hàng', 'javascript:;', true, array(
                     new Nav_Item('order', 'Đơn hàng', '/seller/order/search'),
-                    new Nav_Item('invoice', 'Hóa đơn', '/seller/invoice'),
-                    new Nav_Item('shipment', 'Vận chuyển', '/seller/shipment')
+                    //new Nav_Item('invoice', 'Hóa đơn', '/seller/invoice'),
+                    //new Nav_Item('shipment', 'Vận chuyển', '/seller/shipment')
                 )))
                 ->addMainNav(new Nav_Item('product', '<i class="fa fa-cubes"></i> Sản phẩm', '/seller/product'));
     }

@@ -141,6 +141,9 @@ class PortalBizPaymentHistory extends PortalBizBase{
     function getOrderAllInformation($orderId){
         $selectOne = (!is_array($orderId)) || (is_array($orderId) && count($orderId) == 1);
         $orderIds = is_array($orderId) ? $orderId : array($orderId);
+        if(count($orderIds) == 0){
+        	return array();
+        }
         $portalModelOrder = new PortalModelOrder();
         $orders = array();
         $status = $portalModelOrder->getOrderWithCurrentStatus($orderIds);
