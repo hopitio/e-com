@@ -13,7 +13,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['home'] = 'home/showHome';
         $route['category'] = $route['home'];
         $route['product'] = $route['home'];
-
+        $route['(vi|kr|en)/product/(:any)'] = 'portal/detail/$2';
+        
         $route['logout'] = 'login/out';
         $route['sitemap'] = 'sitemap/showPage';
 

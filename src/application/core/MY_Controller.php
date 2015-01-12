@@ -100,6 +100,7 @@ class MY_Controller extends CI_Controller
             {
                 throw new Lynx_RoutingException();
             }
+            //var_dump($ar_arg);die;
             call_user_func_array(array($this, $method), $ar_arg);
         }
         catch (Lynx_ViewException $e)
@@ -184,6 +185,7 @@ class MY_Controller extends CI_Controller
         }
         catch (Lynx_ModelMiscException $e)
         {
+            log_message('infor', $e);
             $status_code = isset($e->status_code) ? $e->status_code : '500';
             if ($is_ajax_request)
             {

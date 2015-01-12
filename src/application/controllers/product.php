@@ -49,8 +49,8 @@ class product extends BaseController
         });
         if ($product->friendlyName != $this->extractSlugFromURL())
         {
-            header('location:' . $product->getURL());
-            exit;
+            $current_url = Common::curPageURL();
+            throw new Lynx_RequestException("URL không phù hợp product-id: {$productID} url hiện tại:{$current_url}");
         }
         $this->productModel->addtoViewList($productID);
         $user = User::getCurrentUser();
