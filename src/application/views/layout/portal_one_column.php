@@ -197,6 +197,8 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                             <a href="<?php echo Common::language_url("/staticpage/privacy_policy") ?>"><?php echo $language['layout']->lblPrivacyPolicy ?></a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
                             <a href="javascript:;"><?php echo $language['layout']->lblAboutUs ?></a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="<?php echo Common::language_url('/sitemap') ?>">Sitemap</a>
                         </div>
                         <div class="footer-info">
                             Bản quyền @ 2014 Sfriendly.com / Sfriendly.vn - Được bảo vệ<br>
@@ -223,13 +225,13 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
         </div><!--footer-->
 
         <script type="text/javascript">
-                    function Config() {
-                        this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
-                        this.categoryService = '<?php echo base_url('category/categories_service') ?>';
-                        this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
-                    }
-                    $.browser = {};
-                    window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
+            function Config() {
+                this.facebookApplicationKey = '<?php echo get_instance()->config->item('facebook_app_id'); ?>';
+                this.categoryService = '<?php echo base_url('category/categories_service') ?>';
+                this.cartService = '<?php echo base_url('cart/cartProductsService') ?>';
+            }
+            $.browser = {};
+            window.fnMoneyToString = <?php echo getJavascriptMoneyFunction(User::getCurrentUser()->getCurrency()) ?>;
         </script>
 
 
@@ -256,40 +258,40 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
         ?>
         <!--Start of Zopim Live Chat Script-->
         <script type="text/javascript">
-                    window.$user = <?php echo json_encode(User::getCurrentUserForJson()) ?>;
+            window.$user = <?php echo json_encode(User::getCurrentUserForJson()) ?>;
 
-                    window.$zopim || (function (d, s) {
-                        var z = $zopim = function (c) {
-                            z._.push(c);
-                        }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
-                        z.set = function (o) {
-                            z.set._.push(o);
-                        };
-                        z._ = [];
-                        z.set._ = [];
-                        $.async = !0;
-                        $.setAttribute('charset', 'utf-8');
-                        $.src = '//v2.zopim.com/?2h1mxYTKoeMFbOGXiqEH5ioYtTa4t5MT';
-                        z.t = +new Date;
-                        $.type = 'text/javascript';
-                        e.parentNode.insertBefore($, e);
-                    })(document, 'script');
+            window.$zopim || (function (d, s) {
+                var z = $zopim = function (c) {
+                    z._.push(c);
+                }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+                z.set = function (o) {
+                    z.set._.push(o);
+                };
+                z._ = [];
+                z.set._ = [];
+                $.async = !0;
+                $.setAttribute('charset', 'utf-8');
+                $.src = '//v2.zopim.com/?2h1mxYTKoeMFbOGXiqEH5ioYtTa4t5MT';
+                z.t = +new Date;
+                $.type = 'text/javascript';
+                e.parentNode.insertBefore($, e);
+            })(document, 'script');
 
-                    $zopim(function () {
-                        if (!$user.is_authorized) {
-                            return;
-                        }
-                        if ($user.fullname)
-                            $zopim.livechat.setName($user.fullname);
-                        if ($user.account)
-                            $zopim.livechat.setEmail($user.account);
-                        if ($user.languageKey === 'KO-KR')
-                            zopim.livechat.setLanguage('ko');
-                        if ($user.languageKey === 'EN-US')
-                            zopim.livechat.setLanguage('en');
-                        if ($user.languageKey === 'VN-VI')
-                            zopim.livechat.setLanguage('vi');
-                    });
+            $zopim(function () {
+                if (!$user.is_authorized) {
+                    return;
+                }
+                if ($user.fullname)
+                    $zopim.livechat.setName($user.fullname);
+                if ($user.account)
+                    $zopim.livechat.setEmail($user.account);
+                if ($user.languageKey === 'KO-KR')
+                    zopim.livechat.setLanguage('ko');
+                if ($user.languageKey === 'EN-US')
+                    zopim.livechat.setLanguage('en');
+                if ($user.languageKey === 'VN-VI')
+                    zopim.livechat.setLanguage('vi');
+            });
         </script>
         <!--End of Zopim Live Chat Script-->
     </body>
