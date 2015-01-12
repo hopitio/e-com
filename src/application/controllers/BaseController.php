@@ -61,6 +61,7 @@ class BaseController extends MY_Controller
                 break;
             }
         }
+        
         if (!isset($newLanguage))
         {
             return;

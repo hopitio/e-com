@@ -14,13 +14,14 @@ $route['coming-soon'] = 'home/comingSoon';
 //$route['vn'] = 'userLanguage/languageSwitcher/VN-VI';
 //$route['en'] = 'userLanguage/languageSwitcher/EN-US';
 
-//da ngon ngu
-$route['^(\w{2})/(.*)$'] = '$2';
-$route['^(\w{2})$'] = $route['default_controller'];
+
+//
 
 include_once APPPATH . 'config/routes_gift.php';
 include_once APPPATH . 'config/routes_portal.php';
-//
+//da ngon ngu
+$route['^(\w{2})/(.*)$'] = '$2';
+$route['^(\w{2})$'] = $route['default_controller'];
 
 
 

@@ -100,7 +100,6 @@ class MY_Controller extends CI_Controller
             {
                 throw new Lynx_RoutingException();
             }
-            //var_dump($ar_arg);die;
             call_user_func_array(array($this, $method), $ar_arg);
         }
         catch (Lynx_ViewException $e)

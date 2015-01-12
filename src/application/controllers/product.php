@@ -15,10 +15,10 @@ class product extends BaseController
         $this->load->model('modelEx/ProductModel', 'productModel');
     }
 
-    function __call($productID, $args)
-    {
-        $this->details($productID);
-    }
+//     function __call($productID, $args)
+//     {
+//         //$this->details($productID);
+//     }
 
     protected function extractSlugFromURL()
     {
@@ -28,6 +28,7 @@ class product extends BaseController
 
     function details($productID)
     {
+        var_dump($productID);die;
         //query product
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
