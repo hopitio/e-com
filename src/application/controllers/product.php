@@ -28,7 +28,7 @@ class product extends BaseController
 
     function details($productID)
     {
-        var_dump($productID);die;
+        //var_dump($productID);die;
         //query product
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
