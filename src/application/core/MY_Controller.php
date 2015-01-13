@@ -71,7 +71,7 @@ class MY_Controller extends CI_Controller
         parent::__construct();
         $this->_controller = get_class($this);
         $this->input = new MY_Input;
-        var_dump($this->_controller);die;
+        //var_dump($this->_controller);die;
     }
 
     /**
