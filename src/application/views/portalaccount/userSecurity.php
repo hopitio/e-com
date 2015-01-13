@@ -30,7 +30,7 @@
         
         
         
-        <div class="lynx_row-right">
+        <div class="lynx_row-right" style="display: none">
             <div class="lynx_row-head">
                 <span><?php echo $language[$view->view]->loginHistoryTitle;?></span>
             </div>
