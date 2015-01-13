@@ -28,10 +28,10 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
         <link href='/style/fix_chrome.css' rel='stylesheet' type='text/css'>
 
         <!--lang-->
-        <link title="English" type="text/html" rel="alternate" hreflang="en" href="/en" lang="en" xml:lang="en" />
-        <link title="Tiếng Việt" type="text/html" rel="alternate" hreflang="vi" href="/vi" lang="vi" xml:lang="vi" />
-        <link title="Korean" type="text/html" rel="alternate" hreflang="ko" href="/kr" lang="ko" xml:lang="ko" />
-        
+        <link title="English" type="text/html" rel="alternate" hreflang="en" href="http://www.sfriendly.com/en" lang="en" xml:lang="en" />
+        <link title="Tiếng Việt" type="text/html" rel="alternate" hreflang="vi" href="http://www.sfriendly.com/vi" lang="vi" xml:lang="vi" />
+        <link title="Korean" type="text/html" rel="alternate" hreflang="ko" href="http://www.sfriendly.com/kr" lang="ko" xml:lang="ko" />
+
         <?php
         //Thêm các js riêng biệt
         foreach ($view->css as $item)
@@ -135,7 +135,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                                 </ul>
                             </div>
                         <?php endif; ?>
-                            <a href="<?php echo $parentCate->getURL() ?>">
+                        <a href="<?php echo $parentCate->getURL() ?>">
                             <?php echo $parentCate->name ?>
                         </a>
                     </li>
@@ -264,6 +264,8 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                             <a href="<?php echo Common::language_url("/staticpage/privacy_policy") ?>"><?php echo $language['layout']->lblPrivacyPolicy ?></a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
                             <a href="javascript:;"><?php echo $language['layout']->lblAboutUs ?></a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="<?php echo Common::language_url('/sitemap') ?>">Sitemap</a>
                         </div>
                         <div class="footer-info">
                             Bản quyền @ 2014 Sfriendly.com / Sfriendly.vn - Được bảo vệ<br>

@@ -25,7 +25,10 @@ class CategoryModel extends BaseModel
         }
         else
         {
-            return CategoryMapper::make()->filterLanguage($languageKey)->findAll();
+            return CategoryMapper::make()
+                    ->setLanguage($languageKey)
+                    ->orderBy('c.path_sort')
+                    ->findAll();
         }
     }
 

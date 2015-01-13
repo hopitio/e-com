@@ -48,6 +48,7 @@ class category extends BaseController
 
     function show($id)
     {
+
         $user = User::getCurrentUser();
         $thisCate = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($id)->find();
         /* @var $thisCate CategoryDomain */
@@ -66,6 +67,12 @@ class category extends BaseController
         $data['firstLvlCate'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($activeCates[0])->find();
         $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($activeCates[0])->findAll();
 
+        if (Common::isCrawlers())
+        {
+            $this->show_for_crawler($id, $data);
+            exit;
+        }
+
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
         call_user_func_array(array($view, 'setActiveCates'), $activeCates);
         $view->setData($data)
@@ -73,6 +80,23 @@ class category extends BaseController
                 ->setJavascript(array('/js/controller/CategoryListCtrl.js'))
                 ->setCss(array('/style/category.css'))
                 ->render('category/show');
+    }
+
+    function show_for_crawler($id, $data)
+    {
+        $data['products'] = array();
+        if ($data['thisCate']->getLevel() == 2)
+        {
+            $data['products'] = ProductFixedMapper::make()
+                    ->autoloadAttributes()
+                    ->filterCategory($data['thisCate']->id)
+                    ->filterStatus(1)
+                    ->findAll();
+        }
+        $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
+        $view->setData($data)
+                ->setTitle($data['thisCate']->name)
+                ->render('category/show_for_crawler');
     }
 
     function productService($cateID)
