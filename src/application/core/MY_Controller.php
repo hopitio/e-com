@@ -71,6 +71,7 @@ class MY_Controller extends CI_Controller
         parent::__construct();
         $this->_controller = get_class($this);
         $this->input = new MY_Input;
+        var_dump($this->_controller);die;
     }
 
     /**
@@ -100,7 +101,7 @@ class MY_Controller extends CI_Controller
             {
                 throw new Lynx_RoutingException();
             }
-            var_dump($this->_controller); die;
+            
             call_user_func_array(array($this, $method), $ar_arg);
         }
         catch (Lynx_ViewException $e)
