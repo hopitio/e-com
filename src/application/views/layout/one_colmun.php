@@ -240,7 +240,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                     <div class="footer-col-3">
                         <a class="footer-icon icon-dollar" href="javascript:;" title="Selling with Sfriendly"><?php echo $language['layout']->lblSellingGuide ?></a>
                         <div class="seperator"></div>
-                        <a class="footer-icon icon-best" href="<?php echo Common::language_url("/portal/login/registerSellerAccount") ?>" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
+                        <a class="footer-icon icon-best" href="/portal/login/registerSellerAccount" title="Register Seller Account"><?php echo $language['layout']->lblRegisterSeller ?></a>
                         <div class="seperator"></div>
                         <a class="footer-icon icon-product" href="javascript:;" title="Publish Product"><?php echo $language['layout']->lblPublishProduct ?></a>
                     </div>
