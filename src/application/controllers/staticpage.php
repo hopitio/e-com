@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class staticPage extends BaseController
+class staticpage extends BaseController
 {
 
     protected $authorization_required = FALSE;

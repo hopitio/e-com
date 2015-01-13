@@ -15,7 +15,7 @@ $route['coming-soon'] = 'home/comingSoon';
 //$route['en'] = 'userLanguage/languageSwitcher/EN-US';
 
 
-//
+
 
 include_once APPPATH . 'config/routes_gift.php';
 include_once APPPATH . 'config/routes_portal.php';
