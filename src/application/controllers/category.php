@@ -75,7 +75,7 @@ class category extends BaseController
 
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
         call_user_func_array(array($view, 'setActiveCates'), $activeCates);
-        $view->setData($data)
+        $view->setData($data,false)
                 ->setTitle($thisCate->name)
                 ->setJavascript(array('/js/controller/CategoryListCtrl.js'))
                 ->setCss(array('/style/category.css'))
@@ -94,7 +94,7 @@ class category extends BaseController
                     ->findAll();
         }
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
-        $view->setData($data)
+        $view->setData($data,false)
                 ->setTitle($data['thisCate']->name)
                 ->render('category/show_for_crawler');
     }
