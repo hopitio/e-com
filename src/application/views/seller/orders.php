@@ -26,13 +26,13 @@
                     <th></th>
                     <th>
                         <select id="slc_status">
-                            <option value="">ALL</option>
-                            <option value="ORDER_PLACED">ORDER_PLACED</option>
-                            <option value="SHIPPING">SHIPPING</option>
-                            <option value="DELIVERED">DELIVERED</option>
-                            <option value="ORDER_CANCELLED">ORDER_CANCELLED</option>
-                            <option value="REJECTED">REJECTED</option>
-                            <option value="FAIL_TO_DELIVER">FAIL_TO_DELIVER</option>
+                            <option value="">ALL ( Toàn bộ các định dạng )</option>
+                            <option value="ORDER_PLACED">ORDER_PLACED (Đã xác nhận)</option>
+                            <option value="SHIPPING">SHIPPING (Đang vận chuyển)</option>
+                            <option value="DELIVERED">DELIVERED (Đã hoàn thành)</option>
+                            <option value="ORDER_CANCELLED">ORDER_CANCELLED (K/H hủy đơn hàng)</option>
+                            <option value="REJECTED">REJECTED ( Admin từ chối đơn hàng )</option>
+                            <option value="FAIL_TO_DELIVER">FAIL_TO_DELIVER (Không hoàn thành)</option>
                         </select>
                      </th>
                      <th>

@@ -11,6 +11,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 {
     //post & get
     $route['portal/login/registerSellerAccount'] = 'portalController/login/registerSellerAccount';
+    $route['(en|kr|vi)/portal/login/registerSellerAccount'] = 'portalController/login/registerSellerAccount';
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
         //$route['portal/page/policy'] = 'portalController/staticPage/showPolicy';
