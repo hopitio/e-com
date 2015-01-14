@@ -20,14 +20,11 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
         $route['portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
         $route['portal/login/registerSellerSuccessed'] = 'portalController/login/registerSellerSuccessed';
-
         $route['portal/account/resend'] = "portalController/passwordUnauthen/resend";
-
         $route['portal/admin/support'] = 'portalAdmin/support/showPage';
         $route['portal/help/contact_us'] = 'portalController/help/contact_us';
         $route['portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
         $route['portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
-
         $route['portal/account/lost_password'] = 'portalController/lostPassword/showPage';
         $route['portal/policy'] = 'portalController/lostPassword/showPage';
         $route['portal/account'] = 'portalController/userInformation/showPage';
@@ -40,45 +37,22 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/account/order_history/(:any)'] = 'portalController/userOrderHistory/getOrderHistory/$1';
         $route['portal/api/product/gift/(:num)/selled_time'] = 'portalController/apiProduct/getSelledProductTime/$1';
         $route['protal/api/invoice/(:num)'] = 'portalController/apiInvoice/getInvoice/$1';
-        $route['(en|kr|vi)/portal/account/lost_password'] = 'portalController/lostPassword/showPage';
-        $route['(en|kr|vi)/portal/policy'] = 'portalController/lostPassword/showPage';
-        $route['(en|kr|vi)/portal/account'] = 'portalController/userInformation/showPage';
-        $route['(en|kr|vi)/portal/account/user_information'] = 'portalController/userInformation/showPage';
-        $route['(en|kr|vi)/portal/account/security'] = "portalController/userSecurity/showPage";
-        $route['(en|kr|vi)/portal/account/order_history'] = 'portalController/userOrderHistory/showPage';
-
         $route['portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
         $route['portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
-        $route['(en|kr|vi)/portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
-        $route['(en|kr|vi)/portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
-
         $route['portal/order_verifing/verify'] = 'portalController/orderVerifingAuthenicated/orderPlaceVerifyOrder';
         $route['portal/order/checking'] = "portalController/orderChecking/showPage";
         $route['portal/order/checking/show'] = "portalController/orderChecking/showResult";
         $route['portal/shipping_from_usa'] = "portalController/shippingFromUSA/showPage";
         $route['portal/shipping_from_usa/done'] = "portalController/shippingFromUSA/done";
-        $route['(en|kr|vi)/portal/order_verifing/verify'] = 'portalController/orderVerifingAuthenicated/orderPlaceVerifyOrder';
-        $route['(en|kr|vi)/portal/order/checking'] = "portalController/orderChecking/showPage";
-        $route['(en|kr|vi)/portal/order/checking/show'] = "portalController/orderChecking/showResult";
-        $route['(en|kr|vi)/portal/shipping_from_usa'] = "portalController/shippingFromUSA/showPage";
-        $route['(en|kr|vi)/portal/shipping_from_usa/done'] = "portalController/shippingFromUSA/done";
-        
-        
-        
         $route['portal/ngan-luong/callback/success'] = 'portalController/orderNganLuongCallback/success';
         $route['portal/ngan-luong/callback/cancel'] = 'portalController/orderNganLuongCallback/cancel';
-
         $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/userAuthenVerify';
         $route['portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
-        $route['(en|kr|vi)/portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/userAuthenVerify';
-        $route['(en|kr|vi)/portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
-
         $route['portal/__admin'] = 'portalAdmin/dashboard/showPage';
         $route['portal/__admin/user_find'] = 'portalAdmin/userList/showPage';
         $route['portal/__admin/user/(:num)'] = 'portalAdmin/userDetail/showPage/$1';
         $route['portal/__admin/invoice/(:num)'] = 'portalAdmin/invoiceDetail/showPage/$1';
         $route['portal/__admin/user/create'] = 'portalAdmin/userDetail/create';
-
         $route['portal/__mock/ngan_luong_payment'] = 'mock/mockNganLuongPayment/mockPaymentNganLuong';
         $route['portal/__admin/login'] = 'portalAdmin/portalLoginAdmin/showpage';
         $route['portal/__admin/order_find'] = 'portalAdmin/orderList/showpage';
@@ -86,25 +60,48 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/__admin/order/(:num)/add_invoice'] = 'portalAdmin/addInvoice/showPage/$1';
         $route['portal/__admin/order/(:num)/refuned'] = 'portalAdmin/orderRefuned/showPage/$1';
         $route['portal/__admin/order/create'] = 'portalAdmin/orderNewController/showPage';
-        
-        
         $route['portal/api/__admin/user/(:num)/contact'] = 'portalAdmin/apiUser/contact/$1';
         $route['portal/api/__admin/user/(:num)/setting'] = 'portalAdmin/apiUser/setting/$1';
-
         $route['portal/api/__admin/order/(:num)'] = 'portalAdmin/apiOrder/getOrder/$1';
         $route['portal/api/__admin/order/(:num)/invoices'] = 'portalAdmin/apiOrder/getInvoices/$1';
         $route['portal/api/__admin/order/(:num)/status_histories'] = 'portalAdmin/apiOrder/getOrderStatusHistory/$1';
-
         $route['portal/api/__admin/invoice/(:num)'] = 'portalAdmin/apiInvoice/getInvoiceFullInformation/$1';
         $route['portal/api/__admin/invoice/(:num)/products'] = 'portalAdmin/apiInvoice/getInvoiceProducts/$1';
         $route['portal/api/__admin/invoice/(:num)/other_costs'] = 'portalAdmin/apiInvoice/getInvoiceOtherCost/$1';
         $route['portal/api/__admin/invoice/(:num)/shippings'] = 'portalAdmin/apiInvoice/getInvoiceShipping/$1';
         $route['portal/api/__admin/contact/(:num)'] = 'portalAdmin/apiContact/getContact/$1';
-
         $route['portal/api/user/find'] = "portalController/apiUser/findUser";
         $route['portal/dialog/user/find'] = "portalController/account/showDialog";
-
         $route['portal/__test/order_request'] = 'testingController/getMockupOrderRequest';
+        
+
+        $route['(en|kr|vi)/portal/login'] = 'portalController/login/showPage';
+        $route['(en|kr|vi)/portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
+        $route['(en|kr|vi)/portal/active'] = 'portalController/activeAccount/active';
+        $route['(en|kr|vi)/portal/change_password'] = 'portalController/password/showpageChangePassword';
+        $route['(en|kr|vi)/portal/reset_password'] = 'portalController/passwordUnauthen/resetPassword';
+        $route['(en|kr|vi)/portal/login/registerSellerSuccessed'] = 'portalController/login/registerSellerSuccessed';
+        $route['(en|kr|vi)/portal/account/resend'] = "portalController/passwordUnauthen/resend";
+        $route['(en|kr|vi)/portal/admin/support'] = 'portalAdmin/support/showPage';
+        $route['(en|kr|vi)/portal/help/contact_us'] = 'portalController/help/contact_us';
+        $route['(en|kr|vi)/portal/help/contact_by_email'] = 'portalController/help/contact_by_email';
+        $route['(en|kr|vi)/portal/help/contact_by_chat'] = 'portalController/help/contact_by_chat';
+        $route['(en|kr|vi)/portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/userAuthenVerify';
+        $route['(en|kr|vi)/portal/order_place/payment_choice'] = 'portalController/paymentChoice/showPage';
+        $route['(en|kr|vi)/portal/order_verifing/verify'] = 'portalController/orderVerifingAuthenicated/orderPlaceVerifyOrder';
+        $route['(en|kr|vi)/portal/order/checking'] = "portalController/orderChecking/showPage";
+        $route['(en|kr|vi)/portal/order/checking/show'] = "portalController/orderChecking/showResult";
+        $route['(en|kr|vi)/portal/shipping_from_usa'] = "portalController/shippingFromUSA/showPage";
+        $route['(en|kr|vi)/portal/shipping_from_usa/done'] = "portalController/shippingFromUSA/done";
+        $route['(en|kr|vi)/portal/account/lost_password'] = 'portalController/lostPassword/showPage';
+        $route['(en|kr|vi)/portal/policy'] = 'portalController/lostPassword/showPage';
+        $route['(en|kr|vi)/portal/account'] = 'portalController/userInformation/showPage';
+        $route['(en|kr|vi)/portal/account/user_information'] = 'portalController/userInformation/showPage';
+        $route['(en|kr|vi)/portal/account/security'] = "portalController/userSecurity/showPage";
+        $route['(en|kr|vi)/portal/account/order_history'] = 'portalController/userOrderHistory/showPage';
+        $route['(en|kr|vi)/portal/payment_choice'] = 'portalController/paymentChoiceUnauthen/showPageRedirect';
+        $route['(en|kr|vi)/portal/payment_choice_open'] = 'portalController/paymentChoice/showPage';
+        
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
