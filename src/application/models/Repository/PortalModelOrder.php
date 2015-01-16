@@ -117,7 +117,7 @@ class PortalModelOrder extends PortalModelBase
         return parent::getWhereIn(T_order::id, $ordersId);
     }
     
-    function getSearchSellerOrder($sellerId, $productsId, $orderStatus, $startedAt = null, $endedAt = null, $limit, $offset){
+    function getSearchSellerOrder($sellerId, $productsId, $orderStatus, $order_id , $startedAt = null, $endedAt = null, $limit, $offset){
         $sql = "SELECT DISTINCT user_order.id,  
                     (SELECT t_order_status.status FROM t_order_status 
                          WHERE user_order.id = t_order_status.fk_order
@@ -133,6 +133,7 @@ class PortalModelOrder extends PortalModelBase
                 AND   ((SELECT t_order_status.updated_date FROM t_order_status 
                             WHERE user_order.id = t_order_status.fk_order
                             ORDER BY t_order_status.created_at DESC LIMIT 1)  BETWEEN ? AND ?)
+                AND (? = '' OR user_order.id = ?) 
                 AND   product.seller_id = ? 
                 ORDER BY user_order.created_at DESC
                 LIMIT ?,?";
@@ -149,6 +150,7 @@ class PortalModelOrder extends PortalModelBase
                 $productsId,$productsId,
                 $orderStatus,$orderStatus, 
                 $startedAt,$endedAt,
+                $order_id,$order_id,
                 $sellerId,
                 $offset,$limit
         );
@@ -159,7 +161,7 @@ class PortalModelOrder extends PortalModelBase
         return $query->result();
     }
     
-    function getSearchSellerOrderCountAllResult($sellerId, $productsId, $orderStatus, $startedAt, $endedAt){
+    function getSearchSellerOrderCountAllResult($sellerId, $productsId, $orderStatus,$order_id, $startedAt, $endedAt){
         $sql = "SELECT DISTINCT user_order.id,  
                     (SELECT t_order_status.status FROM t_order_status 
                          WHERE user_order.id = t_order_status.fk_order
@@ -175,7 +177,8 @@ class PortalModelOrder extends PortalModelBase
                 AND   ((SELECT t_order_status.updated_date FROM t_order_status 
                             WHERE user_order.id = t_order_status.fk_order
                             ORDER BY t_order_status.created_at DESC LIMIT 1)  BETWEEN ? AND ?)
-                AND   product.seller_id = ?";
+                AND (? = '' OR user_order.id = ?) 
+                AND   product.seller_id = ? ";
         
         $productsId = is_array($productsId) && count($productsId) == 0 ? "" : $productsId;
         $productsId = is_array($productsId) ? implode(",",$productsId) : $productsId;
@@ -186,7 +189,8 @@ class PortalModelOrder extends PortalModelBase
                 $productsId,$productsId,
                 $orderStatus,$orderStatus, 
                 $startedAt,$endedAt,
-                $sellerId,
+                $order_id,$order_id,
+                $sellerId
         );
         //var_dump($param);
         //var_dump($param);die;

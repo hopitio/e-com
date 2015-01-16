@@ -83,14 +83,15 @@ class orderReview extends BasePortalController
     
     private function checkoutWithCash($orderId,$invoiceId)
     {
-        $orderManager = new PortalOrderManager();
-        $orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
+        //$orderManager = new PortalOrderManager();
+        //$orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
         
-        $orderRepository = new PortalModelInvoice();
-        $orderRepository->id = $orderId;
-        $orderRepository->payment_method = DatabaseFixedValue::PAYMENT_BY_CASH;
+        $invoiceIdRepository = new PortalModelInvoice();
+        $invoiceIdRepository->id = $invoiceId;
+        $invoiceIdRepository->payment_method = DatabaseFixedValue::PAYMENT_BY_CASH;
+        $invoiceIdRepository->updateById();
+        //echo $invoiceIdRepository->_dbPortal->last_query(); die;
         
-        $orderRepository->updateById();
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
         array('isError'=>false), true)
         ->setCss($this->css)
@@ -104,7 +105,7 @@ class orderReview extends BasePortalController
         $orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
         
         $orderRepository = new PortalModelInvoice();
-        $orderRepository->id = $orderId;
+        $orderRepository->id = $invoiceId;
         $orderRepository->payment_method = DatabaseFixedValue::PAYMENT_BY_TRANSFER;
         
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(

@@ -114,7 +114,6 @@ class PortalModelBase extends CI_Model
         $id = $class::id;
         $data = array();
         foreach ($propertiesList as $property){
-        
             if($property == $class::tableName || !isset($this->$property) )
             {
                 continue;
@@ -123,6 +122,7 @@ class PortalModelBase extends CI_Model
         }
         $this->_dbPortal->where($id,$this->$id);
         $this->_dbPortal->update($class::tableName,$data);
+        //echo $this->_dbPortal->last_query();die;
         return $this->_dbPortal->insert_id();
     }
     

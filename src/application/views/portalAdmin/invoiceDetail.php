@@ -26,6 +26,7 @@
             <span style="font-weight: bold;"> Ngày thanh toán : </span>{{invoice.paid_date}} </br>
             <span style="font-weight: bold;"> Ngày hủy  : </span>{{invoice.cancelled_date}}</br>
             <span style="font-weight: bold;"> Ngày hủy (admin) : </span>{{invoice.rejected_date}}</br>
+            <span style="font-weight: bold;"> Phương thức thanh toán : </span>{{invoice.payment_method}}</br>
             <span style="font-weight: bold;"> Mã thanh toán : </span>{{invoice.payment_id}}</br>
             <span style="font-weight: bold;"> Tài khoản thực hiện giao dịch : </span>{{order.user.account}}</br>
             <span style="font-weight: bold;"> Ghi chú : </span>{{invoice.comment}}</br>

@@ -17,13 +17,14 @@ class apiSeller extends BasePortalController
         $endedAt = $this->input->post("ended_at");
         $subProductsId = $this->input->post("products_id");
         $status = $this->input->post("order_status");
+        $order_number = $this->input->post('order_number');
         
         $startedAt = $startedAt == null || !isset($startedAt) || $startedAt == "" ? null : $startedAt;
         $endedAt = $endedAt == null || !isset($endedAt) || $endedAt == "" ? null : $endedAt;
         
         $stdClass = new stdClass();
         $orderRepository = new PortalModelOrder();
-        $orders = $orderRepository->getSearchSellerOrder($sellerId, $subProductsId, $status,$startedAt,$endedAt, $limit, $offset);
+        $orders = $orderRepository->getSearchSellerOrder($sellerId, $subProductsId, $status,$order_number,$startedAt,$endedAt, $limit, $offset);
         $orderIds = array();
         foreach ($orders as $order){
             array_push($orderIds, $order->id);
@@ -45,7 +46,7 @@ class apiSeller extends BasePortalController
             }
         }
         
-        $counts = $orderRepository->getSearchSellerOrderCountAllResult($sellerId, $subProductsId, $status,$startedAt,$endedAt);
+        $counts = $orderRepository->getSearchSellerOrderCountAllResult($sellerId, $subProductsId, $status, $order_number,$startedAt,$endedAt);
         $stdClass->start = $offset;
         $stdClass->length = $limit;
         $stdClass->recordsTotal = count($counts);

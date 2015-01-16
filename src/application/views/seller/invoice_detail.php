@@ -91,10 +91,10 @@ a.p-name {
                     <td>{{product.id}}</td>
                     <td>
                         <div class="p-img">
-                            <a href="/product/details/{{product.sub_id}}"><img ng-src="{{product.sub_image}}" title="{{product.name}}" ></a>
+                            <a ng-href="/vi/product/{{product.sub_id}}"><img ng-src="{{product.sub_image}}" title="{{product.name}}" ></a>
                         </div>
                         <div class="p-info">
-                            <a class="p-name" href="/product/details/26" title="Thịt thăn x">
+                            <a class="p-name" ng-href="/vi/product/26" title="Thịt thăn x">
                                 {{product.name}}
                             </a>
                             <p>{{product.short_description}}</p>

@@ -23,9 +23,11 @@
             </thead>
             <thead>
                 <tr class="table-filter">
-                    <th></th>
                     <th>
-                        <select id="slc_status">
+                        <input type="number" class="form-control" placeholder="Mã đơn hàng" id="txt_orderNumber">
+                    </th>
+                    <th>
+                        <select id="slc_status" class="form-control">
                             <option value="">ALL ( Toàn bộ các định dạng )</option>
                             <option value="ORDER_PLACED">ORDER_PLACED (Đã xác nhận)</option>
                             <option value="SHIPPING">SHIPPING (Đang vận chuyển)</option>
@@ -36,12 +38,12 @@
                         </select>
                      </th>
                      <th>
-                        <input type="text" placeholder="Từ" id="txt_start">
-                        <input type="text" placeholder="Đến" id="txt_end">
+                        <input type="text" placeholder="Từ" id="txt_start" class="form-control">
+                        <input type="text" placeholder="Đến" id="txt_end" class="form-control">
                      </th>
                      <th></th>
                      <th>
-                        <input type="text" placeholder="Danh sách sản phẩm" id="txt_product_id">
+                        <input type="text" placeholder="Danh sách sản phẩm" id="txt_product_id" class="form-control">
                      </th>
                 </tr>
             </thead>
@@ -69,6 +71,7 @@
  	                d.ended_at = $('#txt_end').val();
  	                d.order_status = $('#slc_status').val();
  	                d.products_id = $('#txt_product_id').val();
+ 	                d.order_number = $('#txt_orderNumber').val();
  	            }
  	        };
     	 window.table = dataTableInit('#main-table', ajax, tableHeight, {
