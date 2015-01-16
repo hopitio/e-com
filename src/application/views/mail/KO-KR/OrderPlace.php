@@ -32,7 +32,7 @@
 <p style="padding:0px; margin:0px;" >Số điện thoại: <?php echo $contactPay->telephone;?></p>
 </div>
 <p style="padding:0px; margin:0px;" ><strong>Nội dung đơn hàng: </strong></p>
-<p style="padding:0px; margin:0px;" >Mã đơn hàng: <?php echo "SFRIENDLY {$order->id}" ?><br/></p>
+<p style="padding:0px; margin:0px;" >Mã đơn hàng: <?php echo "{$order->id}" ?><br/></p>
 <br/>
 <table style="border-collapse:collapse;border-color: #b6b9ba #b6b9ba; " border="1" cellspacing="0" cellpadding="0">
     <thead>

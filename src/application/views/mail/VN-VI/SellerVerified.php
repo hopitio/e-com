@@ -34,7 +34,7 @@ Chúc mừng bạn! Sản phẩm bạn đăng tại Sfriendly đã được bán
     </div>
     <br/>
 	<b>Nội dung đơn hàng:</b>  <br/>
-		<div style="margin-left: 30px;">Mã đơn hàng:<?php echo "SFRIENDLY {$order->id}"?><br/></div>
+		<div style="margin-left: 30px;">Mã đơn hàng:<?php echo "{$order->id}"?><br/></div>
 
 <table style="border-collapse:collapse;border-color: #b6b9ba #b6b9ba; " border="1" cellspacing="0" cellpadding="0">
     <thead>
