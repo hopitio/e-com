@@ -19,8 +19,6 @@
             var limit = cnf.language === 'KO-KR' ? 10 : 20;
             var img_container = $('.image:first', elem);
 
-            scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
-
             var img = document.createElement('img');
             var src = '/thumbnail.php/' + scope.product.thumbnail + '/w=168';
 
@@ -47,8 +45,6 @@
         function link(scope, elem, attr) {
             var limit = cnf.language === 'KO-KR' ? 18 : 35;
             var img_container = $('.image:first', elem);
-
-            scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
 
             var img = document.createElement('img');
             var src = '/thumbnail.php/' + scope.product.thumbnail + '/w=280';
@@ -79,7 +75,6 @@
         function link(scope, elem, attr) {
             var limit = cnf.language === 'KO-KR' ? 18 : 35;
             var img_container = $('.image:first', elem);
-            scope.product.name = scope.product.name.length < limit ? scope.product.name : scope.product.name.substr(0, limit) + '...';
 
             var img = document.createElement('img');
             var src = '/thumbnail.php/' + scope.product.thumbnail + '/w=200';

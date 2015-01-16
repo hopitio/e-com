@@ -15,10 +15,10 @@ class product extends BaseController
         $this->load->model('modelEx/ProductModel', 'productModel');
     }
 
-//     function __call($productID, $args)
-//     {
-//         //$this->details($productID);
-//     }
+    function __call($productID, $args)
+    {
+        $this->details($productID);
+    }
 
     protected function extractSlugFromURL()
     {
@@ -28,8 +28,6 @@ class product extends BaseController
 
     function details($productID)
     {
-        //var_dump($productID);die;
-        //query product
         $mapper = ProductFixedMapper::make()
                 ->select('p.*', true)
                 ->selectCountPin()
@@ -50,8 +48,7 @@ class product extends BaseController
         });
         if ($product->friendlyName != $this->extractSlugFromURL())
         {
-            $current_url = Common::curPageURL();
-            throw new Lynx_RequestException("URL không phù hợp product-id: {$productID} url hiện tại:{$current_url}");
+            header('location:' . $product->getURL());
         }
         $this->productModel->addtoViewList($productID);
         $user = User::getCurrentUser();

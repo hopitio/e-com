@@ -14,7 +14,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['category'] = $route['home'];
         $route['product'] = $route['home'];
         
-        $route['(en|kr|vi)/product/(:any)'] = 'product/details/$2';
+        //$route['(en|kr|vi)/product/(:any)'] = 'product/details/$2';
         
         $route['logout'] = 'login/out';
         $route['sitemap'] = 'sitemap/showPage';

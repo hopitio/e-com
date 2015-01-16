@@ -48,7 +48,6 @@ class category extends BaseController
 
     function show($id)
     {
-
         $user = User::getCurrentUser();
         $thisCate = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($id)->find();
         /* @var $thisCate CategoryDomain */
@@ -70,12 +69,10 @@ class category extends BaseController
         if (Common::isCrawlers())
         {
             $this->show_for_crawler($id, $data);
-            exit;
         }
-
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
         call_user_func_array(array($view, 'setActiveCates'), $activeCates);
-        $view->setData($data,false)
+        $view->setData($data, false)
                 ->setTitle($thisCate->name)
                 ->setJavascript(array('/js/controller/CategoryListCtrl.js'))
                 ->setCss(array('/style/category.css'))
@@ -94,9 +91,10 @@ class category extends BaseController
                     ->findAll();
         }
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
-        $view->setData($data,false)
+        $view->setData($data, false)
                 ->setTitle($data['thisCate']->name)
                 ->render('category/show_for_crawler');
+        exit;
     }
 
     function productService($cateID)

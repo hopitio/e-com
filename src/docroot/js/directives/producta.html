@@ -1,7 +1,7 @@
 <span class="best-balloon" ng-if="product.best">BEST {{product.best}}</span>
 <span class="sales-balloon" ng-if="product.salesPercent">{{product.salesPercent}}%</span>
 <span class="new-balloon" ng-if="!product.best && product.isNew"></span>
-<a class="opacity" ng-href="{{product.url}}"></a>
+<a class="opacity" ng-href="{{product.url}}" title="{{product.name}}"></a>
 <div class="image">
     <img class="img-loading" src="/images/ajax_loader_blue_32.gif"/>
 </div>

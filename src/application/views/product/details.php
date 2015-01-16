@@ -172,7 +172,7 @@ if (!empty($images))
             </div>
             <div class="seperator"></div>
             <div class="lynx_facebookReview" id="lynx_facebookReview">
-                <div class="fb-comments" data-width="675" data-href="<?php echo Common::curPageURL(); ?>" data-numposts="10" data-colorscheme="light">
+                <div class="fb-comments" data-width="675" data-href="http://sfriendly.com/product/<?php echo $product->id ?>" data-numposts="10" data-colorscheme="light">
                     Loading Facebook...
                 </div>
             </div>

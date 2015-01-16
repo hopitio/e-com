@@ -125,7 +125,7 @@ class Common
 
     static function isCrawlers()
     {
-        $sites = 'Google|Yahoo|msnbot|'; // Add the rest of the search-engines 
+        $sites = 'Google|Yahoo|msnbot'; // Add the rest of the search-engines 
         return (preg_match("/$sites/", $_SERVER['HTTP_USER_AGENT']) > 0) ? true : false;
     }
 

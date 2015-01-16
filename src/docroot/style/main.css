@@ -1224,3 +1224,8 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
     margin: 5px 0;
     clear: both;
 }
+.lynx-box .name, #widget-right .name{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
