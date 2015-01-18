@@ -700,4 +700,8 @@
     </portalOrder_ShippingFromUSADone>
     <sitemap_index>
     </sitemap_index>
+    <category_show_for_crawler>
+    </category_show_for_crawler>    
+    <product_not_found>
+    </product_not_found>
 </data>

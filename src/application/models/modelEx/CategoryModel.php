@@ -26,9 +26,9 @@ class CategoryModel extends BaseModel
         else
         {
             return CategoryMapper::make()
-                    ->setLanguage($languageKey)
-                    ->orderBy('c.path_sort')
-                    ->findAll();
+                            ->setLanguage($languageKey)
+                            ->orderBy('c.path_sort')
+                            ->findAll();
         }
     }
 
@@ -58,7 +58,7 @@ class CategoryModel extends BaseModel
         return CategoryMapper::make()->filterParent(NULL)->setLanguage($language)->findAll();
     }
 
-    function getProductByCategory($category, $offset, $sort, $priceLow, $priceHigh)
+    function getProductByCategory($category, $offset, $sort = 'new', $priceLow = null, $priceHigh = null)
     {
         $limit = $offset ? 10 : 20;
         $user = User::getCurrentUser();
@@ -97,7 +97,7 @@ class CategoryModel extends BaseModel
         return $products;
     }
 
-    function getBestProduct($category, $offset, $sort, $priceLow, $priceHigh)
+    function getBestProduct($category, $offset, $sort = 'new', $priceLow = null, $priceHigh = null)
     {
         $limit = $offset ? 10 : 20;
         $cateID = (int) $category->id;

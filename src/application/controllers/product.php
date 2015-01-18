@@ -39,56 +39,66 @@ class product extends BaseController
         $mapper->getQuery()->select('seller.name as seller_name, seller.logo AS seller_logo')->innerJoin('t_seller as seller', 'seller.id = p.fk_seller');
         $product = $mapper->find(function($rawData, $instance)
         {
-            if (!$instance->id)
+            if ($instance->id)
             {
-                throw new Lynx_RoutingException();
+                $instance->seller_name = $rawData['seller_name'];
+                $instance->seller_logo = $rawData['seller_logo'];
             }
-            $instance->seller_name = $rawData['seller_name'];
-            $instance->seller_logo = $rawData['seller_logo'];
         });
-        if ($product->friendlyName != $this->extractSlugFromURL())
+
+        if ($product->id)
         {
-            header('location:' . $product->getURL());
-        }
-        $this->productModel->addtoViewList($productID);
-        $user = User::getCurrentUser();
-        //query ancestor cates
-        $parentCategory = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($product->fkCategory)->find();
-        $ancestors = explode('/', trim($parentCategory->path, '/'));
-        $breadcrums = array();
-        foreach ($ancestors as $cateID)
-        {
-            if ($cateID == $parentCategory->id)
+            if ($product->friendlyName != $this->extractSlugFromURL())
             {
-                continue;
+                header('location:' . $product->getURL());
+                die;
             }
-            $ancestor = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($cateID)->find();
-            $breadcrums[$ancestor->name] = $ancestor->getURL();
+            $this->productModel->addtoViewList($productID);
+            $user = User::getCurrentUser();
+            //query ancestor cates
+            $parentCategory = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($product->fkCategory)->find();
+            $ancestors = explode('/', trim($parentCategory->path, '/'));
+            $breadcrums = array();
+            foreach ($ancestors as $cateID)
+            {
+                if ($cateID == $parentCategory->id)
+                {
+                    continue;
+                }
+                $ancestor = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($cateID)->find();
+                $breadcrums[$ancestor->name] = $ancestor->getURL();
+            }
+
+            $breadcrums[$parentCategory->name] = $parentCategory->getURL();
+            $productName = strlen(strval($product->getName())) > 50 ? mb_substr((string) $product->getName(), 0, 50, 'UTF-8') . '...' : (string) $product->getName();
+            $breadcrums[$productName] = NULL;
+
+            $data = array(
+                'product'    => $product,
+                'breadcrums' => $breadcrums,
+                'ancestors'  => $ancestors
+            );
+            $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($ancestors[0])->findAll();
+            $data['relatedProducts'] = $this->_get_related_products($product->id);
+            LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                    ->setTitle($product->getName())
+                    ->setCss(array(
+                        '/style/details.css',
+                        '/plugins/jqzoom_ev-2.3/css/jquery.jqzoom.css'
+                    ))
+                    ->setJavascript(array(
+                        '/plugins/jqzoom_ev-2.3/js/jquery.jqzoom-core.js',
+                        '/js/controller/productDetailsCtrl.js'
+                    ))
+                    ->setData($data, true)
+                    ->render('product/details');
         }
-
-        $breadcrums[$parentCategory->name] = $parentCategory->getURL();
-        $productName = strlen(strval($product->getName())) > 50 ? mb_substr((string) $product->getName(), 0, 50, 'UTF-8') . '...' : (string) $product->getName();
-        $breadcrums[$productName] = NULL;
-
-        $data = array(
-            'product'    => $product,
-            'breadcrums' => $breadcrums,
-            'ancestors'  => $ancestors
-        );
-        $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($ancestors[0])->findAll();
-        $data['relatedProducts'] = $this->_get_related_products($product->id);
-        LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
-                ->setTitle($product->getName())
-                ->setCss(array(
-                    '/style/details.css',
-                    '/plugins/jqzoom_ev-2.3/css/jquery.jqzoom.css'
-                ))
-                ->setJavascript(array(
-                    '/plugins/jqzoom_ev-2.3/js/jquery.jqzoom-core.js',
-                    '/js/controller/productDetailsCtrl.js'
-                ))
-                ->setData($data, true)
-                ->render('product/details');
+        else
+        {
+            LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+                    ->setTitle('Product not found')
+                    ->render('product/not_found');
+        }
     }
 
     function _get_related_products($productID)

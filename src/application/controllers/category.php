@@ -58,43 +58,51 @@ class category extends BaseController
             $activeCates[] = $parentID;
         }
         $data['thisCate'] = $thisCate;
-        if ($thisCate->codename != $this->extractSlugFromURL())
-        {
-            header('location:' . $thisCate->getURL());
-            exit;
-        }
+
         $data['firstLvlCate'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterID($activeCates[0])->find();
         $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($activeCates[0])->findAll();
 
         if (Common::isCrawlers())
         {
+            //hien thi trang gian luoc cho crawler
             $this->show_for_crawler($id, $data);
         }
-        $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
-        call_user_func_array(array($view, 'setActiveCates'), $activeCates);
-        $view->setData($data)
-                ->setTitle($thisCate->name)
-                ->setJavascript(array('/js/controller/CategoryListCtrl.js'))
-                ->setCss(array('/style/category.css'))
-                ->render('category/show');
+        else
+        {
+            if ($thisCate->codename != $this->extractSlugFromURL())
+            {
+                header('location:' . $thisCate->getURL());
+                exit;
+            }
+            //hien thi binh thuong
+            $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
+            call_user_func_array(array($view, 'setActiveCates'), $activeCates);
+            $view->setData($data)
+                    ->setTitle($thisCate->name)
+                    ->setJavascript(array('/js/controller/CategoryListCtrl.js'))
+                    ->setCss(array('/style/category.css'))
+                    ->render('category/show');
+        }
     }
 
     function show_for_crawler($id, $data)
     {
         $data['products'] = array();
-        if ($data['thisCate']->getLevel() == 2)
+        $offset = isset($_GET['offset']) ? (int) $_GET['offset'] : 0;
+        $data['offset'] = $offset;
+        if ($data['thisCate']->getLevel() == 1)
         {
-            $data['products'] = ProductFixedMapper::make()
-                    ->autoloadAttributes()
-                    ->filterCategory($data['thisCate']->id)
-                    ->filterStatus(1)
-                    ->findAll();
+            $data['products'] = $this->categoryModel->getBestProduct($data['thisCate'], $offset);
+        }
+        else
+        {
+            $data['products'] = $this->categoryModel->getProductByCategory($data['thisCate'], $offset);
         }
         $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl);
+
         $view->setData($data)
                 ->setTitle($data['thisCate']->name)
                 ->render('category/show_for_crawler');
-        exit;
     }
 
     function productService($cateID)

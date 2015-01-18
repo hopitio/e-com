@@ -57,7 +57,7 @@
                                 </a>
                             </div>
                             <div class="p-info">
-                                <a class="p-name" href="{{product.url}}" title="{{product.name}}">{{product.name}}</a>
+                                <a class="p-name" ng-href="{{product.url}}" title="{{product.name}}">{{product.name}}</a>
                                 <div class="p-status">
                                     <span class="green" ng-if="product.stock > 1 && product.quantity <= product.stock"><?php echo $language[$view->view]->lblInStock ?></span>
                                     <span class="yellow" ng-if="product.stock == 1 && product.quantity <= product.stock"><?php echo $language[$view->view]->lblAlmostEmpty ?></span>
@@ -85,7 +85,7 @@
                 </tbody>
             </table>
             <div class="pull-right" style="width: 300px;">
-                <div class="product-summaries-table">
+                <div class="product-summaries-table" ng-cloak>
                     <div class="border-solid">
                         <div class="tdleft"><?php echo $language[$view->view]->lblProduct ?>:</div>
                         <div class="tdright">{{fnMoneyToString(getProductSubtotal())}}</div>
@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="col-xs-4">
-            <div class="cart-summaries">
+            <div class="cart-summaries" ng-cloak>
                 <div class="inner">
                     <h4><?php echo $language[$view->view]->lblSummaries ?></h4>
                     <div class="product-summaries-table">

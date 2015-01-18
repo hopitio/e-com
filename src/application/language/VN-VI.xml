@@ -519,7 +519,7 @@
                 Cảm ơn bạn đã đặt hàng với Sfriendly.com <br/>
                 Nhân viên bán hàng của chúng tôi sẽ gọi điện cho bạn trước khi giao hàng cho bạn. Chú ý điện thoại bạn nhé !
                 ]]>
-            </lblSucessMsg>
+        </lblSucessMsg>
         <lblFaileMsg>Thanh toán thất bại, vui lòng kiểm tra lại thông tin.</lblFaileMsg>
     </portalPayment_paymentSuccess>
     <file_browse_file></file_browse_file>
@@ -1050,4 +1050,8 @@
     </portalOrder_ShippingFromUSADone>
     <sitemap_index>
     </sitemap_index>
+    <category_show_for_crawler>
+    </category_show_for_crawler>    
+    <product_not_found>
+    </product_not_found>
 </data>
