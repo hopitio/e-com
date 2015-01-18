@@ -1,2 +1,2 @@
 <?php 
-define('ENVIRONMENT', 'production');
+define('ENVIRONMENT',DIRECTORY_SEPARATOR == "\\" ? 'development' : 'production');
