@@ -14,6 +14,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content='width=960, initial-scale=1, maximum-scale=1,user-scalabel=no' name='viewport'>
         <meta name="title" content="<?php echo $title ?>">
+        <meta name="description" content="<?php echo $title ?>">
         <meta http-equiv="Content-Language" content="<?php echo $meta_lang_code ?>">
 
         <title><?php echo $title ?></title>

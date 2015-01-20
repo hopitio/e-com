@@ -121,6 +121,9 @@ if (!empty($images))
                     </li>
                 </ul>
                 <div class="lynx-panes">
+                    <div class="lynx-pane active" id="tab-desc">
+                        <?php echo $product->getDescription() ?>
+                    </div>
                     <div class="lynx-pane " id="tab-support">
                         <?php echo $language[$view->view]->htmlRPolicy ?>
                     </div>
@@ -165,9 +168,7 @@ if (!empty($images))
                         }
                         ?>
                     </div>
-                    <div class="lynx-pane active" id="tab-desc">
-                        <?php echo $product->getDescription() ?>
-                    </div>
+
                 </div>
             </div>
             <div class="seperator"></div>
