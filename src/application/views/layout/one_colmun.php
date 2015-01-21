@@ -16,6 +16,12 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
         <meta name="title" content="<?php echo $title ?>">
         <meta name="description" content="<?php echo $title ?>">
         <meta http-equiv="Content-Language" content="<?php echo $meta_lang_code ?>">
+        <?php
+            foreach ($view->metaData as $tag)
+            {
+                echo $tag;
+            }
+        ?>
 
         <title><?php echo $title ?></title>
         <link rel="stylesheet" type="text/css" href="/bootstrap-3.1.1-dist/css/bootstrap.min.css" media="all">
@@ -99,6 +105,11 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
             </div>
         </div>
         <div class="head-menu width-960 cursor-pointer">
+            <div id="widget-left">
+                <a href="javascript:;" title="Happy new year">
+                    <img src="/images/banner/banner_tet_2.jpg" alt="Sfriendly.com: Happy new year"/>
+                </a>
+            </div><!--widget-->
             <ul>
                 <?php
                 $categogies = CategoryMapper::make()
@@ -150,6 +161,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                 </li>
             </ul>
             <div>
+
                 <div id="widget-right" ng-cloak>
                     <div class="product-group">
                         <a href="javascript:;" title="View" ng-click="setWidgetRightActive('cart')">
@@ -201,6 +213,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                     <a href="javascript:;" class="btn-scroll" title="scroll to top" id="scroll-to-top"><?php echo $language['layout']->wdTop ?><div class="pull-right"><i class="fa fa-caret-up"></i></div></a>
                     <a href="javascript:;" class="btn-scroll" title="scroll to bottom" id="scroll-to-bottom"><?php echo $language['layout']->wdBottom ?><div class="pull-right"><i class="fa fa-caret-down"></i></div></a>
                 </div><!--wiggget-->
+
             </div>
         </div>
         <?php require_once APPPATH . 'views/' . $view->view . '.php'; ?>

@@ -713,11 +713,7 @@ li{list-style: none;}
     margin-left: 500px;
     left: 50%;
 }
-@media(min-width:1180px){
-    #widget-right{
-        display:block;
-    }
-}
+
 #widget-right .product-group{
     width: 100%;
     overflow: visible;
@@ -890,6 +886,32 @@ li{list-style: none;}
 }
 #widget-right .product-group li .remove:hover{
     background: #18748B;
+}
+#widget-left{
+    width: 147px;
+    box-sizing: border-box;
+    display:none;
+    float:left;
+    margin-left: -164px;
+    margin-top: 5px;
+    z-index: 99;
+}
+#widget-left.fixed-top{
+    top: 10px;
+    position: fixed;
+    margin-left: -644px;
+    left: 50%;
+    margin-top:0;
+}
+@media(min-width:1220px){
+    #widget-right{
+        display:block;
+    }
+}
+@media(min-width:1300px){
+    #widget-left{
+        display:block;
+    }
 }
 
 .tab .head ul{
@@ -1228,4 +1250,7 @@ ul.lynx-menu-lvl-2 > li > a > span.menu-name{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+#carousel-home-banner img{
+    max-width: none;
 }

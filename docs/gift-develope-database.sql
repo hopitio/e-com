@@ -715,7 +715,7 @@ CREATE TABLE `t_setting` (
 
 /*Data for the table `t_setting` */
 
-insert  into `t_setting`(`id`,`key`,`value`,`autoload`,`class`) values (1,'home_banner','<root>\r\n	<img src=\"/images/banner/the_shopper_paradise.jpg\" title=\"Sfriendly.com\" href=\"#\"/>\r\n</root>',0,NULL),(2,'hot_product','<root><product><id>12</id></product></root>',0,NULL);
+insert  into `t_setting`(`id`,`key`,`value`,`autoload`,`class`) values (1,'home_banner','<root>\r\n	<img src=\"/images/banner/banner_tet.jpg\" title=\"Sfriendly.com\" href=\"javascript:;\"/>\r\n</root>',0,NULL),(2,'hot_product','<root><product><id>12</id></product></root>',0,NULL);
 
 /*Table structure for table `t_shipment` */
 
