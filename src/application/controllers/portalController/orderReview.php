@@ -83,8 +83,8 @@ class orderReview extends BasePortalController
     
     private function checkoutWithCash($orderId,$invoiceId)
     {
-        //$orderManager = new PortalOrderManager();
-        //$orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
+        $orderManager = new PortalOrderManager();
+        $orderManager->orderPlace(true,$this->obj_user, $orderId, $invoiceId);
         
         $invoiceIdRepository = new PortalModelInvoice();
         $invoiceIdRepository->id = $invoiceId;
