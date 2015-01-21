@@ -40,6 +40,8 @@
         <msgWoringFristName>50 자보다 긴 이름</msgWoringFristName>
         <msgWoringLastName>마지막으로 이름을 50 자 이상</msgWoringLastName>
         <msgWoringAns>250 자보다 긴 답변</msgWoringAns>
+        <msgExitEmail>메일 주소가 이미 있습니다</msgExitEmail>
+        
         <lblResend>계정을 활성화하기 메일 보내기</lblResend>
         <lblFullName>전체 이름</lblFullName>
         <lblPhone>전화 번호</lblPhone>

@@ -40,6 +40,7 @@
         <msgWoringFristName>First Name longer than 50 characters</msgWoringFristName>
         <msgWoringLastName>Last name longer than 50 characters</msgWoringLastName>
         <msgWoringAns>Answers longer than 250 characters</msgWoringAns>
+        <msgExitEmail>The email is exist</msgExitEmail>
         <lblResend>Resend activion email</lblResend>
         <lblFullName>Full name</lblFullName>
         <lblPhone>Phone number</lblPhone>
