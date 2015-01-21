@@ -7,6 +7,7 @@ $seconds_to_cache = 3600 * 24 * 365;
 function make_thumb($src, $dest, $desired_width)
 {
     $source_image = imagecreatefromstring(file_get_contents($src));
+
     /* read the source image */
     $width = imagesx($source_image);
     $height = imagesy($source_image);
@@ -20,8 +21,11 @@ function make_thumb($src, $dest, $desired_width)
     /* copy source image at a resized size */
     imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
 
+    /* convert to progressive */
+    imageinterlace($virtual_image, true);
+
     /* create the physical thumbnail image to its destination */
-    imagejpeg($virtual_image, $dest, 100);
+    imagejpeg($virtual_image, $dest, 95);
 }
 
 function not_found()

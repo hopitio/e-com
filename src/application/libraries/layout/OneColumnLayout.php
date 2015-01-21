@@ -20,7 +20,7 @@ class OneColumnLayout extends AbstractLayout
 
     public function render($view)
     {
-        
+
         $data = $this->_autoLoadLanguage ?
                 MultilLanguageManager::getInstance()->attachedLanguageDataToScreen($view, $this->_data) :
                 MultilLanguageManager::getInstance()->attachedLanguageDataToScreen('layout', $this->_data);
@@ -39,6 +39,7 @@ class OneColumnLayout extends AbstractLayout
         parent::__construct();
         $this->_layout = 'layout/one_colmun';
     }
+
 
     protected function attachedView($view, $data = array())
     {

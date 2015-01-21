@@ -48,8 +48,15 @@ abstract class AbstractLayout
         $item->javascript = $this->_javascript;
         $item->breadcrums = $this->_breadcrums;
         $item->title = $this->_title;
+        $item->metaData = $this->_metaData;
         $data['view'] = $item;
         return $data;
+    }
+
+    function addMeta($html)
+    {
+        $this->_metaData[] = $html;
+        return $this;
     }
 
     function setBreadcrums($arr)
