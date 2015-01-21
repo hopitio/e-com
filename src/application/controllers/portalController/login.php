@@ -181,7 +181,7 @@ class login extends BasePortalController
         $passwordRetry = $this->input->post('passwordRetry');
         $fristName = $this->input->post('fullName');
         $lastName = $this->input->post('phone');
-        $dobDatetime = DateTime::createFromFormat("d/m/y", $this->input->post('dob'));
+        $dobDatetime = DateTime::createFromFormat("d/m/Y", $this->input->post('dob'));
         $dob = empty($dobDatetime) ? "0000-00-00 00:00:00" : $dobDatetime->format(DatabaseFixedValue::DEFAULT_FORMAT_DATE);
         $sex = $this->input->post('sex');
         $question = $this->input->post('question');

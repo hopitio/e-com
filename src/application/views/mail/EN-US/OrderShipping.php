@@ -99,7 +99,6 @@
 <p style="padding:0px; margin:0px;" >Ngày dự kiến giao hàng:</p>
 <p style="padding:0px; margin:0px;" >Địa chỉ nhận hàng: <?php echo "{$contactShipping->street_address},{$contactShipping->city_district},{$contactShipping->state_province}"?></p>
 <p style="padding:0px; margin:0px;" >Hình thức thanh toán: <?php echo $paymentType; ?></p>
-<p style="padding:0px; margin:0px;" >Trân trọng cảm ơn!</p>
      
 <br/>
 <br/>

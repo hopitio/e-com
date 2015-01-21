@@ -4,7 +4,7 @@
             <h3> <?php echo $language[$view->view]->registeTitle;?><em><?php echo $language[$view->view]->lblRegsterGiude;?></em></h3>
                 <?php
                     if(isset($errorRegister)){
-                        echo "<div class='row box'><ul>";
+                        echo "<div><ul>";
                         foreach ($errorRegister as $e){
                             echo '<li>'.$e.'</li>';
                         }
