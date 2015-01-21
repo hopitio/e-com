@@ -1,6 +1,6 @@
 <div class="lynx_contentWarp lynx_staticWidth">
     <div class="lynx_leftContent lynx_box">
-        <form id="resg" method="post">
+        <form id="resg" action="/portal/login" method="post">
             <h3> <?php echo $language[$view->view]->registeTitle;?><em><?php echo $language[$view->view]->lblRegsterGiude;?></em></h3>
                 <?php
                     if(isset($errorRegister)){
@@ -91,7 +91,7 @@
         </form>
     </div>
     <div class="lynx_rightContent lynx_box">
-        <form id="login" method="post">
+        <form id="login" action="/portal/login" method="post">
             
             <input type="hidden" name='c' value='login' />
             <h3> <?php echo $language[$view->view]->loginTitle;?></h3>
