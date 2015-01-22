@@ -10,10 +10,10 @@
                 <div data-assign="{{i = $index}}"></div>
                 <div ng-repeat="category in categoryLevel">
                     <div data-assign="{{j = $index}}"></div>
-                    <label>
+                    <label style="display:block;">
                         <input type="radio" name="category_level[{{i}}]" id="category.id" ng-click="selectCategory(i, j)">
-                        <strong ng-if="i === 0">{{category.name}}</strong>
-                        <span ng-if="i !== 0">{{category.name}}</span>
+                        <strong ng-if="i === 0" style="white-space:nowrap">{{category.name}}</strong>
+                        <span ng-if="i !== 0" style="white-space:nowrap">{{category.name}}</span>
                     </label>
                 </div>
             </td>
