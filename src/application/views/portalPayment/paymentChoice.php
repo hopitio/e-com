@@ -382,9 +382,6 @@
                             </div>
                         </div>
                         <br />
-                        <a ng-click="submit()" class="btn-cart-next" href="javascript:;" style="display: block;" data-type="submit">
-                             <?php echo $language[$view->view]->btnNextHigh;?><div class="pull-right"><i class="fa fa-caret-right"></i></div>
-                        </a>
                     </div>
                 </div>
             </div>
