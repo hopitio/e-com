@@ -179,24 +179,24 @@ defined('BASEPATH') or die('No direct script access allowed');
                         <h4><?php echo $language[$view->view]->lblSummaries ?></h4>
                         <div class="product-summaries-table">
                             <div class="border-dashed">
-                                <div class="tdleft"><strong ><?php echo $language[$view->view]->lblProduct ?> ({{countProducts}}):</strong></div>
-                                <div class="tdright"><strong >{{fnMoneyToString(totalRawPrice)}}</strong></div>
+                                <div class="tdleft"><strong ng-cloak><?php echo $language[$view->view]->lblProduct ?> ({{countProducts}}):</strong></div>
+                                <div class="tdright"><strong ng-cloak>{{fnMoneyToString(totalRawPrice)}}</strong></div>
                             </div>
                             <div class="border-solid">
-                                <div class="tdleft"><strong><?php echo $language[$view->view]->lblShipping ?>:</strong></div>
-                                <div class="tdright"><strong >{{fnMoneyToString(getShipPrice())}}</strong></div>
+                                <div class="tdleft"><strong ng-cloak><?php echo $language[$view->view]->lblShipping ?>:</strong></div>
+                                <div class="tdright"><strong ng-cloak>{{fnMoneyToString(getShipPrice())}}</strong></div>
                             </div>
                             <div class="border-dashed">
-                                <div class="tdleft"><strong ><?php echo $language[$view->view]->lblSubtotal ?>:</strong></div>
-                                <div class="tdright"><strong >{{fnMoneyToString(totalRawPrice + getShipPrice())}}</strong></div>
+                                <div class="tdleft"><strong ng-cloak><?php echo $language[$view->view]->lblSubtotal ?>:</strong></div>
+                                <div class="tdright"><strong ng-cloak>{{fnMoneyToString(totalRawPrice + getShipPrice())}}</strong></div>
                             </div>
                             <div class="border-solid">
-                                <div class="tdleft"><strong><?php echo $language[$view->view]->lblTransferFee ?>:</strong></div>
-                                <div class="tdright"><strong >----?</strong></div>
+                                <div class="tdleft"><strong ng-cloak><?php echo $language[$view->view]->lblTransferFee ?>:</strong></div>
+                                <div class="tdright"><strong ng-cloak>----?</strong></div>
                             </div>
                             <div class="total">
-                                <div class="tdleft"><strong><?php echo $language[$view->view]->lblTotal ?>:</strong></div>
-                                <div class="tdright"><strong>{{fnMoneyToString(totalRawPrice)}}</strong></div>
+                                <div class="tdleft"><strong ng-cloak><?php echo $language[$view->view]->lblTotal ?>:</strong></div>
+                                <div class="tdright"><strong ng-cloak>{{fnMoneyToString(totalRawPrice)}}</strong></div>
                             </div>
                         </div>
                         <div class="clearfix"></div>

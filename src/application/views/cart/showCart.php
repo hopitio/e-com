@@ -80,7 +80,7 @@
                                 <option ng-repeat="i in range(1, product.stock)" value="{{i}}" ng-selected="product.quantity == i">{{i}}</option>
                             </select>
                         </td>
-                        <td class="right"><strong>{{fnMoneyToString(product.price * product.quantity)}}</strong></td>
+                        <td class="right"><strong ng-cloak>{{fnMoneyToString(product.price * product.quantity)}}</strong></td>
                     </tr>
                 </tbody>
             </table>
