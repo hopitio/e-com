@@ -34,19 +34,27 @@ class orderNganLuongCallback extends BasePortalController
         if($order->error_code != 00){
             throw new Lynx_BusinessLogicException('Ngân lương error code:'.$order->error_code->__toString());
         }
-        log_message('error',var_export($order,true));
         
         $portalBizPayment = new PortalBizPayment();
         $portalBizPayment->updateOrderToOrderPlace(false, $orderId, $invocieId);
         $portalBizPayment->updatePaymentMethod($invocieId, $tokenKey, DatabaseFixedValue::PAYMENT_BY_NGANLUONG);
         
-        
         $this->session->unset_userdata('NGANLUONG_PAYMENT_TOKEN_KEY');
         $this->session->unset_userdata('NGANLUONG_PAYMENT_ORDER_ID');
         $this->session->unset_userdata('NGANLUONG_PAYMENT_INVOICE_ID');
         
+        $order_repository = new PortalModelOrder();
+        $order_repository->id = $orderId;
+        $orderResult = $order_repository->getOneById();
+        $user_id = $orderResult->fk_user;
+        $user_repository = new PortalModelUser();
+        $user_repository->id = $user_id;
+        $user_result = $user_repository->getOneById();
+        $user_result instanceof PortalModelUser;
+        $url = "/portal/order/checking?email={$user_result->account}&order={$orderId}";
+        
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
-        array('isError'=>false), true)
+        array('isError'=>false,"order_information_url" => $url ))
         ->setCss($this->css)
         ->setJavascript($this->js)
         ->render('portalPayment/paymentSuccess');

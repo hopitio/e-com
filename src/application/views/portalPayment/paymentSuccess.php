@@ -2,7 +2,7 @@
     <h3><?php echo $language[$view->view]->lblNotify;?></h3>
     <div class="lynx_orderInformation ">
         <div class="lynx_orderInformationRow">
-            <?php if(!$isError){ va?>
+            <?php if(!$isError){?>
                 <span style="text-align: center;width:100%;display: inline-block;">
                     <?php echo str_replace("{checking_order_link}", $order_information_url, $language[$view->view]->lblSucessMsg);?>
                 </span>

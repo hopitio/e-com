@@ -45,7 +45,7 @@ class PortalBizPayment extends PortalBizBase
        $orderModel = new PortalModelOrder();
        $orderModel->id = $orderId;
        $orderStatus = $this->orderUpdateStatus($orderId, $invoiceId, DatabaseFixedValue::ORDER_STATUS_ORDER_PLACED);
-       $orderInfoWithStatus = $orderModel->getOrderWithCurrentStatus();
+       $orderInfoWithStatus = $orderModel->getOrderWithCurrentStatus(array($orderId));
        return $orderInfoWithStatus;
    }
    
