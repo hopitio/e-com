@@ -548,7 +548,7 @@
             <![CDATA[
                 You will receive an email shortly. Our sales representatives will contact you before delivering your order.
                 <br/>
-                To review your order again, please click <a href="/portal/order/checking"> here </a>
+                To review your order again, please click <a href="{checking_order_link}"> here </a>
                 <br/>
                 <br/>
                 Thank you for shopping with Sfriendly.com !

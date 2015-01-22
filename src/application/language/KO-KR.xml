@@ -480,7 +480,16 @@
     <portalPayment_paymentSuccess>
         <title>성공적인 거래</title>
         <lblNotify>성공적인 거래</lblNotify>
-        <lblSucessMsg>성공적으로 결제 확인 메일을 주시기 바랍니다했습니다. {br} 영업 직원은 즉시 연락 드리겠습니다.</lblSucessMsg>
+        <lblSucessMsg> 
+            <![CDATA[
+                You will receive an email shortly. Our sales representatives will contact you before delivering your order.
+                <br/>
+                To review your order again, please click <a href="{checking_order_link}"> here </a>
+                <br/>
+                <br/>
+                Thank you for shopping with Sfriendly.com !
+            ]]>
+        </lblSucessMsg>
         <lblFaileMsg>지불 실패, 정보를 확인하시기 바랍니다.</lblFaileMsg>
     </portalPayment_paymentSuccess>
     <file_browse_file></file_browse_file>

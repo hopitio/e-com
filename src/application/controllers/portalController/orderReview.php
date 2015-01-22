@@ -92,8 +92,21 @@ class orderReview extends BasePortalController
         $invoiceIdRepository->updateById();
         //echo $invoiceIdRepository->_dbPortal->last_query(); die;
         
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
-        array('isError'=>false), true)
+        $order_repository = new PortalModelOrder();
+        $order_repository->id = $orderId;
+        $orderResult = $order_repository->getOneById();
+        $user_id = $orderResult->fk_user;
+        $user_repository = new PortalModelUser();
+        $user_repository->id = $user_id;
+        $user_result = $user_repository->getOneById();
+        $user_result instanceof PortalModelUser;
+        $email = urlencode($user_result->account);
+        $url = "/portal/order/checking?email={$email}&order={$orderId}";
+        $data = array("order_information_url" => $url);
+        
+        
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+        ->setData(array('isError'=>false, "order_information_url" => $url))
         ->setCss($this->css)
         ->setJavascript($this->js)
         ->render('portalPayment/paymentSuccess');
@@ -108,8 +121,19 @@ class orderReview extends BasePortalController
         $orderRepository->id = $invoiceId;
         $orderRepository->payment_method = DatabaseFixedValue::PAYMENT_BY_TRANSFER;
         
-        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
-        array('isError'=>false), true)
+        $order_repository = new PortalModelOrder();
+        $order_repository->id = $orderId;
+        $orderResult = $order_repository->getOneById();
+        $user_id = $orderResult->fk_user;
+        $user_repository = new PortalModelUser();
+        $user_repository->id = $user_id;
+        $user_result = $user_repository->getOneById();
+        $user_result instanceof PortalModelUser;
+        $url = "/portal/order/checking?email={$user_result->account}&order={$orderId}";
+        $data = array("order_information_url" => $url);
+        
+        LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
+        ->setData(array('isError'=>false, "order_information_url" => $url))
         ->setCss($this->css)
         ->setJavascript($this->js)
         ->render('portalPayment/paymentSuccess');

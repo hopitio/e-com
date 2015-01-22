@@ -517,7 +517,8 @@
         <lblSucessMsg>
             <![CDATA[
                 Cảm ơn bạn đã đặt hàng với Sfriendly.com <br/>
-                Nhân viên bán hàng của chúng tôi sẽ gọi điện cho bạn trước khi giao hàng cho bạn. Chú ý điện thoại bạn nhé !
+                Nhân viên bán hàng của chúng tôi sẽ gọi điện cho bạn trước khi giao hàng cho bạn. Chú ý điện thoại bạn nhé ! <br/>
+                Để kiểm tra trạng thái đơn hàng vui lòng xem tại <a href="{checking_order_link}"> đây </a>. 
                 ]]>
         </lblSucessMsg>
         <lblFaileMsg>Thanh toán thất bại, vui lòng kiểm tra lại thông tin.</lblFaileMsg>
