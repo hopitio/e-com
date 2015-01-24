@@ -66,6 +66,9 @@ echo $txtPrice->decorate(new ControlGroupDecorator('Giá chưa thuế:'));
         $('#txtPrice, #txtOriginPrice').change(function (evt) {
             var val = $(this).val();
             $(this).val(val.toString().replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        }).blur(function (evt) {
+            var val = $(this).val();
+            $(this).val(val.toString().replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         }).keypress(function (evt) {
             var theEvent = evt || window.event;
             var key = theEvent.keyCode || theEvent.which;

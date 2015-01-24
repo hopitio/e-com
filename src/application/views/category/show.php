@@ -56,12 +56,12 @@
                         <label for="txt_price_low"><?php echo $language[$view->view]->lblPriceLow ?> </label>
                         <div class='border-right div-inline'>
                             <input type='text'  id="txt_price_low" placeholder="<?php echo $language[$view->view]->lblCurrency ?>" 
-                                   onkeypress="return isNumber(event)" ng-model="advancedParams.priceLow"/>
+                                   ng-model="advancedParams.priceLow"/>
                         </div>
                         <label for="txt_price_high">&nbsp;&nbsp;<?php echo $language[$view->view]->lblPriceHigh ?> </label>
                         <div class='border-right div-inline'>
                             <input type='text'  id="txt_price_high" placeholder="<?php echo $language[$view->view]->lblCurrency ?>" 
-                                   onkeypress="return isNumber(event)" ng-model="advancedParams.priceHigh"/>
+                                   ng-model="advancedParams.priceHigh"/>
                         </div>
                         &nbsp;&nbsp;
                         <input type="button" value="<?php echo $language[$view->view]->lblFilter ?>" ng-click="getProducts(true)"/>

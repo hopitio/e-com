@@ -82,7 +82,7 @@ if (!empty($images))
                 <div class="detail-main-right">
                     <h4 class="product-name"><?php echo $product->getName() ?></h4>
                     <a href="<?php echo $firstLargeImage ?>" class="jqzoom" rel='gal1' title="Zoom">
-                        <img src="<?php echo $firstMediumImage ?>" id="thumbViewing"  title="thumbnail" style="width:450px;">
+                        <img alt="Sfriendly.com: <?php echo $product->getName() ?>" src="<?php echo $firstMediumImage ?>" id="thumbViewing"  title="thumbnail" style="width:450px;">
                     </a>
                 </div>
             </div>

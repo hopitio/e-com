@@ -80,7 +80,7 @@ class product extends BaseController
             );
             $data['secondLvlCates'] = CategoryMapper::make()->setLanguage($user->languageKey)->filterParent($ancestors[0])->findAll();
             $data['relatedProducts'] = $this->_get_related_products($product->id);
-            LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
+            $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                     ->setTitle($product->getName())
                     ->setCss(array(
                         '/style/details.css',
@@ -90,8 +90,19 @@ class product extends BaseController
                         '/plugins/jqzoom_ev-2.3/js/jquery.jqzoom-core.js',
                         '/js/controller/productDetailsCtrl.js'
                     ))
-                    ->setData($data, true)
-                    ->render('product/details');
+                    ->setData($data, true);
+
+            /* @var $product ProductFixedDomain */
+            if ((string) $product->getMetaKeywords())
+            {
+                $view->addMeta('<meta name="keywords" content="' . $product->getMetaKeywords() . '"/>');
+            }
+            if ((string) $product->getMetaDescription())
+            {
+                $view->addMeta('<meta name="description" content="' . $product->getMetaDescription() . '"/>');
+            }
+
+            $view->render('product/details');
         }
         else
         {

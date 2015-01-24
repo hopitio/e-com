@@ -90,11 +90,22 @@ angular.module('lynx').controller('CategoryListCtrl', ['$scope', '$http', '$time
         };
     }]);
 
-function isNumber(evt) {
-    evt = (evt) ? evt : window.event;
-    var charCode = (evt.which) ? evt.which : evt.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 46) {
-        return false;
-    }
-    return true;
-}
+$(function () {
+    $('#txt_price_low, #txt_price_high').change(function (evt) {
+        var val = $(this).val();
+        $(this).val(val.toString().replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    }).blur(function (evt) {
+        var val = $(this).val();
+        $(this).val(val.toString().replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    }).keypress(function (evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        if ((key < 48 || key > 57) && !(key == 8 || key == 9 || key == 13 || key == 37 || key == 39)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault)
+                theEvent.preventDefault();
+        }
+    }).focus(function () {
+        $(this).val($(this).val().replace(/,/g, ''));
+    }).trigger('change');
+});

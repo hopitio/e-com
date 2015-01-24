@@ -20,7 +20,7 @@ foreach ($secondLvlCates as $cate)
     $img = $images[0];
     ?>
     <a href="<?php echo $product->getURL() ?>" title="<?php echo $product->getName() ?>">
-        <img src="/thumbnail.php/<?php echo $img->url ?>/w=200" alt="<?php echo $product->getName() ?>" style="width: 200px;"/>
+        <img src="/thumbnail.php/<?php echo $img->url ?>/w=200" alt="Sfriendly.com: <?php echo $product->getName() ?>" style="width: 200px;"/>
         <br>
         <strong><?php echo $product->getName() ?></strong>
     </a>
