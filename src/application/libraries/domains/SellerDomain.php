@@ -18,6 +18,7 @@ class SellerDomain implements DomainInterface
     public $levelCode;
     public $levelName;
     public $commission;
+    public $logoBgColor;
     protected $categories = array();
 
     function isActive()

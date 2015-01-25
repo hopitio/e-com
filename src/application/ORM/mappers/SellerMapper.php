@@ -18,7 +18,8 @@ class SellerMapper extends MapperAbstract
             'statusReason' => 'status_reason',
             'fkManager'    => 'fk_manager',
             'sellerCode'   => 'seller_code',
-            'sellerName'   => 'seller_name'
+            'sellerName'   => 'seller_name',
+            'logoBgColor'  => 'logo_bg_color'
         );
 
         parent::__construct($domain, $query, $map);
