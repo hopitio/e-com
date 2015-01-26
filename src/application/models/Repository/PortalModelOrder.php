@@ -4,9 +4,11 @@ class PortalModelOrder extends PortalModelBase
     protected $_constIntanceName = 'T_order';
     var $id,$sub_key,$fk_user,$created_user,$created_date,$shiped_date,$canceled_date,$completed_date;
     
-    function getOrderWithStatus($statusName = null)
+    function getOrderWithStatus($statusName = null, $limit = null , $offset = null)
     {
         $statusQuery = "AND  t_order_status.status = '{$statusName}'";
+        $limit_query = "limit {$offset},{$limit}";
+        $limit_query = empty($limit) ? "" : $limit_query;
         if($statusName == null){
             $statusQuery= "";
         }
@@ -20,9 +22,30 @@ class PortalModelOrder extends PortalModelBase
                 	 ORDER BY t_order_status.id DESC
                 	 LIMIT 0, 1)
                 {$statusQuery}
-                ORDER BY t_order_status.updated_date DESC";
+                ORDER BY t_order_status.updated_date DESC
+                {$limit_query}";
         $query = $this->_dbPortal->query($sql);
         return $query->result();
+    }
+    
+    /**
+     * Get total number by user Id
+     * @param string $user_id
+     */
+    function getTotalNumberOfUserOrder($user_id)
+    {
+        $this->fk_user = $user_id;
+        $sql = "SELECT	count(t_order.id) as 'count'
+                FROM t_order
+                WHERE t_order.fk_user = {$this->fk_user}
+                ";
+        $query = $this->_dbPortal->query($sql);
+        $results = $query->result();
+        if($results > 0){
+            return $results[0]->count;
+        }else{
+            throw Lynx_DatabaseQueryException($sql);
+        }
     }
     
     function getOrderWithCurrentStatus($ordersId){

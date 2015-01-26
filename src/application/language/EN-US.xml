@@ -222,7 +222,7 @@
         <lblSubtotal>Sub total</lblSubtotal>
         <lblTotal>TOTAL</lblTotal>
         <lblSubmit>Continue to checkout</lblSubmit>
-        <lblSummaries>Summaries</lblSummaries>
+        <lblSummaries>ORDER SUMMARY</lblSummaries>
         <lblTaxes>Taxes</lblTaxes>
         <lblProductCount><![CDATA[You have <span class="number">{{countProducts()}}</span> product(s) in your Cart]]></lblProductCount>
         <lblInStock>In stock</lblInStock>
@@ -606,7 +606,7 @@
         <paidTo>Payment in</paidTo>
         <lblUsingForShipping>Use as billing address</lblUsingForShipping>
         
-        <lblOrderSummaries>Synthesis orders</lblOrderSummaries>
+        <lblOrderSummaries>ORDER SUMMARY</lblOrderSummaries>
         <lblOrderId>Order Id : </lblOrderId>
         <lblInvoiceId>Invoice Id : </lblInvoiceId>
         <lblCreateDate>Created t : </lblCreateDate>

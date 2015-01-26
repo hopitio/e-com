@@ -28,8 +28,14 @@ class userOrderHistory extends BasePortalController
     }
     
     function getOrderHistory($filter){
+        $page = $this->input->get("page");
+        $page = empty($page) ? 1 : $page;
+        $offset = ($page - 1) * 10; // page size default 10;
+        $limit = $page * 10;// page size default 10;
+        
         $portalOrderStatusBiz = new PortalBizPaymentHistory();
-        $orders = $portalOrderStatusBiz->getUserOrderWithStatus(User::getCurrentUser(),$filter);
+        $orders = $portalOrderStatusBiz->getUserOrderWithStatus(User::getCurrentUser(),$filter,$limit,$offset);
+        
         foreach ($orders as &$order){
             $order->returnUrl = "/portal/order_verifing/verify?o={$order->id}&i={$order->invoices[0]->id}";
         }
@@ -37,6 +43,16 @@ class userOrderHistory extends BasePortalController
         $async->isError = false;
         $async->data = $orders;
         $this->output->set_content_type('application/json')->set_output(json_encode($async, false));
+    }
+    
+    function getUserNumberOfUserOrder($user_id){
+        //var_dump($user_id);die;
+        $portalOrderRepository = new PortalModelOrder();
+        $result = $portalOrderRepository->getTotalNumberOfUserOrder($user_id);
+        $data = array(
+            'total' => $result
+        );
+        $this->output->set_content_type('application/json')->set_output(json_encode($data, false));
     }
     
     function cancelOrder(){

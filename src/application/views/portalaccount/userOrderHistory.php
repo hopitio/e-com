@@ -20,7 +20,9 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 </div>
-
+<script type="text/javascript">
+   window.__me_id__ = "<?php echo User::getCurrentUser()->id;?>";
+</script>
 <script type="text/ng-template" id="ModalOrderDetail.html" >
         <div class="lynx_row-right" ng-show="!(order.invoices.length > 0)">
             <div class="lynx_row-head">
@@ -118,6 +120,12 @@
         </div>
 </script>
 <script type="text/ng-template" id="ModalOrderList.html" >
+        <div class="lynx_row-right" >
+            <ul class="pagination pagination-sm inline">
+                <li ng-repeat="pageing in page.pages" ng-class="{'active':($index+1) ==  page.currentPage}" ><a ng-href="{{pageing.url}}">{{$index+1}}</a/></li>
+            <ul>
+        </div>
+        
         <div class="lynx_row-right" ng-show="!(orders.length > 0)">
             <div class="lynx_row-head">
                 <span ng-click="backToList()">

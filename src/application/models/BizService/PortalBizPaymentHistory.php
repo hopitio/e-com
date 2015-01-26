@@ -101,13 +101,13 @@ class PortalBizPaymentHistory extends PortalBizBase{
         return $portalModelTax->getTaxByProductIds($productIds);
     }
     
-    function getUserOrderWithStatus($user,$orderStatus = 'all')
+    function getUserOrderWithStatus($user,$orderStatus = 'all', $limit = null,  $offset = null)
     {
         $orderStatus = $orderStatus == 'all' ? null : $orderStatus;
         $portalModelOrder = new PortalModelOrder();
         $portalModelOrder->fk_user = $user->id;
         $orders = array();
-        $status = $portalModelOrder->getOrderWithStatus($orderStatus);
+        $status = $portalModelOrder->getOrderWithStatus($orderStatus,$limit,$offset);
         
         foreach ($status as $orderStatus)
         {

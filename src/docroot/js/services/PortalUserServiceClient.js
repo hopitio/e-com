@@ -65,19 +65,17 @@ function PortalUserServiceClient($http)
       };
       
       this.updateUserOpenLogin = function(userId, sucessCallback, errorCallback){
-          $url = '/portal/api/__admin/user/'+user.id+'/open_login';
-          $http.post($url,
-                  $.param(
-                          {userId:userId}),
-                          {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT",'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'}}
-          ).success(function(data){
-              if(typeof sucessCallback === 'function'){
-                  sucessCallback(data);
-              }
-          }).error(function(xhr, status, error){
-              if(typeof errorCallback === 'function'){
-                  errorCallback(xhr,status);
-              }
-          });
+          $url = 'portal/api/account/'+userId+'/order_history_total_order_number';
+          $http.get($url,
+                  {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT"}}
+            ).success(function(data){
+                if(typeof sucessCallback === 'function'){
+                    sucessCallback(data);
+                }
+            }).error(function(xhr, status, error){
+                if(typeof errorCallback === 'function'){
+                    errorCallback(xhr,status);
+                }
+            });
       };
 }
