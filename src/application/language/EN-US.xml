@@ -256,7 +256,7 @@
         <lblBack>Previous</lblBack>
         <lblNext>Continue to payment</lblNext>
         <supportText><![CDATA[You need assistance? Call <span class="phone-no">098.999.999</span> or <span class="phone-no">043.999.999]]></supportText>
-        <lblSummaries>Summaries</lblSummaries>
+        <lblSummaries>ORDER SUMMARY</lblSummaries>
         <lblSubtotal>Subtotal</lblSubtotal>
         <lblTaxes>Taxes</lblTaxes>
         <northernVietnam>Northen</northernVietnam>
@@ -518,7 +518,7 @@
         <colQuantity>Quantity</colQuantity>
         <colTotal>Total</colTotal>
         <shippingTo>Shipping to</shippingTo>
-        <lblOrderSummaries>Summary</lblOrderSummaries>
+        <lblOrderSummaries>ORDER SUMMARY</lblOrderSummaries>
         <lblOrderId>Order Id : </lblOrderId>
         <lblInvoiceId>Invoice : </lblInvoiceId>
         <lblCreateDate>Created at : </lblCreateDate>
@@ -527,7 +527,7 @@
         <lblOrderShipping>Transport : </lblOrderShipping>
         <lblOrderSubtotal>Total goods : </lblOrderSubtotal>
         <lblOrderTax>Taxes : </lblOrderTax>
-        <lblOrderTotal>The total value of bills : </lblOrderTotal>
+        <lblOrderTotal>TOTAL : </lblOrderTotal>
         <lblUsingForShipping>Use as billing address</lblUsingForShipping>
         <lblprocessCart>Cart</lblprocessCart>
         <lblprocessShipping>Delivery information</lblprocessShipping>

@@ -14,6 +14,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     $route['(en|kr|vi)/portal/login/registerSellerAccount'] = 'portalController/login/registerSellerAccount';
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
+        $route['portal/order_place/review'] = 'portalController/orderReview/redirect_on_get';
         //$route['portal/page/policy'] = 'portalController/staticPage/showPolicy';
         $route['portal/login'] = 'portalController/login/showPage';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
@@ -76,7 +77,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/dialog/user/find'] = "portalController/account/showDialog";
         $route['portal/__test/order_request'] = 'testingController/getMockupOrderRequest';
         
-
+        $route['(en|kr|vi)/portal/order_place/review'] = 'portalController/orderReview/redirect_on_get';
         $route['(en|kr|vi)/portal/login'] = 'portalController/login/showPage';
         $route['(en|kr|vi)/portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
         $route['(en|kr|vi)/portal/active'] = 'portalController/activeAccount/active';

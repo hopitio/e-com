@@ -136,7 +136,7 @@ $config['OrderRefundOrder'] = array(
     MAILLER_PORT      => '25',
     MAILLER_PASS      => '0uxj7cECd',
     MAILLER_TIMEOUT   => '1',
-    MAILLER_TEMP      => '/OrderRefundOrder.html',
+    MAILLER_TEMP      => '/OrderRefuned',
     MAILLER_TYPE      => 'html',
     MAILLER_NEWLINE   => "\r\n"
 );

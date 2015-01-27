@@ -11,6 +11,11 @@ class orderReview extends BasePortalController
     protected $authorization_required = false;
     protected $css = array('/style/portalOrder.css');
     protected $js = array('/js/controller/PortalOrderComplete.js');
+    
+    function redirect_on_get(){
+        redirect("/home");
+    }
+    
     function showPage(){
         
         $postData = $this->input->post();

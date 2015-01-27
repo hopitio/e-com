@@ -45,11 +45,13 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
         <div class="head-tool-box text-center">
             <div class="conatiner width-960 text-right">
                 <a href="<?php echo Common::language_url('/seller/product') ?>"><?php echo $language['layout']->lblSellerOffice ?></a>|
-                <a href="<?php echo Common::language_url('/portal/account/order_history') ?>"><?php echo $language['layout']->lblMyOrder ?></a>|
+                
                 <?php if (User::getCurrentUser()->is_authorized): ?>
+                    <a href="<?php echo Common::language_url('/portal/account/order_history') ?>"><?php echo $language['layout']->lblMyOrder ?></a>|
                     <a href="<?php echo Common::language_url('/portal/account/user_information') ?>"><?php echo User::getCurrentUser()->getFullname() ?></a>|
                     <a href="/logout"><?php echo $language['layout']->lblUserLogout ?></a>
                 <?php else: ?>
+                    <a href="<?php echo Common::language_url('/portal/account/order_history') ?>"><?php echo $language['layout']->lblMyOrder ?></a>|
                     <a href="<?php echo User::getCurrentUser()->getLoginAuthenUrl() ?>"><?php echo $language['layout']->lblUserStatusNotSign ?></a>|
                     <a href="<?php echo Common::language_url('/portal/login') ?>" class="last"><?php echo $language['layout']->lblRegister ?></a>
                 <?php endif; ?>
