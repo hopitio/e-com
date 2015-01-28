@@ -233,9 +233,7 @@ class PortalBizOrder extends PortalBizBase
             if($product->seller_email == null || !isset($product->seller_email)){
                 $product->seller_email = 'lethanhan.bkaptech@gmail.com';
             }
-            if(ENVIRONMENT == "development"){
-                $product->seller_email = 'lethanhan.bkaptech@gmail.com';
-            }
+            
             if(!array_key_exists($product->seller_email,$sellerMail)){
                 $sellerMail[$product->seller_email] = $order;
             }

@@ -24,7 +24,6 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
         $buyer_phone = '';
         
         $this->preOrderInformation($order, $order_number, $seller_name, $buyer_name, $buyer_contact, $buyer_phone);
-        
         $name = '';
         $order_number = $order->id;
         $help_url = '';
@@ -50,7 +49,13 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
                 break;
             }
         }
-        
+        foreach ($order->invoice->products as &$product){
+            if($product->seller_email != $this->to){
+                $product->is_visiable = false;
+            }else{
+                $product->is_visiable = true;
+            }
+        }
         foreach ($order->invoice->shippings as $shipping)
         {
             if($shipping->shipping_type == DatabaseFixedValue::SHIPPING_TYPE_SHIP && $shipping->status == DatabaseFixedValue::SHIPPING_STATUS_ACTIVE){

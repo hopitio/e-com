@@ -16,6 +16,8 @@ class SellerPaymentVerifiedMailler extends AbstractStaff{
         $temp = $this->CI->config->item('temp_mail_view');
         $temp .= User::getCurrentUser()->languageKey.'/'.$this->config[MAILLER_TEMP];
         $this->mailData['target'] = $this->to;
+        $order = $this->mailData['order'];
+        $this->mailData['order'] = $this->preOrderInformation($order);
         return $this->CI->load->view($temp,$this->mailData,true);
     }
 
@@ -29,5 +31,17 @@ class SellerPaymentVerifiedMailler extends AbstractStaff{
         return $subject;
         
     } 
+    
+    
+    private function preOrderInformation($order){
+        foreach ($order->invoice->products as &$product){
+            if($product->seller_email != $this->to){
+                $product->is_visiable = false;
+            }else{
+                $product->is_visiable = true;
+            }
+        }
+        return $order;
+    }
 
 }

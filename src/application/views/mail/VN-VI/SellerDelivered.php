@@ -14,13 +14,7 @@
     }
     $contactPay = $contactPay != null ? $contactPay : $contactShipping;
     
-    $sellerName = '';
-    foreach ($order->invoice->products as $product)
-    {
-        if($product->seller_email == $target){
-            $sellerName = $product->seller_name;
-        }
-    }
+    $sellerName = $order->invoice->products[0]->seller_name;
 ?>
 <div style="background: white; margin-top: 11.25pt;">
     <p> Chào <?php echo $sellerName;?>,  </p>
@@ -49,11 +43,15 @@
             </tr >-->
             <?php 
             $productsPrice = 0;
+            //log_message('error',json_encode($order->invoice->products));
             foreach ($order->invoice->products as $product){
-            $productsPrice  += $product->product_price;
-            $priceFormated = number_format($product->product_price);
-            $sellPriceFormated = number_format($product->sell_price);
-            $formatedDescript = strip_tags($product->short_description);
+                if(!$product->is_visiable){
+                    continue;
+                }
+                $productsPrice  += $product->product_price;
+                $priceFormated = number_format($product->product_price);
+                $sellPriceFormated = number_format($product->sell_price);
+                $formatedDescript = strip_tags($product->short_description);
                 echo "
                 <tr>
                     <td valign='top'><p style='padding:0px; margin:0px;' align='center'>{$product->name}</p></td>

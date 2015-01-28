@@ -52,10 +52,13 @@
             <?php 
             $productsPrice = 0;
             foreach ($order->invoice->products as $product){
-            $productsPrice  += $product->product_price;
-            $priceFormated = number_format($product->product_price);
-            $sellPriceFormated = number_format($product->sell_price);
-            $formatedDescript = strip_tags($product->short_description);
+                if(!$product->is_visiable){
+                    continue;
+                }
+                $productsPrice  += $product->product_price;
+                $priceFormated = number_format($product->product_price);
+                $sellPriceFormated = number_format($product->sell_price);
+                $formatedDescript = strip_tags($product->short_description);
                 echo "
                 <tr>
                     <td valign='top'><p style='padding:0px; margin:0px;' align='center'>{$product->name}</p></td>

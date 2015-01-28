@@ -71,12 +71,23 @@ abstract class AbstractStaff
         $fullName = $this->config[MAILLER_FULLNAME];
         $email = $this->config[MAILLER_USER];
         $this->CI->email->from($email, $fullName);
-        $this->CI->email->to($this->to);
         $subject = $this->buildTitle();
         $msg = $this->buildContent();
         $this->CI->email->subject($subject);
         $this->CI->email->message($msg);
+        
+        
+        if(ENVIRONMENT == "development"){
+            $this->CI->email->to('lethanhan.bkaptech@gmail.com');
+        }else{
+            $this->CI->email->to($this->to);
+        }
+        
         $this->CI->email->send();
+        
+        
+        
+        log_message('error',"send to : {$this->to}, '{$subject}'");
     }
     
     

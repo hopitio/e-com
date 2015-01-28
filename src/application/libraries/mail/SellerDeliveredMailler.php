@@ -44,10 +44,18 @@ class SellerDeliveredMailler extends AbstractStaff{
     }
 
     private function preOrderInformation($order,&$order_number,&$seller_name,&$buyer_name,&$buyer_contact,&$buyer_phone){
-        foreach ($order->invoice->products as $product){
+        foreach ($order->invoice->products as &$product){
             if($product->seller_email == $this->to){
                 $seller_name = $product->seller_name;
                 break;
+            }
+        }
+        
+       foreach ($order->invoice->products as &$product){
+            if($product->seller_email != $this->to){
+                $product->is_visiable = false;
+            }else{
+                $product->is_visiable = true;
             }
         }
         
@@ -60,6 +68,5 @@ class SellerDeliveredMailler extends AbstractStaff{
                break;
             }
         }
-        
     }
 }
