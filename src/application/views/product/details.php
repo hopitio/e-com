@@ -182,7 +182,9 @@ if (!empty($images))
             <form id="frmAddTo">
                 <input type="hidden" name="hdn_product" value="<?php echo $product->id ?>">
                 <?php $background = $product->logoBgColor ? "background: " . $product->logoBgColor . ';' : '' ?>
-                <div class="detail-seller-logo" style="<?php echo $background ?>"><img src="<?php echo $product->seller_logo ?>"></div>
+                <div class="detail-seller-logo" style="<?php echo $background ?>">
+                    <img src="<?php echo $product->seller_logo ?>" alt="Sfriendly.com: <?php echo $product->seller_name ?>">
+                </div>
                 <div class="detail-seller-name"><?php echo $product->seller_name ?></div>
                 <div class="text-center">
                     <?php if ($product->getSalesPercent()): ?>

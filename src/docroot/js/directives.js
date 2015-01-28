@@ -1,6 +1,5 @@
-'use strict';
 
-(function () {
+(function (Config) {
     var cnf = new Config;
 
     function generateUUID() {
@@ -99,4 +98,4 @@
             }
         };
     });
-})(Config);
+})(typeof Config !== 'undefined' ? Config : new Function);
