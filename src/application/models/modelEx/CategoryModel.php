@@ -113,19 +113,25 @@ class CategoryModel extends BaseModel
                 WHERE p.`status`=1
                 AND p.id NOT IN(SELECT fk_product FROM t_best WHERE fk_category=$cateID)
                 ";
+        $orderBy = '';
         switch ($sort) {
             case 'new':
-                $sqlNormalProduct .= ' ORDER BY p.date_created DESC';
+                $orderBy = '  p.date_created DESC';
                 break;
             case 'priceasc':
-                $sqlNormalProduct .= ' ORDER BY p.price ASC';
+                $orderBy = '  p.price ASC';
                 break;
             case 'pricedesc':
-                $sqlNormalProduct .= ' ORDER BY p.price DESC';
+                $orderBy = '  p.price DESC';
                 break;
             case 'sale':
-                $sqlNormalProduct .= ' ORDER BY p.sales_percent DESC';
+                $orderBy = '  p.sales_percent DESC';
                 break;
+        }
+
+        if ($orderBy)
+        {
+            $sqlNormalProduct .= ' ORDER BY ' . $orderBy;
         }
         if ($priceLow)
         {
@@ -144,6 +150,7 @@ class CategoryModel extends BaseModel
                 ->from('t_product p')
                 ->innerJoin("($sqlTemp) temp", 'temp.id=p.id')
                 ->innerJoin('t_seller seller', 'p.fk_seller = seller.id')
+                ->orderBy($orderBy)
                 ->limit($limit, $offset);
         if (!$sort)
         {

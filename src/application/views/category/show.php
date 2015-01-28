@@ -72,7 +72,7 @@
     </div>
     <div class="width-960" style="min-height: 355px;">
         <div ng-repeat="products in productRows" class="lynx-row width-960">
-            <div class="lynx-box lynx-box-medium" ng-repeat="product in products" ng-product-medium="product"></div>
+            <div class="lynx-box lynx-box-medium" ng-repeat="product in products" ng-product-medium="product" ng-cloak></div>
         </div>
     </div>
 </div>
