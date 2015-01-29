@@ -194,14 +194,14 @@ class orderReview extends BasePortalController
             $index++;
         }
         
-        if(ENVIRONMENT == "development"){
-            $total_amount =  2000;
+        if( $this->config->item("on-demo-payment")){
+            $total_amount =  10000;
             $fee_shipping = 0;
             $index = 1;
             foreach ($array_items as &$item){
                 if($index == 1){
                     $item["item_quantity{$index}"] = 2; 
-                    $item["item_amount{$index}"] = 1000;
+                    $item["item_amount{$index}"] = 5000;
                 }else{
                     $item["item_amount{$index}"] = 0;
                 }

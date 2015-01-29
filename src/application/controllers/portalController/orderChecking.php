@@ -43,6 +43,7 @@ class orderChecking extends BasePortalController
         $order->exchange_rate_bank_name = empty($order->exchange_rate_bank_name) ? ExchangeRateFactory::EXCHANGE_NAME_VIETCOMBANK : $order->exchange_rate_bank_name;
         $order->exchange_rate = empty($order->exchange_rate) ? $current_exchange_rate : $order->exchange_rate;
         $exchange_rate = ExchangeRateFactory::makeExchangeRateByContent($order->exchange_rate_bank_name, $order->exchange_rate);
+        
         foreach ($order->invoices as &$invoice){
             foreach($invoice->products as &$product){
                 $product->sell_price =  $this->convertToCurrentCurrencyByExchangeRate($product->sell_price, $exchange_rate);

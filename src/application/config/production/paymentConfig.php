@@ -24,7 +24,7 @@ $config['ngan_luong'] = array(
     'return_url' => 'http://localhost.com/portal/order/nganluong_callback',
     'order_name' => 'SFRIENDLY',
 );
-
+$config['on-demo-payment'] = true;
 
 /* End of file config.php */
 /* Location: ./application/config/maintenance.php */

@@ -32,8 +32,7 @@ class ExchangeRateFactory
         switch ($name){
         	case self::EXCHANGE_NAME_VIETCOMBANK;
             	require_once __DIR__ . '/VietcombankExchangeRate.php';
-            	$vietcombank = new VietcombankExchangeRate($exchange_content);
-            	return $vietcombank->getExchangeData();
+            	return new VietcombankExchangeRate($exchange_content);
         	break;
         }
     }
