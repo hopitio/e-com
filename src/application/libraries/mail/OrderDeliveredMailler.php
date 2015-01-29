@@ -33,7 +33,7 @@ class OrderDeliveredMailler extends AbstractStaff{
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
         $order = $this->mailData['order'];
         $subject = $mailLanguage->OrderDelivered;
-        $subject = str_replace('{order_number}',$order->id,$subject);
+        //$subject = str_replace('{order_number}',$order->id,$subject);
         return $subject; 
     }
 

@@ -111,6 +111,8 @@ class PortalPaymentManager extends PortalBizPayment{
          $portalOrder->created_date = $portalOrder->getDate();
          $portalOrder->created_user = $userId;
          $portalOrder->fk_user = $userId;
+         $portalOrder->exchange_rate = ExchangeRateFactory::getExchangeRate(ExchangeRateFactory::EXCHANGE_NAME_VIETCOMBANK);
+         $portalOrder->exchange_rate_bank_name = ExchangeRateFactory::EXCHANGE_NAME_VIETCOMBANK;
          $orderId = $portalOrder->insert();
          return $orderId;
     }

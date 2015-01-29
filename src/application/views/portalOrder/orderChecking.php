@@ -1,3 +1,6 @@
+<?php 
+$user instanceof User;
+?>
 <div class="width-960" style="display: inline-block;" >
     <div class="col-md-4" style="padding-left: 0px">
         <div class="box">
@@ -57,7 +60,7 @@
                             <div class="<?php echo empty($pay) ? "col-md-12" : "col-md-6" ;?>">
                                 <h4>Vận chuyển</h4>
                                 <span style="font-weight: bold;">Hình thức vận chuyển : </span> <?php echo $shipping->display_name;?><br/>
-                                <b>Phí vận chuyển : </b> <?php echo number_format($shipping->price);?> <br/>
+                                <b>Phí vận chuyển : </b> <?php echo Common::getLableCurrency($shipping->price,$user->getCurrency());?> <br/>
                                 <b>Tên : </b> <?php echo $shipping->contact->full_name;?> <br/>
                                 <b>SĐT : </b> <?php echo $shipping->contact->telephone;?> <br/>
                                 <?php echo $shipping->contact->street_address; ?>, <?php echo $shipping->contact->city_district; ?>
@@ -66,7 +69,7 @@
                                 <div class="col-md-6">
                                     <h4>Thanh toán</h4>
                                     <span style="font-weight: bold;">Hình thức vận chuyển : </span> <?php echo $pay->display_name;?><br/>
-                                    <b>Phí vận chuyển : </b> <?php echo number_format($pay->price);?> <br/>
+                                    <b>Phí vận chuyển : </b> <?php echo Common::getLableCurrency($pay->price,$user->getCurrency());?> <br/>
                                     <b>Tên : </b> <?php echo $pay->contact->full_name;?> <br/>
                                     <b>SĐT : </b> <?php echo $pay->contact->telephone;?> <br/>
                                     <?php echo $pay->contact->street_address; ?>, <?php echo $pay->contact->city_district; ?>
@@ -91,7 +94,7 @@
                                                 <a href="<?php echo $product->product_url;?>">
                                                     <b style="color: blue"><?php echo $product->name;?></b>
                                                     <br/>
-                                                    <b>Tổng giá : </b> <span><?php echo number_format($product->product_price);?> vnd</span> <b>Số lượng : </b> <span><?php echo number_format($product->product_quantity);?></span>
+                                                    <b>Tổng giá : </b> <span><?php echo Common::getLableCurrency($product->product_price,$user->getCurrency());?></span> <b>Số lượng : </b> <span><?php echo number_format($product->product_quantity);?></span>
                                                     <br/>
                                                     <span><?php echo $product->short_description;?></span>
                                                 </a>
@@ -110,9 +113,9 @@
                                 continue;
                             }
                             ?>
-                        <b><?php echo $cost->comment?> : </b> <?php echo number_format($cost->value);?> vnd <br/>
+                        <b><?php echo $cost->comment?> : </b> <?php echo Common::getLableCurrency($cost->value,$user->getCurrency());?> <br/>
                         <?php }?>
-                        <b>Tổng giá trị hóa đơn : </b> <?php echo number_format($invoice->totalCost);?> vnd
+                        <b>Tổng giá trị hóa đơn : </b> <?php echo Common::getLableCurrency($invoice->totalCost,$user->getCurrency());?>
                     </div>
                 </div>
             <?php }?>

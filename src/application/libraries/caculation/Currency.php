@@ -8,9 +8,13 @@ class Currency
     /** @var ExchangeRateAbstract */
     static protected $_exchange_rate;
 
-    function __construct($code)
+    function __construct($code, $exchange_rate = null)
     {
-        static::$_exchange_rate = ExchangeRateFactory::makeExchangeRate('Vietcombank');
+        if(empty($exchange_rate)){
+            static::$_exchange_rate = ExchangeRateFactory::makeExchangeRate(ExchangeRateFactory::EXCHANGE_NAME_VIETCOMBANK);
+        }else{
+            static::$_exchange_rate = $exchange_rate;
+        }
         $this->_code = $code;
     }
 

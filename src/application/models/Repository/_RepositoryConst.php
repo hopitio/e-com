@@ -217,7 +217,8 @@ class T_order extends T_base
     CONST canceled_date = "canceled_date";
     CONST completed_date = "completed_date";
     CONST record_status = 'record_status';
-
+    CONST exchange_rate = 'exchange_rate';
+    CONST exchange_rate_bank_name = 'exchange_rate_bank_name';
 }
 
 class T_payment_temp extends T_base

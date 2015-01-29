@@ -128,5 +128,16 @@ class Common
         $sites = 'Google|Yahoo|msnbot'; // Add the rest of the search-engines 
         return (preg_match("/$sites/", $_SERVER['HTTP_USER_AGENT']) > 0) ? true : false;
     }
+    
+    static function convertToCurrentCurrencyByExchangeRate($amount,$exchange_rate,$targetCurrency = 'VND',$currentCurrency = 'VND')
+    {
+        $money = new Money($amount, new Currency($currentCurrency,$exchange_rate));
+        return $money->convert(new Currency($targetCurrency,$exchange_rate))->getAmount();
+    }
+    
+    static function getLableCurrency($amount,$currency = 'VND'){
+        $money = new Money($amount, new Currency($currency));
+        return $money->__toString();
+    }
 
 }

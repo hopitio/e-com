@@ -2,14 +2,24 @@
 
 class VietcombankExchangeRate extends ExchangeRateAbstract
 {
-
+    CONST FILE_PATH = '/cache/exchange_rate.vietcombank.xml';
     protected $_data;
-
+    protected $_exchange_data;
+    
+    /**
+     * 
+     * @param unknown $exchange_data
+     */
+    function __construct($exchange_data = null){
+        $this->_exchange_data = $exchange_data;
+    }
+    
     protected function _get_data()
     {
-        if ($this->_data === null)
+        if (empty($this->_data))
         {
-            $this->_data = simplexml_load_file(APPPATH . '/cache/exchange_rate.vietcombank.xml');
+            $this->_exchange_data = empty($this->_exchange_data) ? file_get_contents(APPPATH . self:: FILE_PATH) : $this->_exchange_data;
+            $this->_data = simplexml_load_string($this->_exchange_data);
         }
         return $this->_data;
     }
@@ -54,6 +64,13 @@ class VietcombankExchangeRate extends ExchangeRateAbstract
             return false;
         }
         return (double) $row->attributes()->Transfer;
+    }
+    
+    function getExchangeData(){
+        if(empty($this->_data)){
+            $this->_get_data();
+        }
+        return $this->_exchange_data;
     }
 
     /**

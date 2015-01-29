@@ -122,7 +122,7 @@ $config['OrderFailToDelivered'] = array(
     MAILLER_PORT      => '25',
     MAILLER_PASS      => '0uxj7cECd',
     MAILLER_TIMEOUT   => '1',
-    MAILLER_TEMP      => '/OrderFailToDelivered.html',
+    MAILLER_TEMP      => '/OrderFailToDelivered',
     MAILLER_TYPE      => 'html',
     MAILLER_NEWLINE   => "\r\n"
 );
