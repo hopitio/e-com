@@ -8,8 +8,8 @@ class orderChecking extends BasePortalController
         $orderId = $this->input->get('order');
         $userEmail = $this->input->get('email');
         if(empty($orderId) || empty($userEmail)){
-            $data['user'] = $this->obj_user;
-            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(array(), true)
+            //$data['user'] = $this->obj_user;
+            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(array('user'=>$this->obj_user), true)
             ->setCss(array())
             ->setJavascript(array())
             ->render('portalOrder/orderChecking');
