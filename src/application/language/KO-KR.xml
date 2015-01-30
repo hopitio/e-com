@@ -294,7 +294,7 @@
     <portalHelp_policy></portalHelp_policy>
     
     <portalaccount_userSecurity>
-        <menuItemSecurity>계정 보안</menuItemSecurity>
+        <menuItemSecurity>비밀번호 변경</menuItemSecurity>
         <menuItemInformation>계정 정보</menuItemInformation>
         <menuItemOrderHistory>순서의 역사</menuItemOrderHistory>
         <menuItemLogout>로그 아웃</menuItemLogout>
@@ -322,7 +322,7 @@
         
     </portalaccount_userSecurity>
     <portalaccount_userInformation>
-        <menuItemSecurity>계정 보안</menuItemSecurity>
+        <menuItemSecurity>비밀번호 변경</menuItemSecurity>
         <menuItemInformation>계정 정보</menuItemInformation>
         <menuItemOrderHistory>순서의 역사</menuItemOrderHistory>
         <menuItemLogout>로그 아웃</menuItemLogout>
@@ -356,7 +356,7 @@
         <msgUpdateContactSucess>이 업데이트는 해결</msgUpdateContactSucess>
     </portalaccount_userInformation>
     <portalaccount_userOrderHistory>
-        <menuItemSecurity>계정 보안</menuItemSecurity>
+        <menuItemSecurity>비밀번호 변경</menuItemSecurity>
         <menuItemInformation>계정 정보</menuItemInformation>
         <menuItemOrderHistory>순서의 역사</menuItemOrderHistory>
         <menuItemLogout>로그 아웃</menuItemLogout>

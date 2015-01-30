@@ -326,7 +326,7 @@
     <portalHelp_policy></portalHelp_policy>
     
     <portalaccount_userSecurity>
-        <menuItemSecurity>Account security</menuItemSecurity>
+        <menuItemSecurity>Change password</menuItemSecurity>
         <menuItemInformation>Account information</menuItemInformation>
         <menuItemOrderHistory>Order history</menuItemOrderHistory>
         <title>Account Security</title>
@@ -353,7 +353,7 @@
         
     </portalaccount_userSecurity>
     <portalaccount_userInformation>
-        <menuItemSecurity>Account Security</menuItemSecurity>
+        <menuItemSecurity>Change password</menuItemSecurity>
         <menuItemInformation>Account information</menuItemInformation>
         <menuItemOrderHistory>Order history</menuItemOrderHistory>
         <title>Personal Information</title>
@@ -386,7 +386,7 @@
         <msgUpdateContactSucess>Update has successfully address</msgUpdateContactSucess>
     </portalaccount_userInformation>
     <portalaccount_userOrderHistory>
-        <menuItemSecurity>Account Security</menuItemSecurity>
+        <menuItemSecurity>Change password</menuItemSecurity>
         <menuItemInformation>Account information</menuItemInformation>
         <menuItemOrderHistory>Order history</menuItemOrderHistory>
         <title>Order history</title>

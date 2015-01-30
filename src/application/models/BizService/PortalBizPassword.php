@@ -21,7 +21,7 @@ class PortalBizPassword extends PortalBizBase
             return false;
         }
         $portalUser->password = $newPass;
-        $portalUser->updateUser();
+        $portalUser->updateById();
         
         $portalUserHistory = new PortalBizUserHistory();
         

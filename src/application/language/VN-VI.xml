@@ -327,7 +327,7 @@
     <portalHelp_policy></portalHelp_policy>
     
     <portalaccount_userSecurity>
-        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemSecurity>Thay đổi mật khẩu</menuItemSecurity>
         <menuItemInformation>Thông tin tài khoản</menuItemInformation>
         <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
         <menuItemLogout>Đăng xuất</menuItemLogout>
@@ -355,7 +355,7 @@
         
     </portalaccount_userSecurity>
     <portalaccount_userInformation>
-        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemSecurity>Thay đổi mật khẩu</menuItemSecurity>
         <menuItemInformation>Thông tin tài khoản</menuItemInformation>
         <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
         <menuItemLogout>Đăng xuất</menuItemLogout>
@@ -389,7 +389,7 @@
         <msgUpdateContactSucess>Cập nhật địa chỉ Thành công</msgUpdateContactSucess>
     </portalaccount_userInformation>
     <portalaccount_userOrderHistory>
-        <menuItemSecurity>Bảo mật tài khoản</menuItemSecurity>
+        <menuItemSecurity>Thay đổi mật khẩu</menuItemSecurity>
         <menuItemInformation>Thông tin tài khoản</menuItemInformation>
         <menuItemOrderHistory>Lịch sử order</menuItemOrderHistory>
         <menuItemLogout>Đăng xuất</menuItemLogout>

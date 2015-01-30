@@ -78,10 +78,6 @@
             <td width="151" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong><?php echo number_format($shippingsPrice);?> đ</strong></p></td>
         </tr>
         <tr>
-            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Thuế</strong></p></td>
-            <td width="151" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>0 đ</strong></p></td>
-        </tr>
-        <tr>
             <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Ưu đãi</strong></p></td>
             <td width="151" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>-0 đ</strong></p></td>
         </tr>
