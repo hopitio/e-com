@@ -6,7 +6,7 @@ class PortalOrderManager extends PortalBizOrder
         $invoiceId = $portalOrderRejected->process();
         $revalue = parent::updateOrderToRejected($user,$orderId,$comment);
         parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_REJECTED);
-        parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_FAIL_TO_DELIVERED);
+        parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_ORDER_REJECTED);
         return $revalue;
     }
     
@@ -14,8 +14,8 @@ class PortalOrderManager extends PortalBizOrder
         $PortalOrderCanncel = new PortalOrderCanncel($user,$orderId,$comment);
         $invoiceId = $PortalOrderCanncel->process();
         $revalue = parent::updateOrderToCancelled($user,$orderId,$comment);
-        parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_CANCEL);
-        parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_FAIL_TO_DELIVERED);
+        parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_REJECTED);
+        parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_ORDER_REJECTED);
         return $revalue;
     }
     
@@ -24,7 +24,7 @@ class PortalOrderManager extends PortalBizOrder
         $PortalOrderCanncel = new PortalOrderRefuned($user, $orderId, $products, $contact, $otherCosts, $comment);
         $invoiceId = $PortalOrderCanncel->process($orderId);
         parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_REFUND);
-        parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_FAIL_TO_DELIVERED);
+        parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_ORDER_REJECTED);
         return $invoiceId;
     }
     

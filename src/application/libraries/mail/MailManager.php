@@ -20,7 +20,7 @@ class MailManager {
     CONST SELLER_PAYMENT_VERIFIED = 'SELLER_PAYMENT_VERIFIED';
     CONST SHIPPING_FROM_USA = 'SHIPPING_FROM_USA';
     CONST ORDER_REJECTED = 'ORDER_REJECTED';
-    CONST SELLER_REJECTED = "SELLER_REJECTED";
+    CONST SELLER_ORDER_REJECTED = "SELLER_REJECTED";
     
     /**
      * Người dùng request gửi mail.
@@ -73,7 +73,7 @@ class MailManager {
             case self::SELLER_PAYMENT_VERIFIED:
                 $staff = new SellerPaymentVerifiedMailler();
                 break;
-            case self::SELLER_REJECTED:
+            case self::SELLER_ORDER_REJECTED:
                 $staff = new SellerOrderRejectedMailler();
                 break;
             case self::SHIPPING_FROM_USA:
