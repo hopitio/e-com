@@ -8,6 +8,7 @@ class orderChecking extends BasePortalController
         $orderId = $this->input->get('order');
         $userEmail = $this->input->get('email');
         if(empty($orderId) || empty($userEmail)){
+            $data['user'] = $this->obj_user;
             LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(array(), true)
             ->setCss(array())
             ->setJavascript(array())
@@ -30,6 +31,7 @@ class orderChecking extends BasePortalController
         $order = $paymentHistory->getOrderAllInformation($orderId);
         $data['order'] = $order;
         $data['user'] = $this->obj_user;
+        
         $this->convertCurrencyOrder($order);
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data, true)
         ->setCss(array())
