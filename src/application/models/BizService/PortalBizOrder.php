@@ -89,7 +89,7 @@ class PortalBizOrder extends PortalBizBase
         $status = $this->updateOrderToDelivered($user, $orderId, $comment);
         $this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_DELIVERED);
         $this->mailSeller($orderId , $invoiceId, MailManager::SELLER_DELIVERED);
-        $this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_ASK_REVIEW);
+        //$this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_ASK_REVIEW);
         return $status;
     }
     
