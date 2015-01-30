@@ -427,7 +427,7 @@
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
     <portalPayment_paymentChoice>
         <title>결제 방법을 선택</title>
-        <fieldsetTitle>Choose payment</fieldsetTitle>
+        <fieldsetTitle>결제를 선택</fieldsetTitle>
         <paymentByNL>아래 전자 결제 용</paymentByNL>
         <paymentByCash>현금 지급</paymentByCash>
         <paymentByVisa>비자 / 마스터로 지불</paymentByVisa>
