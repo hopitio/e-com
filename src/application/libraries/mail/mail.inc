@@ -18,4 +18,5 @@ require_once APPPATH.'libraries/mail/OrderPlaceMailler.php';
 require_once APPPATH.'libraries/mail/SellerRegisteredMailer.php';
 require_once APPPATH.'libraries/mail/ShippingFromUSAMailler.php';
 require_once APPPATH.'libraries/mail/OrderRejectedMailler.php';
+require_once APPPATH.'libraries/mail/SellerOrderRejectedMailler.php';
 

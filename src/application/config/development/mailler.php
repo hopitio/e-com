@@ -211,6 +211,20 @@ $config['SellerPaymentVerified'] = array(
     MAILLER_NEWLINE   => "\r\n"
 );
 
+$config['SellerOrderRejected'] = array(
+    MAILLER_PROTOCOL  => 'smtp',
+    MAILLER_USERAGENT => 'Sfriendly',
+    MAILLER_HOST      => 'ssl://smtp.gmail.com',
+    MAILLER_FULLNAME  => 'Sfriendly Customer Service',
+    MAILLER_USER      => 'projecte2002@gmail.com',
+    MAILLER_PORT      => '465',
+    MAILLER_PASS      => '1234567$',
+    MAILLER_TIMEOUT   => '1',
+    MAILLER_TEMP      => '/SellerOrderRejected',
+    MAILLER_TYPE      => 'html',
+    MAILLER_NEWLINE   => "\r\n"
+);
+
 $config['SellerRegistered'] = array(
     MAILLER_PROTOCOL  => 'smtp',
     MAILLER_USERAGENT => 'Sfriendly',
