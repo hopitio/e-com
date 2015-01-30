@@ -267,9 +267,10 @@
         <registerconfirm>[Sfriendly] Tạo account thành công</registerconfirm>
         <OrderShipping>[Sfriendly] Đơn hàng đang được giao</OrderShipping>
         <OrderDelivered>[Sfriendly] Đã giao hàng</OrderDelivered>
+        <OrderFailToDelivered>[Sfriendly] Không có ai nhận hàng</OrderFailToDelivered>
         <SellerOrderDelivered>[Sfriendly] Đã giao cho khách hàng</SellerOrderDelivered>
-        <SellerPaymentVerified>[Sfriendly] Hàng đã được bán - thanh toán xong</SellerPaymentVerified>
-        <SellerOrderFailDelivered>[Sfriendly] Đơn hàng được hủy</SellerOrderFailDelivered>
+        <SellerPaymentVerified>[Sfriendly] Hàng đã được bán</SellerPaymentVerified>
+        <SellerOrderFailDelivered>[Sfriendly] Không có ai nhận hàng</SellerOrderFailDelivered>
         <OrderPlace>[Sfriendly] Đặt hàng thành công</OrderPlace>
         <OrderAskReview>[Sfriendly] Hỏi về Review, Feedback</OrderAskReview>
         <OrderRejected>[Sfriendly] Đơn hàng được huỷ</OrderRejected>
@@ -278,6 +279,7 @@
         <newpasswordNofication>[Sfriendly] Quên password</newpasswordNofication>
         <passwordNotify>[Sfriendly] Đổi mật khẩu thành công</passwordNotify>
         <orderRefuned>[Sfriendly] Trả hàng thành công </orderRefuned>
+        <ShippingFromUSAMailler>[Sfriendly] Có sản phẩm yêu cầu ship hàng từ mỹ</ShippingFromUSAMailler>
     </mail>
     
     <portalaccount_resetPassword>

@@ -5,7 +5,7 @@ class PortalOrderManager extends PortalBizOrder
         $portalOrderRejected = new PortalOrderRejected($user,$orderId,$comment);
         $invoiceId = $portalOrderRejected->process();
         $revalue = parent::updateOrderToRejected($user,$orderId,$comment);
-        parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_FAIL_TO_DELIVERED);
+        parent::mailBuyer($orderId, $invoiceId , MailManager::ORDER_REJECTED);
         parent::mailSeller($orderId, $invoiceId , MailManager::SELLER_FAIL_TO_DELIVERED);
         return $revalue;
     }

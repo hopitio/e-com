@@ -29,7 +29,7 @@ class OrderFailToDeliveredMailler extends AbstractStaff{
     {
         $mailLanguage = MultilLanguageManager::getInstance()->getLangViaScreen('mail', $this->languageKey);
         $order = $this->mailData['order'];
-        $subject = $mailLanguage->OrderRejected;
+        $subject = $mailLanguage->OrderFailToDelivered;
         $subject = str_replace('{order_number}',$order->id,$subject);
         return $subject;
     }

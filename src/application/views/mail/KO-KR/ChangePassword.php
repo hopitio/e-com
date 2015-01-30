@@ -1,4 +1,4 @@
-Xin chào <?php echo $user->id;?>! <br/>
+Xin chào <?php echo $user->full_name;?>! <br/>
 Bạn đã đổi mật khẩu thành công tại Sfriendly.<br/> 
 Bạn có thể bắt đầu đăng nhập bằng mật khẩu mới. <br/>
 <br/>
