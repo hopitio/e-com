@@ -35,7 +35,7 @@ class userOrderHistory extends BasePortalController
         
         $portalOrderStatusBiz = new PortalBizPaymentHistory();
         $orders = $portalOrderStatusBiz->getUserOrderWithStatus(User::getCurrentUser(),$filter,$limit,$offset);
-        
+        $orders = $this->convertVNDToCurrencyInOrder($orders);
         foreach ($orders as &$order){
             $order->returnUrl = "/portal/order_verifing/verify?o={$order->id}&i={$order->invoices[0]->id}";
         }
@@ -43,6 +43,39 @@ class userOrderHistory extends BasePortalController
         $async->isError = false;
         $async->data = $orders;
         $this->output->set_content_type('application/json')->set_output(json_encode($async, false));
+    }
+    
+    /**
+     * 
+     */
+    function convertVNDToCurrencyInOrder($orders){
+        foreach ($orders as &$order){
+            $current_exchange_rate = ExchangeRateFactory::getExchangeRate(ExchangeRateFactory::EXCHANGE_NAME_VIETCOMBANK);
+            $order->exchange_rate_bank_name = empty($order->exchange_rate_bank_name) ? ExchangeRateFactory::EXCHANGE_NAME_VIETCOMBANK : $order->exchange_rate_bank_name;
+            $order->exchange_rate = empty($order->exchange_rate) ? $current_exchange_rate : $order->exchange_rate;
+            $exchange_rate = ExchangeRateFactory::makeExchangeRateByContent($order->exchange_rate_bank_name, $order->exchange_rate);
+            $order->cost = $this->convertToCurrentCurrencyByExchangeRate($order->cost, $exchange_rate);
+            foreach ($order->invoices as &$invoice){
+                foreach($invoice->products as &$product){
+                    $product->sell_price =  $this->convertToCurrentCurrencyByExchangeRate($product->sell_price, $exchange_rate);
+                    $product->product_price =  $this->convertToCurrentCurrencyByExchangeRate($product->product_price, $exchange_rate);
+                }
+                unset($product);
+            
+                foreach ($invoice->shippings as &$shipping){
+                    $shipping->price = $this->convertToCurrentCurrencyByExchangeRate($shipping->price, $exchange_rate);
+                }
+                unset($shipping);
+            
+                foreach ($invoice->otherCosts as &$cost){
+                    $cost->value = $this->convertToCurrentCurrencyByExchangeRate($cost->value, $exchange_rate);
+                }
+                unset($cost);
+                $invoice->totalCost = $this->convertToCurrentCurrencyByExchangeRate($invoice->totalCost, $exchange_rate);
+            }
+            unset($invoice);
+        }
+        return $orders;
     }
     
     function getUserNumberOfUserOrder($user_id){

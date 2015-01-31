@@ -56,7 +56,7 @@
                         <div class="lynx_row">
                             
                             <div class="lynx_row ">
-                                <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblInvoiceTotal; ?> </span>:&nbsp;<span class="hightLine">{{invoice.totalCost | number}}đ</span>
+                                <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblInvoiceTotal; ?> </span>:&nbsp;<span class="hightLine">{{fnMoneyToString(invoice.totalCost)}}</span>
                             </div>
                             <div class="lynx_row ">
                                 <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblInvoiceId; ?> </span>:&nbsp;<span>{{invoice.id}}</span>
@@ -83,7 +83,7 @@
                                 <div class="lynx_invoiceProduct">
                                     <div class="lynx_productImage"><img width="100px" height="100px" ng-src="{{product.sub_image}}"/></div>
                                     <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblNameProduct; ?> : </span> {{product.name}}</div>
-                                    <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblQuanityProduct; ?> : </span> {{product.quantity}}</div>
+                                    <div class="lynx_productDetail"><span><?php echo $language[$view->view]->lblQuanityProduct; ?> : </span> {{product.quantity | number}}</div>
                                     <div class="lynx_productDetail">{{product.short_description}}</div>
                                     
                                 </div>
@@ -92,13 +92,13 @@
                                 </div>
                             </span>
                             <span class="lynx_colTax">{{product.totalTax | number }}</span>
-                            <span class="lynx_colPrice">{{parseInt(product.product_price) + product.totalTax | number}} đ</span>
+                            <span class="lynx_colPrice">{{fnMoneyToString(parseInt(product.product_price) + product.totalTax)}}</span>
                         </div>
                         
                         <div class="lynx_InvoiceTable lynx_right" ng-repeat="otherCost in invoice.otherCosts">
                             <span class="lynx_colDes">{{otherCost.comment}}</span>
                             <span class="lynx_colTax"></span>
-                            <span class="lynx_colPrice">{{otherCost.value}}</span>
+                            <span class="lynx_colPrice">{{fnMoneyToString(otherCost.value)}}</span>
                         </div>
                         
                         <div class="lynx_InvoiceTable lynx_right" ng-repeat="shipping in invoice.shippings" >
@@ -111,7 +111,7 @@
                                 <div class="lynx_productDetail"><span class="lynx_lblFromtitle"><?php echo $language[$view->view]->lblStatus; ?> : </span> {{shipping.status}}</div>
                             </span>
                             <span class="lynx_colTax"></span>
-                            <span class="lynx_colPrice">{{shipping.price | number}}đ</span>
+                            <span class="lynx_colPrice">{{fnMoneyToString(shipping.price)}}</span>
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                             <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderCreatedDate; ?> : </span>{{order.created_date}}
                         </div>
                         <div class="lynx_row ">
-                           <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderTotalPrices; ?> : </span> <span class="hightLine">{{order.cost | number:0}} VND</span>
+                           <span class="lynx_inHightLine"><?php echo $language[$view->view]->lblOrderTotalPrices; ?> : </span> <span class="hightLine">{{fnMoneyToString(order.cost)}}</span>
                         </div>
                     </div>
                 </div>
@@ -180,8 +180,8 @@
                                 <a class="lynx_inHightLine" href="/product/details/{{product.sub_id}}"><i class="glyphicon glyphicon-list-alt" style="cursor: pointer;"></i>&nbsp;<?php echo $language[$view->view]->btnProductDetail; ?> </a>&nbsp;&nbsp;&nbsp;
                                 </div>
                         </span>
-                        <span class="lynx_colTax">{{product.totalTax | number:0}}đ</span>
-                        <span class="lynx_colPrice">{{parseInt(product.product_price) + product.totalTax | number:0}}đ</span>
+                        <span class="lynx_colTax">{{product.totalTax}}</span>
+                        <span class="lynx_colPrice">{{fnMoneyToString(parseInt(product.product_price) + product.totalTax)}}</span>
                     </div>
                 </div>
             </div>

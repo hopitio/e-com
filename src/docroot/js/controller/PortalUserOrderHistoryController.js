@@ -8,6 +8,7 @@ function PortalUserOrderHistoryController($scope,$http)
     $scope.cancelOrder = {};
     $scope.totalPageNumber = 0;
     $scope.page = {currentPage : 0, pages : []};
+    $scope.fnMoneyToString = window.fnMoneyToString;
     var modalInstance ;
     $scope.loadAllOrder = function(){
     	page = $scope.getParameterByName('page');
