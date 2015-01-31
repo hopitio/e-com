@@ -54,7 +54,7 @@ class orderNganLuongCallback extends BasePortalController
         $url = "/portal/order/checking?email={$user_result->account}&order={$orderId}";
         
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(
-        array('isError'=>false,"order_information_url" => $url ))
+        array('isError'=>false,"order_information_url" => $url, "order"=>$orderResult ))
         ->setCss($this->css)
         ->setJavascript($this->js)
         ->render('portalPayment/paymentSuccess');
