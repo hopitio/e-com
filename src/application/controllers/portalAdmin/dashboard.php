@@ -15,6 +15,7 @@ class dashboard extends PortalAdminControllerAbstract
     protected $_js = array();
     function showPage()
     {
+        redirect('portal/__admin/order_find');
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ADMIN_ONE_COLUMN)
         ->setData(array(),false)
         ->setCss($this->_css)

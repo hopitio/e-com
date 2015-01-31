@@ -20,8 +20,9 @@
 </div>
 
 <script type="text/javascript">
-    function submitBack(){
-        $(document).ready(function(){$("#frm-back").submit();});
+$(document).ready(function(){
+    if( 'GIFT' == '<?php echo $order->sub_key;?>' ){
+        $.ajax('/cart/emptyCart');
     }
-    <?php echo isset($isBack) ? "submitBack()" : "";?>
+});
 </script>

@@ -120,6 +120,6 @@ function PortalAdminOrderListController($scope,$http)
         }
     }, true);
 
-    
+    $scope.find();
 }
 PortalAdminOrderListController.$inject = ['$scope','$http'];

@@ -21,7 +21,7 @@
                 <span style="font-weight: bold;">Ngày Giao hàng : </span> {{order.shiped_date}} <br/>
                 <span style="font-weight: bold;">Ngày hoàn thành : </span> {{order.completed_date}} <br/>
                 <span style="font-weight: bold;">Ngày kết thúc : </span> {{order.canceled_date}} <br/>
-                <span style="font-weight: bold;">Tài khoản thực hiện giao dịch : </span> {{order.user.account}} <br/>
+                <span style="font-weight: bold;">Tài khoản thực hiện giao dịch : </span> <a ng-href="/portal/__admin/user/{{order.fk_user}}">{{order.fk_user}}</a> <br/>
                 <span style="font-weight: bold;">Tổng giá trị đơn hàng : </span> {{order.cost | number}} VND <br/>
                 <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'VERIFYING' && !onSubmit">Xác nhận đơn hàng (order place) </a>
                 <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'ORDER_PLACED' && !onSubmit">Đang vận chuyển (Shipping)</a>
