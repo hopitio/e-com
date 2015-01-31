@@ -89,7 +89,6 @@ class PortalBizOrder extends PortalBizBase
         $status = $this->updateOrderToDelivered($user, $orderId, $comment);
         $this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_DELIVERED);
         $this->mailSeller($orderId , $invoiceId, MailManager::SELLER_DELIVERED);
-        //$this->mailBuyer($orderId , $invoiceId, MailManager::ORDER_ASK_REVIEW);
         return $status;
     }
     
@@ -137,7 +136,21 @@ class PortalBizOrder extends PortalBizBase
         $portalModel->canceled_date =  '';
         $portalModel->completed_date = $portalModel->getDate();
         $portalModel->updateById();
+        $invoices_repository  = new PortalModelInvoice();
+        $invoices_repository->fk_order = $orderId;
+        $results = $invoices_repository->getMutilCondition();
+        if(!empty($results[0])){
+            $invoice = $results[0];
+            if(empty($invoice->paid_date)){
+                $invoices_repository  = new PortalModelInvoice();
+                $invoices_repository->id = $invoice->id;
+                $invoices_repository->paid_date = $invoices_repository->getDate();
+                $invoices_repository->updateById();
+            } 
+        }
+        
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
+        
     }
     
     protected function updateOrderToOrderPlace($userUpdate, $orderId, $comment){
