@@ -3,7 +3,7 @@ defined('BASEPATH') or die('No direct script access allowed');
 /* @var $shippingMethods ShippingMethodDomain */
 ?>
 <div ng-app="lynx" ng-controller="cartShippingCtrl" class="width-960 left">
-    <form method="post" action="/order/placeOrder" id="frmMain" class="form-validate">
+    <form method="post" action="<?php echo Common::language_url('/order/placeOrder') ?>" id="frmMain" class="form-validate">
         <ul id="cart-process">
             <li class="passed">
                 <div class="process-text">
@@ -196,7 +196,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                             </div>
                             <div class="total">
                                 <div class="tdleft"><strong ng-cloak><?php echo $language[$view->view]->lblTotal ?>:</strong></div>
-                                <div class="tdright"><strong ng-cloak>{{fnMoneyToString(totalRawPrice)}}</strong></div>
+                                <div class="tdright"><strong ng-cloak>{{fnMoneyToString(totalRawPrice + getShipPrice())}}</strong></div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -223,8 +223,8 @@ foreach ($provinces as $k => $v)
 }
 ?>
 <script>
-    var script_data = {
-        regions: <?php echo json_encode($regions) ?>,
-        shippingMethods: <?php echo json_encode($shippingMethods) ?>
-    };
+            var script_data = {
+            regions: <?php echo json_encode($regions) ?>,
+                    shippingMethods: <?php echo json_encode($shippingMethods) ?>
+            };
 </script>

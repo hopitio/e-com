@@ -101,7 +101,7 @@ class MY_Controller extends CI_Controller
             {
                 throw new Lynx_RoutingException();
             }
-            
+
             call_user_func_array(array($this, $method), $ar_arg);
         }
         catch (Lynx_ViewException $e)
@@ -275,13 +275,13 @@ class MY_Controller extends CI_Controller
             $index = 0;
             foreach (array_keys($queryString) as $key)
             {
-                if($index == 0){
+                if ($index == 0)
+                {
                     $dst .= '?';
                 }
                 $dst .= "&{$key}={$queryString[$key]}";
                 $index++;
             }
-            
         }
         //HOTFIX for phase 1, portal vs sub in one application
         if (strpos($dst, 'portal/') !== FALSE)

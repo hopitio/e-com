@@ -96,6 +96,7 @@ class order extends BaseController
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data)->render('order/placeOrder');
     }
 
+
     function verifyOrderEvidence()
     {
         $orderEvidenceKey = isset($_GET['evidencekey']) ? $_GET['evidencekey'] : null;

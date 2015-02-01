@@ -90,6 +90,11 @@ class CartMapper extends ProductFixedMapper
         get_instance()->session->set_userdata(static::CART_CONTENTS, $data);
     }
 
+    function emptyCart()
+    {
+        get_instance()->session->set_userdata(static::CART_CONTENTS, array());
+    }
+
     /**
      * @return CartDomain
      */
