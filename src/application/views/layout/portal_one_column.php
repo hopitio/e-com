@@ -51,7 +51,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                     <a href="<?php echo Common::language_url('/portal/account/user_information') ?>"><?php echo User::getCurrentUser()->getFullname() ?></a>|
                     <a href="/logout"><?php echo $language['layout']->lblUserLogout ?></a>
                 <?php else: ?>
-                    <a href="<?php echo Common::language_url('/portal/account/order_history') ?>"><?php echo $language['layout']->lblMyOrder ?></a>|
+                    <a href="<?php echo Common::language_url('/portal/order/checking') ?>"><?php echo $language['layout']->lblMyOrder ?></a>|
                     <a href="<?php echo User::getCurrentUser()->getLoginAuthenUrl() ?>"><?php echo $language['layout']->lblUserStatusNotSign ?></a>|
                     <a href="<?php echo Common::language_url('/portal/login') ?>" class="last"><?php echo $language['layout']->lblRegister ?></a>
                 <?php endif; ?>
