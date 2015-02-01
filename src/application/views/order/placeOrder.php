@@ -27,8 +27,8 @@ foreach ($shippingMethods as $method)
 
 foreach ($cartContents as $cartInstance)
 {
-    $shortDesRemovedHtmlTags = strip_tags(html_entity_decode($cartInstance->getDescription()));
-    $shortDes = mb_strlen($shortDesRemovedHtmlTags) > 50 ? mb_substr($shortDesRemovedHtmlTags, 0, 50) . '...' : $shortDesRemovedHtmlTags;
+    $shortDesRemovedHtmlTags = strip_tags(html_entity_decode($cartInstance->getDescription(), ENT_COMPAT, 'UTF-8'));
+    $shortDes = mb_strlen($shortDesRemovedHtmlTags, 'UTF-8') > 50 ? mb_substr($shortDesRemovedHtmlTags, 0, 50, 'UTF-8') . '...' : $shortDesRemovedHtmlTags;
     $images = $cartInstance->getImages('thumbnail');
     $json_product = array(
         'id'          => $cartInstance->id,
@@ -46,6 +46,7 @@ foreach ($cartContents as $cartInstance)
     );
     $json['products'][] = $json_product;
 }
+
 $json = json_encode($json);
 ?>
 <div class="contentWarp wStaticPx" style="min-height: 500px;">

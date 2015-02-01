@@ -244,4 +244,9 @@ class cart extends BaseController
         CartMapper::make()->removeFromCart($productID);
     }
 
+    function emptyCart()
+    {
+        CartMapper::make()->emptyCart();
+    }
+
 }
