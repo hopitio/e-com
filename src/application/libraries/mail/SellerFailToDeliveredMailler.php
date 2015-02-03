@@ -22,13 +22,15 @@ class SellerFailToDeliveredMailler extends AbstractStaff{
         $buyer_name = '';
         $buyer_contact = '';
         $buyer_phone = '';
-        
         $this->preOrderInformation($order, $order_number, $seller_name, $buyer_name, $buyer_contact, $buyer_phone);
         $name = '';
         $order_number = $order->id;
         $help_url = '';
-        
-        $mailData = array('name'=>$seller_name,'orderNumber' => $order_number,'order'=>$order,'target'=>$this->to);
+        $order_status_repository = new PortalModelOrderStatus();
+        $order_status_repository->fk_order = $order->id;
+        $status_result = $order_status_repository->getMutilCondition(T_order_status::id,"DESC");
+        $status = $status_result[0];
+        $mailData = array('name'=>$seller_name,'orderNumber' => $order_number,'order'=>$order,'target'=>$this->to,'status' => $status);
         return $this->CI->load->view($temp,$mailData,true);
     }
 

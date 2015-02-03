@@ -18,7 +18,11 @@ class OrderFailToDeliveredMailler extends AbstractStaff{
         $temp .= User::getCurrentUser()->languageKey.'/'.$this->config[MAILLER_TEMP];
         $name = '';
         $this->preOrderInformation($order, $name);
-        $mailData = array('order'=>$order,'name'=>$name);
+        $order_status_repository = new PortalModelOrderStatus();
+        $order_status_repository->fk_order = $order->id;
+        $status_result = $order_status_repository->getMutilCondition(T_order_status::id,"DESC");
+        $status = $status_result[0];
+        $mailData = array('order'=>$order,'name'=>$name,'status' => $status);
         return $this->CI->load->view($temp,$mailData,true);;
     }
 
