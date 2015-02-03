@@ -128,6 +128,7 @@ abstract class MapperAbstract
         {
             $domain = $this->makeDomain($record);
             $domains[] = $domain;
+
             if (is_callable($callback))
             {
                 call_user_func($callback, $record, $domain);

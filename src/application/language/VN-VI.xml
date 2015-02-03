@@ -137,7 +137,7 @@
         <lblQuantity>Số lượng</lblQuantity>
         <btnBuyNow>Mua Ngay</btnBuyNow>
         <lblAddTo>Thêm vào</lblAddTo>
-        <btnCart>Thêm vào Giỏ hàng</btnCart>
+        <btnCart>Mua ngay</btnCart>
         <btnFavorite>Thêm vào Ưa thích</btnFavorite>
         <lblShare>Chia sẻ</lblShare>
         <lblDes>Mô tả sản phẩm</lblDes>

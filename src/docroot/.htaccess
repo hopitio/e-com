@@ -1,8 +1,9 @@
 RewriteEngine on
 RewriteBase /
 
-RewriteCond %{HTTP_HOST} !^www\.
-RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^sfriendly.com
+RewriteRule ^(.*)$ http://www.sfriendly.com/$1 [R=permanent,L]
+
 
 RewriteCond $1 !^(index\.php|thumbnail\.php|test\.php|images|googleee58db8cc510e228\.html|bootstrap-3.1.1-dist|fonts|genghis|phpmyadmin|css|uploads|audios|style|js|plugins|mp3|robots\.txt|favicon\.ico|cerulean)
 RewriteCond %{REQUEST_FILENAME} !^(.*)\.(gif|txt|png|jpg|jpeg|html|css|js|mp3|zip|tgz|wav|woff|ttf|svg|eot|map)$ [NC]

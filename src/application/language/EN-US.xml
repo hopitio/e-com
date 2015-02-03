@@ -135,7 +135,7 @@
         <lblQuantity>Quantity</lblQuantity>
         <btnBuyNow>Buy now</btnBuyNow>
         <lblAddTo>Add to</lblAddTo>
-        <btnCart>Add to Cart</btnCart>
+        <btnCart>Buy now</btnCart>
         <btnFavorite>Add to Favorite</btnFavorite>
         <lblShare>Share</lblShare>
         <lblDes>Product description</lblDes>

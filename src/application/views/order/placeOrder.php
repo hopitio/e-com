@@ -33,6 +33,7 @@ foreach ($cartContents as $cartInstance)
     $json_product = array(
         'id'          => $cartInstance->id,
         'name'        => (string) $cartInstance->getName(),
+        'vn_name'     => $cartInstance->vn_name,
         'image'       => '/thumbnail.php/' . $images[0]->url,
         'shortDesc'   => $shortDes,
         'price'       => $cartInstance->getPriceMoney("VND")->getAmount(),
@@ -42,7 +43,9 @@ foreach ($cartContents as $cartInstance)
         'sellerName'  => $cartInstance->sellerName,
         'sellerEmail' => $cartInstance->sellerEmail,
         'sid'         => $cartInstance->sid,
-        'shipping'    => $cartInstance->shipping
+        'sellerId'   => $cartInstance->sellerId,
+        'shipping'    => $cartInstance->shipping,
+        'url'         => 'http://www.' . $_SERVER['HTTP_HOST'] . $cartInstance->getUrl()
     );
     $json['products'][] = $json_product;
 }

@@ -32,7 +32,12 @@ class order extends BaseController
                 ->setLanguage(User::getCurrentUser()->languageKey)
                 ->autoloadTaxes()
                 ->autoloadAttributes()
-                ->findAll();
+                ->select("(SELECT value_varchar FROM t_product_attribute WHERE fk_product=p.id AND `language`='VN-VI' AND fk_attribute_type=1 LIMIT 1) AS vn_name", false)
+                ->findAll(function($record, $domain)
+        {
+            $domain->vn_name = $record['vn_name'];
+        });
+
         $shippingAddress = new stdClass();
         $shippingAddress->fullname = $this->input->post('txtFullname');
         $shippingAddress->telephone = $this->input->post('txtPhoneNo');
@@ -95,7 +100,6 @@ class order extends BaseController
         );
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data)->render('order/placeOrder');
     }
-
 
     function verifyOrderEvidence()
     {

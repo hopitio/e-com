@@ -100,12 +100,21 @@ class CartMapper extends ProductFixedMapper
      */
     function findAll($callback = null)
     {
+        global $fn;
+        $fn = $callback;
         $cartContents = $this->_getCartContents();
         $domains = parent::findAll(function($rawData, $instance)
                 {
                     $instance->sellerName = $rawData['seller_name'];
                     $instance->sellerEmail = $rawData['seller_email'];
                     $instance->sid = $rawData['sid'];
+                    $instance->sellerId = $rawData['seller_id'];
+
+                    global $fn;
+                    if (is_callable($fn))
+                    {
+                        call_user_func($fn, $rawData, $instance);
+                    }
                 });
         foreach ($domains as $instance)
         {
