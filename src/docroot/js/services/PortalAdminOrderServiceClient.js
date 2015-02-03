@@ -81,4 +81,18 @@ function PortalAdminOrderServiceClient($http)
         });
     };
     
+    this.failToDelivery = function(orderId,commentContent,sucessCallback,errorCallback){
+    	$url = '/portal/api/__admin/order/'+orderId+'/status_fail_to_delivery';
+    	$http.post($url,$.param({comment:commentContent}),
+                        {headers:{"If-Modified-Since":"Thu,01 Jun 1970 00:00:00 GMT",'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'}}
+        ).success(function(data){
+            if(typeof sucessCallback === 'function'){
+                sucessCallback(data);
+            }
+        }).error(function(xhr, status, error){
+            if(typeof errorCallback === 'function'){
+                errorCallback(xhr,status);
+            }
+        });
+    };
 }

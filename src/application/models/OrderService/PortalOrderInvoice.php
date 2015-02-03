@@ -62,7 +62,6 @@ class PortalOrderInvoice
     }
     
     function save_contact(&$contact){
-        //var_dump($contact);die;
         if($contact->id != 'new'){
             return $contact->id;
         }else{

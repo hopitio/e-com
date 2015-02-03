@@ -173,6 +173,18 @@ class PortalBizOrder extends PortalBizBase
         return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
     }
     
+    protected function updateOrderToFailToDelivery($userUpdate, $orderId, $comment){
+        $status = DatabaseFixedValue::ORDER_STATUS_FAIL_TO_DELIVER;
+        $portalModel = new PortalModelOrder();
+        $portalModel->id = $orderId;
+        $portalModel->getOneById();
+        $portalModel->canceled_date =  '';
+        $portalModel->completed_date = '';
+        $portalModel->shiped_date = '';
+        $portalModel->updateById();
+        return $this->updateOrderStatus($userUpdate, $orderId, $status, $comment);
+    }
+    
     private function updateOrderStatus($userUpdate, $orderId, $status, $comment){
         $orderStatus = new PortalModelOrderStatus();
         $orderStatus->updated_date = $orderStatus->getDate();

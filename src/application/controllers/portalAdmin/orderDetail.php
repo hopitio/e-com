@@ -92,5 +92,25 @@ class orderDetail extends PortalAdminControllerAbstract
         }
         $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
     }
+    
+    function fail_to_delivery($orderId){
+        $dataPost = $this->input->post();
+        if(isset($dataPost['comment'])){
+            $comment =  $dataPost['comment'];
+        }
+        $portalOrderManage = new PortalOrderManager();
+        $status = $portalOrderManage->fail_to_delivery($this->obj_user, $orderId, $comment);
+        $async = new AsyncResult();
+        if($status == null){
+            $async->isError = true;
+            $async->errorMessage = 'Không thể thực hiện việc thay đổi trạng thái của order';
+            $async->data = null;
+        }else{
+            $async->isError = false;
+            $async->errorMessage = null;
+            $async->data = "Chuyển trạng thái order thành công sang \"{$status->status}\"";
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($async, true));
+    }
 
 }

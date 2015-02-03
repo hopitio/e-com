@@ -10,6 +10,13 @@ class PortalOrderManager extends PortalBizOrder
         return $revalue;
     }
     
+    function fail_to_delivery($user,$orderId,$comment){
+        $revalue = parent::updateOrderToFailToDelivery($user,$orderId,$comment);
+        parent::mailBuyer($orderId, null , MailManager::ORDER_FAIL_TO_DELIVERED);
+        parent::mailSeller($orderId, null , MailManager::SELLER_FAIL_TO_DELIVERED);
+        return $revalue;
+    }
+    
     function cancelOrder($user,$orderId,$comment){
         $PortalOrderCanncel = new PortalOrderCanncel($user,$orderId,$comment);
         $invoiceId = $PortalOrderCanncel->process();

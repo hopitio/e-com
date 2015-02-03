@@ -76,6 +76,20 @@ function PortalAdminOrderController($scope,$http)
         $("#comment-dialog").modal();
     };
     
+    $scope.failDeiveryStatus = function(){
+    	var r = confirm("Bạn có thực sự muốn chuyển trạng thái của order hiện tại");
+    	if(!r){
+    		return;
+    	}
+        $scope.dialogCallback = function(){
+            $("#comment-dialog").modal('hide');
+            portalAdminOrderServiceClient = new PortalAdminOrderServiceClient($http);
+            portalAdminOrderServiceClient.failToDelivery($scope.order.id, $scope.comment, changStatusSucessCallback, changStatusErrorCallback);
+        };
+        $scope.onSubmit = true;
+        $("#comment-dialog").modal();
+    };
+    
     $scope.driectToRefuned = function(){
         window.location = "/portal/__admin/order/"+$scope.order.id+"/refuned";
     };
@@ -84,7 +98,7 @@ function PortalAdminOrderController($scope,$http)
         if(!data.isError){
             alert(data.data);
             $scope.onSubmit = false;
-            location.reload();
+            //location.reload();
         }else{
             alert(data.errorMessage);
         }

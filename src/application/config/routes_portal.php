@@ -149,6 +149,8 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/__admin/order/(:num)/status_next'] = "portalAdmin/orderDetail/nextUpdateStatus/$1";
         $route['portal/api/__admin/order/(:num)/status_back'] = "portalAdmin/orderDetail/backOrderStatus/$1";
         $route['portal/api/__admin/order/(:num)/status_reject'] = "portalAdmin/orderDetail/rejectOrder/$1";
+        $route['portal/api/__admin/order/(:num)/status_fail_to_delivery'] = "portalAdmin/orderDetail/fail_to_delivery/$1";
+        $route['portal/__admin/order/(:num)/add_invoice'] = 'portalAdmin/addInvoice/add/$1';
     }
 }
 //
