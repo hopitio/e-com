@@ -5,10 +5,13 @@ class orderChecking extends BasePortalController
     protected $authorization_required = False;
     
     function showPage(){
+        if($this->obj_user->is_authorized){
+            redirect('/portal/account/order_history');
+        }
+        
         $orderId = $this->input->get('order');
         $userEmail = $this->input->get('email');
         if(empty($orderId) || empty($userEmail)){
-            //$data['user'] = $this->obj_user;
             LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData(array('user'=>$this->obj_user), true)
             ->setCss(array())
             ->setJavascript(array())
@@ -20,17 +23,24 @@ class orderChecking extends BasePortalController
         $portalUserRespository = new PortalModelUser();
         $portalUserRespository->account = $userEmail;
         $accounts = $portalUserRespository->getMutilCondition();
+        
         $portalOrderRespository = new PortalModelOrder();
         $portalOrderRespository->id = $orderId;
         $orders =  $portalOrderRespository->getMutilCondition();
-        if(count($accounts) == 0 || count($orders) == 0){
-            $data["isExits"] = false;
+        $data["isExits"] = false;
+        $data['user'] = $this->obj_user;
+        if(empty($accounts) || empty($orders)){
+            $data["isExits"] = true;
+            LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data, true)
+            ->setCss(array())
+            ->setJavascript(array())
+            ->render('portalOrder/orderChecking');
+            return;
         }
-        
+        $data["isExits"] = true;
         $paymentHistory = new PortalBizPaymentHistory();
         $order = $paymentHistory->getOrderAllInformation($orderId);
         $data['order'] = $order;
-        $data['user'] = $this->obj_user;
         
         $this->convertCurrencyOrder($order);
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data, true)

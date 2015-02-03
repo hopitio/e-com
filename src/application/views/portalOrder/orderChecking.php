@@ -8,6 +8,13 @@ $user instanceof User;
             </div>
             <form action="" id="srch-from">
             <div class="box-body">
+               <?php if(isset($isExits) && !$isExits) {?>
+                    <div class="alert alert-danger alert-dismissable">
+                        <i class="fa fa-ban"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <b>Thông báo!</b> Thông tin order không phù hợp
+                    </div>
+               <?php }?>
                 <div class="form-group">
                     <label for="exampleInputEmail1" style="width:100%;text-align:left;">Địa chỉ mail</label>
                     <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
