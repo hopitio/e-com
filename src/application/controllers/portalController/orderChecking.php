@@ -30,7 +30,6 @@ class orderChecking extends BasePortalController
         $data["isExits"] = false;
         $data['user'] = $this->obj_user;
         if(empty($accounts) || empty($orders)){
-            $data["isExits"] = true;
             LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)->setData($data, true)
             ->setCss(array())
             ->setJavascript(array())
