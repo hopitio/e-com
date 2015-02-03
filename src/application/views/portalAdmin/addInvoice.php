@@ -139,6 +139,17 @@
                         </td>
                         <td><input ng-disabled="selectedContact.id != contact.id" type="number"  ng-model="contact.prices"/></td>
                     </tr>
+                    <tr>
+                        <td><input type="radio" name="rbContact" ng-click="setChoicedContact(newContact)" ng-model="newContact.id" value="{{newContact.id}}" class="simple"/></td>
+                        <td>
+                            <table>
+                                <tr><td>Họ tên</td><td><input ng-model="newContact.full_name" placeholder="Họ tên đầy đủ" type="text" /></td></tr>
+                                <tr><td>SDT</td><td><input ng-model="newContact.telephone" placeholder="Số điện thoại" type="text" /></td></tr>
+                                <tr><td>Địa chỉ</td><td><input ng-model="newContact.street_address" type="text" placeholder="Địa chỉ cụ thể" />, <input ng-model="newContact.state_province" placeholder="Mã vùng, quận huyện" type="text" /></td></tr>
+                            </table>
+                        </td>
+                        <td><input ng-disabled="selectedContact.id != newContact.id" type="number"  ng-model="newContact.prices"/></td>
+                    </tr>
                 </tbody>
                 <tfoot></tfoot>
              </table>

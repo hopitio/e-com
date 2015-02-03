@@ -59,8 +59,9 @@ class PortalOrderManager extends PortalBizOrder
      * 
      */
     function addNewInvoice($user,$orderId,$invoiceType,$products,$contact,$otherCosts,$comment,$paidedDate,$nlCode){
-        $PortalOrderCanncel = new PortalOrderInvoice($user, $orderId, $products, $contact, $otherCosts, $comment,$paidedDate,$nlCode);
-        $invoiceId = $PortalOrderCanncel->process($orderId,$invoiceType);
+        $PortalOrderInvoiceProcessing = new PortalOrderInvoice($user, $orderId, $products, $contact, $otherCosts, $comment,$paidedDate,$nlCode);
+        $invoiceId = $PortalOrderInvoiceProcessing->process($orderId,$invoiceType);
         return $invoiceId;
     }
+    
 }

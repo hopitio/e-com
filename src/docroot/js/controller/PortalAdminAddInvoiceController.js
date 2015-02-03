@@ -16,11 +16,22 @@ function PortalAdminAddInvoiceController($scope,$http)
     $scope.paymentType = $scope.paymentTypes[0];
     $scope.NLCode = "";
     $scope.paiedDate = "";
+
+    $scope.newContact = {
+    		id : "new",
+    		fk_user  : $scope.order.fk_user,
+    		full_name:"",
+    		telephone:"",
+    		street_address:"",
+    		city_district:"",
+    		state_province:"",
+    		email_contact:""	
+    };
     
     for(var i=0;i<$scope.products.length;i++){
         $scope.products[i].choiced = false;
         $scope.products[i].refuned_quantity_allow = [];
-        for(var j = 0;j<$scope.products[i].product_quantity; j++)
+        for(var j = 0;j<=$scope.products[i].product_quantity; j++)
         {
             $scope.products[i].refuned_quantity_allow[j] = j;
         }

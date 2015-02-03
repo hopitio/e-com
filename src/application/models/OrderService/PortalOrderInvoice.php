@@ -33,6 +33,7 @@ class PortalOrderInvoice
         $invoiceId = $portalInvoice->insert();
         $this->saveInvoiceProduct($invoiceId);
         $this->saveOtherCost($invoiceId);
+        $this->save_contact($this->contact);
         $this->shipping($invoiceId);
         
         return $invoiceId;
@@ -58,6 +59,25 @@ class PortalOrderInvoice
             $portalInvoiceOtherCost->comment = $cost->comment;
             $portalInvoiceOtherCost->insert();
         }
+    }
+    
+    function save_contact(&$contact){
+        //var_dump($contact);die;
+        if($contact->id != 'new'){
+            return $contact->id;
+        }else{
+            $contact_repository = new PortalModelUserContact();
+            $contact_repository->fk_user = $contact->fk_user;
+            $contact_repository->full_name = $contact->full_name;
+            $contact_repository->telephone = $contact->telephone;
+            $contact_repository->street_address = $contact->street_address;
+            $contact_repository->city_district = $contact->city_district;
+            $contact_repository->state_province = $contact->state_province;
+            $contact_repository->email_contact = $contact->email_contact;
+            $contact->id = $contact_repository->insert();
+            return $contact->id;
+        }
+        
     }
     
     function shipping($invoiceId)
