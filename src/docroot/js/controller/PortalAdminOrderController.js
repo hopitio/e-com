@@ -98,7 +98,7 @@ function PortalAdminOrderController($scope,$http)
         if(!data.isError){
             alert(data.data);
             $scope.onSubmit = false;
-            //location.reload();
+            location.reload();
         }else{
             alert(data.errorMessage);
         }

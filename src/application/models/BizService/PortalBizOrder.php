@@ -27,6 +27,10 @@ class PortalBizOrder extends PortalBizBase
                //var_dump($result->status);die;
                return $this->processPlaceOrder($user, $orderId, $comment);
             break;
+            case DatabaseFixedValue::ORDER_STATUS_FAIL_TO_DELIVER:
+                //var_dump($result->status);die;
+                return $this->processShippingOrder($user, $orderId, $comment);
+                break;
             default:
                 return null;
             break;

@@ -24,7 +24,7 @@
                 <span style="font-weight: bold;">Tài khoản thực hiện giao dịch : </span> <a ng-href="/portal/__admin/user/{{order.fk_user}}">{{order.fk_user}}</a> <br/>
                 <span style="font-weight: bold;">Tổng giá trị đơn hàng : </span> {{order.cost | number}} VND <br/>
                 <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'VERIFYING' && !onSubmit">Xác nhận đơn hàng (order place) </a>
-                <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'ORDER_PLACED' && !onSubmit">Đang vận chuyển (Shipping)</a>
+                <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'ORDER_PLACED' || order.status == 'FAIL_TO_DELIVER'  && !onSubmit">Đang vận chuyển (Shipping)</a>
                 <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="nextStatus()" ng-show="order.status == 'SHIPPING' && !onSubmit">Hoàn thành (Complete)</a>
                 <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="driectToRefuned()" ng-show="(order.status == 'SHIPPING' || order.status == 'VERIFYING' || order.status == 'DELIVERED') && !onSubmit">Trả hàng</a>
                 <a style="width: 100%;margin-top:20px" class="btn btn-primary" href="javascript:void(0)" ng-click="failDeiveryStatus()" ng-show="(order.status == 'SHIPPING') && !onSubmit">Chuyển hàng thất bại</a>
