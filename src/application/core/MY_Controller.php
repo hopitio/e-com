@@ -59,7 +59,7 @@ class MY_Controller extends CI_Controller
     protected $is_admin_page = false;
 
     /** Ten controller hien tai */
-    protected $_controller;
+    public $_controller;
 
     /**
      * __construct

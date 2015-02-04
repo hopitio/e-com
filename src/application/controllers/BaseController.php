@@ -66,7 +66,6 @@ class BaseController extends MY_Controller
         {
             return;
         }
-        
         if($this->obj_user->is_authorized){
             $portal_user_setting_repository = new PortalModelUserSetting();
             $portal_user_setting_repository->fk_user = $this->obj_user->portal_id;
@@ -78,7 +77,6 @@ class BaseController extends MY_Controller
             $portal_user_setting_repository->value = $newLanguage;
             $portal_user_setting_repository->updateById();
         }
-        
         $this->obj_user->languageKey = $newLanguage;
         $this->set_obj_user_to_me($this->obj_user);
     }

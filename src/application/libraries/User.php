@@ -64,11 +64,19 @@ class User
      */
     function getLoginAuthenUrl()
     {
-        $url = $this->authenUrl;
-        $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
-        $url = str_replace('{ep}', urlencode($this->callBack), $url);
-        $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
-        $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
+        if(get_instance()->_controller != 'login'){
+            $url = $this->authenUrl;
+            $url = str_replace('{cp}', urlencode(Common::curPageURL()), $url);
+            $url = str_replace('{ep}', urlencode($this->callBack), $url);
+            $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
+            $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
+        }else{
+            $url = $this->authenUrl;
+            $url = str_replace('{cp}', urlencode(Common::getCurrentHost()."/home"), $url);
+            $url = str_replace('{ep}', urlencode($this->callBack), $url);
+            $url = str_replace('{su}', urlencode(get_instance()->config->item('subSystemName')), $url);
+            $url = str_replace('{se}', urlencode(get_instance()->session->userdata('session_id')), $url);
+        }
         return $url;
     }
 

@@ -28,4 +28,7 @@ class portalProcess extends BaseController
         
         redirect($redirectURL);
     }
+    function portalAuthenRedirect(){
+        redirect('/');
+    }
 }

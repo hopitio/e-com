@@ -306,6 +306,7 @@ class login extends BasePortalController
         {
             throw new Lynx_RequestException(__CLASS__ . '::onLoginComplete:request login thiếu tham số');
         }
+        
 
         $this->set_obj_user_to_me($this->obj_user);
 

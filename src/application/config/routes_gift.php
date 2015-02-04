@@ -18,7 +18,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         
         $route['logout'] = 'login/out';
         $route['sitemap'] = 'sitemap/showPage';
-
+        $route['__portal/login_callback'] = 'portalCallbackController/portalProcess/portalAuthenRedirect';
         $route['__admin'] = 'admin/mainpage/showpage';
         $route['__admin/mainpage'] = 'admin/mainpage/showpage';
 

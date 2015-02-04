@@ -221,7 +221,7 @@ class PortalBizAccount extends PortalBizBase
         {
             $user = new User();
             $portalModelUserSetting = new PortalModelUserSetting();
-            $portalModelUserSetting->fk_user = $user->id;
+            $portalModelUserSetting->fk_user = $result[0]->id;
             $settings = $portalModelUserSetting->getMutilCondition();
             foreach ($settings as $setting)
             {
@@ -234,7 +234,6 @@ class PortalBizAccount extends PortalBizBase
             }
             $user = $this->mappingModelWithUser($user,$result[0]);
             return $user;
-            
         }
     }
     
