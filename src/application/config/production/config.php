@@ -369,13 +369,13 @@ $config['proxy_ips'] = '';
  */
 
 
-$config['platform_login_url'] = 'http://sfriendly.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
-$config['portal_login_url'] = 'http://sfriendly.com/portal/login?cp={cp}';
+$config['platform_login_url'] = 'http://www.sfriendly.com/portal/login?cp={cp}&ep={ep}&su={su}&se={se}';
+$config['portal_login_url'] = 'http://www.sfriendly.com/portal/login?cp={cp}';
 $config['portal_seller_search_api'] = '/protal/api/gift/seller/{seller_id}/search';
 $config['portal_seller_invoice_detail_api'] = '/protal/api/invoice/{invoice_id}';
 $config['portal_gift_update_product_entry'] = "/api/productSold&product={id}&quantity={total}";
 
-$config['platform_login_callback'] = 'http://sfriendly.com/__portal/login_callback';
+$config['platform_login_callback'] = 'http://www.sfriendly.com/__portal/login_callback';
 $config['platform_logout'] = '/logout';
 $config['subSystemName'] = 'GIFT';
 
@@ -394,8 +394,8 @@ $config['facebook_authen_url'] = 'https://www.facebook.com/dialog/oauth?client_i
 
 
 $config['temp_mail_folder'] = APPPATH . 'temp/mail/';
-$config['path_to_active_account'] = 'http://sfriendly.com/portal/active?k={key}';
-$config['path_to_reset_password_reset'] = 'http://sfriendly.com/portal/reset_password?k={key}';
+$config['path_to_active_account'] = 'http://www.sfriendly.com/portal/active?k={key}';
+$config['path_to_reset_password_reset'] = 'http://www.sfriendly.com/portal/reset_password?k={key}';
 $config['portal_payment_entry'] = "http://www.sfriendly.com/portal/order_verifing/portal_get_information";
 
 $config['sub_system_name'] = array(
