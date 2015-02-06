@@ -80,7 +80,7 @@
                         <p class="help-block"><?php echo $language[$view->view]->lblAnswerGuide;?></p>
                         <input type="text" class="form-control" style="width:100%" name="answer">
                     </div>
-                    <div class="col-md-12" style="text-align: left;padding:0px"><a href="/portal/page/policy"><?php echo $language[$view->view]->lblLinkPolice;?></a></div>
+                    <div class="col-md-12" style="text-align: left;padding:0px"><a href="<?php echo Common::language_url("/staticpage/terms_n_conditions") ?>"><?php echo $language[$view->view]->lblLinkPolice;?></a></div>
                     <div class="col-md-12" style="padding:0px">
                         <br/>
                         <button id="submitResg" class="form-group lynx_button btn btn-primary" type="submit" value="one"><?php echo $language[$view->view]->btnResg;?></button>

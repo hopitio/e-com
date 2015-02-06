@@ -1,4 +1,4 @@
-Xin chào <?php echo $user->lastname;?>! <br/>
+Xin chào <?php echo $user->full_name;?>! <br/>
 Bạn vừa thực hiện yêu cầu lấy lại mật khẩu trên www.sfriendly.vn. 
 Bạn có thể đăng nhập với mật khẩu mới là : <?php echo $password;?><br/>
 <br/>

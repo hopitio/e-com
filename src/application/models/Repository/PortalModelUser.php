@@ -88,6 +88,10 @@ class PortalModelUser extends PortalModelBase
 //         $this->_dbPortal->update(T_user::tableName,$data);
 //     }
     
+    function updateUser(){
+        parent::updateById();
+    }
+    
     /**
      * Lấy thông tin của user thông qua username.
      * @return mixed return false nếu như không có dữ liệu, trả về object User khi có dữ liệu; 
