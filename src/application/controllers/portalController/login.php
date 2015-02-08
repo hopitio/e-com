@@ -35,6 +35,19 @@ class login extends BasePortalController
         }
     }
 
+    function by_token(){
+        $token = $this->input->get("token");
+        $id = $this->input->get("u");
+        $target_page = $this->input->get("cp");
+        if (User::getCurrentUser()->is_authorized)
+        {
+            $this->remove_obj_user_to_me();
+            $this->set_obj_user_to_me(new User());
+        }
+        
+        
+    }
+    
     /**
      * Show login page.
      */
@@ -485,4 +498,47 @@ class login extends BasePortalController
         return $errors;
     }
 
+    function login_by_token()
+    {
+        $user_id = $this->input->get("u");
+        $token = $this->input->get("token");
+        if(empty($user_id) || empty($token)){
+            throw new Lynx_AuthenticationException("Bạn không có quyền truy cập");
+        }
+        
+        $user_repository = new PortalModelUser();
+        $user_repository->id = $user_id;
+        $user = $user_repository->getOneById();
+        if(empty($user_id)){
+            throw new Lynx_AuthenticationException("Bạn không có quyền truy cập");
+        }
+        $user instanceof PortalModelUser; 
+        $us = $user->account;
+        $pw = $token;
+        $isValid = $this->isValidLoginData($us, $pw);
+        if (!$isValid)
+        {
+            $this->canNotLogin();
+            return;
+        }
+        $portalAccountBiz = new PortalBizAccount();
+        $user = $portalAccountBiz->getLogin($us, $pw);
+        if ($user)
+        {
+            $data = array();
+            $data['currentPage'] = $this->input->get("cp");
+            $data['endpoint'] = "";
+            $data['session'] = $this->session->userdata('session_id');
+            $data['subSys'] = "";
+            $this->obj_user = $user;
+            $this->obj_user->is_authorized = true;
+            $this->obj_user->portal_id = $user->id;
+            $this->set_obj_user_to_me($this->obj_user);
+            $this->onLoginComplete($data);
+        }
+        else
+        {
+            throw new Lynx_AuthenticationException("Bạn không có quyền truy cập");
+        }
+    }
 }

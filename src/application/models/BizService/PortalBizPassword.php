@@ -93,7 +93,8 @@ class PortalBizPassword extends PortalBizBase
         
         $mailData = array(
             'user'=> $portalUser,
-            'password'=>$newPass
+            'password'=>$newPass,
+            'url' => ""
         );
         
         MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalUserModel->account , $mailData);
@@ -120,10 +121,15 @@ class PortalBizPassword extends PortalBizBase
         $portalUserHistory = new PortalBizUserHistory();
         $historyId = $portalUserHistory->createNewHistory($user,DatabaseFixedValue::USER_HISTORY_ACTION_RESETPASS,'Reset mật khẩu',null,null);
         
+        $change_password_page = Common::getCurrentHost()."/portal/account/security?token={$newPass}";
+        $change_password_page = urlencode($change_password_page); 
+        $loginPath = Common::getCurrentHost()."/portal/login/by-token?token={$newPass}&u={$user->id}&cp={$change_password_page}";
         $mailData = array(
-            'user'=> $portalModelUsers,
-            'password'=>$newPass
+            'user'=> $user,
+            'password'=>$newPass,
+            'url' => $loginPath
         );
+        
         
         MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalModelUsers->account , $mailData);
         return true;

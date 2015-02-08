@@ -13,8 +13,9 @@
                 <alert ng-show="errorMessage != undefined" type="danger" close="closeAlertPassword('error');" >{{errorMessage}}</alert>
                 <alert ng-show="susscessMessage != undefined" type="success" close="closeAlertPassword('susscess');">{{susscessMessage}}</alert>
                 
-                <div class="lynx_row">
-                    <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->passwordOld;?></span><input name="txtOldPass"  ng-model="oldPass" type="password"/>
+                <div class="lynx_row" style="display:<?php echo empty($token) ? "block" : "none"?>">
+                    <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->passwordOld;?></span>
+                    <input name="txtOldPass" ng-model="oldPass" type="password"/>
                 </div>
                 <div class="lynx_row">
                     <span class="lynx_lblFromtitle"><?php echo $language[$view->view]->passwordNew;?></span><input name="txtNewPass" ng-model="newPass" type="password"/>

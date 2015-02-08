@@ -17,6 +17,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/order_place/review'] = 'portalController/orderReview/redirect_on_get';
         //$route['portal/page/policy'] = 'portalController/staticPage/showPolicy';
         $route['portal/login'] = 'portalController/login/showPage';
+        $route['portal/login/by-token'] = 'portalController/login/by_token';
         $route['portal/loginComplete'] = 'portalController/login/loginCompleteShowPage';
         $route['portal/active'] = 'portalController/activeAccount/active';
         $route['portal/change_password'] = 'portalController/password/showpageChangePassword';
@@ -76,6 +77,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['portal/api/user/find'] = "portalController/apiUser/findUser";
         $route['portal/dialog/user/find'] = "portalController/account/showDialog";
         $route['portal/__test/order_request'] = 'testingController/getMockupOrderRequest';
+        $route['portal/login/by-token'] = 'portalController/login/login_by_token';
         
         $route['(en|kr|vi)/portal/order_place/review'] = 'portalController/orderReview/redirect_on_get';
         $route['(en|kr|vi)/portal/login'] = 'portalController/login/showPage';

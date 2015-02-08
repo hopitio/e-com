@@ -3,9 +3,17 @@ function PortalUserSecurityAccountController($scope,$http)
    $scope.onUpdatingPassword = false;
    $scope.onUpdatingEmail = false;
    $scope.onGetHistory = false;
+   $scope.token;
    $scope.updatePassword = function(){
        userSecurityServiceClient =  new PortalUserSecurityServiceClient($http);
-       oldPass = $scope.oldPass;
+       var token = AppCommon.getParameterByName("token");
+       
+       if(token == undefined || token == ''){
+    	   oldPass = $scope.oldPass;
+       } else{
+    	   oldPass = token;
+       }
+       
        newPass = $scope.newPass;
        comfrimPass = $scope.newComfirmPass;
        userSecurityServiceClient.updatePassword(oldPass,newPass,comfrimPass,updatePasswordSusscessCallback,updatePassowrdErrorCallback);

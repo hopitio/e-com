@@ -20,7 +20,10 @@ class userSecurity extends BasePortalController
      * show information page
      */
     function showPage(){
-
+        $password = $this->input->get("token");
+        $this->_data = array(
+        	'token' => $password
+                );
         LayoutFactory::getLayout(LayoutFactory::TEMP_PORTAL_ONE_COL)
         ->setData($this->_data)
         ->setJavascript($this->_js)
