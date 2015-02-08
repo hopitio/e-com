@@ -83,6 +83,7 @@
             </div>
              <p><b>ID :</b> {{user.id}}</p>
              <p><b>Email :</b> {{user.account}}</p>
+             <p><b>Mật khẩu:</b> <a href="/portal/__admin/user/{{user.id}}/reset-password" ng-show="user.status == 1">Reset mật khẩu</a> </p>
              <p><b>Ngày tham gia  :</b> {{user.date_joined}}</p>
              <p><b>Họ và tên đệm : </b> {{user.full_name}}</p>
              <p><b>SĐT : </b> {{user.phone}}</p>

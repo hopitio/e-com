@@ -55,7 +55,7 @@ class userDetail extends PortalAdminControllerAbstract
             'url' => $loginPath
         );
         
-        MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalUserModel->account , $mailData);
+        MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalUser->account , $mailData);
         
         redirect("/portal/__admin/user/{$id}");
     } 

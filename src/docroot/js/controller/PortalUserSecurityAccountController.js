@@ -69,13 +69,13 @@ function PortalUserSecurityAccountController($scope,$http)
        }else{
            $scope.alertEmailSusscess = undefined;
        }
-   }
+   };
    
    $scope.showHistory = function(){
        userSecurityServiceClient =  new PortalUserSecurityServiceClient($http);
        userSecurityServiceClient.getUserLoginHistory(10,getHistorySucessCallback,getHistoryErrorCallback);
        $scope.onGetHistory = true;
-   }
+   };
    
    function getHistorySucessCallback(result){
        $scope.onGetHistory = false;

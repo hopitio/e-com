@@ -1,6 +1,6 @@
 Xin chào <?php echo $user->full_name;?>! <br/>
-Bạn vừa thực hiện yêu cầu lấy lại mật khẩu trên www.sfriendly.vn. 
-Bạn có thể đăng nhập với mật khẩu mới là : <?php echo $password;?><br/>
+Bạn vừa thực hiện yêu cầu lấy lại mật khẩu trên www.sfriendly.vn. <br/>
+Bạn có thể thay đổi mật khẩu tại : <?php echo $url;?><br/>
 <br/>
 Mọi thắc mắc xin vui lòng liên hệ website:<a href="http://www.sfriendly.vn">http://www.sfriendly.vn</a> .<br/>
 <br/>
