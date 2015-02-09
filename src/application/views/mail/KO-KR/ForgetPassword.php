@@ -1,11 +1,17 @@
-Xin chào <?php echo $user->full_name;?>! <br/>
-Bạn vừa thực hiện yêu cầu lấy lại mật khẩu trên www.sfriendly.vn. <br/>
-Bạn có thể thay đổi mật khẩu tại : <?php echo $url;?><br/>
+Hello <?php echo $user->full_name;?>! <br/>
+You have requested a new password on Sfriendly.<br/>
+Click on the link below to create your new password : <br/>
+<?php echo $url;?><br/>
 <br/>
-Mọi thắc mắc xin vui lòng liên hệ website:<a href="http://www.sfriendly.vn">http://www.sfriendly.vn</a> .<br/>
+
+If this link does not work, copy and paste it into your browser's address window. <br/>
+For security purposes, this link will expire in 24 hours or after you reset your password<br/>
+If you did not request that, please contact Sfriendly customer service immediately.<br/>
+To contact us, call (+84) 043-795-7949 or email us at <a href="mailto:cs@sfriendly.com">cs@sfriendly.com</a><br/>
+
 <br/>
 <br/>
-Trân trọng cảm ơn!<br/>
+Thanks for choosing Sfriendly!<br/>
 <i>Sfriendly M.D</i><br/>
 <hr/>
 <i>Copyright © *Sfriendly Vietnam*, All rights reserved.</i><br/>

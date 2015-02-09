@@ -1,16 +1,15 @@
 <?php $key = SecurityManager::inital()->getEncrytion()->accountActiveEncrytion($user->id, $user->account, $user->date_joined);?>
-Xin chào <?php echo $user->full_name;?>!<br/>
-Chúc mừng bạn đã tạo tài khoản thành công tại Sfriendly.<br/>
-Sau đây là thông tin về tài khoản của bạn:<br/>
-Tài khoản đăng nhập: <?php echo $user->account;?><br/>
-Tên hiển thị: <?php echo $user->full_name;?><br/>
+Hello <?php echo $user->full_name;?>!<br/>
+You have successfully created your account.<br/>
+You can start shopping at Sfriendly.com from now:<br/>
+Account: <?php echo $user->account;?><br/>
+Display name: <?php echo $user->full_name;?><br/>
 Email: <?php echo $user->account;?><br/>
-Vui lòng click vào : <a href="<?php echo Common::getCurrentHost()."/portal/active?k={$key}" ?>">Đây </a>để kích hoạt tài khoản.
+Click  <a href="<?php echo Common::getCurrentHost()."/portal/active?k={$key}" ?>">here </a> to active account.
+
 <br/>
-Bạn đã thể dùng tài khoản này để đăng nhập và sử dụng các dịch vụ của Sfriendly.<br/>
 <br/>
-<br/>
-Trân trọng cảm ơn!<br/>
+Welcome to Sfriendly family!<br/>
 <i>Sfriendly M.D</i><br/>
 <hr/>
 <i>Copyright © *Sfriendly Vietnam*, All rights reserved.</i><br/>

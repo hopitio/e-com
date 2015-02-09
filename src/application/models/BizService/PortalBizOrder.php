@@ -229,11 +229,19 @@ class PortalBizOrder extends PortalBizBase
         $user = $repositoryUser->getOneById();
         $order->user = $user;
         
-        //echo "<pre/>"; var_dump($order);die;
+        $useSetting = new PortalModelUserSetting();
+        $useSetting->fk_user = $user->id;
+        $useSetting->setting_key = DatabaseFixedValue::LANGUAGE_SETTINGKEY;
+        $setting = $useSetting->getMutilCondition();
+        if(empty($setting)){
+            throw new Lynx_BusinessLogicException("Không tồn tại ngôn ngữ");
+        }
+        $languageSetting = $setting[0];
+        $languageSetting instanceof PortalModelUserSetting;
         
         $mailData = array();
         $mailData['order'] = $order;
-        MailManager::initalAndSend($mailType, $user->account, $mailData);
+        MailManager::initalAndSend($mailType, $user->account, $mailData,$languageSetting->value);
     }
     
     protected function mailSeller($orderId,$invoiceId = null,$mailType){
@@ -273,7 +281,7 @@ class PortalBizOrder extends PortalBizBase
         foreach (array_keys($sellerMail) as $key)
         {
             $mailData['order'] = $sellerMail[$key];
-            MailManager::initalAndSend($mailType, $key, $mailData);
+            MailManager::initalAndSend($mailType, $key, $mailData, 'VN-VI'); // HARD FIX for seller language.
         }
     }
     

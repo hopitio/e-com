@@ -28,7 +28,7 @@ class MailManager {
      * @param string $target email address
      * @param array $mailData MailData
      */
-    function requestSendMail($type,$target,$mailData){
+    function requestSendMail($type,$target,$mailData,$language){
         $staff = null;
         switch ($type){
         	case self::TYPE_RESG_COMFIRM:
@@ -84,19 +84,19 @@ class MailManager {
         	    break;
         }
         
-        $staff->setMailData($mailData)->setTo($target)->send();
+        $staff->setMailData($mailData)->setTo($target,$language)->send();
     }
     
     /**
      * @return MailManager  
      */
-    static function initalAndSend($type,$target,$mailData){
+    static function initalAndSend($type,$target,$mailData,$language){
         $mail = new MailManager();
         if($target == null || !isset($target)){
             //$mailData = var_export($mailData,true);
             throw new Lynx_BusinessLogicException(__FILE__.' '.__LINE__." Không có địa chỉ nhận mail :{$type}");
         }
         
-        $mail->requestSendMail($type, $target, $mailData);
+        $mail->requestSendMail($type, $target, $mailData, $language);
     } 
 }

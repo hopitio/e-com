@@ -23,30 +23,37 @@
     }
     
 ?>
-<p style="padding:0px; margin:0px;" > Xin chào <?php echo $contactPay->full_name;?>,</p>
+<p style="padding:0px; margin:0px;" > Hello <?php echo $contactPay->full_name;?>,</p>
 <p style="padding:0px; margin:0px;" >
-    Chúng tôi đã nhận được thông tin đơn hàng của bạn và đã giao hàng theo đúng thông tin bạn cung cấp. Tuy nhiên, không có người nhận hàng cũng như không thể liên hệ được với người nhận hàng. 
-	Bạn vui lòng kiểm tra lại thông tin đơn hàng và liên hệ với chúng tôi trong thời gian sớm nhất: 
+    We're writing about the order you placed <br/>
+    The delivery service was unable to deliver your package. Please contact us at Help to make alternative delivery arrangement again.
 </p>
 <p style="padding:0px; margin:0px;" >
     <?php echo $status->comment;?>
 </p>
-<p style="padding:0px; margin:0px;" ><strong>Thông tin người mua: </strong></p>
+
+
+<p>
+ <b>Please note*:</b> 
+After 3 days without any requests, we will automatically cancel your order. Your refund will be credited following the Refund policy of Sfriendly.
+</p>
+
+<p style="padding:0px; margin:0px;" ><strong>Buyer information: </strong></p>
 <div style="padding-left: 30px;">
-<p style="padding:0px; margin:0px;" >Họ và tên: <?php echo $contactPay->full_name;?></p>
+<p style="padding:0px; margin:0px;" >Fullname: <?php echo $contactPay->full_name;?></p>
 <p style="padding:0px; margin:0px;" >Email: <?php echo isset($order->user->account) ? $order->user->account : "" ;?> </p>
-<p style="padding:0px; margin:0px;" >Số điện thoại: <?php echo $contactPay->telephone;?></p>
+<p style="padding:0px; margin:0px;" >Phone: <?php echo $contactPay->telephone;?></p>
 </div>
-<p style="padding:0px; margin:0px;" ><strong>Nội dung đơn hàng: </strong></p>
-<p style="padding:0px; margin:0px;" >Mã đơn hàng: <?php echo "{$order->id}" ?><br/></p>
+<p style="padding:0px; margin:0px;" ><strong>Order information: </strong></p>
+<p style="padding:0px; margin:0px;" >Order number: <?php echo "{$order->id}" ?><br/></p>
 <br/>
 <table style="border-collapse:collapse;border-color: #b6b9ba #b6b9ba; " border="1" cellspacing="0" cellpadding="0">
     <thead>
        <tr>
-           <th valign="top" style="background: #215868;line-height: 30px;color: white; "><p style="padding:0px; margin:0px;" align="center">Sản phẩm/Dịch vụ</p></th>
-           <th valign="top" style="background: #215868;line-height: 30px;color: white;"><p style="padding:0px; margin:0px;" align="center">Đơn giá</p></th>
-           <th valign="top" style="background: #215868;line-height: 30px;color: white;"><p style="padding:0px; margin:0px;" align="center">Số lượng</p></th>
-           <th valign="top" style="background: #215868;line-height: 30px;color: white;"><p style="padding:0px; margin:0px;" align="center">Thành tiền</p></th>
+           <th valign="top" style="background: #215868;line-height: 30px;color: white; "><p style="padding:0px; margin:0px;" align="center">Products/Services</p></th>
+           <th valign="top" style="background: #215868;line-height: 30px;color: white;"><p style="padding:0px; margin:0px;" align="center">U.Price</p></th>
+           <th valign="top" style="background: #215868;line-height: 30px;color: white;"><p style="padding:0px; margin:0px;" align="center">Qty</p></th>
+           <th valign="top" style="background: #215868;line-height: 30px;color: white;"><p style="padding:0px; margin:0px;" align="center">Total price</p></th>
        </tr>
     </thead>
     <tbody>
@@ -76,23 +83,19 @@
      <tfoot>
         <tr>
             <td width="223" rowspan="6" valign="top"></td>
-            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Tổng giá trị</strong></p></td>
+            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Subtotal</strong></p></td>
             <td width="151" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong><?php echo  number_format($productsPrice)?> đ</strong></p></td>
         </tr>
         <tr>
-            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Phí vận chuyển</strong></p></td>
+            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Shipping fees</strong></p></td>
             <td width="151" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong><?php echo number_format($shippingsPrice);?> đ</strong></p></td>
         </tr>
         <tr>
-            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Thuế</strong></p></td>
-            <td width="151" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>0 đ</strong></p></td>
-        </tr>
-        <tr>
-            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Ưu đãi</strong></p></td>
+            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Promotion</strong></p></td>
             <td width="151" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>-0 đ</strong></p></td>
         </tr>
         <tr>
-            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>Tổng đơn hàng</strong></p></td>
+            <td width="216" colspan="2" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong>TOTAL</strong></p></td>
             <td width="151" valign="top"><p style="padding:0px; margin:0px;" align="right"><strong><?php echo number_format($productsPrice + $shippingsPrice)?> đ</strong></p></td>
         </tr>
         </tfoot>
@@ -100,16 +103,14 @@
 </table>
 <br/>
 
-<p style="padding:0px; margin:0px;" >Ngày đặt hàng: <?php echo DateTime::createFromFormat('Y-m-d H:i:s', $order->invoice->created_date)->format('d/m/Y');?></p>
-<p style="padding:0px; margin:0px;" >Ngày dự kiến giao hàng:</p>
-<p style="padding:0px; margin:0px;" >Địa chỉ nhận hàng: <?php echo "{$contactShipping->street_address},{$contactShipping->city_district},{$contactShipping->state_province}"?></p>
-<p style="padding:0px; margin:0px;" >Hình thức thanh toán: <?php echo $paymentType; ?></p>
-<p style="padding:0px; margin:0px;" >Chúng tôi sẽ đóng gói đơn hàng chuẩn bị cho việc vận chuyển. Thời hạn vận chuyển như sau: <?php echo $shippingInfor->display_name;?></p>
-<p style="padding:0px; margin:0px;" >Trân trọng cảm ơn!</p>
-     
+<p style="padding:0px; margin:0px;" >Placed on: <?php echo DateTime::createFromFormat('Y-m-d H:i:s', $order->invoice->created_date)->format('d/m/Y');?></p>
+<p style="padding:0px; margin:0px;" >Estimated delivery date:</p>
+<p style="padding:0px; margin:0px;" >Delivery address: <?php echo "{$contactShipping->street_address},{$contactShipping->city_district},{$contactShipping->state_province}"?></p>
+<p style="padding:0px; margin:0px;" >Payment method: <?php echo $paymentType; ?></p>
+<p style="padding:0px; margin:0px;" >We are preparing it for shipment to the new delivery address. Your estimated delivery time is: <?php echo $shippingInfor->display_name;?></p>
 <br/>
 <br/>
-Trân trọng cảm ơn!<br/>
+<p style="padding:0px; margin:0px;" >Thanks for shopping with us!</p>
 <i>Sfriendly M.D</i><br/>
 <hr/>
 <i>Copyright © *Sfriendly Vietnam*, All rights reserved.</i><br/>

@@ -17,6 +17,7 @@ abstract class AbstractStaff
     protected abstract function buildTitle();
     protected abstract function buildContent();
     
+    protected $language = 'VN-VI';
     protected $to;
     protected $mailData;
     protected $languageKey;
@@ -84,8 +85,6 @@ abstract class AbstractStaff
         }
         
         $this->CI->email->send();
-        
-        
         
         log_message('error',"send to : {$this->to}, '{$subject}'");
     }

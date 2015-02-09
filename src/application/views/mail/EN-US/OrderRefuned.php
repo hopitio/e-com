@@ -1,13 +1,12 @@
+Hello <?php echo $name;?>,<br/>
+<br/>
+Your order  <?php echo $orderId;?> has been returned completely<br/>
+Reason for return:<?php echo $comment?><br/>
+<br/>
+Thanks for choosing Sfriendly! We hope you satisfied and we look forward to doing more business with you!
 
-Xin chào <?php echo $name;?>,<br/>
-<br/>
-Việc trả hàng đã thực hiện thành công với đơn hàng mã số <?php echo $orderId;?><br/>
-Lý do trả hàng:<?php echo $comment?><br/>
-<br/>
-Trân trọng cảm ơn bạn đã sử dụng dịch vụ của Sfriendly!<br/>
 <br/>
 <br/>
-Trân trọng cảm ơn!<br/>
 <i>Sfriendly M.D</i><br/>
 <hr/>
 <i>Copyright © *Sfriendly Vietnam*, All rights reserved.</i><br/>

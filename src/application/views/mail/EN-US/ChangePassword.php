@@ -1,9 +1,9 @@
-Xin chào <?php echo $user->full_name;?>! <br/>
-Bạn đã đổi mật khẩu thành công tại Sfriendly.<br/> 
-Bạn có thể bắt đầu đăng nhập bằng mật khẩu mới. <br/>
+Hello <?php echo $user->full_name;?>! <br/>
+You have successfully created a new password for your Sfriendly account.<br/> 
+You can access to Sfriendly.com with the new password from now. <br/>
 <br/>
 <br/>
-Trân trọng cảm ơn!<br/>
+Thanks for choosing Sfriendly!<br/>
 <i>Sfriendly M.D</i><br/>
 <hr/>
 <i>Copyright © *Sfriendly Vietnam*, All rights reserved.</i><br/>

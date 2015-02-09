@@ -1,11 +1,11 @@
 <div style="background: white; margin-top: 11.25pt;">
-    <p >Chào <?php echo $name;?>,  </p>
-    <p >Đơn hàng mã số <?php echo $order->id?> đã được hủy thành công.</p>
-    <p >Lý do hủy đơn hàng : <?php echo $order->invoice->comment;?></p>
+    <p >Hello <?php echo $name;?>,  </p>
+    <p >Your order  <?php echo $order->id?> has been cancelled completely.</p>
+    <p >Reason for cancel : <?php echo $order->invoice->comment;?></p>
     
     <br/>
     <br/>
-    Trân trọng cảm ơn!<br/>
+    Thanks for choosing Sfriendly!<br/>
     <i>Sfriendly M.D</i><br/>
     <hr/>
     <i>Copyright © *Sfriendly Vietnam*, All rights reserved.</i><br/>

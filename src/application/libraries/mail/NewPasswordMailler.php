@@ -13,9 +13,9 @@ class NewPasswordMailler extends AbstractStaff{
     protected function buildContent()
     {
         $temp = $this->CI->config->item('temp_mail_view');
-        $temp .= User::getCurrentUser()->languageKey.'/'.$this->config[MAILLER_TEMP];
+        $temp .= $this->languageKey.'/'.$this->config[MAILLER_TEMP];
         return $this->CI->load->view($temp,$this->mailData,true);
-    }
+    }   
 
     /* (non-PHPdoc)
      * @see AbstractStaff::buildTitle()

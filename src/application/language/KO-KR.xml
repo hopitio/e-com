@@ -232,22 +232,22 @@
         <southernVietnam>남부</southernVietnam>
     </cart_shipping>
     <mail>
-        <registerconfirm>[Sfriendly] Tạo account thành công</registerconfirm>
-        <OrderShipping>[Sfriendly] Đơn hàng đang được giao</OrderShipping>
-        <OrderDelivered>[Sfriendly] Đã giao hàng</OrderDelivered>
-        <OrderFailToDelivered>[Sfriendly] Không có ai nhận hàng</OrderFailToDelivered>
-        <SellerOrderDelivered>[Sfriendly] Đã giao cho khách hàng</SellerOrderDelivered>
+        <registerconfirm>[Sfriendly] Welcome and thanks for registering!</registerconfirm>
+        <OrderShipping>[Sfriendly] Your order has been shipped</OrderShipping>
+        <OrderDelivered>[Sfriendly] Order has been delivered</OrderDelivered>
+        <OrderFailToDelivered>[Sfriendly] Fail to delivery</OrderFailToDelivered>
+        <OrderPlace>[Sfriendly] Order placed</OrderPlace>
+        <OrderAskReview>[Sfriendly] Hỏi về Review, Feedback</OrderAskReview>
+        <OrderRejected>[Sfriendly] Order has been cancelled</OrderRejected>
+        <orderCancel>[Sfriendly] Order has been cancelled</orderCancel>
+        <newpasswordNofication>[Sfriendly] Forgot Password</newpasswordNofication>
+        <passwordNotify>[Sfriendly] Your new password</passwordNotify>
+        <orderRefuned>[Sfriendly] Your order has been returned</orderRefuned>
+        <ShippingFromUSAMailler>[Sfriendly] Có sản phẩm yêu cầu ship hàng từ mỹ</ShippingFromUSAMailler>
+        <SellerOrderRejected>[Sfriendly] Đơn hàng được huỷ</SellerOrderRejected>
+        <SellerOrderDelivered>[Sfriendly] Order has been delivered</SellerOrderDelivered>
         <SellerPaymentVerified>[Sfriendly] Hàng đã được bán</SellerPaymentVerified>
         <SellerOrderFailDelivered>[Sfriendly] Không có ai nhận hàng</SellerOrderFailDelivered>
-        <OrderPlace>[Sfriendly] Đặt hàng thành công</OrderPlace>
-        <OrderAskReview>[Sfriendly] Hỏi về Review, Feedback</OrderAskReview>
-        <OrderRejected>[Sfriendly] Đơn hàng được huỷ</OrderRejected>
-        <SellerOrderRejected>[Sfriendly] Đơn hàng được huỷ</SellerOrderRejected>
-        <orderCancel>[Sfriendly] Đơn hàng được huỷ</orderCancel>
-        <newpasswordNofication>[Sfriendly] Quên password</newpasswordNofication>
-        <passwordNotify>[Sfriendly] Đổi mật khẩu thành công</passwordNotify>
-        <orderRefuned>[Sfriendly] Trả hàng thành công </orderRefuned>
-        <ShippingFromUSAMailler>[Sfriendly] Có sản phẩm yêu cầu ship hàng từ mỹ</ShippingFromUSAMailler>
     </mail>
     
     <portalaccount_resetPassword>

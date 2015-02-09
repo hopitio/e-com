@@ -1,18 +1,18 @@
 <div style="background: white; margin-top: 11.25pt;">
     <p style="line-height: 1.15pt; font-family: Arial, sans-serif; font-size: 13.5pt; color: #CC6600">
-        Chào <?php echo $name;?>,  
+        Hello  <?php echo $name;?>,  
     </p>
     <p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
-        Chúng tôi đã hoàn tất việc giao hàng cho đơn hàng mã số : (#<?php echo $orderNumber?>) 
+        Your order (#<?php echo $orderNumber?>) has been delivered.
     </p>
     
     <p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
-        <i>Trân trọng cảm ơn bạn đã chọn Sfriendly và hi vọng bạn hài lòng với sản phẩm, cũng như tiếp tục sử dụng dịch vụ của chúng tôi!</i> 
+        <i>We hope you satisfy with the order and continue to support us!</i> 
     </p>
     
     <br/>
     <br/>
-    Trân trọng cảm ơn!<br/>
+    Thanks for choosing Sfriendly!<br/>
     <i>Sfriendly M.D</i><br/>
     <hr/>
     <i>Copyright © *Sfriendly Vietnam*, All rights reserved.</i><br/>
