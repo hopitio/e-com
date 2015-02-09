@@ -11,6 +11,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
         $route['home'] = 'home/showHome';
+        $route['(en|kr|vi)/home'] = 'home/showHome';
         $route['category'] = $route['home'];
         $route['product'] = $route['home'];
         

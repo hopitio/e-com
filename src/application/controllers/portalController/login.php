@@ -155,7 +155,9 @@ class login extends BasePortalController
     {
         $params = $this->getQueryStringParams();
         $url = !empty($params['u']) ? $params['u'] : '/home';
+        $currentLanguage = $this->obj_user->languageKey;
         $this->obj_user = new User();
+        $this->obj_user->languageKey = $currentLanguage;
         $this->set_obj_user_to_me($this->obj_user);
         redirect($url);
         return;
