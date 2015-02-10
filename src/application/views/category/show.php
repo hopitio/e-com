@@ -51,8 +51,8 @@
             <div class="box_header"><?php echo $language[$view->view]->lblFilterHeader ?>:</div>
             <div class="box_content">
                 <div class='row'>
-                    <div class='col-xs-1'><?php echo $language[$view->view]->lblFilterPrice ?></div>
-                    <div class='col-xs-11'>
+                    <div class='col-xs-2'><?php echo $language[$view->view]->lblFilterPrice ?></div>
+                    <div class='col-xs-10'>
                         <label for="txt_price_low"><?php echo $language[$view->view]->lblPriceLow ?> </label>
                         <div class='border-right div-inline'>
                             <input type='text'  id="txt_price_low" placeholder="<?php echo $language[$view->view]->lblCurrency ?>" 
