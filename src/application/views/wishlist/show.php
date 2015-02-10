@@ -20,7 +20,7 @@ if (!defined('BASEPATH'))
                 <tr ng-if="!products.length">
                     <td colspan="4"><?php echo $language[$view->view]->lblNoProduct ?></td>
                 </tr>
-                <tr ng-repeat="product in products" ng-class-even="'even'" ng-class-odd="'odd'">
+                <tr ng-repeat="product in products" ng-class-even="'even'" ng-class-odd="'odd'" ng-cloak>
                     <td class="center">
                         <a ng-href="{{product.url}}" title="product thumbnail">
                             <img class="product-thumbnail" src="/thumbnail.php/{{product.thumbnail}}/w=200" alt="product thumbnail">
