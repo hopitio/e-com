@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>404 Page Not Found</title>
+<title>Lỗi hệ thống</title>
 <style type="text/css">
 
 ::selection{ background-color: #E13300; color: white; }
@@ -11,7 +11,8 @@
 body {
 	background-color: #fff;
 	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
+	font: Helvetica, sans-serif;
+	font-size:15px;
 	color: #4F5155;
 }
 
@@ -54,9 +55,13 @@ p {
 </style>
 </head>
 <body>
-	<div id="container">
-		<h1>ĐANG NÂNG CẤP WEBSITE</h1>
-		
+	<div id="container" style="text-align: center;">
+		<h1 ><img src="/images/Logo-head.fw.png"/></h1>
+		<h3>UNDER MAINTENANCE</h3>
+		<h5>
+		  You can either:<br/>
+           - Contact Sfriendly customer service by email: <a href="mailto:cs@sfriendly.com">cs@sfriendly.com</a>
+		</h5>
+		<?php  ENVIRONMENT == 'development1' ? var_dump($e) : "";?>
 	</div>
 </body>
-</html>

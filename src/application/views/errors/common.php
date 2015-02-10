@@ -1,37 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Lỗi hệ thống</title>
-    <style>
-        a{color:#ff881e;font-style:normal;text-decoration:underline;}
-        a:link {color:#ff881e;font-style:normal;text-decoration:underline;}
-        a:visited {color:#ff881e;text-decoration:underline;}
-        a:hover {color:#888888;font-style:normal;text-decoration:underline;}
-        a:active {text-decoration:none;}
-    </style>
+<title>Lỗi hệ thống</title>
+<style type="text/css">
+
+::selection{ background-color: #E13300; color: white; }
+::moz-selection{ background-color: #E13300; color: white; }
+::webkit-selection{ background-color: #E13300; color: white; }
+
+body {
+	background-color: #fff;
+	margin: 40px;
+	font: Helvetica, sans-serif;
+	font-size:15px;
+	color: #4F5155;
+}
+
+a {
+	color: #003399;
+	background-color: transparent;
+	font-weight: normal;
+}
+
+h1 {
+	color: #444;
+	background-color: transparent;
+	border-bottom: 1px solid #D0D0D0;
+	font-size: 19px;
+	font-weight: normal;
+	margin: 0 0 14px 0;
+	padding: 14px 15px 10px 15px;
+}
+
+code {
+	font-family: Consolas, Monaco, Courier New, Courier, monospace;
+	font-size: 12px;
+	background-color: #f9f9f9;
+	border: 1px solid #D0D0D0;
+	color: #002166;
+	display: block;
+	margin: 14px 0 14px 0;
+	padding: 12px 10px 12px 10px;
+}
+
+#container {
+	margin: 10px;
+	border: 1px solid #D0D0D0;
+	-webkit-box-shadow: 0 0 8px #D0D0D0;
+}
+
+p {
+	margin: 12px 15px 12px 15px;
+}
+</style>
 </head>
 <body>
-<div class="wrap_gray">
-    <div class="logo">
-        <img src="/images/logo_exception.png" />
-    </div>
-    <div class="mi_title">
-        <p>Lỗi</p>
-    </div>
-    <div class="mi_notice">
-        <p class="maintain">
-            Lỗi Hệ Thống.
-        </p>
-        <p class="orange">
-            Hệ thống sảy ra lỗi bất thường<br />
-            Vui lòng liên hệ admin để biết thêm chi tiết.
-        </p>
-    </div>
-    <div class="mi_copy">
-        <p>Copyright © LYNX TEAM : lethanhan.bkaptech@gmail.com</p>
-    </div>
-</div>
-<?php echo $this->layout->get_extra_footer(); ?>
+	<div id="container" style="text-align: center;">
+		<h1 ><img src="/images/Logo-head.fw.png"/></h1>
+		<h3>404 PAGE NOT FOUND</h3>
+		<h5>
+		  An error has occurred during the current request<br/>
+		  You can either:<br/>
+           - Contact Sfriendly customer service by email: <a href="mailto:cs@sfriendly.com">cs@sfriendly.com</a><br/>
+           - Return to the <a href="/home">Homepage</a>
+		</h5>
+		<?php  ENVIRONMENT == 'development1' ? var_dump($e) : "";?>
+	</div>
 </body>
-</html>
+
+
+
+
+
+

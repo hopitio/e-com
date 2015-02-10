@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>404 Page Not Found</title>
+<title>Lỗi hệ thống</title>
 <style type="text/css">
 
 ::selection{ background-color: #E13300; color: white; }
@@ -11,7 +11,8 @@
 body {
 	background-color: #fff;
 	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
+	font: Helvetica, sans-serif;
+	font-size:15px;
 	color: #4F5155;
 }
 
@@ -54,10 +55,16 @@ p {
 </style>
 </head>
 <body>
-	<div id="container">
-		<h1>SYSTEM ERROR</h1>
-		Sảy ra lỗi hệ thống : <?php  ENVIRONMENT == 'development1' ? var_dump($e) : "";?><br/>
-		Thông tin Liên hệ : LeThanhAn.bkaptech@gmail.com
+	<div id="container" style="text-align: center;">
+		<h1 ><img src="/images/Logo-head.fw.png"/></h1>
+		<h3>SYSTEM ERROR</h3>
+		<h5>
+		  An error has occurred during the current request<br/>
+		  You can either:<br/>
+           - Contact Sfriendly customer service by email: <a href="mailto:cs@sfriendly.com">cs@sfriendly.com</a><br/>
+           - Return to the <a href="/home">Homepage</a>
+		</h5>
+		<?php  ENVIRONMENT == 'development1' ? var_dump($e) : "";?>
 	</div>
 </body>
 
