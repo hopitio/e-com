@@ -100,7 +100,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                 </ul>
                 <a href="<?php echo Common::language_url("/cart/showCart") ?>" title="<?php echo $language['layout']->lblYourCart ?>">
                     <div class="cart cursor-pointer">
-                        <span class="cart-num text-center">{{countCartProducts()}}</span>
+                        <span class="cart-num text-center" ng-cloak>{{countCartProducts()}}</span>
                     </div>
                 </a>
             </div>
