@@ -224,7 +224,7 @@
         <lblSubmit>Continue to checkout</lblSubmit>
         <lblSummaries>ORDER SUMMARY</lblSummaries>
         <lblTaxes>Taxes</lblTaxes>
-        <lblProductCount><![CDATA[You have <span class="number">{{countProducts()}}</span> product(s) in your Cart]]></lblProductCount>
+        <lblProductCount><![CDATA[You have <span class="number" ng-cloak>{{countProducts()}}</span> product(s) in your Cart]]></lblProductCount>
         <lblInStock>In stock</lblInStock>
         <lblAlmostEmpty>Almost empty</lblAlmostEmpty>
         <lblOutOfOrder>Out of order</lblOutOfOrder>

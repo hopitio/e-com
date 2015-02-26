@@ -192,7 +192,7 @@
         <lblSubmit>진행 순서</lblSubmit>
         <lblSummaries>요약</lblSummaries>
         <lblTaxes>세금</lblTaxes>
-        <lblProductCount><![CDATA[당신은 당신의 장바구니에 <span class="number">{{countProducts()}}</span> 제품을 가지고]]></lblProductCount>
+        <lblProductCount><![CDATA[당신은 당신의 장바구니에 <span class="number" ng-cloak>{{countProducts()}}</span> 제품을 가지고]]></lblProductCount>
         <lblInStock>재고</lblInStock>
         <lblAlmostEmpty>거의 빈</lblAlmostEmpty>
         <lblOutOfOrder>순서가</lblOutOfOrder>

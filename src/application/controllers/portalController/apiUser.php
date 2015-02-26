@@ -45,5 +45,22 @@ class apiUser extends BasePortalController
         $this->output->set_content_type('application/json')->set_output(json_encode($asyncResult, true));
     }
     
+    /**
+     * api for UserId
+     * QueryString : full_name, telephone, street_address, city_district, state_province
+     * @param string $user_id
+     */
+    function findingUserContact($user_id)
+    {
+        $full_name = $this->input->get("full_name");
+        $telephone = $this->input->get("telephone");
+        $street_address = $this->input->get("street_address");
+        $city_district = $this->input->get("city_district");
+        $state_province = $this->input->get("state_province");
+        $userContactReponsitory = new PortalModelUserContact();
+        $result = $userContactReponsitory->searching($user_id, $full_name, $telephone, $street_address, $city_district, $state_province); 
+        $this->output->set_content_type('application/json')->set_output(json_encode($result, true));
+    }
+    
     
 }

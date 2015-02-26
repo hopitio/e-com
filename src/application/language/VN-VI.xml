@@ -224,7 +224,7 @@
         <lblSubmit>Tiến hành đặt hàng</lblSubmit>
         <lblSummaries>Tóm tắt</lblSummaries>
         <lblTaxes>Thuế</lblTaxes>
-        <lblProductCount><![CDATA[Bạn có <span class="number">{{countProducts()}}</span> trong Giỏ hàng]]></lblProductCount>
+        <lblProductCount><![CDATA[Bạn có <span class="number" ng-cloak>{{countProducts()}}</span> trong Giỏ hàng]]></lblProductCount>
         <lblInStock>Còn hàng</lblInStock>
         <lblAlmostEmpty>Sắp hết hàng</lblAlmostEmpty>
         <lblOutOfOrder>Hết hàng</lblOutOfOrder>
