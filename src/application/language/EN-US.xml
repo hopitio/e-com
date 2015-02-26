@@ -192,7 +192,7 @@
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>
-        <subititle></subititle>
+        <subititle>Wishlist (Items which you loved. Add to cart soon before it run out of stock)</subititle>
         <colProduct>Products</colProduct>
         <colPrice>Price</colPrice>
         <colAction> </colAction>

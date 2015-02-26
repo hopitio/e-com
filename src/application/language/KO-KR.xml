@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <home>
-        <lblBestSeller>베스트 셀러</lblBestSeller>
-        <lblNewProduct>새로운 제품</lblNewProduct>
-        <lblFeatureProduct>기능 제품</lblFeatureProduct>
+        <lblBestSeller>베스트 상품</lblBestSeller>
+        <lblNewProduct>신상품</lblNewProduct>
+        <lblFeatureProduct>추천 상품</lblFeatureProduct>
     </home>
     <login>
         <title>PROJECT E 로그인</title>
@@ -61,11 +61,11 @@
     </Details>
     <layout>
         <lblAccount>Tài khoản</lblAccount>
-        <lblSellerOffice>판매자 사무실</lblSellerOffice>
-        <lblMyOrder>내 순서</lblMyOrder>
+        <lblSellerOffice>Seller Office</lblSellerOffice>
+        <lblMyOrder>주문배송</lblMyOrder>
         <lblRegister>레지스터</lblRegister>
-        <lblMadeinVietnam>베트남 제</lblMadeinVietnam>
-        <lblHot>뜨거운</lblHot>
+        <lblMadeinVietnam>베트남 상품</lblMadeinVietnam>
+        <lblHot>인기 상품</lblHot>
         
         <lblHeadSell>판매</lblHeadSell>
         <lblLiveChat>라이브 채팅</lblLiveChat>
@@ -95,7 +95,7 @@
         <lblCartQuantity>수</lblCartQuantity>
         <lblUserStatus>안녕하세요, {1} 귀하의 계정</lblUserStatus>
         <lblUserStatusNotSign>로그인</lblUserStatusNotSign>
-        <lblUserLogout>로그 아웃</lblUserLogout>
+        <lblUserLogout>회원가입</lblUserLogout>
         <lblUserAccount>계정 정보</lblUserAccount>
         <lblUserOrder>주문 정보</lblUserOrder>
         <lblUserWishlist>Wishlist</lblUserWishlist>
@@ -104,28 +104,28 @@
         <lblMenu>카테고리/메뉴 </lblMenu>
         <lblYourCart>장바구니</lblYourCart>
         <btnPlus>더보기</btnPlus>
-        <wdCart>카트</wdCart>
-        <wdView>조회</wdView>
-        <wdTop>최고</wdTop>
-        <wdBottom>바닥</wdBottom>
+        <wdCart>장바구니</wdCart>
+        <wdView>최근 본 상품</wdView>
+        <wdTop>Top</wdTop>
+        <wdBottom>Bottom</wdBottom>
         
-        <lblCustomerCare>고객 지원</lblCustomerCare>
-        <lblShoppingAtSfriendly>SFRIENDLY 에서 쇼핑</lblShoppingAtSfriendly>
-        <lblSellingAtSfriendly>SFRIENDLY 에 판매</lblSellingAtSfriendly>
-        <lblSupportedPayment>지불 방법</lblSupportedPayment>
-        <lblWorkingTime>작업 시간</lblWorkingTime>
-        <lblHanoiShip>Hanoi: 2-5 일 선적</lblHanoiShip>
+        <lblCustomerCare>고객센터</lblCustomerCare>
+        <lblShoppingAtSfriendly>SFRIENDLY에서  쇼핑하기</lblShoppingAtSfriendly>
+        <lblSellingAtSfriendly>SFRIENDLY에서 판매하기</lblSellingAtSfriendly>
+        <lblSupportedPayment>결제옵션</lblSupportedPayment>
+        <lblWorkingTime>운영시간</lblWorkingTime>
+        <lblHanoiShip>상품 배송기간: 2-5일소요 (하노이 지역)</lblHanoiShip>
         <lblDistrictShip>지역</lblDistrictShip>
         <lblHowToBuy>어떻게 구입 하는가?</lblHowToBuy>
         <lblShippingPolicy>배송 정책</lblShippingPolicy>
         <lblSellingGuide>판매 가이드</lblSellingGuide>
-        <lblRegisterSeller>판매자 계정을 등록</lblRegisterSeller>
-        <lblPublishProduct>제품을 게시</lblPublishProduct>
+        <lblRegisterSeller>판매자 계정에 가입하기</lblRegisterSeller>
+        <lblPublishProduct>상품등록하기</lblPublishProduct>
         <lblQualityAssurance>품질 보증</lblQualityAssurance>
         <lblTermsOfUse>이용 약관</lblTermsOfUse>
         <lblPrivacyPolicy>개인 정보 보호 정책</lblPrivacyPolicy>
         <lblAboutUs>회사 소개</lblAboutUs>
-        <lblSupport>지원</lblSupport>
+        <lblSupport>연락처</lblSupport>
     </layout>
     
     <sitemap>
@@ -160,7 +160,7 @@
     </product_details>
     <wishlist_show>
         <title>Wishlist</title>
-        <subtitle>위시리스트 (곧 품절 전에 MA 항목 목록을 사랑했다. 장바구니에 담기입니다!)</subtitle>
+        <subtitle>Wishlist (Items which you loved. Add to cart soon before it run out of stock)</subtitle>
         <colProduct>제품</colProduct>
         <colPrice>가격</colPrice>
         <colAction> </colAction>
@@ -688,7 +688,77 @@
     <static_terms_n_conditions>
         <content>
         <![CDATA[
-         coming soon
+         <h1><center>약정 & 이용조건</center></h1>
+         <h1><center>소개</center></h1>
+         <p>Sfriendly 베트남 에 오신 것을 환영합니다!</p>
+         <p>유한 회사 Sfriendly는 베트남에서 최초로 글로벌 표준에 맞추어 국제 주민들을 지원하는 제품이나 서비스를 제공하는 온라인 마켓 플레이스입니다. 본사는 19/62 Tran Binh, Mai Dich, Cau Giay, Ha noi, 베트남에 위치해 있습니다. 우리는 다음 2개 웹사이트만 가지고 있습니다: www.Sfriendly.com 및 www.Sfriendly.vn. 우리의 온라인 쇼핑 서비스를 이용하려면 2개의 웹 사이트 주소 중 어느 것이든 이용 가능합니다. </p>
+         <p>우리의 웹 사이트를 방문 하는 것은 우리 웹 사이트의 약관에 동의 한 것을 의미합니다. 웹 사이트는 언제든지 이용약관정책의 일부를 변경, 수정 , 추가하고 제거할 권리가 있다. 변경 내용은 사전에 어떠한 공지 없이도 웹 사이트에 게시되는 즉시 효력을 발생합니다. 약정 & 이용조건이 업데이트된 후에도 웹 사이트에 계속 접속 하시는 경우, 당신이 이런 변경 사항들을 수락 한 것으로 간주합니다. 등록된 이메일을 통해 우리의 업데이트를 정기적으로 확인하시기 바랍니다.</p>
+         <h4>1. 어떻게 우리의 웹 사이트를 사용 하는가?</h4>
+         <ul>
+            <li>당신이 우리의 웹 사이트를 이용하는 경우, 당신은 반드시 18 세 이상이어야 하나, 그렇지 않은 경우 부모 또는 법적 보호자의 감독 하에 이용할 수 있습니다.</li>
+           <li>우리는 약관정책을 통해 이 웹 사이트에 온라인 쇼핑에 대한 허가를 부여했습니다.</li>
+           <li>상업적 목적이나 제 3자 측 익명의 사용자가 우리 쪽의 서면 허가 없이 웹 사이트의 어떤 부분을 사용하는 것은 엄격히 금지 됩니다.</li>
+           <li>이 웹 사이트는 공급자에 관계없이 제품의 정보를 제공하기 위해 사용됩니다. 그러므로 웹 사이트에 있는 의견이나 발언은 우리가 아니라 고객의 의견입니다.</li>
+           <li>당신은 개인정보를 증명하기 위하여 웹사이트에 계정을 등록해야 하며, 정보에 변화가 있을 경우 주기적으로 업데이트 해야 합니다.</li>
+           <li>각 사용자는 자신의 암호, 계정 및 웹사이트 상의 활동에 대하여 책임을 져야 합니다. 또한, 우리에게 불법 계정의 정보를 통지해야 합니다.</li>
+           <li>당신이 규정을 준수하지 않을 경우 손해 또는 손실에 대해 우리는 직접 또는 간접적으로 어떤 책임도 지지 않습니다.</li>
+           <li>등록 절차에 따라, 당신은 우리의 광고 메일을 받게 될 것입니다. 따라서 광고 메일을 더 이상 수신하고 싶지 않은 경우에는 이메일 하단의 링크를 클릭하여 거부할 수 있습니다.</li>
+        </ul>
+        <h4>2.고객의 의견</h4>
+        <p>이 웹사이트의 모든 내용 및 고객의 의견은 우리에게 매우 필수적입니다.</p>
+        <p>만약 우리가 어떤 허위 정보를 인지하게 되면, 당신의 계정을 즉시 차단하거나 베트남 법규 규정에 따른 다른 수단을 적용할 것입니다.</p>
+        <h4>3. 주문 및 가격의 수락</h4>
+        <ul>
+            <li>저희는 언제든지 어떤 이유로든 고객의 주문을 거부하거나 취소 할 권리가 있습니다. 당신은 주문 전에 전화 번호 및 주소를 제공해야 할 수 있습니다.</li>
+            <li>저희는 Sfriendly.com / Sfriendly.vn에서 이용된 제품 정보, 가격 및 배달 서비스를 안전하게 보호합니다. 그러나, 가격이 잘못 표기되거나 표기되지기않은 경우 또는 다른 실수가 있는 경우에는 안내 또는 주문 취소를 위하여 연락드릴 수 있습니다. 사기, 피싱, 규정 위반 흔적이있거나 바이어/공급 업체로 부터 합법적인 요청이 있는 경우에 고객의 주문이 확인, 결제완료 되었어도 저희가 고객의 주문을 거부하거나 취소할 권리가 있습니다. 주문 취소는 고객과 공급자 모두에게 통지됩니다.</li>
+        </ul>    
+        <h4>4. 저작권 브랜드</h4>
+        모든 지적 소유권 (등록 여부에 관계없이), 모든 내용과 디자인, 그래픽, 소프트웨어, 이미지, 사운드, 소프트웨어 프로그래밍, 소스 코드 및 기본 소프트웨어는 우리의 자산입니다. 전체 내용은 베트남 저작권법과 국제 협약에 의해 보호됩니다. 모든 저작권 (판권)은 소유되어 있습니다.
+        <h4>5. 책임</h4>
+        웹 사이트의 조건, 규정 및 내용에 베트남 법규가 적용되며 이 웹 사이트 자산에 불법적인 접근이 있을 경우 발생하는 모든 분쟁은 베트남 대법원에서 처리할 것입니다.
+        <h4>6. 보안 규정</h4>
+        <ul>
+            <li>우리의 웹 사이트는 정보의 보안을 보장하며 결제를 위한 최고의 개인 정보 보호 솔루션을 사용합니다. 결제 과정에서 고객의 개인 정보는 안전을 보장하기 위해 인코딩됩니다.</li>
+            <li>사용자는 시스템에 개입하거나 데이터 구조를 변경하는 어떤 프로그램, 도구 및 종류를 사용해서도 안됩니다. 이 웹 사이트는 시스템 데이터베이스에 개입하거나 침투하기 위한 어떤 활동의 선전 또는 자극을 금합니다. 이를 위반한 개인 또는 조직은 혜택이 취소될 뿐만 아니라 필요한 경우에 법원에 기소될 것입니다.</li>
+            <li>모든 거래 정보는 안전하게 처리되며 권한 기관의 요청이 있는 경우 정보를 제공하게 될 수 있습니다.</li>
+        </ul>
+        <h4>7. Sfriendly에안전하고편리한결제</h4>
+        <ul>
+            <li>Sfriendly.com에서 국제신용카드로 결제된 모든 거래는 인코딩되어 보호됩니다. (위에서 주어진 우리의 "개인정보보호정책" 용어를 참조하여 자세한 내용을 보시기 바랍니다.) 따라서, 고객은 온라인 결제에 대한 다음 사항을 알고 있어야 합니다.</li>
+            <li>안전한 결제 서비스만 사용합니다.</li>
+            <li>Sfriendly.com에서 결제하기 위해 타인에게 당신의 신용카드 또는 계정을 대여하지 마십서오. 예상치못한 거래의 경우, 적절하게 지원하기 위해 저희에게 알려 주십시오.</li>
+            <li>신용카드로 결제된 모든 거래 내용을 관리할 수 있도록 정기적으로 은행 계좌를 확인하십시오.</li>
+            <li>비정상적인 거래나 주문량이 큰 경우에 Sfriendly는 대금 교환 인도 (C.O.D)를 허용하지않습니다. 우리는 단지 주문을 확인하기 위해 고객의 개인 ID 카드번호 또는 여권번호를 요구할 수 있습니다. 고객에게 합법적인 권리를 보호하기 위해 Sfriendly은 다른 보안방법을 적용할 수도 있습니다.</li>
+        </ul>
+        <h4>8. Sfriendly (sfriendly.com)에서의 거래 과정</h4>
+        Sfriendly.com에서 온라인 쇼핑을 하는 경우, 고객은 다음 단계를 준수해야 합니다 :
+        <strong>제1방법:</strong> 신용카드를 이용한 온라인 선불 결제 (비자, 마스터카드 ..)
+        <ul>
+            <li>제1단계: (고객은) 주문하고 정확하고 완전한 정보를 제공</li>
+            <li>제2단계: (고객은) 선불 결제</li>
+            <li>제3단계: sfriendly.com는 주문을 확인 및 배송</li>
+            <li>제4단계: 고객은 물품을 수령하고 확인</li>
+        </ul>
+        <strong>제2방법:</strong> 대금 교환 인도 (C.O.D)
+        <ul>
+            <li>제1단계: 고객은 주문하고 정확하고 완전한 정보를 제공</li>
+            <li>제2단계: Sfriendly.com는 고객의 주문을 확인</li>
+            <li>제3단계: Sfriendly.com는 고객의 정보 (전화번호, 메시지, 이메일)을 확인</li>
+            <li>제4단계: Sfriendly.com는물품을 배송</li>
+            <li>제5단계: 고객은 물품을 수령하고결제</li>
+        </ul>
+        <p>일부의 경우, 고객은 Sfriendly에 등록된 이메일주소를 통해 거래정보를 확인할 수 있으며 웹사이트에서 거래 상태를 확인할 수 있습니다. 또한 sfriendly.com(Sfriendly.vn)에서 자신의 계정에 로그인할 때 거래 기록을 확인할 수 있습니다.</p>
+        <p>고객이 정보를 수정하고 싶은 경우에 핫라인 AAAAAA / AAAAAA 통하거나 (우리의웹사이트에) 라이브 채팅 서비스에 메시지를 입력하여 Sfriendly에게 통보해야 합니다. 우리는Sfriendly.com (Sfriendly.vn)의 전자정보사이트에 제공되는 정보의 내용에 대한 책임이 있으며 계약, 주문 및 결제에 관한 법률의 조건을 이행합니다.</p>
+        <h4>9. Sfriendly.com에서의 거래 변경 또는 취소</h4>
+        당신의 주문이 확인, 결제되었어도 사기, 피싱, 규정위반의 징후가 있거나 바이어/공급업체에서 합법적인 요청이 있는 경우 우리가 주문을 거부하거나 취소할 권리가 있습니다. 주문 취소할 때는 구매자와 공급자 모두에 안내해 드릴 것입니다. 
+        <h4>10. Sfriendly.com에서 잘못된 정보의 입력에 의한 결과 처리</h4>
+        고객은 Sfriendly.com (Sfriendly.vn)에서 거래를 할 때 정확하고 완전한 정보를 제공할 책임이 있습니다. 고객이 Sfriendly.com (Sfriendly.vn)에서 전자정보사이트에 정확하지 않은 정보를 입력하면, Sfriendly는 언제든지 거래를 거부할 권리가 있습니다.
+        <h4>11. 분쟁해결</h4>
+        Sfriendly.com (Sfriendly.vn)에서 거래나 이용약관에 관해 발생하는 모든 논쟁, 클레임, 분쟁을 협상, 화해, 중재 및/또는 소비자보호법- '제 4 장 소비자, 기업 및 개인간의 상품과 서비스 거래에 관한 분쟁 해결'에 따라 법정에서 해결될 것입니다.
+        <h4>12. 계약해지협정</h4>
+        웹사이트의 이용약관을 위반하여 손해가 발생할 경우에 우리는 당신의 계정을 일시 중단 시키거나 영구적으로 차단할 권리가 있습니다. 당신이 웹사이트 또는 Sfriendly의 약관, 조건, 규정, 정책, 지침 또는 운영에 불만이 있는 경우 유일한 방안은 우리와 협조를 중지하는 것입니다.
+        <h4>13. 베트남에서 법률 및 권한</h4>
+        모든 이용약관과 계약 (계약에서발생하는의무나관련사항)은 베트남 법률에 따라 지배되며 해석됩니다. 이용약관에서 분쟁이 발생하면 해결을 위해 베트남법원에 이의를 제기할 수 있습니다.
         ]]>
         </content>
     </static_terms_n_conditions>

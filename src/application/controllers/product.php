@@ -107,6 +107,7 @@ class product extends BaseController
         }
         else
         {
+            header("HTTP/1.1 410 Gone");
             LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                     ->setTitle('Product not found')
                     ->render('product/not_found');
