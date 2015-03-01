@@ -50,17 +50,16 @@ foreach ($cartContents as $cartInstance)
     $json['products'][] = $json_product;
 }
 
-$json = json_encode($json);
+$json = base64_encode(json_encode($json));
 ?>
 <div class="contentWarp wStaticPx" style="min-height: 500px;">
     <script type="text/javascript">
         window.onload = function () {
-            document.getElementById("submit").submit();
+           // document.getElementById("submit").submit();
         };
     </script>
     <form id="submit" action="<?php echo get_instance()->config->item('portal_payment_entry'); ?>"
           method="POST">
-        <input name='order' type="text" value='<?php echo $json; ?>'
-               style="display: none;" />
+        <input type="hidden" name='order' type="text" value='<?php echo $json; ?>'/>
     </form>
 </div>
