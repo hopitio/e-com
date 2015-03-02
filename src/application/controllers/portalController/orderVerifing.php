@@ -14,7 +14,7 @@ class orderVerifing extends BasePortalController
     
     function saveInformation(){
         $data = $this->input->post();
-        $data = json_decode($data['order']);
+        $data = json_decode(base64_decode($data['order']));
         $tempId = $this->insertTempData();
         $paymentManager = new PortalPaymentManager();
         $tempData = $paymentManager->getPaymentByPaymentKey($tempId);

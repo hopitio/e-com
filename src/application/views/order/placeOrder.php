@@ -55,7 +55,7 @@ $json = base64_encode(json_encode($json));
 <div class="contentWarp wStaticPx" style="min-height: 500px;">
     <script type="text/javascript">
         window.onload = function () {
-           // document.getElementById("submit").submit();
+       document.getElementById("submit").submit();
         };
     </script>
     <form id="submit" action="<?php echo get_instance()->config->item('portal_payment_entry'); ?>"

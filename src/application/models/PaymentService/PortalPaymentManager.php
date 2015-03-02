@@ -236,6 +236,7 @@ class PortalPaymentManager extends PortalBizPayment{
      */
     function insertTemp($data)
     {
+        $data = base64_decode($data);
         $session = get_instance()->session->all_userdata();
         $dataDecoded = json_decode($data);
         $paymentTemp = new PortalModelPaymentTemp();
