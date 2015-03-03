@@ -45,12 +45,7 @@ class OrderDeliveredMailler extends AbstractStaff{
                 continue;
             }
             //TODO: DEMO ĐỊA CHỈ MAIL ĐỂ TEST NÊN THỬ LẠI.
-            if($this->to == $contact->email_contact || 
-               $this->to == 'lethanhan.bkaptech@gmail.com')
-            {
-                $name = $contact->full_name;
-                break;
-            }
+            $name = $contact->full_name;
         }
         $help_url = '/portal/help';
         $help_url = Common::getCurrentHost().$help_url;

@@ -1,13 +1,13 @@
 <div style="background: white; margin-top: 11.25pt;">
-    <p style="line-height: 1.15pt; font-family: Arial, sans-serif; font-size: 13.5pt; color: #CC6600">
+    <p >
         Hello  <?php echo $name;?>,  
     </p>
-    <p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
-        Your order (#<?php echo $orderNumber?>) has been delivered.
+    <p >
+        Your order #<?php echo $orderNumber?> has been delivered.
     </p>
     
-    <p style="font-size:9.0pt;font-family:Arial,sans-serif;mso-fareast-font-family:Times New Roman;color:#333333">
-        <i>We hope you satisfy with the order and continue to support us!</i> 
+    <p >
+        We hope you satisfy with the order and continue to support us! 
     </p>
     
     <br/>

@@ -617,7 +617,7 @@
         <lblOrderShipping>Transport : </lblOrderShipping>
         <lblOrderSubtotal>Total goods : </lblOrderSubtotal>
         <lblOrderTax>Taxes : </lblOrderTax>
-        <lblOrderTotal>The total value of bills : </lblOrderTotal>
+        <lblOrderTotal>TOTAL : </lblOrderTotal>
         <btnNext>Next</btnNext>
         <btnBack>Back cart</btnBack>
     </portalPayment_orderEmailVerify>
