@@ -4,11 +4,8 @@ class sellerOrder extends seller
 {
     function showPage(){
         $stdClass = new stdClass();
-        $stdClass->sellerId = $this->sellerInstance->id;
-        $stdClass->apiUrl = str_replace("{seller_id}", $this->sellerInstance->id, $this->config->item("portal_seller_search_api"));
-        //TODO: DEBUG CODE :
-        $stdClass->apiUrl = str_replace("{seller_id}", "0", $this->config->item("portal_seller_search_api"));
-        $stdClass->sellerId = "0";
+        $stdClass->sellerId = $this->sellerInstance->sid;
+        $stdClass->apiUrl = str_replace("{seller_id}", $this->sellerInstance->sid, $this->config->item("portal_seller_search_api"));
         $config = array(
             "config" => $stdClass
         );
@@ -17,11 +14,7 @@ class sellerOrder extends seller
     
     function invocieDetail($orderId){
         $stdClass = new stdClass();
-        $stdClass->sellerId = $this->sellerInstance->id;
-        $stdClass->apiUrl = str_replace("{invoice_id}", $orderId, $this->config->item("portal_seller_invoice_detail_api"));
-        
-        //config DEBUG CODE
-        $stdClass->sellerId = 0;
+        $stdClass->sellerId = $this->sellerInstance->sid;
         $stdClass->apiUrl = str_replace("{invoice_id}", $orderId, $this->config->item("portal_seller_invoice_detail_api"));
         
         $config = array(

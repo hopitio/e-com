@@ -19,7 +19,8 @@ class SellerMapper extends MapperAbstract
             'fkManager'    => 'fk_manager',
             'sellerCode'   => 'seller_code',
             'sellerName'   => 'seller_name',
-            'logoBgColor'  => 'logo_bg_color'
+            'logoBgColor'  => 'logo_bg_color',
+            'sid'          => 'sid'
         );
 
         parent::__construct($domain, $query, $map);
