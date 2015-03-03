@@ -4,7 +4,7 @@ class sellerOrder extends seller
 {
     function showPage(){
         $stdClass = new stdClass();
-        $stdClass->sellerId = $this->sellerInstance->sid;
+        $stdClass->sellerId = $this->sellerInstance->sid; 
         $stdClass->apiUrl = str_replace("{seller_id}", $this->sellerInstance->sid, $this->config->item("portal_seller_search_api"));
         $config = array(
             "config" => $stdClass
