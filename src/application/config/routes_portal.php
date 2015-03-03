@@ -135,7 +135,7 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
         $route['api/language/submit_change'] = 'userLanguage/submitChangeXhr';
         $route['portal/account/lost_password'] = 'portalController/lostPassword/reset';
         $route['portal/api/account/order_history/cancel_order'] = "portalController/userOrderHistory/cancelOrder";
-        $route['protal/api/gift/seller/(:num)/search'] = 'portalController/apiSeller/searchSellerProduct/$1';
+        $route['protal/api/gift/seller/(:any)/search'] = 'portalController/apiSeller/searchSellerProduct/$1';
 
 
         $route['portal/order_verifing/portal_get_information'] = 'portalController/orderVerifing/saveInformation';
