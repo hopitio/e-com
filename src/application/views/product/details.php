@@ -57,23 +57,13 @@ if (!empty($images))
                         $class = $i++ == 0 ? 'zoomThumbActive' : '';
                         $smallImage = '/thumbnail.php/' . $img->url . '/w=70';
                         $mediumImage = '/thumbnail.php/' . $img->url . '/w=560';
-                        $largeImage = '/thumbnail.php/' . $img->url . '/w=800';
                         if (!isset($firstMediumImage))
                         {
                             $firstMediumImage = $mediumImage;
                         }
-                        if (!isset($firstLargeImage))
-                        {
-                            $firstLargeImage = $largeImage;
-                        }
-                        $rel = json_encode(array(
-                            'gallery'    => 'gal1',
-                            'smallimage' => $mediumImage,
-                            'largeimage' => $largeImage
-                        ));
                         ?>
                         <li class="<?php echo $class ?>">
-                            <a href="javascript:;" rel="{gallery: 'gal1', smallimage: '<?php echo $mediumImage ?>', 'largeimage': '<?php echo $largeImage ?>'}">
+                            <a href="javascript:;" data-image="<?php echo $mediumImage ?>">
                                 <img  src="<?php echo $smallImage ?>">
                             </a>
                         </li>
@@ -81,9 +71,7 @@ if (!empty($images))
                 </ul>
                 <div class="detail-main-right">
                     <h4 class="product-name"><?php echo $product->getName() ?></h4>
-                    <a href="<?php echo $firstLargeImage ?>" class="jqzoom" rel='gal1' title="Zoom">
-                        <img alt="Sfriendly.com: <?php echo $product->getName() ?>" src="<?php echo $firstMediumImage ?>" id="thumbViewing"  title="thumbnail" style="width:450px;">
-                    </a>
+                    <img alt="Sfriendly.com: <?php echo $product->getName() ?>" src="<?php echo $firstMediumImage ?>" id="thumbViewing"  title="thumbnail" style="width:450px;">
                 </div>
             </div>
             <div class='clearfix'>

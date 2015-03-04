@@ -71,7 +71,7 @@ class search extends BaseController
             $obj['priceString'] = strval($product->getFinalPriceMoney($user->getCurrency()));
             $obj['priceOrigin'] = $product->priceOrigin ? (string) $product->getPriceOrigin($user->getCurrency()) : '';
             $obj['thumbnail'] = isset($images[0]) ? $images[0]->url : '';
-            $obj['url'] = '/product/details/' . $product->id;
+            $obj['url'] =  $product->getURL();
             $obj['isNew'] = $product->isNew();
             $obj['salesPercent'] = $product->getSalesPercent();
             $json['products'][] = $obj;

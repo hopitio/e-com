@@ -27,7 +27,7 @@ class FeatureGroupMapper extends MapperAbstract
 
     function makeDomainCallback(&$domainInstance)
     {
-        $domLanguage = simplexml_load_string($domainInstance->xmlLanguage);
+        $domLanguage = simplexml_load_string($domainInstance->xmlLanguage, 'SimpleXMLElement', LIBXML_NOCDATA);
         if ($domLanguage)
         {
             $domainInstance->name = (string) Common::fetch_array($domLanguage->xpath("//language[@id=\"{$this->_language}\"]/name"), 0);

@@ -36,10 +36,7 @@ angular.module('lynx').controller('productDetailsCtrl', ['$scope', '$timeout', f
 
 $(document).ready(function () {
     loadComment(document, 'script', 'facebook-jssdk');
-    $('.detail-main-left li a').click(function () {
-        $('.zoomThumbActive').removeClass('zoomThumbActive');
-        $(this).parent().addClass('zoomThumbActive');
-    });
+
 });
 $(function () {
     var container = $('.lynx-tabs');
@@ -54,11 +51,15 @@ $(function () {
         });
     });
 });
+
 $(function () {
-    $('.jqzoom').jqzoom({
-        zoomType: 'innerzoom'
+    $('.detail-main-left li a').click(function () {
+        $('#thumbViewing').attr('src', $(this).attr('data-image'));
+        $('.zoomThumbActive').removeClass('zoomThumbActive');
+        $(this).parent().addClass('zoomThumbActive');
     });
 });
+
 $(function () {
     $('#frmAddTo').on('click', '[data-type=button]', function () {
         var btn = this;
