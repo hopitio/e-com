@@ -84,11 +84,9 @@ class product extends BaseController
             $view = LayoutFactory::getLayout(LayoutFactory::TEMP_ONE_COl)
                     ->setTitle($product->getName())
                     ->setCss(array(
-                        '/style/details.css',
-                        '/plugins/jqzoom_ev-2.3/css/jquery.jqzoom.css'
+                        '/style/details.css'
                     ))
                     ->setJavascript(array(
-                        '/plugins/jqzoom_ev-2.3/js/jquery.jqzoom-core.js',
                         '/js/controller/productDetailsCtrl.js'
                     ))
                     ->setData($data, true);
