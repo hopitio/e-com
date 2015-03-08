@@ -255,7 +255,7 @@
         <lblTotal>TOTAL</lblTotal>
         <lblBack>Previous</lblBack>
         <lblNext>Continue to payment</lblNext>
-        <supportText><![CDATA[You need assistance? Call <span class="phone-no">098.999.999</span> or <span class="phone-no">043.999.999]]></supportText>
+        <supportText><![CDATA[You need assistance? Call <span class="phone-no">098.999.999</span> or <span class="phone-no">043 795 7949]]></supportText>
         <lblSummaries>ORDER SUMMARY</lblSummaries>
         <lblSubtotal>Subtotal</lblSubtotal>
         <lblTaxes>Taxes</lblTaxes>

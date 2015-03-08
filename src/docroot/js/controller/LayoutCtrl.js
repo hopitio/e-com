@@ -12,6 +12,8 @@ angular.module('lynx').factory('cartService', ['$http', function ($http) {
             });
         }
         loadProducts();
+        
+        window.refreshCart = loadProducts;
 
         function getProducts() {
             return products;

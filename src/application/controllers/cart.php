@@ -247,6 +247,8 @@ class cart extends BaseController
     function emptyCart()
     {
         CartMapper::make()->emptyCart();
+        header('content-type:application/json');
+        echo json_encode(array('result' => 1));
     }
 
 }

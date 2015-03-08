@@ -223,7 +223,7 @@
         <lblTotal>총</lblTotal>
         <lblBack>이전</lblBack>
         <lblNext>다음</lblNext>
-        <supportText><![CDATA[당신 도움이 필요하십니까? 전화 <span class="phone-no">098.999.999</span> 또는 <span class="phone-no">043.999.999]]></supportText>
+        <supportText><![CDATA[당신 도움이 필요하십니까? 전화 <span class="phone-no">098.999.999</span> 또는 <span class="phone-no">043 795 7949]]></supportText>
         <lblSummaries>요약</lblSummaries>
         <lblSubtotal>서브 총</lblSubtotal>
         <lblTaxes>세금</lblTaxes>

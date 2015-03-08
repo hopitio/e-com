@@ -255,7 +255,7 @@
         <lblTotal>Tổng tiền</lblTotal>
         <lblBack>Quay lại</lblBack>
         <lblNext>Tiếp tục</lblNext>
-        <supportText><![CDATA[Bạn cần hỗ trợ? Gọi Hotline <span class="phone-no">098.999.999</span> hoặc <span class="phone-no">043.999.999]]></supportText>
+        <supportText><![CDATA[Bạn cần hỗ trợ? Gọi Hotline <span class="phone-no">098.999.999</span> hoặc <span class="phone-no">043 795 7949]]></supportText>
         <lblSummaries>Tóm tắt</lblSummaries>
         <lblSubtotal>Thành tiền</lblSubtotal>
         <lblTaxes>Thuế</lblTaxes>

@@ -6,6 +6,7 @@ class CartMapper extends ProductFixedMapper
 {
 
     const CART_CONTENTS = 'cart_contents';
+    const CART_USER_CHECK = 'cart_user';
 
     function __construct($domain = 'CartDomain')
     {
@@ -76,6 +77,14 @@ class CartMapper extends ProductFixedMapper
      */
     protected function _getCartContents()
     {
+        //nếu user rỗng hoặc đúng user thì giữ, ngược lại xóa cart
+        $cart_user = get_instance()->session->userdata(static::CART_USER_CHECK);
+        if ($cart_user && $cart_user != User::getCurrentUser()->account)
+        {
+            $this->emptyCart();
+            return array(0);
+        }
+
         $ret = get_instance()->session->userdata(static::CART_CONTENTS);
         $ret = !empty($ret) ? $ret : array(0);
         return $ret;
@@ -87,6 +96,7 @@ class CartMapper extends ProductFixedMapper
      */
     protected function _setCartContents($data)
     {
+        get_instance()->session->set_userdata(static::CART_USER_CHECK, User::getCurrentUser()->account);
         get_instance()->session->set_userdata(static::CART_CONTENTS, $data);
     }
 
