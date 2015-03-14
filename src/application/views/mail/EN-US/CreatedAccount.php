@@ -2,10 +2,10 @@
 Hello <?php echo $user->full_name;?>!<br/>
 You have successfully created your account.<br/>
 You can start shopping at Sfriendly.com from now:<br/>
-Account: <?php echo $user->account;?><br/>
-Display name: <?php echo $user->full_name;?><br/>
-Email: <?php echo $user->account;?><br/>
-Click  <a href="<?php echo Common::getCurrentHost()."/portal/active?k={$key}" ?>">here </a> to active account.
+&nbsp;&nbsp;&nbsp;&nbsp;Account: <?php echo $user->account;?><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Display name: <?php echo $user->full_name;?><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Email: <?php echo $user->account;?><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Phone: <?php echo $user->phone;?><br/>
 
 <br/>
 <br/>
