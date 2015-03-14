@@ -39,9 +39,16 @@ class PortalBizAccount extends PortalBizBase
 //         ->accountActiveEncrytion($portalUserModel->id, $portalUserModel->account, $portalUserModel->date_joined); 
 //         $linkActive = str_replace('{key}', $activeKey, $linkActive);
 
+        //Language key.
+        $languagekey = new PortalModelUserSetting();
+        $languagekey->fk_user = $newId;
+        $languagekey->setting_key = DatabaseFixedValue::LANGUAGE_SETTINGKEY;
+        $results = $languagekey->getMutilCondition();
+        $languageSetting = $results[0];
+        $languageSetting instanceof PortalModelUserSetting;
         $mailData = array('user' => $portalUserModel);
         
-        MailManager::initalAndSend(MailManager::TYPE_RESG_COMFIRM, $account, $mailData);
+        MailManager::initalAndSend(MailManager::TYPE_RESG_COMFIRM, $account, $mailData,$languageSetting->value);
         
         $history = new PortalBizUserHistory();
         $user = new User();

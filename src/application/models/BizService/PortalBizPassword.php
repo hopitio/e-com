@@ -129,9 +129,15 @@ class PortalBizPassword extends PortalBizBase
             'password'=>$newPass,
             'url' => $loginPath
         );
+        //Language key.
+        $languagekey = new PortalModelUserSetting();
+        $languagekey->fk_user = $portalModelUsers->id;
+        $languagekey->setting_key = DatabaseFixedValue::LANGUAGE_SETTINGKEY;
+        $results = $languagekey->getMutilCondition();
+        $languageSetting = $results[0];
+        $languageSetting instanceof PortalModelUserSetting;
         
-        
-        MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalModelUsers->account , $mailData);
+        MailManager::initalAndSend(MailManager::TYPE_NEWPASSWORD_NOFICATION,  $portalModelUsers->account , $mailData,$languageSetting->value);
         return true;
     }
     
