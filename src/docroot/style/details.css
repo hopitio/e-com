@@ -3,9 +3,13 @@ ul.lynx-product-breadcrums{
     list-style-type: none;
     color: #4f4f4f;
     margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 ul.lynx-product-breadcrums li{
-    float: left;
+    display: inline-block;
 }
 ul.lynx-product-breadcrums li a{
     display:inline-block;
@@ -134,8 +138,8 @@ ul.lynx-product-breadcrums li a:hover{
     font-size:130%;
     color: #b3b2b2;
     text-decoration: line-through;
-	display: inline-block;
-	width:auto;
+    display: inline-block;
+    width:auto;
 }
 .detail-summaries .detail-price{
     text-align: center;
@@ -153,12 +157,12 @@ ul.lynx-product-breadcrums li a:hover{
 .detail-summaries .detail-fast-shipping{
     height: 44px;
     line-height: 44px;
-	padding-top:25px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+    padding-top:25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .detail-summaries .detail-fast-shipping.fast{
-	background: url(/images/fast-shipping.fw.png) no-repeat top center;
+    background: url(/images/fast-shipping.fw.png) no-repeat top center;
 }
 .detail-summaries .detail-free-shipping.free{
     background: url(/images/free-shipping.png) no-repeat;
