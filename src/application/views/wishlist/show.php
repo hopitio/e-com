@@ -37,7 +37,9 @@ if (!defined('BASEPATH'))
                         <span class="product-price"><strong>{{fnMoneyToString(product.price + product.taxes)}}</strong></span>
                     </td>
                     <td class="center">
-                        <a href="javascript:;" ng-click="addToCart(product.wishlistDetailID)"><?php echo $language[$view->view]->lblAddToCart; ?></a><br>
+                        <span ng-if="product.quantity > 0">
+                            <a href="javascript:;" ng-click="addToCart(product.wishlistDetailID)"><?php echo $language[$view->view]->lblAddToCart; ?></a><br>
+                        </span>
                         <a href="javascript:;" ng-click="remove(product.wishlistDetailID)"><?php echo $language[$view->view]->lblRemoveItem; ?></a>
                     </td>
                 </tr>

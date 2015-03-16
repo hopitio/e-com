@@ -41,7 +41,7 @@ class product extends AdminControllerAbstract
             $instance->code = (string) $instance->getStorageCode();
             $instance->price = (string) $instance->getFinalPriceMoney('VND');
             $instance->qty = (string) $instance->getQuantity();
-            $instance->status = $instance->status == 1 ? 'Đang bán' : $instance->status == '0' ? 'Không bán' : 'Đã xóa';
+            $instance->status = $instance->status == 1 ? 'Đang bán' : ($instance->status == '0' ? 'Không bán' : 'Đã xóa');
         });
         $count = $mapper->count();
         header('content-type:application/json');

@@ -34,7 +34,14 @@ class cart extends BaseController
         foreach ($data['shippingMethods'] as &$method)
         {
             $estDate = date_create(DB::getDate())->add(new DateInterval('P' . ($method->max_day + 1) . 'D'));
-            $method->description = str_replace('((est))', $estDate->format('d F'), $method->description);
+            switch (User::getCurrentUser()->languageKey) {
+                case 'VN-VI':
+                    $date_format = 'd/m/Y';
+                    break;
+                default:
+                    $date_format = 'd M';
+            }
+            $method->description = str_replace('((est))', $estDate->format($date_format), $method->description);
         }
 
         $jqueryValidateLanguagefileName = "/js/jquery-validate-vn.js";
