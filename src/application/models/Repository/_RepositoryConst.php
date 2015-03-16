@@ -3,7 +3,7 @@
 class DatabaseFixedValue
 {
 
-    CONST DEFAULT_FORMAT_DATE = 'Y-m-d h:m:s';
+    CONST DEFAULT_FORMAT_DATE = 'Y-m-d H:i:s';
     CONST USER_STATUS_REGISTED = 0;
     CONST USER_STATUS_OPENED = 1;
     CONST USER_STATUS_CLOSED = 2;

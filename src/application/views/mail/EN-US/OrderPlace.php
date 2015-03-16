@@ -21,7 +21,7 @@
        $order->invoice->payment_method == DatabaseFixedValue::PAYMENT_BY_VISA){
         $paymentType = "Thanh toán điện tử";
     }
-    
+    $endDate = !empty($shippingInfor->estimated_max) ? DateTime::createFromFormat(DatabaseFixedValue::DEFAULT_FORMAT_DATE, $shippingInfor->estimated_max)->format('d/m/Y') : "";
 ?>
 <p style="padding:0px; margin:0px;" > Hello <?php echo $contactPay->full_name;?>,</p>
 <p style="padding:0px; margin:0px;" >
@@ -93,7 +93,7 @@
 <br/>
 
 <p style="padding:0px; margin:0px;" >Placed on: <?php echo DateTime::createFromFormat('Y-m-d H:i:s', $order->invoice->created_date)->format('d/m/Y');?></p>
-<p style="padding:0px; margin:0px;" >Estimated delivery date:</p>
+<p style="padding:0px; margin:0px;" >Estimated delivery date: <?php echo $endDate;?></p>
 <p style="padding:0px; margin:0px;" >Delivery address: <?php echo "{$contactShipping->street_address},{$contactShipping->city_district},{$contactShipping->state_province}"?></p>
 <p style="padding:0px; margin:0px;" >Payment method: <?php echo $paymentType; ?></p>
 <p style="padding:0px; margin:0px;" >We are preparing it for shipment to the new delivery address. Your estimated delivery time is: <?php echo $shippingInfor->display_name;?></p>

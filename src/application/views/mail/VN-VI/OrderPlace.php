@@ -21,7 +21,7 @@
        $order->invoice->payment_method == DatabaseFixedValue::PAYMENT_BY_VISA){
         $paymentType = "Thanh toán điện tử";
     }
-    
+    $endDate = !empty($shippingInfor->estimated_max) ? DateTime::createFromFormat(DatabaseFixedValue::DEFAULT_FORMAT_DATE, $shippingInfor->estimated_max) : "";
 ?>
 <p style="padding:0px; margin:0px;" > Xin chào <?php echo $contactPay->full_name;?>,</p>
 <p style="padding:0px; margin:0px;" >Bạn đã đặt hàng thành công! Đây là thông tin đơn hàng của bạn:</p>
@@ -91,7 +91,7 @@
 <br/>
 
 <p style="padding:0px; margin:0px;" >Ngày đặt hàng: <?php echo DateTime::createFromFormat('Y-m-d H:i:s', $order->invoice->created_date)->format('d/m/Y');?></p>
-<p style="padding:0px; margin:0px;" >Ngày dự kiến giao hàng:</p>
+<p style="padding:0px; margin:0px;" >Ngày dự kiến giao hàng: <?php echo $endDate->format('d/m/Y');?></p>
 <p style="padding:0px; margin:0px;" >Địa chỉ nhận hàng: <?php echo "{$contactShipping->street_address},{$contactShipping->city_district},{$contactShipping->state_province}"?></p>
 <p style="padding:0px; margin:0px;" >Hình thức thanh toán: <?php echo $paymentType; ?></p>
 <p style="padding:0px; margin:0px;" >Chúng tôi sẽ đóng gói đơn hàng chuẩn bị cho việc vận chuyển. Thời hạn vận chuyển như sau: <?php echo $shippingInfor->display_name;?></p>
