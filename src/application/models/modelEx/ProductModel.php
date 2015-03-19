@@ -118,6 +118,10 @@ class ProductModel extends BaseModel
             $tempList = '';
             foreach ($productIDs as $id)
             {
+                if ($this->isOwner(User::getCurrentUser()->sub_id, $id) == false)
+                {
+                    continue;
+                }
                 $tempList .= $tempList ? ',' . intval($id) : $id;
             }
             $productIDs = $tempList;
@@ -414,6 +418,15 @@ class ProductModel extends BaseModel
         DB::update('t_product_attribute', array('value_number' => $remain - $quantity), "fk_product=? AND fk_attribute_type=($quantityAttr)", array($product));
         $success = $db->CompleteTrans();
         return $success;
+    }
+
+    function isOwner($userID, $productID)
+    {
+        $db = DB::getInstance();
+        $seller_id = $db->GetOne("SELECT fk_seller FROM t_product WHERE id=?", array($productID));
+        $owner_id = $db->GetOne("SELECT fk_manager FROM t_seller WHERE id=?", array($seller_id));
+
+        return ($owner_id == $userID);
     }
 
 }

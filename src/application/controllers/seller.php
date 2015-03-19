@@ -16,6 +16,7 @@ class seller extends BaseController
 
     /** @var SellerDomain */
     protected $sellerInstance;
+    protected $userID;
 
     function __construct()
     {
@@ -24,10 +25,11 @@ class seller extends BaseController
         $this->_layout->addMainNav(new Nav_Item('dashboard', '<i class="fa fa-dashboard"></i> Trang chủ', '/seller/dashboard'))
                 ->addMainNav(new Nav_Item('sales', '<i class="fa fa-dollar"></i> Bán hàng', 'javascript:;', true, array(
                     new Nav_Item('order', 'Đơn hàng', '/seller/order/search'),
-                    //new Nav_Item('invoice', 'Hóa đơn', '/seller/invoice'),
-                    //new Nav_Item('shipment', 'Vận chuyển', '/seller/shipment')
+                        //new Nav_Item('invoice', 'Hóa đơn', '/seller/invoice'),
+                        //new Nav_Item('shipment', 'Vận chuyển', '/seller/shipment')
                 )))
                 ->addMainNav(new Nav_Item('product', '<i class="fa fa-cubes"></i> Sản phẩm', '/seller/product'));
+        $this->userID = User::getCurrentUser()->sub_id;
     }
 
     function init()
@@ -124,13 +126,20 @@ class seller extends BaseController
 
     function delete_image()
     {
+        $this->getFileModel();
+        $this->getProductModel();
+        $productID = (int) $this->input->get('product');
+        $fileID = (int) $this->input->get('file');
+        $language = $this->input->get('language');
+
+        if ($this->productModel->isOwner($this->userID, $productID) == false)
+        {
+            redirect('/');
+        }
+
         try
         {
-            $this->getFileModel();
-            $this->getProductModel();
-            $productID = (int) $this->input->get('product');
-            $fileID = (int) $this->input->get('file');
-            $language = $this->input->get('language');
+
 
             if (!$productID || !$fileID)
             {
@@ -197,6 +206,12 @@ class seller extends BaseController
         $this->getFileModel();
         $productID = (int) $this->input->post('hdnProductID');
         $language = $this->input->post('hdnLanguage');
+
+        if ($this->productModel->isOwner($this->userID, $productID) == false)
+        {
+            redirect('/');
+        }
+
         $productFields = array(
             'fk_seller'    => $this->sellerInstance->id,
             'fk_category'  => $productID ? $this->input->post('radCate') : $this->input->post('hdnCategory'),
@@ -249,12 +264,24 @@ class seller extends BaseController
     function duplicate_product($productID)
     {
         $this->getProductModel();
+
+        if ($this->productModel->isOwner($this->userID, $productID) == false)
+        {
+            redirect('/');
+        }
+
         $newProductID = $this->productModel->duplicateProduct($productID);
         redirect('/seller/product_details/' . $newProductID);
     }
 
     function product_details($productID = 0)
     {
+        $this->getProductModel();
+        if ($this->productModel->isOwner($this->userID, $productID) == false)
+        {
+            redirect('/');
+        }
+
         $language = $this->input->get('language');
         if (!$language)
         {
@@ -291,13 +318,27 @@ class seller extends BaseController
     function addTax()
     {
         $this->getProductModel();
-        $this->productModel->addTax($this->input->post('productID'), $this->input->post('taxID'));
+        $productID = $this->input->post('productID');
+
+        if ($this->productModel->isOwner($this->userID, $productID) == false)
+        {
+            redirect('/');
+        }
+
+        $this->productModel->addTax($productID, $this->input->post('taxID'));
     }
 
     function deleteTax()
     {
         $this->getProductModel();
-        $this->productModel->deleteTax($this->input->post('productID'), $this->input->post('taxID'));
+        $productID = $this->input->post('productID');
+
+        if ($this->productModel->isOwner($this->userID, $productID) == false)
+        {
+            redirect('/');
+        }
+
+        $this->productModel->deleteTax($productID, $this->input->post('taxID'));
     }
 
     function category_service($parentCategory = NULL)
@@ -313,25 +354,5 @@ class seller extends BaseController
                 ->setHeading('<i class="fa fa-folder"></i> Chọn chuyên mục cho sản phẩm')
                 ->render('seller/add_product');
     }
-
-//    function auto_update_friendly()
-//    {
-//        DB::getInstance()->debug = 1;
-//        $arr = DB::getInstance()->GetAssoc("SELECT fk_product, value_varchar FROM t_product_attribute WHERE
-//            fk_attribute_type = 1 AND `language`='EN-US'");
-//
-//        foreach ($arr as $k => $v)
-//        {
-//            $friendly_name = strtolower($v);
-//            //Strip any unwanted characters
-//            $friendly_name = preg_replace("/[^a-z0-9_\s-]/", "", $friendly_name);
-//            //Clean multiple dashes or whitespaces
-//            $friendly_name = preg_replace("/[\s-]+/", " ", $friendly_name);
-//            //Convert whitespaces and underscore to dash
-//            $friendly_name = preg_replace("/[\s_]/", "-", $friendly_name);
-//
-//            DB::update('t_product', array('friendly_name' => $friendly_name), 'id=?', array($k));
-//        }
-//    }
 
 }

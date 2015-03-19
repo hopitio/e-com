@@ -217,6 +217,7 @@
         <lblShippingInfo>Shipping Infomation</lblShippingInfo>
         <lblPaymentInfo>Payment Infomation</lblPaymentInfo>
         <lblProduct>Product</lblProduct>
+        <lblProductTotal>Product total</lblProductTotal>
         <lblPrice>Price</lblPrice>
         <lblQty>Qty</lblQty>
         <lblSubtotal>Sub total</lblSubtotal>

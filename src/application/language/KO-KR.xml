@@ -183,31 +183,32 @@
     <cart_showCart>
         <lblYourCart>장바구니</lblYourCart>
         <lblShippingInfo>배송 정보</lblShippingInfo>
-        <lblPaymentInfo>결제 정보</lblPaymentInfo>
-        <lblProduct>제품</lblProduct>
-        <lblPrice>가격</lblPrice>
-        <lblQty>수량</lblQty>
+        <lblPaymentInfo>결제하기</lblPaymentInfo>
+        <lblProduct>상품명</lblProduct>
+        <lblProductTotal>상품가격</lblProductTotal>
+        <lblPrice>판매가</lblPrice>
+        <lblQty>금액</lblQty>
         <lblSubtotal>서브 총</lblSubtotal>
-        <lblTotal>총</lblTotal>
-        <lblSubmit>진행 순서</lblSubmit>
+        <lblTotal>총 결제금액</lblTotal>
+        <lblSubmit>계속하기</lblSubmit>
         <lblSummaries>요약</lblSummaries>
         <lblTaxes>세금</lblTaxes>
-        <lblProductCount><![CDATA[당신은 당신의 장바구니에 <span class="number" ng-cloak>{{countProducts()}}</span> 제품을 가지고]]></lblProductCount>
+        <lblProductCount><![CDATA[장바구니 (<span class="number" ng-cloak>{{countProducts()}}</span>)]]></lblProductCount>
         <lblInStock>재고</lblInStock>
         <lblAlmostEmpty>거의 빈</lblAlmostEmpty>
         <lblOutOfOrder>순서가</lblOutOfOrder>
         <lblRemove>제거</lblRemove>
         <lblSales>판매</lblSales>
-        <lblShipping>배송</lblShipping>
-        <lblTransferFee>송금 수수료</lblTransferFee>
+        <lblShipping>배송비</lblShipping>
+        <lblTransferFee>결제수수료</lblTransferFee>
     </cart_showCart>
     <cart_shipping>
         <lblTransferFee>송금 수수료</lblTransferFee>
         <lblYourCart>장바구니</lblYourCart>
         <lblShippingInfo>배송 정보</lblShippingInfo>
         <lblPaymentInfo>결제 정보</lblPaymentInfo>
-        <lblFullname>전체 이름</lblFullname>
-        <lblEnterShippingAddress>배송 주소를 입력</lblEnterShippingAddress>
+        <lblFullname>받으실 분</lblFullname>
+        <lblEnterShippingAddress>배송지 정보</lblEnterShippingAddress>
         <lblCityProvince>시 /도</lblCityProvince>
         <lblAddress>주소</lblAddress>
         <addressPlaceHolder>수, 거리, 마을</addressPlaceHolder>
@@ -223,7 +224,7 @@
         <lblTotal>총</lblTotal>
         <lblBack>이전</lblBack>
         <lblNext>다음</lblNext>
-        <supportText><![CDATA[당신 도움이 필요하십니까? 전화 <span class="phone-no">098.999.999</span> 또는 <span class="phone-no">043 795 7949]]></supportText>
+        <supportText><![CDATA[고객센터 <span class="phone-no">098.999.999</span> / <span class="phone-no">043 795 7949]]></supportText>
         <lblSummaries>요약</lblSummaries>
         <lblSubtotal>서브 총</lblSubtotal>
         <lblTaxes>세금</lblTaxes>
@@ -518,36 +519,36 @@
         <lblprocessShipping>배송 정보</lblprocessShipping>
         <lblprocessPayment>결제 정보</lblprocessPayment>
         <lblGoBack>돌아 가기</lblGoBack>
-        <txtEmailInput>귀하의 이메일 주소를 입력 :</txtEmailInput>
-        <orderWithoutAccount>등록없이 주문</orderWithoutAccount>
-        <orderWithAccount>이미 Sfriendly.com에서 계정을 가지고</orderWithAccount>
-        <lostPassword>패스워드 분실</lostPassword>
+        <txtEmailInput>이메일을 입력해 주세요:</txtEmailInput>
+        <orderWithoutAccount>비회원으로 구매합니다</orderWithoutAccount>
+        <orderWithAccount>Sfriendly에 이미 등록된 이메일입니다</orderWithAccount>
+        <lostPassword>비밀번호 찾기</lostPassword>
         <lblShippingAddress>수취인 주소</lblShippingAddress>
         <lblShippingInvoiceAddress>결제 주소</lblShippingInvoiceAddress>
         <lblFullname>전체 이름 : </lblFullname>
         <lblPhone>전화 번호 : </lblPhone>
         <lblAddress>주소 : </lblAddress>
-        <lblEmail>이메일을 확인</lblEmail>
+        <lblEmail>이메일 확인</lblEmail>
         <loginWrongMsg>잘못된 사용자 이름이나 암호</loginWrongMsg>
         <lblPaymentType>지불 방법</lblPaymentType>
         <colPlaymentType>지불 유형</colPlaymentType>
         <colPlaymentFreeType>요금</colPlaymentFreeType>
         <colPlaymentFree>비용 (VND)</colPlaymentFree>
         
-        <shippingTo>로 배송</shippingTo>
+        <shippingTo>배송지주소</shippingTo>
         <paidTo>지급</paidTo>
-        <lblUsingForShipping>대금 청구 주소로 사용</lblUsingForShipping>
+        <lblUsingForShipping>이 주소로 결제를 진행하겠습니다</lblUsingForShipping>
         
-        <lblOrderSummaries>합성 주문</lblOrderSummaries>
+        <lblOrderSummaries>주문내역</lblOrderSummaries>
         <lblOrderId>순서 아이디 : </lblOrderId>
         <lblInvoiceId>송장 이드 : </lblInvoiceId>
         <lblCreateDate>에서 만든 : </lblCreateDate>
         <lblOrderSummariesDetail>주문 포함</lblOrderSummariesDetail>
-        <lblProducts>제품</lblProducts>
-        <lblOrderShipping>운송에 필요한 정보 : </lblOrderShipping>
-        <lblOrderSubtotal>전체 제품 : </lblOrderSubtotal>
+        <lblProducts>상품가격</lblProducts>
+        <lblOrderShipping>배송비: </lblOrderShipping>
+        <lblOrderSubtotal>총 주문금액:</lblOrderSubtotal>
         <lblOrderTax>세금 : </lblOrderTax>
-        <lblOrderTotal>지폐의 총 가치 : </lblOrderTotal>
+        <lblOrderTotal>총 결제금액:</lblOrderTotal>
         <btnNext>다음</btnNext>
         <btnBack>돌아 가기 카트</btnBack>
     </portalPayment_orderEmailVerify>

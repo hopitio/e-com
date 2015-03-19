@@ -217,6 +217,7 @@
         <lblShippingInfo>Thông tin vận chuyển</lblShippingInfo>
         <lblPaymentInfo>Thông tin thanh toán</lblPaymentInfo>
         <lblProduct>Sản phẩm</lblProduct>
+         <lblProductTotal>Sản phẩm</lblProductTotal>
         <lblPrice>Đơn giá</lblPrice>
         <lblQty>SL</lblQty>
         <lblSubtotal>Thành tiền</lblSubtotal>

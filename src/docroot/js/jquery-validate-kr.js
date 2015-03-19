@@ -1,5 +1,5 @@
 jQuery.extend(jQuery.validator.messages, {
-    required: "이 필드는 필요하다.",
+    required: "필수입력.",
     remote: "이 정보를 수정하십시오.",
     email: "정확한 이메일 주소를 입력하십시오.",
     url: "올바른 경로를 입력하십시오.",

@@ -69,7 +69,7 @@ defined('BASEPATH') or die('No direct script access allowed');
                             <div class="form-group">
                                 <label class="col-xs-4 control-label" for="txtStreetAddr"><span class="required">* </span><?php echo $language[$view->view]->lblAddress ?></label>
                                 <div class="col-xs-8 control">
-                                    <input type="text" name="txtStreetAddr" id="txtStreetAddr" class="form-control" data-rule-required="true" placeholder="<?php echo $language[$view->view]->addressPlaceHolder ?>">
+                                    <input type="text" name="txtStreetAddr" id="txtStreetAddr" class="form-control" data-rule-required="true">
                                 </div>
                             </div>
                             <div class="form-group">

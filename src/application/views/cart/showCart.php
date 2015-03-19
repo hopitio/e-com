@@ -87,7 +87,7 @@
             <div class="pull-right" style="width: 300px;">
                 <div class="product-summaries-table" ng-cloak>
                     <div class="border-solid">
-                        <div class="tdleft"><?php echo $language[$view->view]->lblProduct ?>:</div>
+                        <div class="tdleft"><?php echo $language[$view->view]->lblProductTotal ?>:</div>
                         <div class="tdright">{{fnMoneyToString(getProductSubtotal())}}</div>
                     </div>
                     <div class="total">
@@ -108,7 +108,7 @@
                     <h4><?php echo $language[$view->view]->lblSummaries ?></h4>
                     <div class="product-summaries-table">
                         <div class="border-dashed">
-                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblProduct ?> ({{countProducts()}}):</strong></div>
+                            <div class="tdleft"><strong><?php echo $language[$view->view]->lblProductTotal ?> ({{countProducts()}}):</strong></div>
                             <div class="tdright"><strong>{{fnMoneyToString(getProductSubtotal())}}</strong></div>
                         </div>
                         <div class="border-dashed">
