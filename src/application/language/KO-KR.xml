@@ -139,15 +139,15 @@
         <btnBuyNow>바로구매</btnBuyNow>
         <lblAddTo>장바구니 </lblAddTo>
         <btnCart>장바구니에 담기</btnCart>
-        <btnFavorite>즐겨 찾기에 추가</btnFavorite>
-        <lblShare>공유</lblShare>
-        <lblDes>제품 설명</lblDes>
-        <lblDetails>제품 세부 사항</lblDetails>
+        <btnFavorite>관심상품에 추가</btnFavorite>
+        <lblShare>공유하기</lblShare>
+        <lblDes>상품정보</lblDes>
+        <lblDetails>상품사양</lblDetails>
         <lblWarranty>보증  &amp; 반품</lblWarranty>
         <lblRelated>관련 제품</lblRelated>
         <lblBoughtQty>구매</lblBoughtQty>
-        <lblSatisfied>만족</lblSatisfied>
-        <lblComment>코멘트</lblComment>
+        <lblSatisfied>고객만족</lblSatisfied>
+        <lblComment>후기/리뷰</lblComment>
         <lblDimension>차원(cm)</lblDimension>
         <lblWeight>무게</lblWeight>
         <lblBrand>상표</lblBrand>
@@ -284,15 +284,15 @@
     <seller_dashboard></seller_dashboard>
     <seller_product></seller_product>
     <portalaccount_lostPassword>
-        <title>비밀 번호를 복구</title>
-        <lblStepDes>단계는 암호 재설정을 포함 </lblStepDes>
-        <lblStep1>당신은 당신의 이메일 주소를 입력해야</lblStep1>
-        <lblStep2>귀하의 이메일을 확인하고 암호 정보를 얻을</lblStep2>
-        <lblStep3>새 암호 정보로 로그인</lblStep3>
-        <lblMail>E-메일 주소</lblMail>
-        <btnMailler>확인</btnMailler>
+        <title>비밀번호를 잊으셨습니까?</title>
+        <lblStepDes>비밀번호 재설정 단꼐</lblStepDes>
+        <lblStep1>Sfriendly에 가입된 이메일 주소를 정확히 기입하세요 </lblStep1>
+        <lblStep2>이메일로 발송된 새 </lblStep2>
+        <lblStep3>새 비밀번호로 Sfriendly에 로그이하세요</lblStep3>
+        <lblMail>이메일 주소</lblMail>
+        <btnMailler>비밀번호 재설정</btnMailler>
         <lblMsgOk>암호 재설정에 성공, 당신은 더 많은 정보를 귀하의 이메일을 확인.</lblMsgOk>
-        <lblMsgNotOk>입력하신 메일은 정확하지 않습니다.</lblMsgNotOk>
+        <lblMsgNotOk>등록되어 있지 않은 이메일입니다</lblMsgNotOk>
     </portalaccount_lostPassword>
     <portalHelp_policy></portalHelp_policy>
     
@@ -411,20 +411,20 @@
         <title>범주</title>
         <lblLoading>로딩, 대기하십시오...</lblLoading>
         <lblShowMore>더보기</lblShowMore>
-        <lblSortNew>새로운</lblSortNew>
+        <lblSortNew>신상품순</lblSortNew>
         <lblSortBestbuy>베스트셀러</lblSortBestbuy>
-        <lblSortPriceDown>최저 가격</lblSortPriceDown>
-        <lblSortPriceUp>최고 가격</lblSortPriceUp>
-        <lblSortSaleoff>할인</lblSortSaleoff>
+        <lblSortPriceDown>높은가격순</lblSortPriceDown>
+        <lblSortPriceUp>낮은가격순</lblSortPriceUp>
+        <lblSortSaleoff>할인상품</lblSortSaleoff>
         <lblSortHot>뜨거운</lblSortHot>
         <lblSortLike>같은</lblSortLike>
-        <lblAvdvancedFilter>고급 필터</lblAvdvancedFilter>
+        <lblAvdvancedFilter>상세검색</lblAvdvancedFilter>
         <lblFilterPrice>가격</lblFilterPrice>
-        <lblFilterHeader>필터 제품</lblFilterHeader>
-        <lblPriceLow>가장 낮은</lblPriceLow>
-        <lblPriceHigh>최고</lblPriceHigh>
+        <lblFilterHeader>가격대</lblFilterHeader>
+        <lblPriceLow>최저가격</lblPriceLow>
+        <lblPriceHigh>최고가격</lblPriceHigh>
         <lblCurrency>KRW</lblCurrency>
-        <lblFilter>필터</lblFilter>
+        <lblFilter>결과보기</lblFilter>
     </category_show>
     <page></page>
     <portalPayment_orderVefiry></portalPayment_orderVefiry>
