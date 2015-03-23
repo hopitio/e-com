@@ -12,29 +12,29 @@
         <lblUs>계정 / 이메일 : </lblUs>
         <lblPs>암호 :</lblPs>
         <btnLogin>로그인</btnLogin>
-        <lblForgetPassword>당신은 계정에 로그인 할 수 없습니다 </lblForgetPassword>
+        <lblForgetPassword>아이디, 비밀번호를 잊으셨나요? </lblForgetPassword>
         <lblCreateNewAccount>레지스터 </lblCreateNewAccount>
         <lblError>계정 (이메일) / 비밀번호가 올바르지 않습니다</lblError>
         <lblCreateFristName>이름</lblCreateFristName>
         <lblCreateLastName> 이름 </lblCreateLastName>
         <lblDOB>생년월일</lblDOB>
-        <lblEmail>이메일 </lblEmail>
-        <lblPassword>암호 </lblPassword>
-        <lblPasswordRetry> 암호를 입력 </lblPasswordRetry>
+        <lblEmail>이메일 주소</lblEmail>
+        <lblPassword>비밀번호</lblPassword>
+        <lblPasswordRetry>비밀번호 확인</lblPasswordRetry>
         <lblSex>성 </lblSex>
         <lblSexM>남성</lblSexM>
         <lblSexF>여성</lblSexF>
         <lblSexO>다른</lblSexO>
-        <lblQuestion>질문</lblQuestion>
-        <lblQ0>당신은 대부분 게임을 좋아합니까?</lblQ0>
-        <lblQ1>어린 시절은 무엇입니까 이름? </lblQ1>
-        <lblQ2>고등학교의 이름은 무엇입니까?</lblQ2>
-        <lblQ3>좋아하는 책?</lblQ3>
-        <lblQ4>당신의 애완 동물은 무엇입니까 이름?</lblQ4>
-        <lblQ5>당신은 어떤 동물 가장 좋아합니까?</lblQ5>
+        <lblQuestion>비밀번호 확인 질문</lblQuestion>
+        <lblQ0>가장 좋아하는 게임 이름은?</lblQ0>
+        <lblQ1>어린시절 별명은? </lblQ1>
+        <lblQ2>고등하교 이름은?</lblQ2>
+        <lblQ3>가장 좋아하는 책 이름은?</lblQ3>
+        <lblQ4>애완동물 이름은?</lblQ4>
+        <lblQ5>가장 좋아하는 동물은?</lblQ5>
         <lblanswer>답변</lblanswer>
-        <btnResg>나는 이용 약관에 동의하고 등록을 계속</btnResg>
-        <lblLinkPolice>세부 사항 및 웹 사이트 헌장의 규정.</lblLinkPolice>
+        <btnResg>이용약관에 동의하고 가입하기</btnResg>
+        <lblLinkPolice>사이트 이용약관 내용보기</lblLinkPolice>
         <msgWoringEmail>잘못된 형식으로 이메일을 보내거나 254 문자를 초과 할</msgWoringEmail>
         <msgWoringPass>비밀번호가 일치 0-9, 애리조나에서만 문자를 포함하지 않는 </msgWoringPass>
         <msgWoringFristName>50 자보다 긴 이름</msgWoringFristName>
@@ -42,14 +42,14 @@
         <msgWoringAns>250 자보다 긴 답변</msgWoringAns>
         <msgExitEmail>메일 주소가 이미 있습니다</msgExitEmail>
         
-        <lblResend>계정을 활성화하기 메일 보내기</lblResend>
-        <lblFullName>전체 이름</lblFullName>
-        <lblPhone>전화 번호</lblPhone>
+        <lblResend>아이디 또는 비밀번호 찾으세요</lblResend>
+        <lblFullName>이름 (영문)</lblFullName>
+        <lblPhone>연락처</lblPhone>
         <lblDob>생년월일</lblDob>
-        <lblGender>성별</lblGender>
-        <lblQuestionGuide>( 비밀 질문은 우리가 당신의 계정에 요청을 확인할 수 있도록합니다 )</lblQuestionGuide>
-        <lblAnswerGuide>( 기억에 남는 장소에 답을 적어 둡니다. 당신이 잊어 버린 경우 보안을 위해, 우리는 답을 복원 할 수는 없습니다 )</lblAnswerGuide>
-        <lblRegsterGiude>( Sfriendly.co의 구성원이의 혜택을 즐길 수m )</lblRegsterGiude>
+        <lblGender>연락처를 정확하게 입력해 주세요</lblGender>
+        <lblQuestionGuide>(비밀번호 확인질문은 고객님 계정 확인 절차시 사용됩니다)</lblQuestionGuide>
+        <lblAnswerGuide>(답변을 쉽게 기억할 수 있는 질문을 선택해주세요비밀번호 확인답변을 잊었을 경우,보안을 위해 답변은 복원하지 않습니다)</lblAnswerGuide>
+        <lblRegsterGiude>(회원가입을 통해서 다양한 혜택을 누리세요)</lblRegsterGiude>
         <lblPhoneGuide>정확한을 입력하세요</lblPhoneGuide>
     </login>
     <registercomplete>
@@ -66,6 +66,8 @@
         <lblRegister>레지스터</lblRegister>
         <lblMadeinVietnam>베트남 상품</lblMadeinVietnam>
         <lblHot>인기 상품</lblHot>
+        <lblM_F>주중</lblM_F>
+        <lblWeekend>주말</lblWeekend>
         
         <lblHeadSell>판매</lblHeadSell>
         <lblLiveChat>라이브 채팅</lblLiveChat>
@@ -115,7 +117,7 @@
         <lblSupportedPayment>결제옵션</lblSupportedPayment>
         <lblWorkingTime>운영시간</lblWorkingTime>
         <lblHanoiShip>상품 배송기간: 2-5일소요 (하노이 지역)</lblHanoiShip>
-        <lblDistrictShip>지역</lblDistrictShip>
+        <lblDistrictShip></lblDistrictShip>
         <lblHowToBuy>어떻게 구입 하는가?</lblHowToBuy>
         <lblShippingPolicy>배송 정책</lblShippingPolicy>
         <lblSellingGuide>판매 가이드</lblSellingGuide>
@@ -498,8 +500,8 @@
     <file_browse_file></file_browse_file>
     <search_show_page>
         <title>수색</title>
-        <lblResult>결과</lblResult>
-        <lblResultCount>장바구니 {{total_record}}</lblResultCount>
+        <lblResult>검색결과를 찾을 수 없습니다</lblResult>
+        <lblResultCount>검색어가 올바른지 재확인 하신 후 정확하게 다시 입력해주세요 {{total_record}}</lblResultCount>
         <colProduct>상품</colProduct>
         <colPrices>가격</colPrices>
         <colAction></colAction>
@@ -569,12 +571,12 @@
     <registerSellerAccount>
         <title>PROJECT E 로그인</title>
         <loginTitle>로그인</loginTitle>
-        <registeTitle>가입</registeTitle>
-        <lblUs>계정 / 이메일 : </lblUs>
-        <lblPs>암호 :</lblPs>
+        <registeTitle>일반회원 가입하기</registeTitle>
+        <lblUs>아이디 (이메일): </lblUs>
+        <lblPs>비밀번호:</lblPs>
         <btnLogin>로그인</btnLogin>
-        <lblResend>계정을 활성화하기 메일 보내기</lblResend>
-        <lblForgetPassword>당신은 계정에 로그인 할 수 없습니다 </lblForgetPassword>
+        <lblResend>아이디 또는 비밀번호 찾으세요</lblResend>
+        <lblForgetPassword>아이디, 비밀번호를 잊으셨나요?</lblForgetPassword>
         <lblCreateNewAccount>레지스터 </lblCreateNewAccount>
         <lblShopName>가게 이름</lblShopName>
         <lblContactPerson>담당자</lblContactPerson>

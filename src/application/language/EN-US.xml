@@ -66,6 +66,8 @@
         <lblMadeinVietnam>Made in Vietnam</lblMadeinVietnam>
         <lblHot>Hot</lblHot>
         
+        <lblM_F>T2 - T6</lblM_F>
+        <lblWeekend>Cuối tuần</lblWeekend>
         <lblHeadSell>SELL</lblHeadSell>
         <lblLiveChat>LIVE CHAT</lblLiveChat>
         <lblLanguage>LANGUAGE</lblLanguage>

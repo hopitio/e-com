@@ -45,7 +45,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
         <div class="head-tool-box text-center">
             <div class="conatiner width-960 text-right">
                 <a href="<?php echo Common::language_url('/seller/product') ?>"><?php echo $language['layout']->lblSellerOffice ?></a>|
-                
+
                 <?php if (User::getCurrentUser()->is_authorized): ?>
                     <a href="<?php echo Common::language_url('/portal/account/order_history') ?>"><?php echo $language['layout']->lblMyOrder ?></a>|
                     <a href="<?php echo Common::language_url('/portal/account/user_information') ?>"><?php echo User::getCurrentUser()->getFullname() ?></a>|
@@ -159,7 +159,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                         <h4 class="clearfix"></h4>
                         <div class="footer-group-header"><h4><?php echo $language['layout']->lblWorkingTime ?></h4></div>
                         <ul>
-                            <li>M - F: 9:00 to 19:00<br>Weekends: 9:00 to 15:00</li>
+                            <li><?php echo $language[$view->view]->lblM_F ?>: 9:00 to 19:00<br><?php echo $language[$view->view]->lblWeekend ?>: 9:00 to 15:00</li>
                             <li>
                                 <?php echo $language['layout']->lblHanoiShip ?>
                                 <br>

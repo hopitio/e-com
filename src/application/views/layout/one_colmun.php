@@ -239,7 +239,7 @@ $meta_lang_code = $arr_meta_lang[User::getCurrentUser()->languageKey];
                         <h4 class="clearfix"></h4>
                         <div class="footer-group-header"><h4><?php echo $language['layout']->lblWorkingTime ?></h4></div>
                         <ul>
-                            <li>M - F: 9:00 to 19:00<br>Weekends: 9:00 to 15:00</li>
+                            <li><?php echo $language[$view->view]->lblM_F ?>: 9:00 to 19:00<br><?php echo $language[$view->view]->lblWeekend ?>: 9:00 to 15:00</li>
                             <li>
                                 <?php echo $language['layout']->lblHanoiShip ?>
                                 <br>
