@@ -53,7 +53,7 @@ $active_record = TRUE;
 
 $db['lynx']['hostname'] = 'localhost';
 $db['lynx']['username'] = 'root';
-$db['lynx']['password'] = 'root';
+$db['lynx']['password'] = 'projecte';
 $db['lynx']['database'] = 'eproject';
 $db['lynx']['dbdriver'] = 'mysqli';
 $db['lynx']['dbprefix'] = '';
@@ -71,7 +71,7 @@ $db['lynx']['port'] = 3306;
 
 $db['portal']['hostname'] = 'localhost';
 $db['portal']['username'] = 'root';
-$db['portal']['password'] = 'root';
+$db['portal']['password'] = 'projecte';
 $db['portal']['database'] = 'portal_e_project';
 $db['portal']['dbdriver'] = 'mysqli';
 $db['portal']['dbprefix'] = '';

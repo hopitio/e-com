@@ -23,11 +23,12 @@ spl_autoload_register(function($class)
     }
 });
 
+$ds = DIRECTORY_SEPARATOR;
 $portalConfig = new DBConfig;
 $portalConfig->type = 'mysqli';
 $portalConfig->host = 'localhost';
 $portalConfig->user = 'root';
-$portalConfig->password = 'root';
+$portalConfig->password = $ds == "/" ? 'root' : 'projecte';
 $portalConfig->database = 'portal';
 DB::config('portal', $portalConfig);
 
@@ -35,6 +36,6 @@ $mainConfig = new DBConfig;
 $mainConfig->type = 'mysqli';
 $mainConfig->host = 'localhost';
 $mainConfig->user = 'root';
-$mainConfig->password = 'root';
+$mainConfig->password = $ds == "/" ? 'root' : 'projecte';
 $mainConfig->database = 'eproject';
 DB::config(DB::DEFAULT_INSTANCE, $mainConfig);
